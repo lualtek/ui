@@ -9,6 +9,7 @@ This turborepo uses [NPM](https://www.npmjs.com/) as a package manager. It inclu
 ### Apps and Packages
 
 - `components`: React Components based on Radix
+- `config`: Sharebale UI configs (PostCSS and co)
 - `tsconfig`: `tsconfig.json`s used throughout the monorepo
 
 Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
