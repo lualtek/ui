@@ -10,7 +10,9 @@
     "build:nocache": "turbo run build --force",
     "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
+    "test": "echo \"Add some tests\"",
     "prepare": "husky install"
+
   },
   "lint-staged": {
     "*.{ts,tsx,js,jsx}": "eslint"
