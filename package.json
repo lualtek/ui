@@ -9,10 +9,28 @@
     "build": "turbo run build",
     "build:nocache": "turbo run build --force",
     "dev": "turbo run dev --parallel",
-    "lint": "turbo run lint"
+    "lint": "turbo run lint",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx}": "eslint"
   },
   "devDependencies": {
-    "turbo": "latest"
+    "@commitlint/cli": "16.1.0",
+    "@commitlint/config-conventional": "16.0.0",
+    "@lasalefamine/eslint-config": "1.2.0",
+    "@typescript-eslint/eslint-plugin": "5.10.1",
+    "@typescript-eslint/parser": "5.10.1",
+    "eslint": "8.7.0",
+    "eslint-plugin-import": "2.25.4",
+    "eslint-plugin-jsx-a11y": "6.5.1",
+    "eslint-plugin-react": "7.28.0",
+    "eslint-plugin-react-hooks": "4.3.0",
+    "eslint-plugin-simple-import-sort": "7.0.0",
+    "husky": "7.0.4",
+    "lint-staged": "12.3.2",
+    "turbo": "latest",
+    "typescript": "4.5.5"
   },
   "engines": {
     "npm": ">=7.0.0",
