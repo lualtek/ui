@@ -1,0 +1,42 @@
+{
+  "name": "@lualtek/react-components",
+  "version": "0.0.0",
+  "types": "dist/index.d.ts",
+  "main": "dist/index.js",
+  "license": "MIT",
+  "scripts": {
+    "prebuild": "rimraf dist core core.css",
+    "build": "run-s build:ts build:css",
+    "build:css": "cpy '**/*.css' '../dist' --parents --cwd=src && postcss dist/*.css \"dist/**/!(utils)/!(_mixins).css\" --replace",
+    "postbuild:css": "rimraf dist/**/_mixins.css",
+    "build:ts": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lualtek/ui.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lualtek/ui/issues"
+  },
+  "homepage": "https://github.com/lualtek/ui",
+  "browserslist": [
+    "last 2 Chrome versions",
+    "last 2 Firefox versions",
+    "last 2 Safari versions",
+    "last 2 Edge versions"
+  ],
+  "peerDependencies": {
+    "react": "^17.0",
+    "react-dom": "^17.0"
+  },
+  "devDependencies": {
+    "@types/react": "17.0.37",
+    "@types/react-dom": "17.0.11",
+    "@lualtek/config": "*",
+    "cpy-cli": "3.1.1",
+    "postcss": "8.4.5",
+    "postcss-cli": "9.1.0",
+    "tsconfig": "*",
+    "typescript": "4.5.3"
+  }
+}

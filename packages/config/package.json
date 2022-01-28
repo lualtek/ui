@@ -1,0 +1,39 @@
+{
+  "name": "@lualtek/config",
+  "description": "Lualtek UI shared configurations",
+  "version": "0.0.0",
+  "author": "Lualtek",
+  "main": "dist/index",
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lualtek/ui.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lualtek/ui/issues"
+  },
+  "homepage": "https://github.com/lualtek/ui",
+  "scripts": {
+    "build": "run-s clean build:ts",
+    "clean": "rimraf dist",
+    "build:ts": "tsc"
+  },
+  "peerDependencies": {
+    "postcss": ">=8.x"
+  },
+  "dependencies": {
+    "cssnano": "5.0.15",
+    "cssnano-preset-default": "5.1.10",
+    "flat": "5.0.2",
+    "postcss-import": "14.0.2",
+    "postcss-mixins": "9.0.1",
+    "postcss-preset-env": "7.2.3"
+  },
+  "devDependencies": {
+    "@types/flat": "5.0.2",
+    "typescript": "4.5.4"
+  },
+  "types": "./dist/index.d.ts"
+}
