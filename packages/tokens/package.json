@@ -1,0 +1,35 @@
+{
+  "name": "@lualtek/tokens",
+  "version": "0.0.0",
+  "description": "Design tokens from Lualtek design language",
+  "main": "platforms/web/index",
+  "files": [
+    "platforms/"
+  ],
+  "scripts": {
+    "prebuild": "rimraf platforms/",
+    "build": "run-s build:tokens build:types",
+    "build:tokens": "ts-node src/index",
+    "build:types": "ts-node src/generate-types"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lualtek/ui.git"
+  },
+  "author": "Lualtek",
+  "bugs": {
+    "url": "https://github.com/lualtek/ui/issues"
+  },
+  "homepage": "https://github.com/lualtek/ui",
+  "devDependencies": {
+    "@types/fs-extra": "9.0.13",
+    "@types/tinycolor2": "1.4.3",
+    "fs-extra": "10.0.0",
+    "style-dictionary": "3.0.3",
+    "tinycolor2": "1.4.2"
+  },
+  "dependencies": {
+    "commander": "5.1.0",
+    "jsonfile": "4.0.0"
+  }
+}
