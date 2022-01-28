@@ -3,4 +3,8 @@ module.exports = {
   parserOptions: {
     project: './tsconfig.eslint.json',
   },
+  // Disable extraneous deps for monorepo incompatibility
+  rules: {
+    'import/no-extraneous-dependencies': 'off',
+  },
 };

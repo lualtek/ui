@@ -55,5 +55,8 @@
     "storybook-css-modules-preset": "1.1.1",
     "tsconfig": "*",
     "typescript": "4.5.5"
+  },
+  "dependencies": {
+    "@radix-ui/react-popover": "0.1.4"
   }
 }
