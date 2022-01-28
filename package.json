@@ -3,17 +3,15 @@
   "version": "0.0.0",
   "private": true,
   "workspaces": [
-    "apps/*",
     "packages/*"
   ],
   "scripts": {
     "build": "turbo run build",
+    "build:nocache": "turbo run build --force",
     "dev": "turbo run dev --parallel",
-    "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "lint": "turbo run lint"
   },
   "devDependencies": {
-    "prettier": "^2.5.1",
     "turbo": "latest"
   },
   "engines": {
