@@ -1,4 +1,5 @@
-// import '@lualtek/themes';
+/* eslint-disable import/no-extraneous-dependencies */
+import '@lualtek/themes';
 // import '../src/core.css';
 import './overrides.css';
 
