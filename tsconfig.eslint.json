@@ -6,6 +6,8 @@
     "node_modules"
   ],
   "include": [
+    "**/.eslintrc.js",
+    "**/.storybook/*.js",
     "**/*.js",
     "**/*.ts",
     "**/*.tsx"

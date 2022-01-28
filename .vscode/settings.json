@@ -4,8 +4,8 @@
   "editor.formatOnSave": false,
   "javascript.validate.enable": false,
   "typescript.tsdk": "node_modules/typescript/lib",
-  // "cssEnvVarsAutocomplete.varFiles": ["./node_modules/@wonderflow/themes/dist/themes/light.css"],
-  // "cssEnvVarsAutocomplete.envFiles": ["./node_modules/@wonderflow/tokens/platforms/web/tokens.css"],
+  // "cssEnvVarsAutocomplete.varFiles": ["./node_modules/@lualtek/themes/dist/themes/light.css"],
+  // "cssEnvVarsAutocomplete.envFiles": ["./node_modules/@lualtek/tokens/platforms/web/tokens.css"],
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true,
     "source.fixAll.stylelint": true

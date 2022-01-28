@@ -5,11 +5,14 @@
   "main": "dist/index.js",
   "license": "MIT",
   "scripts": {
+    "dev": "start-storybook --quiet -p 6006",
     "prebuild": "rimraf dist core core.css",
     "build": "run-s build:ts build:css",
     "build:css": "cpy '**/*.css' '../dist' --parents --cwd=src && postcss dist/*.css \"dist/**/!(utils)/!(_mixins).css\" --replace",
     "postbuild:css": "rimraf dist/**/_mixins.css",
-    "build:ts": "tsc"
+    "build:ts": "tsc",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "repository": {
     "type": "git",
@@ -30,12 +33,26 @@
     "react-dom": "^17.0"
   },
   "devDependencies": {
+    "@babel/core": "7.16.12",
+    "@babel/preset-typescript": "7.16.7",
+    "@lualtek/config": "*",
+    "@storybook/addon-actions": "6.4.15",
+    "@storybook/addon-essentials": "6.4.15",
+    "@storybook/addon-links": "6.4.15",
+    "@storybook/addon-postcss": "2.0.0",
+    "@storybook/addons": "6.4.15",
+    "@storybook/builder-webpack5": "6.4.15",
+    "@storybook/manager-webpack5": "6.4.15",
+    "@storybook/react": "6.4.15",
+    "@storybook/theming": "6.4.15",
     "@types/react": "17.0.37",
     "@types/react-dom": "17.0.11",
-    "@lualtek/config": "*",
+    "babel-loader": "8.2.3",
     "cpy-cli": "3.1.1",
     "postcss": "8.4.5",
     "postcss-cli": "9.1.0",
+    "storybook-addon-themes": "6.1.0",
+    "storybook-css-modules-preset": "1.1.1",
     "tsconfig": "*",
     "typescript": "4.5.3"
   }
