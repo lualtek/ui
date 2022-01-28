@@ -12,10 +12,10 @@
     "lint": "turbo run lint",
     "test": "echo \"Add some tests\"",
     "prepare": "husky install"
-
   },
   "lint-staged": {
-    "*.{ts,tsx,js,jsx}": "eslint"
+    "*.{ts,tsx,js,jsx}": "eslint",
+    "*.css": "stylelint"
   },
   "devDependencies": {
     "@commitlint/cli": "16.1.0",
@@ -31,6 +31,7 @@
     "eslint-plugin-simple-import-sort": "7.0.0",
     "husky": "7.0.4",
     "lint-staged": "12.3.2",
+    "stylelint-config-equinusocio": "1.5.1",
     "turbo": "latest",
     "typescript": "4.5.5"
   },

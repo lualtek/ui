@@ -1,0 +1,12 @@
+
+
+{
+  "extends": ["stylelint-config-equinusocio"],
+  "ignoreFiles": [
+    "!**/*.css",
+    "**/*.jsx",
+    "**/*.tsx",
+    "**/*.ts",
+    "node_modules"
+  ]
+}
