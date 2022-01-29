@@ -32,7 +32,7 @@ const run = () => {
     jsonStructure.svgs[dir.name] = [];
     jsonStructure.iconStyles.push(dir.name);
     dir.children?.forEach((file) => {
-      const formattedName = file.name.replace(/-\d.*/gm, '').replace('.svg', '').replace(/(-solid|-outline|-duotone).*?/gm, '');
+      const formattedName = file.name.replace(/-\d.*/gm, '').replace('.svg', '').replace(/(-fill|-duotone).*?/gm, '');
       const iconID = `${dir.name}/${formattedName}`;
 
       sprite.add(iconID, fs.readFileSync(file.path, 'utf8'));
