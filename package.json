@@ -5,6 +5,7 @@
   "workspaces": [
     "packages/*"
   ],
+  "packageManager": "npm@8.3.1",
   "scripts": {
     "build": "turbo run build",
     "build:nocache": "turbo run build --force",
@@ -39,8 +40,7 @@
     "typescript": "4.5.5"
   },
   "engines": {
-    "npm": ">=7.0.0",
+    "npm": ">=8.0.0",
     "node": ">=14.0.0"
-  },
-  "packageManager": "npm@8.3.1"
+  }
 }
