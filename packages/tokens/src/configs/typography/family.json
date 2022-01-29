@@ -2,7 +2,7 @@
   "font": {
     "family": {
       "sans": {
-        "value": "system-ui, sans-serif"
+        "value": "\"Nunito Sans\", system-ui, sans-serif"
       },
       "mono": {
         "value": "monospace"
