@@ -1,14 +1,15 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import postcssMixins from 'postcss-mixins';
 
-export const postcssConfig = (envs: Record<string, unknown>) => ({
+export const postcssConfig = (tokens: Record<string, unknown>) => ({
   plugins: {
     'postcss-import': {},
+    'postcss-replace': {
+      pattern: /env\(.*?--([^\s]+?)\)/gi,
+      data: tokens,
+    },
     'postcss-preset-env': {
       stage: 0,
-      importFrom: [{
-        environmentVariables: envs,
-      }],
       features: {
         'logical-properties-and-values': false,
         'prefers-color-scheme-query': false,

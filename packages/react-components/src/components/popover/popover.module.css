@@ -1,3 +1,5 @@
 .Popover {
-  background-color: red;
+  background-color: hsl(env(--color-primary-80));
+  color: hsl(env(--color-primary-30));
+  padding: env(--space-32);
 }
