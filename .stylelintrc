@@ -1,7 +1,7 @@
-
-
 {
-  "extends": ["stylelint-config-equinusocio"],
+  "extends": [
+    "stylelint-config-equinusocio"
+  ],
   "ignoreFiles": [
     "!**/*.css",
     "**/*.jsx",
