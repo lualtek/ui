@@ -57,6 +57,7 @@
     "typescript": "4.5.5"
   },
   "dependencies": {
+    "@lualtek/icons": "*",
     "@radix-ui/react-popover": "0.1.4"
   }
 }

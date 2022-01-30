@@ -9,7 +9,7 @@ const story: ComponentMeta<Polymorphic.IntrinsicElement<typeof Button>> = {
   component: Button,
 };
 
-const Template: ComponentStory<typeof Button> = (args: any) => <Button {...args} />;
+const Template: ComponentStory<typeof Button> = args => <Button {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {

@@ -1,5 +1,0 @@
-.Popover {
-  background-color: hsl(token(--color-primary-80));
-  color: var(--global-foreground);
-  padding: token(--space-32);
-}
