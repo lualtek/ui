@@ -9,7 +9,7 @@ const story: ComponentMeta<typeof Icon> = {
   args: {
     style: 'outline',
     dimension: 24,
-    fill: 'currentColor',
+    fill: 'currentcolor',
   },
   argTypes: {
     style: {
@@ -39,7 +39,7 @@ const CustomReactIcon = ({ ...props }: SVGAttributes<SVGElement | SVGSVGElement>
 
 export const Default = Template.bind({});
 Default.args = {
-  source: 'wine',
+  source: 'message',
 };
 
 export const CustomIcon = Template.bind({});
