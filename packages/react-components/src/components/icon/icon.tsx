@@ -26,23 +26,16 @@ export type IconProps = SVGAttributes<SVGElement | SVGSVGElement> & {
    * is automatically defined based on the dimension.
    */
   dimension?: TokensTypes['icon']['size'];
-  /**
-   * Set the style of the icon.
-   * The default style is `solid` and outline or duotone icons are available
-   * only for icons sized 24pt or larger.
-  */
-  style?: 'outline' | 'duotone';
 }
 
 export const Icon = forwardRef<SVGSVGElement, IconProps>(({
   className,
   source,
   dimension = 16,
-  style = 'outline',
   fill,
   ...otherProps
 }: IconProps, forwardedRef) => {
-  const computedStyle = useMemo(() => (dimension < 24 ? 'solid' : style), [style, dimension]);
+  const computedStyle = useMemo(() => (dimension < 16 ? 'solid' : 'duotone'), [dimension]);
 
   return (typeof source === 'string')
     ? (
