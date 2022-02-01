@@ -1,6 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import '@lualtek/themes';
-// import '../src/core.css';
+import '../src/core.css';
 import './overrides.css';
 
 export const parameters = {

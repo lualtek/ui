@@ -1,7 +1,7 @@
 {
   "global": {
     "foreground": {
-      "value": "hsl({color.primary.80})"
+      "value": "hsl({color.support.white})"
     },
     "background": {
       "value": "hsl({color.primary.100})"

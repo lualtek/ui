@@ -5,6 +5,35 @@ import { Button } from '.';
 const story: ComponentMeta<typeof Button> = {
   title: 'Components/Actions/Button',
   component: Button,
+  args: {
+    dimension: 'regular',
+    kind: 'primary',
+    children: 'Click me',
+    fullWidth: false,
+    disabled: false,
+    busy: false,
+    pressed: false,
+  },
+  argTypes: {
+    onClick: {
+      action: 'clicked',
+      table: {
+        disable: true,
+      },
+    },
+    dimension: {
+      options: ['small', 'regular', 'big'],
+      control: { type: 'radio' },
+    },
+    kind: {
+      options: ['primary', 'secondary', 'flat'],
+      control: { type: 'radio' },
+    },
+    iconPosition: {
+      options: ['left', 'right'],
+      control: { type: 'inline-radio' },
+    },
+  },
 };
 
 const Template: ComponentStory<typeof Button> = args => <Button {...args} />;

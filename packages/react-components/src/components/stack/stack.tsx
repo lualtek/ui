@@ -41,11 +41,11 @@ export type StackProps = {
   /**
    * Set the horizontal padding (left/right)
    */
-  horizontalPadding?: TokensTypes['space'];
+  horizontalPadding?: 0 | TokensTypes['space'];
   /**
    * Set the vertical padding (top/bottom)
    */
-  verticalPadding?: TokensTypes['space'];
+  verticalPadding?: 0 | TokensTypes['space'];
   /**
    * Renderes children as rows or columns. The value can be one of the flex directions.
    * More info: https://developer.mozilla.org/en-US/docs/Web/CSS/flex-direction

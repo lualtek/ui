@@ -9,6 +9,7 @@ To use the tokens you have to install the npm package first:
 ```sh
 npm i @lualtek/tokens
 ```
+
 or
 
 ```sh
@@ -46,14 +47,14 @@ type MyComponentProps = {
 
 ### Inside CSS
 
-Inside css files the tokens are available as custom env variables (`env(--[TOKEN-NAME])`), they are then converted into the final value at build-time.
+Inside css files the tokens are available as custom env variables (`token(--[TOKEN-NAME])`), they are then converted into the final value at build-time.
 
 ```css
 @import "@lualtek/tokens/platforms/web/tokens.css";
 
 div {
   /* Colors are defined as HSL-4 but without the hsl() notation */
-  color: hsl(env(--color-primary-50) / 50%);
+  color: hsl(token(--color-primary-50) / 50%);
 }
 ```
 
