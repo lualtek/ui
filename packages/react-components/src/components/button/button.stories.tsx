@@ -1,10 +1,8 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import { Polymorphic } from '../..';
 import { Button } from '.';
 
-const story: ComponentMeta<Polymorphic.IntrinsicElement<typeof Button>> = {
+const story: ComponentMeta<typeof Button> = {
   title: 'Components/Actions/Button',
   component: Button,
 };
@@ -20,9 +18,9 @@ Default.args = {
 export const WithIcon = Template.bind({});
 WithIcon.args = {
   children: 'Ciao',
-  // icon: 'bookmark',
-  // iconPosition: 'left',
-  // iconColor: 'currentColor',
+  icon: 'chat',
+  iconPosition: 'left',
+  iconColor: 'currentColor',
 };
 
 export const WithCustomIcon = Template.bind({});
