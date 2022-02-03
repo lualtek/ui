@@ -12,7 +12,7 @@ concurrency:
 
 jobs:
   ci:
-    - uses: lualtek/workflows/.github/workflows/ui_setup.yml@master
+    uses: lualtek/workflows/.github/workflows/ui_setup.yml@master
 
     - name: Create Release Pull Request or Publish to GitHub Packages
       id: changesets
@@ -20,10 +20,8 @@ jobs:
       with:
         version: ./update-lock.sh
         publish: npm run release
-        commit: >
-          ci: release
-        title: >
-          ci: release
+        commit: "ci: release"
+        title: "ci: release"
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
