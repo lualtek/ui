@@ -12,6 +12,7 @@
     "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
     "test": "echo \"Add some tests\"",
+    "release": "changeset publish",
     "prepare": "husky install",
     "upgrade-interactive": "npx npm-upgrade-monorepo"
   },
@@ -20,6 +21,7 @@
     "*.css": "stylelint"
   },
   "devDependencies": {
+    "@changesets/cli": "2.20.0",
     "@commitlint/cli": "16.1.0",
     "@commitlint/config-conventional": "16.0.0",
     "@lasalefamine/eslint-config": "1.2.1",

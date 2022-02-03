@@ -3,6 +3,10 @@
   "version": "0.0.0",
   "description": "Design tokens from Lualtek design language",
   "main": "platforms/web/index",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com",
+    "access": "restricted"
+  },
   "files": [
     "platforms/"
   ],
@@ -14,7 +18,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lualtek/ui.git"
+    "url": "ssh+https://github.com/lualtek/ui.git",
+    "directory": "packages/tokens"
   },
   "author": "Lualtek",
   "bugs": {

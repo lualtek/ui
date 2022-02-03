@@ -3,7 +3,10 @@
   "version": "0.0.0",
   "types": "dist/index.d.ts",
   "main": "dist/index.js",
-  "license": "MIT",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com",
+    "access": "restricted"
+  },
   "scripts": {
     "dev": "start-storybook --quiet -p 6006",
     "prebuild": "rimraf dist core core.css",
@@ -15,7 +18,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lualtek/ui.git"
+    "url": "ssh+https://github.com/lualtek/ui.git",
+    "directory": "packages/react-components"
   },
   "bugs": {
     "url": "https://github.com/lualtek/ui/issues"
