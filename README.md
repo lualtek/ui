@@ -8,7 +8,7 @@ This turborepo uses [NPM](https://www.npmjs.com/) as a package manager. It inclu
 
 ### Apps and Packages
 
-- `components`: React Components based on Radix
+- `react-components`: React Components based on Radix
 - `tokens`: Sharable UI tokens
 - `themes`: CSS and JSON themes
 - `config`: Sharebale UI configs (PostCSS and co)

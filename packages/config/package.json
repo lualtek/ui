@@ -40,6 +40,7 @@
   },
   "devDependencies": {
     "@types/flat": "5.0.2",
+    "tsconfig": "*",
     "typescript": "4.5.5"
   },
   "types": "./dist/index.d.ts"
