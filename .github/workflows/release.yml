@@ -1,0 +1,27 @@
+name: Build, Test and Release
+
+on:
+  push:
+    branches:
+      - main
+
+# Cancel in-progress jobs or runs for the current workflow
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  ci:
+    - uses: lualtek/workflows/.github/workflows/ui_setup.yml@master
+
+    - name: Create Release Pull Request or Publish to GitHub Packages
+      id: changesets
+      uses: changesets/action@v1
+      with:
+        version: ./update-lock.sh
+        publish: npm run release
+        commit: "[ci] release"
+        title: "[ci] release"
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -4,6 +4,10 @@
   "version": "0.0.0",
   "author": "Lualtek",
   "main": "dist/index",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com",
+    "access": "restricted"
+  },
   "exports": {
     "./sprite": "./dist/sprite.svg",
     "./structure": "./dist/structure.json"
@@ -32,7 +36,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lualtek/ui.git"
+    "url": "ssh+https://github.com/lualtek/ui.git",
+    "directory": "packages/icons"
   },
   "bugs": {
     "url": "https://github.com/lualtek/ui/issues"
