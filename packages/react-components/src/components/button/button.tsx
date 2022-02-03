@@ -1,11 +1,12 @@
 import clsx from 'clsx';
 import {
-  Children, cloneElement, FC, forwardRef, MouseEvent, useCallback,
+  forwardRef, MouseEvent, useCallback,
 } from 'react';
 
 import {
-  Icon, IconProps, Polymorphic, Spinner,
-} from '../..';
+  Elevator, Icon, IconProps, Polymorphic, Spinner,
+} from '@/components';
+
 import styles from './button.module.css';
 
 export type ButtonProps = {
@@ -93,53 +94,36 @@ export const Button = forwardRef((
   };
 
   return (
-    <Wrapper
-      ref={forwardedRef}
-      type={Wrapper === 'button' ? type : undefined}
-      className={clsx(styles.Button, className)}
-      data-button-icon-position={iconPosition}
-      data-button-dimension={dimension}
-      data-button-kind={kind}
-      data-button-fullwidth={fullWidth}
-      aria-disabled={disabled}
-      aria-busy={busy}
-      aria-pressed={Wrapper === 'button' ? pressed : undefined}
-      aria-live={busy ? 'polite' : undefined}
-      onClick={handleClick()}
-      {...otherProps}
-    >
-      {icon && (
+    <Elevator resting={kind === 'primary' ? 1 : 0}>
+      <Wrapper
+        ref={forwardedRef}
+        type={Wrapper === 'button' ? type : undefined}
+        className={clsx(styles.Button, className)}
+        data-button-icon-position={iconPosition}
+        data-button-dimension={dimension}
+        data-button-kind={kind}
+        data-button-fullwidth={fullWidth}
+        aria-disabled={disabled}
+        aria-busy={busy}
+        aria-pressed={Wrapper === 'button' ? pressed : undefined}
+        aria-live={busy ? 'polite' : undefined}
+        onClick={handleClick()}
+        {...otherProps}
+      >
+        {icon && (
         <Icon
           source={icon}
           fill={iconColor}
           dimension={iconSize[dimension] as IconProps['dimension']}
         />
-      )}
-      {(children && busy) ? <span>{children}</span> : children}
-      {busy && (
+        )}
+        {(children && busy) ? <span>{children}</span> : children}
+        {busy && (
         <span className={styles.SpinnerIndicator}>
           <Spinner dimension={dimension} />
         </span>
-      )}
-    </Wrapper>
+        )}
+      </Wrapper>
+    </Elevator>
   );
 }) as PolymorphicButton;
-
-export type ButtonsGroupProps = PropsWithClass & Pick<ButtonProps, 'dimension' | 'kind'>
-
-export const ButtonsGroup: FC<ButtonsGroupProps> = ({
-  children,
-  className,
-  kind,
-  dimension = 'regular',
-}) => (
-  <div className={clsx(styles.ButtonsGroup, className)}>
-    {Children.map(children, (child: any) => cloneElement(
-      child,
-      {
-        kind,
-        dimension,
-      },
-    ))}
-  </div>
-);

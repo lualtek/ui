@@ -82,11 +82,11 @@ export const Stack = forwardRef(({
 
   const computedStyle: CSSProperties = {
     '--rGap': rowGap ? tkns.space[rowGap] : 0,
-    '--cGap': columnGap && tkns.space[columnGap],
+    '--cGap': columnGap ? tkns.space[columnGap] : 0,
     '--vAlign': verticalAlign && alignmentTemplate(verticalAlign),
     '--hAlign': horizontalAlign && alignmentTemplate(horizontalAlign),
-    '--vPadding': verticalPadding && tkns.space[verticalPadding],
-    '--hPadding': horizontalPadding && tkns.space[horizontalPadding],
+    '--vPadding': verticalPadding ? tkns.space[verticalPadding] : 0,
+    '--hPadding': horizontalPadding ? tkns.space[horizontalPadding] : 0,
   };
 
   return (

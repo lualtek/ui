@@ -1,7 +1,8 @@
 import clsx from 'clsx';
 import { forwardRef } from 'react';
 
-import { Polymorphic } from '../..';
+import { Polymorphic } from '@/components';
+
 import styles from './container.module.css';
 
 export type ContainerProps = {
