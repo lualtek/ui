@@ -16,15 +16,15 @@ html {
 }
 
 *:focus-visible {
-  outline: 5px auto Highlight;
-  outline: 5px auto -webkit-focus-ring-color;
+  outline: 2px solid var(--global-foreground);
+  outline-offset: 2px;
 }
 
 body {
   color: var(--global-foreground);
   font-family: token(--font-family-sans);
+  font-weight: token(--font-weight-semi-bold);
   font-feature-settings: 'calt' off;
-  scroll-padding: token(--space-80);
   margin: 0;
 }
 
