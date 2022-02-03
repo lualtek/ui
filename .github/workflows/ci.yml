@@ -12,4 +12,4 @@ concurrency:
 
 jobs:
   ci:
-    uses: lualtek/workflows/.github/workflows/ui_setup.yml@master
+    uses: lualtek/workflows/.github/workflows/ui_ci.yml@master

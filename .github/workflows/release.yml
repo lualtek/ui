@@ -1,4 +1,4 @@
-name: Build, Test and Release
+name: Build, Release and Stage
 
 on:
   push:
@@ -12,18 +12,8 @@ concurrency:
 
 jobs:
   ci:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: lualtek/workflows/.github/workflows/ui_setup.yml@master
-
-      - name: Create Release Pull Request or Publish to GitHub Packages
-        id: changesets
-        uses: changesets/action@v1
-        with:
-          version: ./update-lock.sh
-          publish: npm run release
-          commit: "ci: release"
-          title: "ci: release"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    uses: lualtek/workflows/.github/workflows/ui_ci.yml@master
+    secrets:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    with:
+      release: true
