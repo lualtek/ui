@@ -9,17 +9,18 @@
   font-family: inherit;
   display: inline-flex;
   align-items: center;
+  line-height: 1;
   min-inline-size: min-content;
   justify-content: center;
   text-decoration: none;
   white-space: nowrap;
   border: 0;
   appearance: none;
-  font-weight: 700;
+  font-weight: token(--font-weight-bold);
   position: relative;
   overflow: hidden;
   background: none;
-  grid-gap: token(--space-8);
+  gap: token(--space-8);
   border-radius: token(--radius-16);
 
   /* Sizes */
@@ -29,7 +30,7 @@
     font-size: token(--font-size-18);
     block-size: token(--space-48);
     border-radius: token(--radius-16);
-    grid-gap: token(--space-16);
+    gap: token(--space-16);
   }
 
   &[data-button-dimension='regular'] {
@@ -42,23 +43,23 @@
     font-size: token(--font-size-14);
     padding: 0 token(--space-8);
     block-size: token(--space-24);
-    grid-gap: token(--space-4);
+    gap: token(--space-4);
     border-radius: token(--radius-8);
   }
 
   /* Types */
 
   &[data-button-kind='primary'] {
-    background: var(--cta-default);
+    background: radial-gradient(circle at center top, var(--gradient-brand-1) 0%, var(--gradient-brand-2) 100%);
     color: var(--cta-foreground);
 
     &:not([aria-pressed='true'], [aria-disabled='true']):is(:active) {
-      background: var(--cta-dark);
+      background: var(--cta-default);
     }
 
     &:where([aria-pressed='true']),
     &:where([aria-pressed='true']:active) {
-      background: var(--cta-dark);
+      background: var(--cta-default);
       color: hsl(token(--color-support-white));
     }
   }
@@ -120,7 +121,7 @@
     @mixin vibrancy;
 
     color: var(--global-disabled-foreground);
-    background-color: var(--global-disabled-background);
+    background: var(--global-disabled-background);
     cursor: not-allowed;
   }
 
@@ -137,25 +138,4 @@
   right: 0;
   display: grid;
   place-content: center;
-}
-
-
-.ButtonsGroup {
-  display: inline-flex;
-
-  & > *:not(:first-child, :last-child, :only-of-type) {
-    border-radius: 0;
-  }
-
-  & > *:first-child:not(:only-of-type) {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-    box-shadow: inset -1px 0 0 hsl(0deg 0% 40% / 10%);
-  }
-
-  & > *:last-child:not(:only-of-type) {
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-    box-shadow: inset 1px 0 0 hsl(0deg 0% 40% / 10%);
-  }
 }

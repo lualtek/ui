@@ -58,16 +58,4 @@ WithCustomIcon.args = {
   // icon: <CustomReactIcon />,
 };
 
-const GroupTemplate: ComponentStory<typeof Button> = () => (
-  <>
-    <Button>Action</Button>
-    <Button>Action</Button>
-    <Button>Action</Button>
-    <Button>Action</Button>
-  </>
-);
-
-export const Grouped = GroupTemplate.bind({});
-Grouped.args = {};
-
 export default story;
