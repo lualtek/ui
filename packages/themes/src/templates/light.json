@@ -68,6 +68,22 @@
       "value": "hsl({color.primary.70})"
     }
   },
+  "gradient": {
+    "brand": {
+      "1": {
+        "value": "hsl({color.support.brand})",
+        "attributes": {
+          "category": "color"
+        }
+      },
+      "2": {
+        "value": "hsl(245 80% 55%)",
+        "attributes": {
+          "category": "color"
+        }
+      }
+    }
+  },
   "highlight": {
     "gray-background": {
       "value": "hsl({color.primary.20})"
