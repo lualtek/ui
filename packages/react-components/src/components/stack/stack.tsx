@@ -3,7 +3,8 @@ import tkns from '@lualtek/tokens/platforms/web/tokens.json';
 import clsx from 'clsx';
 import { CSSProperties, forwardRef } from 'react';
 
-import { Polymorphic } from '../..';
+import { Polymorphic } from '@/components';
+
 import styles from './stack.module.css';
 
 export type StackProps = {
