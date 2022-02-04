@@ -13,7 +13,7 @@
     "build": "run-s build:ts build:css",
     "build:css": "cpy '**/*.css' '../dist' --parents --cwd=src && postcss dist/*.css \"dist/**/!(utils)/!(_mixins).css\" --replace",
     "postbuild:css": "rimraf dist/**/_mixins.css",
-    "build:ts": "tsc",
+    "build:ts": "tsc && tsc-alias",
     "storybook": "start-storybook -p 6006"
   },
   "repository": {
