@@ -1,27 +1,24 @@
-import * as CheckboxPrimitve from '@radix-ui/react-checkbox';
+import * as RadioPrimitive from '@radix-ui/react-radio-group';
 import clsx from 'clsx';
 import { domAnimation, LazyMotion, m } from 'framer-motion';
 import { ElementRef, forwardRef } from 'react';
 
 import { Icon } from '@/components';
 
-import styles from './checkbox.module.css';
+import styles from './radio.module.css';
 
-export type CheckboxProps = CheckboxPrimitve.CheckboxProps & {
+export type RadioProps = RadioPrimitive.RadioGroupItemProps & {
   dimension?: 'small' | 'regular';
 };
 
-export const Checkbox = forwardRef<
-ElementRef<typeof CheckboxPrimitve.Root>,
-CheckboxProps
+export const Radio = forwardRef<
+ElementRef<typeof RadioPrimitive.Item>,
+RadioProps
 >(({
   dimension = 'regular',
-  checked,
   className,
   ...otherProps
 }, forwardedRef) => {
-  const isIndeterminate = checked === 'indeterminate';
-
   const animation = {
     hidden: {
       opacity: 0,
@@ -47,22 +44,23 @@ CheckboxProps
 
   return (
     <LazyMotion features={domAnimation}>
-      <CheckboxPrimitve.Root
-        className={clsx(styles.Checkbox, className)}
-        checked={checked}
-        data-checkbox-dimension={dimension}
-        ref={forwardedRef}
+      <RadioPrimitive.Item
         asChild
+        className={clsx(styles.Radio, className)}
+        data-radio-dimension={dimension}
+        ref={forwardedRef}
         {...otherProps}
       >
         <m.button whileTap={{ scale: 1.15 }} transition={{ duration: 0.3, ease: 'backOut' }}>
-          <CheckboxPrimitve.CheckboxIndicator asChild>
+          <RadioPrimitive.Indicator asChild>
             <m.span className={styles.Icon} initial="hidden" animate="visible" exit="hidden" variants={animation}>
-              <Icon dimension={12} source={isIndeterminate ? 'minus' : 'check'} />
+              <Icon dimension={12} source="shape-oval" />
             </m.span>
-          </CheckboxPrimitve.CheckboxIndicator>
+          </RadioPrimitive.Indicator>
         </m.button>
-      </CheckboxPrimitve.Root>
+      </RadioPrimitive.Item>
     </LazyMotion>
   );
 });
+
+export const RadioGroup = RadioPrimitive.Root;

@@ -23,7 +23,7 @@ const story: ComponentMeta<typeof Checkbox> = {
 export default story;
 
 const Template: ComponentStory<typeof Checkbox> = args => (
-  <Checkbox {...args} />
+  <Checkbox onCheckedChange={info => console.log(info)} {...args} />
 );
 
 export const Default = Template.bind({});
@@ -42,7 +42,14 @@ DisabledChecked.args = {
 const TemplateIndeterminate: ComponentStory<typeof Checkbox> = (args) => {
   const [isChecked, setIsChecked] = useState<CheckboxProps['checked']>('indeterminate');
 
-  return <Checkbox checked={isChecked} onCheckedChange={setIsChecked} {...args} />;
+  return (
+    <Checkbox
+      name="test"
+      checked={isChecked}
+      onCheckedChange={setIsChecked}
+      {...args}
+    />
+  );
 };
 
 export const Indeterminate = TemplateIndeterminate.bind({});

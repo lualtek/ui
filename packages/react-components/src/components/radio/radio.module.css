@@ -1,0 +1,49 @@
+@import '../../core/utils/vibrancy.css';
+
+.Radio {
+
+  @mixin vibrancy;
+
+  appearance: none;
+  line-height: 1;
+  display: inline-flex;
+  margin: 0;
+  border: 0;
+  padding: 0;
+  max-inline-size: token(--space-24);
+  max-block-size: token(--space-24);
+  background-color: var(--global-vibrancy-background);
+  color: var(--global-background);
+  border-radius: 1e5px;
+  position: relative;
+
+  &:is([data-state='checked']) {
+    background-color: var(--dimmed-7);
+  }
+
+  &[data-disabled] {
+    background-color: var(--global-disabled-background);
+    color: var(--global-disabled-foreground);
+  }
+
+  &[data-radio-dimension='small'] {
+    inline-size: token(--space-16);
+    block-size: token(--space-16);
+  }
+
+  &[data-radio-dimension='regular'] {
+    inline-size: token(--space-24);
+    block-size: token(--space-24);
+  }
+}
+
+.Icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  place-items: center;
+  place-content: center;
+}
