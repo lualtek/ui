@@ -6,3 +6,4 @@ export * from './icon';
 export * from './radio';
 export * from './spinner';
 export * from './stack';
+export * from './switch';

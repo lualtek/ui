@@ -46,7 +46,7 @@ CheckboxProps
   };
 
   return (
-    <LazyMotion features={domAnimation}>
+    <LazyMotion features={domAnimation} strict>
       <CheckboxPrimitve.Root
         className={clsx(styles.Checkbox, className)}
         checked={checked}

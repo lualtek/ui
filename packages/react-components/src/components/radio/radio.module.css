@@ -29,11 +29,15 @@
   &[data-radio-dimension='small'] {
     inline-size: token(--space-16);
     block-size: token(--space-16);
+    max-inline-size: token(--space-16);
+    max-block-size: token(--space-16);
   }
 
   &[data-radio-dimension='regular'] {
     inline-size: token(--space-24);
     block-size: token(--space-24);
+    max-inline-size: token(--space-24);
+    max-block-size: token(--space-24);
   }
 }
 

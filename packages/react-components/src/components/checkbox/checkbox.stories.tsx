@@ -7,12 +7,6 @@ const story: ComponentMeta<typeof Checkbox> = {
   title: 'Components/Inputs/Checkbox',
   component: Checkbox,
   argTypes: {
-    onChange: {
-      action: 'changed',
-      table: {
-        disable: true,
-      },
-    },
     disabled: {
       options: [true, false],
       control: { type: 'inline-radio' },

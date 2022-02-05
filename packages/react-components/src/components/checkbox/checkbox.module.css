@@ -10,8 +10,6 @@
   margin: 0;
   border: 0;
   padding: 0;
-  max-inline-size: token(--space-24);
-  max-block-size: token(--space-24);
   background-color: var(--global-vibrancy-background);
   color: var(--global-background);
   position: relative;
@@ -26,15 +24,19 @@
   }
 
   &[data-checkbox-dimension='small'] {
+    border-radius: token(--radius-4);
     inline-size: token(--space-16);
     block-size: token(--space-16);
-    border-radius: token(--radius-4);
+    max-inline-size: token(--space-16);
+    max-block-size: token(--space-16);
   }
 
   &[data-checkbox-dimension='regular'] {
     border-radius: token(--radius-8);
     inline-size: token(--space-24);
     block-size: token(--space-24);
+    max-inline-size: token(--space-24);
+    max-block-size: token(--space-24);
   }
 }
 

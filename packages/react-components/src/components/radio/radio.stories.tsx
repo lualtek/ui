@@ -6,12 +6,6 @@ const story: ComponentMeta<typeof Radio> = {
   title: 'Components/Inputs/Radio',
   component: Radio,
   argTypes: {
-    onChange: {
-      action: 'changed',
-      table: {
-        disable: true,
-      },
-    },
     disabled: {
       options: [true, false],
       control: { type: 'inline-radio' },

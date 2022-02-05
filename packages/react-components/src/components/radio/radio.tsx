@@ -43,7 +43,7 @@ RadioProps
   };
 
   return (
-    <LazyMotion features={domAnimation}>
+    <LazyMotion features={domAnimation} strict>
       <RadioPrimitive.Item
         asChild
         className={clsx(styles.Radio, className)}
