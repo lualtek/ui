@@ -13,13 +13,9 @@
   max-inline-size: token(--space-24);
   max-block-size: token(--space-24);
   background-color: var(--global-vibrancy-background);
-  color: var(--global-background);
+  color: var(--cta-default);
   border-radius: 1e5px;
   position: relative;
-
-  &:is([data-state='checked']) {
-    background-color: var(--dimmed-7);
-  }
 
   &[data-disabled] {
     background-color: var(--global-disabled-background);

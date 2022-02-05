@@ -11,12 +11,8 @@
   border: 0;
   padding: 0;
   background-color: var(--global-vibrancy-background);
-  color: var(--global-background);
+  color: var(--cta-default);
   position: relative;
-
-  &:is([data-state='checked'], [data-state='indeterminate']) {
-    background-color: var(--dimmed-7);
-  }
 
   &[data-disabled] {
     background-color: var(--global-disabled-background);

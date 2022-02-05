@@ -25,20 +25,12 @@ RadioProps
       scale: 0,
       x: '-50%',
       y: '-50%',
-      transition: {
-        ease: 'backOut',
-        duration: 0.2,
-      },
     },
     visible: {
       opacity: 1,
       scale: 1,
       x: '-50%',
       y: '-50%',
-      transition: {
-        ease: 'backOut',
-        duration: 0.2,
-      },
     },
   };
 
@@ -53,7 +45,18 @@ RadioProps
       >
         <m.button whileTap={{ scale: 1.15 }} transition={{ duration: 0.3, ease: 'backOut' }}>
           <RadioPrimitive.Indicator asChild>
-            <m.span className={styles.Icon} initial="hidden" animate="visible" exit="hidden" variants={animation}>
+            <m.span
+              className={styles.Icon}
+              initial="hidden"
+              animate="visible"
+              exit="hidden"
+              variants={animation}
+              transition={{
+                type: 'spring',
+                stiffness: 700,
+                damping: 30,
+              }}
+            >
               <Icon dimension={12} source="shape-oval" />
             </m.span>
           </RadioPrimitive.Indicator>

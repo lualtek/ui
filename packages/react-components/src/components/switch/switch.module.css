@@ -13,11 +13,13 @@
   inline-size: 2.44rem;
   max-block-size: token(--space-24);
   background-color: var(--global-vibrancy-background);
-  color: var(--global-foreground);
+  color: var(--dimmed-6);
   border-radius: 1e5px;
   justify-content: flex-start;
 
   &:is([data-state='checked']) {
+    background: var(--cta-default);
+    color: hsl(token(--color-support-white));
     justify-content: flex-end;
   }
 
