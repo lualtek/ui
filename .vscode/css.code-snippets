@@ -15,28 +15,28 @@
 	// 	],
 	// 	"description": "Log output to console"
 	// }
-  "Import Wanda css media queries from inside a component": {
+  "Import Lualtek css media queries from inside a component": {
 		"prefix": "media",
 		"body": [
 			"@import '../../core/utils/media.css';"
 		],
     "scope": "css, postcss",
-		"description": "Import Wanda css media queries from inside a component"
+		"description": "Import Lualtek css media queries from inside a component"
 	},
-  "Import Wanda css design tokens": {
+  "Import Lualtek css design tokens": {
 		"prefix": "tokens",
 		"body": [
 			"@import '@wonderflow/tokens/platforms/web/tokens.css';"
 		],
     "scope": "css, postcss",
-		"description": "Import Wanda css media queries from inside a component"
+		"description": "Import Lualtek css media queries from inside a component"
 	},
-  "Import Wanda css utils": {
+  "Import Lualtek css utils": {
 		"prefix": "utils",
 		"body": [
 			"@import '../../core/utils/vibrancy.css';"
 		],
     "scope": "css, postcss",
-		"description": "Import Wanda css utilities inside a component"
+		"description": "Import Lualtek css utilities inside a component"
 	}
 }

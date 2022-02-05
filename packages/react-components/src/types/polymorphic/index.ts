@@ -1,6 +1,6 @@
 /**
  * Polymorphic types aretaken from https://github.com/radix-ui/primitives/blob/main/packages/react/polymorphic/src/polymorphic.ts
- * Due the deprecation, we decided to include these types inside Wanda's react-components.
+ * Due the deprecation, we decided to include these types inside Lualtek react-components.
  *
  * All the references and liceses are own by the team Radix
  */
