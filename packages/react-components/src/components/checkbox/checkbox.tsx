@@ -1,5 +1,6 @@
 import * as CheckboxPrimitve from '@radix-ui/react-checkbox';
 import clsx from 'clsx';
+import { domAnimation, LazyMotion, m } from 'framer-motion';
 import { ElementRef, forwardRef } from 'react';
 
 import { Icon } from '@/components';
@@ -21,18 +22,47 @@ CheckboxProps
 }, forwardedRef) => {
   const isIndeterminate = checked === 'indeterminate';
 
+  const animation = {
+    hidden: {
+      opacity: 0,
+      scale: 0,
+      x: '-50%',
+      y: '-50%',
+      transition: {
+        ease: 'backOut',
+        duration: 0.2,
+      },
+    },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      x: '-50%',
+      y: '-50%',
+      transition: {
+        ease: 'backOut',
+        duration: 0.2,
+      },
+    },
+  };
+
   return (
-    <CheckboxPrimitve.Root
-      className={clsx(styles.Checkbox, className)}
-      checked={checked}
-      data-checkbox-dimension={dimension}
-      ref={forwardedRef}
-      {...otherProps}
-    >
-      <CheckboxPrimitve.CheckboxIndicator>
-        {isIndeterminate && <Icon className={styles.Icon} dimension={12} source="minus" />}
-        {!isIndeterminate && <Icon className={styles.Icon} dimension={12} source="check" />}
-      </CheckboxPrimitve.CheckboxIndicator>
-    </CheckboxPrimitve.Root>
+    <LazyMotion features={domAnimation}>
+      <CheckboxPrimitve.Root
+        className={clsx(styles.Checkbox, className)}
+        checked={checked}
+        data-checkbox-dimension={dimension}
+        ref={forwardedRef}
+        asChild
+        {...otherProps}
+      >
+        <m.button whileTap={{ scale: 1.2 }} transition={{ duration: 0.3, ease: 'backOut' }}>
+          <CheckboxPrimitve.CheckboxIndicator asChild>
+            <m.span className={styles.Icon} initial="hidden" animate="visible" exit="hidden" variants={animation}>
+              <Icon dimension={12} source={isIndeterminate ? 'minus' : 'check'} />
+            </m.span>
+          </CheckboxPrimitve.CheckboxIndicator>
+        </m.button>
+      </CheckboxPrimitve.Root>
+    </LazyMotion>
   );
 });
