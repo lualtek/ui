@@ -1,0 +1,49 @@
+@import '../../core/utils/vibrancy.css';
+
+.Switch {
+  --thumb-size: 1.11rem;
+
+  @mixin vibrancy;
+
+  appearance: none;
+  display: inline-flex;
+  margin: 0;
+  border: 0;
+  padding: 2px;
+  inline-size: 2.44rem;
+  max-block-size: token(--space-24);
+  background-color: var(--global-vibrancy-background);
+  color: var(--dimmed-6);
+  border-radius: 1e5px;
+  justify-content: flex-start;
+
+  &:is([data-state='checked']) {
+    background: var(--cta-default);
+    color: hsl(token(--color-support-white));
+    justify-content: flex-end;
+  }
+
+  &[data-disabled] {
+    background-color: var(--global-disabled-background);
+    color: var(--global-disabled-foreground);
+  }
+
+  &[data-switch-dimension='small'] {
+    --thumb-size: 0.66rem;
+
+    inline-size: 1.55rem;
+    block-size: token(--space-16);
+  }
+
+  &[data-switch-dimension='regular'] {
+    block-size: token(--space-24);
+    max-block-size: token(--space-24);
+  }
+}
+
+.Thumb {
+  background-color: currentcolor;
+  border-radius: 100%;
+  block-size: var(--thumb-size);
+  inline-size: var(--thumb-size);
+}
