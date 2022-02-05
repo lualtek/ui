@@ -1,4 +1,5 @@
 export * from './button';
+export * from './checkbox';
 export * from './container';
 export * from './elevator';
 export * from './icon';

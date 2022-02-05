@@ -1,0 +1,50 @@
+@import '../../core/utils/vibrancy.css';
+
+.Checkbox {
+
+  @mixin vibrancy;
+
+  appearance: none;
+  line-height: 1;
+  display: inline-flex;
+  margin: 0;
+  border: 0;
+  padding: 0;
+  max-inline-size: token(--space-24);
+  max-block-size: token(--space-24);
+  background-color: var(--global-vibrancy-background);
+  color: var(--global-background);
+  position: relative;
+
+  & > span {
+    display: contents;
+  }
+
+  &:is([data-state='checked'], [data-state='indeterminate']) {
+    background-color: var(--dimmed-7);
+  }
+
+  &[data-disabled] {
+    background-color: var(--global-disabled-background);
+    color: var(--global-disabled-foreground);
+  }
+
+  &[data-checkbox-dimension='small'] {
+    inline-size: token(--space-16);
+    block-size: token(--space-16);
+    border-radius: token(--radius-4);
+  }
+
+  &[data-checkbox-dimension='regular'] {
+    border-radius: token(--radius-8);
+    inline-size: token(--space-24);
+    block-size: token(--space-24);
+  }
+}
+
+.Icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

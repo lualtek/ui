@@ -50,7 +50,7 @@
   /* Types */
 
   &[data-button-kind='primary'] {
-    background: radial-gradient(circle at center top, var(--gradient-brand-1) 0%, var(--gradient-brand-2) 100%);
+    background: radial-gradient(farthest-side at 50% top, var(--gradient-brand-1) 0%, var(--gradient-brand-2) 100%);
     color: var(--cta-foreground);
 
     &:not([aria-pressed='true'], [aria-disabled='true']):is(:active) {
