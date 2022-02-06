@@ -3,6 +3,7 @@ export * from './checkbox';
 export * from './container';
 export * from './elevator';
 export * from './icon';
+export * from './icon-button';
 export * from './radio';
 export * from './spinner';
 export * from './stack';

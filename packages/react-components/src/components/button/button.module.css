@@ -1,6 +1,6 @@
 @import '../../core/utils/vibrancy.css';
 
-.Button {
+:where(.Button) {
   box-sizing: border-box;
   user-select: none;
   -webkit-touch-callout: none;
@@ -21,7 +21,6 @@
   overflow: hidden;
   background: none;
   gap: token(--space-8);
-  border-radius: token(--radius-16);
 
   /* Sizes */
 
@@ -37,6 +36,7 @@
     padding: 0.33rem token(--space-16) token(--space-8);
     font-size: token(--font-size-16);
     block-size: token(--space-40);
+    border-radius: token(--radius-16);
   }
 
   &[data-button-dimension='small'] {
@@ -54,13 +54,12 @@
     color: var(--cta-foreground);
 
     &:not([aria-pressed='true'], [aria-disabled='true']):is(:active) {
-      background: var(--cta-default);
+      background: var(--gradient-brand-2);
     }
 
     &:where([aria-pressed='true']),
     &:where([aria-pressed='true']:active) {
-      background: var(--cta-default);
-      color: hsl(token(--color-support-white));
+      background: var(--cta-dark);
     }
   }
 
