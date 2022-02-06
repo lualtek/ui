@@ -8,6 +8,9 @@ import { Icon } from '@/components';
 import styles from './radio.module.css';
 
 export type RadioProps = RadioPrimitive.RadioGroupItemProps & {
+  /**
+   * Set the size of the radio.
+   */
   dimension?: 'small' | 'regular';
 };
 

@@ -6,6 +6,9 @@ import { ElementRef, forwardRef } from 'react';
 import styles from './switch.module.css';
 
 export type SwitchProps = SwitchPrimitive.SwitchProps & {
+  /**
+   * Set the size of the switch.
+   */
   dimension?: 'small' | 'regular';
 };
 
