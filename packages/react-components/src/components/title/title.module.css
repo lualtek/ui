@@ -1,6 +1,6 @@
 @import '../../core/utils/media.css';
 
-.Title {
+:where(.Title) {
   &:is(.H1, .H2, .H3, .H4, .H5, .H6, .Display) {
     --lh: token(--font-lh-standard);
 

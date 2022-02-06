@@ -1,6 +1,6 @@
 @import '../../core/utils/vibrancy.css';
 
-.Switch {
+:where(.Switch) {
   --thumb-size: 1.11rem;
 
   @mixin vibrancy;

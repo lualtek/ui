@@ -1,6 +1,6 @@
 @import '../../core/utils/vibrancy.css';
 
-.Checkbox {
+:where(.Checkbox) {
 
   @mixin vibrancy;
 

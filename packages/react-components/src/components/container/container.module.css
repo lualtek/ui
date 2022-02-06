@@ -1,6 +1,6 @@
 @import '../../core/utils/media.css';
 
-.Container {
+:where(.Container) {
   padding: 0 token(--space-16);
   margin: 0 auto;
   inline-size: 100%;

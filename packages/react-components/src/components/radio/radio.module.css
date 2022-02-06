@@ -1,6 +1,6 @@
 @import '../../core/utils/vibrancy.css';
 
-.Radio {
+:where(.Radio) {
 
   @mixin vibrancy;
 

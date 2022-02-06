@@ -1,6 +1,6 @@
 @import '../../core/utils/media.css';
 
-.Text {
+:where(.Text) {
   min-block-size: 0.01vh;
   font-size: var(--fs-max);
   max-inline-size: var(--maxW, initial);
