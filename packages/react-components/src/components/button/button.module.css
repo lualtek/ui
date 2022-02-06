@@ -67,12 +67,12 @@
 
     @mixin vibrancy;
 
-    background-color: var(--global-vibrancy-background);
-    color: var(--global-vibrancy-foreground);
+    background-color: var(--vibrancy-background);
+    color: var(--vibrancy-foreground);
 
     &:not([aria-pressed='true'], [aria-disabled='true']):is(:active) {
-      background-color: var(--global-vibrancy-background-hard);
-      color: var(--global-vibrancy-foreground);
+      background-color: var(--vibrancy-background-hard);
+      color: var(--vibrancy-foreground);
     }
 
     &:where([aria-pressed='true']),
@@ -83,18 +83,18 @@
   }
 
   &[data-button-kind='flat'] {
-    color: var(--global-vibrancy-foreground);
+    color: var(--vibrancy-foreground);
 
     &:not([aria-pressed='true'], [aria-disabled='true']):is(:active) {
-      background-color: var(--global-vibrancy-background-hard);
+      background-color: var(--vibrancy-background-hard);
     }
 
     &:is(:hover, :focus) {
 
       @mixin vibrancy;
 
-      background-color: var(--global-vibrancy-background);
-      color: var(--global-vibrancy-foreground);
+      background-color: var(--vibrancy-background);
+      color: var(--vibrancy-foreground);
     }
 
     &:where([aria-pressed='true']),

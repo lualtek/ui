@@ -12,18 +12,6 @@
     "interactive-text-hover": {
       "value": "hsl({color.support.brand})"
     },
-    "vibrancy-foreground": {
-      "value": "hsl({color.primary.30})"
-    },
-    "vibrancy-background": {
-      "value": "hsl({color.primary.80} / 80%)"
-    },
-    "vibrancy-background-soft": {
-      "value": "hsl({color.primary.100} / 80%)"
-    },
-    "vibrancy-background-hard": {
-      "value": "hsl({color.primary.70} / 80%)"
-    },
     "disabled-foreground": {
       "value": "hsl({color.primary.5} / 20%)"
     },
@@ -40,6 +28,20 @@
     },
     "foreground": {
       "value": "hsl({color.support.white})"
+    }
+  },
+  "vibrancy": {
+    "foreground": {
+      "value": "hsl({color.primary.30})"
+    },
+    "background": {
+      "value": "hsl({color.primary.80} / 80%)"
+    },
+    "background-soft": {
+      "value": "hsl({color.primary.100} / 80%)"
+    },
+    "background-hard": {
+      "value": "hsl({color.primary.70} / 80%)"
     }
   },
   "dimmed": {

@@ -112,7 +112,7 @@ legend {
 }
 
 code {
-  background-color: var(--global-vibrancy-background);
+  background-color: var(--vibrancy-background);
   border-radius: token(--radius-4);
   padding: 0 4px 3px;
   font-size: 1em;

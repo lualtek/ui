@@ -12,7 +12,7 @@
   padding: 0;
   max-inline-size: token(--space-24);
   max-block-size: token(--space-24);
-  background-color: var(--global-vibrancy-background);
+  background-color: var(--vibrancy-background);
   color: var(--cta-default);
   border-radius: 1e5px;
   position: relative;
