@@ -8,3 +8,4 @@ export * from './spinner';
 export * from './stack';
 export * from './switch';
 export * from './text';
+export * from './title';
