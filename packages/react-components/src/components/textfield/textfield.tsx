@@ -87,16 +87,17 @@ export const Textfield = forwardRef<PrimitiveInputType, TextfieldProps>(({
     [],
   );
 
-  const iconSizes = {
-    small: 12,
-    regular: 16,
-    big: 24,
-  };
-
-  const actionSizes = {
-    small: 'small',
-    regular: 'regular',
-    big: 'big',
+  const sizes = {
+    actions: {
+      small: 'small',
+      regular: 'regular',
+      big: 'big',
+    },
+    icons: {
+      small: 12,
+      regular: 16,
+      big: 24,
+    },
   };
 
   const commonProps = {
@@ -147,7 +148,7 @@ export const Textfield = forwardRef<PrimitiveInputType, TextfieldProps>(({
         {isPassword && (
           <IconButton
             className={styles.IconButton}
-            dimension={actionSizes[dimension] as IconButtonProps['dimension']}
+            dimension={sizes.actions[dimension] as IconButtonProps['dimension']}
             onClick={handlePasswordVisibility}
             kind="flat"
             aria-label="Reveal password"
@@ -159,7 +160,7 @@ export const Textfield = forwardRef<PrimitiveInputType, TextfieldProps>(({
           <Icon
             className={styles.Icon}
             source={icon}
-            dimension={iconSizes[dimension] as IconProps['dimension']}
+            dimension={sizes.icons[dimension] as IconProps['dimension']}
           />
         )}
       </div>
