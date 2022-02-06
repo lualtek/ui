@@ -42,6 +42,15 @@
     },
     "background-hard": {
       "value": "hsl({color.primary.40} / 40%)"
+    },
+    "background-error": {
+      "value": "hsl({color.red.50} / 10%)"
+    },
+    "background-positive": {
+      "value": "hsl({color.green.40} / 10%)"
+    },
+    "background-warning": {
+      "value": "hsl({color.yellow.50} / 10%)"
     }
   },
   "dimmed": {

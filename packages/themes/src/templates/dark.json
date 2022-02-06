@@ -4,7 +4,7 @@
       "value": "hsl({color.support.white})"
     },
     "background": {
-      "value": "hsl({color.primary.100})"
+      "value": "hsl(222deg 47% 6%)"
     },
     "interactive-text": {
       "value": "hsl({color.support.brand})"
@@ -42,6 +42,15 @@
     },
     "background-hard": {
       "value": "hsl({color.primary.70} / 80%)"
+    },
+    "background-error": {
+      "value": "hsl({color.red.50} / 20%)"
+    },
+    "background-positive": {
+      "value": "hsl({color.green.40} / 20%)"
+    },
+    "background-warning": {
+      "value": "hsl({color.yellow.50} / 20%)"
     }
   },
   "dimmed": {

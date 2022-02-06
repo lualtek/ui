@@ -1,0 +1,134 @@
+@import '../../../core/utils/vibrancy.css';
+
+.BaseField {
+
+  @mixin vibrancy;
+
+  margin: 0;
+  text-overflow: ellipsis;
+  font-size: var(--font-size);
+  font-weight: token(--font-weight-semi-bold);
+  font-family: inherit;
+  line-height: 1;
+  appearance: none;
+  inline-size: 100%;
+  border: none;
+  box-sizing: border-box;
+  overflow: hidden;
+  color: inherit;
+  background-color: var(--vibrancy-background-soft);
+  block-size: var(--field-height);
+  padding: 0 var(--field-padding);
+  display: flex;
+  caret-color: var(--cta-default);
+  outline-offset: 2px;
+
+  @nest [data-textfield-dimension='small'] & {
+    border-radius: token(--radius-8);
+  }
+  @nest :is([data-textfield-dimension='regular'], [data-textfield-dimension='big']) & {
+    border-radius: token(--radius-16);
+  }
+  @nest [data-textfield-has-icon='true'] &::-webkit-calendar-picker-indicator {
+    opacity: 0%;
+    position: absolute;
+    right: calc(var(--field-padding) / 2);
+  }
+
+  /* @nest [data-textfield-picker-only='true'] &::-webkit-calendar-picker-indicator {
+    opacity: 0%;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+  } */
+
+  &:-moz-ui-invalid {
+    box-shadow: none;
+  }
+
+  &::placeholder {
+    color: var(--dimmed-5);
+  }
+
+  &:focus-visible {
+    background-color: var(--vibrancy-background);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    border-color: transparent;
+    color: var(--global-disabled-foreground);
+    background-color: var(--global-disabled-background);
+
+    &::placeholder {
+      color: var(--dimmed-6);
+    }
+  }
+
+  &[readonly] {
+    border: 1px dashed var(--dimmed-4);
+    box-shadow: none;
+    cursor: default;
+  }
+
+  &:autofill,
+  &:autofill:hover,
+  &:autofill:focus,
+  &:autofill:active {
+    box-shadow: 0 0 0 100px var(--global-background) inset;
+  }
+
+  &:is(:invalid, [data-basefield-invalid='true'], :out-of-range),
+  &:is(:invalid, [data-basefield-invalid='true'], :out-of-range):focus-visible {
+    background-color: var(--vibrancy-background-error);
+    outline-color: var(--highlight-red-foreground);
+  }
+
+
+  &[type='number'] {
+    appearance: textfield;
+  }
+
+  &[type='number']::-webkit-inner-spin-button,
+  &[type='number']::-webkit-outer-spin-button {
+    display: none;
+  }
+
+  &[type='search'] {
+    appearance: none;
+  }
+
+  &[type='search']::-webkit-search-cancel-button,
+  &[type='search']::-webkit-search-decoration {
+    appearance: none;
+  }
+}
+
+
+textarea.BaseField {
+  block-size: auto;
+  min-block-size: token(--space-32);
+  line-height: token(--font-lh-standard);
+  resize: vertical;
+  padding:
+    calc(var(--field-padding) / 2)
+    calc(var(--field-padding) + token(--space-16))
+    calc(var(--field-padding) / 2)
+    var(--field-padding);
+
+  &::-webkit-datetime-edit-text {
+    opacity: 30%;
+  }
+
+  &::-webkit-calendar-picker-indicator {
+    color: var(--global-foreground);
+  }
+
+  &:-moz-ui-invalid {
+    box-shadow: none;
+  }
+
+  &::-webkit-calendar-picker-indicator:hover {
+    background-color: transparent;
+  }
+}
