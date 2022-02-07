@@ -1,6 +1,6 @@
 @import '../../core/utils/vibrancy.css';
 
-.Checkbox {
+:where(.Checkbox) {
 
   @mixin vibrancy;
 
@@ -10,7 +10,7 @@
   margin: 0;
   border: 0;
   padding: 0;
-  background-color: var(--global-vibrancy-background);
+  background-color: var(--vibrancy-background);
   color: var(--cta-default);
   position: relative;
 

@@ -8,6 +8,9 @@ import { Icon } from '@/components';
 import styles from './checkbox.module.css';
 
 export type CheckboxProps = CheckboxPrimitve.CheckboxProps & {
+  /**
+   * Set the size of the checkbox.
+   */
   dimension?: 'small' | 'regular';
 };
 

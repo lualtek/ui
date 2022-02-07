@@ -1,6 +1,6 @@
 @import '../../core/utils/vibrancy.css';
 
-.Switch {
+:where(.Switch) {
   --thumb-size: 1.11rem;
 
   @mixin vibrancy;
@@ -12,7 +12,7 @@
   padding: 2px;
   inline-size: 2.44rem;
   max-block-size: token(--space-24);
-  background-color: var(--global-vibrancy-background);
+  background-color: var(--vibrancy-background);
   color: var(--dimmed-6);
   border-radius: 1e5px;
   justify-content: flex-start;

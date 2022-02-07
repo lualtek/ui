@@ -1,4 +1,4 @@
-.Icon {
+:where(.Icon) {
   & *[fill] {
     fill: currentcolor;
   }
