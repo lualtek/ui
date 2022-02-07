@@ -1,5 +1,18 @@
 # @lualtek/react-components
 
+## 0.3.0
+
+### Minor Changes
+
+- e289763: Add selection controls
+- 8a993fc: Tweak themes and add Texfield
+
+### Patch Changes
+
+- Updated dependencies [e289763]
+- Updated dependencies [8a993fc]
+  - @lualtek/icons@0.2.0
+
 ## 0.2.0
 
 ### Minor Changes
