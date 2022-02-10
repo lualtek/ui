@@ -7,14 +7,17 @@ const story: ComponentMeta<typeof Slider> = {
   component: Slider,
   args: {
     orientation: 'horizontal',
-    dimension: 'regular',
-    defaultValue: [30, 40],
+    defaultValue: [30],
     showValues: true,
-    onValueChange: value => console.log(value[0]),
+    onValueChange: value => console.log(value),
   },
   argTypes: {
     disabled: {
       options: [true, false],
+      control: { type: 'inline-radio' },
+    },
+    orientation: {
+      options: ['vertical', 'horizontal'],
       control: { type: 'inline-radio' },
     },
   },
@@ -29,3 +32,8 @@ const Template: ComponentStory<typeof Slider> = args => (
 );
 
 export const Default = Template.bind({});
+
+export const Double = Template.bind({});
+Double.args = {
+  defaultValue: [30, 70],
+};
