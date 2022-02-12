@@ -41,11 +41,17 @@ export type SelectProps = SelectHTMLAttributes<HTMLSelectElement> & {
   onChange?: (event: ChangeEvent<HTMLSelectElement>) => void;
 }
 
+const iconSizes = {
+  small: 12,
+  regular: 16,
+  big: 24,
+};
+
 export const Select = forwardRef<HTMLSelectElement, SelectProps>(({
   children,
   className,
   disabled = false,
-  icon = 'sort-alt',
+  icon = 'increase',
   label,
   kind = 'single',
   dimension = 'regular',
@@ -53,12 +59,6 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(({
   ...otherProps
 }, forwardedRef) => {
   const seedID = useUIDSeed();
-
-  const iconSizes = {
-    small: 12,
-    regular: 16,
-    big: 24,
-  };
 
   return (
     <Stack

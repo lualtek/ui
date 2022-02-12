@@ -8,6 +8,7 @@
   &[data-select-dimension='small'] {
     --field-height: token(--space-24);
     --field-padding: 0.33rem;
+    --field-radius: token(--radius-8);
     --font-size: token(--font-size-14);
   }
 
@@ -15,12 +16,14 @@
     --field-height: token(--space-40);
     --field-padding: token(--space-16);
     --font-size: token(--font-size-16);
+    --field-radius: token(--radius-16);
   }
 
   &[data-select-dimension='big'] {
     --field-height: token(--space-48);
     --field-padding: token(--space-16);
     --font-size: token(--font-size-18);
+    --field-radius: token(--radius-16);
   }
 }
 
@@ -42,7 +45,7 @@
   border: 0;
   text-overflow: ellipsis;
   font-size: var(--font-size);
-  border-radius: token(--radius-4);
+  border-radius: var(--field-radius);
   font-family: inherit;
   appearance: none;
   display: block;

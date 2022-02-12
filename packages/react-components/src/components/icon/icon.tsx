@@ -17,8 +17,6 @@ export type IconProps = SVGAttributes<SVGElement | SVGSVGElement> & {
   /**
    * Set the icon name to display. Icon names are defined in
    * the `IconNames` enum and are part of Lualtek iconography system.
-   *
-   * Learn more: https://design.wonderflow.ai/design/iconography/
    */
   source: IconNames | ReactElement<HTMLOrSVGElement>;
   /**
