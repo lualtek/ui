@@ -1,5 +1,11 @@
 # @lualtek/react-components
 
+## 0.4.0
+
+### Minor Changes
+
+- 8083c79: Add slider component
+
 ## 0.3.0
 
 ### Minor Changes
