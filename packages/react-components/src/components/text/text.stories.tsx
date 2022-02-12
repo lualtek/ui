@@ -15,6 +15,10 @@ const story: ComponentMeta<typeof Text> = {
     lineHeight: 'small',
   },
   argTypes: {
+    size: {
+      options: [14, 16, 18, 22, 28],
+      control: { type: 'select' },
+    },
     sentiment: {
       options: ['positive', 'informative', 'danger', 'warning'],
       control: { type: 'select' },

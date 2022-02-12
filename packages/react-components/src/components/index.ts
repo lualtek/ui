@@ -4,6 +4,7 @@ export * from './container';
 export * from './elevator';
 export * from './icon';
 export * from './icon-button';
+export * from './label';
 export * from './radio';
 export * from './select';
 export * from './slider';

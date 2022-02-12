@@ -5,9 +5,10 @@ import {
 import { useUIDSeed } from 'react-uid';
 
 import {
-  Icon, IconProps, Stack, Text,
+  Icon, IconProps, Label, Stack,
 } from '@/components';
 
+import { LabelProps } from '../label';
 import styles from './select.module.css';
 
 export type SelectProps = SelectHTMLAttributes<HTMLSelectElement> & {
@@ -41,10 +42,17 @@ export type SelectProps = SelectHTMLAttributes<HTMLSelectElement> & {
   onChange?: (event: ChangeEvent<HTMLSelectElement>) => void;
 }
 
-const iconSizes = {
-  small: 12,
-  regular: 16,
-  big: 24,
+const sizes = {
+  label: {
+    small: 14,
+    regular: 16,
+    big: 18,
+  },
+  icon: {
+    small: 12,
+    regular: 16,
+    big: 24,
+  },
 };
 
 export const Select = forwardRef<HTMLSelectElement, SelectProps>(({
@@ -74,7 +82,14 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(({
       inline
       tabIndex={disabled ? 0 : undefined}
     >
-      {label && <Text as="label" size={dimension === 'small' ? 14 : 16} htmlFor={seedID('select')}>{label}</Text>}
+      {label && (
+      <Label
+        size={sizes.label[dimension] as LabelProps['size']}
+        htmlFor={seedID('select')}
+      >
+        {label}
+      </Label>
+      )}
       <div className={styles.FieldContainer}>
         <select
           disabled={disabled}
@@ -92,7 +107,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(({
           <Icon
             className={styles.Icon}
             source={icon}
-            dimension={iconSizes[dimension] as IconProps['dimension']}
+            dimension={sizes.icon[dimension] as IconProps['dimension']}
           />
         ) }
       </div>
