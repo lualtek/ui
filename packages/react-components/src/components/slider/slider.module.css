@@ -100,10 +100,6 @@
     cursor: grabbing;
   }
 
-  &:focus-visible {
-    outline: 3px auto Highlight;
-    outline: 3px auto -webkit-focus-ring-color;
-  }
 
   &[data-disabled] {
 
