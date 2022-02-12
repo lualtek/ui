@@ -1,0 +1,115 @@
+@import '../../core/utils/vibrancy.css';
+
+:where(.Slider) {
+  --thumb-size: token(--space-24);
+  --thumb-radius: token(--radius-8);
+  --track-h: token(--space-8);
+
+  position: relative;
+  display: flex;
+  align-items: center;
+  user-select: none;
+  touch-action: none;
+  cursor: pointer;
+  font-variant-numeric: tabular-nums;
+
+  &[data-orientation='horizontal'] {
+    block-size: token(--space-24);
+  }
+
+  &[data-orientation='vertical'] {
+    flex-direction: column;
+    inline-size: token(--space-24);
+    block-size: 100%;
+    min-block-size: 8rem;
+  }
+}
+
+.Track {
+
+  @mixin vibrancy;
+
+  background-color: var(--vibrancy-background);
+  position: relative;
+  flex-grow: 1;
+  border-radius: 1e5px;
+
+  &[data-orientation='horizontal'] {
+    block-size: var(--track-h);
+  }
+
+  &[data-orientation='vertical'] {
+    inline-size: var(--track-h);
+  }
+
+  &[data-disabled] {
+    background-color: var(--global-disabled-background);
+  }
+}
+
+.Range {
+  position: absolute;
+  background-color: var(--cta-default);
+  border-radius: 1e5px;
+
+  &[data-disabled] {
+    background-color: var(--global-disabled-foreground);
+  }
+
+  &[data-orientation='horizontal'] {
+    block-size: 100%;
+  }
+
+  &[data-orientation='vertical'] {
+    inline-size: 100%;
+  }
+}
+
+.Thumb {
+  display: block;
+  position: relative;
+  inline-size: var(--thumb-size);
+  block-size: var(--thumb-size);
+  background-color: var(--dimmed-0);
+  border-radius: var(--thumb-radius);
+  border: 2px solid var(--cta-default);
+
+  @nest .Slider[data-slider-show-values='true'] &::after {
+    content: attr(aria-valuenow);
+    position: absolute;
+    top: calc(100% + token(--space-8));
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    font-size: token(--font-size-16);
+    color: var(--dimmed-6);
+    font-weight: token(--font-weight-bold);
+  }
+  @nest .Slider[data-slider-show-values='true'] &[data-orientation='vertical']::after {
+    left: calc(100% + token(--space-8));
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+
+  &:hover {
+    cursor: grab;
+  }
+
+  &:active {
+    cursor: grabbing;
+  }
+
+  &:focus-visible {
+    outline: 3px auto Highlight;
+    outline: 3px auto -webkit-focus-ring-color;
+  }
+
+  &[data-disabled] {
+
+    @mixin vibrancy;
+
+    background-color: var(--global-disabled-foreground);
+    border: 0;
+  }
+}

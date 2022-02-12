@@ -5,6 +5,7 @@ export * from './elevator';
 export * from './icon';
 export * from './icon-button';
 export * from './radio';
+export * from './slider';
 export * from './spinner';
 export * from './stack';
 export * from './switch';
