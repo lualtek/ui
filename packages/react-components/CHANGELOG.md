@@ -1,5 +1,11 @@
 # @lualtek/react-components
 
+## 0.5.0
+
+### Minor Changes
+
+- 4b38726: Add Select component
+
 ## 0.4.0
 
 ### Minor Changes
