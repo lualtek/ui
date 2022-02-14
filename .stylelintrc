@@ -1,7 +1,16 @@
 {
+  "plugins": [
+    "stylelint-design-tokens-plugin"
+  ],
   "extends": [
     "stylelint-config-equinusocio"
   ],
+  "rules": {
+    "designtokens/check": [
+      true,
+      "./packages/tokens/platforms/web/tokens.json"
+    ]
+  },
   "ignoreFiles": [
     "!**/*.css",
     "**/*.jsx",
