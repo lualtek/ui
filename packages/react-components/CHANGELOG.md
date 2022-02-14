@@ -1,5 +1,11 @@
 # @lualtek/react-components
 
+## 0.6.0
+
+### Minor Changes
+
+- 20022c9: Add popover component
+
 ## 0.5.0
 
 ### Minor Changes
