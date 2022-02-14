@@ -14,6 +14,21 @@ export type CheckboxProps = CheckboxPrimitve.CheckboxProps & {
   dimension?: 'small' | 'regular';
 };
 
+const animation = {
+  hidden: {
+    opacity: 0,
+    scale: 0,
+    x: '-50%',
+    y: '-50%',
+  },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    x: '-50%',
+    y: '-50%',
+  },
+};
+
 export const Checkbox = forwardRef<
 ElementRef<typeof CheckboxPrimitve.Root>,
 CheckboxProps
@@ -24,21 +39,6 @@ CheckboxProps
   ...otherProps
 }, forwardedRef) => {
   const isIndeterminate = checked === 'indeterminate';
-
-  const animation = {
-    hidden: {
-      opacity: 0,
-      scale: 0,
-      x: '-50%',
-      y: '-50%',
-    },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      x: '-50%',
-      y: '-50%',
-    },
-  };
 
   return (
     <LazyMotion features={domAnimation} strict>
