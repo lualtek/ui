@@ -10,6 +10,7 @@ export * from './radio';
 export * from './select';
 export * from './slider';
 export * from './spinner';
+export * from './split-button';
 export * from './stack';
 export * from './switch';
 export * from './text';
