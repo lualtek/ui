@@ -6,6 +6,7 @@ import {
   Button, Polymorphic, Popover, PopoverContentProps, Stack,
 } from '@/components';
 
+import { Elevator } from '../elevator';
 import styles from './split-button.module.css';
 
 export type SplitButtonProps = Pick<PopoverContentProps, 'side' | 'offset' | 'align'> & {
@@ -60,7 +61,9 @@ export const SplitButton = forwardRef(({
       </Button>
       <Popover trigger={<Button icon={icon} {...commonProps} />}>
         <Popover.Content side={side} align={align} offset={offset}>
-          {children}
+          <Elevator resting={2}>
+            {children}
+          </Elevator>
         </Popover.Content>
       </Popover>
     </Stack>

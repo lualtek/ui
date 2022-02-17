@@ -10,7 +10,7 @@ const story: ComponentMeta<typeof SplitButton> = {
     kind: 'primary',
     label: 'Click me',
     fullWidth: false,
-    disabled: true,
+    disabled: false,
     busy: false,
     offset: 8,
   },
@@ -37,7 +37,6 @@ export default story;
 const Template: ComponentStory<typeof SplitButton> = args => (
   <SplitButton {...args}>
     <div
-      data-elevation="2"
       style={{
         padding: 24, background: 'var(--dimmed-2)', width: 300, borderRadius: 16,
       }}
