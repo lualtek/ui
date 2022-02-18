@@ -103,7 +103,7 @@
       "value": "hsl({color.primary.60})"
     },
     "yellow-background": {
-      "value": "hsl({color.yellow.20})"
+      "value": "hsl({color.yellow.10})"
     },
     "yellow-foreground": {
       "value": "hsl({color.yellow.70})"
@@ -130,10 +130,10 @@
       "value": "hsl({color.cyan.10})"
     },
     "cyan-foreground": {
-      "value": "hsl({color.cyan.50})"
+      "value": "hsl({color.cyan.60})"
     },
     "purple-background": {
-      "value": "hsl({color.purple.20})"
+      "value": "hsl({color.purple.10})"
     },
     "purple-foreground": {
       "value": "hsl({color.purple.60})"
