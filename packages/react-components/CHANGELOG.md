@@ -1,5 +1,16 @@
 # @lualtek/react-components
 
+## 0.7.0
+
+### Minor Changes
+
+- 77253a5: Add SplitButton component
+
+### Patch Changes
+
+- Updated dependencies [77253a5]
+  - @lualtek/icons@0.3.0
+
 ## 0.6.0
 
 ### Minor Changes

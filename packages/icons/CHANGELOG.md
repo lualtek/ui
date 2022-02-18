@@ -1,5 +1,11 @@
 # @lualtek/icons
 
+## 0.3.0
+
+### Minor Changes
+
+- 77253a5: Add SplitButton component
+
 ## 0.2.0
 
 ### Minor Changes
