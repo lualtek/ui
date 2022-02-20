@@ -1,6 +1,7 @@
 export * from './button';
 export * from './checkbox';
 export * from './chip';
+export * from './circular-progress';
 export * from './container';
 export * from './elevator';
 export * from './icon';
