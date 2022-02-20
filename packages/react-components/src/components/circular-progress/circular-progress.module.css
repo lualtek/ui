@@ -1,4 +1,4 @@
-.CircularProgress {
+:where(.CircularProgress) {
   --hue: 220;
   --track-size: 4px;
   --track-bg: var(--dimmed-1);

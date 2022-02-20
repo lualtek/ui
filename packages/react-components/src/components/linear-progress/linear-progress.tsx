@@ -43,9 +43,7 @@ export const LinearProgress = forwardRef<HTMLProgressElement, LinearProgressProp
   const clamp = (num: number, min: number, max: number) => Math.min(Math.max(num, min), max);
 
   return (
-    <div
-      className={clsx(styles.LinearProgress, className)}
-    >
+    <div className={clsx(styles.LinearProgress, className)}>
       <progress
         role="progressbar"
         ref={forwardedRef}
