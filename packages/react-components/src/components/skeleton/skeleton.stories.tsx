@@ -2,7 +2,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { Skeleton } from './skeleton';
 
-export const story: ComponentMeta<typeof Skeleton> = {
+const story: ComponentMeta<typeof Skeleton> = {
   title: 'Components/Loading/Skeleton',
   component: Skeleton,
   args: {
