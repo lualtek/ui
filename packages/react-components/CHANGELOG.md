@@ -1,5 +1,15 @@
 # @lualtek/react-components
 
+## 0.8.0
+
+### Minor Changes
+
+- 5af6642: Add Chip component and tweak light theme to improve contrast for highlight colors
+- 87cdd64: Add Skeleton component
+- 87cdd64: Add LinearProgress component
+- 87cdd64: Add CircularProgress
+- 83f6198: Add Tooltip
+
 ## 0.7.0
 
 ### Minor Changes
