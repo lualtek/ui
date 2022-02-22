@@ -1,4 +1,4 @@
-.LinearProgress {
+:where(.LinearProgress) {
   position: relative;
 }
 
@@ -28,6 +28,7 @@
 
   &::-webkit-progress-value {
     background: var(--fill-color);
+    border-radius: 1e5px;
     transition: width 200ms ease-out;
   }
 

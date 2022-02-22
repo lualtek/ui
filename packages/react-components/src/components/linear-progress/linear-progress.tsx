@@ -1,5 +1,7 @@
 import clsx from 'clsx';
-import { forwardRef, ProgressHTMLAttributes, useCallback } from 'react';
+import {
+  forwardRef, ProgressHTMLAttributes, useCallback, useMemo,
+} from 'react';
 
 import { Text } from '@/components';
 
@@ -40,12 +42,10 @@ export const LinearProgress = forwardRef<HTMLProgressElement, LinearProgressProp
     [max, value],
   );
 
-  const clamp = (num: number, min: number, max: number) => Math.min(Math.max(num, min), max);
+  const clamp = useMemo(() => (num: number, min: number, max: number) => Math.min(Math.max(num, min), max), []);
 
   return (
-    <div
-      className={clsx(styles.LinearProgress, className)}
-    >
+    <div className={clsx(styles.LinearProgress, className)}>
       <progress
         role="progressbar"
         ref={forwardedRef}
