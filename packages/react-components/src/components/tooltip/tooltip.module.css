@@ -4,4 +4,5 @@
   color: var(--global-background);
   border-radius: token(--radius-16);
   font-size: token(--font-size-16);
+  pointer-events: none;
 }

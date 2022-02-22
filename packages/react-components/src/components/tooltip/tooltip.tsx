@@ -1,6 +1,9 @@
 import * as TooltipPrimitive from '@radix-ui/react-tooltip';
 import clsx from 'clsx';
 import {
+  domAnimation, LazyMotion, m,
+} from 'framer-motion';
+import {
   Children, cloneElement, isValidElement, ReactNode, useEffect, useRef, useState,
 } from 'react';
 
@@ -9,6 +12,17 @@ import styles from './tooltip.module.css';
 export type TooltipProps = PropsWithClass & TooltipPrimitive.TooltipProps & {
   trigger: ReactNode;
 }
+
+const animation = {
+  hidden: {
+    opacity: 0,
+    y: 20,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+  },
+};
 
 export const Tooltip = ({
   children,
@@ -46,10 +60,24 @@ export const Tooltip = ({
         </TooltipPrimitive.Trigger>
       ))}
 
-      <TooltipPrimitive.Content className={clsx(styles.Tooltip, className)}>
-        {children}
-        <TooltipPrimitive.Arrow offset={triggerCenter} fill="var(--global-foreground)" />
-      </TooltipPrimitive.Content>
+      <LazyMotion features={domAnimation}>
+        <TooltipPrimitive.Content asChild side="top" className={clsx(styles.Tooltip, className)}>
+          <m.div
+            initial="hidden"
+            animate="visible"
+            exit="hidden"
+            variants={animation}
+            transition={{
+              type: 'spring',
+              stiffness: 700,
+              damping: 30,
+            }}
+          >
+            {children}
+            <TooltipPrimitive.Arrow offset={triggerCenter} fill="var(--global-foreground)" />
+          </m.div>
+        </TooltipPrimitive.Content>
+      </LazyMotion>
     </TooltipPrimitive.Root>
   );
 };

@@ -12,9 +12,14 @@ export default story;
 
 const Template: ComponentStory<typeof Tooltip> = args => (
   <>
-    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit expedita, saepe numquam illo quas,
+    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit expedita,
+    saepe numquam illo quas, Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+    Impedit expedita, saepe numquam illo quas, Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+    Impedit expedita, saepe numquam illo quas, Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+    Impedit expedita, saepe numquam illo quas,Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+    Impedit expedita, saepe numquam illo quas,
     {' '}
-    <Tooltip {...args} trigger={<Text as="span">HTML</Text>}>
+    <Tooltip {...args} trigger={<Text as="span" sentiment="informative">HTML</Text>}>
       HTML stands for HyperText Markup Language.
     </Tooltip>
     {' '}
