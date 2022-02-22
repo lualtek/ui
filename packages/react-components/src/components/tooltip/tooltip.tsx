@@ -1,13 +1,13 @@
 import * as TooltipPrimitive from '@radix-ui/react-tooltip';
 import clsx from 'clsx';
 import {
-  Children, cloneElement, ReactElement, ReactNode, useEffect, useRef, useState,
+  Children, cloneElement, isValidElement, ReactNode, useEffect, useRef, useState,
 } from 'react';
 
 import styles from './tooltip.module.css';
 
 export type TooltipProps = PropsWithClass & TooltipPrimitive.TooltipProps & {
-  trigger: ReactNode | ReactElement<HTMLButtonElement>;
+  trigger: ReactNode;
 }
 
 export const Tooltip = ({
@@ -18,7 +18,7 @@ export const Tooltip = ({
   ...otherProps
 }: TooltipProps) => {
   const [triggerCenter, setTriggerCenter] = useState<number>(0);
-  const triggerRef = useRef<any>(trigger);
+  const triggerRef = useRef<HTMLHtmlElement>();
 
   useEffect(() => {
     if (triggerRef.current) setTriggerCenter(triggerRef.current.offsetWidth / 2);
@@ -34,10 +34,10 @@ export const Tooltip = ({
       {...otherProps}
     >
 
-      {Children.map(trigger, child => (
+      {Children.map(trigger, child => isValidElement(child) && (
         <TooltipPrimitive.Trigger asChild>
           {cloneElement(
-            child as ReactElement,
+            child,
             {
               ref: triggerRef,
               tabIndex: 0,
