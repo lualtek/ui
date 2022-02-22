@@ -1,5 +1,11 @@
 # @lualtek/themes
 
+## 0.4.0
+
+### Minor Changes
+
+- 5af6642: Add Chip component and tweak light theme to improve contrast for highlight colors
+
 ## 0.3.0
 
 ### Minor Changes
