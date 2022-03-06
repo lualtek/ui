@@ -89,7 +89,7 @@
       background-color: var(--vibrancy-background-hard);
     }
 
-    &:is(:hover, :focus) {
+    &:is(:hover, :focus):not([aria-disabled='true']) {
 
       @mixin vibrancy;
 

@@ -16,7 +16,7 @@
   box-sizing: border-box;
   overflow: hidden;
   color: inherit;
-  background-color: var(--vibrancy-background-soft);
+  background-color: var(--vibrancy-background);
   block-size: var(--field-height);
   padding: 0 var(--field-padding);
   display: flex;
