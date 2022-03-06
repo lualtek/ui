@@ -6,7 +6,6 @@
 
 .Trigger {
   position: relative;
-  transition: all 300ms;
   overflow: unset;
   border-radius: 0;
   backdrop-filter: unset;

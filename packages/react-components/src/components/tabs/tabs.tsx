@@ -43,7 +43,7 @@ export const Tabs = ({
               className={styles.Trigger}
               asChild
             >
-              <Button kind="flat">
+              <Button kind="flat" icon={child.props.icon}>
                 {child.props.label}
                 {(child.props.value === activeItem) && 'active' && (
                   <m.span className={styles.Highlight} layoutId="highlight" />
