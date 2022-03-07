@@ -17,6 +17,7 @@ export * from './spinner';
 export * from './split-button';
 export * from './stack';
 export * from './switch';
+export * from './tabs';
 export * from './text';
 export * from './textfield';
 export * from './title';
