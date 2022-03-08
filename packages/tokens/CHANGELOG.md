@@ -1,5 +1,11 @@
 # @lualtek/tokens
 
+## 0.3.0
+
+### Minor Changes
+
+- 37f378c: Add Tabs and fix brand color
+
 ## 0.2.0
 
 ### Minor Changes
