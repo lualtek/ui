@@ -48,6 +48,6 @@ const Template: ComponentStory<typeof Stack> = args => (
 
 export const Default = Template.bind({});
 Default.args = {
-  horizontalAlign: 'start',
-  verticalAlign: 'start',
+  hAlign: 'start',
+  vAlign: 'start',
 };

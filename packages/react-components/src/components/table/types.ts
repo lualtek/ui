@@ -1,0 +1,28 @@
+import { ReactNode } from 'react';
+import {
+  Column, ColumnInstance,
+  CustomCell,
+  CustomHeaderGroup,
+} from 'react-table';
+
+export type PaginationType = {
+  pageIndex: number;
+  pageSize: number;
+}
+
+export type OptionalColumnTypes = {
+  isCollapsed?: boolean;
+  align?: 'start' | 'center' | 'end';
+  hideFromList?: boolean;
+  expander?: boolean;
+}
+
+export type OptionalDataTypes<T> = {
+  subRows?: T[];
+  actions?: ReactNode | ReactNode[];
+}
+
+export type HeaderGroupType = CustomHeaderGroup<OptionalColumnTypes>
+export type CellType = CustomCell<OptionalColumnTypes>
+export type CustomColumnsType<T extends Record<string, unknown>> = Array<Column<T> & OptionalColumnTypes>
+export type CustomColumnInstanceType = ColumnInstance & OptionalColumnTypes
