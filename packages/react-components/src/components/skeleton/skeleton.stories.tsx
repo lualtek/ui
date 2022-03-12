@@ -6,6 +6,8 @@ const story: ComponentMeta<typeof Skeleton> = {
   title: 'Components/Loading/Skeleton',
   component: Skeleton,
   args: {
+    radius: 8,
+    gap: 8,
     enableAnimation: true,
     inline: false,
   },
@@ -32,5 +34,13 @@ Circle.args = {
 export const Rounded = Template.bind({});
 Rounded.args = {
   width: '400px',
-  height: '248px',
+  height: '48px',
+  borderRadius: 16,
+};
+
+export const WithGap = Template.bind({});
+WithGap.args = {
+  gap: 32,
+  count: 4,
+  height: '48px',
 };

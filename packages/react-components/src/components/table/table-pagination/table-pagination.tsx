@@ -29,8 +29,13 @@ export const TablePagination: FC<TablePaginationProps> = ({
   ...otherProps
 }) => {
   const uid = useUIDSeed();
-  const computedPageCount = useMemo(() => (isManual ? Math.ceil(totalItems / pageSize) : totalPages), [isManual, pageSize, totalItems, totalPages]);
-  const computedItemsInPageStart = useMemo(() => (currentPage && pageSize) && currentPage * pageSize, [currentPage, pageSize]);
+  const computedPageCount = useMemo(() => (
+    isManual ? Math.ceil(totalItems / pageSize) : totalPages
+  ), [isManual, pageSize, totalItems, totalPages]);
+  const computedItemsInPageStart = useMemo(
+    () => (currentPage && pageSize) && currentPage * pageSize,
+    [currentPage, pageSize],
+  );
   const computedItemsInPageEnd = useMemo(() => currentPage * pageSize + pageSize, [currentPage, pageSize]);
 
   return (
@@ -50,7 +55,7 @@ export const TablePagination: FC<TablePaginationProps> = ({
           dimension="small"
           id={uid('table-i-per-page')}
           onChange={({ currentTarget }) => {
-            onPageSizeChange && onPageSizeChange(Number(currentTarget.value));
+            onPageSizeChange?.(Number(currentTarget.value));
           }}
         >
           {clusters.map(cluster => (
@@ -65,7 +70,7 @@ export const TablePagination: FC<TablePaginationProps> = ({
         itemsCount={totalItems}
         itemsPerPage={pageSize}
         pageCount={computedPageCount}
-        onPageClick={({ selected }) => onPageClick && onPageClick(selected)}
+        onPageClick={({ selected }) => onPageClick?.(selected)}
         renderOnZeroPageCount={() => null}
         forcePage={currentPage}
       />

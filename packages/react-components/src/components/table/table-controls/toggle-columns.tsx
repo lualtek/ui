@@ -4,15 +4,15 @@ import { Button, Menu, Popover } from '@/components';
 
 import { CustomColumnInstanceType } from '../types';
 
-type ToggleColumnsControlProps = {
-  columns: CustomColumnInstanceType[];
-  visibleColumns: CustomColumnInstanceType[];
+type ToggleColumnsControlProps<T extends Record<string, unknown>> = {
+  columns: Array<CustomColumnInstanceType<T>>;
+  visibleColumns: Array<CustomColumnInstanceType<T>>;
 }
 
-export const ToggleColumnsControl = ({
+export const ToggleColumnsControl = <T extends Record<string, unknown>>({
   columns,
   visibleColumns,
-}: ToggleColumnsControlProps) => {
+}: ToggleColumnsControlProps<T>) => {
   const someVisibleColums = useMemo(() => visibleColumns.length !== 0, [visibleColumns]);
   const filteredColumns = useMemo(() => columns.filter(col => !col.hideFromList), [columns]);
 
@@ -37,29 +37,30 @@ export const ToggleColumnsControl = ({
 
   return (
     <Popover
-      placement="bottom-start"
       trigger={<Button kind="secondary">Toggle columns</Button>}
     >
-      <Menu>
-        <Menu.ItemCheckbox
-          onClick={() => handleToggleAll()}
-          checked
-          icon={visibleColumns.length === 0 ? 'check' : 'minus'}
-        >
-          Toggle All
-        </Menu.ItemCheckbox>
-        {columns.filter(col => !col.hideFromList).map((column, i) => (
+      <Popover.Content side="bottom" align="start">
+        <Menu>
           <Menu.ItemCheckbox
-            autoFocus={i === 0}
-            key={column.id}
-            checked={column.isVisible}
-            icon={column.isVisible ? 'check' : undefined}
-            onClick={() => column.toggleHidden()}
+            onClick={() => handleToggleAll()}
+            checked
+            icon={visibleColumns.length === 0 ? 'check' : 'minus'}
           >
-            {column.render('Header')}
+            Toggle All
           </Menu.ItemCheckbox>
-        ))}
-      </Menu>
+          {columns.filter(col => !col.hideFromList).map((column, i) => (
+            <Menu.ItemCheckbox
+              autoFocus={i === 0}
+              key={column.id}
+              checked={column.isVisible}
+              icon={column.isVisible ? 'check' : undefined}
+              onClick={() => column.toggleHidden()}
+            >
+              {column.render('Header')}
+            </Menu.ItemCheckbox>
+          ))}
+        </Menu>
+      </Popover.Content>
     </Popover>
   );
 };

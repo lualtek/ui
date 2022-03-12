@@ -2,9 +2,18 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { useCallback, useState } from 'react';
 
 import {
-  Button, IconButton, Popover, Stack, Title,
+  Button, IconButton, Menu, Popover, Separator, Stack, Title,
 } from '../..';
 import { Table } from './table';
+import { CustomColumnsType, CustomSortingRule } from './types';
+
+const firstData = {
+  firstName: 'Gianni',
+  lastName: 'Morandi',
+  address: 'Via Roma, 1, Treno',
+  uid: 3456789542556789,
+  info: 123123.12,
+};
 
 const story: ComponentMeta<typeof Table> = {
   title: 'Layouts/Table',
@@ -50,11 +59,7 @@ const story: ComponentMeta<typeof Table> = {
     ],
     data: [
       {
-        firstName: 'Gianni',
-        lastName: 'Morandi',
-        address: 'Via Roma, 1, Treno',
-        uid: 3456789542556789,
-        info: 123123.12,
+        ...firstData,
         subRows: [
           {
             firstName: 'ciao',
@@ -471,8 +476,12 @@ const story: ComponentMeta<typeof Table> = {
 
 export default story;
 
-const CustomExpandableComponent = ({ data }) => (
-  <Stack hPadding={16} vPadding={16}>
+const CustomExpandableComponent = ({ data }: { data: any }) => (
+  <Stack
+    vPadding={16}
+    hPadding={16}
+    rowGap={32}
+  >
     {Object.keys(data).map((item, i) => (
       <div key={item} style={{ background: 'var(--dimmed-1)', padding: 24, minHeight: 50 * (i + 1) }}>
         <Title level="6">{typeof data[item] === 'string' ? data[item] : null}</Title>
@@ -483,7 +492,7 @@ const CustomExpandableComponent = ({ data }) => (
 );
 
 const CustomEmptyComponent = () => (
-  <div>
+  <div title="No data to show">
     It seems there is no data to show inside this table. If data should be present,please
     check if columns are visible by using the table controls.
   </div>
@@ -562,10 +571,29 @@ RowActions.args = {
   selectableRows: true,
   actionsRowComponent: ({ depth }) => (
     <Stack direction="row" fill={false}>
-      <IconButton icon="ctrl-right" kind="flat" dimension="small" />
+      <IconButton icon="view" kind="flat" dimension="small" />
       {depth > 0 && (
-      <Popover trigger={<IconButton icon="increase" kind="flat" dimension="small" />}>
-        <div>Pop</div>
+      <Popover trigger={<IconButton icon="chat" kind="flat" dimension="small" />}>
+        <Popover.Content side="bottom" align="start" offset={4}>
+          <Menu>
+            <Menu.Item
+              dimension="small"
+              autoFocus
+              icon="ctrl-right"
+            >
+              Sample long menu item
+            </Menu.Item>
+            <Menu.Item
+              dimension="small"
+              icon="sun"
+            >
+              Short menu label
+            </Menu.Item>
+            <Separator />
+            <Menu.Item dimension="small" icon="view">Even shorter</Menu.Item>
+            <Menu.Item dimension="small" disabled>Really?</Menu.Item>
+          </Menu>
+        </Popover.Content>
       </Popover>
       )}
     </Stack>
@@ -580,13 +608,18 @@ NoData.args = {
   data: [],
 };
 
-const ManualPaginationTemplate: ComponentStory<typeof Table> = ({ data, ...args }) => {
-  const [pageData, setPageData] = useState([]);
+const ManualPaginationTemplate: ComponentStory<typeof Table> = ({
+  data,
+  ...args
+}) => {
+  const [pageData, setPageData] = useState<Array<typeof firstData>>([]);
   const [totalRows, setTotalRows] = useState(1);
 
-  const fetchData = useCallback(({ pageIndex, pageSize }) => {
+  const fetchData = useCallback(({ pageIndex, pageSize }: { pageIndex: number; pageSize: number }) => {
+    const newIndexStart = pageIndex * pageSize;
+    const newIndexEnd = (pageIndex * pageSize) + pageSize;
     setTotalRows(data.length);
-    setPageData(data.slice(pageIndex * pageSize, pageIndex * pageSize + pageSize));
+    setPageData((data as Array<typeof firstData>).slice(newIndexStart, newIndexEnd));
   }, [data]);
 
   return (
@@ -599,6 +632,7 @@ const ManualPaginationTemplate: ComponentStory<typeof Table> = ({ data, ...args 
     />
   );
 };
+
 export const ManualPagination = ManualPaginationTemplate.bind({});
 ManualPagination.args = {
   columnsControl: true,
@@ -616,47 +650,62 @@ Loading.args = {
   loading: true,
 };
 
-const ManualSortingTemplate: ComponentStory<typeof Table> = ({ data, ...args }) => {
-  const [pageData, setPageData] = useState([]);
+const ManualSortingTemplate = ({
+  data,
+  ...args
+}: {
+  data: Array<typeof firstData>;
+  columns: CustomColumnsType<typeof firstData>;
+}) => {
+  const [pageData, setPageData] = useState<Array<typeof firstData>>([]);
   const [totalRows, setTotalRows] = useState(1);
-  const [sortBy, setSortBy] = useState([]);
+  const [sortBy, setSortBy] = useState<Array<CustomSortingRule<typeof firstData>>>([]);
 
-  const fetchData = useCallback(({ pageIndex, pageSize }) => {
+  const fetchData = useCallback(({ pageIndex, pageSize }: { pageIndex: number; pageSize: number }) => {
     setTotalRows(data.length);
 
-    const result = [...data];
-    console.log(sortBy[0]);
-    if (sortBy[0]) {
-      result.sort((a, b) => {
-        if (typeof b[sortBy[0].id] === 'number' || typeof a[sortBy[0].id] === 'number') {
-          if (sortBy[0].desc) {
-            return b[sortBy[0].id] - a[sortBy[0].id];
-          }
-          return a[sortBy[0].id] - b[sortBy[0].id];
-        }
-        if (sortBy[0].desc) {
-          return b[sortBy[0].id].localeCompare(a[sortBy[0].id]);
-        }
-        return a[sortBy[0].id].localeCompare(b[sortBy[0].id]);
-      });
+    const result = [...data] as Array<typeof firstData>;
+
+    if (sortBy.length === 0) {
+      setPageData(result.slice(pageIndex * pageSize, pageIndex * pageSize + pageSize));
+      return;
     }
+
+    const sorting = sortBy[0];
+
+    result.sort((dataA, dataB) => {
+      const isTypeNumber = typeof dataB[sorting.id] === 'number' || typeof dataA[sorting.id] === 'number';
+      if (isTypeNumber) {
+        const numberA = Number(dataA[sorting.id]);
+        const numberB = Number(dataB[sorting.id]);
+        return sorting.desc ? numberB - numberA : numberA - numberB;
+      }
+
+      const stringA = String(dataA[sorting.id]);
+      const stringB = String(dataB[sorting.id]);
+
+      return sorting.desc
+        ? stringB.localeCompare(stringA)
+        : stringA.localeCompare(stringB);
+    });
 
     setPageData(result.slice(pageIndex * pageSize, pageIndex * pageSize + pageSize));
   }, [data, sortBy]);
 
   return (
     <Table
-      {...args}
       data={pageData}
       onSortChange={sortBy => setSortBy(sortBy)}
       onDataUpdate={fetchData}
       totalRows={totalRows}
       emptyComponent={<CustomEmptyComponent />}
+      {...args}
     />
   );
 };
 
 export const ManualSorting = ManualSortingTemplate.bind({});
+// @ts-expect-error
 ManualSorting.args = {
   isManualSorted: true,
   columnsControl: true,

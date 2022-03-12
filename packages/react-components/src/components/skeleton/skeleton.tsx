@@ -10,9 +10,9 @@ export type SkeletonProps = PropsWithClass & {
    * Set the edge radius of each skeleton block.
    * This value must be one of the available `radius` tokens
    */
-  radius?: TokensTypes['radius'];
+  borderRadius?: TokensTypes['radius'];
   /**
-   * Set the block to be a circle, ignoring the `radius` property.
+   * Set the block to be a circle, ignoring the `borderRadius` property.
    */
   circle?: boolean;
   /**
@@ -37,15 +37,20 @@ export type SkeletonProps = PropsWithClass & {
    * Enable the shim animation and the announcement of the loading state.
    */
   enableAnimation?: boolean;
+  /**
+   * Set the gap between stacked skeleton items.
+   */
+  gap?: TokensTypes['space'];
 }
 
 export const Skeleton = ({
   className,
-  radius = 16,
+  borderRadius = 4,
   style,
   width,
   height,
   count = 1,
+  gap,
   enableAnimation = true,
   inline,
   circle,
@@ -57,9 +62,10 @@ export const Skeleton = ({
 
   const SkeletonItem = useCallback(() => {
     const dynamicStyle: CSSProperties = {
-      '--radius': radius && tkns.radius[radius],
+      '--radius': borderRadius && tkns.radius[borderRadius],
       '--width': width && computedWidth,
       '--height': height && computedHeight,
+      '--gap': gap ? tkns.space[gap] : undefined,
     };
 
     return (
@@ -72,10 +78,7 @@ export const Skeleton = ({
         &zwnj;
       </span>
     );
-  }, [
-    radius, width, computedWidth, height,
-    computedHeight, circle, style, enableAnimation,
-  ]);
+  }, [borderRadius, width, computedWidth, height, computedHeight, gap, circle, enableAnimation, style]);
 
   return (
     <span

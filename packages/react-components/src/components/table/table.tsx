@@ -1,4 +1,3 @@
-
 import clsx from 'clsx';
 import { AnimatePresence, motion } from 'framer-motion';
 import {
@@ -12,7 +11,8 @@ import {
 import { useUIDSeed } from 'react-uid';
 
 import {
-  IconButton, Skeleton, Stack, Text,
+  Skeleton, Stack, Text,
+  ToggleButton,
 } from '@/components';
 
 import styles from './table.module.css';
@@ -24,7 +24,9 @@ import { TableHeader, TableHeaderProps } from './table-header';
 import { TablePagination, TablePaginationProps } from './table-pagination';
 import { TableRow } from './table-row';
 import {
-  CellType, CustomColumnInstanceType, CustomColumnsType, HeaderGroupType, OptionalDataTypes, PaginationType,
+  CellType, CustomColumnInstanceType, CustomColumnsType,
+  CustomSortingRule,
+  HeaderGroupType, OptionalDataTypes, PaginationType,
 } from './types';
 
 export type TableProps<T extends Record<string, unknown>> = PropsWithClass & {
@@ -57,7 +59,7 @@ export type TableProps<T extends Record<string, unknown>> = PropsWithClass & {
    * Passing this property along side `showPagination` will enable manual pagination,
    * disabling the automatic one.
    */
-  onDataUpdate?: ({ pageIndex, pageSize }: PaginationType) => Promise<void>;
+  onDataUpdate?: ({ pageIndex, pageSize }: PaginationType) => Promise<void> | void;
   /**
    * Set the number of pages to show in the pagination. Used only when doing manual pagination.
    */
@@ -75,7 +77,7 @@ export type TableProps<T extends Record<string, unknown>> = PropsWithClass & {
   /**
    * Callback run when the selected rows change
    */
-  onSelectionChange?: (selectedRows?: Row[], selectedRowIds?: Record<IdType<T>, boolean>) => void;
+  onSelectionChange?: (selectedRows?: Array<Row<T>>, selectedRowIds?: Record<IdType<T>, boolean>) => void;
   /**
    * If true, disable the automatic column sorting of the table. Turn this on if you want to
    * to control the sorting yourself.
@@ -84,7 +86,7 @@ export type TableProps<T extends Record<string, unknown>> = PropsWithClass & {
   /**
    * Callback run when a column is sorted
    */
-  onSortChange?: (sorting?: Array<SortingRule<T>>) => void;
+  onSortChange?: (sorting: Array<CustomSortingRule<T>>) => void;
   /**
    * Add an alternate style to the table rows
    */
@@ -227,8 +229,11 @@ export const Table = <T extends Record<string, unknown>>({
       manualPagination: isManualPaginated,
       autoResetSelectedRows: false,
       pageCount: (isManualPaginated && totalRows) ? Math.ceil(totalRows / itemsPerPage) : 10,
-      // This `paginateExpandedRows` prop prevent expanded rows to be placed in the next page. But it breaks row selection
-      // paginateExpandedRows: !showPagination,
+      /**
+       * This `paginateExpandedRows` prop prevent expanded rows to
+       * be placed in the next page. But it breaks row selection
+       * paginateExpandedRows: !showPagination,
+       */
       initialState: {
         sortBy: initialSortBy,
         pageIndex: activePageIndex,
@@ -243,37 +248,43 @@ export const Table = <T extends Record<string, unknown>>({
     (hooks: Hooks<T>) => {
       const checkboxColumn: CustomColumnsType<T> = [{
         id: 'selection',
-        Header: ({ getToggleAllRowsSelectedProps }) => (!loading ? <TableCheckbox {...getToggleAllRowsSelectedProps()} /> : null),
-        Cell: ({ row }: {row: Row<T>}) => <TableCheckbox {...row.getToggleRowSelectedProps()} />,
         isCollapsed: true,
         hideFromList: true,
-      }];
-
-      const expanderColumn: CustomColumnsType<T> = [{
-        id: 'expander',
-        isCollapsed: true,
-        hideFromList: true,
-        expander: true,
-        Header: ({ getToggleAllRowsExpandedProps, isAllRowsExpanded }) => (
+        Header: ({ getToggleAllRowsSelectedProps }) => (
           !loading
             ? (
-              <IconButton
-                kind="flat"
-                dimension="small"
-                className={styles.ExpandButton}
-                icon={isAllRowsExpanded ? 'chevron-down' : 'chevron-right'}
-                {...getToggleAllRowsExpandedProps()}
+              <TableCheckbox
+                {...getToggleAllRowsSelectedProps()}
               />
             )
             : null
         ),
+        Cell: ({ row }: {row: Row<T>}) => (
+          <TableCheckbox
+            {...row.getToggleRowSelectedProps()}
+          />
+        ),
+      }];
+
+      const expanderColumn: CustomColumnsType<T> = [{
+        id: 'expander',
+        hideFromList: true,
+        expander: true,
+        minWidth: 40,
+        align: 'center',
         Cell: ({ row }: {row: Row<T>}) => (row.canExpand
           ? (
-            <IconButton
+            <ToggleButton
               kind="secondary"
               dimension="small"
-              icon={row.isExpanded ? 'chevron-down' : 'chevron-right'}
+              restingIcon="ctrl-right"
+              pressedIcon="ctrl-down"
               {...row.getToggleRowExpandedProps()}
+              onClick={() => {
+                const subRowsExpanded = row.subRows.filter(r => r.isExpanded);
+                subRowsExpanded.forEach(r => r.toggleRowExpanded(!r.isExpanded));
+                row.toggleRowExpanded(!row.isExpanded);
+              }}
             />
           )
           : null),
@@ -296,28 +307,39 @@ export const Table = <T extends Record<string, unknown>>({
   );
 
   useEffect(() => {
-    const artificialColumns = defaultHiddenColumns || [];
+    const artificialColumns = defaultHiddenColumns ?? [];
     if (!selectableRows) artificialColumns.push('selection');
     if (!hasSomeExpandableRows) artificialColumns.push('expander');
     if (!ActionsRowComponent) artificialColumns.push('actions');
 
     setHiddenColumns(artificialColumns);
-  }, [selectableRows, setHiddenColumns, defaultHiddenColumns, expandableRowComponent, hasSomeExpandableRows, ActionsRowComponent]);
+  }, [
+    selectableRows,
+    setHiddenColumns,
+    defaultHiddenColumns,
+    expandableRowComponent,
+    hasSomeExpandableRows,
+    ActionsRowComponent,
+  ]);
 
   useEffect(() => {
-    onSelectionChange && onSelectionChange(selectedFlatRows, selectedRowIds);
+    onSelectionChange?.(selectedFlatRows, selectedRowIds);
   }, [onSelectionChange, selectedFlatRows, selectedRowIds]);
 
   useEffect(() => {
-    onSortChange && onSortChange(sortBy);
+    onSortChange?.(sortBy);
   }, [onSortChange, sortBy]);
 
   useEffect(() => {
-    onDataUpdate && onDataUpdate({ pageIndex, pageSize });
+    void onDataUpdate?.({ pageIndex, pageSize });
   }, [onDataUpdate, pageIndex, pageSize]);
 
   const rowEntries = useMemo(() => (showPagination ? page : rows), [page, rows, showPagination]);
-  const filteredVisibleColumns = useMemo(() => visibleColumns.filter((col: CustomColumnInstanceType) => !col.hideFromList), [visibleColumns]);
+  const filteredVisibleColumns = useMemo(() => (
+    visibleColumns.filter((col: CustomColumnInstanceType<T>) => !col.hideFromList)
+  ), [visibleColumns]);
+
+  const expandedRows = useMemo(() => rows.filter(row => row.canExpand && row.isExpanded).map(r => r.id), [rows]);
 
   const dynamicStyle: CSSProperties = {
     '--table-height': height,
@@ -397,7 +419,7 @@ export const Table = <T extends Record<string, unknown>>({
                 <thead role="rowgroup" className={styles.THead}>
                   {headerGroups.map(headerGroup => (
                     <TableRow {...headerGroup.getHeaderGroupProps()}>
-                      {headerGroup.headers.map((column: HeaderGroupType) => (
+                      {headerGroup.headers.map((column: HeaderGroupType<T>) => (
                         <TableCell
                           as="th"
                           width={column.minWidth === 0 ? undefined : column.minWidth}
@@ -433,18 +455,17 @@ export const Table = <T extends Record<string, unknown>>({
                       <Fragment key={row.id}>
                         <TableRow
                           {...row.getRowProps()}
-                          data-row-expanded={row.isExpanded || undefined}
-                          data-row-depth={row.depth > 0 ? row.depth : undefined}
+                          expanded={(
+                            row.isExpanded && !row.subRows.some(subrow => subrow.isExpanded && subrow.canExpand)
+                          )}
+                          rowData={row}
+                          expandedRows={expandedRows}
                         >
-                          {row.cells.map((cell: CellType) => (
+                          {row.cells.map((cell: CellType<T>) => (
                             <TableCell
                               collapsed={cell.column.isCollapsed}
-                              isExpander={cell.column.expander}
-                              expanded={row.isExpanded}
-                              depth={row.depth}
                               width={cell.column.minWidth === 0 ? undefined : cell.column.minWidth}
                               align={cell.column.align}
-                              hasSubrows={!!row.subRows?.length}
                               {...cell.getCellProps()}
                             >
                               {cell.render('Cell')}
@@ -467,7 +488,7 @@ export const Table = <T extends Record<string, unknown>>({
         )
         : (
           <Stack vAlign="center" hAlign="center">
-            {emptyComponent || 'No data'}
+            {emptyComponent ?? 'No data'}
           </Stack>
         )
       }
@@ -477,7 +498,7 @@ export const Table = <T extends Record<string, unknown>>({
         <TablePagination
           clusters={pageClusters}
           pageSize={pageSize}
-          totalItems={totalRows || rows.length}
+          totalItems={totalRows ?? rows.length}
           currentPage={pageIndex}
           totalPages={pageCount}
           isManual={Boolean(isManualPaginated && totalRows)}

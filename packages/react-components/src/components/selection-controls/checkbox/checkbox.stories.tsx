@@ -1,12 +1,17 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { useState } from 'react';
 
-import { Checkbox, CheckboxProps } from './checkbox';
+import { Checkbox } from './checkbox';
 
 const story: ComponentMeta<typeof Checkbox> = {
   title: 'Components/Inputs/Checkbox',
   component: Checkbox,
   argTypes: {
+    onChange: {
+      action: 'changed',
+      table: {
+        disable: true,
+      },
+    },
     disabled: {
       options: [true, false],
       control: { type: 'inline-radio' },
@@ -17,7 +22,7 @@ const story: ComponentMeta<typeof Checkbox> = {
 export default story;
 
 const Template: ComponentStory<typeof Checkbox> = args => (
-  <Checkbox onCheckedChange={info => console.log(info)} {...args} />
+  <Checkbox {...args} />
 );
 
 export const Default = Template.bind({});
@@ -33,18 +38,7 @@ DisabledChecked.args = {
   disabled: true,
 };
 
-const TemplateIndeterminate: ComponentStory<typeof Checkbox> = (args) => {
-  const [isChecked, setIsChecked] = useState<CheckboxProps['checked']>('indeterminate');
-
-  return (
-    <Checkbox
-      name="test"
-      checked={isChecked}
-      onCheckedChange={setIsChecked}
-      {...args}
-    />
-  );
+export const Indeterminate = Template.bind({});
+Indeterminate.args = {
+  indeterminate: true,
 };
-
-export const Indeterminate = TemplateIndeterminate.bind({});
-
