@@ -1,12 +1,12 @@
 .SkeletonItem {
-  --base-color: var(--dimmed-0);
-  --highlight-color: var(--dimmed-1);
+  --base-color: var(--dimmed-1);
+  --highlight-color: var(--dimmed-0);
   --animation-duration: 1.5s;
   --animation-direction: normal;
 
   background-color: var(--base-color);
   width: var(--width, 100%);
-  block-size: var(--height);
+  height: var(--height);
   border-radius: var(--radius, token(--radius-32));
   display: inline-flex;
   line-height: 1;
@@ -14,13 +14,17 @@
   overflow: hidden;
   z-index: 1;
 
+  & + br + & {
+    margin-top: var(--gap, 0);
+  }
+
   &::after {
     content: ' ';
     display: block;
     position: absolute;
     left: 0;
     right: 0;
-    block-size: 100%;
+    height: 100%;
     background-repeat: no-repeat;
     background-image:
       linear-gradient(

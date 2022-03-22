@@ -77,8 +77,8 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(({
       data-select-has-label={Boolean(label)}
       data-select-dimension={dimension}
       aria-disabled={disabled}
-      horizontalAlign="start"
-      verticalAlign="start"
+      hAlign="start"
+      vAlign="start"
       inline
       tabIndex={disabled ? 0 : undefined}
     >

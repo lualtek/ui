@@ -23,6 +23,10 @@
     block-size: 100%;
     min-block-size: 8rem;
   }
+
+  &[data-disabled] {
+    cursor: not-allowed;
+  }
 }
 
 .Track {
@@ -33,6 +37,7 @@
   position: relative;
   flex-grow: 1;
   border-radius: 1e5px;
+  overflow: hidden;
 
   &[data-orientation='horizontal'] {
     block-size: var(--track-h);
@@ -44,13 +49,13 @@
 
   &[data-disabled] {
     background-color: var(--global-disabled-background);
+    cursor: not-allowed;
   }
 }
 
 .Range {
   position: absolute;
   background-color: var(--cta-default);
-  border-radius: 1e5px;
 
   &[data-disabled] {
     background-color: var(--global-disabled-foreground);
@@ -107,5 +112,6 @@
 
     background-color: var(--global-disabled-foreground);
     border: 0;
+    cursor: not-allowed;
   }
 }

@@ -14,7 +14,7 @@ const story: ComponentMeta<typeof Popover> = {
 export default story;
 
 const Template: ComponentStory<typeof Popover> = args => (
-  <Stack horizontalAlign="center" verticalPadding={200}>
+  <Stack hAlign="center" vPadding={200}>
     <Popover {...args}>
       <Popover.Content>
         <div
