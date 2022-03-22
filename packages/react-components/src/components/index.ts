@@ -5,6 +5,7 @@ export * from './container';
 export * from './elevator';
 export * from './icon';
 export * from './icon-button';
+export * from './icon-meter';
 export * from './label';
 export * from './linear-progress';
 export * from './menu';
