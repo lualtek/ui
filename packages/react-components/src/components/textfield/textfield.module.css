@@ -1,51 +1,43 @@
 :where(.Textfield) {
+  --factor: 3;
+  --field-padding: token(--space-16);
+  --font-size: token(--font-size-16);
+
   appearance: none;
   position: relative;
   padding: 0;
-
-  &[data-textfield-dimension='small'] {
-    --field-height: token(--space-24);
-    --field-padding: 0.33rem;
-    --font-size: token(--font-size-14);
-  }
-
-  &[data-textfield-dimension='regular'] {
-    --field-height: token(--space-40);
-    --field-padding: token(--space-16);
-    --font-size: token(--font-size-16);
-  }
-
-  &[data-textfield-dimension='big'] {
-    --field-height: token(--space-48);
-    --field-padding: token(--space-24);
-    --font-size: token(--font-size-18);
-  }
 }
 
 .FieldContainer {
   position: relative;
+  z-index: 0;
+}
+
+.Label {
+  position: absolute;
+  pointer-events: none;
+  top: token(--space-4);
+  left: var(--field-padding);
+  z-index: 1;
+
+  @nest [data-textfield-has-icon='true'][data-textfield-icon-position='left'] & {
+    left: calc(var(--field-padding) * var(--factor));
+  }
+  @nest .Textfield[data-textfield-invalid='true'] & {
+    color: var(--highlight-red-foreground);
+  }
 }
 
 .InputField {
-  --factor: 4;
+  padding: calc(token(--space-24) - token(--space-4)) var(--field-padding) token(--space-4) var(--field-padding);
 
   @nest [data-textfield-has-icon='true'][data-textfield-icon-position='right'] & {
-    padding:
-      0
-      calc(var(--field-padding) * var(--factor))
-      0
-      var(--field-padding);
+    padding-right: calc(var(--field-padding) * var(--factor));
+    padding-left: var(--field-padding);
   }
   @nest [data-textfield-has-icon='true'][data-textfield-icon-position='left'] & {
-    padding:
-      0
-      var(--field-padding)
-      0
-      calc(var(--field-padding) * var(--factor));
-  }
-  @nest [data-textfield-dimension*='regular'] &,
-  [data-textfield-dimension*='big'] & {
-    --factor: 3;
+    padding-right: var(--field-padding);
+    padding-left: calc(var(--field-padding) * var(--factor));
   }
 }
 

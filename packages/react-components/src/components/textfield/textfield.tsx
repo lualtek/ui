@@ -5,7 +5,7 @@ import {
 import { useUIDSeed } from 'react-uid';
 
 import {
-  Icon, IconButton, IconButtonProps, IconProps, Stack, Text,
+  Icon, IconButton, IconProps, Stack, Text,
 } from '@/components';
 
 import { BaseField, BaseFieldProps, PrimitiveInputType } from './base-field';
@@ -25,7 +25,7 @@ export type TextfieldProps = BaseFieldProps & {
    * mandatory, an input should always have a label. If not using this property
    * you can bind a custom label to the input by using an id.
    */
-  label?: string;
+  label: string;
   /**
    * Set the input type. The value can be anything that
    * is supported by the HTML input element.
@@ -38,10 +38,6 @@ export type TextfieldProps = BaseFieldProps & {
    * This property completely changes the rendered element from an input to a textarea.
    */
   textarea?: boolean;
-  /**
-   * Set the size of the field
-   */
-  dimension?: 'regular' | 'small' | 'big';
   /**
    * Set the field into a readonly state. When readonly, the field value
    * cannot be edited but it can still be selected and copied.
@@ -69,7 +65,6 @@ export const Textfield = forwardRef<PrimitiveInputType, TextfieldProps>(({
   invalid,
   id,
   iconPosition = 'right',
-  dimension = 'regular',
   type,
   style,
   onChange,
@@ -87,19 +82,6 @@ export const Textfield = forwardRef<PrimitiveInputType, TextfieldProps>(({
     [],
   );
 
-  const sizes = {
-    actions: {
-      small: 'small',
-      regular: 'regular',
-      big: 'big',
-    },
-    icons: {
-      small: 12,
-      regular: 16,
-      big: 24,
-    },
-  };
-
   const commonProps = {
     readOnly,
     invalid,
@@ -114,7 +96,6 @@ export const Textfield = forwardRef<PrimitiveInputType, TextfieldProps>(({
       className={clsx(styles.Textfield, className)}
       data-textfield-has-icon={isPassword || Boolean(icon)}
       data-textfield-icon-position={iconPosition}
-      data-textfield-dimension={dimension}
       data-textfield-invalid={invalid}
       aria-disabled={disabled}
       hAlign="stretch"
@@ -122,7 +103,6 @@ export const Textfield = forwardRef<PrimitiveInputType, TextfieldProps>(({
       tabIndex={disabled ? 0 : undefined}
       style={style}
     >
-      {label && <Text as="label" size={dimension === 'small' ? 14 : 16} htmlFor={fieldID}>{label}</Text>}
       <div className={styles.FieldContainer}>
         {textarea
           ? (
@@ -148,7 +128,7 @@ export const Textfield = forwardRef<PrimitiveInputType, TextfieldProps>(({
         {isPassword && (
           <IconButton
             className={styles.IconButton}
-            dimension={sizes.actions[dimension] as IconButtonProps['dimension']}
+            dimension="regular"
             onClick={handlePasswordVisibility}
             kind="flat"
             aria-label="Reveal password"
@@ -160,9 +140,11 @@ export const Textfield = forwardRef<PrimitiveInputType, TextfieldProps>(({
           <Icon
             className={styles.Icon}
             source={icon}
-            dimension={sizes.icons[dimension] as IconProps['dimension']}
+            dimension={16}
           />
         )}
+
+        <Text as="label" dimmed={5} className={styles.Label} size={14} htmlFor={fieldID}>{label}</Text>
       </div>
     </Stack>
   );

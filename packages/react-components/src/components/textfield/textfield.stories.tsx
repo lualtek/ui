@@ -8,7 +8,6 @@ const story: ComponentMeta<typeof Textfield> = {
   title: 'Components/Inputs/Textfield',
   component: Textfield,
   args: {
-    dimension: 'regular',
     readOnly: false,
     defaultValue: 'Sample value',
   },
@@ -18,10 +17,6 @@ const story: ComponentMeta<typeof Textfield> = {
       table: {
         disable: true,
       },
-    },
-    dimension: {
-      options: ['small', 'regular', 'big'],
-      control: { type: 'radio' },
     },
     readOnly: {
       options: [true, false],

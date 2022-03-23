@@ -12,35 +12,23 @@
   line-height: 1;
   appearance: none;
   inline-size: 100%;
-  border: none;
   box-sizing: border-box;
   overflow: hidden;
   color: inherit;
-  background-color: var(--vibrancy-background);
-  block-size: var(--field-height);
+  background-color: var(--vibrancy-background-soft);
   padding: 0 var(--field-padding);
   display: flex;
   caret-color: var(--cta-default);
   outline-offset: 2px;
+  min-block-size: token(--space-48);
+  border: 1px solid var(--vibrancy-background);
+  border-radius: token(--radius-16);
 
-  @nest [data-textfield-dimension='small'] & {
-    border-radius: token(--radius-8);
-  }
-  @nest :is([data-textfield-dimension='regular'], [data-textfield-dimension='big']) & {
-    border-radius: token(--radius-16);
-  }
   @nest [data-textfield-has-icon='true'] &::-webkit-calendar-picker-indicator {
     opacity: 0%;
     position: absolute;
     right: calc(var(--field-padding) / 2);
   }
-
-  /* @nest [data-textfield-picker-only='true'] &::-webkit-calendar-picker-indicator {
-    opacity: 0%;
-    height: 100%;
-    width: 100%;
-    position: absolute;
-  } */
 
   &:-moz-ui-invalid {
     box-shadow: none;
@@ -51,7 +39,7 @@
   }
 
   &:focus-visible {
-    background-color: var(--vibrancy-background);
+    background-color: transparent;
   }
 
   &:disabled {
