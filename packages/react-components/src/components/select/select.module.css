@@ -38,7 +38,6 @@
   @mixin vibrancy;
 
   margin: 0;
-  border: 0;
   text-overflow: ellipsis;
   font-size: var(--font-size);
   font-family: inherit;
@@ -52,11 +51,12 @@
   block-size: var(--field-height);
   font-weight: token(--font-weight-semi-bold);
   border-radius: var(--field-radius);
+  border: 1px solid var(--vibrancy-background);
   background:
     linear-gradient(
       to bottom,
-      var(--vibrancy-background),
-      var(--vibrancy-background)
+      var(--vibrancy-background-soft),
+      var(--vibrancy-background-soft)
     );
   padding:
     calc(token(--space-24) - token(--space-4))
