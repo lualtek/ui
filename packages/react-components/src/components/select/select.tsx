@@ -5,10 +5,10 @@ import {
 import { useUIDSeed } from 'react-uid';
 
 import {
-  Icon, IconProps, Label, Stack,
+  Icon, IconProps, Stack,
+  Text,
 } from '@/components';
 
-import { LabelProps } from '../label';
 import styles from './select.module.css';
 
 export type SelectProps = SelectHTMLAttributes<HTMLSelectElement> & {
@@ -23,15 +23,11 @@ export type SelectProps = SelectHTMLAttributes<HTMLSelectElement> & {
   /**
    * Set the accessible label for the select.
    */
-  label?: ReactNode;
+  label: ReactNode;
   /**
    * Set how many options can be selected at once.
    */
   kind?: 'single' | 'multiple';
-  /**
-   * Set the size of the select. This affects alsosize and style of the icon.
-   */
-  dimension?: 'regular' | 'small' | 'big';
   /**
    * Set disabled state. The select is not interactive and grayed out.
    */
@@ -42,19 +38,6 @@ export type SelectProps = SelectHTMLAttributes<HTMLSelectElement> & {
   onChange?: (event: ChangeEvent<HTMLSelectElement>) => void;
 }
 
-const sizes = {
-  label: {
-    small: 14,
-    regular: 16,
-    big: 18,
-  },
-  icon: {
-    small: 12,
-    regular: 16,
-    big: 24,
-  },
-};
-
 export const Select = forwardRef<HTMLSelectElement, SelectProps>(({
   children,
   className,
@@ -62,7 +45,6 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(({
   icon = 'increase',
   label,
   kind = 'single',
-  dimension = 'regular',
   onChange,
   ...otherProps
 }, forwardedRef) => {
@@ -75,21 +57,12 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(({
       className={clsx(styles.Select, className)}
       data-select-is-multiple={kind === 'multiple'}
       data-select-has-label={Boolean(label)}
-      data-select-dimension={dimension}
       aria-disabled={disabled}
       hAlign="start"
       vAlign="start"
       inline
       tabIndex={disabled ? 0 : undefined}
     >
-      {label && (
-      <Label
-        size={sizes.label[dimension] as LabelProps['size']}
-        htmlFor={seedID('select')}
-      >
-        {label}
-      </Label>
-      )}
       <div className={styles.FieldContainer}>
         <select
           disabled={disabled}
@@ -103,13 +76,23 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(({
           {children}
         </select>
 
-        { kind === 'single' && (
+        {kind === 'single' && (
           <Icon
             className={styles.Icon}
             source={icon}
-            dimension={sizes.icon[dimension] as IconProps['dimension']}
+            dimension={16}
           />
-        ) }
+        )}
+
+        <Text
+          as="label"
+          dimmed={4}
+          size={14}
+          htmlFor={seedID('select')}
+          className={styles.Label}
+        >
+          {label}
+        </Text>
       </div>
     </Stack>
   );

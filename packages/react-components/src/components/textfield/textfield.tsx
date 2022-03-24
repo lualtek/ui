@@ -144,7 +144,7 @@ export const Textfield = forwardRef<PrimitiveInputType, TextfieldProps>(({
           />
         )}
 
-        <Text as="label" dimmed={5} className={styles.Label} size={14} htmlFor={fieldID}>{label}</Text>
+        <Text as="label" dimmed={4} className={styles.Label} size={14} htmlFor={fieldID}>{label}</Text>
       </div>
     </Stack>
   );

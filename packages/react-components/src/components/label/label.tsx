@@ -7,7 +7,6 @@ export type LabelProps = LabelHTMLAttributes<HTMLLabelElement> & Pick<TextProps,
 }
 
 export const Label: FC<LabelProps> = ({
-  className,
   children,
   size,
   ...otherProps

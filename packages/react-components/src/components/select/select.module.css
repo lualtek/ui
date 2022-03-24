@@ -1,30 +1,14 @@
 @import '../../core/utils/vibrancy.css';
 
 .Select {
+  --field-height: token(--space-40);
+  --field-padding: token(--space-16);
+  --font-size: token(--font-size-16);
+  --field-radius: token(--radius-16);
+
   appearance: none;
   position: relative;
   padding: 0;
-
-  &[data-select-dimension='small'] {
-    --field-height: token(--space-24);
-    --field-padding: 0.33rem;
-    --field-radius: token(--radius-8);
-    --font-size: token(--font-size-14);
-  }
-
-  &[data-select-dimension='regular'] {
-    --field-height: token(--space-40);
-    --field-padding: token(--space-16);
-    --font-size: token(--font-size-16);
-    --field-radius: token(--radius-16);
-  }
-
-  &[data-select-dimension='big'] {
-    --field-height: token(--space-48);
-    --field-padding: token(--space-16);
-    --font-size: token(--font-size-18);
-    --field-radius: token(--radius-16);
-  }
 }
 
 .FieldContainer {
@@ -37,6 +21,18 @@
   }
 }
 
+.Label {
+  position: absolute;
+  pointer-events: none;
+  top: token(--space-4);
+  left: var(--field-padding);
+  z-index: 1;
+
+  @nest [data-textfield-has-icon='true'][data-textfield-icon-position='left'] & {
+    right: calc(var(--field-padding) * 3.5);
+  }
+}
+
 .Field {
 
   @mixin vibrancy;
@@ -45,7 +41,6 @@
   border: 0;
   text-overflow: ellipsis;
   font-size: var(--font-size);
-  border-radius: var(--field-radius);
   font-family: inherit;
   appearance: none;
   display: block;
@@ -53,19 +48,21 @@
   box-sizing: border-box;
   overflow: hidden;
   color: inherit;
+  min-block-size: token(--space-48);
   block-size: var(--field-height);
   font-weight: token(--font-weight-semi-bold);
-  padding:
-    0
-    calc(var(--field-padding) * 3.5)
-    0
-    var(--field-padding);
+  border-radius: var(--field-radius);
   background:
     linear-gradient(
       to bottom,
       var(--vibrancy-background),
       var(--vibrancy-background)
     );
+  padding:
+    calc(token(--space-24) - token(--space-4))
+    calc(var(--field-padding) * 3.5)
+    token(--space-4)
+    var(--field-padding);
 
   &:disabled {
     cursor: not-allowed;
@@ -88,7 +85,11 @@
 
   &[multiple] {
     block-size: auto;
-    padding: token(--space-8) token(--space-16) token(--space-8) token(--space-16);
+    padding:
+      calc(token(--space-24) - token(--space-2))
+      calc(var(--field-padding) * 3.5)
+      token(--space-4)
+      var(--field-padding);
     overflow: auto;
 
     & option {
@@ -117,7 +118,7 @@
   border-radius: token(--radius-4);
   pointer-events: none;
   position: absolute;
-  top: calc(var(--field-height) / 2);
+  top: 50%;
   transform: translateY(-50%);
   right: calc(var(--field-padding) - calc(var(--field-padding) / 3));
 }

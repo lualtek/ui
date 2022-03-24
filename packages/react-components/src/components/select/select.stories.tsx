@@ -16,17 +16,10 @@ const story: ComponentMeta<typeof Select> = {
       options: ['single', 'multiple'],
       control: { type: 'radio' },
     },
-    dimension: {
-      options: ['small', 'regular', 'big'],
-      control: { type: 'radio' },
-    },
     disabled: {
       options: [true, false],
       control: { type: 'inline-radio' },
     },
-  },
-  args: {
-    dimension: 'regular',
   },
 };
 
@@ -64,12 +57,6 @@ const MultipleTemplate: ComponentStory<typeof Select> = args => (
 
 export const Single = SingleTemplate.bind({});
 Single.args = {
-  disabled: false,
-  kind: 'single',
-};
-
-export const WithLabel = SingleTemplate.bind({});
-WithLabel.args = {
   disabled: false,
   kind: 'single',
   label: 'Label',

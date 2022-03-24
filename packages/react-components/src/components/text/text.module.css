@@ -8,6 +8,10 @@
 
   /* Colors */
 
+  &[data-text-dimmed='4'] {
+    color: var(--dimmed-4);
+  }
+
   &[data-text-dimmed='5'] {
     color: var(--dimmed-5);
   }
