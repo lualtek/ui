@@ -74,6 +74,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(({
           {...otherProps}
         >
           {children}
+          {label && <option hidden disabled>{label}</option>}
         </select>
 
         {kind === 'single' && (

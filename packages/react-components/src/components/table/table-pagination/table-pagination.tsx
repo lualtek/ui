@@ -49,10 +49,9 @@ export const TablePagination: FC<TablePaginationProps> = ({
       {...otherProps}
     >
       <Stack direction="row" columnGap={4}>
-        <Text as="label" htmlFor={uid('table-i-per-page')} size={14}>Items per page:</Text>
         <Select
           value={pageSize}
-          dimension="small"
+          label="Items per page"
           id={uid('table-i-per-page')}
           onChange={({ currentTarget }) => {
             onPageSizeChange?.(Number(currentTarget.value));
