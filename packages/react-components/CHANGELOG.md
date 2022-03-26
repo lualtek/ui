@@ -1,5 +1,18 @@
 # @lualtek/react-components
 
+## 0.10.0
+
+### Minor Changes
+
+- 358b44b: Add table component and releative components
+- c4f7343: Add icon-meter
+- 423dea5: Add List and Card components
+
+### Patch Changes
+
+- Updated dependencies [358b44b]
+  - @lualtek/icons@0.4.0
+
 ## 0.9.0
 
 ### Minor Changes

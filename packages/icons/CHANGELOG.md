@@ -1,5 +1,11 @@
 # @lualtek/icons
 
+## 0.4.0
+
+### Minor Changes
+
+- 358b44b: Add table component and releative components
+
 ## 0.3.0
 
 ### Minor Changes
