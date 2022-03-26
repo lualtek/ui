@@ -1,0 +1,63 @@
+@import '../../core/utils/vibrancy.css';
+
+:where(.Card) {
+  background-color: var(--global-background);
+  padding: var(--padding);
+  border-radius: var(--radius);
+  position: relative;
+
+  &[data-card-highlight-hover='true']:is(:hover, :focus-visible) {
+    background-color: var(--dimmed-0);
+  }
+
+  &[data-card-dimmed='1'] {
+    background-color: var(--dimmed-0);
+
+    &[data-card-highlight-hover='true']:is(:hover, :focus-visible) {
+      background-color: var(--global-background);
+    }
+  }
+
+  &[data-card-dimmed='2'] {
+    background-color: var(--dimmed-1);
+
+    &[data-card-highlight-hover='true']:is(:hover, :focus-visible) {
+      background-color: var(--dimmed-0);
+    }
+  }
+
+  &[data-card-dimmed='3'] {
+    background-color: var(--dimmed-2);
+
+    &[data-card-highlight-hover='true']:is(:hover, :focus-visible) {
+      background-color: var(--dimmed-1);
+    }
+  }
+
+  &[data-card-vibrant='true'] {
+
+    @mixin vibrancy;
+
+    background-color: var(--vibrancy-background);
+
+    &[data-card-highlight-hover='true']:is(:hover, :focus-visible) {
+      background-color: var(--vibrancy-background-soft);
+    }
+  }
+
+  &[data-card-bordered='true'] {
+    border: solid 1px var(--dimmed-1);
+  }
+}
+
+.Left {
+  flex-shrink: 0;
+}
+
+.Content {
+  flex-grow: 1;
+}
+
+.Right {
+  flex-shrink: 0;
+}
