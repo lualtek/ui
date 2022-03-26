@@ -7,6 +7,7 @@ export * from './icon';
 export * from './icon-button';
 export * from './icon-meter';
 export * from './linear-progress';
+export * from './list';
 export * from './menu';
 export * from './pagination';
 export * from './popover';
