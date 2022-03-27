@@ -1,5 +1,16 @@
 # @lualtek/react-components
 
+## 0.13.0
+
+### Minor Changes
+
+- 0563ada: Add idProvider
+
+### Patch Changes
+
+- Updated dependencies [d33d9ed]
+  - @lualtek/icons@0.6.0
+
 ## 0.12.0
 
 ### Minor Changes
