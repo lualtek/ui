@@ -67,6 +67,14 @@
     cursor: default;
   }
 
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active {
+    -webkit-text-fill-color: var(--vibrancy-foreground);
+    box-shadow: 0 0 0 100px var(--vibrancy-background-soft) inset, 0 0 0 100px var(--global-background) inset;
+  }
+
   &:is(:invalid, [data-basefield-invalid='true'], :out-of-range),
   &:is(:invalid, [data-basefield-invalid='true'], :out-of-range):focus-visible {
     background-color: var(--vibrancy-background-error);
@@ -74,9 +82,6 @@
     border-color: transparent;
   }
 
-  &:-webkit-autofill:is(:hover, :focus, :active) {
-    box-shadow: 0 0 0 100px var(--vibrancy-background-soft) inset;
-  }
 
   &[type='number'] {
     appearance: textfield;

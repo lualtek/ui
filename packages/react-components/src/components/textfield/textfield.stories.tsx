@@ -44,7 +44,7 @@ const SingleTemplate: ComponentStory<typeof Textfield> = args => (
     <Textfield {...args} size={4} label="Empty" placeholder="Placeholder" />
     <Textfield {...args} size={4} label="Empty" placeholder="Placeholder" />
     <Textfield {...args} size={4} label="Empty" placeholder="Placeholder" />
-    <Textfield {...args} type="password" label="Password" defaultValue="123123klòasj" placeholder="Placeholder" />
+    <Textfield {...args} type="password" autoComplete="current-password" label="Password" placeholder="Placeholder" />
   </Stack>
 );
 

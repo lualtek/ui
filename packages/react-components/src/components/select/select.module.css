@@ -75,8 +75,12 @@
       );
   }
 
-  &:-webkit-autofill:is(:hover, :focus, :active) {
-    box-shadow: 0 0 0 100px var(--vibrancy-background-soft) inset;
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active {
+    -webkit-text-fill-color: var(--vibrancy-foreground);
+    box-shadow: 0 0 0 100px var(--vibrancy-background-soft) inset, 0 0 0 100px var(--global-background) inset;
   }
 
   & option {
