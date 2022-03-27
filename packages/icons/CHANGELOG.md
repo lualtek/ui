@@ -1,5 +1,11 @@
 # @lualtek/icons
 
+## 0.5.0
+
+### Minor Changes
+
+- 9be65d0: Release
+
 ## 0.4.0
 
 ### Minor Changes

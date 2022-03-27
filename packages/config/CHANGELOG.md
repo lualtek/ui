@@ -1,5 +1,16 @@
 # @lualtek/config
 
+## 0.2.0
+
+### Minor Changes
+
+- 9be65d0: Release
+
+### Patch Changes
+
+- Updated dependencies [9be65d0]
+  - @lualtek/tokens@0.4.0
+
 ## 0.1.2
 
 ### Patch Changes
