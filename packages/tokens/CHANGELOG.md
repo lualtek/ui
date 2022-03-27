@@ -1,5 +1,11 @@
 # @lualtek/tokens
 
+## 0.4.0
+
+### Minor Changes
+
+- 9be65d0: Release
+
 ## 0.3.0
 
 ### Minor Changes
