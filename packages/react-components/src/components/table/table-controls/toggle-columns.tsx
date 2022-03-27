@@ -36,9 +36,8 @@ export const ToggleColumnsControl = <T extends Record<string, unknown>>({
   );
 
   return (
-    <Popover
-      trigger={<Button kind="secondary">Toggle columns</Button>}
-    >
+    <Popover>
+      <Popover.Trigger><Button kind="secondary">Toggle columns</Button></Popover.Trigger>
       <Popover.Content side="bottom" align="start">
         <Menu>
           <Menu.ItemCheckbox

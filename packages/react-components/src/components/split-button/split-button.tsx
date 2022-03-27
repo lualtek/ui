@@ -59,7 +59,8 @@ export const SplitButton = forwardRef(({
       >
         {label}
       </Button>
-      <Popover trigger={<Button icon={icon} {...commonProps} />}>
+      <Popover>
+        <Popover.Trigger><Button icon={icon} {...commonProps} /></Popover.Trigger>
         <Popover.Content side={side} align={align} offset={offset}>
           <Elevator resting={2}>
             {children}

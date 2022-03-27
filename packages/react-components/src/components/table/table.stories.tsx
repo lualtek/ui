@@ -573,7 +573,8 @@ RowActions.args = {
     <Stack direction="row" fill={false}>
       <IconButton icon="view" kind="flat" dimension="small" />
       {depth > 0 && (
-      <Popover trigger={<IconButton icon="chat" kind="flat" dimension="small" />}>
+      <Popover>
+        <Popover.Trigger><IconButton icon="chat" kind="flat" dimension="small" /></Popover.Trigger>
         <Popover.Content side="bottom" align="start" offset={4}>
           <Menu>
             <Menu.Item
