@@ -1,5 +1,11 @@
 # @lualtek/icons
 
+## 0.6.0
+
+### Minor Changes
+
+- d33d9ed: Add pc-monitor icon
+
 ## 0.5.0
 
 ### Minor Changes
