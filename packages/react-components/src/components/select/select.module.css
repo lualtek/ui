@@ -75,6 +75,10 @@
       );
   }
 
+  &:-webkit-autofill:is(:hover, :focus, :active) {
+    box-shadow: 0 0 0 100px var(--vibrancy-background-soft) inset;
+  }
+
   & option {
     color: black;
   }

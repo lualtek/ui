@@ -67,13 +67,6 @@
     cursor: default;
   }
 
-  &:autofill,
-  &:autofill:hover,
-  &:autofill:focus,
-  &:autofill:active {
-    box-shadow: 0 0 0 100px var(--global-background) inset;
-  }
-
   &:is(:invalid, [data-basefield-invalid='true'], :out-of-range),
   &:is(:invalid, [data-basefield-invalid='true'], :out-of-range):focus-visible {
     background-color: var(--vibrancy-background-error);
@@ -81,6 +74,9 @@
     border-color: transparent;
   }
 
+  &:-webkit-autofill:is(:hover, :focus, :active) {
+    box-shadow: 0 0 0 100px var(--vibrancy-background-soft) inset;
+  }
 
   &[type='number'] {
     appearance: textfield;
