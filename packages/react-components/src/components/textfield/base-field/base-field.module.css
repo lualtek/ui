@@ -73,6 +73,10 @@
   &:-webkit-autofill:active {
     -webkit-text-fill-color: var(--vibrancy-foreground);
     box-shadow: 0 0 0 100px var(--vibrancy-background-soft) inset, 0 0 0 100px var(--global-background) inset;
+
+    &::selection {
+      -webkit-text-fill-color: var(--dimmed-0);
+    }
   }
 
   &:is(:invalid, [data-basefield-invalid='true'], :out-of-range),
