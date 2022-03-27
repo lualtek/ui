@@ -1,5 +1,11 @@
 # @lualtek/react-components
 
+## 0.13.1
+
+### Patch Changes
+
+- e6798cd: Fix popover positioning and animation origin
+
 ## 0.13.0
 
 ### Minor Changes
