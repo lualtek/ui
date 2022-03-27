@@ -1,5 +1,11 @@
 # @lualtek/react-components
 
+## 0.14.0
+
+### Minor Changes
+
+- 023fe34: Update popover to use custom anchor
+
 ## 0.13.1
 
 ### Patch Changes
