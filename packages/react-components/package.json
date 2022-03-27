@@ -3,6 +3,13 @@
   "version": "0.11.2",
   "types": "dist/index.d.ts",
   "main": "dist/index.js",
+  "exports": {
+    ".": "./dist/index.js",
+    "./core.css": "./dist/core.css"
+  },
+  "files": [
+    "dist"
+  ],
   "publishConfig": {
     "registry": "https://npm.pkg.github.com",
     "access": "restricted"
