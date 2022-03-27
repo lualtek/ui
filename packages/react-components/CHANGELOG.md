@@ -1,5 +1,11 @@
 # @lualtek/react-components
 
+## 0.11.2
+
+### Patch Changes
+
+- fae1437: Fix style for autocomplete selects and fields
+
 ## 0.11.1
 
 ### Patch Changes
