@@ -1,5 +1,11 @@
 # @lualtek/react-components
 
+## 0.11.1
+
+### Patch Changes
+
+- 4766d67: Fix textfield autofilled style
+
 ## 0.11.0
 
 ### Minor Changes
