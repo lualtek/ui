@@ -1,5 +1,16 @@
 # @lualtek/react-components
 
+## 0.12.0
+
+### Minor Changes
+
+- 4b65865: Added exports for react-components for using core.css directly from the root
+
+### Patch Changes
+
+- 05994f5: Fix text color for autofilled fields when focused
+- a4531c5: Reduced the blur effect of vibrancy
+
 ## 0.11.2
 
 ### Patch Changes
