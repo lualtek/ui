@@ -1,5 +1,15 @@
 # @lualtek/react-components
 
+## 0.16.0
+
+### Minor Changes
+
+- bfaa263: Add side prop to tooltip
+
+### Patch Changes
+
+- e6ecce7: Fix responsive Text attribute
+
 ## 0.15.0
 
 ### Minor Changes
