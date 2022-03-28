@@ -1,5 +1,11 @@
 # @lualtek/react-components
 
+## 0.15.0
+
+### Minor Changes
+
+- 4be53ae: Improve List component and add List.Li
+
 ## 0.14.0
 
 ### Minor Changes
