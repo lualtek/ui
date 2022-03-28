@@ -77,7 +77,7 @@ export const Text = forwardRef(({
       data-text-sentiment={sentiment}
       data-text-dimmed={dimmed}
       data-text-line-height={lineHeight}
-      data-text-responsive={size === 14 ? 14 : responsive}
+      data-text-responsive={size === 14 ? false : responsive}
       className={clsx(styles.Text, className)}
       style={{ ...dynamicStyle, ...style }}
       {...otherProps}
