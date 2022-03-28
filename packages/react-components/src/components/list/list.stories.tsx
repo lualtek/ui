@@ -18,11 +18,11 @@ const story: ComponentMeta<typeof List> = {
 
 export default story;
 
-const Template: ComponentStory<typeof List> = args => (
+const Template: ComponentStory<typeof List & typeof List.Li> = ({ marker, markerColor, ...args }) => (
   <List {...args}>
-    <li>List item text</li>
-    <li>List item text List item textList item textList item textList item text</li>
-    <li>List item text</li>
+    <List.Li marker={marker} markerColor={markerColor}>List item text</List.Li>
+    <List.Li marker={marker} markerColor={markerColor}>List item text List item textList text</List.Li>
+    <List.Li marker={marker} markerColor={markerColor}>List item text</List.Li>
   </List>
 );
 
