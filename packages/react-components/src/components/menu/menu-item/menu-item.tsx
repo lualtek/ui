@@ -99,7 +99,7 @@ export const MenuItem = forwardRef(({
       hAlign={isIconRight ? 'space-between' : 'start'}
       vAlign="center"
       columnGap={8}
-      hPadding={16}
+      hPadding={24}
       vPadding={8}
       data-menu-item-icon-right={isIconRight}
       data-menu-item-has-icon={Boolean(icon)}
@@ -113,7 +113,14 @@ export const MenuItem = forwardRef(({
           dimension={dimension === 'small' ? 12 : 16}
         />
       )}
-      <Stack className={styles.DecorationContent} columnGap={16} fill={false} direction="row" hAlign="space-between">
+      <Stack
+        className={styles.DecorationContent}
+        columnGap={16}
+        fill={false}
+        direction="row"
+        hAlign="space-between"
+        vAlign="center"
+      >
         {children}
         {decoration}
       </Stack>

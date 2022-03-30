@@ -2,7 +2,7 @@
   list-style-type: none;
   background-color: var(--global-background);
   border: 1px solid var(--dimmed-1);
-  border-radius: token(--radius-8);
+  border-radius: token(--radius-24);
   overflow: hidden;
   position: relative;
 

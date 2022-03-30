@@ -1,5 +1,5 @@
 .MenuItem {
-  --padding: token(--space-40);
+  --padding: token(--space-48);
 
   border: 0;
   background: none;
@@ -26,7 +26,7 @@
   &::before {
     content: '';
     position: absolute;
-    border-radius: token(--radius-4);
+    border-radius: token(--radius-16);
     top: 0;
     left: token(--space-8);
     right: token(--space-8);
