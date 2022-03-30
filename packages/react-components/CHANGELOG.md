@@ -1,5 +1,11 @@
 # @lualtek/react-components
 
+## 0.16.1
+
+### Patch Changes
+
+- 0ef9129: Update menu style to match brand visual
+
 ## 0.16.0
 
 ### Minor Changes
