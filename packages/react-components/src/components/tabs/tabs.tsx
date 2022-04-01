@@ -3,6 +3,7 @@ import { domMax, LazyMotion, m } from 'framer-motion';
 import {
   Children, isValidElement, useCallback, useState,
 } from 'react';
+import { useUIDSeed } from 'react-uid';
 
 import { Button } from '@/components';
 
@@ -19,6 +20,7 @@ export const Tabs = ({
   ...otherProps
 }: TabsProps) => {
   const [activeItem, setActiveItem] = useState<string>(defaultValue ?? '');
+  const seedID = useUIDSeed();
 
   const handleOnVlaueChange = useCallback(
     (value: string) => {
@@ -46,14 +48,17 @@ export const Tabs = ({
               <Button kind="flat" icon={child.props.icon}>
                 {child.props.label}
                 {(child.props.value === activeItem) && 'active' && (
-                  <m.span className={styles.Highlight} layoutId="highlight" />
+                  <>
+                    <m.span className={styles.Highlight} layoutId={seedID('tab-highlight-lazy')} />
+                    <m.span className={styles.Highlight} transition={{ ease: 'easeOut', delay: 0.01 }} layoutId={seedID('tab-highlight')} />
+                  </>
                 )}
               </Button>
             </TabsPrimitive.Trigger>
           ))}
         </TabsPrimitive.List>
-        {children}
       </LazyMotion>
+      {children}
     </TabsPrimitive.Root>
   );
 };
