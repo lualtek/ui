@@ -18,10 +18,15 @@
   pointer-events: none;
   top: token(--space-4);
   left: var(--field-padding);
+  right: var(--field-padding);
   z-index: 1;
 
   @nest [data-textfield-has-icon='true'][data-textfield-icon-position='left'] & {
     left: calc(var(--field-padding) * var(--factor));
+  }
+  @nest [data-textfield-has-icon='true'][data-textfield-icon-position='right'] & {
+    left: var(--field-padding);
+    right: calc(var(--field-padding) * var(--factor));
   }
   @nest .Textfield[data-textfield-invalid='true'] & {
     color: var(--highlight-red-foreground);

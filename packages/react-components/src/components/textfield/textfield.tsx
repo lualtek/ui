@@ -5,6 +5,7 @@ import {
 import { useUIDSeed } from 'react-uid';
 
 import {
+  ClampText,
   Icon, IconButton, IconProps, Stack, Text,
 } from '@/components';
 
@@ -144,7 +145,9 @@ export const Textfield = forwardRef<PrimitiveInputType, TextfieldProps>(({
           />
         )}
 
-        <Text as="label" dimmed={4} className={styles.Label} size={14} htmlFor={fieldID}>{label}</Text>
+        <Text as="label" dimmed={4} className={styles.Label} size={14} htmlFor={fieldID}>
+          <ClampText rows={1}>{label}</ClampText>
+        </Text>
       </div>
     </Stack>
   );

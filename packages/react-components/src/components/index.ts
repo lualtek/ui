@@ -2,6 +2,7 @@ export * from './button';
 export * from './card';
 export * from './chip';
 export * from './circular-progress';
+export * from './clamp-text';
 export * from './container';
 export * from './elevator';
 export * from './icon';
