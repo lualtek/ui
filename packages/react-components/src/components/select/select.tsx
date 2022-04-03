@@ -87,7 +87,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(({
 
         <Text
           as="label"
-          dimmed={4}
+          dimmed={5}
           size={14}
           htmlFor={seedID('select')}
           className={styles.Label}
