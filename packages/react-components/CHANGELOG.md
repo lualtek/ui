@@ -1,5 +1,14 @@
 # @lualtek/react-components
 
+## 0.16.2
+
+### Patch Changes
+
+- ea488a1: Update icon size for big buttons
+- e55202e: Fix textfields label clamping
+- e337d19: Fix multi-tabs animation
+- 9598c21: Fix labels color
+
 ## 0.16.1
 
 ### Patch Changes
