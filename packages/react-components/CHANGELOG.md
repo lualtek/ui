@@ -1,5 +1,16 @@
 # @lualtek/react-components
 
+## 0.17.0
+
+### Minor Changes
+
+- 6ded831: Add toast component
+
+### Patch Changes
+
+- Updated dependencies [6ded831]
+  - @lualtek/icons@0.7.0
+
 ## 0.16.2
 
 ### Patch Changes
