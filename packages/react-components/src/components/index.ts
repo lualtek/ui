@@ -28,5 +28,6 @@ export * from './tabs';
 export * from './text';
 export * from './textfield';
 export * from './title';
+export * from './toast';
 export * from './toggle-button';
 export * from './tooltip';

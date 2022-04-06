@@ -1,0 +1,59 @@
+.Toast {
+  display: block;
+  padding: token(--space-16) token(--space-24);
+  background: var(--toast-bg);
+  color: var(--toast-fg);
+  border-radius: token(--radius-24);
+  overflow: hidden;
+
+  & p {
+    font-size: token(--font-size-16);
+  }
+
+  &[data-toast-kind='neutral'] {
+    --toast-bg: var(--global-foreground);
+    --toast-fg: var(--global-background);
+  }
+
+  &[data-toast-kind='positive'] {
+    --toast-bg: var(--highlight-green-background);
+    --toast-fg: var(--highlight-green-foreground);
+  }
+
+  &[data-toast-kind='warning'] {
+    --toast-bg: var(--highlight-yellow-background);
+    --toast-fg: var(--highlight-yellow-foreground);
+  }
+
+  &[data-toast-kind='info'] {
+    --toast-bg: var(--highlight-blue-background);
+    --toast-fg: var(--highlight-blue-foreground);
+  }
+
+  &[data-toast-kind='danger'] {
+    --toast-bg: var(--highlight-red-background);
+    --toast-fg: var(--highlight-red-foreground);
+  }
+}
+
+
+.Icon {
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.Title {
+  color: var(--toast-fg);
+}
+
+.Action {
+  color: var(--toast-bg);
+  background-color: var(--toast-fg);
+  flex-grow: 0;
+
+  &:is(.Action):active {
+    color: var(--toast-bg);
+    background-color: var(--toast-fg);
+    opacity: 80%;
+  }
+}
