@@ -1,5 +1,11 @@
 # @lualtek/icons
 
+## 0.7.0
+
+### Minor Changes
+
+- 6ded831: Add new icons
+
 ## 0.6.0
 
 ### Minor Changes
