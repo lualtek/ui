@@ -49,6 +49,14 @@ export type ToastProps = {
 
 type PolymorphicToast = Polymorphic.ForwardRefComponent<'output', ToastProps>;
 
+const defaultIcons: Record<string, IconProps['source']> = {
+  info: 'c-info',
+  warning: 'c-warning',
+  neutral: 'c-info',
+  positive: 'check',
+  danger: 'c-remove',
+};
+
 export const Toast = forwardRef(({
   children,
   className,
@@ -61,35 +69,25 @@ export const Toast = forwardRef(({
   singleLine,
   onDismiss,
   ...otherProps
-}, forwardedRef) => {
-  const defaultIcons: Record<string, IconProps['source']> = {
-    info: 'c-info',
-    warning: 'c-warning',
-    neutral: 'c-info',
-    positive: 'check',
-    danger: 'c-remove',
-  };
-
-  return (
-    <Wrapper
-      ref={forwardedRef}
-      className={clsx(styles.Toast, className)}
-      data-toast-kind={kind}
-      role="status"
-      {...otherProps}
-    >
-      <Stack vAlign="start" hAlign="start" direction="row" columnGap={16}>
-        <Icon className={styles.Icon} source={icon || defaultIcons[kind]} dimension={24} />
-        <Stack direction={singleLine ? 'row' : undefined} columnGap={16} rowGap={8} hAlign="start" fill={!!singleLine}>
-          <Stack>
-            {title && <Title level="6" className={styles.Title}>{title}</Title>}
-            <p>{children}</p>
-          </Stack>
-          {dismissable && (
-            <Button onClick={onDismiss} dimension="small" kind="secondary" className={styles.Action}>{dismissLabel}</Button>
-          )}
+}, forwardedRef) => (
+  <Wrapper
+    ref={forwardedRef}
+    className={clsx(styles.Toast, className)}
+    data-toast-kind={kind}
+    role="status"
+    {...otherProps}
+  >
+    <Stack vAlign="start" hAlign="start" direction="row" columnGap={16}>
+      <Icon className={styles.Icon} source={icon || defaultIcons[kind]} dimension={24} />
+      <Stack direction={singleLine ? 'row' : undefined} columnGap={16} rowGap={8} hAlign="start" fill={!!singleLine}>
+        <Stack>
+          {title && <Title level="6" className={styles.Title}>{title}</Title>}
+          <p>{children}</p>
         </Stack>
+        {dismissable && (
+        <Button onClick={onDismiss} dimension="small" kind="secondary" className={styles.Action}>{dismissLabel}</Button>
+        )}
       </Stack>
-    </Wrapper>
-  );
-}) as PolymorphicToast;
+    </Stack>
+  </Wrapper>
+)) as PolymorphicToast;
