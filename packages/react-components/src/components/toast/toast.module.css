@@ -1,6 +1,4 @@
 .Toast {
-  display: block;
-  padding: token(--space-16) token(--space-24);
   background: var(--toast-bg);
   color: var(--toast-fg);
   border-radius: token(--radius-24);

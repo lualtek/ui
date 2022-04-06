@@ -1,10 +1,10 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import { Toast } from './toast';
+import { InlineToast } from './toast';
 
-const story: ComponentMeta<typeof Toast> = {
-  title: 'Components/Dialogs/Toast',
-  component: Toast,
+const story: ComponentMeta<typeof InlineToast> = {
+  title: 'Components/Dialogs/Inline Toast',
+  component: InlineToast,
   argTypes: {
     kind: {
       options: ['info', 'warning', 'neutral', 'positive', 'danger'],
@@ -15,12 +15,10 @@ const story: ComponentMeta<typeof Toast> = {
 
 export default story;
 
-const Template: ComponentStory<typeof Toast> = args => (
-  <Toast {...args}>
-    Cras ultricies, elit sit amet cursus consectetur, risus felis ullamcorper nulla,
-    ut scelerisque sapien lorem non sem. Integer vestibulum ornare ligula, a placerat
-    lectus volutpat ultrices. Aliquam commodo malesuada purus a mollis.
-  </Toast>
+const Template: ComponentStory<typeof InlineToast> = ({ ...args }) => (
+  <InlineToast {...args}>
+    Cras ultricies, elit sit amet cursus consectetur.
+  </InlineToast>
 );
 
 export const Single = Template.bind({});
