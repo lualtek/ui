@@ -46,11 +46,12 @@
   color: var(--toast-fg);
 }
 
-.Action:is(.Action.Action) {
+.Action {
   color: var(--toast-bg);
   background-color: var(--toast-fg);
+  flex-grow: 0;
 
-  &:active {
+  &:is(.Action):active {
     color: var(--toast-bg);
     background-color: var(--toast-fg);
     opacity: 80%;

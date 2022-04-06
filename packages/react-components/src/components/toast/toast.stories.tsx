@@ -27,7 +27,14 @@ export const Single = Template.bind({});
 Single.args = {
   title: 'Sample title',
 };
+
 export const Dismissable = Template.bind({});
 Dismissable.args = {
+  dismissable: true,
+};
+
+export const SingleLine = Template.bind({});
+SingleLine.args = {
+  singleLine: true,
   dismissable: true,
 };

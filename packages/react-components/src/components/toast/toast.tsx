@@ -41,6 +41,10 @@ export type ToastProps = {
    * Callback function to be called when the dismiss button is clicked.
    */
   onDismiss?: () => void;
+  /**
+   * Set content and actions on the same line
+   */
+  singleLine?: boolean;
 }
 
 type PolymorphicToast = Polymorphic.ForwardRefComponent<'output', ToastProps>;
@@ -54,6 +58,7 @@ export const Toast = forwardRef(({
   as: Wrapper = 'output',
   dismissable,
   dismissLabel = 'Dismiss',
+  singleLine,
   onDismiss,
   ...otherProps
 }, forwardedRef) => {
@@ -73,9 +78,9 @@ export const Toast = forwardRef(({
       role="status"
       {...otherProps}
     >
-      <Stack vAlign="start" hAlign="start" direction="row" columnGap={16} fill={false}>
+      <Stack vAlign="start" hAlign="start" direction="row" columnGap={16}>
         <Icon className={styles.Icon} source={icon || defaultIcons[kind]} dimension={24} />
-        <Stack rowGap={16} hAlign="start" fill={false}>
+        <Stack direction={singleLine ? 'row' : undefined} columnGap={16} rowGap={8} hAlign="start" fill={!!singleLine}>
           <Stack>
             {title && <Title level="6" className={styles.Title}>{title}</Title>}
             <p>{children}</p>
