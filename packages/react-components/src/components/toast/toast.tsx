@@ -63,7 +63,7 @@ const defaultIcons: Record<string, IconProps['source']> = {
   danger: 'c-remove',
 };
 
-export const InlineToast = ({
+export const InlineToast = forwardRef<HTMLElement, InlineToastProps>(({
   children,
   className,
   title,
@@ -75,8 +75,9 @@ export const InlineToast = ({
   onDismiss,
   action,
   ...otherProps
-}: InlineToastProps) => (
+}: InlineToastProps, forwardedRef) => (
   <Stack
+    ref={forwardedRef}
     as="output"
     className={clsx(styles.Toast, className)}
     data-toast-kind={kind}
@@ -110,7 +111,7 @@ export const InlineToast = ({
       </Stack>
     </Stack>
   </Stack>
-);
+));
 
 export type ToastProps = ToastPrimitive.ToastProps & InlineToastProps
 
@@ -142,3 +143,5 @@ ToastProps
     </InlineToast>
   </ToastPrimitive.Root>
 ));
+
+export const { ToastViewport, ToastProvider } = ToastPrimitive;

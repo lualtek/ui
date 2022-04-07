@@ -1,6 +1,12 @@
+// import { Toast, ToastProvider, ToastViewport } from '@radix-ui/react-toast';
+import { useState } from '@storybook/addons';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { useRef } from 'react';
 
-import { InlineToast } from './toast';
+import { Button } from '../button';
+import {
+  InlineToast, Toast, ToastProvider, ToastViewport,
+} from './toast';
 
 const story: ComponentMeta<typeof InlineToast> = {
   title: 'Components/Dialogs/Inline Toast',
@@ -34,5 +40,42 @@ Dismissable.args = {
 export const SingleLine = Template.bind({});
 SingleLine.args = {
   singleLine: true,
+  dismissable: true,
+};
+
+const TemplateToast: ComponentStory<typeof Toast> = ({ ...args }) => {
+  const [toasts, setToasts] = useState<Array<{title: string}>>([]);
+  const toastsShown = useRef(0);
+
+  const onShowToast = () => {
+    setToasts(oldToasts => [
+      ...oldToasts,
+      {
+        title: `Toast ${toastsShown.current}`,
+      },
+    ]);
+    toastsShown.current += 1;
+  };
+
+  return (
+    <ToastProvider>
+
+      <Button onClick={onShowToast}>Click me</Button>
+
+      {toasts.map(({ title }) => (
+        <Toast
+          key={title}
+          title={title}
+          {...args}
+        />
+      ))}
+
+      <ToastViewport />
+    </ToastProvider>
+  );
+};
+
+export const RadixToast = TemplateToast.bind({});
+RadixToast.args = {
   dismissable: true,
 };
