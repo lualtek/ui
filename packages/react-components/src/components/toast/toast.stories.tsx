@@ -11,6 +11,9 @@ import {
 const story: ComponentMeta<typeof InlineToast> = {
   title: 'Components/Dialogs/Inline Toast',
   component: InlineToast,
+  args: {
+    dismissable: false,
+  },
   argTypes: {
     kind: {
       options: ['info', 'warning', 'neutral', 'positive', 'danger'],
@@ -40,7 +43,6 @@ Dismissable.args = {
 export const SingleLine = Template.bind({});
 SingleLine.args = {
   singleLine: true,
-  dismissable: true,
 };
 
 const TemplateToast: ComponentStory<typeof Toast> = ({ ...args }) => {

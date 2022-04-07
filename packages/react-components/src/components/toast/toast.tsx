@@ -75,7 +75,7 @@ export const InlineToast = forwardRef<HTMLElement, InlineToastProps>(({
   onDismiss,
   action,
   ...otherProps
-}: InlineToastProps, forwardedRef) => (
+}, forwardedRef) => (
   <Stack
     ref={forwardedRef}
     as="output"
@@ -103,6 +103,7 @@ export const InlineToast = forwardRef<HTMLElement, InlineToastProps>(({
         </ToastPrimitive.Description>
       </Stack>
       <Stack direction="row" hAlign="start" columnGap={16}>
+        {`${String(dismissable)}`}
         {dismissable && (
           <ToastPrimitive.Close asChild>
             <Button onClick={onDismiss} dimension="small" kind="secondary" className={styles.Action}>{dismissLabel}</Button>
