@@ -1,7 +1,7 @@
 import * as ToastPrimitive from '@radix-ui/react-toast';
 import clsx from 'clsx';
 import {
-  ElementRef, forwardRef, PropsWithChildren, ReactNode,
+  ElementRef, forwardRef, PropsWithChildren, ReactNode, useMemo,
 } from 'react';
 
 import {
@@ -10,6 +10,8 @@ import {
 } from '@/components';
 
 import styles from './toast.module.css';
+
+const PrimitiveNoopComponent: React.FC<{asChild?: boolean}> = ({ children }) => <>{children}</>;
 
 export type InlineToastProps = PropsWithChildren<PropsWithClass> & {
   /**
@@ -53,6 +55,7 @@ export type InlineToastProps = PropsWithChildren<PropsWithClass> & {
    * Set content and actions on the same line
    */
   singleLine?: boolean;
+  isPrimitive?: boolean;
 }
 
 const defaultIcons: Record<string, IconProps['source']> = {
@@ -74,45 +77,48 @@ export const InlineToast = forwardRef<HTMLElement, InlineToastProps>(({
   singleLine,
   onDismiss,
   action,
+  isPrimitive,
   ...otherProps
-}, forwardedRef) => (
-  <Stack
-    ref={forwardedRef}
-    as="output"
-    className={clsx(styles.Toast, className)}
-    data-toast-kind={kind}
-    hPadding={24}
-    vPadding={16}
-    role="status"
-    vAlign="start"
-    hAlign="start"
-    direction="row"
-    columnGap={16}
-    {...otherProps}
-  >
-    <Icon className={styles.Icon} source={icon || defaultIcons[kind]} dimension={24} />
-    <Stack direction={singleLine ? 'row' : undefined} columnGap={16} rowGap={8} hAlign="start" fill={!!singleLine}>
-      <Stack>
-        {title && (
-        <ToastPrimitive.Title asChild>
-          <Title level="6" className={styles.Title}>{title}</Title>
-        </ToastPrimitive.Title>
-        )}
-        <ToastPrimitive.Description asChild>
-          <Text>{children}</Text>
-        </ToastPrimitive.Description>
-      </Stack>
-      <Stack direction="row" hAlign="start" columnGap={16}>
-        {`${String(dismissable)}`}
-        {dismissable && (
-          <ToastPrimitive.Close asChild>
-            <Button onClick={onDismiss} dimension="small" kind="secondary" className={styles.Action}>{dismissLabel}</Button>
-          </ToastPrimitive.Close>
-        )}
+}, forwardedRef) => {
+  const ActionWrapper = useMemo(() => (isPrimitive ? ToastPrimitive.Close : PrimitiveNoopComponent), [isPrimitive]);
+  return (
+    <Stack
+      ref={forwardedRef}
+      as="output"
+      className={clsx(styles.Toast, className)}
+      data-toast-kind={kind}
+      hPadding={24}
+      vPadding={16}
+      role="status"
+      vAlign="start"
+      hAlign="start"
+      direction="row"
+      columnGap={16}
+      {...otherProps}
+    >
+      <Icon className={styles.Icon} source={icon || defaultIcons[kind]} dimension={24} />
+      <Stack direction={singleLine ? 'row' : undefined} columnGap={16} rowGap={8} hAlign="start" fill={!!singleLine}>
+        <Stack>
+          {title && (
+            <ToastPrimitive.Title asChild>
+              <Title level="6" className={styles.Title}>{title}</Title>
+            </ToastPrimitive.Title>
+          )}
+          <ToastPrimitive.Description asChild>
+            <Text>{children}</Text>
+          </ToastPrimitive.Description>
+        </Stack>
+        <Stack direction="row" hAlign="start" columnGap={16}>
+          {dismissable && (
+            <ActionWrapper asChild>
+              <Button onClick={onDismiss} dimension="small" kind="secondary" className={styles.Action}>{dismissLabel}</Button>
+            </ActionWrapper>
+          )}
+        </Stack>
       </Stack>
     </Stack>
-  </Stack>
-));
+  );
+});
 
 export type ToastProps = ToastPrimitive.ToastProps & InlineToastProps
 
@@ -139,7 +145,7 @@ ToastProps
     onOpenChange={onOpenChange}
     defaultOpen={defaultOpen}
   >
-    <InlineToast {...otherProps}>
+    <InlineToast isPrimitive {...otherProps}>
       {children}
     </InlineToast>
   </ToastPrimitive.Root>
