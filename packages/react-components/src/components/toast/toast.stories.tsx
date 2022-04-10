@@ -5,7 +5,10 @@ import { useRef } from 'react';
 
 import { Button } from '../button';
 import {
-  InlineToast, Toast, ToastProvider, ToastViewport,
+  InlineToast,
+} from './inline-toast';
+import {
+  Toast, ToastProvider, ToastViewport,
 } from './toast';
 
 const story: ComponentMeta<typeof InlineToast> = {

@@ -44,7 +44,7 @@
   color: var(--toast-fg);
 }
 
-.Action {
+.Action:is(.Action) {
   color: var(--toast-bg);
   background-color: var(--toast-fg);
   flex-grow: 0;
