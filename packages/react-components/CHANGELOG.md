@@ -1,5 +1,11 @@
 # @lualtek/react-components
 
+## 0.18.0
+
+### Minor Changes
+
+- e631167: Add toast
+
 ## 0.17.0
 
 ### Minor Changes
