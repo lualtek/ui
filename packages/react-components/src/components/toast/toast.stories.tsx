@@ -1,10 +1,22 @@
+// import { Toast, ToastProvider, ToastViewport } from '@radix-ui/react-toast';
+import { useState } from '@storybook/addons';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { useRef } from 'react';
 
-import { Toast } from './toast';
+import { Button } from '../button';
+import {
+  InlineToast,
+} from './inline-toast';
+import {
+  Toast, ToastProvider, ToastViewport,
+} from './toast';
 
-const story: ComponentMeta<typeof Toast> = {
-  title: 'Components/Dialogs/Toast',
-  component: Toast,
+const story: ComponentMeta<typeof InlineToast> = {
+  title: 'Components/Dialogs/Inline Toast',
+  component: InlineToast,
+  args: {
+    dismissable: false,
+  },
   argTypes: {
     kind: {
       options: ['info', 'warning', 'neutral', 'positive', 'danger'],
@@ -15,12 +27,10 @@ const story: ComponentMeta<typeof Toast> = {
 
 export default story;
 
-const Template: ComponentStory<typeof Toast> = args => (
-  <Toast {...args}>
-    Cras ultricies, elit sit amet cursus consectetur, risus felis ullamcorper nulla,
-    ut scelerisque sapien lorem non sem. Integer vestibulum ornare ligula, a placerat
-    lectus volutpat ultrices. Aliquam commodo malesuada purus a mollis.
-  </Toast>
+const Template: ComponentStory<typeof InlineToast> = ({ ...args }) => (
+  <InlineToast {...args}>
+    Cras ultricies, elit sit amet cursus consectetur.
+  </InlineToast>
 );
 
 export const Single = Template.bind({});
@@ -36,5 +46,37 @@ Dismissable.args = {
 export const SingleLine = Template.bind({});
 SingleLine.args = {
   singleLine: true,
-  dismissable: true,
 };
+
+const TemplateToast: ComponentStory<typeof Toast> = ({ ...args }) => {
+  const [toasts, setToasts] = useState<Array<{title: string}>>([]);
+  const toastsShown = useRef(0);
+
+  const onShowToast = () => {
+    setToasts(oldToasts => [
+      ...oldToasts,
+      {
+        title: `Toast super ${toastsShown.current * 100000}`,
+      },
+    ]);
+    toastsShown.current += 1;
+  };
+
+  return (
+    <ToastProvider duration={3000}>
+      <Button onClick={onShowToast}>Click me</Button>
+
+      {toasts.map(({ title }) => (
+        <Toast
+          key={title}
+          title={title}
+          {...args}
+        />
+      ))}
+
+      <ToastViewport />
+    </ToastProvider>
+  );
+};
+
+export const Floating = TemplateToast.bind({});
