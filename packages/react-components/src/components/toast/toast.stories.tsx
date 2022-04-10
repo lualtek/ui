@@ -56,15 +56,14 @@ const TemplateToast: ComponentStory<typeof Toast> = ({ ...args }) => {
     setToasts(oldToasts => [
       ...oldToasts,
       {
-        title: `Toast ${toastsShown.current}`,
+        title: `Toast super ${toastsShown.current * 100000}`,
       },
     ]);
     toastsShown.current += 1;
   };
 
   return (
-    <ToastProvider>
-
+    <ToastProvider duration={3000}>
       <Button onClick={onShowToast}>Click me</Button>
 
       {toasts.map(({ title }) => (
@@ -80,7 +79,4 @@ const TemplateToast: ComponentStory<typeof Toast> = ({ ...args }) => {
   );
 };
 
-export const RadixToast = TemplateToast.bind({});
-RadixToast.args = {
-  dismissable: true,
-};
+export const Floating = TemplateToast.bind({});

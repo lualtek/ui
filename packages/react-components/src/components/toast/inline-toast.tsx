@@ -1,6 +1,5 @@
 import * as ToastPrimitive from '@radix-ui/react-toast';
 import clsx from 'clsx';
-// import { domAnimation, LazyMotion, m } from 'framer-motion';
 import {
   forwardRef, PropsWithChildren, ReactNode, useMemo,
 } from 'react';
@@ -113,8 +112,8 @@ export const InlineToast = forwardRef<HTMLElement, InlineToastProps>(({
             <Text>{children}</Text>
           </ToastPrimitive.Description>
         </Stack>
-        <Stack inline direction="row" hAlign="start">
-          {dismissable && (
+        {dismissable && (
+          <Stack inline direction="row" hAlign="start">
             <ActionWrapper
               asChild
             >
@@ -127,8 +126,8 @@ export const InlineToast = forwardRef<HTMLElement, InlineToastProps>(({
                 {dismissLabel}
               </Button>
             </ActionWrapper>
-          )}
-        </Stack>
+          </Stack>
+        )}
       </Stack>
     </Stack>
   );
