@@ -1,5 +1,16 @@
 # @lualtek/config
 
+## 0.3.0
+
+### Minor Changes
+
+- 660895d: Dependencies update
+
+### Patch Changes
+
+- Updated dependencies [660895d]
+  - @lualtek/tokens@0.5.0
+
 ## 0.2.0
 
 ### Minor Changes
