@@ -1,5 +1,11 @@
 # @lualtek/icons
 
+## 0.8.0
+
+### Minor Changes
+
+- 660895d: Dependencies update
+
 ## 0.7.0
 
 ### Minor Changes
