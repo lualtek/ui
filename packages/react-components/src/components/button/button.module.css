@@ -124,8 +124,12 @@
     cursor: not-allowed;
   }
 
-  &[aria-busy='true'] > :not(.SpinnerIndicator) {
-    visibility: hidden;
+  &[aria-busy='true'] {
+    box-shadow: none;
+
+    & > :not(.SpinnerIndicator) {
+      visibility: hidden;
+    }
   }
 }
 
