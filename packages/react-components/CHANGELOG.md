@@ -1,5 +1,11 @@
 # @lualtek/react-components
 
+## 0.18.1
+
+### Patch Changes
+
+- b58c5e9: Remove shadow for busy buttons
+
 ## 0.18.0
 
 ### Minor Changes
