@@ -1,5 +1,11 @@
 # @lualtek/react-components
 
+## 0.20.0
+
+### Minor Changes
+
+- 926200c: Add Avatar
+
 ## 0.19.1
 
 ### Patch Changes
