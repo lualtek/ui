@@ -7,10 +7,10 @@
       "value": "hsl(222deg 47% 6%)"
     },
     "interactive-text": {
-      "value": "hsl({color.support.brand})"
+      "value": "hsl(246 100% 68%)"
     },
     "interactive-text-hover": {
-      "value": "hsl({color.support.brand})"
+      "value": "hsl(246 100% 68%)"
     },
     "disabled-foreground": {
       "value": "hsl({color.primary.5} / 20%)"
@@ -21,7 +21,7 @@
   },
   "cta": {
     "default": {
-      "value": "hsl({color.support.brand})"
+      "value": "hsl(246 100% 68%)"
     },
     "dark": {
       "value": "hsl(245 80% 55%)"
