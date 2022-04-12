@@ -1,5 +1,11 @@
 # @lualtek/themes
 
+## 0.7.0
+
+### Minor Changes
+
+- d91fd3d: Update cta color to improve contrast
+
 ## 0.6.0
 
 ### Minor Changes
