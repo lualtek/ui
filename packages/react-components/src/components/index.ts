@@ -12,6 +12,8 @@ export * from './icon-meter';
 export * from './linear-progress';
 export * from './list';
 export * from './menu';
+export * from './modal';
+export * from './overlay-container';
 export * from './pagination';
 export * from './popover';
 export * from './select';

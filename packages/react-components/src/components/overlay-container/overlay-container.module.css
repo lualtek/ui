@@ -1,0 +1,24 @@
+.OverlayContainer {
+  display: block;
+  position: fixed;
+  inset: 0;
+
+  &[data-overlay-container-obfuscate='false'] {
+    pointer-events: none;
+  }
+}
+
+.Backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-color: var(--dimmed-0);
+
+  &[data-overlay-color='light'] {
+    background-color: hsl(token(--color-primary-0));
+  }
+
+  &[data-overlay-color='dark'] {
+    background-color: hsl(token(--color-primary-90));
+  }
+}
