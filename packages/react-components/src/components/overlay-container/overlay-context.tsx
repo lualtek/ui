@@ -3,7 +3,7 @@ import { useUIDSeed } from 'react-uid';
 
 import { OverlayContainerProps } from './overlay-container';
 
-type OverlayContextProps = Partial<OverlayContainerProps> & {
+type OverlayContextProps = Pick<OverlayContainerProps, 'onClose'> & {
   titleId?: string;
 }
 
