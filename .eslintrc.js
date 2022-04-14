@@ -6,5 +6,6 @@ module.exports = {
   // Disable extraneous deps for monorepo incompatibility
   rules: {
     'import/no-extraneous-dependencies': 'off',
+    'react/require-default-props': 'off',
   },
 };
