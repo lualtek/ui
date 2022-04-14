@@ -52,7 +52,7 @@ export const OverlayContainer: React.FC<OverlayContainerProps> = ({
 
   useEffect(() => {
     if (root.closest('[data-overlay-container]')) {
-      throw new Error('An OverlayContainer must not be inside another container. Please change the root prop.');
+      console.warn('OverlayContainer: An OverlayContainer must not be inside another container. Please change the root prop.');
     }
   }, [root]);
 

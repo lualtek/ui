@@ -33,10 +33,10 @@ export const OverlayProvider = (props: PropsWithChildren<OverlayContextProps>) =
 
 export const useOverlayContext = () => {
   const context = useContext(OverlayContext);
+
   if (!context) {
-    throw new Error(
-      'OverlayContainer component must be used inside OverlayContext to access context data.',
-    );
+    console.warn('useOverlayContext: Missing OverlayContext. Please wrap your component in an OverlayProvider.');
   }
+
   return context;
 };
