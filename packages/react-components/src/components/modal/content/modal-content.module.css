@@ -1,4 +1,5 @@
 @import '../../../core/utils/media.css';
+@import '../../../core/utils/vibrancy.css';
 
 .Content {
   background-color: var(--global-background);
@@ -21,10 +22,12 @@
 }
 
 .Header {
+
+  @mixin vibrancy;
+
   position: sticky;
   top: 0;
-  background-color: inherit;
-  border-bottom: 1px solid var(--dimmed-1);
+  background-color: var(--virbancy-background-soft);
   z-index: 1;
   padding:
     token(--space-16)
