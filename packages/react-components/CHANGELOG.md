@@ -1,5 +1,11 @@
 # @lualtek/react-components
 
+## 0.21.1
+
+### Patch Changes
+
+- a417ec0: Fix Text bold style
+
 ## 0.21.0
 
 ### Minor Changes
