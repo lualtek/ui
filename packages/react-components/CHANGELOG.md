@@ -1,5 +1,11 @@
 # @lualtek/react-components
 
+## 0.21.2
+
+### Patch Changes
+
+- 3638961: Fix modal header lkayering
+
 ## 0.21.1
 
 ### Patch Changes
