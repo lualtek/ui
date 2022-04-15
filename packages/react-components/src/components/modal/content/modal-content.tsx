@@ -25,7 +25,7 @@ export const ModalContent = forwardRef<HTMLDivElement, ModalContentProps>(({
   children,
   className,
   title,
-  theme = 'light',
+  theme = 'auto',
   ...otherProps
 }, forwardedRef) => {
   const { onClose, titleId } = useOverlayContext();
