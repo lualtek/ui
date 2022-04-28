@@ -1,5 +1,11 @@
 # @lualtek/tokens
 
+## 0.6.0
+
+### Minor Changes
+
+- 2111589: Update container sizes
+
 ## 0.5.0
 
 ### Minor Changes
