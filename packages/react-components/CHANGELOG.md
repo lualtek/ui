@@ -1,5 +1,11 @@
 # @lualtek/react-components
 
+## 0.22.0
+
+### Minor Changes
+
+- 07534f0: Update container sizes to match tokens
+
 ## 0.21.2
 
 ### Patch Changes
