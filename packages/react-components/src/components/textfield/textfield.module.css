@@ -6,6 +6,10 @@
   appearance: none;
   position: relative;
   padding: 0;
+
+  &[data-textfield-fullwidth='true'] {
+    inline-size: 100%;
+  }
 }
 
 .FieldContainer {

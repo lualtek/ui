@@ -53,6 +53,10 @@ export type TextfieldProps = BaseFieldProps & {
    * The callback function that is called when the input value changes.
    */
   onChange?: (event: ChangeEvent<PrimitiveInputType>) => void;
+  /**
+   * Make the textfield full width, filling the available space.
+   */
+  fullWidth?: boolean;
 }
 
 export const Textfield = forwardRef<PrimitiveInputType, TextfieldProps>(({
@@ -69,12 +73,13 @@ export const Textfield = forwardRef<PrimitiveInputType, TextfieldProps>(({
   type,
   style,
   onChange,
+  fullWidth,
   ...otherProps
 }, forwardedRef) => {
   const [passwordVisible, setPasswordVisible] = useState<boolean>(false);
   const seedID = useUIDSeed();
   const isPassword = type === 'password';
-  const fieldID = useMemo(() => id || seedID('field'), [id, seedID]);
+  const fieldID = useMemo(() => id ?? seedID('field'), [id, seedID]);
 
   const handlePasswordVisibility = useCallback(
     () => {
@@ -98,6 +103,7 @@ export const Textfield = forwardRef<PrimitiveInputType, TextfieldProps>(({
       data-textfield-has-icon={isPassword || Boolean(icon)}
       data-textfield-icon-position={iconPosition}
       data-textfield-invalid={invalid}
+      data-textfield-fullwidth={fullWidth}
       aria-disabled={disabled}
       hAlign="stretch"
       vAlign="start"
