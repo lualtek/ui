@@ -1,5 +1,17 @@
 # @lualtek/react-components
 
+## 0.23.0
+
+### Minor Changes
+
+- 291d355: Add fullWidth prop to Textfield
+
+### Patch Changes
+
+- 5320aa6: Fix icon size for big buttons
+- Updated dependencies [8feeb47]
+  - @lualtek/icons@0.10.0
+
 ## 0.22.0
 
 ### Minor Changes
