@@ -1,5 +1,11 @@
 # @lualtek/react-components
 
+## 0.24.1
+
+### Patch Changes
+
+- c792d15: Add Grid export
+
 ## 0.24.0
 
 ### Minor Changes
