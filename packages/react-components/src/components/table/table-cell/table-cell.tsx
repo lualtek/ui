@@ -6,7 +6,7 @@ import { Icon, Polymorphic } from '@/components';
 import { OptionalColumnTypes } from '../types';
 import styles from './table-cell.module.css';
 
-type TableCellProps = PropsWithClass & {
+type TableCellProps = {
   collapsed?: OptionalColumnTypes['isCollapsed'];
   isSorted?: boolean;
   isSortedDesc?: boolean;
