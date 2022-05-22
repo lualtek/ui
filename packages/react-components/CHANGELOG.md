@@ -1,5 +1,11 @@
 # @lualtek/react-components
 
+## 0.24.0
+
+### Minor Changes
+
+- a883fdf: Add Grid component
+
 ## 0.23.0
 
 ### Minor Changes
