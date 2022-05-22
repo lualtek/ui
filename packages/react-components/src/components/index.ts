@@ -6,6 +6,7 @@ export * from './circular-progress';
 export * from './clamp-text';
 export * from './container';
 export * from './elevator';
+export * from './grid';
 export * from './icon';
 export * from './icon-button';
 export * from './icon-meter';
