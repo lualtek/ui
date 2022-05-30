@@ -1,5 +1,11 @@
 # @lualtek/icons
 
+## 0.11.0
+
+### Minor Changes
+
+- a1d0e0f: Add new icons
+
 ## 0.10.1
 
 ### Patch Changes
