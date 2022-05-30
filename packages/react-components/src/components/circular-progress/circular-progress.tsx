@@ -5,7 +5,7 @@ import {
 
 import styles from './circular-progress.module.css';
 
-export type CircularProgressProps = PropsWithClass & {
+export type CircularProgressProps = PropsWithClass<{
   /**
    * Set the current progress of the progress bar.
    * This value should be between 0 and 'max'. The percentage is
@@ -29,7 +29,7 @@ export type CircularProgressProps = PropsWithClass & {
    * Change the color of the progress bar.
    */
   color?: string;
-}
+}>
 
 export const CircularProgress = forwardRef<HTMLDivElement, CircularProgressProps>(({
   className,

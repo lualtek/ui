@@ -1,7 +1,7 @@
 
 import clsx from 'clsx';
 import {
-  Children, forwardRef, ForwardRefExoticComponent, HTMLAttributes, ReactNode,
+  Children, forwardRef, ForwardRefExoticComponent, HTMLAttributes,
 } from 'react';
 import { RovingTabIndexProvider } from 'react-roving-tabindex';
 
@@ -11,12 +11,7 @@ import styles from './menu.module.css';
 import { MenuItem, MenuItemProps } from './menu-item/menu-item';
 import { MenuItemCheckbox, MenuItemCheckboxProps } from './menu-item/menu-item-checkbox';
 
-export type MenuProps = HTMLAttributes<HTMLUListElement> & {
-  /**
-   * The items of the dropdown menu.
-   */
-  children: ReactNode;
-}
+export type MenuProps = PropsClassChildren<HTMLAttributes<HTMLUListElement>>
 
 type MenuComponent = ForwardRefExoticComponent<MenuProps> & {
   Item: Polymorphic.ForwardRefComponent<

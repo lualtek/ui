@@ -5,7 +5,7 @@ import { PopoverClose } from './popover-close';
 import { PopoverContent } from './popover-content';
 import { PopoverTrigger } from './popover-trigger';
 
-export type PopoverProps = PropsWithClass & PopoverPrimitive.PopoverProps
+export type PopoverProps = PropsWithClass<PopoverPrimitive.PopoverProps>
 export const Popover = ({
   children,
   className,

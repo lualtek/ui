@@ -1,20 +1,16 @@
 import clsx from 'clsx';
-import { CSSProperties, forwardRef, ReactNode } from 'react';
+import { CSSProperties, forwardRef } from 'react';
 
 import { Polymorphic } from '@/components';
 
 import styles from './clamp-text.module.css';
 
-export type ClampTextProps = {
-  /**
-   * The text content to be displayed and clamped
-   */
-  children: ReactNode;
+export type ClampTextProps = PropsClassChildren<{
   /**
    * Define how many lines the text should be clamped to.
    */
   rows?: number;
-}
+}>
 
 type PolymorphicClampText = Polymorphic.ForwardRefComponent<'span', ClampTextProps>;
 

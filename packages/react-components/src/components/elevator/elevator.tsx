@@ -1,5 +1,5 @@
 import {
-  Children, cloneElement, FC, ReactElement,
+  Children, cloneElement, ReactElement,
 } from 'react';
 
 export type ElevatorProps = {
@@ -13,7 +13,7 @@ export type ElevatorProps = {
   hover?: 0 | 1 | 2 | 3 | 4;
 }
 
-export const Elevator: FC<ElevatorProps> = ({
+export const Elevator: FCChildren<ElevatorProps> = ({
   children,
   resting,
   hover,

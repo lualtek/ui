@@ -1,11 +1,11 @@
 import clsx from 'clsx';
-import { forwardRef, PropsWithChildren } from 'react';
+import { forwardRef } from 'react';
 
 import { Icon, IconProps, Stack } from '@/components';
 
 import styles from './chip.module.css';
 
-export type ChipProps = PropsWithChildren<PropsWithClass> & {
+export type ChipProps = PropsClassChildren<{
   /**
    * Set the dimension of the component.
    */
@@ -22,7 +22,7 @@ export type ChipProps = PropsWithChildren<PropsWithClass> & {
    * Callback function to be called when the dismiss button is pressed.
    */
   onDismissClick?: () => void;
-}
+}>
 
 export const Chip = forwardRef<HTMLSpanElement, ChipProps>(({
   children,

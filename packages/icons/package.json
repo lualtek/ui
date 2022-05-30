@@ -44,13 +44,13 @@
   },
   "homepage": "https://github.com/lualtek/ui#readme",
   "devDependencies": {
-    "directory-tree": "3.2.2",
-    "fs-extra": "10.0.1",
+    "directory-tree": "3.3.0",
+    "fs-extra": "10.1.0",
     "nanospinner": "0.6.0",
     "picocolors": "1.0.0",
     "svgo": "2.8.0",
     "svgstore": "3.0.1",
     "tsconfig": "*",
-    "ts-node": "10.7.0"
+    "ts-node": "10.8.0"
   }
 }

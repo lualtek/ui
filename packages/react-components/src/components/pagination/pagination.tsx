@@ -38,7 +38,7 @@ export type PaginationProps = Except<ReactPaginateProps, 'pageCount'> & {
   marginPagesDisplayed?: ReactPaginateProps['marginPagesDisplayed'];
 }
 
-export const Pagination = ({
+export const Pagination: FCClass<PaginationProps> = ({
   className,
   itemsCount,
   itemsPerPage = 10,
@@ -47,7 +47,7 @@ export const Pagination = ({
   pageRangeDisplayed = 3,
   marginPagesDisplayed = 1,
   ...otherProps
-}: PaginationProps) => {
+}) => {
   const [computedPageCount, setComputedPageCount] = useState(0);
 
   useEffect(() => {
