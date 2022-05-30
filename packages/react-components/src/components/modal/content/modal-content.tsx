@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { forwardRef, PropsWithChildren, ReactNode } from 'react';
+import { forwardRef, ReactNode } from 'react';
 import { AutoFocusInside } from 'react-focus-on';
 
 import {
@@ -8,7 +8,7 @@ import {
 
 import styles from './modal-content.module.css';
 
-export type ModalContentProps = PropsWithChildren<PropsWithClass> & {
+export type ModalContentProps = PropsClassChildren<{
   /**
    * Set the accessible title of the modal. This is used by screen readers to
    * announce the title of the modal when opened.
@@ -19,7 +19,7 @@ export type ModalContentProps = PropsWithChildren<PropsWithClass> & {
    * this is set to `light` by default.
    */
   theme?: 'dark' | 'light' | 'auto';
-}
+}>
 
 export const ModalContent = forwardRef<HTMLDivElement, ModalContentProps>(({
   children,

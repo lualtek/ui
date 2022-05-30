@@ -5,7 +5,7 @@ import { useUIDSeed } from 'react-uid';
 
 import styles from './skeleton.module.css';
 
-export type SkeletonProps = PropsWithClass & {
+export type SkeletonProps = {
   /**
    * Set the edge radius of each skeleton block.
    * This value must be one of the available `radius` tokens
@@ -43,7 +43,7 @@ export type SkeletonProps = PropsWithClass & {
   gap?: TokensTypes['space'];
 }
 
-export const Skeleton = ({
+export const Skeleton: FCClass<SkeletonProps> = ({
   className,
   borderRadius = 4,
   style,
@@ -55,7 +55,7 @@ export const Skeleton = ({
   inline,
   circle,
   ...otherProps
-}: SkeletonProps) => {
+}) => {
   const uid = useUIDSeed();
   const computedWidth = typeof width === 'number' ? `${width}px` : width;
   const computedHeight = typeof height === 'number' ? `${height}px` : height;

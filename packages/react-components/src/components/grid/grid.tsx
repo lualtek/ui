@@ -47,8 +47,8 @@ export type GridProps = {
   rowMinHeight?: string;
 }
 
-type GridComponent = React.ForwardRefExoticComponent<GridProps> & {
-  Item: React.ForwardRefExoticComponent<GridItemProps>;
+type GridComponent = FCForwardRef<GridProps> & {
+  Item: FCForwardRef<GridItemProps>;
 }
 
 export const Grid = forwardRef<HTMLUListElement, PropsWithClass<GridProps>>(({

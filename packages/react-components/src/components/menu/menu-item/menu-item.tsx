@@ -10,11 +10,7 @@ import {
 
 import styles from './menu-item.module.css';
 
-export type MenuItemProps = {
-  /**
-   * Content to display in the menu item.
-   */
-  children: ReactNode;
+export type MenuItemProps = PropsClassChildren<{
   /**
    * Whether the menu item should have an icon
    */
@@ -56,7 +52,7 @@ export type MenuItemProps = {
    * if `Menu.Item` is rendered as ´<button>´ (default).
    */
   decoration?: ReactNode;
-}
+}>
 
 type PolymorphicMenuItem = Polymorphic.ForwardRefComponent<'button', MenuItemProps>;
 

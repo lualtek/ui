@@ -1,16 +1,13 @@
 import { TokensTypes } from '@lualtek/tokens/platforms/web';
 import tkns from '@lualtek/tokens/platforms/web/tokens.json';
 import clsx from 'clsx';
-import { CSSProperties, forwardRef, ReactNode } from 'react';
+import React, { CSSProperties, forwardRef, ReactNode } from 'react';
 
 import { Polymorphic, Stack, StackProps } from '@/components';
 
 import styles from './card.module.css';
 
-export type CardProps = Pick<
-StackProps,
-'wrap' | 'columnGap' | 'rowGap' | 'vAlign' | 'hAlign'>
-& {
+export type CardProps = Pick<StackProps, 'wrap' | 'columnGap' | 'rowGap' | 'vAlign' | 'hAlign'> & {
   /**
    * Set the padding on each side of the card.
    */

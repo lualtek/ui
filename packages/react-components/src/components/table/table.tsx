@@ -32,7 +32,7 @@ import {
   CustomSortingRule, HeaderGroupType, OptionalDataTypes, PaginationPageType,
 } from './types';
 
-export type TableProps<T extends Record<string, unknown>> = PropsWithClass & {
+export type TableProps<T extends Record<string, unknown>> = PropsWithClass<{
   /**
    * Define the columns and headers of the table.
    */
@@ -152,7 +152,7 @@ export type TableProps<T extends Record<string, unknown>> = PropsWithClass & {
     * Callback run when a column is sorted
     */
   onSortChange?: (sorting: Array<CustomSortingRule<T>>) => void;
-}
+}>
 
 export const Table = <T extends Record<string, unknown>>({
   className,

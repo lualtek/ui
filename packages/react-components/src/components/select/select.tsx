@@ -11,11 +11,7 @@ import {
 
 import styles from './select.module.css';
 
-export type SelectProps = SelectHTMLAttributes<HTMLSelectElement> & {
-  /**
-   * Pass the children `option` elements. This is required.
-   */
-  children: ReactNode;
+export type SelectProps = PropsClassChildren<SelectHTMLAttributes<HTMLSelectElement> & {
   /**
    * Change the default icon displayed on the side of the select.
    */
@@ -36,7 +32,7 @@ export type SelectProps = SelectHTMLAttributes<HTMLSelectElement> & {
    * Callback function to be called when a new value is selected.
    */
   onChange?: (event: ChangeEvent<HTMLSelectElement>) => void;
-}
+}>
 
 export const Select = forwardRef<HTMLSelectElement, SelectProps>(({
   children,
