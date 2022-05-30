@@ -10,6 +10,7 @@ export * from './grid';
 export * from './icon';
 export * from './icon-button';
 export * from './icon-meter';
+export * from './info-state';
 export * from './linear-progress';
 export * from './list';
 export * from './menu';
