@@ -1,5 +1,11 @@
 # @lualtek/tokens
 
+## 0.6.1
+
+### Patch Changes
+
+- b785f6e: Small types changes and update dependencies
+
 ## 0.6.0
 
 ### Minor Changes

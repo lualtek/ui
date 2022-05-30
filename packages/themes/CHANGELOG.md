@@ -1,5 +1,11 @@
 # @lualtek/themes
 
+## 0.7.1
+
+### Patch Changes
+
+- b785f6e: Small types changes and update dependencies
+
 ## 0.7.0
 
 ### Minor Changes

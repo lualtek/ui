@@ -1,5 +1,17 @@
 # @lualtek/react-components
 
+## 0.25.0
+
+### Minor Changes
+
+- 017ced4: Add InfoState
+
+### Patch Changes
+
+- b785f6e: Small types changes and update dependencies
+- Updated dependencies [b785f6e]
+  - @lualtek/icons@0.10.1
+
 ## 0.24.1
 
 ### Patch Changes

@@ -1,5 +1,13 @@
 # @lualtek/config
 
+## 0.3.1
+
+### Patch Changes
+
+- b785f6e: Small types changes and update dependencies
+- Updated dependencies [b785f6e]
+  - @lualtek/tokens@0.6.1
+
 ## 0.3.0
 
 ### Minor Changes
