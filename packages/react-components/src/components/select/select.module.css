@@ -26,7 +26,6 @@
   pointer-events: none;
   top: token(--space-4);
   left: var(--field-padding);
-  z-index: 1;
 
   @nest [data-textfield-has-icon='true'][data-textfield-icon-position='left'] & {
     right: calc(var(--field-padding) * 3.5);
