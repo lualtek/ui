@@ -1,5 +1,11 @@
 # @lualtek/react-components
 
+## 0.25.1
+
+### Patch Changes
+
+- 2061992: Fix label z index inside textfields and selects
+
 ## 0.25.0
 
 ### Minor Changes
