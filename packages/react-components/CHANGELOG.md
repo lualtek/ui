@@ -1,5 +1,11 @@
 # @lualtek/react-components
 
+## 0.26.0
+
+### Minor Changes
+
+- 9615ddb: Add Drawer component
+
 ## 0.25.2
 
 ### Patch Changes
