@@ -55,7 +55,7 @@
   },
   "dimmed": {
     "0": {
-      "value": "hsl({color.primary.90})"
+      "value": "hsl({color.primary.100})"
     },
     "1": {
       "value": "hsl({color.primary.80})"
