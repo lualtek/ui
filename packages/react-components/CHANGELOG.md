@@ -1,5 +1,11 @@
 # @lualtek/react-components
 
+## 0.26.1
+
+### Patch Changes
+
+- baae3e5: Fix dimmed 0 color
+
 ## 0.26.0
 
 ### Minor Changes
