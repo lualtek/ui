@@ -21,7 +21,7 @@
   },
   "cta": {
     "default": {
-      "value": "hsl(246 100% 68%)"
+      "value": "hsl({color.support.brand})"
     },
     "dark": {
       "value": "hsl(245 80% 55%)"
