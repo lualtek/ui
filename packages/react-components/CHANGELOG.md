@@ -1,5 +1,11 @@
 # @lualtek/react-components
 
+## 0.25.2
+
+### Patch Changes
+
+- a6089b7: Fix Select label indexing
+
 ## 0.25.1
 
 ### Patch Changes
