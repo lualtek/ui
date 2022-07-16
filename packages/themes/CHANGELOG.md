@@ -1,5 +1,11 @@
 # @lualtek/themes
 
+## 0.7.2
+
+### Patch Changes
+
+- baae3e5: Fix dimmed 0 color
+
 ## 0.7.1
 
 ### Patch Changes
