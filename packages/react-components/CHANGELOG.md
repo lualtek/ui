@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 0.26.2
+
+### Patch Changes
+
+- 703a3b6: Added ResponsiveContext
+- a04b277: Fix Modal animation
+
 ## 0.26.1
 
 ### Patch Changes
