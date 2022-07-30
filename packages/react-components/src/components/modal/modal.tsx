@@ -1,9 +1,10 @@
+import tkns from '@lualtek/tokens/platforms/web/tokens.json';
 import clsx from 'clsx';
 import { domMax, LazyMotion, m } from 'framer-motion';
-import { forwardRef } from 'react';
+import { forwardRef, useMemo } from 'react';
 import { FocusOn } from 'react-focus-on';
 
-import { useOverlayContext } from '@/components';
+import { useOverlayContext, useResponsiveContext } from '@/components';
 
 import { ModalContent, ModalContentProps } from './content/modal-content';
 import styles from './modal.module.css';
@@ -21,23 +22,9 @@ type ModalComponent = React.ForwardRefExoticComponent<ModalProps> & {
   Content: React.ForwardRefExoticComponent<ModalContentProps>;
 }
 
-const ModalAnimation = {
-  visible: {
-    scale: 1,
-    opacity: 1,
-    transition: {
-      ease: [0, 0, 0.34, 1],
-      duration: 0.35,
-    },
-  },
-  hidden: {
-    scale: 0.98,
-    opacity: 0,
-    transition: {
-      ease: [0.3, 0.07, 1, 1],
-      duration: 0.2,
-    },
-  },
+const cssEasingToArray = (cssEasing: string) => {
+  const [x1, y1, x2, y2] = cssEasing.replace(/[^0-9.,]+/g, '').split(',').map(i => parseFloat(i));
+  return [x1, y1, x2, y2];
 };
 
 export const Modal = forwardRef<HTMLDivElement, ModalProps>(({
@@ -47,6 +34,28 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>(({
   ...otherProps
 }, forwardedRef) => {
   const { titleId, onClose } = useOverlayContext();
+  const { matches } = useResponsiveContext();
+
+  const ModalAnimation = useMemo(() => ({
+    visible: {
+      scale: 1,
+      opacity: 1,
+      y: 0,
+      transition: {
+        ease: cssEasingToArray(tkns.easing.entrance),
+        duration: parseFloat(tkns.duration[300].replace('s', '')),
+      },
+    },
+    hidden: {
+      scale: matches.small ? 0.98 : 1,
+      opacity: matches.small ? 0 : 1,
+      y: matches.small ? 0 : '100%',
+      transition: {
+        ease: cssEasingToArray(tkns.easing.exit),
+        duration: matches.small ? parseFloat(tkns.duration[200].replace('s', '')) : parseFloat(tkns.duration[500].replace('s', '')),
+      },
+    },
+  }), [matches]);
 
   return (
     <div

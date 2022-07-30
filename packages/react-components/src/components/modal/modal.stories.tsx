@@ -2,7 +2,8 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { useState } from 'react';
 
 import {
-  Button, IconButton, OverlayContainer, Stack, Title, useOverlayContext,
+  Button, IconButton, OverlayContainer, ResponseContextProvider,
+  Stack, Title, useOverlayContext,
 } from '../..';
 import { Modal } from './modal';
 
@@ -18,13 +19,13 @@ const story: ComponentMeta<typeof Modal> = {
 export default story;
 
 const ModalShell: ComponentStory<typeof Modal> = ({ children, ...otherProps }) => {
-  const [visible, setVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
 
   return (
-    <>
-      <Button onClick={() => setVisible(true)}>Show Modal</Button>
-      <OverlayContainer onClose={() => setVisible(false)}>
-        {visible && (
+    <ResponseContextProvider>
+      <Button onClick={() => setIsVisible(true)}>Show Modal</Button>
+      <OverlayContainer onClose={() => setIsVisible(false)}>
+        {isVisible && (
           <Modal
             key="dynamic-modal"
             {...otherProps}
@@ -33,7 +34,7 @@ const ModalShell: ComponentStory<typeof Modal> = ({ children, ...otherProps }) =
           </Modal>
         )}
       </OverlayContainer>
-    </>
+    </ResponseContextProvider>
   );
 };
 
