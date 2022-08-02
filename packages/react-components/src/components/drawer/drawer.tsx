@@ -126,16 +126,16 @@ export const Drawer: FCChildrenClass<DrawerProps> = forwardRef(({
                 {...otherProps}
               >
                 {(showHeader && title) && (
-                <Stack
-                  vAlign="center"
-                  hAlign="space-between"
-                  direction="row"
-                  className={styles.Header}
-                  columnGap={24}
-                >
-                  <Title responsive={false} level="6" id={titleId}>{title}</Title>
-                  {onClose && <IconButton onClick={onClose} className={styles.CloseButton} icon="remove" kind="flat" />}
-                </Stack>
+                  <Stack
+                    vAlign="center"
+                    hAlign="space-between"
+                    direction="row"
+                    className={styles.Header}
+                    columnGap={24}
+                  >
+                    <Title responsive={false} level="6" id={titleId}>{title}</Title>
+                    {onClose && <IconButton onClick={onClose} className={styles.CloseButton} icon="remove" kind="flat" />}
+                  </Stack>
                 )}
                 <AutoFocusInside>
                   {children}
