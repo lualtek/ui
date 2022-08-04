@@ -1,5 +1,16 @@
 # @lualtek/react-components
 
+## 0.27.0
+
+### Minor Changes
+
+- 732415f: Add new icons
+
+### Patch Changes
+
+- Updated dependencies [732415f]
+  - @lualtek/icons@0.14.0
+
 ## 0.26.2
 
 ### Patch Changes
