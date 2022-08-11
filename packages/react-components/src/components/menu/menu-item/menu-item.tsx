@@ -27,7 +27,7 @@ export type MenuItemProps = PropsClassChildren<{
   /**
    * Callback function to be called when the menu item is pressed.
    */
-  onClick?: (event?: React.MouseEvent<HTMLButtonElement>) => void;
+  onClick?: (event?: React.MouseEvent<HTMLElement>) => void;
   /**
    * Set disabled state. The item is not interactive and grayed out.
    */
@@ -77,7 +77,7 @@ export const MenuItem = forwardRef(({
   useFocusEffect(isFocused, itemRef);
 
   const triggerClick = useCallback(
-    (event: React.MouseEvent<HTMLButtonElement>) => {
+    (event: React.MouseEvent<HTMLElement>) => {
       if (onClick) {
         handleClick();
         onClick(event);
