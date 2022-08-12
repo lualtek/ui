@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import { motion } from 'framer-motion';
+import { IconNames } from 'packages/icons/dist';
 import {
   forwardRef, useCallback, useEffect, useState,
 } from 'react';
@@ -64,14 +65,14 @@ export const ToggleButton = forwardRef(({
   ...otherProps
 }, forwardedRef) => {
   const [isPressed, setIsPressed] = useState<boolean>(pressed);
-  const [firstRender, setFirstRender] = useState(true);
+  const [isFirstRender, setFirstRender] = useState(true);
 
   useEffect(() => {
     setFirstRender(false);
   }, [pressed]);
 
   const handleClick = useCallback(
-    (event) => {
+    (event: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {
       setIsPressed(!isPressed);
       onClick?.(event);
     },
@@ -79,14 +80,14 @@ export const ToggleButton = forwardRef(({
   );
 
   const renderIcon = useCallback(
-    (icon, dimension) => {
+    (icon: IconNames, dimension?: IconProps['dimension']) => {
       const iconSize: Record<string, IconProps['dimension']> = {
         big: 24,
         regular: 16,
         small: 12,
       };
 
-      return (<Icon source={icon} dimension={iconSize[dimension]} />);
+      return (<Icon source={icon} dimension={iconSize[dimension ?? 'regular']} />);
     },
     [],
   );
@@ -108,20 +109,20 @@ export const ToggleButton = forwardRef(({
           <motion.span
             key="pressedIcon"
             variants={scaleAnimation}
-            initial={firstRender && isPressed ? false : 'scaleOut'}
+            initial={isFirstRender && isPressed ? false : 'scaleOut'}
             animate="scaleIn"
           >
-            {renderIcon(pressedIcon, dimension)}
+            {renderIcon(pressedIcon as IconNames, dimension as IconProps['dimension'])}
           </motion.span>
         )
         : restingIcon && (
           <motion.span
             key="restingIcon"
             variants={scaleAnimation}
-            initial={firstRender && !isPressed ? false : 'scaleOut'}
+            initial={isFirstRender && !isPressed ? false : 'scaleOut'}
             animate="scaleIn"
           >
-            {renderIcon(restingIcon, dimension)}
+            {renderIcon(restingIcon as IconNames, dimension as IconProps['dimension'])}
           </motion.span>
         )
       }

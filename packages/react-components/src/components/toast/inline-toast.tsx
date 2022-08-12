@@ -11,7 +11,7 @@ import {
 
 import styles from './toast.module.css';
 
-const PrimitiveNoopComponent: React.FC<{asChild?: boolean}> = ({ children }) => <>{children}</>;
+const PrimitiveNoopComponent: FCChildren<{ asChild?: boolean }> = ({ children }) => <>{children}</>;
 
 export type InlineToastProps = PropsWithChildren<PropsWithClass> & {
   /**
@@ -70,7 +70,7 @@ const defaultIcons: Record<string, IconProps['source']> = {
   danger: 'c-remove',
 };
 
-export const InlineToast = forwardRef<HTMLElement, InlineToastProps>(({
+export const InlineToast = forwardRef<HTMLOutputElement, InlineToastProps>(({
   children,
   className,
   title,
@@ -100,7 +100,7 @@ export const InlineToast = forwardRef<HTMLElement, InlineToastProps>(({
       columnGap={16}
       {...otherProps}
     >
-      <Icon className={styles.Icon} source={icon || defaultIcons[kind]} dimension={24} />
+      <Icon className={styles.Icon} source={icon ?? defaultIcons[kind]} dimension={24} />
       <Stack direction={singleLine ? 'row' : undefined} columnGap={24} rowGap={8} hAlign="start" fill={!!singleLine}>
         <Stack>
           {title && (
