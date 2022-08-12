@@ -43,7 +43,7 @@
     "stylelint-config-equinusocio": "1.5.1",
     "stylelint-design-tokens-plugin": "0.0.14",
     "tsc-alias": "1.7.0",
-    "turbo": "latest",
+    "turbo": "1.3.4",
     "typescript": "4.7.4"
   },
   "engines": {

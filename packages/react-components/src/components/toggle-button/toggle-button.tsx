@@ -1,6 +1,6 @@
+import { IconNames } from '@lualtek/icons';
 import clsx from 'clsx';
 import { motion } from 'framer-motion';
-import { IconNames } from 'packages/icons/dist';
 import {
   forwardRef, useCallback, useEffect, useState,
 } from 'react';
