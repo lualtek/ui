@@ -2,6 +2,10 @@
   "extends": "tsconfig/react-library.json",
   "compilerOptions": {
     "outDir": "dist",
+    "baseUrl": ".",
+    "paths": {
+      "@/components": ["src"]
+    }
   },
   "include": ["src", "types"],
   "exclude": ["dist", "build", "node_modules"]
