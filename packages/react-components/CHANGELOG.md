@@ -1,5 +1,11 @@
 # @lualtek/react-components
 
+## 0.28.1
+
+### Patch Changes
+
+- 6895ac4: Fix broken build and import
+
 ## 0.28.0
 
 ### Minor Changes
