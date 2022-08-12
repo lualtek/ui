@@ -1,5 +1,11 @@
 # @lualtek/tokens
 
+## 0.7.0
+
+### Minor Changes
+
+- 03a09bf: Update to React 18 peer dependency
+
 ## 0.6.1
 
 ### Patch Changes

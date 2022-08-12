@@ -1,5 +1,16 @@
 # @lualtek/config
 
+## 0.4.0
+
+### Minor Changes
+
+- 03a09bf: Update to React 18 peer dependency
+
+### Patch Changes
+
+- Updated dependencies [03a09bf]
+  - @lualtek/tokens@0.7.0
+
 ## 0.3.1
 
 ### Patch Changes

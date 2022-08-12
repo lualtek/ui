@@ -1,5 +1,16 @@
 # @lualtek/react-components
 
+## 0.28.0
+
+### Minor Changes
+
+- 03a09bf: Update to React 18 peer dependency
+
+### Patch Changes
+
+- Updated dependencies [03a09bf]
+  - @lualtek/icons@0.15.0
+
 ## 0.27.0
 
 ### Minor Changes
