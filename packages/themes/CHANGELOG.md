@@ -1,5 +1,11 @@
 # @lualtek/themes
 
+## 0.8.0
+
+### Minor Changes
+
+- 03a09bf: Update to React 18 peer dependency
+
 ## 0.7.2
 
 ### Patch Changes
