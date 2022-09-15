@@ -34,6 +34,8 @@
 
   &.Trigger[aria-disabled='true'] {
     background: none;
+    color: var(--global-disabled-foreground);
+    backdrop-filter: none;
   }
 
   &[data-state='active'] {
