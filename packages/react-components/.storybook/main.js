@@ -15,6 +15,7 @@ module.exports = {
     builder: 'webpack5',
   },
   addons: [
+    'storybook-dark-mode',
     '@storybook/addon-actions',
     '@storybook/addon-links',
     'storybook-css-modules-preset',
@@ -43,6 +44,7 @@ module.exports = {
   webpackFinal: async (config) => {
     // eslint-disable-next-line no-param-reassign
     config.resolve.alias['@/components'] = path.resolve(__dirname, '../src/');
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
     return config;
   },
   framework: '@storybook/react',

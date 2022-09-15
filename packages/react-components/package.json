@@ -64,6 +64,7 @@
     "postcss-cli": "9.1.0",
     "storybook-addon-themes": "6.1.0",
     "storybook-css-modules-preset": "1.1.1",
+    "storybook-dark-mode": "1.1.2",
     "tsconfig": "*",
     "typescript": "4.7.4"
   },

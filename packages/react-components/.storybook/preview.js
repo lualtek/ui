@@ -3,6 +3,8 @@ import '@lualtek/themes';
 import '../src/core.css';
 import './overrides.css';
 
+import { themes } from '@storybook/theming';
+
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
   controls: {
@@ -10,6 +12,13 @@ export const parameters = {
       color: /(background|color)$/i,
       date: /Date$/,
     },
+  },
+  darkMode: {
+    current: 'dark',
+    // Override the default dark theme
+    dark: { ...themes.dark },
+    // Override the default light theme
+    light: { ...themes.normal },
   },
   themes: {
     default: 'light',
@@ -21,6 +30,7 @@ export const parameters = {
     onChange: (theme) => {
       const iframe = document.querySelector('#storybook-preview-iframe');
       if (theme) {
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
         iframe.contentDocument.documentElement.dataset.theme = theme.name;
       } else {
         iframe.contentDocument.documentElement.dataset.theme = 'auto';
