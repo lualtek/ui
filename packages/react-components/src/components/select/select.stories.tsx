@@ -64,5 +64,6 @@ Single.args = {
 
 export const Multiple = MultipleTemplate.bind({});
 Multiple.args = {
+  label: 'Label',
   kind: 'multiple',
 };

@@ -94,8 +94,8 @@
   &[multiple] {
     block-size: auto;
     padding:
-      calc(token(--space-24) - token(--space-2))
-      calc(var(--field-padding) * 3.5)
+      calc(token(--space-24) - token(--space-4))
+      var(--field-padding)
       token(--space-4)
       var(--field-padding);
     overflow: auto;
