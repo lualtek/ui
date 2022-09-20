@@ -3,7 +3,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Chip } from './chip';
 
 const story: ComponentMeta<typeof Chip> = {
-  title: 'Components/Widgets/Chip',
+  title: 'Widgets/Chip',
   component: Chip,
   argTypes: {
     onDismissClick: {

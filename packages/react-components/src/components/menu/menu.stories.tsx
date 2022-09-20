@@ -5,7 +5,7 @@ import { Chip, Separator } from '../..';
 import { Menu } from './menu';
 
 const story: ComponentMeta<typeof Menu> = {
-  title: 'Components/Navigation/Menu',
+  title: 'Navigation/Menu',
   component: Menu,
 };
 
@@ -36,14 +36,14 @@ const WithIconsTemplate: ComponentStory<typeof Menu> = args => (
 export const WithIcons = WithIconsTemplate.bind({});
 
 const WithCheckboxTemplate: ComponentStory<typeof Menu> = (args) => {
-  const [checked, setChecked] = useState<boolean>(false);
+  const [isChecked, setIsChecked] = useState<boolean>(false);
 
   return (
     <Menu {...args}>
       <Menu.ItemCheckbox
-        checked={checked}
-        icon={checked ? 'check' : undefined}
-        onClick={() => setChecked(val => !val)}
+        checked={isChecked}
+        icon={isChecked ? 'check' : undefined}
+        onClick={() => setIsChecked(val => !val)}
       >
         Checkable item
       </Menu.ItemCheckbox>

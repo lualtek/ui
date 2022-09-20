@@ -3,13 +3,12 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Slider } from './slider';
 
 const story: ComponentMeta<typeof Slider> = {
-  title: 'Components/Inputs/Slider',
+  title: 'Inputs/Slider',
   component: Slider,
   args: {
     orientation: 'horizontal',
     defaultValue: [30],
     showValues: true,
-    onValueChange: value => console.log(value),
   },
   argTypes: {
     disabled: {

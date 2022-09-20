@@ -4,7 +4,7 @@ import { SVGAttributes } from 'react';
 import { Icon } from './icon';
 
 const story: ComponentMeta<typeof Icon> = {
-  title: 'Components/Widgets/Icon',
+  title: 'Widgets/Icon',
   component: Icon,
   args: {
     dimension: 24,

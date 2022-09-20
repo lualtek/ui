@@ -3,7 +3,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Elevator } from './elevator';
 
 const story: ComponentMeta<typeof Elevator> = {
-  title: 'Components/Widgets/Elevator',
+  title: 'Widgets/Elevator',
   component: Elevator,
 };
 

@@ -3,7 +3,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Avatar } from './avatar';
 
 const story: ComponentMeta<typeof Avatar> = {
-  title: 'Components/Widgets/Avatar',
+  title: 'Widgets/Avatar',
   component: Avatar,
   args: {
     dimension: 'regular',

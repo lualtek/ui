@@ -5,7 +5,7 @@ import { Container } from '@/components';
 import { Text } from './text';
 
 const story: ComponentMeta<typeof Text> = {
-  title: 'Components/Typography/Text',
+  title: 'Typography/Text',
   component: Text,
   args: {
     maxWidth: 'auto',

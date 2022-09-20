@@ -4,7 +4,7 @@ import { SVGAttributes } from 'react';
 import { Button } from '.';
 
 const story: ComponentMeta<typeof Button> = {
-  title: 'Components/Actions/Button',
+  title: 'Actions/Button',
   component: Button,
   args: {
     dimension: 'regular',

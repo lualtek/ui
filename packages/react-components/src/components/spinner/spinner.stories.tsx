@@ -3,7 +3,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Spinner } from './spinner';
 
 const story: ComponentMeta<typeof Spinner> = {
-  title: 'Components/Loading/Spinner',
+  title: 'Loading/Spinner',
   component: Spinner,
   args: {
     dimension: 'big',

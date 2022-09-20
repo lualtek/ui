@@ -5,7 +5,7 @@ import { Button } from '../..';
 import { Tabs } from './tabs';
 
 const story: ComponentMeta<typeof Tabs> = {
-  title: 'Components/Navigation/Tabs',
+  title: 'Navigation/Tabs',
   component: Tabs,
   args: {
     defaultValue: '1',

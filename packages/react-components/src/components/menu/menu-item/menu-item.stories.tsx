@@ -5,7 +5,7 @@ import { Chip, Text } from '../..';
 import { Menu } from '..';
 
 const story: ComponentMeta<typeof Menu.Item> = {
-  title: 'Components/Navigation/Menu/Menu Item',
+  title: 'Navigation/Menu/Menu Item',
   component: Menu.Item,
   args: {
     dimension: 'regular',
@@ -47,14 +47,14 @@ const TemplateItem: ComponentStory<typeof Menu.Item> = args => (
 export const DefaultItem = TemplateItem.bind({});
 
 const WithCheckboxTemplate: ComponentStory<typeof Menu.ItemCheckbox> = (args) => {
-  const [checked, setChecked] = useState<boolean>(false);
+  const [isChecked, setIsChecked] = useState<boolean>(false);
 
   return (
     <>
       <Menu.ItemCheckbox
-        checked={checked}
-        icon={checked ? 'check' : undefined}
-        onClick={() => setChecked(val => !val)}
+        checked={isChecked}
+        icon={isChecked ? 'check' : undefined}
+        onClick={() => setIsChecked(val => !val)}
         {...args}
       >
         Checkable item

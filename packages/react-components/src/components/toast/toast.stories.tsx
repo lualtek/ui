@@ -12,7 +12,7 @@ import {
 } from './toast';
 
 const story: ComponentMeta<typeof InlineToast> = {
-  title: 'Components/Dialogs/Inline Toast',
+  title: 'Dialogs/Inline Toast',
   component: InlineToast,
   args: {
     dismissable: false,
@@ -49,7 +49,7 @@ SingleLine.args = {
 };
 
 const TemplateToast: ComponentStory<typeof Toast> = ({ ...args }) => {
-  const [toasts, setToasts] = useState<Array<{title: string}>>([]);
+  const [toasts, setToasts] = useState<Array<{ title: string }>>([]);
   const toastsShown = useRef(0);
 
   const onShowToast = () => {

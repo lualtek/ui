@@ -4,7 +4,7 @@ import { Button, IconButton, Stack } from '../..';
 import { Popover } from './popover';
 
 const story: ComponentMeta<typeof Popover> = {
-  title: 'Components/Dialogs/Popover',
+  title: 'Dialogs/Popover',
   component: Popover,
 };
 

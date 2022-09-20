@@ -3,8 +3,10 @@ import { useEffect, useMemo, useState } from 'react';
 
 import { Pagination } from './pagination';
 
+type PaginationType = Array<Record<string, string>>
+
 const story: ComponentMeta<typeof Pagination> = {
-  title: 'Components/Navigation/Pagination',
+  title: 'Navigation/Pagination',
   component: Pagination,
   args: {
     itemsPerPage: 3,
@@ -17,7 +19,7 @@ export const Default: ComponentStory<typeof Pagination> = ({
   itemsPerPage,
   ...args
 }) => {
-  const items = useMemo(() => [
+  const items = useMemo((): PaginationType => [
     {
       ip: '212.5.90.2',
       os: 'MacOS Sierra',
@@ -416,11 +418,11 @@ export const Default: ComponentStory<typeof Pagination> = ({
     },
   ], []);
 
-  const [currentItems, setCurrentItems] = useState<any>(null);
+  const [currentItems, setCurrentItems] = useState<PaginationType>([]);
   const [itemOffset, setItemOffset] = useState(0);
 
   useEffect(() => {
-    const endOffset = itemOffset + Number(itemsPerPage || 10);
+    const endOffset = itemOffset + Number(itemsPerPage ?? 10);
     setCurrentItems(items.slice(itemOffset, endOffset));
   }, [itemOffset, items, itemsPerPage]);
 
@@ -430,7 +432,7 @@ export const Default: ComponentStory<typeof Pagination> = ({
 
   return (
     <>
-      {currentItems?.map((item: any) => (
+      {currentItems?.map(item => (
         <h3 key={item.ip}>
           {item.ip}
         </h3>

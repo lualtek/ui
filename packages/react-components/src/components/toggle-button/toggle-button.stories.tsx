@@ -3,7 +3,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { ToggleButton } from './toggle-button';
 
 const story: ComponentMeta<typeof ToggleButton> = {
-  title: 'Components/Actions/Toggle button',
+  title: 'Actions/Toggle button',
   component: ToggleButton,
   args: {
     dimension: 'regular',

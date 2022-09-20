@@ -3,7 +3,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Switch } from './switch';
 
 const story: ComponentMeta<typeof Switch> = {
-  title: 'Components/Inputs/Switch',
+  title: 'Inputs/Switch',
   component: Switch,
   argTypes: {
     disabled: {
@@ -16,7 +16,7 @@ const story: ComponentMeta<typeof Switch> = {
 export default story;
 
 const Template: ComponentStory<typeof Switch> = args => (
-  <Switch onCheckedChange={value => console.log(value)} {...args} />
+  <Switch {...args} />
 );
 
 export const Default = Template.bind({});

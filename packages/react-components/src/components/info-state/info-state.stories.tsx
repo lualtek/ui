@@ -4,7 +4,7 @@ import { Button } from '../..';
 import { InfoState } from './info-state';
 
 const story: ComponentMeta<typeof InfoState> = {
-  title: 'Components/Dialogs/InfoState',
+  title: 'Dialogs/InfoState',
   component: InfoState,
   args: {
     title: 'Sample very long title',

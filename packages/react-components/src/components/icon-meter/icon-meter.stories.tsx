@@ -4,7 +4,7 @@ import { Stack } from '../..';
 import { IconMeter } from './icon-meter';
 
 const story: ComponentMeta<typeof IconMeter> = {
-  title: 'Components/Widgets/Icon meter',
+  title: 'Widgets/Icon meter',
   component: IconMeter,
   args: {
     dimension: 'regular',
