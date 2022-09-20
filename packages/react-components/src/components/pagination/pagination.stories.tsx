@@ -3,7 +3,15 @@ import { useEffect, useMemo, useState } from 'react';
 
 import { Pagination } from './pagination';
 
-type PaginationType = Array<Record<string, string>>
+type PaginationType = Array<{
+  ip: string;
+  os: string;
+  date: string;
+  status: string;
+  browser: string;
+  position: string;
+  application: string;
+}>
 
 const story: ComponentMeta<typeof Pagination> = {
   title: 'Navigation/Pagination',
