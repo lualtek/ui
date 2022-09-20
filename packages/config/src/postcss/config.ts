@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import postcssMixins from 'postcss-mixins';
 
 export const postcssConfig = (tokens: Record<string, unknown>) => ({
@@ -13,6 +14,7 @@ export const postcssConfig = (tokens: Record<string, unknown>) => ({
         'logical-properties-and-values': false,
         'prefers-color-scheme-query': false,
         'gap-properties': false,
+        'cascade-layers': false,
       },
       insertAfter: {
         'custom-media-queries': postcssMixins,
