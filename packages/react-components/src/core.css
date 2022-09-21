@@ -1,7 +1,8 @@
 @layer core, utilties, components, overrides, themes;
 
-@import './core/basic.css';
-@import './core/elevations.css';
-@import './core/typography.css';
+@import './core/basic.css' layer(core);
+@import './core/elevations.css' layer(core);
+@import './core/typography.css' layer(core);
 @import './core/utils/media.css';
 @import './core/utils/vibrancy.css';
+@import './core/utils/elevation.css';

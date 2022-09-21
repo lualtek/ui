@@ -1,0 +1,25 @@
+@define-mixin elevation-1 $color: 0deg 0% 0% {
+  box-shadow:
+    0 4px 8px hsl($color / 4%),
+    0 0 2px hsl($color / 6%),
+    0 0 1px hsl($color / 0.04%);
+}
+@define-mixin elevation-2 $color: 0deg 0% 0% {
+  box-shadow:
+    0 10px 20px hsl($color  / 4%),
+    0 2px 6px hsl($color  / 4%),
+    0 0 1px hsl($color  / 4%);
+}
+@define-mixin elevation-3 $color: 0deg 0% 0% {
+  box-shadow:
+    0 16px 24px hsl($color / 6%),
+    0 2px 6px hsl($color / 4%),
+    0 0 1px hsl($color / 4%);
+}
+@define-mixin elevation-4 $color: 0deg 0% 0% {
+  box-shadow:
+    0 24px 32px hsl($color / 4%),
+    0 16px 24px hsl($color / 4%),
+    0 4px 8px hsl($color / 4%),
+    0 0 1px hsl($color / 4%);
+}
