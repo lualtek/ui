@@ -8,7 +8,7 @@ import { useUIDSeed } from 'react-uid';
 import { Button } from '@/components';
 
 import * as styles from './tabs.module.css';
-import { TabPanel } from './tabs-panel';
+import { TabPanel, TabPanelProps } from './tabs-panel';
 
 export type TabsProps = TabsPrimitive.TabsProps & Record<string, unknown>;
 
@@ -38,7 +38,7 @@ export const Tabs = ({
     >
       <LazyMotion features={domMax} strict>
         <TabsPrimitive.List className={styles.List}>
-          {Children.map(children, child => isValidElement(child) && (
+          {Children.map(children, child => isValidElement<TabPanelProps>(child) && (
             <TabsPrimitive.Trigger
               value={child.props.value}
               disabled={child.props.disabled}
