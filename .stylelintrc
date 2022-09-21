@@ -9,7 +9,10 @@
     "designtokens/check": [
       true,
       "./packages/tokens/platforms/web/tokens.json"
-    ]
+    ],
+    "function-no-unknown": [true, {
+      "ignoreFunctions": ["token"]
+    }]
   },
   "ignoreFiles": [
     "!**/*.css",
