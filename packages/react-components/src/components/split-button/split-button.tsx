@@ -7,7 +7,7 @@ import {
 } from '@/components';
 
 import { Elevator } from '../elevator';
-import styles from './split-button.module.css';
+import * as styles from './split-button.module.css';
 
 export type SplitButtonProps = Pick<PopoverContentProps, 'side' | 'offset' | 'align'> & {
   /**

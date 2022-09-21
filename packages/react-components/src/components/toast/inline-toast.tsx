@@ -9,7 +9,7 @@ import {
   Title,
 } from '@/components';
 
-import styles from './toast.module.css';
+import * as styles from './toast.module.css';
 
 const PrimitiveNoopComponent: FCChildren<{ asChild?: boolean }> = ({ children }) => <>{children}</>;
 

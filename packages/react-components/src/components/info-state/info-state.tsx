@@ -5,7 +5,7 @@ import {
   Icon, IconProps, Stack, StackProps, Text, Title,
 } from '@/components';
 
-import styles from './info-state.module.css';
+import * as styles from './info-state.module.css';
 
 export type InfoStateProps = PropsWithChildren<PropsWithClass<{
   /**
@@ -66,22 +66,22 @@ export const InfoState = forwardRef<HTMLDivElement, InfoStateProps>(({
     >
       <LazyMotion features={domMax}>
         {(!image && icon) && (
-        <m.span
-          data-info-state-icon-color={iconColor}
-          className={styles.IconWrapper}
-          animate={{
-            scale: [1, 0.8, 1],
-          }}
-          transition={{
-            duration: 0.8,
-            repeat: Infinity,
-            repeatDelay: 5.2,
-            repeatType: 'reverse',
-            type: 'spring',
-          }}
-        >
-          <Icon source={icon} dimension={48} />
-        </m.span>
+          <m.span
+            data-info-state-icon-color={iconColor}
+            className={styles.IconWrapper}
+            animate={{
+              scale: [1, 0.8, 1],
+            }}
+            transition={{
+              duration: 0.8,
+              repeat: Infinity,
+              repeatDelay: 5.2,
+              repeatType: 'reverse',
+              type: 'spring',
+            }}
+          >
+            <Icon source={icon} dimension={48} />
+          </m.span>
         )}
 
         {(image && !icon) && <img className={styles.Image} alt="" width="400" src={image} loading="lazy" decoding="async" />}
@@ -95,9 +95,9 @@ export const InfoState = forwardRef<HTMLDivElement, InfoStateProps>(({
           <Title maxWidth="20ch" textAlign={isHorizontal ? 'start' : 'center'} level="4">{title}</Title>
           <Text maxWidth="60ch" dimmed={6} textAlign={isHorizontal ? 'start' : 'center'}>{children}</Text>
           {actions && (
-          <Stack vPadding={16} inline direction="row" columnGap={16} rowGap={16} wrap>
-            {actions}
-          </Stack>
+            <Stack vPadding={16} inline direction="row" columnGap={16} rowGap={16} wrap>
+              {actions}
+            </Stack>
           )}
         </Stack>
       </LazyMotion>

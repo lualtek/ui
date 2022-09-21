@@ -4,7 +4,7 @@ import { CSSProperties, forwardRef } from 'react';
 import { Icon, Polymorphic } from '@/components';
 
 import { OptionalColumnTypes } from '../types';
-import styles from './table-cell.module.css';
+import * as styles from './table-cell.module.css';
 
 type TableCellProps = {
   collapsed?: OptionalColumnTypes['isCollapsed'];

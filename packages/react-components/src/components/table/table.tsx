@@ -19,7 +19,7 @@ import {
   ToggleButton,
 } from '@/components';
 
-import styles from './table.module.css';
+import * as styles from './table.module.css';
 import { TableCell } from './table-cell';
 import { TableCheckbox } from './table-checkbox';
 import { ToggleColumnsControl } from './table-controls';
@@ -436,7 +436,7 @@ export const Table = <T extends Record<string, unknown>>({
               )}
 
               {/* TBODY */}
-              <tbody role="rowgroup" className={styles.TBody} {...getTableBodyProps()}>
+              <tbody role="rowgroup" {...getTableBodyProps()}>
                 {loading
                   ? (
                     <TableRow>

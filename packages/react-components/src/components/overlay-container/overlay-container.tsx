@@ -5,7 +5,7 @@ import { ReactNode, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { useUIDSeed } from 'react-uid';
 
-import styles from './overlay-container.module.css';
+import * as styles from './overlay-container.module.css';
 import { OverlayProvider } from './overlay-context';
 
 export type OverlayContainerProps = {
@@ -52,7 +52,7 @@ export const OverlayContainer: FCChildren<OverlayContainerProps> = ({
 
   useEffect(() => {
     if (root.closest('[data-overlay-container]')) {
-      console.warn('OverlayContainer: An OverlayContainer must not be inside another container. Please change the root prop.');
+      throw new Error('OverlayContainer: An OverlayContainer must not be inside another container. Please change the root prop.');
     }
   }, [root]);
 
@@ -68,15 +68,15 @@ export const OverlayContainer: FCChildren<OverlayContainerProps> = ({
           >
             <LazyMotion features={domMax}>
               {obfuscate && (
-              <m.span
-                key={seedID('modal-backdrop')}
-                className={styles.Backdrop}
-                data-overlay-color={overlayColor}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 0.95 }}
-                transition={{ duration: 0.2 }}
-                exit={{ opacity: 0 }}
-              />
+                <m.span
+                  key={seedID('modal-backdrop')}
+                  className={styles.Backdrop}
+                  data-overlay-color={overlayColor}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 0.95 }}
+                  transition={{ duration: 0.2 }}
+                  exit={{ opacity: 0 }}
+                />
               )}
               {children}
             </LazyMotion>

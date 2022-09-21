@@ -11,7 +11,7 @@ import { useUIDSeed } from 'react-uid';
 import { Elevator } from '@/components';
 
 import { InlineToast, InlineToastProps } from './inline-toast';
-import styles from './toast.module.css';
+import * as styles from './toast.module.css';
 
 export type ToastProps = ToastPrimitive.ToastProps & InlineToastProps
 

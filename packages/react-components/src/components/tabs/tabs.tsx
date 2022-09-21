@@ -7,7 +7,7 @@ import { useUIDSeed } from 'react-uid';
 
 import { Button } from '@/components';
 
-import styles from './tabs.module.css';
+import * as styles from './tabs.module.css';
 import { TabPanel } from './tabs-panel';
 
 export type TabsProps = TabsPrimitive.TabsProps & Record<string, unknown>;

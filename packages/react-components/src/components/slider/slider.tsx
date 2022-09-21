@@ -7,7 +7,7 @@ import { useUIDSeed } from 'react-uid';
 
 import { Elevator } from '@/components';
 
-import styles from './slider.module.css';
+import * as styles from './slider.module.css';
 
 export type SliderProps = SliderPrimitive.SliderProps & {
   /**

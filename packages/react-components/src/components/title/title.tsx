@@ -3,7 +3,7 @@ import { CSSProperties, forwardRef } from 'react';
 
 import { Polymorphic } from '@/components';
 
-import styles from './title.module.css';
+import * as styles from './title.module.css';
 
 export type TitleProps = {
   /**

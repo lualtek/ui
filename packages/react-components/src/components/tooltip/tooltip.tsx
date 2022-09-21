@@ -7,7 +7,7 @@ import {
   Children, cloneElement, isValidElement, ReactNode, useEffect, useRef, useState,
 } from 'react';
 
-import styles from './tooltip.module.css';
+import * as styles from './tooltip.module.css';
 
 export type TooltipProps = PropsWithClass & TooltipPrimitive.TooltipProps & {
   trigger: ReactNode;

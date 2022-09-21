@@ -10,7 +10,7 @@ import {
   Icon, IconButton, IconButtonProps, IconProps, Polymorphic,
 } from '@/components';
 
-import styles from './toggle-button.module.css';
+import * as styles from './toggle-button.module.css';
 
 export type ToggleButtonProps = Except<IconButtonProps, 'icon'> & {
   /**

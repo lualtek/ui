@@ -3,7 +3,7 @@ import { CSSProperties, forwardRef } from 'react';
 
 import { Polymorphic } from '@/components';
 
-import styles from './clamp-text.module.css';
+import * as styles from './clamp-text.module.css';
 
 export type ClampTextProps = PropsClassChildren<{
   /**

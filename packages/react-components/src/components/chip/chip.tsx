@@ -3,7 +3,7 @@ import { forwardRef } from 'react';
 
 import { Icon, IconProps, Stack } from '@/components';
 
-import styles from './chip.module.css';
+import * as styles from './chip.module.css';
 
 export type ChipProps = PropsClassChildren<{
   /**

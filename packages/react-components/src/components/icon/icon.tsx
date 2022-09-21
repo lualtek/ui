@@ -11,7 +11,7 @@ import {
   useMemo,
 } from 'react';
 
-import styles from './icon.module.css';
+import * as styles from './icon.module.css';
 
 export type IconProps = SVGAttributes<SVGElement | SVGSVGElement> & {
   /**

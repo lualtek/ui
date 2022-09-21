@@ -8,7 +8,7 @@ import {
   Icon, IconProps, Polymorphic, Stack,
 } from '@/components';
 
-import styles from './menu-item.module.css';
+import * as styles from './menu-item.module.css';
 
 export type MenuItemProps = PropsClassChildren<{
   /**
@@ -104,7 +104,6 @@ export const MenuItem = forwardRef(({
     >
       {icon && (
         <Icon
-          className={styles.IconClass}
           source={icon}
           dimension={dimension === 'small' ? 12 : 16}
         />
