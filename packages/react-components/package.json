@@ -15,13 +15,16 @@
     "access": "restricted"
   },
   "scripts": {
-    "dev": "start-storybook --quiet -p 6006",
-    "prebuild": "rimraf dist core core.css",
+    "dev": "run-p storybook watch:csstypes",
+    "prebuild": "run-s clean build:csstypes",
     "build": "run-s build:ts build:css",
     "build:css": "cpy '**/*.css' '../dist' --parents --cwd=src && postcss dist/*.css \"dist/**/!(utils)/!(_mixins).css\" --replace",
     "postbuild:css": "rimraf dist/**/_mixins.css",
     "build:ts": "tsc && tsc-alias",
-    "storybook": "start-storybook -p 6006"
+    "storybook": "start-storybook --quiet -p 6006",
+    "watch:csstypes": "tcm -w -p '**/*.module.css' src",
+    "build:csstypes": "tcm -p '**/*.module.css' src",
+    "clean": "rimraf dist core core.css"
   },
   "repository": {
     "type": "git",
@@ -64,6 +67,7 @@
     "storybook-addon-themes": "6.1.0",
     "storybook-css-modules-preset": "1.1.1",
     "tsconfig": "*",
+    "typed-css-modules": "0.7.2",
     "typescript": "4.7.4"
   },
   "dependencies": {

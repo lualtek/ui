@@ -111,17 +111,17 @@ export const Button = forwardRef((
         {...otherProps}
       >
         {icon && (
-        <Icon
-          source={icon}
-          fill={iconColor}
-          dimension={iconSize[dimension] as IconProps['dimension']}
-        />
+          <Icon
+            source={icon}
+            fill={iconColor}
+            dimension={iconSize[dimension] as IconProps['dimension']}
+          />
         )}
         {(children && busy) ? <span>{children}</span> : children}
         {busy && (
-        <span className={styles.SpinnerIndicator}>
-          <Spinner dimension={dimension} />
-        </span>
+          <span className={styles.SpinnerIndicator}>
+            <Spinner dimension={dimension} />
+          </span>
         )}
       </Wrapper>
     </Elevator>
