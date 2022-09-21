@@ -22,12 +22,15 @@ export const PopoverContent = ({
     if (side === 'left') {
       return { x: -20, y: 0 };
     }
+
     if (side === 'right') {
       return { x: 20, y: 0 };
     }
+
     if (side === 'top') {
       return { x: 0, y: -20 };
     }
+
     return { x: 0, y: 20 };
   }, [side]);
 
@@ -45,22 +48,24 @@ export const PopoverContent = ({
 
   return (
     <LazyMotion features={domAnimation} strict>
-      <PopoverPrimitive.Content asChild sideOffset={Number(offset)} side={side} {...otherProps}>
-        <m.div
-          initial="hidden"
-          animate="visible"
-          exit="hidden"
-          variants={animation}
-          transition={{
-            type: 'spring',
-            stiffness: 700,
-            damping: 30,
-          }}
-        >
-          {children}
-          {showArrow && <PopoverPrimitive.Arrow fill={arrowColor} />}
-        </m.div>
-      </PopoverPrimitive.Content>
+      <PopoverPrimitive.Portal>
+        <PopoverPrimitive.Content asChild sideOffset={Number(offset)} side={side} {...otherProps}>
+          <m.div
+            initial="hidden"
+            animate="visible"
+            exit="hidden"
+            variants={animation}
+            transition={{
+              type: 'spring',
+              stiffness: 700,
+              damping: 30,
+            }}
+          >
+            {children}
+            {showArrow && <PopoverPrimitive.Arrow fill={arrowColor} />}
+          </m.div>
+        </PopoverPrimitive.Content>
+      </PopoverPrimitive.Portal>
     </LazyMotion>
   );
 };
