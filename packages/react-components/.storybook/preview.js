@@ -17,11 +17,10 @@ export const parameters = {
     },
   },
   themes: {
-    default: 'light',
     list: [
       { name: 'auto', color: 'linear-gradient(to bottom right, lightgray 50%, black 50.1%)' },
       { name: 'light', color: 'lightgray' },
-      { name: 'dark', color: 'black' },
+      { name: 'dark', color: 'black', default: true },
     ],
     onChange: (theme) => {
       const iframe = document.querySelector('#storybook-preview-iframe');

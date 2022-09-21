@@ -1,144 +1,146 @@
 @import '../../core/utils/vibrancy.css';
 
-:where(.Button) {
-  box-sizing: border-box;
-  user-select: none;
-  -webkit-touch-callout: none;
-  margin: 0;
-  cursor: pointer;
-  font-family: inherit;
-  display: inline-flex;
-  align-items: center;
-  line-height: 1;
-  min-inline-size: min-content;
-  justify-content: center;
-  text-decoration: none;
-  white-space: nowrap;
-  border: 0;
-  appearance: none;
-  font-weight: token(--font-weight-bold);
-  position: relative;
-  overflow: hidden;
-  background: none;
-  gap: token(--space-8);
+@layer components {
+  .Button {
+    box-sizing: border-box;
+    user-select: none;
+    -webkit-touch-callout: none;
+    margin: 0;
+    cursor: pointer;
+    font-family: inherit;
+    display: inline-flex;
+    align-items: center;
+    line-height: 1;
+    min-inline-size: min-content;
+    justify-content: center;
+    text-decoration: none;
+    white-space: nowrap;
+    border: 0;
+    appearance: none;
+    font-weight: token(--font-weight-bold);
+    position: relative;
+    overflow: hidden;
+    background: none;
+    gap: token(--space-8);
 
-  /* Sizes */
+    /* Sizes */
 
-  &[data-button-dimension='big'] {
-    padding: 0.55rem token(--space-24) 0.66rem;
-    font-size: token(--font-size-18);
-    block-size: token(--space-48);
-    border-radius: token(--radius-16);
-    gap: token(--space-16);
-  }
-
-  &[data-button-dimension='regular'] {
-    padding: 0.33rem token(--space-16) token(--space-8);
-    font-size: token(--font-size-16);
-    block-size: token(--space-40);
-    border-radius: token(--radius-16);
-  }
-
-  &[data-button-dimension='small'] {
-    font-size: token(--font-size-14);
-    padding: 0 token(--space-8);
-    block-size: token(--space-24);
-    gap: token(--space-4);
-    border-radius: token(--radius-8);
-  }
-
-  /* Types */
-
-  &[data-button-kind='primary'] {
-    background: radial-gradient(farthest-side at 50% top, var(--gradient-brand-1) 0%, var(--gradient-brand-2) 100%);
-    color: var(--cta-foreground);
-
-    &:not([aria-pressed='true'], [aria-disabled='true']):is(:active) {
-      box-shadow: inset 0 -5px 25px hsl(token(--color-support-black) / 30%);
+    &[data-button-dimension='big'] {
+      padding: 0.55rem token(--space-24) 0.66rem;
+      font-size: token(--font-size-18);
+      block-size: token(--space-48);
+      border-radius: token(--radius-16);
+      gap: token(--space-16);
     }
 
-    &:where([aria-pressed='true']),
-    &:where([aria-pressed='true']:active) {
-      background: var(--cta-dark);
-    }
-  }
-
-  &[data-button-kind='secondary'] {
-
-    @mixin vibrancy;
-
-    background-color: var(--vibrancy-background);
-    color: var(--vibrancy-foreground);
-
-    &:not([aria-pressed='true'], [aria-disabled='true']):is(:active) {
-      background-color: var(--vibrancy-background-hard);
-      color: var(--vibrancy-foreground);
+    &[data-button-dimension='regular'] {
+      padding: 0.33rem token(--space-16) token(--space-8);
+      font-size: token(--font-size-16);
+      block-size: token(--space-40);
+      border-radius: token(--radius-16);
     }
 
-    &:where([aria-pressed='true']),
-    &:where([aria-pressed='true']:active) {
-      color: var(--dimmed-0);
-      background: var(--dimmed-7);
-    }
-  }
-
-  &[data-button-kind='flat'] {
-    color: var(--vibrancy-foreground);
-
-    &:not([aria-pressed='true'], [aria-disabled='true']):is(:active) {
-      background-color: var(--vibrancy-background-hard);
+    &[data-button-dimension='small'] {
+      font-size: token(--font-size-14);
+      padding: 0 token(--space-8);
+      block-size: token(--space-24);
+      gap: token(--space-4);
+      border-radius: token(--radius-8);
     }
 
-    &:is(:hover, :focus):not([aria-disabled='true']) {
+    /* Types */
+
+    &[data-button-kind='primary'] {
+      background: radial-gradient(farthest-side at 50% top, var(--gradient-brand-1) 0%, var(--gradient-brand-2) 100%);
+      color: var(--cta-foreground);
+
+      &:where([aria-pressed='true']),
+      &:where([aria-pressed='true']:active) {
+        background: var(--cta-dark);
+      }
+
+      &:not([aria-pressed='true'], [aria-disabled='true']):is(:active) {
+        box-shadow: inset 0 -5px 25px hsl(token(--color-support-black) / 30%);
+      }
+    }
+
+    &[data-button-kind='secondary'] {
 
       @mixin vibrancy;
 
       background-color: var(--vibrancy-background);
       color: var(--vibrancy-foreground);
+
+      &:where([aria-pressed='true']),
+      &:where([aria-pressed='true']:active) {
+        color: var(--dimmed-0);
+        background: var(--dimmed-7);
+      }
+
+      &:not([aria-pressed='true'], [aria-disabled='true']):is(:active) {
+        background-color: var(--vibrancy-background-hard);
+        color: var(--vibrancy-foreground);
+      }
     }
 
-    &:where([aria-pressed='true']),
-    &:where([aria-pressed='true']:is(:active, :focus)) {
-      color: var(--dimmed-0);
-      background: var(--dimmed-7);
+    &[data-button-kind='flat'] {
+      color: var(--vibrancy-foreground);
+
+      &:where([aria-pressed='true']),
+      &:where([aria-pressed='true']:is(:active, :focus)) {
+        color: var(--dimmed-0);
+        background: var(--dimmed-7);
+      }
+
+      &:not([aria-pressed='true'], [aria-disabled='true']):is(:active) {
+        background-color: var(--vibrancy-background-hard);
+      }
+
+      &:is(:hover, :focus):not([aria-disabled='true']) {
+
+        @mixin vibrancy;
+
+        background-color: var(--vibrancy-background);
+        color: var(--vibrancy-foreground);
+      }
+    }
+
+    /* Styles */
+
+    &[data-button-fullwidth='true'] {
+      inline-size: 100%;
+    }
+
+    &[data-button-icon-position='right'] {
+      flex-direction: row-reverse;
+    }
+
+    &[aria-disabled='true'],
+    &[aria-disabled='true']:is(:hover, :focus, :active) {
+
+      @mixin vibrancy;
+
+      color: var(--global-disabled-foreground);
+      background: var(--global-disabled-background);
+      cursor: not-allowed;
+    }
+
+    &[aria-busy='true'] {
+      box-shadow: none;
+
+      & > :not(.SpinnerIndicator) {
+        visibility: hidden;
+      }
     }
   }
 
-  /* Styles */
-
-  &[data-button-fullwidth='true'] {
-    inline-size: 100%;
+  .SpinnerIndicator {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    display: grid;
+    place-content: center;
   }
-
-  &[data-button-icon-position='right'] {
-    flex-direction: row-reverse;
-  }
-
-  &[aria-disabled='true'],
-  &[aria-disabled='true']:is(:hover, :focus, :active) {
-
-    @mixin vibrancy;
-
-    color: var(--global-disabled-foreground);
-    background: var(--global-disabled-background);
-    cursor: not-allowed;
-  }
-
-  &[aria-busy='true'] {
-    box-shadow: none;
-
-    & > :not(.SpinnerIndicator) {
-      visibility: hidden;
-    }
-  }
-}
-
-.SpinnerIndicator {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  display: grid;
-  place-content: center;
 }

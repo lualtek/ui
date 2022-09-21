@@ -50,8 +50,8 @@ export const Title = forwardRef(({
   const computedLevel = level.match(/\d/g) ? `H${level}` : level.charAt(0).toUpperCase() + level.slice(1);
 
   const dynamicStyle: CSSProperties = {
-    '--maxW': maxWidth,
-    '--tAlign': textAlign,
+    '--max-w': maxWidth,
+    '--t-align': textAlign,
   };
 
   return (

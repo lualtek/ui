@@ -1,49 +1,51 @@
-.ToggleButton {
-  transition: box-shadow token(--duration-300) token(--easing-entrance);
-  line-height: 0;
-
-  &[aria-pressed='true'] {
-    box-shadow:
-      0 0 0 var(--border-width) var(--border-color),
-      0 0 0 var(--border-width) var(--border-color);
-  }
-
-  &[data-button-kind='primary'] {
-    --border-color: hsl(token(--color-support-brand) / 60%);
+@layer components {
+  .ToggleButton {
+    transition: box-shadow token(--duration-300) token(--easing-entrance);
+    line-height: 0;
 
     &[aria-pressed='true'] {
-      color: var(--global-foreground);
-      background: none;
+      box-shadow:
+        0 0 0 var(--border-width) var(--border-color),
+        0 0 0 var(--border-width) var(--border-color);
     }
-  }
 
-  &[data-button-kind='secondary'] {
-    --border-color: var(--dimmed-2);
+    &[data-button-kind='primary'] {
+      --border-color: hsl(token(--color-support-brand) / 60%);
 
-    &[aria-pressed='true'] {
-      color: var(--global-vibrancy-foreground);
-      background: none;
+      &[aria-pressed='true'] {
+        color: var(--global-foreground);
+        background: none;
+      }
     }
-  }
 
-  &[data-button-kind='flat'] {
-    --border-color: var(--dimmed-2);
+    &[data-button-kind='secondary'] {
+      --border-color: var(--dimmed-2);
 
-    &[aria-pressed='true'] {
-      color: var(--global-vibrancy-foreground);
-      background: none;
+      &[aria-pressed='true'] {
+        color: var(--global-vibrancy-foreground);
+        background: none;
+      }
     }
-  }
 
-  &[data-button-dimension='small'] {
-    --border-width: 2px;
-  }
+    &[data-button-kind='flat'] {
+      --border-color: var(--dimmed-2);
 
-  &[data-button-dimension='regular'] {
-    --border-width: 4px;
-  }
+      &[aria-pressed='true'] {
+        color: var(--global-vibrancy-foreground);
+        background: none;
+      }
+    }
 
-  &[data-button-dimension='big'] {
-    --border-width: 6px;
+    &[data-button-dimension='small'] {
+      --border-width: 2px;
+    }
+
+    &[data-button-dimension='regular'] {
+      --border-width: 4px;
+    }
+
+    &[data-button-dimension='big'] {
+      --border-width: 6px;
+    }
   }
 }

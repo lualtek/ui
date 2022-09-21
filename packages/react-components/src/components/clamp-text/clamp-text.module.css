@@ -1,7 +1,9 @@
 /* stylelint-disable */
+@layer components {
 .ClampText {
   display: -webkit-box;
   -webkit-line-clamp: var(--r, 1);
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
 }

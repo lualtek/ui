@@ -6,6 +6,8 @@ const story: ComponentMeta<typeof Grid> = {
   title: 'Layouts/Grid',
   component: Grid,
   args: {
+    rowGap: 8,
+    columnGap: 8,
   },
   argTypes: {
   },

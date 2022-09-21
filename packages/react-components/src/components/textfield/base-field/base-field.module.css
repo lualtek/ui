@@ -1,136 +1,139 @@
 @import '../../../core/utils/vibrancy.css';
 
-.BaseField {
+@layer components {
+  .BaseField {
 
-  @mixin vibrancy;
+    @mixin vibrancy;
 
-  margin: 0;
-  text-overflow: ellipsis;
-  font-size: var(--font-size);
-  font-weight: token(--font-weight-semi-bold);
-  font-family: inherit;
-  line-height: 1;
-  appearance: none;
-  inline-size: 100%;
-  box-sizing: border-box;
-  overflow: hidden;
-  color: inherit;
-  background-color: var(--vibrancy-background-soft);
-  padding: 0 var(--field-padding);
-  display: flex;
-  caret-color: var(--cta-default);
-  outline-offset: 2px;
-  min-block-size: token(--space-48);
-  border: 1px solid var(--vibrancy-background);
-  border-radius: token(--radius-16);
+    margin: 0;
+    text-overflow: ellipsis;
+    font-size: var(--font-size);
+    font-weight: token(--font-weight-semi-bold);
+    font-family: inherit;
+    line-height: 1;
+    appearance: none;
+    inline-size: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    color: inherit;
+    background-color: var(--vibrancy-background-soft);
+    padding: 0 var(--field-padding);
+    display: flex;
+    caret-color: var(--cta-default);
+    outline-offset: 2px;
+    min-block-size: token(--space-48);
+    border: 1px solid var(--vibrancy-background);
+    border-radius: token(--radius-16);
 
-  &::-webkit-calendar-picker-indicator {
-    width: 0;
-    height: 0;
+    &::-webkit-calendar-picker-indicator {
+      width: 0;
+      height: 0;
 
-    /* opacity: 0%; */
-  }
+      /* opacity: 0%; */
+    }
 
-  @nest [data-textfield-has-icon='true'] &::-webkit-calendar-picker-indicator {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    right: calc(var(--field-padding) / 2);
-  }
+    @nest [data-textfield-has-icon='true'] &::-webkit-calendar-picker-indicator {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: calc(var(--field-padding) / 2);
+    }
 
-  &:-moz-ui-invalid {
-    box-shadow: none;
-  }
-
-  &::placeholder {
-    color: var(--dimmed-5);
-  }
-
-  &:focus-visible {
-    background-color: transparent;
-  }
-
-  &:disabled {
-    cursor: not-allowed;
-    border-color: transparent;
-    color: var(--global-disabled-foreground);
-    background-color: var(--global-disabled-background);
+    &:-moz-ui-invalid {
+      box-shadow: none;
+    }
 
     &::placeholder {
-      color: var(--dimmed-6);
+      color: var(--dimmed-5);
+    }
+
+    &:focus-visible {
+      background-color: transparent;
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      border-color: transparent;
+      color: var(--global-disabled-foreground);
+      background-color: var(--global-disabled-background);
+
+      &::placeholder {
+        color: var(--dimmed-6);
+      }
+    }
+
+    &[readonly] {
+      border: 1px dashed var(--dimmed-4);
+      box-shadow: none;
+      cursor: default;
+    }
+
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus,
+    &:-webkit-autofill:active {
+      -webkit-text-fill-color: var(--vibrancy-foreground);
+      box-shadow: 0 0 0 100px var(--vibrancy-background-soft) inset, 0 0 0 100px var(--global-background) inset;
+
+      &::selection {
+        -webkit-text-fill-color: var(--dimmed-0);
+      }
+    }
+
+    /* stylelint-disable-next-line no-descending-specificity */
+    &:is(:invalid, [data-basefield-invalid='true'], :out-of-range),
+    &:is(:invalid, [data-basefield-invalid='true'], :out-of-range):focus-visible {
+      background-color: var(--vibrancy-background-error);
+      outline-color: var(--highlight-red-foreground);
+      border-color: transparent;
+    }
+
+
+    &[type='number'] {
+      appearance: textfield;
+    }
+
+    &[type='number']::-webkit-inner-spin-button,
+    &[type='number']::-webkit-outer-spin-button {
+      display: none;
+    }
+
+    &[type='search'] {
+      appearance: none;
+    }
+
+    &[type='search']::-webkit-search-cancel-button,
+    &[type='search']::-webkit-search-decoration {
+      appearance: none;
     }
   }
 
-  &[readonly] {
-    border: 1px dashed var(--dimmed-4);
-    box-shadow: none;
-    cursor: default;
-  }
 
-  &:-webkit-autofill,
-  &:-webkit-autofill:hover,
-  &:-webkit-autofill:focus,
-  &:-webkit-autofill:active {
-    -webkit-text-fill-color: var(--vibrancy-foreground);
-    box-shadow: 0 0 0 100px var(--vibrancy-background-soft) inset, 0 0 0 100px var(--global-background) inset;
+  textarea.BaseField {
+    block-size: auto;
+    min-block-size: token(--space-32);
+    line-height: token(--font-lh-standard);
+    resize: vertical;
+    padding:
+      calc(var(--field-padding) / 2)
+      calc(var(--field-padding) + token(--space-16))
+      calc(var(--field-padding) / 2)
+      var(--field-padding);
 
-    &::selection {
-      -webkit-text-fill-color: var(--dimmed-0);
+    &::-webkit-datetime-edit-text {
+      opacity: 30%;
     }
-  }
 
-  &:is(:invalid, [data-basefield-invalid='true'], :out-of-range),
-  &:is(:invalid, [data-basefield-invalid='true'], :out-of-range):focus-visible {
-    background-color: var(--vibrancy-background-error);
-    outline-color: var(--highlight-red-foreground);
-    border-color: transparent;
-  }
+    &::-webkit-calendar-picker-indicator {
+      color: var(--global-foreground);
+    }
 
+    &:-moz-ui-invalid {
+      box-shadow: none;
+    }
 
-  &[type='number'] {
-    appearance: textfield;
-  }
-
-  &[type='number']::-webkit-inner-spin-button,
-  &[type='number']::-webkit-outer-spin-button {
-    display: none;
-  }
-
-  &[type='search'] {
-    appearance: none;
-  }
-
-  &[type='search']::-webkit-search-cancel-button,
-  &[type='search']::-webkit-search-decoration {
-    appearance: none;
-  }
-}
-
-
-textarea.BaseField {
-  block-size: auto;
-  min-block-size: token(--space-32);
-  line-height: token(--font-lh-standard);
-  resize: vertical;
-  padding:
-    calc(var(--field-padding) / 2)
-    calc(var(--field-padding) + token(--space-16))
-    calc(var(--field-padding) / 2)
-    var(--field-padding);
-
-  &::-webkit-datetime-edit-text {
-    opacity: 30%;
-  }
-
-  &::-webkit-calendar-picker-indicator {
-    color: var(--global-foreground);
-  }
-
-  &:-moz-ui-invalid {
-    box-shadow: none;
-  }
-
-  &::-webkit-calendar-picker-indicator:hover {
-    background-color: transparent;
+    &::-webkit-calendar-picker-indicator:hover {
+      background-color: transparent;
+    }
   }
 }

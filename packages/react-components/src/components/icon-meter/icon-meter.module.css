@@ -1,29 +1,31 @@
-.IconMeter {
-  --icon-dimmed-color: var(--dimmed-3);
-  --icon-size: token(--icon-size-16);
+@layer components {
+  .IconMeter {
+    --icon-dimmed-color: var(--dimmed-3);
+    --icon-size: token(--icon-size-16);
 
-  position: relative;
+    position: relative;
 
-  &[data-icon-meter-dimension='small'] {
-    --icon-size: token(--icon-size-14);
+    &[data-icon-meter-dimension='small'] {
+      --icon-size: token(--icon-size-14);
+    }
+
+    &[data-icon-meter-dimension='big'] {
+      --icon-size: token(--icon-size-24);
+    }
   }
 
-  &[data-icon-meter-dimension='big'] {
-    --icon-size: token(--icon-size-24);
+  .Gradient {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    block-size: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    inline-size: 1px;
   }
-}
 
-.Gradient {
-  clip: rect(0 0 0 0);
-  clip-path: inset(50%);
-  block-size: 1px;
-  overflow: hidden;
-  position: absolute;
-  white-space: nowrap;
-  inline-size: 1px;
-}
-
-.Icon {
-  inline-size: var(--icon-size);
-  block-size: var(--icon-size);
+  .Icon {
+    inline-size: var(--icon-size);
+    block-size: var(--icon-size);
+  }
 }

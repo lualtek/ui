@@ -77,16 +77,17 @@ export const Stack = forwardRef(({
     if (prop.includes('start') || prop.includes('end')) {
       return `flex-${prop}`;
     }
+
     return prop;
   };
 
   const computedStyle: CSSProperties = {
-    '--rGap': rowGap ? tkns.space[rowGap] : 0,
-    '--cGap': columnGap ? tkns.space[columnGap] : 0,
-    '--vAlign': vAlign && alignmentTemplate(vAlign),
-    '--hAlign': hAlign && alignmentTemplate(hAlign),
-    '--vPadding': vPadding ? tkns.space[vPadding] : 0,
-    '--hPadding': hPadding ? tkns.space[hPadding] : 0,
+    '--r-gap': rowGap ? tkns.space[rowGap] : 0,
+    '--c-gap': columnGap ? tkns.space[columnGap] : 0,
+    '--v-align': vAlign && alignmentTemplate(vAlign),
+    '--h-align': hAlign && alignmentTemplate(hAlign),
+    '--v-padding': vPadding ? tkns.space[vPadding] : 0,
+    '--h-padding': hPadding ? tkns.space[hPadding] : 0,
   };
 
   return (

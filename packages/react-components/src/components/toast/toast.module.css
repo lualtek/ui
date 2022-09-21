@@ -1,67 +1,70 @@
-.Toast {
-  background: var(--toast-bg);
-  color: var(--toast-fg);
-  border-radius: token(--radius-24);
-  overflow: hidden;
+@layer components {
+  .Toast {
+    background: var(--toast-bg);
+    color: var(--toast-fg);
+    border-radius: token(--radius-24);
+    overflow: hidden;
 
-  & p {
-    font-size: token(--font-size-16);
+    & p {
+      font-size: token(--font-size-16);
+    }
+
+    &[data-toast-kind='neutral'] {
+      --toast-bg: var(--global-foreground);
+      --toast-fg: var(--global-background);
+    }
+
+    &[data-toast-kind='positive'] {
+      --toast-bg: var(--highlight-green-background);
+      --toast-fg: var(--highlight-green-foreground);
+    }
+
+    &[data-toast-kind='warning'] {
+      --toast-bg: var(--highlight-yellow-background);
+      --toast-fg: var(--highlight-yellow-foreground);
+    }
+
+    &[data-toast-kind='info'] {
+      --toast-bg: var(--highlight-blue-background);
+      --toast-fg: var(--highlight-blue-foreground);
+    }
+
+    &[data-toast-kind='danger'] {
+      --toast-bg: var(--highlight-red-background);
+      --toast-fg: var(--highlight-red-foreground);
+    }
   }
 
-  &[data-toast-kind='neutral'] {
-    --toast-bg: var(--global-foreground);
-    --toast-fg: var(--global-background);
+  .Icon {
+    flex-shrink: 0;
+    flex-grow: 0;
   }
 
-  &[data-toast-kind='positive'] {
-    --toast-bg: var(--highlight-green-background);
-    --toast-fg: var(--highlight-green-foreground);
-  }
 
-  &[data-toast-kind='warning'] {
-    --toast-bg: var(--highlight-yellow-background);
-    --toast-fg: var(--highlight-yellow-foreground);
-  }
-
-  &[data-toast-kind='info'] {
-    --toast-bg: var(--highlight-blue-background);
-    --toast-fg: var(--highlight-blue-foreground);
-  }
-
-  &[data-toast-kind='danger'] {
-    --toast-bg: var(--highlight-red-background);
-    --toast-fg: var(--highlight-red-foreground);
+  .Viewport {
+    display: flex;
+    flex-direction: column;
+    gap: token(--space-8);
+    position: fixed;
+    inset: auto 0 0 auto;
+    padding: token(--space-24);
+    list-style: none;
   }
 }
+@layer overrides {
+  .Title {
+    color: var(--toast-fg);
+  }
 
-
-.Icon {
-  flex-shrink: 0;
-  flex-grow: 0;
-}
-
-.Title {
-  color: var(--toast-fg);
-}
-
-.Action:is(.Action) {
-  color: var(--toast-bg);
-  background-color: var(--toast-fg);
-  flex-grow: 0;
-
-  &:is(.Action):active {
+  .Action {
     color: var(--toast-bg);
     background-color: var(--toast-fg);
-    opacity: 80%;
-  }
-}
+    flex-grow: 0;
 
-.Viewport {
-  display: flex;
-  flex-direction: column;
-  gap: token(--space-8);
-  position: fixed;
-  inset: auto 0 0 auto;
-  padding: token(--space-24);
-  list-style: none;
+    &:active {
+      color: var(--toast-bg);
+      background-color: var(--toast-fg);
+      opacity: 80%;
+    }
+  }
 }

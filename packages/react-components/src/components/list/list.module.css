@@ -1,57 +1,60 @@
-.List {
-  --marker-size: token(--space-16);
-  --marker-gap: token(--space-8);
-
-  &[data-list-ordered='false'] {
-    padding: 0;
-    list-style: none;
-  }
-
-  &[data-list-size='small'] {
-    --marker-size: 0.77rem;
+@layer components {
+  .List {
+    --marker-size: token(--space-16);
     --marker-gap: token(--space-8);
+
+    &[data-list-ordered='false'] {
+      padding: 0;
+      list-style: none;
+    }
+
+    &[data-list-size='small'] {
+      --marker-size: 0.77rem;
+      --marker-gap: token(--space-8);
+    }
+
+    &[data-list-size='big'] {
+      --marker-size: 1.11rem;
+      --marker-gap: token(--space-16);
+    }
+
+    &[data-list-no-marker='true'] {
+      --marker-size: 0;
+      --marker-gap: 0;
+
+      list-style: none;
+      padding: 0;
+    }
   }
 
-  &[data-list-size='big'] {
-    --marker-size: 1.11rem;
-    --marker-gap: token(--space-16);
-  }
-
-  &[data-list-no-marker='true'] {
-    --marker-size: 0;
-    --marker-gap: 0;
-
-    list-style: none;
-    padding: 0;
-  }
-}
-
-.ListItem.ListItem {
-  gap: var(--marker-gap);
+  .Marker {
+    flex-shrink: 0;
+    inline-size: var(--marker-size);
+    block-size: var(--marker-size);
+    margin-block-start: calc(var(--marker-size) / 2.5);
 
 
-  @nest [data-list-ordered='true'] & {
-    display: list-item;
+    &[data-list-default-marker='true'] {
+      transform: scale(0.7);
+      margin-block-start: calc(var(--marker-size) / 3);
+    }
 
-    &::marker {
-      color: var(--dimmed-5);
+    @nest .List[data-list-size='big'] & {
+      margin-block-start: calc(var(--marker-size) / 3);
     }
   }
 }
-
-.Marker {
-  flex-shrink: 0;
-  inline-size: var(--marker-size);
-  block-size: var(--marker-size);
-  margin-block-start: calc(var(--marker-size) / 2.5);
+@layer overrides {
+  .ListItem {
+    gap: var(--marker-gap);
 
 
-  &[data-list-default-marker='true'] {
-    transform: scale(0.7);
-    margin-block-start: calc(var(--marker-size) / 3);
-  }
+    @nest [data-list-ordered='true'] & {
+      display: list-item;
 
-  @nest .List[data-list-size='big'] & {
-    margin-block-start: calc(var(--marker-size) / 3);
+      &::marker {
+        color: var(--dimmed-5);
+      }
+    }
   }
 }

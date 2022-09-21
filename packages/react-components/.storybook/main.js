@@ -15,7 +15,6 @@ module.exports = {
     builder: 'webpack5',
   },
   addons: [
-    'storybook-dark-mode',
     '@storybook/addon-actions',
     '@storybook/addon-links',
     'storybook-css-modules-preset',
