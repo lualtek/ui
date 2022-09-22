@@ -48,7 +48,9 @@ export const Title = forwardRef(({
   ...otherProps
 }, forwardedRef) => {
   const computedLevel = level.match(/\d/g) ? `H${level}` : level.charAt(0).toUpperCase() + level.slice(1);
-
+  // @ts-expect-error: generated className is not pure in CSS
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+  const computedCSSClass = styles[computedLevel];
   const dynamicStyle: CSSProperties = {
     '--max-w': maxWidth,
     '--t-align': textAlign,
@@ -59,7 +61,7 @@ export const Title = forwardRef(({
       ref={forwardedRef}
       data-title-line-height={lineHeight}
       data-title-responsive={responsive}
-      className={clsx(styles.Title, styles[computedLevel], className)}
+      className={clsx(styles.Title, computedCSSClass, className)}
       style={{ ...dynamicStyle, ...style }}
       {...otherProps}
     >

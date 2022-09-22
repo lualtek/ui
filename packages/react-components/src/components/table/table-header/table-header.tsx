@@ -1,11 +1,11 @@
-import { FC, HTMLAttributes } from 'react';
+import { FC, HTMLAttributes, ReactNode } from 'react';
 
-import { Polymorphic, Stack, Title } from '@/components';
+import { Stack, Title } from '@/components';
 
 import * as styles from './table-header.module.css';
 
 export type TableHeaderProps = HTMLAttributes<HTMLElement> & {
-  title?: Polymorphic.IntrinsicElement<typeof Title>;
+  title?: string | ReactNode;
 }
 
 export const TableHeader: FC<TableHeaderProps> = ({
