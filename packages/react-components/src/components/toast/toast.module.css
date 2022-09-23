@@ -1,7 +1,6 @@
 @layer components {
   .Toast {
     background: var(--toast-bg);
-    color: var(--toast-fg);
     border-radius: token(--radius-24);
     overflow: hidden;
 
@@ -10,32 +9,38 @@
     }
 
     &[data-toast-kind='neutral'] {
-      --toast-bg: var(--global-foreground);
-      --toast-fg: var(--global-background);
+      --toast-bg: var(--vibrancy-background);
+      --toast-fg: var(--global-foreground);
+      --toast-action-fg: var(--global-background);
     }
 
     &[data-toast-kind='positive'] {
-      --toast-bg: var(--highlight-green-background);
+      --toast-bg: var(--vibrancy-background);
       --toast-fg: var(--highlight-green-foreground);
+      --toast-action-fg: var(--highlight-green-background);
     }
 
     &[data-toast-kind='warning'] {
-      --toast-bg: var(--highlight-yellow-background);
+      --toast-bg: var(--vibrancy-background);
       --toast-fg: var(--highlight-yellow-foreground);
+      --toast-action-fg: var(--highlight-yellow-background);
     }
 
     &[data-toast-kind='info'] {
-      --toast-bg: var(--highlight-blue-background);
+      --toast-bg: var(--vibrancy-background);
       --toast-fg: var(--highlight-blue-foreground);
+      --toast-action-fg: var(--highlight-blue-background);
     }
 
     &[data-toast-kind='danger'] {
-      --toast-bg: var(--highlight-red-background);
+      --toast-bg: var(--vibrancy-background);
       --toast-fg: var(--highlight-red-foreground);
+      --toast-action-fg: var(--highlight-red-background);
     }
   }
 
   .Icon {
+    color: var(--toast-fg);
     flex-shrink: 0;
     flex-grow: 0;
   }
@@ -57,13 +62,13 @@
   }
 
   .Action {
-    color: var(--toast-bg);
+    color: var(--toast-action-fg);
     background-color: var(--toast-fg);
     flex-grow: 0;
 
     &:active {
-      color: var(--toast-bg);
-      background-color: var(--toast-fg);
+      color: var(--toast-fg);
+      background-color: var(--toast-action-fg);
       opacity: 80%;
     }
   }
