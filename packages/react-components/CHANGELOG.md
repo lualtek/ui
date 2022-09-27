@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 0.29.1
+
+### Patch Changes
+
+- eb8c13c: Fix Separator color
+- e2a6f57: Fix small radio override style
+
 ## 0.29.0
 
 ### Minor Changes
