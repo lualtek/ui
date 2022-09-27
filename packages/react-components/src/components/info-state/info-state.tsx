@@ -1,3 +1,4 @@
+import { TokensTypes } from '@lualtek/tokens';
 import { domMax, LazyMotion, m } from 'framer-motion';
 import { forwardRef, PropsWithChildren, ReactNode } from 'react';
 
@@ -22,7 +23,7 @@ export type InfoStateProps = PropsWithChildren<PropsWithClass<{
    * Set the icon color. Please use the correct color based on the type of the message.
    * Eg. Don't use `green` for negative informations.
    */
-  iconColor?: 'gray' | 'cyan' | 'green' | 'purple' | 'yellow' | 'red' | 'blue';
+  iconColor?: TokensTypes['colors'];
   /**
    * An image may be used instead of an icon. The image is centered and scaled.
    */

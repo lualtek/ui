@@ -1,3 +1,4 @@
+import { TokensTypes } from '@lualtek/tokens';
 import clsx from 'clsx';
 import { forwardRef } from 'react';
 
@@ -13,7 +14,7 @@ export type ChipProps = PropsClassChildren<{
   /**
    * Set a color from one of the provided values.
    */
-  color?: 'gray' | 'cyan' | 'green' | 'purple' | 'yellow' | 'red' | 'blue';
+  color?: TokensTypes['colors'];
   /**
    * Make the chip dismissable. When `true` adds a close button on the side.
    */
@@ -28,7 +29,7 @@ export const Chip = forwardRef<HTMLSpanElement, ChipProps>(({
   children,
   className,
   dimension = 'regular',
-  color = 'gray',
+  color,
   interactive,
   onDismissClick,
   ...otherProps
