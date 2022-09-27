@@ -1,5 +1,11 @@
 # @lualtek/react-components
 
+## 0.29.2
+
+### Patch Changes
+
+- 3497491: Fix tokentypes colors
+
 ## 0.29.1
 
 ### Patch Changes

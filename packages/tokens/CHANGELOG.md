@@ -1,5 +1,11 @@
 # @lualtek/tokens
 
+## 0.7.2
+
+### Patch Changes
+
+- 3497491: Fix tokentypes colors
+
 ## 0.7.1
 
 ### Patch Changes
