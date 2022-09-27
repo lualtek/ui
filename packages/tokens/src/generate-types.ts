@@ -12,19 +12,23 @@ const getTypeUnion = (json: Record<string, unknown>) => Object.keys(json).reduce
   (acc, key, index) => acc.concat(`${index !== 0 ? '| ' : ''}${printCorrectValue(key)} `), '',
 );
 
-const reduceTokensJson = (tokens: Record<string, any>): string => Object.keys(tokens).reduce((acc, key) => {
-  const jsonEntity = tokens[key];
+const reduceTokensJson = (tokens: Record<string, unknown>): string => Object.keys(tokens).reduce((acc, key) => {
+  const jsonEntity = tokens[key] as Record<string, unknown>;
 
   if (deeperKeys.includes(key)) {
     return acc.concat(`${key}: { ${reduceTokensJson(jsonEntity)} };\n`);
   }
+
   const allKeysAsTypeUnion = getTypeUnion(jsonEntity);
   return allKeysAsTypeUnion ? acc.concat(`${key}: ${allKeysAsTypeUnion.trimEnd()};\n `) : acc;
 }, '');
 
 const run = () => {
-  const tokens = require('../platforms/web/tokens.json');
-  const types = `export type TokensTypes = {\n ${reduceTokensJson(tokens)} \n}`;
+  const tokens = require('../platforms/web/tokens.json') as Record<string, unknown>;
+  const types = `export type TokensTypes = {
+  ${reduceTokensJson(tokens)}
+  colors: ${Object.keys(tokens.color as Record<string, unknown>).map(item => `'${item}'`).join('|')};
+};`;
 
   fs.writeFileSync(path.join('platforms', 'web', 'index.ts'), types);
 };
@@ -32,7 +36,7 @@ const run = () => {
 try {
   run();
   process.exit(0);
-} catch (error) {
+} catch (error: unknown) {
   console.error('⚠️ Something went wrong:', error);
   process.exit(1);
 }
