@@ -1,5 +1,7 @@
 # @lualtek/tokens
 
+## 1.0.1
+
 ## 0.7.2
 
 ### Patch Changes
