@@ -1,5 +1,7 @@
 # @lualtek/icons
 
+## 1.0.1
+
 ## 0.15.0
 
 ### Minor Changes

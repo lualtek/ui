@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 1.0.1
+
+### Patch Changes
+
+- ae297a3: Fix menu and menu-item issues
+  - @lualtek/icons@1.0.1
+
 ## 1.0.0
 
 ### Major Changes
