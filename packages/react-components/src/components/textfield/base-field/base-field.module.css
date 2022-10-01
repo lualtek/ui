@@ -83,7 +83,7 @@
     /* stylelint-disable-next-line no-descending-specificity */
     &:is(:invalid, [data-basefield-invalid='true'], :out-of-range),
     &:is(:invalid, [data-basefield-invalid='true'], :out-of-range):focus-visible {
-      background-color: var(--vibrancy-background-error);
+      background-color: var(--vibrancy-background-red);
       outline-color: var(--highlight-red-foreground);
       border-color: transparent;
     }

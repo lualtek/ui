@@ -43,13 +43,13 @@
     "background-hard": {
       "value": "hsl({color.primary.40} / 40%)"
     },
-    "background-error": {
+    "background-red": {
       "value": "hsl({color.red.50} / 10%)"
     },
-    "background-positive": {
+    "background-green": {
       "value": "hsl({color.green.40} / 10%)"
     },
-    "background-warning": {
+    "background-yellow": {
       "value": "hsl({color.yellow.50} / 10%)"
     }
   },

@@ -73,7 +73,7 @@
       color: var(--highlight-green-foreground);
 
       &::before {
-        background-color: var(--vibrancy-background-positive);
+        background-color: var(--vibrancy-background-green);
       }
     }
 
@@ -81,7 +81,7 @@
       color: var(--highlight-red-foreground);
 
       &::before {
-        background-color: var(--vibrancy-background-error);
+        background-color: var(--vibrancy-background-red);
       }
     }
 
@@ -89,7 +89,7 @@
       color: var(--highlight-yellow-foreground);
 
       &::before {
-        background-color: var(--vibrancy-background-warning);
+        background-color: var(--vibrancy-background-yellow);
       }
     }
   }
