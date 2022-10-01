@@ -1,5 +1,11 @@
 # @lualtek/themes
 
+## 1.0.0
+
+### Major Changes
+
+- fe23190: Change vibrancy theme keys from positive, danger, warning to green, red, yellow
+
 ## 0.8.0
 
 ### Minor Changes
