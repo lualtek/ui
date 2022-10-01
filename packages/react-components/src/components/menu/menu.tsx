@@ -10,6 +10,7 @@ import { Elevator, Polymorphic, Stack } from '@/components';
 import * as styles from './menu.module.css';
 import { MenuItem, MenuItemProps } from './menu-item/menu-item';
 import { MenuItemCheckbox, MenuItemCheckboxProps } from './menu-item/menu-item-checkbox';
+import { MenuSeparator } from './menu-separator/menu-separator';
 
 export type MenuProps = PropsClassChildren<HTMLAttributes<HTMLUListElement>>
 
@@ -22,6 +23,7 @@ type MenuComponent = ForwardRefExoticComponent<MenuProps> & {
   Polymorphic.IntrinsicElement<typeof MenuItemCheckbox>,
   Polymorphic.OwnProps<typeof MenuItemCheckbox> & MenuItemCheckboxProps
   >;
+  Separator: typeof MenuSeparator;
 }
 
 export const Menu = forwardRef<HTMLUListElement, MenuProps>(({
@@ -57,3 +59,4 @@ Menu.displayName = 'Menu';
 
 Menu.Item = MenuItem;
 Menu.ItemCheckbox = MenuItemCheckbox;
+Menu.Separator = MenuSeparator;
