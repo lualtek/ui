@@ -1,5 +1,20 @@
 # @lualtek/react-components
 
+## 1.0.0
+
+### Major Changes
+
+- fe23190: Change vibrancy theme keys from positive, danger, warning to green, red, yellow
+
+### Minor Changes
+
+- 31de07e: Add Menu.Separator element
+- f0dd9a4: Add sentiment prop to menu-item
+
+### Patch Changes
+
+- a5f6b7b: Update menu-item content element to div
+
 ## 0.29.2
 
 ### Patch Changes
