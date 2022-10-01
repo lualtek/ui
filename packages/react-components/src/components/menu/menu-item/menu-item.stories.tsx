@@ -33,15 +33,17 @@ export default story;
 const TemplateItem: ComponentStory<typeof Menu.Item> = args => (
   <>
     <Menu.Item
-      icon="sun"
       {...args}
+      value="1"
+      icon="sun"
     >
       List item text
     </Menu.Item>
     <Menu.Item
-      icon="sun"
-      decoration={<Chip dimension="small" color="blue">Decoration</Chip>}
       {...args}
+      icon="sun"
+      value="2"
+      decoration={<Chip dimension="small" color="blue">Decoration</Chip>}
     >
       List item text
     </Menu.Item>
@@ -56,17 +58,19 @@ const WithCheckboxTemplate: ComponentStory<typeof Menu.ItemCheckbox> = (args) =>
   return (
     <>
       <Menu.ItemCheckbox
+        {...args}
         checked={isChecked}
         icon={isChecked ? 'check' : undefined}
         onClick={() => setIsChecked(val => !val)}
-        {...args}
+        value="1"
       >
         Checkable item
       </Menu.ItemCheckbox>
       <Menu.Item
+        {...args}
         icon="sun"
         decoration={<Chip dimension="small" color="blue">Decoration</Chip>}
-        {...args}
+        value="2"
       >
         List item text
       </Menu.Item>
@@ -78,10 +82,10 @@ export const WithCheckboxes = WithCheckboxTemplate.bind({});
 
 const WithDecoratorsTemplate: ComponentStory<typeof Menu.Item> = args => (
   <>
-    <Menu.Item decoration={<Chip dimension="small" color="yellow">Good</Chip>} icon="sun" {...args}>List item text</Menu.Item>
-    <Menu.Item decoration={<Chip dimension="small" color="blue">Example</Chip>} icon="chat" {...args}>List item text List item</Menu.Item>
-    <Menu.Item decoration={<Text size={14} sentiment="danger">Warning</Text>} icon="view" {...args}>List item text</Menu.Item>
-    <Menu.Item decoration={<Chip dimension="small" color="purple">Decoration</Chip>} icon="file" {...args}>List item text</Menu.Item>
+    <Menu.Item {...args} value="1" decoration={<Chip dimension="small" color="yellow">Good</Chip>} icon="sun">List item text</Menu.Item>
+    <Menu.Item {...args} value="2" decoration={<Chip dimension="small" color="blue">Example</Chip>} icon="chat">List item text List item</Menu.Item>
+    <Menu.Item {...args} value="3" decoration={<Text size={14} sentiment="danger">Warning</Text>} icon="view">List item text</Menu.Item>
+    <Menu.Item {...args} value="4" decoration={<Chip dimension="small" color="purple">Decoration</Chip>} icon="file">List item text</Menu.Item>
   </>
 );
 

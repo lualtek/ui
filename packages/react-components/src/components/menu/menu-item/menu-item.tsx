@@ -27,7 +27,7 @@ export type MenuItemProps = PropsClassChildren<{
   /**
    * Callback function to be called when the menu item is pressed.
    */
-  onClick?: (event?: React.MouseEvent<HTMLElement>) => void;
+  onClick?: (event: React.MouseEvent<HTMLElement>, value: string) => void;
   /**
    * Set disabled state. The item is not interactive and grayed out.
    */
@@ -37,6 +37,8 @@ export type MenuItemProps = PropsClassChildren<{
    * This space is used to keep the content aligned across items with or without icons.
    * We suggest to not remove the padding if you have items with icons in the same menu to
    * keep a good readability.
+   *
+   * Read more: https://design.wonderflow.ai/design/recipes/menu/#items-with-icons
    */
   padding?: boolean;
   /**
@@ -52,6 +54,10 @@ export type MenuItemProps = PropsClassChildren<{
    * if `Menu.Item` is rendered as ´<button>´ (default).
    */
   decoration?: ReactNode;
+  /**
+   * Assign a string value to the menu option. This is returned when the menu item is clicked.
+   */
+  value: string;
   /**
    * Set the sentiment color for the item
    */
@@ -72,6 +78,7 @@ export const MenuItem = forwardRef(({
   disabled = false,
   autoFocus,
   decoration,
+  value,
   sentiment,
   ...otherProps
 }, forwardedRef) => {
@@ -82,13 +89,13 @@ export const MenuItem = forwardRef(({
   useFocusEffect(isFocused, itemRef);
 
   const triggerClick = useCallback(
-    (event: React.MouseEvent<HTMLElement>) => {
+    (e: React.MouseEvent<HTMLElement>) => {
       if (onClick) {
         handleClick();
-        onClick(event);
+        onClick(e, value);
       }
     },
-    [handleClick, onClick],
+    [handleClick, onClick, value],
   );
 
   const InnerContent = useMemo(() => (
@@ -108,6 +115,7 @@ export const MenuItem = forwardRef(({
     >
       {icon && (
         <Icon
+          className={styles.Icon}
           source={icon}
           dimension={dimension === 'small' ? 12 : 16}
         />
@@ -127,22 +135,24 @@ export const MenuItem = forwardRef(({
   ), [children, dimension, icon, isIconRight, decoration, padding]);
 
   return (
-    <Wrapper
-      autoFocus={autoFocus}
-      ref={itemRef}
-      role="menuitem"
-      className={clsx(styles.MenuItem, className)}
-      onClick={disabled ? undefined : triggerClick}
-      onKeyDown={disabled ? undefined : handleKeyDown}
-      tabIndex={tabIndex}
-      aria-disabled={disabled}
-      type={Wrapper === 'button' ? 'button' : undefined}
-      data-menu-item-dimension={dimension}
-      data-menu-item-sentiment={sentiment}
-      {...otherProps}
-    >
-      {InnerContent}
-    </Wrapper>
+    <Stack as="li" role="none">
+      <Wrapper
+        autoFocus={autoFocus}
+        ref={itemRef}
+        role="menuitem"
+        className={clsx(styles.MenuItem, className)}
+        onClick={disabled ? undefined : triggerClick}
+        onKeyDown={disabled ? undefined : handleKeyDown}
+        tabIndex={tabIndex}
+        aria-disabled={disabled}
+        type={Wrapper === 'button' ? 'button' : undefined}
+        data-menu-item-dimension={dimension}
+        data-menu-item-sentiment={sentiment}
+        {...otherProps}
+      >
+        {InnerContent}
+      </Wrapper>
+    </Stack>
   );
 }) as PolymorphicMenuItem;
 

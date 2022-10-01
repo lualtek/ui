@@ -15,7 +15,6 @@
     position: relative;
     padding: 0;
 
-
     &:hover {
       color: var(--global-foreground);
     }

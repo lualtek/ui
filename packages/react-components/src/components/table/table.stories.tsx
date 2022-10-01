@@ -2,7 +2,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { useCallback, useMemo, useState } from 'react';
 
 import {
-  Button, IconButton, Menu, Popover, Separator, Stack, Title,
+  Button, IconButton, Menu, Popover, Stack, Title,
 } from '../..';
 import { tableData, tableDataWithIds, tableFirstData } from './__fixtures__/table-data';
 import { Table } from './table';
@@ -162,6 +162,7 @@ const RowActionsTemplate: ComponentStory<typeof Table> = ({
             <Popover.Content side="bottom" align="start" offset={4}>
               <Menu>
                 <Menu.Item
+                  value="1"
                   dimension="small"
                   autoFocus
                   icon="ctrl-right"
@@ -169,14 +170,15 @@ const RowActionsTemplate: ComponentStory<typeof Table> = ({
                   Sample long menu item
                 </Menu.Item>
                 <Menu.Item
+                  value="2"
                   dimension="small"
                   icon="sun"
                 >
                   Short menu label
                 </Menu.Item>
-                <Separator />
-                <Menu.Item dimension="small" icon="view">Even shorter</Menu.Item>
-                <Menu.Item dimension="small" disabled>Really?</Menu.Item>
+                <Menu.Separator />
+                <Menu.Item value="3" dimension="small" icon="view">Even shorter</Menu.Item>
+                <Menu.Item value="4" dimension="small" disabled>Really?</Menu.Item>
               </Menu>
             </Popover.Content>
           </Popover>

@@ -1,7 +1,7 @@
 
 import clsx from 'clsx';
 import {
-  Children, forwardRef, ForwardRefExoticComponent, HTMLAttributes,
+  CSSProperties, forwardRef, ForwardRefExoticComponent, HTMLAttributes, ReactNode,
 } from 'react';
 import { RovingTabIndexProvider } from 'react-roving-tabindex';
 
@@ -12,7 +12,16 @@ import { MenuItem, MenuItemProps } from './menu-item/menu-item';
 import { MenuItemCheckbox, MenuItemCheckboxProps } from './menu-item/menu-item-checkbox';
 import { MenuSeparator } from './menu-separator/menu-separator';
 
-export type MenuProps = PropsClassChildren<HTMLAttributes<HTMLUListElement>>
+export type MenuProps = HTMLAttributes<HTMLUListElement> & {
+  /**
+   * The items of the menu.
+   */
+  children: ReactNode;
+  /**
+   * Set a maximum height of the menu after which it will scroll.
+   */
+  maxHeight?: string;
+}
 
 type MenuComponent = ForwardRefExoticComponent<MenuProps> & {
   Item: Polymorphic.ForwardRefComponent<
@@ -29,9 +38,13 @@ type MenuComponent = ForwardRefExoticComponent<MenuProps> & {
 export const Menu = forwardRef<HTMLUListElement, MenuProps>(({
   className,
   children,
+  maxHeight,
+  style,
   ...otherProps
 }, forwardedRef) => {
-  const renderedChildren = Children.toArray(children).filter(Boolean);
+  const computedStyle: CSSProperties = {
+    '--max-height': maxHeight,
+  };
 
   return (
     <Elevator resting={2}>
@@ -39,16 +52,14 @@ export const Menu = forwardRef<HTMLUListElement, MenuProps>(({
         as="ul"
         ref={forwardedRef}
         className={clsx(styles.Menu, className)}
+        style={{ ...computedStyle, ...style }}
+        data-menu-should-scroll={Boolean(maxHeight)}
         vPadding={8}
         role="menu"
         {...otherProps}
       >
         <RovingTabIndexProvider options={{ direction: 'vertical', loopAround: true }}>
-          {Children.map(renderedChildren, (child: any) => (
-            <Stack as="li" role="none" vPadding={child.type?.displayName === 'Separator' ? 8 : undefined}>
-              {child}
-            </Stack>
-          ))}
+          {children}
         </RovingTabIndexProvider>
       </Stack>
     </Elevator>

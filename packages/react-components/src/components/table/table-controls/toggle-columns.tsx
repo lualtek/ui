@@ -13,7 +13,7 @@ export const ToggleColumnsControl = <T extends Record<string, unknown>>({
   columns,
   visibleColumns,
 }: ToggleColumnsControlProps<T>) => {
-  const someVisibleColums = useMemo(() => visibleColumns.length !== 0, [visibleColumns]);
+  const hasSomeVisibleColums = useMemo(() => visibleColumns.length !== 0, [visibleColumns]);
   const filteredColumns = useMemo(() => columns.filter(col => !col.isToggable), [columns]);
 
   const handleToggleAll = useCallback(
@@ -22,17 +22,18 @@ export const ToggleColumnsControl = <T extends Record<string, unknown>>({
        * If there are visible columns (excluding artificial ones),
        * hide them all by calling `toggleHidden(true)` for each column
        */
-      if (someVisibleColums) {
+      if (hasSomeVisibleColums) {
         visibleColumns.forEach(col => col.toggleHidden(true));
         return;
       }
+
       /**
        * If there are no visible columns (excluding artificial ones), call
        * toggleHidden(false) for each column
        */
       filteredColumns.forEach(col => col.toggleHidden(false));
     },
-    [someVisibleColums, filteredColumns, visibleColumns],
+    [hasSomeVisibleColums, filteredColumns, visibleColumns],
   );
 
   return (
@@ -41,6 +42,7 @@ export const ToggleColumnsControl = <T extends Record<string, unknown>>({
       <Popover.Content side="bottom" align="start">
         <Menu>
           <Menu.ItemCheckbox
+            value="toggle-all"
             onClick={() => handleToggleAll()}
             checked
             icon={visibleColumns.length === 0 ? 'check' : 'minus'}
@@ -49,6 +51,7 @@ export const ToggleColumnsControl = <T extends Record<string, unknown>>({
           </Menu.ItemCheckbox>
           {columns.filter(col => !col.isToggable).map((column, i) => (
             <Menu.ItemCheckbox
+              value={column.id}
               autoFocus={i === 0}
               key={column.id}
               checked={column.isVisible}
