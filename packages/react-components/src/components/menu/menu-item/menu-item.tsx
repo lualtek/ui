@@ -89,7 +89,6 @@ export const MenuItem = forwardRef(({
   const InnerContent = useMemo(() => (
     <Stack
       direction={isIconRight ? 'row-reverse' : 'row'}
-      as="span"
       fill={false}
       className={styles.ItemContent}
       hAlign={isIconRight ? 'space-between' : 'start'}
