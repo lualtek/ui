@@ -52,6 +52,10 @@ export type MenuItemProps = PropsClassChildren<{
    * if `Menu.Item` is rendered as ´<button>´ (default).
    */
   decoration?: ReactNode;
+  /**
+   * Set the sentiment color for the item
+   */
+  sentiment?: 'positive' | 'warning' | 'danger';
 }>
 
 type PolymorphicMenuItem = Polymorphic.ForwardRefComponent<'button', MenuItemProps>;
@@ -68,6 +72,7 @@ export const MenuItem = forwardRef(({
   disabled = false,
   autoFocus,
   decoration,
+  sentiment,
   ...otherProps
 }, forwardedRef) => {
   const itemRef = useRef<any>(forwardedRef);
@@ -133,6 +138,7 @@ export const MenuItem = forwardRef(({
       aria-disabled={disabled}
       type={Wrapper === 'button' ? 'button' : undefined}
       data-menu-item-dimension={dimension}
+      data-menu-item-sentiment={sentiment}
       {...otherProps}
     >
       {InnerContent}

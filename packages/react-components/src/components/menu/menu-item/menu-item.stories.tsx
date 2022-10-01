@@ -17,6 +17,10 @@ const story: ComponentMeta<typeof Menu.Item> = {
       options: ['small', 'regular'],
       control: { type: 'radio' },
     },
+    sentiment: {
+      options: ['positive', 'warning', 'danger'],
+      control: { type: 'radio' },
+    },
     iconPosition: {
       options: ['left', 'right'],
       control: { type: 'inline-radio' },
