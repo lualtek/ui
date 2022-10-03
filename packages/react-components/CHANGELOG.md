@@ -1,5 +1,15 @@
 # @lualtek/react-components
 
+## 1.1.0
+
+### Minor Changes
+
+- 2f13f4f: Add Popover.Portal
+
+### Patch Changes
+
+- @lualtek/icons@1.1.0
+
 ## 1.0.1
 
 ### Patch Changes
