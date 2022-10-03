@@ -1,5 +1,15 @@
 # @lualtek/react-components
 
+## 1.2.0
+
+### Minor Changes
+
+- 910b60f: Fix Drawer header padding for safe areas
+
+### Patch Changes
+
+- @lualtek/icons@1.2.0
+
 ## 1.1.0
 
 ### Minor Changes
