@@ -9,6 +9,7 @@ const story: ComponentMeta<typeof ToggleButton> = {
     dimension: 'regular',
     kind: 'primary',
     restingIcon: 'view',
+    disabled: false,
   },
   argTypes: {
     onClick: { action: 'clicked' },
