@@ -23,6 +23,10 @@
         background: var(--cta-dark);
       }
 
+      &[aria-disabled='true'] {
+        --separator-color: hsl(0deg 0% 40% / 20%);
+      }
+
       &:is([data-button-dimension='big'], [data-button-dimension='regular']) {
         padding-left: token(--space-8);
         padding-right: token(--space-8);
