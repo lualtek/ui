@@ -1,5 +1,19 @@
 # @lualtek/react-components
 
+## 1.3.0
+
+### Minor Changes
+
+- cb76f2c: Fix split button separator color when disabled
+- d448682: Add Disclosure component
+- d75da79: Update button styles
+- 2379522: Add new `18` icon size
+- 43a8e26: Fix icon style based on size
+
+### Patch Changes
+
+- @lualtek/icons@1.3.0
+
 ## 1.2.0
 
 ### Minor Changes
