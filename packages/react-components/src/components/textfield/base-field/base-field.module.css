@@ -115,7 +115,7 @@
     line-height: token(--font-lh-standard);
     resize: vertical;
     padding:
-      calc(var(--field-padding) / 2)
+      calc(token(--space-24) - token(--space-4))
       calc(var(--field-padding) + token(--space-16))
       calc(var(--field-padding) / 2)
       var(--field-padding);

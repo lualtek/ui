@@ -69,7 +69,8 @@
       fill: var(--highlight-red-foreground);
     }
   }
-
+}
+@layer overrides {
   .IconButton {
     --x: 25%;
 
