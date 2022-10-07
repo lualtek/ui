@@ -1,5 +1,19 @@
 # @lualtek/react-components
 
+## 1.4.0
+
+### Minor Changes
+
+- 994cfbf: Fix `Menu.Item` hover color
+- af856d8: Add safe area padding to modal content
+- 1ddedf2: Fix textfield
+- 71cc110: Fix table rows style
+- c7d79f1: Add missing vibrancy to Toast
+
+### Patch Changes
+
+- @lualtek/icons@1.4.0
+
 ## 1.3.0
 
 ### Minor Changes
