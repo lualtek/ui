@@ -1,5 +1,10 @@
+@import '../../core/utils/vibrancy.css';
+
 @layer components {
   .Toast {
+
+    @mixin vibrancy;
+
     background: var(--toast-bg);
     border-radius: token(--radius-24);
     overflow: hidden;
