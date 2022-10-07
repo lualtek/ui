@@ -34,7 +34,7 @@
       opacity: 60%;
       z-index: 0;
       display: none;
-      background-color: var(--dimmed-1);
+      background-color: var(--dimmed-2);
     }
 
     &:is(:hover, :focus-visible, [aria-pressed='true']):not([aria-disabled='true']) {
