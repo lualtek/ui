@@ -18,13 +18,13 @@ jobs:
     with:
       release: true
   notify:
-    name: Notify deploy
+    name: Notify Release
     runs-on: ubuntu-latest
-    needs: deploy
+    needs: ci
     steps:
       - uses: sarisia/actions-status-discord@v1
         if: success()
         with:
           webhook: ${{ secrets.DISCORD_WEBHOOK }}
-          title: "Deploy UI Components"
-          description: "Deployed UI components on NPM"
+          title: "Release UI Components"
+          description: "UI components released on NPM"
