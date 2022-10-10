@@ -29,7 +29,7 @@ export type IconProps = SVGAttributes<SVGElement | SVGSVGElement> & {
 export const Icon = forwardRef<SVGSVGElement, IconProps>(({
   className,
   source,
-  dimension = 16,
+  dimension = 18,
   fill,
   ...otherProps
 }: IconProps, forwardedRef) => {
