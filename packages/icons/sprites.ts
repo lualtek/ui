@@ -3,17 +3,17 @@ import fs from 'fs-extra';
 import { createSpinner } from 'nanospinner';
 import path from 'path';
 import colors from 'picocolors';
-// @ts-expect-error
+// @ts-expect-error: missing types
 import svgstore from 'svgstore';
 
 const generateTypes = (jsonStructure: { iconNames: string[]; iconStyles: string[] }) => `
-export type IconNames = '${[...new Set(jsonStructure.iconNames)].join('\' |\n\'')}';
+export type IconNames = '${jsonStructure.iconNames.join('\' |\n\'')}';
 export type IconStyles = '${jsonStructure.iconStyles.join('\' |\n\'')}';
 `;
 
 const run = () => {
   const spinner = createSpinner('Processing icons...').start();
-  const directories = dt(path.join('dist', 'svgs'));
+  const directories = dt(path.join('svgs'));
   fs.ensureDirSync('dist');
 
   const jsonStructure: {
@@ -26,6 +26,7 @@ const run = () => {
     iconStyles: [],
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const sprite = svgstore();
 
   directories.children?.forEach((dir) => {
@@ -58,7 +59,7 @@ declare module "@lualtek/icons/sprite" {
 try {
   run();
   process.exit(0);
-} catch (error) {
+} catch (error: unknown) {
   console.error(colors.yellow('⚠️ Something went wrong:'), error);
   process.exit(1);
 }
