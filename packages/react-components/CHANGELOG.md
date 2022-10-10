@@ -1,5 +1,16 @@
 # @lualtek/react-components
 
+## 1.5.0
+
+### Minor Changes
+
+- 164a20d: Set default icon size to 18
+
+### Patch Changes
+
+- Updated dependencies [ca3df20]
+  - @lualtek/icons@1.5.0
+
 ## 1.4.0
 
 ### Minor Changes

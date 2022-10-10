@@ -1,5 +1,11 @@
 # @lualtek/icons
 
+## 1.5.0
+
+### Minor Changes
+
+- ca3df20: Update icon optimization process
+
 ## 1.4.0
 
 ## 1.3.0
