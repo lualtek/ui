@@ -1,5 +1,11 @@
 # @lualtek/icons
 
+## 1.6.0
+
+### Minor Changes
+
+- d572d6c: Fix sprite import path
+
 ## 1.5.0
 
 ### Minor Changes
