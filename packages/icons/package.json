@@ -9,7 +9,7 @@
     "access": "restricted"
   },
   "exports": {
-    "./sprite.svg": "./dist/sprite.svg",
+    "./sprite": "./dist/sprite.svg",
     "./structure": "./dist/structure.json"
   },
   "typesVersions": {
