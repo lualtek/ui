@@ -1,5 +1,11 @@
 # @lualtek/icons
 
+## 1.7.0
+
+### Minor Changes
+
+- 0fde66f: Fix icon styles
+
 ## 1.6.0
 
 ### Minor Changes

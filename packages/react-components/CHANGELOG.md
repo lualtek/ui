@@ -1,5 +1,18 @@
 # @lualtek/react-components
 
+## 1.7.0
+
+### Minor Changes
+
+- 1916f29: Replace react-ui with native react 18 uid hook
+- d4859da: Fix modal animation
+- 46171b5: Fix card dimmed prop values
+
+### Patch Changes
+
+- Updated dependencies [0fde66f]
+  - @lualtek/icons@1.7.0
+
 ## 1.6.0
 
 ### Patch Changes
