@@ -1,5 +1,11 @@
 # @lualtek/icons
 
+## 1.10.0
+
+### Minor Changes
+
+- 377fb73: Restore missing icons
+
 ## 1.9.1
 
 ## 1.9.0
