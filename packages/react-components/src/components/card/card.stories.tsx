@@ -12,7 +12,7 @@ const story: ComponentMeta<typeof Card> = {
     bordered: false,
     vibrant: false,
     highlightOnHover: true,
-    dimmed: 1,
+    dimmed: 0,
   },
   argTypes: {
     children: {
