@@ -15,16 +15,6 @@ jobs:
     uses: lualtek/workflows/.github/workflows/ui_ci.yml@master
     secrets:
       RELEASE_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
     with:
       release: true
-  notify:
-    name: Notify Release
-    runs-on: ubuntu-latest
-    needs: ci
-    steps:
-      - uses: sarisia/actions-status-discord@v1
-        if: success()
-        with:
-          webhook: ${{ secrets.DISCORD_WEBHOOK }}
-          title: "Release UI Components"
-          description: "UI components released on NPM"
