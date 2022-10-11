@@ -1,5 +1,4 @@
-import { FC, useMemo } from 'react';
-import { useUIDSeed } from 'react-uid';
+import { FC, useId, useMemo } from 'react';
 
 import {
   Pagination, Select, Stack, Text,
@@ -28,7 +27,7 @@ export const TablePagination: FC<TablePaginationProps> = ({
   onPageClick,
   ...otherProps
 }) => {
-  const uid = useUIDSeed();
+  const uid = useId();
   const computedPageCount = useMemo(() => (
     isManual ? Math.ceil(totalItems / pageSize) : totalPages
   ), [isManual, pageSize, totalItems, totalPages]);
@@ -52,7 +51,7 @@ export const TablePagination: FC<TablePaginationProps> = ({
         <Select
           value={pageSize}
           label="Items per page"
-          id={uid('table-i-per-page')}
+          id={`${uid}-table-i-per-page`}
           onChange={({ currentTarget }) => {
             onPageSizeChange?.(Number(currentTarget.value));
           }}

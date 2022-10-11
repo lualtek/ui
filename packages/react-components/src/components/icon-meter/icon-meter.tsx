@@ -1,11 +1,11 @@
+import { IconNames } from '@lualtek/icons';
 import clsx from 'clsx';
 import {
-  forwardRef, ReactNode, useCallback, useMemo,
+  forwardRef, ReactNode, useCallback, useId, useMemo,
 } from 'react';
-import { useUIDSeed } from 'react-uid';
 
 import {
-  Icon, IconProps, Polymorphic, Stack, Text, TextProps,
+  Icon, Polymorphic, Stack, Text, TextProps,
 } from '@/components';
 
 import * as styles from './icon-meter.module.css';
@@ -43,7 +43,7 @@ export type IconMeterProps = {
   /**
    * Set the icon to use as indicator
    */
-  icon?: IconProps['source'];
+  icon?: IconNames;
   /**
    * Set the color to use as accent
    */
@@ -66,7 +66,7 @@ export const IconMeter = forwardRef(({
   iconColor = 'var(--highlight-green-foreground)',
   ...otherProps
 }, forwardedRef) => {
-  const seedID = useUIDSeed();
+  const uid = useId();
 
   const properties = {
     small: {
@@ -139,7 +139,7 @@ export const IconMeter = forwardRef(({
       aria-valuenow={clamp(value, 0, iconCount)}
       aria-valuemin={0}
       aria-valuemax={iconCount}
-      aria-labelledby={seedID('icon-meter')}
+      aria-labelledby={`${uid}-icon-meter`}
       data-icon-meter-dimension={dimension}
       ref={forwardedRef}
       {...otherProps}
@@ -160,7 +160,7 @@ export const IconMeter = forwardRef(({
       <Text
         as="span"
         dimmed={6}
-        id={seedID('icon-meter')}
+        id={`${uid}-icon-meter`}
         size={properties[dimension].labelSize as TextProps['size']}
         lineHeight="none"
         weight="bold"

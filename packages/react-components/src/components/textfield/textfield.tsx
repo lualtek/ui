@@ -1,8 +1,7 @@
 import clsx from 'clsx';
 import {
-  ChangeEvent, forwardRef, Ref, useCallback, useMemo, useState,
+  ChangeEvent, forwardRef, Ref, useCallback, useId, useMemo, useState,
 } from 'react';
-import { useUIDSeed } from 'react-uid';
 
 import {
   ClampText,
@@ -77,9 +76,9 @@ export const Textfield = forwardRef<PrimitiveInputType, TextfieldProps>(({
   ...otherProps
 }, forwardedRef) => {
   const [isPasswordVisible, setPasswordVisible] = useState<boolean>(false);
-  const seedID = useUIDSeed();
+  const uid = useId();
   const isPassword = type === 'password';
-  const fieldID = useMemo(() => id ?? seedID('field'), [id, seedID]);
+  const fieldID = useMemo(() => id ?? `${uid}-field`, [id, uid]);
 
   const handlePasswordVisibility = useCallback(
     () => {

@@ -5,9 +5,8 @@ import {
 import {
   CSSProperties,
   DetailsHTMLAttributes, forwardRef,
-  ReactNode, useCallback, useEffect, useRef, useState,
+  ReactNode, useCallback, useEffect, useId, useRef, useState,
 } from 'react';
-import { useUIDSeed } from 'react-uid';
 
 import {
   Icon, IconProps, Text, TextProps,
@@ -72,7 +71,7 @@ export const Disclosure = forwardRef<HTMLDetailsElement, DisclosureProps>(({
 }, forwardedRef) => {
   const ref = useRef<any>(forwardedRef);
   const [isOpen, setIsOpen] = useState<boolean>(open);
-  const seedID = useUIDSeed();
+  const uid = useId();
 
   useEffect(() => {
     if (ref.current) {
@@ -123,7 +122,7 @@ export const Disclosure = forwardRef<HTMLDetailsElement, DisclosureProps>(({
         as="summary"
         responsive={false}
         className={styles.Summary}
-        id={seedID('disclosure')}
+        id={`${uid}-disclosure`}
         size={dimension ? sizes[dimension].summary : undefined}
         weight="bold"
       >
@@ -147,7 +146,7 @@ export const Disclosure = forwardRef<HTMLDetailsElement, DisclosureProps>(({
           transition={{ ease: 'easeOut', duration: 0.1, delay: 0 }}
           initial={false}
           role="region"
-          aria-labelledby={seedID('disclosure')}
+          aria-labelledby={`${uid}-disclosure`}
         >
           {children}
         </m.div>

@@ -1,8 +1,7 @@
 import clsx from 'clsx';
 import {
-  ChangeEvent, forwardRef, ReactNode, SelectHTMLAttributes,
+  ChangeEvent, forwardRef, ReactNode, SelectHTMLAttributes, useId,
 } from 'react';
-import { useUIDSeed } from 'react-uid';
 
 import {
   Icon, IconProps, Stack,
@@ -44,7 +43,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(({
   onChange,
   ...otherProps
 }, forwardedRef) => {
-  const seedID = useUIDSeed();
+  const uid = useId();
 
   return (
     <Stack
@@ -63,7 +62,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(({
         <select
           disabled={disabled}
           className={styles.Field}
-          id={seedID('select')}
+          id={`${uid}-select`}
           multiple={kind === 'multiple'}
           onChange={onChange}
           ref={forwardedRef}
@@ -85,7 +84,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(({
           as="label"
           dimmed={5}
           size={14}
-          htmlFor={seedID('select')}
+          htmlFor={`${uid}-select`}
           className={styles.Label}
         >
           {label}

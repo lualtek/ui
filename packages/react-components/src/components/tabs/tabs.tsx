@@ -1,11 +1,10 @@
 import * as TabsPrimitive from '@radix-ui/react-tabs';
 import { domMax, LazyMotion, m } from 'framer-motion';
 import {
-  Children, isValidElement, useCallback, useState,
+  Children, isValidElement, useCallback, useId, useState,
 } from 'react';
-import { useUIDSeed } from 'react-uid';
 
-import { Button } from '@/components';
+import { Button, Icon } from '@/components';
 
 import * as styles from './tabs.module.css';
 import { TabPanel, TabPanelProps } from './tabs-panel';
@@ -20,7 +19,7 @@ export const Tabs = ({
   ...otherProps
 }: TabsProps) => {
   const [activeItem, setActiveItem] = useState<string>(defaultValue ?? '');
-  const seedID = useUIDSeed();
+  const uid = useId();
 
   const handleOnVlaueChange = useCallback(
     (value: string) => {
@@ -45,12 +44,14 @@ export const Tabs = ({
               className={styles.Trigger}
               asChild
             >
-              <Button kind="flat" icon={child.props.icon}>
+              <Button kind="flat" dimension="big">
+                {/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
+                {child.props.icon && <Icon source={child.props.icon} dimension={18} />}
                 {child.props.label}
-                {(child.props.value === activeItem) && 'active' && (
+                {(child.props.value === activeItem) && (
                   <>
-                    <m.span className={styles.Highlight} layoutId={seedID('tab-highlight-lazy')} />
-                    <m.span className={styles.Highlight} transition={{ ease: 'easeOut', delay: 0.01 }} layoutId={seedID('tab-highlight')} />
+                    <m.span className={styles.Highlight} layoutId={`${uid}-tab-highlight-lazy`} />
+                    <m.span className={styles.Highlight} transition={{ ease: 'easeOut', delay: 0.01 }} layoutId={`${uid}-tab-highlight`} />
                   </>
                 )}
               </Button>

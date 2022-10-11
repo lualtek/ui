@@ -1,7 +1,8 @@
 import { TokensTypes } from '@lualtek/tokens/platforms/web';
 import tkns from '@lualtek/tokens/platforms/web/tokens.json';
-import { CSSProperties, Fragment, useCallback } from 'react';
-import { useUIDSeed } from 'react-uid';
+import {
+  CSSProperties, Fragment, useCallback, useId,
+} from 'react';
 
 import * as styles from './skeleton.module.css';
 
@@ -56,7 +57,7 @@ export const Skeleton: FCClass<SkeletonProps> = ({
   circle,
   ...otherProps
 }) => {
-  const uid = useUIDSeed();
+  const uid = useId();
   const computedWidth = typeof width === 'number' ? `${width}px` : width;
   const computedHeight = typeof height === 'number' ? `${height}px` : height;
 
@@ -88,10 +89,10 @@ export const Skeleton: FCClass<SkeletonProps> = ({
       {...otherProps}
     >
       {
-        Array.from({ length: count }).map((_, i) => (inline
-          ? <SkeletonItem key={uid(i)} />
+        Array.from(Array(count).keys()).map(n => (inline
+          ? <SkeletonItem key={`${uid}-${n}`} />
           : (
-            <Fragment key={uid(i)}>
+            <Fragment key={`${uid}-${n}`}>
               <SkeletonItem />
               <br />
             </Fragment>

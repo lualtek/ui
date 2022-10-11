@@ -31,6 +31,7 @@
     &.Trigger:not([aria-disabled='true']):is(:hover, :focus, :active) {
       background: none;
       color: var(--global-foreground);
+      backdrop-filter: none;
     }
 
     &.Trigger[aria-disabled='true'] {
@@ -55,6 +56,7 @@
 
     &:nth-child(2) {
       background: var(--cta-default);
+      z-index: 1;
     }
   }
 }

@@ -3,7 +3,7 @@ import {
   AnimatePresence, domMax, LazyMotion, m,
 } from 'framer-motion';
 import {
-  ComponentType, CSSProperties, Fragment, ReactNode, useCallback, useMemo,
+  ComponentType, CSSProperties, Fragment, ReactNode, useCallback, useId, useMemo,
 } from 'react';
 import {
   Hooks, IdType, Row,
@@ -11,7 +11,6 @@ import {
   useExpanded, usePagination,
   useRowSelect, useSortBy, useTable,
 } from 'react-table';
-import { useUIDSeed } from 'react-uid';
 import { useDidUpdate } from 'rooks';
 
 import {
@@ -186,7 +185,7 @@ export const Table = <T extends Record<string, unknown>>({
   initialSortBy = [],
   ...otherProps
 }: TableProps<T>) => {
-  const uid = useUIDSeed();
+  const uid = useId();
   const hasSomeExpandableRows = useMemo(() => data.some(d => d.subRows), [data]);
   const isManualPaginated = useMemo(() => Boolean(showPagination && onPaginationChange && totalRows),
     [showPagination, totalRows, onPaginationChange]);
@@ -407,7 +406,7 @@ export const Table = <T extends Record<string, unknown>>({
               data-table-stripes={stripes}
               data-table-separators={showSeparators}
               data-table-loading={loading}
-              aria-labelledby={uid('table-title')}
+              aria-labelledby={`${uid}-table-title`}
               {...getTableProps()}
               {...otherProps}
             >

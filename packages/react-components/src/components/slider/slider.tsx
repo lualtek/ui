@@ -1,9 +1,8 @@
 import * as SliderPrimitive from '@radix-ui/react-slider';
 import clsx from 'clsx';
 import {
-  ElementRef, forwardRef,
+  ElementRef, forwardRef, useId,
 } from 'react';
-import { useUIDSeed } from 'react-uid';
 
 import { Elevator } from '@/components';
 
@@ -28,7 +27,7 @@ SliderProps
   ...otherProps
 }, forwardedRef) => {
   const val = value ?? defaultValue;
-  const seedID = useUIDSeed();
+  const uid = useId();
 
   return (
     <SliderPrimitive.Root
@@ -46,8 +45,8 @@ SliderProps
         <SliderPrimitive.Range className={styles.Range} />
       </SliderPrimitive.Track>
 
-      {val?.map((_, i) => (
-        <Elevator resting={1} key={seedID(i)}>
+      {val?.map(v => (
+        <Elevator resting={1} key={`${uid}-${v}`}>
           <SliderPrimitive.Thumb className={styles.Thumb} />
         </Elevator>
       ))}

@@ -1,5 +1,6 @@
-import { createContext, PropsWithChildren, useContext } from 'react';
-import { useUIDSeed } from 'react-uid';
+import {
+  createContext, PropsWithChildren, useContext, useId,
+} from 'react';
 
 import { OverlayContainerProps } from './overlay-container';
 
@@ -14,10 +15,10 @@ export const OverlayContext = createContext<OverlayContextProps>({
 OverlayContext.displayName = 'OverlayContext';
 
 export const OverlayProvider = (props: PropsWithChildren<OverlayContextProps>) => {
-  const seedID = useUIDSeed();
+  const uid = useId();
   const {
     children,
-    titleId = seedID('overlay-title'), onClose,
+    titleId = `${uid}-overlay-title`, onClose,
   } = props;
 
   return (

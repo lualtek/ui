@@ -4,9 +4,8 @@ import {
   domAnimation, LazyMotion, m,
 } from 'framer-motion';
 import {
-  ElementRef, forwardRef,
+  ElementRef, forwardRef, useId,
 } from 'react';
-import { useUIDSeed } from 'react-uid';
 
 import { Elevator } from '@/components';
 
@@ -28,7 +27,7 @@ ToastProps
   onOpenChange,
   ...otherProps
 }, forwardedRef) => {
-  const seedID = useUIDSeed();
+  const uid = useId();
   const animation = {
     hidden: {
       opacity: 0,
@@ -53,7 +52,7 @@ ToastProps
         defaultOpen={defaultOpen}
       >
         <m.li
-          key={seedID('toast')}
+          key={`${uid}-toast`}
           initial="hidden"
           animate="visible"
           exit="hidden"
