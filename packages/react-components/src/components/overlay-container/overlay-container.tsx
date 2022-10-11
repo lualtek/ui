@@ -58,7 +58,7 @@ export const OverlayContainer: FCChildren<OverlayContainerProps> = ({
 
   const content = (
     <OverlayProvider onClose={onClose}>
-      <AnimatePresence exitBeforeEnter>
+      <AnimatePresence mode="wait">
         {children && (
           <div
             data-overlay-container
