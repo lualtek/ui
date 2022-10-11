@@ -1,5 +1,11 @@
 # @lualtek/tokens
 
+## 1.8.0
+
+### Minor Changes
+
+- 540d435: Add new text fize
+
 ## 1.7.0
 
 ## 1.6.0

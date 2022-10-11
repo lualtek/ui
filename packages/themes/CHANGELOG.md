@@ -1,5 +1,11 @@
 # @lualtek/themes
 
+## 1.8.0
+
+### Minor Changes
+
+- 6decbe0: Add new vibrancy background brand
+
 ## 1.7.0
 
 ## 1.6.0
