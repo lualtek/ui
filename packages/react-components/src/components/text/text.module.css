@@ -43,8 +43,13 @@
 
     /* Sizes */
 
+    &[data-text-size='12'] {
+      font-size: token(--font-size-12);
+    }
+
     &[data-text-size='14'] {
-      font-size: token(--font-size-14);
+      --fs-min: token(--font-size-12);
+      --fs-max: token(--font-size-14);
     }
 
     &[data-text-size='16'] {
