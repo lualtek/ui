@@ -30,6 +30,12 @@
         "attributes": {
           "category": "size"
         }
+      },
+      "12": {
+        "value": 12,
+        "attributes": {
+          "category": "size"
+        }
       }
     }
   }
