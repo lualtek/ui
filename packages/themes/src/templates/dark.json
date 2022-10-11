@@ -51,6 +51,9 @@
     },
     "background-yellow": {
       "value": "hsl({color.yellow.50} / 20%)"
+    },
+    "background-brand": {
+      "value": "hsl({color.support.brand} / 20%)"
     }
   },
   "dimmed": {
