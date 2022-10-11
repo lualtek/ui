@@ -29,7 +29,7 @@ const run = () => {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const sprite = svgstore();
 
-  directories.children?.forEach((dir) => {
+  directories.children?.filter(dir => dir.name !== '.DS_Store').forEach((dir) => {
     jsonStructure.svgs[dir.name] = [];
     jsonStructure.iconStyles.push(dir.name);
     dir.children?.forEach((file) => {
