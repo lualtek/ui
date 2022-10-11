@@ -1,0 +1,8 @@
+{
+  "ignore": {
+    "cpy-cli": {
+      "versions": "*",
+      "reason": "Fucked up"
+    }
+  }
+}
