@@ -1,5 +1,15 @@
 # @lualtek/react-components
 
+## 1.9.0
+
+### Minor Changes
+
+- 1684d26: Fix text size 12
+
+### Patch Changes
+
+- @lualtek/icons@1.9.0
+
 ## 1.8.0
 
 ### Patch Changes
