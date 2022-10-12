@@ -18,7 +18,7 @@ export type SplitButtonProps = Pick<PopoverContentProps, 'side' | 'offset' | 'al
 
 type PolymorphicSplitButton = Polymorphic.ForwardRefComponent<
 Polymorphic.IntrinsicElement<typeof Button>,
-Except<Polymorphic.OwnProps<typeof Button>, 'iconPosition' | 'iconColor' | 'pressed'> & SplitButtonProps
+Except<Polymorphic.OwnProps<typeof Button>, 'iconPosition' | 'iconColor'> & SplitButtonProps
 >;
 
 export const SplitButton = forwardRef(({
