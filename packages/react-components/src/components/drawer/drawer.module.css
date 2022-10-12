@@ -34,6 +34,7 @@
     inline-size: 100vw;
     overflow: auto;
     -webkit-overflow-scrolling: touch;
+    padding-bottom: env(safe-area-inset-bottom);
     max-inline-size: var(--max-w);
   }
 
@@ -45,9 +46,9 @@
     border-bottom: 1px solid var(--dimmed-1);
     padding:
       calc(env(safe-area-inset-top) + token(--space-16))
-      token(--space-16)
-      token(--space-24)
-      token(--space-24);
+      calc(env(safe-area-inset-right) + token(--space-16))
+      calc(env(safe-area-inset-right) + token(--space-24))
+      calc(env(safe-area-inset-right) + token(--space-24));
   }
 }
 @layer overrides {
