@@ -1,5 +1,15 @@
 # @lualtek/react-components
 
+## 1.12.0
+
+### Minor Changes
+
+- cb4e1a5: Fix drawer padding bottom to consider sefe areas
+
+### Patch Changes
+
+- @lualtek/icons@1.12.0
+
 ## 1.11.0
 
 ### Minor Changes
