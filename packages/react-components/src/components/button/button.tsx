@@ -49,13 +49,13 @@ export type ButtonProps = {
    */
   busy?: boolean;
   /**
-   * Set the pressed state and add required aria attributes.
-   */
-  pressed?: boolean;
-  /**
-   * Callback function to be called when the button is pressed.
+   * Callback function to be called when the button is clicked.
    */
   onClick?: (event: MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => void;
+  /**
+   * Set a sentiment color/status to convey meaning and important to the action
+   */
+  sentiment?: 'positive' | 'warning' | 'danger';
 }
 
 type PolymorphicButton = Polymorphic.ForwardRefComponent<'button', ButtonProps>;
@@ -72,10 +72,10 @@ export const Button = forwardRef((
     iconPosition = 'left',
     iconColor,
     type = 'button',
-    pressed,
     onClick,
     busy,
     as: Wrapper = 'button',
+    sentiment,
     ...otherProps
   }, forwardedRef,
 ) => {
@@ -102,10 +102,11 @@ export const Button = forwardRef((
         data-button-icon-position={iconPosition}
         data-button-dimension={dimension}
         data-button-kind={kind}
+        data-button-sentiment={sentiment}
         data-button-fullwidth={fullWidth}
         aria-disabled={disabled}
+        disabled={busy}
         aria-busy={busy}
-        aria-pressed={Wrapper === 'button' ? pressed : undefined}
         aria-live={busy ? 'polite' : undefined}
         onClick={handleClick()}
         {...otherProps}
