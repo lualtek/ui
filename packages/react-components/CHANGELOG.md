@@ -1,5 +1,15 @@
 # @lualtek/react-components
 
+## 1.11.0
+
+### Minor Changes
+
+- a5ba1a9: Add sentiment buttons
+
+### Patch Changes
+
+- @lualtek/icons@1.11.0
+
 ## 1.10.0
 
 ### Patch Changes
