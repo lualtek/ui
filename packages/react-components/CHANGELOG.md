@@ -1,5 +1,16 @@
 # @lualtek/react-components
 
+## 1.14.0
+
+### Minor Changes
+
+- 3482ee6: Add headerTint prop to modal.content
+
+### Patch Changes
+
+- 98aba2a: Fix themes and overlay container style
+  - @lualtek/icons@1.14.0
+
 ## 1.13.1
 
 ### Patch Changes
