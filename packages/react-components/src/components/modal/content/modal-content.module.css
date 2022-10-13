@@ -5,7 +5,7 @@
   .Content {
     background-color: var(--global-background);
     overscroll-behavior: contain;
-    inline-size: 100%;
+    inline-size: 100vw;
     overflow: auto;
     -webkit-overflow-scrolling: touch;
     max-block-size: 95vh;
@@ -29,7 +29,7 @@
 
     position: sticky;
     top: 0;
-    background-color: var(--virbancy-background-soft);
+    background-color: var(--vibrancy-background-soft);
     z-index: 1;
     padding:
       token(--space-16)
