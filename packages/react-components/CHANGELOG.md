@@ -1,5 +1,15 @@
 # @lualtek/react-components
 
+## 1.13.0
+
+### Minor Changes
+
+- 6a3e2a1: Add new dimmed 8 color and update themes
+
+### Patch Changes
+
+- @lualtek/icons@1.13.0
+
 ## 1.12.0
 
 ### Minor Changes
