@@ -1,5 +1,11 @@
 # @lualtek/themes
 
+## 1.13.0
+
+### Minor Changes
+
+- 6a3e2a1: Add new dimmed 8 color and update themes
+
 ## 1.12.0
 
 ## 1.11.0
