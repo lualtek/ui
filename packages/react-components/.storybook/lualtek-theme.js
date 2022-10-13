@@ -10,7 +10,7 @@ export default create({
   colorSecondary: '#6A5CFF',
 
   // UI
-  appBg: '#0C1322',
+  appBg: 'hsl(222deg 47% 6%)',
   appContentBg: '#1E293B',
   appBorderColor: '#334155',
   barBg: '#1E293B',

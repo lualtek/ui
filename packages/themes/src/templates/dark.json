@@ -4,10 +4,10 @@
       "value": "hsl({color.primary.30})"
     },
     "background": {
-      "value": "hsl(222deg 47% 6%)"
+      "value": "hsl({color.primary.100})"
     },
     "interactive-text": {
-      "value": "hsl(246 100% 68%)"
+      "value": "hsl({color.support.brand})"
     },
     "interactive-text-hover": {
       "value": "hsl(246 100% 68%)"
@@ -38,7 +38,7 @@
       "value": "hsl({color.primary.80} / 80%)"
     },
     "background-soft": {
-      "value": "hsl({color.primary.100} / 80%)"
+      "value": "hsl({color.primary.90} / 90%)"
     },
     "background-hard": {
       "value": "hsl({color.primary.70} / 80%)"
@@ -58,7 +58,7 @@
   },
   "dimmed": {
     "0": {
-      "value": "hsl({color.primary.100})"
+      "value": "hsl({color.primary.90})"
     },
     "1": {
       "value": "hsl({color.primary.80})"

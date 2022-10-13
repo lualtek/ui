@@ -3,12 +3,12 @@
 
 @layer components {
   .Content {
-    background-color: var(--global-background);
+    background-color: var(--dimmed-0);
     overscroll-behavior: contain;
     inline-size: 100vw;
     overflow: auto;
     -webkit-overflow-scrolling: touch;
-    max-block-size: 95vh;
+    max-block-size: 95dvh;
     border-radius: token(--radius-24) token(--radius-24) 0 0;
     justify-self: center;
     align-self: end;
@@ -16,7 +16,7 @@
 
     @media (--from-small) {
       max-inline-size: 600px;
-      max-block-size: 80vh;
+      max-block-size: 80dvh;
       border-radius: token(--radius-24);
       justify-self: center;
       align-self: center;

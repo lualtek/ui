@@ -13,14 +13,14 @@
     position: fixed;
     inset: 0;
     z-index: -1;
-    background-color: var(--dimmed-0);
+    background-color: var(--global-background);
 
     &[data-overlay-color='light'] {
       background-color: hsl(token(--color-primary-0));
     }
 
     &[data-overlay-color='dark'] {
-      background-color: hsl(token(--color-primary-90));
+      background-color: hsl(token(--color-primary-100));
     }
   }
 }

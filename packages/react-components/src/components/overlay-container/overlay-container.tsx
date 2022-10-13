@@ -28,7 +28,7 @@ export type OverlayContainerProps = {
    * behind the overlay if `obfuscate` is `true`. If set to `auto`, the overlay
    * color is determined by the global active theme (light or dark).
    */
-  overlayColor?: 'light' | 'dark' | 'auto';
+  theme?: 'light' | 'dark' | 'auto';
   /**
    * The callback function that is called when the overlay is closed.
    */
@@ -42,7 +42,7 @@ export type OverlayContainerProps = {
 export const OverlayContainer: FCChildren<OverlayContainerProps> = ({
   children,
   root = document.body,
-  overlayColor = 'auto',
+  theme = 'auto',
   index = 4,
   obfuscate = true,
   onClose,
@@ -70,7 +70,7 @@ export const OverlayContainer: FCChildren<OverlayContainerProps> = ({
                 <m.span
                   key={`${uid}-modal-backdrop`}
                   className={styles.Backdrop}
-                  data-overlay-color={overlayColor}
+                  data-overlay-color={theme}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 0.95 }}
                   transition={{ duration: 0.2 }}
