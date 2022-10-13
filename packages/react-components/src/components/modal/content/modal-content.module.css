@@ -3,7 +3,7 @@
 
 @layer components {
   .Content {
-    background-color: var(--dimmed-0);
+    background-color: var(--global-background);
     overscroll-behavior: contain;
     inline-size: 100vw;
     overflow: auto;
