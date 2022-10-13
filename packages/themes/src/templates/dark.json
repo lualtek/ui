@@ -1,7 +1,7 @@
 {
   "global": {
     "foreground": {
-      "value": "hsl({color.support.white})"
+      "value": "hsl({color.primary.30})"
     },
     "background": {
       "value": "hsl(222deg 47% 6%)"
@@ -80,6 +80,9 @@
     },
     "7": {
       "value": "hsl({color.primary.0})"
+    },
+    "8": {
+      "value": "hsl({color.support.white})"
     }
   },
   "gradient": {
