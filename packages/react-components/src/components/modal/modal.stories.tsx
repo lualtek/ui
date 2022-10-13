@@ -12,8 +12,6 @@ const story: ComponentMeta<typeof Modal> = {
   component: Modal,
   argTypes: {
   },
-  args: {
-  },
 };
 
 export default story;
@@ -40,7 +38,7 @@ const ModalShell: ComponentStory<typeof Modal> = ({ children, ...otherProps }) =
 
 const DefaultTemplate: ComponentStory<typeof Modal> = args => (
   <ModalShell {...args}>
-    <Modal.Content title="Modal title" theme="auto">
+    <Modal.Content title="Modal title">
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
       distinctio qui quod ducimus libero magni earum perspiciatis.
       <img width="100%" height="400" src="https://images.unsplash.com/photo-1579332649290-10b7da0cd111?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=cover&w=1600&q=80" />

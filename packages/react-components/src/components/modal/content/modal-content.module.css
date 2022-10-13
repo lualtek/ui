@@ -29,7 +29,7 @@
 
     position: sticky;
     top: 0;
-    background-color: var(--vibrancy-background-soft);
+    background-color: var(--header-tint, var(--vibrancy-background-soft));
     z-index: 1;
     padding:
       token(--space-16)

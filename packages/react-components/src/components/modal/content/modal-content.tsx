@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { forwardRef, ReactNode } from 'react';
+import { CSSProperties, forwardRef, ReactNode } from 'react';
 import { AutoFocusInside } from 'react-focus-on';
 
 import {
@@ -19,6 +19,7 @@ export type ModalContentProps = PropsClassChildren<{
    * this is set to `light` by default.
    */
   theme?: 'dark' | 'light' | 'auto';
+  headerTint?: string;
 }>
 
 export const ModalContent = forwardRef<HTMLDivElement, ModalContentProps>(({
@@ -26,14 +27,21 @@ export const ModalContent = forwardRef<HTMLDivElement, ModalContentProps>(({
   className,
   title,
   theme = 'auto',
+  headerTint,
+  style,
   ...otherProps
 }, forwardedRef) => {
   const { onClose, titleId } = useOverlayContext();
+
+  const dynamicStyle: CSSProperties = {
+    '--header-tint': headerTint,
+  };
 
   return (
     <Elevator resting={4}>
       <div
         className={clsx(styles.Content, className)}
+        style={{ ...dynamicStyle, ...style }}
         ref={forwardedRef}
         data-theme={theme}
         {...otherProps}
