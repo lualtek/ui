@@ -1,5 +1,11 @@
 # @lualtek/tokens
 
+## 1.15.0
+
+### Minor Changes
+
+- c58a5e9: Add IconChip and update color tokens
+
 ## 1.14.0
 
 ## 1.13.1
