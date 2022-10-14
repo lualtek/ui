@@ -7,7 +7,7 @@
       "value": "hsl({color.primary.100})"
     },
     "interactive-text": {
-      "value": "hsl({color.support.brand})"
+      "value": "hsl(246 100% 72%)"
     },
     "interactive-text-hover": {
       "value": "hsl(246 100% 68%)"
