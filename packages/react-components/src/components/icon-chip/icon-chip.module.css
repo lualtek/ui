@@ -1,19 +1,19 @@
 @layer components {
-  .Chip {
-    padding: 0 token(--space-8);
-    border-radius: 1e5px;
-    font-size: token(--font-size-16);
-    block-size: token(--space-24);
+  .IconChip {
+    border-radius: calc(token(--radius-8) + token(--radius-4));
+    block-size: var(--size, token(--space-32));
+    inline-size: var(--size, token(--space-32));
 
     &[data-chip-dimension='small'] {
-      block-size: token(--space-16);
-      font-size: token(--font-size-14);
-      padding: 10px token(--space-8);
+      --size: token(--space-24);
+
+      border-radius: token(--radius-8);
     }
 
     &[data-chip-dimension='big'] {
-      font-size: token(--font-size-18);
-      block-size: token(--space-32);
+      border-radius: token(--radius-16);
+
+      --size: token(--space-40);
     }
 
     &[data-chip-color='gray'] {
@@ -50,17 +50,5 @@
       background-color: var(--highlight-blue-background);
       color: var(--highlight-blue-foreground);
     }
-  }
-
-  .Action {
-    display: inline-flex;
-    appearance: none;
-    border: 0;
-    background: none;
-    padding: 0;
-    color: inherit;
-    font: inherit;
-    margin-top: 1px;
-    cursor: pointer;
   }
 }

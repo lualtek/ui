@@ -1,17 +1,11 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import { Chip } from './chip';
+import { IconChip } from './icon-chip';
 
-const story: ComponentMeta<typeof Chip> = {
-  title: 'Widgets/Chip',
-  component: Chip,
+const story: ComponentMeta<typeof IconChip> = {
+  title: 'Widgets/Icon Chip',
+  component: IconChip,
   argTypes: {
-    onDismissClick: {
-      action: 'dismissed',
-      table: {
-        disable: true,
-      },
-    },
     dimension: {
       options: ['small', 'regular', 'big'],
       control: { type: 'radio' },
@@ -23,13 +17,13 @@ const story: ComponentMeta<typeof Chip> = {
   },
   args: {
     dimension: 'regular',
-    interactive: false,
+    icon: 'sensor',
   },
 };
 
 export default story;
 
-const Template: ComponentStory<typeof Chip> = args => <Chip {...args}>Chip text</Chip>;
+const Template: ComponentStory<typeof IconChip> = args => <IconChip {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {

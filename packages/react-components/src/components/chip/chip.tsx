@@ -29,7 +29,7 @@ export const Chip = forwardRef<HTMLSpanElement, ChipProps>(({
   children,
   className,
   dimension = 'regular',
-  color,
+  color = 'gray',
   interactive,
   onDismissClick,
   ...otherProps

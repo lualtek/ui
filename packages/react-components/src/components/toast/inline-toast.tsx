@@ -109,7 +109,7 @@ export const InlineToast = forwardRef<HTMLOutputElement, InlineToastProps>(({
             </ToastPrimitive.Title>
           )}
           <ToastPrimitive.Description asChild>
-            <Text>{children}</Text>
+            <Text size={16}>{children}</Text>
           </ToastPrimitive.Description>
         </Stack>
         {dismissable && (
