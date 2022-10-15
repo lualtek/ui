@@ -19,7 +19,15 @@ export type ModalContentProps = PropsClassChildren<{
    * this is set to `light` by default.
    */
   theme?: 'dark' | 'light' | 'auto';
+  /**
+   * Set the background color for the content header
+   */
   headerTint?: string;
+  /**
+   * Enable or disable content scrolling. This is used when you want to create a scrollable element inside
+   * and prevend double scrolling.
+   */
+  scrollInside?: boolean;
 }>
 
 export const ModalContent = forwardRef<HTMLDivElement, ModalContentProps>(({
@@ -27,6 +35,7 @@ export const ModalContent = forwardRef<HTMLDivElement, ModalContentProps>(({
   className,
   title,
   theme = 'auto',
+  scrollInside = true,
   headerTint,
   style,
   ...otherProps
@@ -44,6 +53,7 @@ export const ModalContent = forwardRef<HTMLDivElement, ModalContentProps>(({
         style={{ ...dynamicStyle, ...style }}
         ref={forwardedRef}
         data-theme={theme}
+        data-modal-content-scroll={scrollInside}
         {...otherProps}
       >
         <Stack vAlign="center" fill={false} hAlign="space-between" direction="row" className={styles.Header}>

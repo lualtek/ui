@@ -6,7 +6,7 @@
     background-color: var(--dimmed-1);
     overscroll-behavior: contain;
     inline-size: 100vw;
-    overflow: auto;
+    overflow: hidden;
     -webkit-overflow-scrolling: touch;
     max-block-size: 95dvh;
     border-radius: token(--radius-24) token(--radius-24) 0 0;
@@ -20,6 +20,10 @@
       border-radius: token(--radius-24);
       justify-self: center;
       align-self: center;
+    }
+
+    &[data-modal-content-scroll='true'] {
+      overflow: auto;
     }
   }
 
