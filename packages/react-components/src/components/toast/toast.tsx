@@ -74,8 +74,8 @@ ToastProps
   );
 });
 
-export const ToastViewport = ({ className }: PropsWithClass) => (
-  <ToastPrimitive.Viewport className={clsx(styles.Viewport, className)} />
+export const ToastViewport = ({ className, ...otherProps }: PropsWithClass) => (
+  <ToastPrimitive.Viewport className={clsx(styles.Viewport, className)} {...otherProps} />
 );
 
 export const { ToastProvider } = ToastPrimitive;
