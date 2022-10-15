@@ -1,5 +1,16 @@
 # @lualtek/react-components
 
+## 1.17.0
+
+### Minor Changes
+
+- f060c0f: Add new dimmed-8 to Text
+- 057cbca: Add `scrollInside` prop to Modal.Content
+
+### Patch Changes
+
+- @lualtek/icons@1.17.0
+
 ## 1.16.0
 
 ### Minor Changes
