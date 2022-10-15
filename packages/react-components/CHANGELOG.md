@@ -1,5 +1,16 @@
 # @lualtek/react-components
 
+## 1.16.0
+
+### Minor Changes
+
+- da3fb8b: Spread props to ToastViewport
+- dcaed13: Fix modal content color
+
+### Patch Changes
+
+- @lualtek/icons@1.16.0
+
 ## 1.15.0
 
 ### Minor Changes

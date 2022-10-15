@@ -1,5 +1,11 @@
 # @lualtek/themes
 
+## 1.16.0
+
+### Patch Changes
+
+- c59e422: Fix interactive-text color on dark
+
 ## 1.15.0
 
 ## 1.14.0
