@@ -20,7 +20,7 @@ export type TextProps = {
    * Set the dimmed color of the text. To keep readability and contrast,
    * you can only use dimmed colors `5`, `6`, and `7`.
    */
-  dimmed?: 4 | 5 | 6 | 7;
+  dimmed?: 4 | 5 | 6 | 7 | 8;
   /**
    * Set the font weight of the text. The values are
    * consistent with the typography system.

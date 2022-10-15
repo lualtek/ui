@@ -25,6 +25,10 @@
       color: var(--dimmed-7);
     }
 
+    &[data-text-dimmed='8'] {
+      color: var(--dimmed-7);
+    }
+
     &[data-text-sentiment='positive'] {
       color: var(--highlight-green-foreground);
     }
