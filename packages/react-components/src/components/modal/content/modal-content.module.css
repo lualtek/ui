@@ -31,9 +31,11 @@
 
     @mixin vibrancy;
 
+    overflow: hidden;
+    border-radius: token(--radius-24) token(--radius-24) 0 0;
     position: sticky;
     top: 0;
-    background-color: var(--header-tint, var(--vibrancy-background-hard));
+    background-color: var(--header-tint, var(--vibrancy-background));
     z-index: 1;
     padding:
       token(--space-16)

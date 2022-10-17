@@ -52,7 +52,6 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>(({
       y: matches.small ? 0 : '100%',
       transition: {
         ease: cssEasingToArray(tkns.easing.exit),
-        duration: matches.small ? parseFloat(tkns.duration[200].replace('s', '')) : parseFloat(tkns.duration[500].replace('s', '')),
       },
     },
   }), [matches]);

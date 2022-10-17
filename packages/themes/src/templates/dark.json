@@ -35,7 +35,7 @@
       "value": "hsl({color.primary.30})"
     },
     "background": {
-      "value": "hsl({color.primary.80} / 80%)"
+      "value": "hsl(215 30 20 / 80%)"
     },
     "background-soft": {
       "value": "hsl({color.primary.90} / 90%)"
