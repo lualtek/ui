@@ -1,5 +1,15 @@
 # @lualtek/react-components
 
+## 1.18.0
+
+### Minor Changes
+
+- b5a18bd: Update modal design and dark theme
+
+### Patch Changes
+
+- @lualtek/icons@1.18.0
+
 ## 1.17.0
 
 ### Minor Changes

@@ -1,5 +1,11 @@
 # @lualtek/themes
 
+## 1.18.0
+
+### Minor Changes
+
+- b5a18bd: Update modal design and dark theme
+
 ## 1.17.0
 
 ## 1.16.0
