@@ -22,7 +22,7 @@ const ModalShell: ComponentStory<typeof Modal> = ({ children, ...otherProps }) =
   return (
     <ResponseContextProvider>
       <Button onClick={() => setIsVisible(true)}>Show Modal</Button>
-      <OverlayContainer onClose={() => setIsVisible(false)}>
+      <OverlayContainer onClose={() => setIsVisible(false)} theme="auto">
         {isVisible && (
           <Modal
             key="dynamic-modal"
