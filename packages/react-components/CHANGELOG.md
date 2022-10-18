@@ -1,5 +1,13 @@
 # @lualtek/react-components
 
+## 1.18.1
+
+### Patch Changes
+
+- ed51548: Fix light dimmed-1 theme color
+- c2d9052: Restore styles
+  - @lualtek/icons@1.18.1
+
 ## 1.18.0
 
 ### Minor Changes
