@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 1.18.2
+
+### Patch Changes
+
+- 23bf2c8: Fix overlay container contrast and colors
+  - @lualtek/icons@1.18.2
+
 ## 1.18.1
 
 ### Patch Changes
