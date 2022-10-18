@@ -42,7 +42,7 @@ export type OverlayContainerProps = {
 export const OverlayContainer: FCChildren<OverlayContainerProps> = ({
   children,
   root = document.body,
-  theme = 'dark',
+  theme = 'auto',
   index = 4,
   obfuscate = true,
   onClose,
@@ -72,7 +72,7 @@ export const OverlayContainer: FCChildren<OverlayContainerProps> = ({
                   className={styles.Backdrop}
                   data-overlay-color={theme}
                   initial={{ opacity: 0 }}
-                  animate={{ opacity: 0.8 }}
+                  animate={{ opacity: 0.9 }}
                   transition={{ duration: 0.2 }}
                   exit={{ opacity: 0 }}
                 />

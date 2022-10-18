@@ -14,14 +14,13 @@
     inset: 0;
     z-index: -1;
     background-color: var(--global-background);
-    backdrop-filter: saturate(0);
 
     &[data-overlay-color='light'] {
-      background-color: hsl(token(--color-support-white));
+      background-color: hsl(token(--color-primary-0));
     }
 
     &[data-overlay-color='dark'] {
-      background-color: hsl(token(--color-support-black));
+      background-color: hsl(token(--color-primary-100));
     }
   }
 }

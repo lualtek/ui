@@ -4,7 +4,7 @@
 @layer components {
   .Content {
     background-color: var(--global-background);
-    border: 1px solid var(--dimmed-1);
+    border: 1px solid var(--dimmed-0);
     overscroll-behavior: contain;
     inline-size: 100vw;
     overflow: hidden;
@@ -32,7 +32,6 @@
 
     @mixin vibrancy;
 
-    border-bottom: 1px solid var(--dimmed-1);
     overflow: hidden;
     border-radius: token(--radius-24) token(--radius-24) 0 0;
     position: sticky;
