@@ -35,16 +35,16 @@
       "value": "hsl({color.primary.30})"
     },
     "background": {
-      "value": "hsl({color.primary.100} / 80%)"
+      "value": "hsl({color.primary.100} / 70%)"
     },
     "background-soft": {
-      "value": "hsl({color.primary.90} / 80%)"
+      "value": "hsl({color.primary.90} / 70%)"
     },
     "background-mid": {
-      "value": "hsl({color.primary.80} / 80%)"
+      "value": "hsl({color.primary.80} / 70%)"
     },
     "background-hard": {
-      "value": "hsl({color.primary.70} / 80%)"
+      "value": "hsl({color.primary.70} / 70%)"
     },
     "background-red": {
       "value": "hsl({color.red.50} / 20%)"
