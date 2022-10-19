@@ -62,7 +62,7 @@ export const Drawer: FCChildrenClass<DrawerProps> = forwardRef(({
   showHeader = true,
   maxWidth = '400px',
   side = 'right',
-  theme = 'light',
+  theme = 'auto',
   isModal = true,
   title,
   ...otherProps
