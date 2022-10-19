@@ -1,5 +1,16 @@
 # @lualtek/react-components
 
+## 1.19.0
+
+### Minor Changes
+
+- edfee6d: Update elevations system and add shadows directions
+- 21b0d85: Add new vibrancy backgrounds
+
+### Patch Changes
+
+- @lualtek/icons@1.19.0
+
 ## 1.18.2
 
 ### Patch Changes

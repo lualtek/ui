@@ -1,5 +1,11 @@
 # @lualtek/config
 
+## 1.19.0
+
+### Patch Changes
+
+- @lualtek/tokens@1.19.0
+
 ## 1.18.2
 
 ### Patch Changes
