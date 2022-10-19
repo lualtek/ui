@@ -22,21 +22,15 @@
 [data-elevation-hover='1']:hover {
 
   /* Default shadow offsets. */
-  --x1: 0px;
   --y1: 4px;
+  --x1: 0px;
 
   transition: box-shadow token(--duration-100) token(--easing-standard);
   box-shadow:
     calc(var(--x1) * var(--shadow-direction))
     calc(var(--y1) * var(--shadow-direction))
     8px
-    hsl(
-      var(--shadow-color) / calc(
-        4% +
-        var
-        --shadow-opacity-factor
-      )
-    )),
+    hsl(var(--shadow-color) / calc(4% + var(--shadow-opacity-factor))),
     0 0 2px hsl(var(--shadow-color) / calc(6% + var(--shadow-opacity-factor))),
     0 0 1px hsl(var(--shadow-color) / calc(4% + var(--shadow-opacity-factor)));
 
