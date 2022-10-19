@@ -20,7 +20,7 @@
     color: var(--cta-foreground);
     border-radius: token(--radius-8);
     position: relative;
-    background-color: var(--vibrancy-background);
+    background-color: var(--vibrancy-background-mid);
     box-shadow: 0 0 0 1px var(--global-background), inset 0 0 0 1px var(--dimmed-2);
 
     &::after {

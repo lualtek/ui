@@ -39,7 +39,7 @@
 
       @mixin vibrancy;
 
-      background-color: var(--vibrancy-background);
+      background-color: var(--vibrancy-background-mid);
 
       &[data-card-highlight-hover='true']:is(:hover, :focus-visible) {
         background-color: var(--vibrancy-background-soft);

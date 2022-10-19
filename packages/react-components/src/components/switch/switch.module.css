@@ -13,7 +13,7 @@
     padding: 2px;
     inline-size: 2.44rem;
     max-block-size: token(--space-24);
-    background-color: var(--vibrancy-background);
+    background-color: var(--vibrancy-background-mid);
     color: var(--dimmed-6);
     border-radius: 1e5px;
     justify-content: flex-start;

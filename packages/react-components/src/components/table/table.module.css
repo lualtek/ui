@@ -55,7 +55,7 @@
 
     @mixin vibrancy;
 
-    background-color: var(--vibrancy-background);
+    background-color: var(--vibrancy-background-mid);
     position: absolute;
     top: 0;
     left: 0;

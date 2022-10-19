@@ -35,10 +35,13 @@
       "value": "hsl({color.primary.30})"
     },
     "background": {
-      "value": "hsl({color.primary.80} / 80%)"
+      "value": "hsl({color.primary.100} / 80%)"
     },
     "background-soft": {
-      "value": "hsl({color.primary.90} / 90%)"
+      "value": "hsl({color.primary.90} / 80%)"
+    },
+    "background-mid": {
+      "value": "hsl({color.primary.80} / 80%)"
     },
     "background-hard": {
       "value": "hsl({color.primary.70} / 80%)"

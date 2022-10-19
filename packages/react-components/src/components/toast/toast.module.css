@@ -14,31 +14,31 @@
     }
 
     &[data-toast-kind='neutral'] {
-      --toast-bg: var(--vibrancy-background);
+      --toast-bg: var(--vibrancy-background-mid);
       --toast-fg: var(--global-foreground);
       --toast-action-fg: var(--global-background);
     }
 
     &[data-toast-kind='positive'] {
-      --toast-bg: var(--vibrancy-background);
+      --toast-bg: var(--vibrancy-background-mid);
       --toast-fg: var(--highlight-green-foreground);
       --toast-action-fg: var(--highlight-green-background);
     }
 
     &[data-toast-kind='warning'] {
-      --toast-bg: var(--vibrancy-background);
+      --toast-bg: var(--vibrancy-background-mid);
       --toast-fg: var(--highlight-yellow-foreground);
       --toast-action-fg: var(--highlight-yellow-background);
     }
 
     &[data-toast-kind='info'] {
-      --toast-bg: var(--vibrancy-background);
+      --toast-bg: var(--vibrancy-background-mid);
       --toast-fg: var(--highlight-blue-foreground);
       --toast-action-fg: var(--highlight-blue-background);
     }
 
     &[data-toast-kind='danger'] {
-      --toast-bg: var(--vibrancy-background);
+      --toast-bg: var(--vibrancy-background-mid);
       --toast-fg: var(--highlight-red-foreground);
       --toast-action-fg: var(--highlight-red-background);
     }

@@ -80,7 +80,7 @@
 
       @mixin vibrancy;
 
-      background-color: var(--vibrancy-background);
+      background-color: var(--vibrancy-background-mid);
       color: var(--vibrancy-foreground);
 
       &:not([aria-disabled='true'])[data-button-sentiment='positive'] {
@@ -139,7 +139,7 @@
 
         @mixin vibrancy;
 
-        background-color: var(--vibrancy-background);
+        background-color: var(--vibrancy-background-mid);
         color: var(--vibrancy-foreground);
       }
 

@@ -22,7 +22,7 @@
     caret-color: var(--cta-default);
     outline-offset: 2px;
     min-block-size: token(--space-48);
-    border: 1px solid var(--vibrancy-background);
+    border: 1px solid var(--vibrancy-background-mid);
     border-radius: token(--radius-16);
 
     &::-webkit-calendar-picker-indicator {

@@ -52,7 +52,7 @@
     block-size: var(--field-height);
     font-weight: token(--font-weight-semi-bold);
     border-radius: var(--field-radius);
-    border: 1px solid var(--vibrancy-background);
+    border: 1px solid var(--vibrancy-background-mid);
     background:
       linear-gradient(
         to bottom,
