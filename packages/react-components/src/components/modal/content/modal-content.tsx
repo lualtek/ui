@@ -3,7 +3,7 @@ import { CSSProperties, forwardRef, ReactNode } from 'react';
 import { AutoFocusInside } from 'react-focus-on';
 
 import {
-  Elevator, IconButton, Stack, Title, useOverlayContext,
+  Elevator, IconButton, Stack, Title, useOverlayContext, useResponsiveContext,
 } from '@/components';
 
 import * as styles from './modal-content.module.css';
@@ -41,13 +41,14 @@ export const ModalContent = forwardRef<HTMLDivElement, ModalContentProps>(({
   ...otherProps
 }, forwardedRef) => {
   const { onClose, titleId } = useOverlayContext();
+  const { matches } = useResponsiveContext();
 
   const dynamicStyle: CSSProperties = {
     '--header-tint': headerTint,
   };
 
   return (
-    <Elevator resting={4}>
+    <Elevator resting={4} direction={matches.small ? 'bottom' : 'top'}>
       <div
         className={clsx(styles.Content, className)}
         style={{ ...dynamicStyle, ...style }}
