@@ -11,11 +11,16 @@ export type ElevatorProps = {
    * Set the elevation of the component when is hovered.
    */
   hover?: 0 | 1 | 2 | 3 | 4;
+  /**
+   * Set the direction of shadow casting
+  */
+  direction?: 'top' | 'bottom' | 'left' | 'right';
 }
 
 export const Elevator: FCChildren<ElevatorProps> = ({
   children,
   resting,
+  direction = 'bottom',
   hover,
 }) => (
   <>
@@ -23,6 +28,7 @@ export const Elevator: FCChildren<ElevatorProps> = ({
       child as ReactElement,
       {
         'data-elevation': resting,
+        'data-elevation-direction': direction,
         'data-elevation-hover': hover,
       },
     ))}

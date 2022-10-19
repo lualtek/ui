@@ -118,7 +118,7 @@ export const Drawer: FCChildrenClass<DrawerProps> = forwardRef(({
             className={styles.Container}
             data-drawer-side={side}
           >
-            <Elevator resting={4}>
+            <Elevator resting={4} direction="left">
               <div
                 className={styles.Content}
                 style={dynamicStyle}
