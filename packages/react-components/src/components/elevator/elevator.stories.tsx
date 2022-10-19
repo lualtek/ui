@@ -5,6 +5,20 @@ import { Elevator } from './elevator';
 const story: ComponentMeta<typeof Elevator> = {
   title: 'Widgets/Elevator',
   component: Elevator,
+  argTypes: {
+    resting: {
+      options: ['0', '1', '2', '3', '4'],
+      control: { type: 'select' },
+    },
+    hover: {
+      options: ['0', '1', '2', '3', '4'],
+      control: { type: 'select' },
+    },
+    direction: {
+      options: ['top', 'bottom', 'left', 'right'],
+      control: { type: 'select' },
+    },
+  },
 };
 
 export default story;

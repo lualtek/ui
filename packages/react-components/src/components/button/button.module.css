@@ -51,7 +51,12 @@
     /* Types */
 
     &[data-button-kind='primary'] {
-      background: radial-gradient(farthest-side at 50% top, var(--gradient-brand-1) 0%, var(--gradient-brand-2) 100%);
+      background:
+        radial-gradient(
+          farthest-side at 50% top,
+          var(--gradient-brand-start) 0%,
+          var(--gradient-brand-end) 100%
+        );
       color: var(--cta-foreground);
 
       &:not([aria-disabled='true'])[data-button-sentiment='positive'] {

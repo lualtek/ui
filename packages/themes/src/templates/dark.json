@@ -144,5 +144,10 @@
     "purple-foreground": {
       "value": "hsl({color.purple.40})"
     }
+  },
+  "shadow": {
+    "opacity-factor": {
+      "value": "30%"
+    }
   }
 }
