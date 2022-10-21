@@ -17,6 +17,11 @@
         color: var(--global-foreground);
         background: none;
       }
+
+      &[aria-pressed='true']:hover {
+        color: var(--global-foreground);
+        background: none;
+      }
     }
 
     &[data-button-kind='secondary'] {

@@ -1,6 +1,6 @@
 @layer components {
   .Textfield {
-    --factor: 3;
+    --factor: 3.5;
     --field-padding: token(--space-16);
     --font-size: token(--font-size-16);
 

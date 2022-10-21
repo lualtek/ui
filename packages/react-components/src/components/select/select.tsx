@@ -76,7 +76,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(({
           <Icon
             className={styles.Icon}
             source={icon}
-            dimension={16}
+            dimension={18}
           />
         )}
 
@@ -84,6 +84,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(({
           as="label"
           dimmed={5}
           size={14}
+          responsive={false}
           htmlFor={`${uid}-select`}
           className={styles.Label}
         >

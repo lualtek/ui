@@ -134,7 +134,7 @@ export const Textfield = forwardRef<PrimitiveInputType, TextfieldProps>(({
         {isPassword && (
           <IconButton
             className={styles.IconButton}
-            dimension="regular"
+            dimension="big"
             onClick={handlePasswordVisibility}
             kind="flat"
             aria-label="Reveal password"
@@ -146,11 +146,11 @@ export const Textfield = forwardRef<PrimitiveInputType, TextfieldProps>(({
           <Icon
             className={styles.Icon}
             source={icon}
-            dimension={16}
+            dimension={18}
           />
         )}
 
-        <Text as="label" dimmed={5} className={styles.Label} size={14} htmlFor={fieldID}>
+        <Text as="label" responsive={false} dimmed={5} className={styles.Label} size={14} htmlFor={fieldID}>
           <ClampText rows={1}>{label}</ClampText>
         </Text>
       </div>
