@@ -83,7 +83,7 @@ export const ToggleButton = forwardRef(({
     (icon: IconNames, dimension?: IconProps['dimension']) => {
       const iconSize: Record<string, IconProps['dimension']> = {
         big: 24,
-        regular: 16,
+        regular: 18,
         small: 12,
       };
 
