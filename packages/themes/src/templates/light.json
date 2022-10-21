@@ -71,7 +71,7 @@
       }
     },
     "background-soft": {
-      "value": "hsl({color.primary.5} / 40%)",
+      "value": "hsl({color.primary.10} / 40%)",
       "attributes": {
         "category": "color"
       }
