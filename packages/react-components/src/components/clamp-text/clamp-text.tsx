@@ -10,6 +10,10 @@ export type ClampTextProps = PropsClassChildren<{
    * Define how many lines the text should be clamped to.
    */
   rows?: number;
+  /**
+   * Put the text as inline element instead of block.
+   */
+  inline?: boolean;
 }>
 
 type PolymorphicClampText = Polymorphic.ForwardRefComponent<'span', ClampTextProps>;
@@ -20,6 +24,7 @@ export const ClampText = forwardRef(({
   rows = 1,
   style,
   as: Wrapper = 'span',
+  inline,
   ...otherProps
 }, forwardedRef) => {
   const dynamicStyle: CSSProperties = {
@@ -31,6 +36,7 @@ export const ClampText = forwardRef(({
       ref={forwardedRef}
       style={{ ...dynamicStyle, ...style }}
       className={clsx(styles.ClampText, className)}
+      data-clamp-text-inline={inline}
       {...otherProps}
     >
       {children}
