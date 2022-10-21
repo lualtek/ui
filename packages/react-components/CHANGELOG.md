@@ -1,5 +1,16 @@
 # @lualtek/react-components
 
+## 1.20.0
+
+### Minor Changes
+
+- 71e2376: Add inline clamp text
+
+### Patch Changes
+
+- Updated dependencies [e6ce2ac]
+  - @lualtek/icons@1.20.0
+
 ## 1.19.0
 
 ### Minor Changes

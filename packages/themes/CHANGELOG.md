@@ -1,5 +1,15 @@
 # @lualtek/themes
 
+## 1.20.0
+
+### Minor Changes
+
+- 6ae6f6f: Increase light vibrancy background soft contrast
+
+### Patch Changes
+
+- fe2fb1c: Fix vibrancy dark transparency
+
 ## 1.19.0
 
 ### Minor Changes
