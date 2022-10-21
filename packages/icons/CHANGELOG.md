@@ -1,5 +1,11 @@
 # @lualtek/icons
 
+## 1.20.0
+
+### Minor Changes
+
+- e6ce2ac: Update style for duotone icons
+
 ## 1.19.0
 
 ## 1.18.2

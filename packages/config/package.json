@@ -1,7 +1,7 @@
 {
   "name": "@lualtek/config",
   "description": "Lualtek UI shared configurations",
-  "version": "1.19.0",
+  "version": "1.20.0",
   "author": "Lualtek",
   "main": "dist/index",
   "publishConfig": {
