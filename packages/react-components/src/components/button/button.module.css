@@ -105,17 +105,14 @@
 
       &[data-button-sentiment='positive']:not([aria-disabled='true'], [aria-busy='true']):is(:hover) {
         background: var(--highlight-green-background);
-        color: var(--highlight-green-foreground);
       }
 
       &[data-button-sentiment='warning']:not([aria-disabled='true'], [aria-busy='true']):is(:hover) {
         background: var(--highlight-yellow-background);
-        color: var(--highlight-yellow-foreground);
       }
 
       &[data-button-sentiment='danger']:not([aria-disabled='true'], [aria-busy='true']):is(:hover) {
         background: var(--highlight-red-background);
-        color: var(--highlight-red-foreground);
       }
     }
 
@@ -144,17 +141,14 @@
       }
 
       &[data-button-sentiment='positive']:not([aria-disabled='true'], [aria-busy='true']):is(:hover) {
-        color: var(--highlight-green-foreground);
         background-color: var(--vibrancy-background-green);
       }
 
       &[data-button-sentiment='warning']:not([aria-disabled='true'], [aria-busy='true']):is(:hover) {
-        color: var(--highlight-yellow-foreground);
         background-color: var(--vibrancy-background-yellow);
       }
 
       &[data-button-sentiment='danger']:not([aria-disabled='true'], [aria-busy='true']):is(:hover) {
-        color: var(--highlight-red-foreground);
         background-color: var(--vibrancy-background-red);
       }
     }
