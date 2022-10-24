@@ -13,13 +13,13 @@
       }
     },
     "interactive-text": {
-      "value": "hsl({color.support.brand})",
+      "value": "hsl({color.brand.default})",
       "attributes": {
         "category": "color"
       }
     },
     "interactive-text-hover": {
-      "value": "hsl({color.support.brand})",
+      "value": "hsl({color.brand.default})",
       "attributes": {
         "category": "color"
       }
@@ -39,7 +39,7 @@
   },
   "cta": {
     "default": {
-      "value": "hsl({color.support.brand})",
+      "value": "hsl({color.brand.default})",
       "attributes": {
         "category": "color"
       }
@@ -107,7 +107,7 @@
       }
     },
     "background-brand": {
-      "value": "hsl({color.support.brand} / 10%)",
+      "value": "hsl({color.brand.default} / 10%)",
       "attributes": {
         "category": "color"
       }
@@ -172,7 +172,7 @@
   "gradient": {
     "brand": {
       "start": {
-        "value": "hsl({color.support.brand})",
+        "value": "hsl({color.brand.default})",
         "attributes": {
           "category": "color"
         }
@@ -186,6 +186,18 @@
     }
   },
   "highlight": {
+    "brand-background": {
+      "value": "hsl({color.brand.light})",
+      "attributes": {
+        "category": "color"
+      }
+    },
+    "brand-foreground": {
+      "value": "hsl({color.brand.default})",
+      "attributes": {
+        "category": "color"
+      }
+    },
     "gray-background": {
       "value": "hsl({color.primary.20})",
       "attributes": {

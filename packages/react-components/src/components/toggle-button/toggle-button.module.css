@@ -11,7 +11,7 @@
     }
 
     &[data-button-kind='primary'] {
-      --border-color: hsl(token(--color-support-brand) / 60%);
+      --border-color: hsl(token(--color-brand-default) / 60%);
 
       &[aria-pressed='true'] {
         color: var(--global-foreground);

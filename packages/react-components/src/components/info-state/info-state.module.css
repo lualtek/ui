@@ -25,14 +25,19 @@
       display: block;
     }
 
-    &[data-info-state-icon-color='cyan'] {
-      --bg: var(--highlight-cyan-background);
-      --fg: var(--highlight-cyan-foreground);
+    &[data-info-state-icon-color='brand'] {
+      --bg: var(--highlight-brand-background);
+      --fg: var(--highlight-brand-foreground);
     }
 
     &[data-info-state-icon-color='gray'] {
       --bg: var(--highlight-gray-background);
       --fg: var(--highlight-gray-foreground);
+    }
+
+    &[data-info-state-icon-color='cyan'] {
+      --bg: var(--highlight-cyan-background);
+      --fg: var(--highlight-cyan-foreground);
     }
 
     &[data-info-state-icon-color='green'] {

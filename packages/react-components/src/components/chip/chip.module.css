@@ -16,6 +16,11 @@
       block-size: token(--space-32);
     }
 
+    &[data-chip-color='brand'] {
+      background-color: var(--highlight-brand-background);
+      color: var(--highlight-brand-foreground);
+    }
+
     &[data-chip-color='gray'] {
       background-color: var(--highlight-gray-background);
       color: var(--highlight-gray-foreground);

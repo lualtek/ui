@@ -1,0 +1,24 @@
+{
+  "color": {
+    "brand": {
+      "light": {
+        "value": "#e8e5ff",
+        "attributes": {
+          "category": "color"
+        }
+      },
+      "default": {
+        "value": "#5746ff",
+        "attributes": {
+          "category": "color"
+        }
+      },
+      "dark": {
+        "value": "#201c4a",
+        "attributes": {
+          "category": "color"
+        }
+      }
+    }
+  }
+}

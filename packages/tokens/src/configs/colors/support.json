@@ -1,12 +1,6 @@
 {
   "color": {
     "support": {
-      "brand": {
-        "value": "#5746FF",
-        "attributes": {
-          "category": "color"
-        }
-      },
       "black": {
         "value": "#000000",
         "attributes": {
