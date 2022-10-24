@@ -1,8 +1,9 @@
-import { IconNames } from '@lualtek/icons';
 import { TokensTypes } from '@lualtek/tokens';
 import clsx from 'clsx';
 
-import { Icon, IconProps, Stack } from '@/components';
+import {
+  Icon, IconProps, Stack,
+} from '@/components';
 
 import * as styles from './icon-chip.module.css';
 
@@ -18,7 +19,7 @@ export type IconChipProps = {
   /**
    * Set the icon to show
    */
-  icon: IconNames;
+  icon: IconProps['source'];
 }
 
 type Sizes = Record<string, {
