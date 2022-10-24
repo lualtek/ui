@@ -25,7 +25,7 @@
     }
 
     &[data-button-kind='secondary'] {
-      --border-color: var(--dimmed-2);
+      --border-color: var(--dimmed-3);
 
       &[aria-pressed='true'] {
         color: var(--global-vibrancy-foreground);
@@ -34,7 +34,7 @@
     }
 
     &[data-button-kind='flat'] {
-      --border-color: var(--dimmed-2);
+      --border-color: var(--dimmed-3);
 
       &[aria-pressed='true'] {
         color: var(--global-vibrancy-foreground);
