@@ -134,7 +134,6 @@ export const Textfield = forwardRef<PrimitiveInputType, TextfieldProps>(({
         {isPassword && (
           <IconButton
             className={styles.IconButton}
-            dimension="big"
             onClick={handlePasswordVisibility}
             kind="flat"
             aria-label="Reveal password"

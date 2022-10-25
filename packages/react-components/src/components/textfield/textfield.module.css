@@ -38,15 +38,19 @@
   }
 
   .InputField {
-    padding: calc(token(--space-24) - token(--space-4)) var(--field-padding) token(--space-4) var(--field-padding);
+    padding:
+      calc(token(--space-24) - token(--space-4))
+      var(--field-padding)
+      token(--space-4)
+      var(--field-padding);
 
     @nest [data-textfield-has-icon='true'][data-textfield-icon-position='right'] & {
-      padding-right: calc(var(--field-padding) * var(--factor));
+      padding-right: calc(var(--field-padding) * (var(--factor) * 0.95));
       padding-left: var(--field-padding);
     }
     @nest [data-textfield-has-icon='true'][data-textfield-icon-position='left'] & {
       padding-right: var(--field-padding);
-      padding-left: calc(var(--field-padding) * var(--factor));
+      padding-left: calc(var(--field-padding) * (var(--factor) * 0.95));
     }
   }
 
@@ -59,11 +63,11 @@
 
     @nest [data-textfield-icon-position='left'] & {
       right: auto;
-      left: var(--field-padding);
+      left: calc(var(--field-padding) + (var(--field-padding) / 4));
     }
     @nest [data-textfield-icon-position='right'] & {
       left: auto;
-      right: var(--field-padding);
+      right: calc(var(--field-padding) + (var(--field-padding) / 4));
     }
     @nest .Textfield[data-textfield-invalid='true'] & {
       fill: var(--highlight-red-foreground);
