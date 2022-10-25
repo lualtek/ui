@@ -54,7 +54,7 @@ Inside css files the tokens are available as custom env variables (`token(--[TOK
 
 div {
   /* Colors are defined as HSL-4 but without the hsl() notation */
-  color: hsl(token(--color-primary-50) / 50%);
+  color: hsl(token(--color-gray-80) / 50%);
 }
 ```
 
