@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 1.21.4
+
+### Patch Changes
+
+- ce2798d: disable shrink for selection controls
+  - @lualtek/icons@1.21.4
+
 ## 1.21.3
 
 ### Patch Changes
