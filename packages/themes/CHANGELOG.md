@@ -1,5 +1,12 @@
 # @lualtek/themes
 
+## 1.21.0
+
+### Minor Changes
+
+- 302d5dc: Add new gray color
+- d43f208: Add new brand colors and rename default brand
+
 ## 1.20.0
 
 ### Minor Changes
