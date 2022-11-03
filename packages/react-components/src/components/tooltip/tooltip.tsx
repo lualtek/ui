@@ -50,7 +50,7 @@ export const Tooltip = ({
       {...otherProps}
     >
 
-      {Children.map(trigger, child => isValidElement(child) && (
+      {Children.map(trigger, child => isValidElement<any>(child) && (
         <TooltipPrimitive.Trigger asChild>
           {cloneElement(
             child,
@@ -83,3 +83,5 @@ export const Tooltip = ({
     </TooltipPrimitive.Root>
   );
 };
+
+export const TooltipProvider = TooltipPrimitive.Provider;
