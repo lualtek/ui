@@ -1,4 +1,3 @@
-import { IconNames } from '@lualtek/icons';
 import clsx from 'clsx';
 import { motion } from 'framer-motion';
 import {
@@ -16,11 +15,11 @@ export type ToggleButtonProps = Except<IconButtonProps, 'icon'> & {
   /**
    * Set the icon to show when the button is resting.
    */
-  restingIcon: IconButtonProps['icon'];
+  restingIcon: IconProps['source'];
   /**
    * Set the icon to show when the button is pressed/active.
    */
-  pressedIcon?: IconButtonProps['icon'];
+  pressedIcon?: IconProps['source'];
   /**
    * Set the pressed state of the button. If `pressedIcon` is set,
    * the icon will be shown instead of the resting icon.
@@ -80,7 +79,7 @@ export const ToggleButton = forwardRef(({
   );
 
   const renderIcon = useCallback(
-    (icon: IconNames, dimension?: IconProps['dimension']) => {
+    (icon: IconProps['source'], dimension?: IconProps['dimension']) => {
       const iconSize: Record<string, IconProps['dimension']> = {
         big: 24,
         regular: 18,
@@ -112,7 +111,7 @@ export const ToggleButton = forwardRef(({
             initial={isFirstRender && isPressed ? false : 'scaleOut'}
             animate="scaleIn"
           >
-            {renderIcon(pressedIcon as IconNames, dimension as IconProps['dimension'])}
+            {renderIcon(pressedIcon, dimension as IconProps['dimension'])}
           </motion.span>
         )
         : restingIcon && (
@@ -122,7 +121,7 @@ export const ToggleButton = forwardRef(({
             initial={isFirstRender && !isPressed ? false : 'scaleOut'}
             animate="scaleIn"
           >
-            {renderIcon(restingIcon as IconNames, dimension as IconProps['dimension'])}
+            {renderIcon(restingIcon, dimension as IconProps['dimension'])}
           </motion.span>
         )
       }
