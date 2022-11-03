@@ -1,5 +1,13 @@
 # @lualtek/react-components
 
+## 1.21.3
+
+### Patch Changes
+
+- 20101df: Add clamp text to chip
+- 2eb1659: Fix ToggleButton types
+  - @lualtek/icons@1.21.3
+
 ## 1.21.2
 
 ### Patch Changes
