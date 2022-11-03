@@ -1,5 +1,23 @@
 # @lualtek/react-components
 
+## 1.21.0
+
+### Minor Changes
+
+- 302d5dc: Add new gray color
+- f38afe5: Fix textfield and select paddings
+- ff9678f: Fix button icon sizes
+- 4422516: Fix Card style
+- 0834763: Add new icons
+- a33acf3: Fix textfield and select design
+
+### Patch Changes
+
+- 7b6f2bb: Add `TooltipProvider` export
+- Updated dependencies [0834763]
+- Updated dependencies [d43f208]
+  - @lualtek/icons@1.21.0
+
 ## 1.20.0
 
 ### Minor Changes

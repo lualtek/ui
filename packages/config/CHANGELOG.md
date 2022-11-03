@@ -1,5 +1,13 @@
 # @lualtek/config
 
+## 1.21.0
+
+### Patch Changes
+
+- Updated dependencies [302d5dc]
+- Updated dependencies [d43f208]
+  - @lualtek/tokens@1.21.0
+
 ## 1.20.0
 
 ### Patch Changes

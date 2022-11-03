@@ -1,5 +1,12 @@
 # @lualtek/icons
 
+## 1.21.0
+
+### Minor Changes
+
+- 0834763: Add new icons
+- d43f208: Add new brand colors and rename default brand
+
 ## 1.20.0
 
 ### Minor Changes
