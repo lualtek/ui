@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 1.21.2
+
+### Patch Changes
+
+- 133df8a: Fix Tooltip animation offset
+  - @lualtek/icons@1.21.2
+
 ## 1.21.1
 
 ### Patch Changes
