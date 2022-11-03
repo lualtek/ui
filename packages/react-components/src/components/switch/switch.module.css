@@ -17,6 +17,8 @@
     color: var(--dimmed-6);
     border-radius: 1e5px;
     justify-content: flex-start;
+    flex-shrink: 0;
+    flex-grow: 0;
 
     &:is([data-state='checked']) {
       background: var(--cta-default);
