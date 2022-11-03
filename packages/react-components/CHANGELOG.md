@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 1.21.1
+
+### Patch Changes
+
+- 84b3f0c: Fix IconChip colors
+  - @lualtek/icons@1.21.1
+
 ## 1.21.0
 
 ### Minor Changes
