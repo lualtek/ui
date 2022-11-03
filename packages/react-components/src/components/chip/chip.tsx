@@ -2,7 +2,9 @@ import { TokensTypes } from '@lualtek/tokens';
 import clsx from 'clsx';
 import { forwardRef } from 'react';
 
-import { Icon, IconProps, Stack } from '@/components';
+import {
+  ClampText, Icon, IconProps, Stack,
+} from '@/components';
 
 import * as styles from './chip.module.css';
 
@@ -62,7 +64,7 @@ export const Chip = forwardRef<HTMLSpanElement, ChipProps>(({
       ref={forwardedRef}
       {...otherProps}
     >
-      <b>{children}</b>
+      <ClampText as="b" rows={1}>{children}</ClampText>
       {interactive && (
         <button onClick={interactive && onDismissClick} className={styles.Action} type="button">
           <Icon
