@@ -38,7 +38,7 @@ export const Tooltip = ({
   className,
   trigger,
   side = 'top',
-  delayDuration = 0,
+  delayDuration,
   ...otherProps
 }: TooltipProps) => {
   const [triggerCenter, setTriggerCenter] = useState<number>(0);
