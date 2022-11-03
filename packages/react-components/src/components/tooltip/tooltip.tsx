@@ -4,7 +4,7 @@ import {
   domAnimation, LazyMotion, m,
 } from 'framer-motion';
 import {
-  Children, cloneElement, isValidElement, ReactNode, useEffect, useRef, useState,
+  Children, cloneElement, isValidElement, ReactNode, useEffect, useMemo, useRef, useState,
 } from 'react';
 
 import * as styles from './tooltip.module.css';
@@ -14,14 +14,22 @@ export type TooltipProps = PropsWithClass & TooltipPrimitive.TooltipProps & {
   side?: TooltipPrimitive.TooltipContentProps['side'];
 }
 
-const animation = {
-  hidden: {
-    opacity: 0,
+const animationOffsets = {
+  top: {
     y: 20,
+    x: 0,
   },
-  visible: {
-    opacity: 1,
+  bottom: {
+    y: -20,
+    x: 0,
+  },
+  left: {
     y: 0,
+    x: 20,
+  },
+  right: {
+    y: 0,
+    x: -20,
   },
 };
 
@@ -35,6 +43,19 @@ export const Tooltip = ({
 }: TooltipProps) => {
   const [triggerCenter, setTriggerCenter] = useState<number>(0);
   const triggerRef = useRef<HTMLHtmlElement>();
+
+  const animation = useMemo(() => ({
+    hidden: {
+      opacity: 0,
+      y: animationOffsets[side].y,
+      x: animationOffsets[side].x,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      x: 0,
+    },
+  }), [side]);
 
   useEffect(() => {
     if (triggerRef.current) setTriggerCenter(triggerRef.current.offsetWidth / 2);

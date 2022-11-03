@@ -1,17 +1,26 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { Text } from '../..';
-import { Tooltip } from './tooltip';
+import { Tooltip, TooltipProvider } from './tooltip';
 
 const story: ComponentMeta<typeof Tooltip> = {
   title: 'Dialogs/Tooltip',
   component: Tooltip,
+  args: {
+    side: 'bottom',
+  },
+  argTypes: {
+    side: {
+      options: ['top', 'bottom', 'left', 'right'],
+      control: { type: 'radio' },
+    },
+  },
 };
 
 export default story;
 
 const Template: ComponentStory<typeof Tooltip> = args => (
-  <>
+  <TooltipProvider>
     Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit expedita,
     saepe numquam illo quas, Lorem ipsum dolor, sit amet consectetur adipisicing elit.
     Impedit expedita, saepe numquam illo quas, Lorem ipsum dolor, sit amet consectetur adipisicing elit.
@@ -25,7 +34,7 @@ const Template: ComponentStory<typeof Tooltip> = args => (
     {' '}
     eos dolorum modi earum quidem molestias recusandae, voluptas delectus aliquam nemo temporibus.
     Quas perspiciatis sunt ut.
-  </>
+  </TooltipProvider>
 );
 
 export const Default = Template.bind({});
