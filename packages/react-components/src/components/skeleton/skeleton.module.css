@@ -1,7 +1,7 @@
 @layer components {
   .SkeletonItem {
     --base-color: var(--dimmed-0);
-    --highlight-color: var(--dimmed-1);
+    --highlight-color: var(--dimmed-2);
     --animation-duration: 1.5s;
     --animation-direction: normal;
 
