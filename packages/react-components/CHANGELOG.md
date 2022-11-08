@@ -1,5 +1,14 @@
 # @lualtek/react-components
 
+## 1.21.5
+
+### Patch Changes
+
+- d51d06f: Fix skeleton colors
+- 54f983f: Fix skeleton loader index
+- 5f13ded: Fix popover animation origin
+  - @lualtek/icons@1.21.5
+
 ## 1.21.4
 
 ### Patch Changes
