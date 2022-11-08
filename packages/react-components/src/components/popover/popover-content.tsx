@@ -20,18 +20,18 @@ export const PopoverContent = ({
 }: PopoverContentProps) => {
   const computeOrigin = useMemo(() => {
     if (side === 'left') {
-      return { x: -20, y: 0 };
-    }
-
-    if (side === 'right') {
       return { x: 20, y: 0 };
     }
 
-    if (side === 'top') {
-      return { x: 0, y: -20 };
+    if (side === 'right') {
+      return { x: -20, y: 0 };
     }
 
-    return { x: 0, y: 20 };
+    if (side === 'top') {
+      return { x: 0, y: 20 };
+    }
+
+    return { x: 0, y: -20 };
   }, [side]);
 
   const animation = useMemo(() => ({

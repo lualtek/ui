@@ -14,25 +14,6 @@ export type TooltipProps = PropsWithClass & TooltipPrimitive.TooltipProps & {
   side?: TooltipPrimitive.TooltipContentProps['side'];
 }
 
-const animationOffsets = {
-  top: {
-    y: 20,
-    x: 0,
-  },
-  bottom: {
-    y: -20,
-    x: 0,
-  },
-  left: {
-    y: 0,
-    x: 20,
-  },
-  right: {
-    y: 0,
-    x: -20,
-  },
-};
-
 export const Tooltip = ({
   children,
   className,
@@ -44,18 +25,33 @@ export const Tooltip = ({
   const [triggerCenter, setTriggerCenter] = useState<number>(0);
   const triggerRef = useRef<HTMLHtmlElement>();
 
+  const computeOrigin = useMemo(() => {
+    if (side === 'left') {
+      return { x: 20, y: 0 };
+    }
+
+    if (side === 'right') {
+      return { x: -20, y: 0 };
+    }
+
+    if (side === 'top') {
+      return { x: 0, y: 20 };
+    }
+
+    return { x: 0, y: -20 };
+  }, [side]);
+
   const animation = useMemo(() => ({
     hidden: {
       opacity: 0,
-      y: animationOffsets[side].y,
-      x: animationOffsets[side].x,
+      ...computeOrigin,
     },
     visible: {
       opacity: 1,
       y: 0,
       x: 0,
     },
-  }), [side]);
+  }), [computeOrigin]);
 
   useEffect(() => {
     if (triggerRef.current) setTriggerCenter(triggerRef.current.offsetWidth / 2);
