@@ -1,5 +1,15 @@
 # @lualtek/react-components
 
+## 1.23.0
+
+### Minor Changes
+
+- 1ad5881: Fix container paddings to use safe areas
+
+### Patch Changes
+
+- @lualtek/icons@1.23.0
+
 ## 1.22.0
 
 ### Patch Changes
