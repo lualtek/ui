@@ -1,5 +1,15 @@
 # @lualtek/react-components
 
+## 1.24.0
+
+### Minor Changes
+
+- 6e29019: Add big Switch variant
+
+### Patch Changes
+
+- @lualtek/icons@1.24.0
+
 ## 1.23.0
 
 ### Minor Changes
