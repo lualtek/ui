@@ -13,7 +13,7 @@
     border-radius: token(--radius-24) token(--radius-24) 0 0;
     justify-self: center;
     align-self: end;
-    padding-bottom: env(safe-area-inset-bottom);
+    padding-block-end: env(safe-area-inset-bottom);
 
     @media (--from-small) {
       max-inline-size: 600px;

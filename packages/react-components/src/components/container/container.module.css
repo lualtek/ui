@@ -2,7 +2,17 @@
 
 @layer components {
   .Container {
-    padding: 0 token(--space-16);
+    padding:
+      0
+      max(
+        token(--space-16),
+        calc(token(--space-16) + env(safe-area-inset-right))
+      )
+      0
+      max(
+        token(--space-16),
+        calc(token(--space-16) + env(safe-area-inset-left))
+      );
     margin: 0 auto;
     inline-size: 100%;
 
@@ -10,7 +20,17 @@
       max-inline-size: token(--container-small);
 
       @media (--from-small) {
-        padding: 0 token(--space-32);
+        padding:
+          0
+          max(
+            token(--space-16),
+            calc(token(--space-16) + env(safe-area-inset-right))
+          )
+          0
+          max(
+            token(--space-16),
+            calc(token(--space-16) + env(safe-area-inset-left))
+          );
       }
     }
 
@@ -18,7 +38,17 @@
       max-inline-size: token(--container-medium);
 
       @media (--from-small) {
-        padding: 0 token(--space-32);
+        padding:
+          0
+          max(
+            token(--space-32),
+            calc(token(--space-32) + env(safe-area-inset-right))
+          )
+          0
+          max(
+            token(--space-32),
+            calc(token(--space-32) + env(safe-area-inset-left))
+          );
       }
     }
 
@@ -26,7 +56,17 @@
       max-inline-size: token(--container-large);
 
       @media (--from-small) {
-        padding: 0 token(--space-32);
+        padding:
+          0
+          max(
+            token(--space-32),
+            calc(token(--space-32) + env(safe-area-inset-right))
+          )
+          0
+          max(
+            token(--space-32),
+            calc(token(--space-32) + env(safe-area-inset-left))
+          );
       }
     }
 
