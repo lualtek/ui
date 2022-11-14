@@ -9,7 +9,7 @@ export type SwitchProps = SwitchPrimitive.SwitchProps & {
   /**
    * Set the size of the switch.
    */
-  dimension?: 'small' | 'regular';
+  dimension?: 'small' | 'regular' | 'big';
 };
 
 export const Switch = forwardRef<
