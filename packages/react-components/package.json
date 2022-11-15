@@ -43,7 +43,8 @@
   ],
   "peerDependencies": {
     "react": "^18.2",
-    "react-dom": "^18.2"
+    "react-dom": "^18.2",
+    "constate": "^3.3.0"
   },
   "devDependencies": {
     "@babel/core": "7.19.3",
