@@ -9,16 +9,21 @@ import {
 
 import * as styles from './tooltip.module.css';
 
-export type TooltipProps = PropsWithClass & TooltipPrimitive.TooltipProps & {
+export type TooltipProps = PropsWithClass<
+TooltipPrimitive.TooltipProps &
+TooltipPrimitive.TooltipContentProps & {
   trigger: ReactNode;
   side?: TooltipPrimitive.TooltipContentProps['side'];
-}
+}>
 
 export const Tooltip = ({
   children,
   className,
   trigger,
   side = 'top',
+  sideOffset = 4,
+  align = 'center',
+  alignOffset,
   delayDuration,
   ...otherProps
 }: TooltipProps) => {
@@ -80,7 +85,14 @@ export const Tooltip = ({
       ))}
 
       <LazyMotion features={domAnimation}>
-        <TooltipPrimitive.Content asChild side={side} className={clsx(styles.Tooltip, className)}>
+        <TooltipPrimitive.Content
+          asChild
+          side={side}
+          align={align}
+          sideOffset={sideOffset}
+          alignOffset={alignOffset}
+          className={clsx(styles.Tooltip, className)}
+        >
           <m.div
             initial="hidden"
             animate="visible"
