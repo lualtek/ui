@@ -6,6 +6,7 @@
     font-size: var(--fs-max);
     max-inline-size: var(--max-w, initial);
     text-align: var(--t-align);
+    word-break: break-word;
 
     /* Colors */
 
