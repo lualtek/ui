@@ -1,5 +1,17 @@
 # @lualtek/react-components
 
+## 1.25.0
+
+### Minor Changes
+
+- e5c15ac: Update themes and primary color tokens
+
+### Patch Changes
+
+- 331383a: Add word-break to title and text
+- Updated dependencies [e5c15ac]
+  - @lualtek/icons@1.25.0
+
 ## 1.24.1
 
 ### Patch Changes

@@ -1,5 +1,12 @@
 # @lualtek/config
 
+## 1.25.0
+
+### Patch Changes
+
+- Updated dependencies [e5c15ac]
+  - @lualtek/tokens@1.25.0
+
 ## 1.24.1
 
 ### Patch Changes
