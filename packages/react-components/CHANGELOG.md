@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 1.25.2
+
+### Patch Changes
+
+- 3fbfd52: Fix deps
+  - @lualtek/icons@1.25.2
+
 ## 1.25.1
 
 ### Patch Changes
