@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 1.25.1
+
+### Patch Changes
+
+- 13c2de8: Fix toggle button style
+  - @lualtek/icons@1.25.1
+
 ## 1.25.0
 
 ### Minor Changes
