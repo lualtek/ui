@@ -19,8 +19,6 @@
       }
 
       &[aria-pressed='true']:hover {
-        --border-color: hsl(token(--color-brand-default) / 60%);
-
         color: var(--global-foreground);
         background: none;
       }
