@@ -11,14 +11,14 @@ export default create({
 
   // UI
   appBg: 'hsl(222deg 47% 6%)',
-  appContentBg: '#1E293B',
-  appBorderColor: '#334155',
-  barBg: '#1E293B',
+  appContentBg: '#231e3b',
+  appBorderColor: '#393355',
+  barBg: '#231e3b',
 
   // Typography
   fontBase: '"Open Sans", sans-serif',
 
   // Toolbar default and active colors
-  barTextColor: '#FFFFFF',
-  barSelectedColor: '#22D3EE',
+  barTextColor: '#CFCBE1',
+  barSelectedColor: '#7D70FF',
 });
