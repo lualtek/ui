@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 1.24.1
+
+### Patch Changes
+
+- ef2588f: Update tooltip props
+  - @lualtek/icons@1.24.1
+
 ## 1.24.0
 
 ### Minor Changes
