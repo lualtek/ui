@@ -7,7 +7,7 @@
     aspect-ratio: 1 / 1;
     border-radius: token(--radius-8);
     overflow: hidden;
-    background-color: var(--highlight-gray-background);
+    background-color: var(--highlight-brand-background);
     display: flex;
     align-items: flex-end;
     justify-content: center;

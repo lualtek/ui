@@ -16,11 +16,11 @@
     background-color: var(--global-background);
 
     &[data-overlay-color='light'] {
-      background-color: hsl(token(--color-gray-0));
+      background-color: hsl(token(--color-primary-0));
     }
 
     &[data-overlay-color='dark'] {
-      background-color: hsl(token(--color-gray-100));
+      background-color: hsl(token(--color-primary-100));
     }
   }
 }
