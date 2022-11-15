@@ -1,5 +1,11 @@
 # @lualtek/themes
 
+## 1.25.0
+
+### Minor Changes
+
+- e5c15ac: Update themes and primary color tokens
+
 ## 1.24.1
 
 ## 1.24.0
