@@ -29,6 +29,7 @@
     pointer-events: none;
     top: token(--space-4);
     left: var(--field-padding);
+    transform: translateZ(0);
 
     @nest [data-textfield-has-icon='true'][data-textfield-icon-position='left'] & {
       right: var(--field-padding);
