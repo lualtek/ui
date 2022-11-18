@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 1.25.3
+
+### Patch Changes
+
+- b113cb3: Fix fields label rendering issue
+  - @lualtek/icons@1.25.3
+
 ## 1.25.2
 
 ### Patch Changes
