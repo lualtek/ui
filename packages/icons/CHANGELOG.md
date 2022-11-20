@@ -1,5 +1,11 @@
 # @lualtek/icons
 
+## 1.26.0
+
+### Minor Changes
+
+- 9e44552: Add wifi icon
+
 ## 1.25.3
 
 ## 1.25.2
