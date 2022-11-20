@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 1.26.0
+
+### Patch Changes
+
+- Updated dependencies [9e44552]
+  - @lualtek/icons@1.26.0
+
 ## 1.25.3
 
 ### Patch Changes
