@@ -1,5 +1,15 @@
 # @lualtek/react-components
 
+## 1.27.0
+
+### Minor Changes
+
+- c78caf0: Add google font import to core.
+
+### Patch Changes
+
+- @lualtek/icons@1.27.0
+
 ## 1.26.0
 
 ### Patch Changes
