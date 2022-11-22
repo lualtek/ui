@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 1.27.1
+
+### Patch Changes
+
+- f1bbda9: Fix Skeleton for Alessio
+  - @lualtek/icons@1.27.1
+
 ## 1.27.0
 
 ### Minor Changes
