@@ -48,7 +48,7 @@ export const Skeleton: FCClass<SkeletonProps> = ({
   className,
   borderRadius = 4,
   style,
-  width,
+  width = 120,
   height,
   count = 1,
   gap,
