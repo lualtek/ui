@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 1.27.2
+
+### Patch Changes
+
+- 9209b17: Remove skeleton default size
+  - @lualtek/icons@1.27.2
+
 ## 1.27.1
 
 ### Patch Changes
