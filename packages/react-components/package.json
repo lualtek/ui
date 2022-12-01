@@ -36,10 +36,7 @@
   },
   "homepage": "https://github.com/lualtek/ui",
   "browserslist": [
-    "last 2 Chrome versions",
-    "last 2 Firefox versions",
-    "last 2 Safari versions",
-    "last 2 Edge versions"
+    "> 1.5%"
   ],
   "peerDependencies": {
     "react": "^18.2",
