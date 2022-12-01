@@ -21,6 +21,7 @@ export * from './modal';
 export * from './overlay-container';
 export * from './pagination';
 export * from './popover';
+export * from './prose';
 export * from './select';
 export * from './selection-controls/checkbox';
 export * from './selection-controls/radio';
