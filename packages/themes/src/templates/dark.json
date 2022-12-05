@@ -199,13 +199,13 @@
       }
     },
     "gray-background": {
-      "value": "hsl({color.gray.80})",
+      "value": "hsl({color.primary.80})",
       "attributes": {
         "category": "color"
       }
     },
     "gray-foreground": {
-      "value": "hsl({color.gray.40})",
+      "value": "hsl({color.primary.40})",
       "attributes": {
         "category": "color"
       }
