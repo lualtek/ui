@@ -6,13 +6,19 @@
     "stylelint-config-equinusocio"
   ],
   "rules": {
+    "import-notation": "string",
     "designtokens/check": [
       true,
       "./packages/tokens/platforms/web/tokens.json"
     ],
-    "function-no-unknown": [true, {
-      "ignoreFunctions": ["token"]
-    }]
+    "function-no-unknown": [
+      true,
+      {
+        "ignoreFunctions": [
+          "token"
+        ]
+      }
+    ]
   },
   "ignoreFiles": [
     "!**/*.css",

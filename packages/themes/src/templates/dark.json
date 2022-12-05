@@ -171,14 +171,14 @@
   },
   "gradient": {
     "brand": {
-      "1": {
-        "value": "hsl(245 100% 69%)",
+      "start": {
+        "value": "hsl({color.brand.default})",
         "attributes": {
           "category": "color"
         }
       },
-      "2": {
-        "value": "hsl({color.brand.default})",
+      "end": {
+        "value": "hsl(245 80% 55%)",
         "attributes": {
           "category": "color"
         }
