@@ -1,5 +1,12 @@
 # @lualtek/themes
 
+## 1.29.0
+
+### Minor Changes
+
+- 977d0f4: Fix dark gradients
+- 4cca78e: Fix gray theme highlight colors
+
 ## 1.28.0
 
 ### Minor Changes

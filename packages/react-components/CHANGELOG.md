@@ -1,5 +1,11 @@
 # @lualtek/react-components
 
+## 1.29.0
+
+### Patch Changes
+
+- @lualtek/icons@1.29.0
+
 ## 1.28.0
 
 ### Minor Changes
