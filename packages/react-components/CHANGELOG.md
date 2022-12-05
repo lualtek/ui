@@ -1,5 +1,16 @@
 # @lualtek/react-components
 
+## 1.28.0
+
+### Minor Changes
+
+- ca8c31c: Add prose component
+
+### Patch Changes
+
+- Updated dependencies [2479d11]
+  - @lualtek/icons@1.28.0
+
 ## 1.27.2
 
 ### Patch Changes

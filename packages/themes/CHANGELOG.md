@@ -1,5 +1,11 @@
 # @lualtek/themes
 
+## 1.28.0
+
+### Minor Changes
+
+- f96d4a1: Update dark brand gradient
+
 ## 1.27.2
 
 ## 1.27.1
