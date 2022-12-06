@@ -9,4 +9,7 @@ const story: ComponentMeta<typeof Separator> = {
 
 export default story;
 
-export const Default: ComponentStory<typeof Separator> = () => <Separator />;
+export const Default: ComponentStory<typeof Separator> = args => <Separator {...args} />;
+Default.args = {
+  vPadding: 32,
+};
