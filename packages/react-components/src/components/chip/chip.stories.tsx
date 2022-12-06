@@ -34,3 +34,8 @@ const Template: ComponentStory<typeof Chip> = args => <Chip {...args}>Chip text<
 export const Default = Template.bind({});
 Default.args = {
 };
+
+export const WithIcon = Template.bind({});
+WithIcon.args = {
+  icon: 'device',
+};
