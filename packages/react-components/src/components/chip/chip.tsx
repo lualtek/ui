@@ -1,6 +1,6 @@
-import { TokensTypes } from '@lualtek/tokens';
+import type { TokensTypes } from '@lualtek/tokens/platforms/web';
 import clsx from 'clsx';
-import { forwardRef } from 'react';
+import { forwardRef, Ref } from 'react';
 
 import {
   ClampText, Icon, IconProps, Stack,
@@ -8,7 +8,7 @@ import {
 
 import * as styles from './chip.module.css';
 
-export type ChipProps = PropsClassChildren<{
+export type ChipProps = {
   /**
    * Set the dimension of the component.
    */
@@ -25,17 +25,23 @@ export type ChipProps = PropsClassChildren<{
    * Callback function to be called when the dismiss button is pressed.
    */
   onDismissClick?: () => void;
-}>
+  /**
+   * Show an icon before the chip content.
+   * @important The icon is not rendered if `dismissable` is `true`
+   */
+  icon?: IconProps['source'];
+}
 
-export const Chip = forwardRef<HTMLSpanElement, ChipProps>(({
+export const Chip: FCChildrenClass<ChipProps> = forwardRef(({
   children,
   className,
   dimension = 'regular',
   color = 'gray',
+  icon,
   interactive,
   onDismissClick,
   ...otherProps
-}, forwardedRef) => {
+}, forwardedRef: Ref<HTMLSpanElement>) => {
   const sizes: Record<string, {
     icon: IconProps['dimension'];
   }> = {
@@ -43,10 +49,10 @@ export const Chip = forwardRef<HTMLSpanElement, ChipProps>(({
       icon: 12,
     },
     regular: {
-      icon: 12,
+      icon: 16,
     },
     big: {
-      icon: 16,
+      icon: 18,
     },
   };
 
@@ -64,6 +70,13 @@ export const Chip = forwardRef<HTMLSpanElement, ChipProps>(({
       ref={forwardedRef}
       {...otherProps}
     >
+      {(icon && !interactive) && (
+        <Icon
+          source={icon}
+          dimension={sizes[dimension].icon}
+        />
+      )}
+
       <ClampText as="b" rows={1}>{children}</ClampText>
       {interactive && (
         <button onClick={interactive && onDismissClick} className={styles.Action} type="button">
