@@ -25,6 +25,7 @@ body {
   font-family: token(--font-family-sans);
   font-weight: token(--font-weight-semi-bold);
   font-feature-settings: 'calt' off;
+  font-size: 1rem;
   margin: 0;
 }
 
