@@ -49,7 +49,7 @@ export const Chip: FCChildrenClass<ChipProps> = forwardRef(({
       icon: 12,
     },
     regular: {
-      icon: 12,
+      icon: 16,
     },
     big: {
       icon: 18,

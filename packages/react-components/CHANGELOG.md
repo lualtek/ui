@@ -1,5 +1,16 @@
 # @lualtek/react-components
 
+## 1.31.0
+
+### Minor Changes
+
+- 362b62f: Add Icon to Chip
+
+### Patch Changes
+
+- 74504c4: Fix types
+  - @lualtek/icons@1.31.0
+
 ## 1.30.0
 
 ### Minor Changes
