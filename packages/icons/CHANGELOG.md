@@ -1,5 +1,11 @@
 # @lualtek/icons
 
+## 1.30.0
+
+### Minor Changes
+
+- 3318b8e: Update icons
+
 ## 1.29.0
 
 ## 1.28.0

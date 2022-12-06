@@ -1,5 +1,17 @@
 # @lualtek/react-components
 
+## 1.30.0
+
+### Minor Changes
+
+- 25163d6: Update text font weight and fix custom font import
+- 89879c9: Add `vPadding` to Separator
+
+### Patch Changes
+
+- Updated dependencies [3318b8e]
+  - @lualtek/icons@1.30.0
+
 ## 1.29.0
 
 ### Patch Changes
