@@ -79,12 +79,16 @@
 
     /* Weights */
 
-    &[data-text-weight='thin'] {
-      font-weight: 100;
+    &[data-text-weight='light'] {
+      font-weight: token(--font-weight-light);
+    }
+
+    &[data-text-weight='regular'] {
+      font-weight: token(--font-weight-semi-bold);
     }
 
     &[data-text-weight='bold'] {
-      font-weight: 700;
+      font-weight: token(--font-weight-bold);
     }
 
     /* Responsiveness */
