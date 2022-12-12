@@ -1,5 +1,13 @@
 # @lualtek/icons
 
+## 1.33.0
+
+### Minor Changes
+
+- 063a4b2: Add new `plus` icon
+- f1eb73f: Add new dot-menu icon
+- 4de0685: Add new icons
+
 ## 1.32.0
 
 ## 1.31.0
