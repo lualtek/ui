@@ -3,7 +3,7 @@ import { CSSProperties, forwardRef } from 'react';
 
 import { PropsClassChildren } from '@/types';
 
-import * as styles from './grid-item.module.css';
+import styles from './grid-item.module.css';
 
 export type GridItemProps = PropsClassChildren<{
   /**

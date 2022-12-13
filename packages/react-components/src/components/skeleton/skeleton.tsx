@@ -6,7 +6,7 @@ import {
 
 import { FCClass } from '@/types';
 
-import * as styles from './skeleton.module.css';
+import styles from './skeleton.module.css';
 
 export type SkeletonProps = {
   /**

@@ -7,7 +7,7 @@ import {
 import { PropsClassChildren } from '@/types';
 
 import { ListProps } from './list';
-import * as styles from './list.module.css';
+import styles from './list.module.css';
 
 export type ListItemProps = PropsClassChildren<Pick<ListProps, 'dimension' | 'hideMarker'> & {
   /**

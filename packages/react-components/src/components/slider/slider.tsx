@@ -6,7 +6,7 @@ import {
 
 import { Elevator } from '@/components';
 
-import * as styles from './slider.module.css';
+import styles from './slider.module.css';
 
 export type SliderProps = SliderPrimitive.SliderProps & {
   /**

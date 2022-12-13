@@ -9,7 +9,7 @@ import {
 } from '@/components';
 import { PropsClassChildren } from '@/types';
 
-import * as styles from './select.module.css';
+import styles from './select.module.css';
 
 export type SelectProps = PropsClassChildren<SelectHTMLAttributes<HTMLSelectElement> & {
   /**

@@ -11,7 +11,7 @@ import { Elevator } from '@/components';
 import { PropsWithClass } from '@/types';
 
 import { InlineToast, InlineToastProps } from './inline-toast';
-import * as styles from './toast.module.css';
+import styles from './toast.module.css';
 
 export type ToastProps = ToastPrimitive.ToastProps & InlineToastProps
 

@@ -9,7 +9,7 @@ import {
 
 import { PropsWithClass } from '@/types';
 
-import * as styles from './tooltip.module.css';
+import styles from './tooltip.module.css';
 
 export type TooltipProps = PropsWithClass<
 TooltipPrimitive.TooltipProps &

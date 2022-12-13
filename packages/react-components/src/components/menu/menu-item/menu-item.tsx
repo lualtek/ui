@@ -9,7 +9,7 @@ import {
 } from '@/components';
 import { PropsClassChildren } from '@/types';
 
-import * as styles from './menu-item.module.css';
+import styles from './menu-item.module.css';
 
 export type MenuItemProps = PropsClassChildren<{
   /**

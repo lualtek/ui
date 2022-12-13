@@ -8,7 +8,7 @@ import {
   Icon, Polymorphic, Stack, Text, TextProps,
 } from '@/components';
 
-import * as styles from './icon-meter.module.css';
+import styles from './icon-meter.module.css';
 
 export type IconMeterProps = {
   /**

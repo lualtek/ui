@@ -7,7 +7,7 @@ import {
 } from '@/components';
 import { PropsWithClass } from '@/types';
 
-import * as styles from './info-state.module.css';
+import styles from './info-state.module.css';
 
 export type InfoStateProps = PropsWithChildren<PropsWithClass<{
   /**

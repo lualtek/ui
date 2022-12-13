@@ -6,7 +6,7 @@ import {
 
 import { Button, Icon } from '@/components';
 
-import * as styles from './tabs.module.css';
+import styles from './tabs.module.css';
 import { TabPanel, TabPanelProps } from './tabs-panel';
 
 export type TabsProps = TabsPrimitive.TabsProps & Record<string, unknown>;

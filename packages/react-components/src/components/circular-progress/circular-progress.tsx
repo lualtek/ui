@@ -5,7 +5,7 @@ import {
 
 import { PropsWithClass } from '@/types';
 
-import * as styles from './circular-progress.module.css';
+import styles from './circular-progress.module.css';
 
 export type CircularProgressProps = PropsWithClass<{
   /**

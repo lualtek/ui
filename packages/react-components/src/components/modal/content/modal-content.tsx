@@ -7,7 +7,7 @@ import {
 } from '@/components';
 import { PropsClassChildren } from '@/types';
 
-import * as styles from './modal-content.module.css';
+import styles from './modal-content.module.css';
 
 export type ModalContentProps = PropsClassChildren<{
   /**

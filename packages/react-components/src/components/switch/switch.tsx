@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import { domMax, LazyMotion, m } from 'framer-motion';
 import { ElementRef, forwardRef } from 'react';
 
-import * as styles from './switch.module.css';
+import styles from './switch.module.css';
 
 export type SwitchProps = SwitchPrimitive.SwitchProps & {
   /**

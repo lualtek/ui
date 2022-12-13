@@ -7,7 +7,7 @@ import {
   Elevator, Icon, IconProps, Polymorphic, Spinner,
 } from '@/components';
 
-import * as styles from './button.module.css';
+import styles from './button.module.css';
 
 export type ButtonProps = {
   /**

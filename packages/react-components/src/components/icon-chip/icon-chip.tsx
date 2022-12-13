@@ -6,7 +6,7 @@ import {
 } from '@/components';
 import { FCClass } from '@/types';
 
-import * as styles from './icon-chip.module.css';
+import styles from './icon-chip.module.css';
 
 export type IconChipProps = {
   /**

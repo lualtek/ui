@@ -19,7 +19,7 @@ import {
 } from '@/components';
 import { PropsWithClass } from '@/types';
 
-import * as styles from './table.module.css';
+import styles from './table.module.css';
 import { TableCell } from './table-cell';
 import { TableCheckbox } from './table-checkbox';
 import { ToggleColumnsControl } from './table-controls';

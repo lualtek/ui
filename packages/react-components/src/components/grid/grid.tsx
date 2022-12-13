@@ -5,7 +5,7 @@ import { CSSProperties, forwardRef, ReactNode } from 'react';
 
 import { FCForwardRef, PropsWithClass } from '@/types';
 
-import * as styles from './grid.module.css';
+import styles from './grid.module.css';
 import { GridItem, GridItemProps } from './item/grid-item';
 
 export type GridProps = {

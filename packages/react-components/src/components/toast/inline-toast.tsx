@@ -10,7 +10,7 @@ import {
 } from '@/components';
 import { FCChildren, PropsWithClass } from '@/types';
 
-import * as styles from './toast.module.css';
+import styles from './toast.module.css';
 
 const PrimitiveNoopComponent: FCChildren<{ asChild?: boolean }> = ({ children }) => <>{children}</>;
 

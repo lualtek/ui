@@ -6,7 +6,7 @@ import { Except } from 'type-fest';
 import { Icon } from '@/components';
 import { FCChildrenClass } from '@/types';
 
-import * as styles from './pagination.module.css';
+import styles from './pagination.module.css';
 
 export type PaginationProps = Except<ReactPaginateProps, 'pageCount'> & {
   /**
