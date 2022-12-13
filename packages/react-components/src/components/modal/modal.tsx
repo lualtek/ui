@@ -5,6 +5,7 @@ import { forwardRef, useMemo } from 'react';
 import { FocusOn } from 'react-focus-on';
 
 import { useOverlayContext, useResponsiveContext } from '@/components';
+import { PropsClassChildren } from '@/types';
 
 import { ModalContent, ModalContentProps } from './content/modal-content';
 import * as styles from './modal.module.css';

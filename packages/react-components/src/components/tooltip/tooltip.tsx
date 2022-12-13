@@ -7,6 +7,8 @@ import {
   Children, cloneElement, isValidElement, ReactNode, useEffect, useMemo, useRef, useState,
 } from 'react';
 
+import { PropsWithClass } from '@/types';
+
 import * as styles from './tooltip.module.css';
 
 export type TooltipProps = PropsWithClass<

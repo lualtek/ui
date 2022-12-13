@@ -2,6 +2,8 @@ import clsx from 'clsx';
 import { PropsWithChildren, useMemo } from 'react';
 import { IdType, Row } from 'react-table';
 
+import { PropsWithClass } from '@/types';
+
 import * as styles from './table-row.module.css';
 
 type TableRowProps<T extends Record<string, unknown>> = PropsWithChildren<PropsWithClass<{

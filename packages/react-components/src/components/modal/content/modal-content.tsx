@@ -5,6 +5,7 @@ import { AutoFocusInside } from 'react-focus-on';
 import {
   Elevator, IconButton, Stack, Title, useOverlayContext, useResponsiveContext,
 } from '@/components';
+import { PropsClassChildren } from '@/types';
 
 import * as styles from './modal-content.module.css';
 

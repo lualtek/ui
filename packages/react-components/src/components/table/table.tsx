@@ -17,6 +17,7 @@ import {
   Skeleton, Stack, Text,
   ToggleButton,
 } from '@/components';
+import { PropsWithClass } from '@/types';
 
 import * as styles from './table.module.css';
 import { TableCell } from './table-cell';

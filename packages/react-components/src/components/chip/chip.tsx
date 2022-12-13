@@ -5,6 +5,7 @@ import { forwardRef, Ref } from 'react';
 import {
   ClampText, Icon, IconProps, Stack,
 } from '@/components';
+import { FCChildrenClass } from '@/types';
 
 import * as styles from './chip.module.css';
 

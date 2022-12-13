@@ -7,6 +7,7 @@ import {
   Icon, IconProps, Stack,
   Text,
 } from '@/components';
+import { PropsClassChildren } from '@/types';
 
 import * as styles from './select.module.css';
 

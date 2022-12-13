@@ -5,6 +5,7 @@ import { forwardRef, PropsWithChildren, ReactNode } from 'react';
 import {
   IconChip, IconChipProps, Stack, StackProps, Text, Title,
 } from '@/components';
+import { PropsWithClass } from '@/types';
 
 import * as styles from './info-state.module.css';
 

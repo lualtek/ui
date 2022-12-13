@@ -10,6 +10,7 @@ import { useKeys } from 'rooks';
 import {
   Elevator, IconButton, Stack, Title, useOverlayContext,
 } from '@/components';
+import { FCChildrenClass } from '@/types';
 
 import * as styles from './drawer.module.css';
 

@@ -4,6 +4,7 @@ import clsx from 'clsx';
 import {
   Icon, IconProps, Stack,
 } from '@/components';
+import { FCClass } from '@/types';
 
 import * as styles from './icon-chip.module.css';
 

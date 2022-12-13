@@ -3,6 +3,8 @@ import tkns from '@lualtek/tokens/platforms/web/tokens.json';
 import clsx from 'clsx';
 import { CSSProperties, forwardRef, ReactNode } from 'react';
 
+import { FCForwardRef, PropsWithClass } from '@/types';
+
 import * as styles from './grid.module.css';
 import { GridItem, GridItemProps } from './item/grid-item';
 

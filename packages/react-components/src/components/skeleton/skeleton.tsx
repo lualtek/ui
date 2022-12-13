@@ -4,6 +4,8 @@ import {
   CSSProperties, Fragment, useCallback, useId,
 } from 'react';
 
+import { FCClass } from '@/types';
+
 import * as styles from './skeleton.module.css';
 
 export type SkeletonProps = {
