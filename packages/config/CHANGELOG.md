@@ -1,5 +1,16 @@
 # @lualtek/config
 
+## 1.34.0
+
+### Minor Changes
+
+- 5467f16: Update types
+
+### Patch Changes
+
+- Updated dependencies [5467f16]
+  - @lualtek/tokens@1.34.0
+
 ## 1.33.1
 
 ### Patch Changes
