@@ -1,7 +1,7 @@
 {
   "name": "@lualtek/themes",
   "description": "Lualtek design system themes",
-  "version": "1.33.1",
+  "version": "1.34.0",
   "author": "Lualtek",
   "main": "dist/themes.css",
   "style": "dist/themes.css",

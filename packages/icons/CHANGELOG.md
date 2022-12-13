@@ -1,5 +1,11 @@
 # @lualtek/icons
 
+## 1.34.0
+
+### Minor Changes
+
+- 5467f16: Update types
+
 ## 1.33.1
 
 ### Patch Changes
