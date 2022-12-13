@@ -1,5 +1,11 @@
 # @lualtek/icons
 
+## 1.33.1
+
+### Patch Changes
+
+- d859623: Fix icons
+
 ## 1.33.0
 
 ### Minor Changes
