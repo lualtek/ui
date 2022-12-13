@@ -2,8 +2,9 @@ import clsx from 'clsx';
 import { CSSProperties, forwardRef } from 'react';
 
 import { Polymorphic } from '@/components';
+import { PropsClassChildren } from '@/types';
 
-import * as styles from './clamp-text.module.css';
+import styles from './clamp-text.module.css';
 
 export type ClampTextProps = PropsClassChildren<{
   /**

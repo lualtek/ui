@@ -12,7 +12,7 @@ import {
   Icon, IconProps, Text, TextProps,
 } from '@/components';
 
-import * as styles from './disclosure.module.css';
+import styles from './disclosure.module.css';
 
 export type DisclosureProps = DetailsHTMLAttributes<HTMLDetailsElement> & {
   /**

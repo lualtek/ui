@@ -1,5 +1,7 @@
 import * as PopoverPrimitive from '@radix-ui/react-popover';
 
+import { PropsWithClass } from '@/types';
+
 import { PopoverAnchor } from './popover-anchor';
 import { PopoverClose } from './popover-close';
 import { PopoverContent } from './popover-content';

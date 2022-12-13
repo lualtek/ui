@@ -8,10 +8,15 @@ import { AutoFocusInside, FocusOn } from 'react-focus-on';
 import { useKeys } from 'rooks';
 
 import {
-  Elevator, IconButton, Stack, Title, useOverlayContext,
+  Elevator,
+  IconButton,
+  Stack,
+  Title,
+  useOverlayContext,
 } from '@/components';
+import { FCChildrenClass } from '@/types';
 
-import * as styles from './drawer.module.css';
+import styles from './drawer.module.css';
 
 export type DrawerProps = {
   /**

@@ -4,8 +4,9 @@ import ReactPaginate, { ReactPaginateProps } from 'react-paginate';
 import { Except } from 'type-fest';
 
 import { Icon } from '@/components';
+import { FCChildrenClass } from '@/types';
 
-import * as styles from './pagination.module.css';
+import styles from './pagination.module.css';
 
 export type PaginationProps = Except<ReactPaginateProps, 'pageCount'> & {
   /**
@@ -38,7 +39,7 @@ export type PaginationProps = Except<ReactPaginateProps, 'pageCount'> & {
   marginPagesDisplayed?: ReactPaginateProps['marginPagesDisplayed'];
 }
 
-export const Pagination: FCClass<PaginationProps> = ({
+export const Pagination: FCChildrenClass<PaginationProps> = ({
   className,
   itemsCount,
   itemsPerPage = 10,

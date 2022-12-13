@@ -3,7 +3,7 @@ import { forwardRef } from 'react';
 
 import { Polymorphic } from '@/components';
 
-import * as styles from './container.module.css';
+import styles from './container.module.css';
 
 export type ContainerProps = {
   /**

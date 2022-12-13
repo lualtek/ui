@@ -4,7 +4,9 @@ import {
 import { ReactNode, useEffect, useId } from 'react';
 import { createPortal } from 'react-dom';
 
-import * as styles from './overlay-container.module.css';
+import { FCChildren } from '@/types';
+
+import styles from './overlay-container.module.css';
 import { OverlayProvider } from './overlay-context';
 
 export type OverlayContainerProps = {

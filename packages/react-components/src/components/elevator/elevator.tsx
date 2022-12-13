@@ -2,6 +2,8 @@ import {
   Children, cloneElement, ReactElement,
 } from 'react';
 
+import { FCChildren } from '@/types';
+
 export type ElevatorProps = {
   /**
    * Set the elevation of the component when is resting.

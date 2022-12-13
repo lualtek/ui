@@ -3,7 +3,7 @@ import { forwardRef, InputHTMLAttributes } from 'react';
 
 import { Polymorphic } from '@/components';
 
-import * as styles from './base-field.module.css';
+import styles from './base-field.module.css';
 
 /**
  * @internal

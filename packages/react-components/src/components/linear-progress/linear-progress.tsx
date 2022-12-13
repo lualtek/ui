@@ -5,7 +5,7 @@ import {
 
 import { Text } from '@/components';
 
-import * as styles from './linear-progress.module.css';
+import styles from './linear-progress.module.css';
 
 export type LinearProgressProps = ProgressHTMLAttributes<HTMLProgressElement> & {
   /**

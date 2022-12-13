@@ -5,7 +5,7 @@ import React, { CSSProperties, forwardRef, ReactNode } from 'react';
 
 import { Polymorphic, Stack, StackProps } from '@/components';
 
-import * as styles from './card.module.css';
+import styles from './card.module.css';
 
 export type CardProps = Pick<StackProps, 'wrap' | 'columnGap' | 'rowGap' | 'vAlign' | 'hAlign'> & {
   /**

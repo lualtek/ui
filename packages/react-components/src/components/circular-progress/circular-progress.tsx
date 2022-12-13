@@ -3,7 +3,9 @@ import {
   CSSProperties, forwardRef, useCallback, useMemo,
 } from 'react';
 
-import * as styles from './circular-progress.module.css';
+import { PropsWithClass } from '@/types';
+
+import styles from './circular-progress.module.css';
 
 export type CircularProgressProps = PropsWithClass<{
   /**

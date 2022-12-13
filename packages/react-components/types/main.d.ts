@@ -18,20 +18,3 @@ declare module '*.svg' {
   export { svgComponent as ReactComponent };
 }
 
-type PropsWithClass<P = Record<string, unknown>> = {
-  style?: Record<string, any>;
-  className?: string;
-} & P
-
-type FCClass<T = Record<string, unknown>> = React.FC<{
-  style?: Record<string, any>;
-  className?: string;
-} & T>
-
-type FCChildren<P = Record<string, unknown>> = React.FC<React.PropsWithChildren<P>>
-
-type FCChildrenClass<P = Record<string, unknown>> = FCChildren<PropsWithClass<P>>
-
-type FCForwardRef<P = Record<string, unknown>> = React.ForwardRefExoticComponent<PropsWithClass<P>>
-
-type PropsClassChildren<P = Record<string, unknown>> = React.PropsWithChildren<PropsWithClass<P>>
