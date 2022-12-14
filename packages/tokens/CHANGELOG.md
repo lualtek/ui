@@ -1,5 +1,11 @@
 # @lualtek/tokens
 
+## 1.36.0
+
+### Minor Changes
+
+- 301b9ce: Fixed folder generation for types
+
 ## 1.35.0
 
 ## 1.34.0
