@@ -1,5 +1,15 @@
 # @lualtek/react-components
 
+## 1.35.0
+
+### Minor Changes
+
+- dfcfa69: Add labels to Radio and Checkbox
+
+### Patch Changes
+
+- @lualtek/icons@1.35.0
+
 ## 1.34.0
 
 ### Minor Changes
