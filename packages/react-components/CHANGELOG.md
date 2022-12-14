@@ -1,5 +1,16 @@
 # @lualtek/react-components
 
+## 1.36.0
+
+### Minor Changes
+
+- 301b9ce: Fixed folder generation for types
+
+### Patch Changes
+
+- Updated dependencies [301b9ce]
+  - @lualtek/icons@1.36.0
+
 ## 1.35.0
 
 ### Minor Changes
