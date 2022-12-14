@@ -1,8 +1,10 @@
 import clsx from 'clsx';
 import { domAnimation, LazyMotion, m } from 'framer-motion';
 import {
-  ChangeEvent, forwardRef, InputHTMLAttributes, useEffect, useRef,
+  ChangeEvent, forwardRef, InputHTMLAttributes, ReactNode, useEffect, useId, useRef,
 } from 'react';
+
+import { Stack, Text, TextProps } from '@/components';
 
 import styles from '../selection-controls.module.css';
 
@@ -25,7 +27,18 @@ export type CheckboxProps = InputHTMLAttributes<HTMLInputElement> & {
    * A parameter `ChangeEvent<HTMLInputElement>` is passed with the event details
    */
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
+  /**
+   * Assign a label to the input. If passed an ID is automatically generated and used internally
+   */
+  label?: ReactNode;
 }
+
+type Properties = Record<NonNullable<CheckboxProps['dimension']>, {
+  text: {
+    size: TextProps['size'];
+    lh?: TextProps['lineHeight'];
+  };
+}>
 
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(({
   className,
@@ -33,9 +46,11 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(({
   dimension = 'regular',
   onChange,
   indeterminate,
+  label,
   ...otherProps
 }, forwardedRef) => {
   const ref = useRef<any>(forwardedRef);
+  const uid = useId();
 
   useEffect(() => {
     if (ref.current) {
@@ -43,24 +58,42 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(({
     }
   }, [indeterminate]);
 
+  const properties: Properties = {
+    small: {
+      text: {
+        size: 16,
+        lh: 'none',
+      },
+    },
+    regular: {
+      text: {
+        size: 18,
+      },
+    },
+  };
+
   return (
     <LazyMotion features={domAnimation} strict>
-      <m.span
-        className={styles.InputWrapper}
-        whileTap={{ scale: 1.15 }}
-        transition={{ duration: 0.3, ease: 'backOut' }}
-      >
-        <input
-          type="checkbox"
-          disabled={disabled}
-          aria-disabled={disabled}
-          data-control-dimension={dimension}
-          onChange={onChange}
-          className={clsx(styles.CheckboxInput, className)}
-          ref={ref}
-          {...otherProps}
-        />
-      </m.span>
+      <Stack direction="row" vAlign="start" columnGap={8} fill={false} inline>
+        <m.span
+          className={styles.InputWrapper}
+          whileTap={{ scale: 1.15 }}
+          transition={{ duration: 0.3, ease: 'backOut' }}
+        >
+          <input
+            type="checkbox"
+            disabled={disabled}
+            aria-disabled={disabled}
+            data-control-dimension={dimension}
+            onChange={onChange}
+            className={clsx(styles.CheckboxInput, className)}
+            ref={ref}
+            id={label ? uid : undefined}
+            {...otherProps}
+          />
+        </m.span>
+        {label && <Text as="label" lineHeight={properties[dimension].text.lh} htmlFor={uid} size={properties[dimension].text.size}>{label}</Text>}
+      </Stack>
     </LazyMotion>
   );
 });

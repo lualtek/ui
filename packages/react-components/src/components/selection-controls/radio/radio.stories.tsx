@@ -1,5 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
+import { Chip } from '../..';
 import { Radio } from './radio';
 
 const story: ComponentMeta<typeof Radio> = {
@@ -22,4 +23,14 @@ export const Default = Template.bind({});
 export const DisabledChecked = Template.bind({});
 DisabledChecked.args = {
   disabled: true,
+};
+
+export const WithLabel = Template.bind({});
+WithLabel.args = {
+  label: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Et blanditiis dolore natus itaque fugiat eos harum ea veritatis consequatur deserunt, maxime similique unde ad veniam quas tempore, laboriosam accusamus nihil.',
+};
+
+export const WithCustomLabel = Template.bind({});
+WithCustomLabel.args = {
+  label: <Chip color="green">Rich label</Chip>,
 };

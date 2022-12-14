@@ -2,7 +2,6 @@
 
 @layer components {
   .InputWrapper {
-    display: inline-block;
     line-height: 0;
   }
 

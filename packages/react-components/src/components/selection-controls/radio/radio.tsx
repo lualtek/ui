@@ -1,6 +1,10 @@
 import clsx from 'clsx';
 import { domAnimation, LazyMotion, m } from 'framer-motion';
-import { ChangeEvent, forwardRef, InputHTMLAttributes } from 'react';
+import {
+  ChangeEvent, forwardRef, InputHTMLAttributes, ReactNode, useId,
+} from 'react';
+
+import { Stack, Text, TextProps } from '@/components';
 
 import styles from '../selection-controls.module.css';
 
@@ -18,33 +22,67 @@ export type RadioProps = InputHTMLAttributes<HTMLInputElement> & {
    * A parameter `ChangeEvent<HTMLInputElement>` is passed with the event details
    */
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
+  /**
+   * Assign a label to the input. If passed an ID is automatically generated and used internally
+   */
+  label?: ReactNode;
 }
+
+type Properties = Record<NonNullable<RadioProps['dimension']>, {
+  text: {
+    size: TextProps['size'];
+    lh?: TextProps['lineHeight'];
+  };
+}>
 
 export const Radio = forwardRef<HTMLInputElement, RadioProps>(({
   className,
   disabled,
   dimension = 'regular',
   onChange,
+  label,
   ...otherProps
-}, forwardedRef) => (
-  <LazyMotion features={domAnimation} strict>
-    <m.span
-      className={styles.InputWrapper}
-      whileTap={{ scale: 1.15 }}
-      transition={{ duration: 0.3, ease: 'backOut' }}
-    >
-      <input
-        type="radio"
-        disabled={disabled}
-        aria-disabled={disabled}
-        data-control-dimension={dimension}
-        onChange={onChange}
-        className={clsx(styles.RadioInput, className)}
-        ref={forwardedRef}
-        {...otherProps}
-      />
-    </m.span>
-  </LazyMotion>
-));
+}, forwardedRef) => {
+  const uid = useId();
+
+  const properties: Properties = {
+    small: {
+      text: {
+        size: 16,
+        lh: 'none',
+      },
+    },
+    regular: {
+      text: {
+        size: 18,
+      },
+    },
+  };
+
+  return (
+    <LazyMotion features={domAnimation} strict>
+      <Stack direction="row" vAlign="start" columnGap={8} fill={false} inline>
+        <m.span
+          className={styles.InputWrapper}
+          whileTap={{ scale: 1.15 }}
+          transition={{ duration: 0.3, ease: 'backOut' }}
+        >
+          <input
+            type="radio"
+            disabled={disabled}
+            aria-disabled={disabled}
+            data-control-dimension={dimension}
+            onChange={onChange}
+            className={clsx(styles.RadioInput, className)}
+            ref={forwardedRef}
+            id={label ? uid : undefined}
+            {...otherProps}
+          />
+        </m.span>
+        {label && <Text as="label" lineHeight={properties[dimension].text.lh} htmlFor={uid} size={properties[dimension].text.size}>{label}</Text>}
+      </Stack>
+    </LazyMotion>
+  );
+});
 
 Radio.displayName = 'Radio';
