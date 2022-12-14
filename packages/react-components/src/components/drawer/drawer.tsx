@@ -14,7 +14,7 @@ import {
   Title,
   useOverlayContext,
 } from '@/components';
-import { FCChildrenClass } from '@/types';
+import { FCChildrenClass } from '@/components/types';
 
 import styles from './drawer.module.css';
 

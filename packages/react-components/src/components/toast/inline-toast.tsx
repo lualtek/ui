@@ -8,7 +8,7 @@ import {
   Button, Icon, IconProps, Stack, Text,
   Title,
 } from '@/components';
-import { FCChildren, PropsWithClass } from '@/types';
+import { FCChildren, PropsWithClass } from '@/components/types';
 
 import styles from './toast.module.css';
 

@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import { PropsWithChildren, useMemo } from 'react';
 import { IdType, Row } from 'react-table';
 
-import { PropsWithClass } from '@/types';
+import { PropsWithClass } from '@/components/types';
 
 import styles from './table-row.module.css';
 

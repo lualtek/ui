@@ -3,7 +3,7 @@ import { FC, useId, useMemo } from 'react';
 import {
   Pagination, Select, Stack, Text,
 } from '@/components';
-import { PropsWithClass } from '@/types';
+import { PropsWithClass } from '@/components/types';
 
 export type TablePaginationProps = PropsWithClass & {
   clusters?: number[];

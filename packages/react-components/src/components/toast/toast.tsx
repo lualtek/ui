@@ -8,7 +8,7 @@ import {
 } from 'react';
 
 import { Elevator } from '@/components';
-import { PropsWithClass } from '@/types';
+import { PropsWithClass } from '@/components/types';
 
 import { InlineToast, InlineToastProps } from './inline-toast';
 import styles from './toast.module.css';

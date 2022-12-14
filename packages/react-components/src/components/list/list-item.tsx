@@ -4,7 +4,7 @@ import { forwardRef } from 'react';
 import {
   Icon, IconProps, Stack, Text, TextProps,
 } from '@/components';
-import { PropsClassChildren } from '@/types';
+import { PropsClassChildren } from '@/components/types';
 
 import { ListProps } from './list';
 import styles from './list.module.css';

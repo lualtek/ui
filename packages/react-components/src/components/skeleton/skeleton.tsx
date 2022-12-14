@@ -4,7 +4,7 @@ import {
   CSSProperties, Fragment, useCallback, useId,
 } from 'react';
 
-import { FCClass } from '@/types';
+import { FCClass } from '@/components/types';
 
 import styles from './skeleton.module.css';
 

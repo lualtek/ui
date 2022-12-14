@@ -13,6 +13,7 @@ export default {
     if (color.getAlpha() === 1) {
       return `${vals}`;
     }
+
     return `${vals} / ${o.a}`;
   },
 };

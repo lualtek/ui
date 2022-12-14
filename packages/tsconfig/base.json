@@ -23,7 +23,7 @@
     "baseUrl": "../..",
     "paths": {
       "@/components": ["packages/react-components/src"],
-      "@/types": ["packages/react-components/types"]
+      "@/components/types": ["packages/react-components/src/types"]
     }
   },
   "exclude": ["node_modules"]

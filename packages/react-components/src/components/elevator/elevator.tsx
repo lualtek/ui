@@ -2,7 +2,7 @@ import {
   Children, cloneElement, ReactElement,
 } from 'react';
 
-import { FCChildren } from '@/types';
+import { FCChildren } from '@/components/types';
 
 export type ElevatorProps = {
   /**

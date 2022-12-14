@@ -7,7 +7,7 @@ import { useFocusEffect, useRovingTabIndex } from 'react-roving-tabindex';
 import {
   Icon, IconProps, Polymorphic, Stack,
 } from '@/components';
-import { PropsClassChildren } from '@/types';
+import { PropsClassChildren } from '@/components/types';
 
 import styles from './menu-item.module.css';
 

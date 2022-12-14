@@ -4,7 +4,7 @@ import ReactPaginate, { ReactPaginateProps } from 'react-paginate';
 import { Except } from 'type-fest';
 
 import { Icon } from '@/components';
-import { FCChildrenClass } from '@/types';
+import { FCChildrenClass } from '@/components/types';
 
 import styles from './pagination.module.css';
 
