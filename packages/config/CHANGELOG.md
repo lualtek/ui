@@ -1,5 +1,12 @@
 # @lualtek/config
 
+## 1.37.0
+
+### Patch Changes
+
+- Updated dependencies [26940ad]
+  - @lualtek/tokens@1.37.0
+
 ## 1.36.0
 
 ### Minor Changes

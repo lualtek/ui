@@ -1,5 +1,16 @@
 # @lualtek/react-components
 
+## 1.37.0
+
+### Minor Changes
+
+- c12ea2a: Add interactive chips
+- b6d738a: Add clustersLabel to Table
+
+### Patch Changes
+
+- @lualtek/icons@1.37.0
+
 ## 1.36.0
 
 ### Minor Changes
