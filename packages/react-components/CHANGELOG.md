@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 1.38.1
+
+### Patch Changes
+
+- cfae75e: Strange Things
+  - @lualtek/icons@1.38.1
+
 ## 1.38.0
 
 ### Minor Changes
