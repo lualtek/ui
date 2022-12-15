@@ -1,7 +1,7 @@
 {
   "name": "@lualtek/icons",
   "description": "Lualtek's iconography",
-  "version": "1.38.2",
+  "version": "1.38.3",
   "author": "Lualtek",
   "main": "dist/index",
   "publishConfig": {

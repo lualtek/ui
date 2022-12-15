@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 1.38.3
+
+### Patch Changes
+
+- 87df7d6: Fix bold/strong style
+  - @lualtek/icons@1.38.3
+
 ## 1.38.2
 
 ### Patch Changes
