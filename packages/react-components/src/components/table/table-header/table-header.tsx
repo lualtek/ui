@@ -5,7 +5,7 @@ import { Stack, Title } from '@/components';
 import styles from './table-header.module.css';
 
 export type TableHeaderProps = HTMLAttributes<HTMLElement> & {
-  title?: string | ReactNode;
+  title?: ReactNode;
 }
 
 export const TableHeader: FC<TableHeaderProps> = ({
