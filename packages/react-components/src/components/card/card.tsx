@@ -49,7 +49,7 @@ export const Card = forwardRef(({
   children,
   className,
   padding = 24,
-  radius = 8,
+  radius = 16,
   left,
   right,
   dimmed,
