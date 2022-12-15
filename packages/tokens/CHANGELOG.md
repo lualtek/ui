@@ -1,5 +1,11 @@
 # @lualtek/tokens
 
+## 1.37.0
+
+### Minor Changes
+
+- 26940ad: Update colors tokens and icon sizes with nre 14 dimension
+
 ## 1.36.0
 
 ### Minor Changes
