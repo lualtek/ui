@@ -23,13 +23,18 @@ const story: ComponentMeta<typeof Chip> = {
   },
   args: {
     dimension: 'regular',
-    interactive: false,
+    dismissable: false,
   },
 };
 
 export default story;
 
-const Template: ComponentStory<typeof Chip> = args => <Chip {...args}>Chip text</Chip>;
+const Template: ComponentStory<typeof Chip> = args => (
+  <>
+    <Chip {...args}>Chip text</Chip>
+    <Chip>Chip text</Chip>
+  </>
+);
 
 export const Default = Template.bind({});
 Default.args = {

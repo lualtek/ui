@@ -1,9 +1,16 @@
 @layer components {
   .Chip {
+    font: unset;
     padding: 0 token(--space-8);
     border-radius: 1e5px;
     font-size: token(--font-size-16);
     block-size: token(--space-24);
+
+    &:where(button) {
+      appearance: none;
+      border: 0;
+      cursor: pointer;
+    }
 
     &[data-chip-dimension='small'] {
       block-size: token(--space-16);

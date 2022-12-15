@@ -46,7 +46,7 @@ const sizes: Sizes = {
     icon: 12,
   },
   regular: {
-    icon: 16,
+    icon: 14,
   },
   big: {
     icon: 18,
@@ -66,13 +66,13 @@ export const Chip: FCChildrenClass<ChipProps> = forwardRef(({
 }, forwardedRef: Ref<HTMLButtonElement>) => {
   const commonProps: StackProps & Record<string, unknown> = useMemo(() => ({
     direction: 'row',
-    columnGap: 8 as const,
+    columnGap: 8,
     inline: true,
     fill: false,
     'data-chip-color': color,
     'data-chip-dimension': dimension,
     className: clsx(styles.Chip, className),
-    vAlign: 'center' as const,
+    vAlign: 'center',
   }), [className, color, dimension]);
 
   const Content = useMemo(() => (
