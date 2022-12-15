@@ -134,6 +134,11 @@ export type TableProps<T extends Record<string, unknown>> = PropsWithClass<{
     */
   pageClusters?: TablePaginationProps['clusters'];
   /**
+   * Set the label for the clusters select.
+   * @note Use this propertu to translate the label of the select used to change visible items per page.
+   */
+  clustersLabel?: string;
+  /**
     * The callback that is called when the active page index and page size change.
     * Passing this property will enable manual pagination,
     * disabling the automatic one.
@@ -183,6 +188,7 @@ export const Table = <T extends Record<string, unknown>>({
   onPaginationChange,
   onSortChange,
   pageClusters,
+  clustersLabel,
   initialSortBy = [],
   ...otherProps
 }: TableProps<T>) => {
@@ -497,6 +503,7 @@ export const Table = <T extends Record<string, unknown>>({
           totalItems={totalRows ?? rows.length}
           currentPage={pageIndex}
           totalPages={pageCount}
+          clustersLabel={clustersLabel}
           isManual={Boolean(isManualPaginated && totalRows)}
           onPageSizeChange={setPageSize}
           onPageClick={selected => gotoPage(selected)}

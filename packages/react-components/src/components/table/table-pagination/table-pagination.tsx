@@ -14,6 +14,7 @@ export type TablePaginationProps = PropsWithClass & {
   onPageSizeChange?: (pageSize: number) => void;
   onPageClick?: (page: number) => void;
   isManual?: boolean;
+  clustersLabel?: string;
 }
 
 export const TablePagination: FC<TablePaginationProps> = ({
@@ -26,6 +27,7 @@ export const TablePagination: FC<TablePaginationProps> = ({
   isManual,
   totalPages,
   onPageClick,
+  clustersLabel = 'Items per page',
   ...otherProps
 }) => {
   const uid = useId();
@@ -51,7 +53,7 @@ export const TablePagination: FC<TablePaginationProps> = ({
       <Stack direction="row" columnGap={4}>
         <Select
           value={pageSize}
-          label="Items per page"
+          label={clustersLabel}
           id={`${uid}-table-i-per-page`}
           onChange={({ currentTarget }) => {
             onPageSizeChange?.(Number(currentTarget.value));
