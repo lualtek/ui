@@ -121,7 +121,7 @@ Scrollable.args = {
 export const WithTableActions = Template.bind({});
 WithTableActions.args = {
   columnsControl: true,
-  title: 'Custom title element',
+  title: <Title>Dio</Title>,
   showHeader: true,
   actions: <Button>Custom action</Button>,
 };

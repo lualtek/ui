@@ -1,14 +1,17 @@
-import { FC, HTMLAttributes, ReactNode } from 'react';
+import {
+  cloneElement, HTMLAttributes, isValidElement, ReactNode,
+} from 'react';
+import { Except } from 'type-fest';
 
-import { Stack, Title } from '@/components';
+import { FCChildrenClass, Stack, Title } from '@/components';
 
 import styles from './table-header.module.css';
 
-export type TableHeaderProps = HTMLAttributes<HTMLElement> & {
+export type TableHeaderProps = Except<HTMLAttributes<HTMLElement>, 'title'> & {
   title?: ReactNode;
 }
 
-export const TableHeader: FC<TableHeaderProps> = ({
+export const TableHeader: FCChildrenClass<TableHeaderProps> = ({
   children,
   title,
   id,
@@ -24,7 +27,14 @@ export const TableHeader: FC<TableHeaderProps> = ({
     {...otherProps}
   >
     <div>
-      {typeof title === 'string' ? <Title id={id} level="5">{title}</Title> : title}
+      {typeof title === 'string'
+        ? <Title id={id} level="5">{title}</Title>
+        : isValidElement<HTMLElement>(title) && cloneElement(
+          title,
+          {
+            id,
+          },
+        )}
     </div>
 
     <Stack direction="row" vAlign="center" columnGap={8} inline>
