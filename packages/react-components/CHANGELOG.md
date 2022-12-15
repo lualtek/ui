@@ -1,5 +1,16 @@
 # @lualtek/react-components
 
+## 1.38.0
+
+### Minor Changes
+
+- 3710137: Change Card default radius to 16
+
+### Patch Changes
+
+- feebb62: Fix table header title type
+  - @lualtek/icons@1.38.0
+
 ## 1.37.0
 
 ### Minor Changes
