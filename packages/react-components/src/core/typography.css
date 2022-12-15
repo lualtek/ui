@@ -10,7 +10,7 @@ small {
 
 strong,
 b {
-  font-weight: 600;
+  font-weight: token(--font-weight-bold);
 }
 
 :where(a:any-link) {
