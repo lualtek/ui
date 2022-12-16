@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 1.38.4
+
+### Patch Changes
+
+- 125bd0b: Update table header controls
+  - @lualtek/icons@1.38.4
+
 ## 1.38.3
 
 ### Patch Changes
