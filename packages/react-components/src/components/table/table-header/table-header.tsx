@@ -37,7 +37,7 @@ export const TableHeader: FCChildrenClass<TableHeaderProps> = ({
         )}
     </div>
 
-    <Stack direction="row" vAlign="center" columnGap={8} inline>
+    <Stack direction="row" vAlign="center" columnGap={24} inline>
       {children}
     </Stack>
   </Stack>

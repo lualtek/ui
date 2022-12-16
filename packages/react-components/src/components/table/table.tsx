@@ -389,6 +389,7 @@ export const Table = <T extends Record<string, unknown>>({
               }}
             >
               <TableHeader title={title} id={`${uid}-table-title`}>
+                {actions}
                 {(columnsControl && data.length)
                   ? (
                     <ToggleColumnsControl
@@ -397,7 +398,6 @@ export const Table = <T extends Record<string, unknown>>({
                     />
                   )
                   : null}
-                {actions}
               </TableHeader>
             </m.div>
           )}
