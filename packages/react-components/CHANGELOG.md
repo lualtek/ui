@@ -1,5 +1,15 @@
 # @lualtek/react-components
 
+## 1.39.0
+
+### Minor Changes
+
+- e0e5f87: Update toggle column control
+
+### Patch Changes
+
+- @lualtek/icons@1.39.0
+
 ## 1.38.5
 
 ### Patch Changes
