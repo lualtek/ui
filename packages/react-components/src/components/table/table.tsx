@@ -80,6 +80,10 @@ export type TableProps<T extends Record<string, unknown>> = PropsWithClass<{
    */
   columnsControl?: boolean;
   /**
+   * Set the label for the toggle columns control
+   */
+  toggleColumnsLabel?: string;
+  /**
    * Pass custom actions to the table header
    */
   actions?: ReactNode;
@@ -174,6 +178,7 @@ export const Table = <T extends Record<string, unknown>>({
   showHeader = false,
   showTableHead = true,
   columnsControl = false,
+  toggleColumnsLabel,
   defaultHiddenColumns,
   height,
   loading,
@@ -394,7 +399,7 @@ export const Table = <T extends Record<string, unknown>>({
                   ? (
                     <ToggleColumnsControl
                       columns={allColumns}
-                      visibleColumns={filteredVisibleColumns}
+                      label={toggleColumnsLabel}
                     />
                   )
                   : null}
