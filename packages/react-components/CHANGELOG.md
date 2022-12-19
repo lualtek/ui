@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 1.39.1
+
+### Patch Changes
+
+- 3bdd899: Fix table header filling and wrapping
+  - @lualtek/icons@1.39.1
+
 ## 1.39.0
 
 ### Minor Changes
