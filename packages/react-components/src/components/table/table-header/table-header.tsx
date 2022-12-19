@@ -20,7 +20,7 @@ export const TableHeader: FCChildrenClass<TableHeaderProps> = ({
   <Stack
     direction="row"
     columnGap={32}
-    rowGap={32}
+    rowGap={8}
     vAlign="center"
     hAlign="space-between"
     wrap
