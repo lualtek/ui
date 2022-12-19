@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 1.39.2
+
+### Patch Changes
+
+- 20733ab: Fix table header spacing
+  - @lualtek/icons@1.39.2
+
 ## 1.39.1
 
 ### Patch Changes
