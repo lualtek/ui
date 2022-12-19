@@ -14,6 +14,7 @@ import {
 import { useDidUpdate } from 'rooks';
 
 import {
+  ResponseContextProvider,
   Skeleton, Stack, Text,
   ToggleButton,
 } from '@/components';
@@ -342,178 +343,180 @@ export const Table = <T extends Record<string, unknown>>({
   };
 
   return (
-    <div
-      className={clsx(styles.Table, className)}
-      style={{ ...dynamicStyle, ...style }}
-    >
+    <ResponseContextProvider>
+      <div
+        className={clsx(styles.Table, className)}
+        style={{ ...dynamicStyle, ...style }}
+      >
 
-      {/* CONTEXT TOAST */}
-      <AnimatePresence>
-        <LazyMotion features={domMax}>
-          {!!Object.keys(selectedRowIds).length && selectableRows && (
-            <Stack
-              as={m.div}
-              className={styles.Toast}
-              direction="row"
-              hAlign="space-between"
-              vAlign="center"
-              hPadding={16}
-              vPadding={8}
-              fill={false}
-              columnGap={16}
-              initial={{ y: '-16px', opacity: 0 }}
-              animate={{
-                y: 0,
-                opacity: 1,
-                transition: {
-                  type: 'spring',
-                  stiffness: 700,
-                  damping: 30,
-                },
-              }}
-              exit={{ y: '-16px', opacity: 0 }}
-            >
-              <Text as="span" size={14} weight="bold">
-                {selectedLabel(Object.keys(selectedRowIds))}
-              </Text>
-              {selectedActions?.(Object.keys(selectedRowIds))}
-            </Stack>
-          )}
+        {/* CONTEXT TOAST */}
+        <AnimatePresence>
+          <LazyMotion features={domMax}>
+            {!!Object.keys(selectedRowIds).length && selectableRows && (
+              <Stack
+                as={m.div}
+                className={styles.Toast}
+                direction="row"
+                hAlign="space-between"
+                vAlign="center"
+                hPadding={16}
+                vPadding={8}
+                fill={false}
+                columnGap={16}
+                initial={{ y: '-16px', opacity: 0 }}
+                animate={{
+                  y: 0,
+                  opacity: 1,
+                  transition: {
+                    type: 'spring',
+                    stiffness: 700,
+                    damping: 30,
+                  },
+                }}
+                exit={{ y: '-16px', opacity: 0 }}
+              >
+                <Text as="span" size={14} weight="bold">
+                  {selectedLabel(Object.keys(selectedRowIds))}
+                </Text>
+                {selectedActions?.(Object.keys(selectedRowIds))}
+              </Stack>
+            )}
 
-          {/* HEADER */}
-          {(showHeader || selectableRows) && (
-            <m.div
-              animate={{
-                y: selectedFlatRows?.length ? 20 : 0,
-                opacity: selectedFlatRows?.length ? 0 : 1,
-                transition: {
-                  type: 'spring',
-                  stiffness: 700,
-                  damping: 30,
-                },
-              }}
-            >
-              <TableHeader title={title} id={`${uid}-table-title`}>
-                {actions}
-                {(columnsControl && data.length)
-                  ? (
-                    <ToggleColumnsControl
-                      columns={allColumns}
-                      label={toggleColumnsLabel}
-                    />
-                  )
-                  : null}
-              </TableHeader>
-            </m.div>
-          )}
-        </LazyMotion>
-      </AnimatePresence>
+            {/* HEADER */}
+            {(showHeader || selectableRows) && (
+              <m.div
+                animate={{
+                  y: selectedFlatRows?.length ? 20 : 0,
+                  opacity: selectedFlatRows?.length ? 0 : 1,
+                  transition: {
+                    type: 'spring',
+                    stiffness: 700,
+                    damping: 30,
+                  },
+                }}
+              >
+                <TableHeader title={title} id={`${uid}-table-title`}>
+                  {actions}
+                  {(columnsControl && data.length)
+                    ? (
+                      <ToggleColumnsControl
+                        columns={allColumns}
+                        label={toggleColumnsLabel}
+                      />
+                    )
+                    : null}
+                </TableHeader>
+              </m.div>
+            )}
+          </LazyMotion>
+        </AnimatePresence>
 
-      {/* TABLE */}
-      {((data.length || loading) && filteredVisibleColumns.length)
-        ? (
-          <div className={styles.TableWrapper} data-table-scrolling={Boolean(height)}>
-            <table
-              className={styles.TableElement}
-              data-table-stripes={stripes}
-              data-table-separators={showSeparators}
-              data-table-loading={loading}
-              aria-labelledby={`${uid}-table-title`}
-              {...getTableProps()}
-              {...otherProps}
-            >
+        {/* TABLE */}
+        {((data.length || loading) && filteredVisibleColumns.length)
+          ? (
+            <div className={styles.TableWrapper} data-table-scrolling={Boolean(height)}>
+              <table
+                className={styles.TableElement}
+                data-table-stripes={stripes}
+                data-table-separators={showSeparators}
+                data-table-loading={loading}
+                aria-labelledby={`${uid}-table-title`}
+                {...getTableProps()}
+                {...otherProps}
+              >
 
-              {/* THEAD */}
-              {showTableHead && (
-                <thead role="rowgroup" className={styles.THead}>
-                  {headerGroups.map(headerGroup => (
-                    <TableRow {...headerGroup.getHeaderGroupProps()}>
-                      {headerGroup.headers.map((column: HeaderGroupType<T>) => (
-                        <TableCell
-                          as="th"
-                          width={column.minWidth === 0 ? undefined : column.minWidth}
-                          collapsed={column.isCollapsed}
-                          isSorted={column.isSorted}
-                          isSortedDesc={column.isSorted && column.isSortedDesc}
-                          align={column.align}
-                          {...column.getHeaderProps(column.getSortByToggleProps())}
-                        >
-                          {column.render('Header')}
-                        </TableCell>
-                      ))}
-                    </TableRow>
-                  ))}
-                </thead>
-              )}
-
-              {/* TBODY */}
-              <tbody role="rowgroup" {...getTableBodyProps()}>
-                {loading
-                  ? (
-                    <TableRow>
-                      <TableCell colSpan={100}>
-                        <Skeleton gap={16} height={24} count={10} />
-                      </TableCell>
-                    </TableRow>
-                  )
-                  : rowEntries.map((row) => {
-                    prepareRow(row);
-                    return (
-                      <Fragment key={row.id}>
-                        <TableRow
-                          {...row.getRowProps()}
-                          expanded={(
-                            row.isExpanded && !row.subRows.some(subrow => subrow.isExpanded && subrow.canExpand)
-                          )}
-                          rowData={row}
-                          expandedRows={expandedRows}
-                        >
-                          {row.cells.map((cell: CellType<T>) => (
-                            <TableCell
-                              collapsed={cell.column.isCollapsed}
-                              width={cell.column.minWidth === 0 ? undefined : cell.column.minWidth}
-                              align={cell.column.align}
-                              {...cell.getCellProps()}
-                            >
-                              {cell.render('Cell')}
-                            </TableCell>
-                          ))}
-                        </TableRow>
-                        {(row.subRows && row.isExpanded && expandableRowComponent) && row.subRows.map(subRow => (
-                          <TableRow data-table-row-expander key={subRow.id}>
-                            <TableCell padding={false} colSpan={100}>
-                              <TableExpand data={subRow.original} component={expandableRowComponent} />
-                            </TableCell>
-                          </TableRow>
+                {/* THEAD */}
+                {showTableHead && (
+                  <thead role="rowgroup" className={styles.THead}>
+                    {headerGroups.map(headerGroup => (
+                      <TableRow {...headerGroup.getHeaderGroupProps()}>
+                        {headerGroup.headers.map((column: HeaderGroupType<T>) => (
+                          <TableCell
+                            as="th"
+                            width={column.minWidth === 0 ? undefined : column.minWidth}
+                            collapsed={column.isCollapsed}
+                            isSorted={column.isSorted}
+                            isSortedDesc={column.isSorted && column.isSortedDesc}
+                            align={column.align}
+                            {...column.getHeaderProps(column.getSortByToggleProps())}
+                          >
+                            {column.render('Header')}
+                          </TableCell>
                         ))}
-                      </Fragment>
-                    );
-                  })}
-              </tbody>
-            </table>
-          </div>
-        )
-        : (
-          <Stack vAlign="center" hAlign="center">
-            {emptyComponent ?? 'No data'}
-          </Stack>
-        )
+                      </TableRow>
+                    ))}
+                  </thead>
+                )}
+
+                {/* TBODY */}
+                <tbody role="rowgroup" {...getTableBodyProps()}>
+                  {loading
+                    ? (
+                      <TableRow>
+                        <TableCell colSpan={100}>
+                          <Skeleton gap={16} height={24} count={10} />
+                        </TableCell>
+                      </TableRow>
+                    )
+                    : rowEntries.map((row) => {
+                      prepareRow(row);
+                      return (
+                        <Fragment key={row.id}>
+                          <TableRow
+                            {...row.getRowProps()}
+                            expanded={(
+                            row.isExpanded && !row.subRows.some(subrow => subrow.isExpanded && subrow.canExpand)
+                            )}
+                            rowData={row}
+                            expandedRows={expandedRows}
+                          >
+                            {row.cells.map((cell: CellType<T>) => (
+                              <TableCell
+                                collapsed={cell.column.isCollapsed}
+                                width={cell.column.minWidth === 0 ? undefined : cell.column.minWidth}
+                                align={cell.column.align}
+                                {...cell.getCellProps()}
+                              >
+                                {cell.render('Cell')}
+                              </TableCell>
+                            ))}
+                          </TableRow>
+                          {(row.subRows && row.isExpanded && expandableRowComponent) && row.subRows.map(subRow => (
+                            <TableRow data-table-row-expander key={subRow.id}>
+                              <TableCell padding={false} colSpan={100}>
+                                <TableExpand data={subRow.original} component={expandableRowComponent} />
+                              </TableCell>
+                            </TableRow>
+                          ))}
+                        </Fragment>
+                      );
+                    })}
+                </tbody>
+              </table>
+            </div>
+          )
+          : (
+            <Stack vAlign="center" hAlign="center">
+              {emptyComponent ?? 'No data'}
+            </Stack>
+          )
       }
 
-      {/* PAGINATION */}
-      {(showPagination && filteredVisibleColumns.length > 0 && !!rows.length) && (
-        <TablePagination
-          clusters={pageClusters}
-          pageSize={pageSize}
-          totalItems={totalRows ?? rows.length}
-          currentPage={pageIndex}
-          totalPages={pageCount}
-          clustersLabel={clustersLabel}
-          isManual={Boolean(isManualPaginated && totalRows)}
-          onPageSizeChange={setPageSize}
-          onPageClick={selected => gotoPage(selected)}
-        />
-      )}
-    </div>
+        {/* PAGINATION */}
+        {(showPagination && filteredVisibleColumns.length > 0 && !!rows.length) && (
+          <TablePagination
+            clusters={pageClusters}
+            pageSize={pageSize}
+            totalItems={totalRows ?? rows.length}
+            currentPage={pageIndex}
+            totalPages={pageCount}
+            clustersLabel={clustersLabel}
+            isManual={Boolean(isManualPaginated && totalRows)}
+            onPageSizeChange={setPageSize}
+            onPageClick={selected => gotoPage(selected)}
+          />
+        )}
+      </div>
+    </ResponseContextProvider>
   );
 };
