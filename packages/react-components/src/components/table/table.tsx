@@ -95,7 +95,7 @@ export type TableProps<T extends Record<string, unknown>> = PropsWithClass<{
   /**
    * Pass custom components to show when rows are selected.
    */
-  selectedActions?: (selectedRowIds: Array<IdType<T>>) => ReactNode;
+  selectedActions?: (selectedRows: Array<Row<T>>) => ReactNode;
   /**
    * Set the table height after which the table will scroll.
    */
@@ -378,7 +378,7 @@ export const Table = <T extends Record<string, unknown>>({
                 <Text as="span" size={14} weight="bold">
                   {selectedLabel(Object.keys(selectedRowIds))}
                 </Text>
-                {selectedActions?.(Object.keys(selectedRowIds))}
+                {selectedActions?.(selectedFlatRows)}
               </Stack>
             )}
 
