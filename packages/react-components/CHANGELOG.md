@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 1.40.2
+
+### Patch Changes
+
+- 59faddf: Fix menu-item icon space
+  - @lualtek/icons@1.40.2
+
 ## 1.40.1
 
 ### Patch Changes
