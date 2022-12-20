@@ -1,5 +1,14 @@
 # @lualtek/react-components
 
+## 1.40.1
+
+### Patch Changes
+
+- ab8840c: Fix menu-item icon style
+- 29f8649: Fix selectedActions on table
+- d93b11a: Remove menu-item checked color
+  - @lualtek/icons@1.40.1
+
 ## 1.40.0
 
 ### Minor Changes
