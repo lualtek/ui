@@ -60,7 +60,7 @@ const WithCheckboxTemplate: ComponentStory<typeof Menu.ItemCheckbox> = (args) =>
       <Menu.ItemCheckbox
         {...args}
         checked={isChecked}
-        icon={isChecked ? 'check' : 'shape-oval'}
+        icon={isChecked ? 'check' : undefined}
         onClick={() => setIsChecked(val => !val)}
         value="1"
       >
