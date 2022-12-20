@@ -118,7 +118,7 @@ export const MenuItem = forwardRef(({
         <Icon
           className={styles.Icon}
           source={icon}
-          dimension={dimension === 'small' ? 12 : 16}
+          dimension={dimension === 'small' ? 12 : 18}
         />
       )}
       <Stack
