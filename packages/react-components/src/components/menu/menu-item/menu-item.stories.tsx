@@ -18,7 +18,7 @@ const story: ComponentMeta<typeof Menu.Item> = {
       control: { type: 'radio' },
     },
     sentiment: {
-      options: ['positive', 'warning', 'danger'],
+      options: [undefined, 'positive', 'warning', 'danger'],
       control: { type: 'radio' },
     },
     iconPosition: {
@@ -60,7 +60,7 @@ const WithCheckboxTemplate: ComponentStory<typeof Menu.ItemCheckbox> = (args) =>
       <Menu.ItemCheckbox
         {...args}
         checked={isChecked}
-        icon={isChecked ? 'check' : undefined}
+        icon={isChecked ? 'check' : 'shape-oval'}
         onClick={() => setIsChecked(val => !val)}
         value="1"
       >

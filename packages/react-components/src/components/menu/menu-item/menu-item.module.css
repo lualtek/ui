@@ -68,7 +68,7 @@
       padding-right: var(--padding);
     }
 
-    &[data-menu-item-sentiment='positive'] {
+    &[data-menu-item-sentiment='positive']:not([aria-checked='false']) {
       color: var(--highlight-green-foreground);
 
       &::before {
@@ -76,7 +76,7 @@
       }
     }
 
-    &[data-menu-item-sentiment='danger'] {
+    &[data-menu-item-sentiment='danger']:not([aria-checked='false']) {
       color: var(--highlight-red-foreground);
 
       &::before {
@@ -84,7 +84,7 @@
       }
     }
 
-    &[data-menu-item-sentiment='warning'] {
+    &[data-menu-item-sentiment='warning']:not([aria-checked='false']) {
       color: var(--highlight-yellow-foreground);
 
       &::before {
