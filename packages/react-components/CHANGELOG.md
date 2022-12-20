@@ -1,5 +1,15 @@
 # @lualtek/react-components
 
+## 1.40.0
+
+### Minor Changes
+
+- 42fdd07: Update menu item checkbox style
+
+### Patch Changes
+
+- @lualtek/icons@1.40.0
+
 ## 1.39.2
 
 ### Patch Changes
