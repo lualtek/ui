@@ -1,5 +1,12 @@
 @layer components {
   .Autocomplete {
-    display: contents;
+    display: unset;
+  }
+
+  .OptionsList {
+    max-block-size: var(--max-h);
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
   }
 }
