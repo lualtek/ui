@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 1.40.3
+
+### Patch Changes
+
+- f753e9e: Update menu design
+  - @lualtek/icons@1.40.3
+
 ## 1.40.2
 
 ### Patch Changes
