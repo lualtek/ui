@@ -1,7 +1,12 @@
+@import '../../core/utils/vibrancy.css';
+
 @layer components {
   .Menu {
+
+    @mixin vibrancy;
+
     list-style-type: none;
-    background-color: var(--global-background);
+    background-color: var(--vibrancy-background);
     border: 1px solid var(--dimmed-1);
     border-radius: token(--radius-24);
     overflow: hidden;
