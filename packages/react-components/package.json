@@ -42,9 +42,9 @@
     "last 2 Edge versions"
   ],
   "peerDependencies": {
+    "constate": "^3.3.0",
     "react": "^18.2",
-    "react-dom": "^18.2",
-    "constate": "^3.3.0"
+    "react-dom": "^18.2"
   },
   "devDependencies": {
     "@babel/core": "7.19.3",
@@ -81,6 +81,7 @@
     "@radix-ui/react-tabs": "1.0.0",
     "@radix-ui/react-toast": "1.0.0",
     "@radix-ui/react-tooltip": "1.0.0",
+    "@tanstack/react-table": "8.7.4",
     "clsx": "1.2.1",
     "framer-motion": "7.5.3",
     "react-focus-on": "3.6.0",
