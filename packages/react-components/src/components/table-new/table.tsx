@@ -3,10 +3,12 @@ import {
   ColumnDef,
   flexRender,
   getCoreRowModel,
+  getSortedRowModel,
+  SortingState,
   useReactTable,
 } from '@tanstack/react-table';
 import clsx from 'clsx';
-import { ReactNode, useId } from 'react';
+import { ReactNode, useId, useState } from 'react';
 
 import {
   PropsWithClass, ResponseContextProvider, Skeleton, Stack,
@@ -50,23 +52,28 @@ export const Table = <T extends Record<string, unknown>>({
   columns,
   className,
   stripes,
-  separators,
+  separators = true,
   loading,
   emptyComponent,
   ...otherProps
 }: TableProps<T>) => {
+  const [sorting, setSorting] = useState<SortingState>([]);
+
   const uid = useId();
   const table = useReactTable({
     data,
     columns,
+    state: {
+      sorting,
+    },
+    onSortingChange: setSorting,
     getCoreRowModel: getCoreRowModel(),
+    getSortedRowModel: getSortedRowModel(),
   });
 
   return (
     <ResponseContextProvider>
-      <div
-        className={clsx(styles.Table, className)}
-      >
+      <div className={clsx(styles.Table, className)}>
         {((data.length || loading) && table.getIsSomeColumnsVisible())
           ? (
             <div className={styles.TableWrapper}>
@@ -85,10 +92,11 @@ export const Table = <T extends Record<string, unknown>>({
                           key={header.id}
                           as="th"
                           width={header.column.columnDef.size}
-                          isSorted={Boolean(header.column.getIsSorted())}
-                          isSortedDesc={header.column.getIsSorted() === 'desc'}
+                          canSort={header.column.getCanSort()}
+                          sorting={header.column.getIsSorted()}
                           collapsed={(header.column.columnDef.meta as CustomColumnMeta)?.collapsed}
                           align={(header.column.columnDef.meta as CustomColumnMeta)?.align}
+                          onClick={header.column.getToggleSortingHandler()}
                         >
                           {!header.isPlaceholder && flexRender(
                             header.column.columnDef.header,

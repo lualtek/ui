@@ -1,42 +1,15 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { createColumnHelper, TableNew as Table } from '.';
+import { tableDataFixture } from './__fixture__/table-data';
 
 type Person = {
   firstName: string;
   lastName: string;
   age: number;
-  visits: number;
+  balance: string;
   status: string;
-  progress: number;
 }
-
-const defaultData: Person[] = [
-  {
-    firstName: 'tanner',
-    lastName: 'linsley',
-    age: 24,
-    visits: 100,
-    status: 'In Relationship',
-    progress: 50,
-  },
-  {
-    firstName: 'tandy',
-    lastName: 'miller',
-    age: 40,
-    visits: 40,
-    status: 'Single',
-    progress: 80,
-  },
-  {
-    firstName: 'joe',
-    lastName: 'dirte',
-    age: 45,
-    visits: 20,
-    status: 'Complicated',
-    progress: 10,
-  },
-];
 
 const columnHelper = createColumnHelper<Person>();
 
@@ -57,16 +30,12 @@ const columns = [
     cell: info => info.renderValue(),
     footer: info => info.column.id,
   }),
-  columnHelper.accessor('visits', {
-    header: () => <span>Visits</span>,
+  columnHelper.accessor('balance', {
+    header: () => <span>Balance</span>,
     footer: info => info.column.id,
   }),
   columnHelper.accessor('status', {
     header: 'Status',
-    footer: info => info.column.id,
-  }),
-  columnHelper.accessor('progress', {
-    header: 'Profile Progress',
     footer: info => info.column.id,
   }),
 ];
@@ -78,8 +47,6 @@ const story: ComponentMeta<typeof Table> = {
 
 export default story;
 
-const Template: ComponentStory<typeof Table> = args => (
-  <Table {...args} columns={columns} data={defaultData} />
-);
+const Template: ComponentStory<typeof Table> = args => (<Table {...args} columns={columns} data={tableDataFixture} />);
 
 export const Default = Template.bind({});
