@@ -55,3 +55,9 @@ export const WithPagination = Template.bind({});
 WithPagination.args = {
   showPagination: true,
 };
+
+export const WithToggleColumns = Template.bind({});
+WithToggleColumns.args = {
+  showHeader: true,
+  columnsControl: true,
+};

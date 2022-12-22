@@ -1,0 +1,8 @@
+@layer components {
+  .TableHeader {
+    position: relative;
+    min-block-size: token(--space-56);
+    margin-block-end: token(--space-16);
+    z-index: 3;
+  }
+}

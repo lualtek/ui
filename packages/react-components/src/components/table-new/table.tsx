@@ -9,7 +9,12 @@ import {
   useReactTable,
 } from '@tanstack/react-table';
 import clsx from 'clsx';
-import { ReactNode, useId, useState } from 'react';
+import {
+  AnimatePresence, domMax, LazyMotion, m,
+} from 'framer-motion';
+import {
+  ReactNode, useId, useMemo, useState,
+} from 'react';
 
 import {
   PropsWithClass, ResponseContextProvider, Skeleton, Stack,
@@ -17,6 +22,8 @@ import {
 
 import styles from './table.module.css';
 import { TableCell } from './table-cell';
+import { ToggleColumnsControl } from './table-controls';
+import { TableHeader, TableHeaderProps } from './table-header';
 import { TablePagination, TablePaginationProps } from './table-pagination';
 import { TableRow } from './table-row';
 import { CustomColumnMeta } from './types';
@@ -61,6 +68,27 @@ type TableProps<T> = PropsWithClass<{
    * @note Use this propertu to translate the label of the select used to change visible items per page.
    */
   clustersLabel?: string;
+  /**
+   * Pass custom actions to the table header
+   */
+  actions?: ReactNode;
+  /**
+   * Add an accessible title to the table component
+   */
+  title?: TableHeaderProps['title'];
+  /**
+   * Hide the header which includes the title and controls.
+   * This option is ignored and set to `true` if `selectableRows` is set to `true`.
+   */
+  showHeader?: boolean;
+  /**
+ * Enable the dropdown to choose the visibility of the column
+ */
+  columnsControl?: boolean;
+  /**
+   * Set the label for the toggle columns control
+   */
+  toggleColumnsLabel?: string;
 }>
 
 export const Table = <T extends Record<string, unknown>>({
@@ -74,8 +102,15 @@ export const Table = <T extends Record<string, unknown>>({
   showPagination,
   pageClusters,
   clustersLabel,
+  actions,
+  title,
+  showHeader = false,
+  columnsControl = false,
+  toggleColumnsLabel,
   ...otherProps
 }: TableProps<T>) => {
+  const [columnVisibility, setColumnVisibility] = useState({});
+  const [rowSelection, setRowSelection] = useState({});
   const [sorting, setSorting] = useState<SortingState>([]);
 
   const uid = useId();
@@ -84,16 +119,54 @@ export const Table = <T extends Record<string, unknown>>({
     columns,
     state: {
       sorting,
+      columnVisibility,
+      rowSelection,
     },
     onSortingChange: setSorting,
     getCoreRowModel: getCoreRowModel(),
     getSortedRowModel: getSortedRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
+    onRowSelectionChange: setRowSelection,
+    onColumnVisibilityChange: setColumnVisibility,
   });
+
+  const selectedFlatRows = useMemo(() => table.getSelectedRowModel().flatRows, [table]);
 
   return (
     <ResponseContextProvider>
       <div className={clsx(styles.Table, className)}>
+        <AnimatePresence>
+          <LazyMotion features={domMax}>
+            {/* HEADER */}
+            {(showHeader) && (
+              <m.div
+                animate={{
+                  y: selectedFlatRows?.length ? 20 : 0,
+                  opacity: selectedFlatRows?.length ? 0 : 1,
+                  transition: {
+                    type: 'spring',
+                    stiffness: 700,
+                    damping: 30,
+                  },
+                }}
+              >
+                <TableHeader title={title} id={`${uid}-table-title`}>
+                  {actions}
+                  {(columnsControl && data.length)
+                    ? (
+                      <ToggleColumnsControl
+                        columns={table.getAllLeafColumns()}
+                        label={toggleColumnsLabel}
+                      />
+                    )
+                    : null}
+                </TableHeader>
+              </m.div>
+            )}
+          </LazyMotion>
+        </AnimatePresence>
+
+        {/* TABLE */}
         {((data.length || loading) && table.getIsSomeColumnsVisible())
           ? (
             <div className={styles.TableWrapper}>
