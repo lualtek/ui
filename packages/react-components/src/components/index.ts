@@ -33,7 +33,6 @@ export * from './split-button';
 export * from './stack';
 export * from './switch';
 export * from './table';
-export * from './table-new';
 export * from './tabs';
 export * from './text';
 export * from './textfield';

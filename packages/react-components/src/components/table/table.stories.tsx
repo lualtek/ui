@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import { createColumnHelper, TableNew as Table } from '.';
+import { createColumnHelper, Table } from '.';
 import { tableDataFixture } from './__fixture__/table-data';
 
 type Person = {
@@ -31,7 +31,8 @@ const columns = [
     footer: info => info.column.id,
   }),
   columnHelper.accessor('balance', {
-    header: () => <span>Balance</span>,
+    header: () => 'Balance',
+    cell: info => <code>{info.renderValue()}</code>,
     footer: info => info.column.id,
   }),
   columnHelper.accessor('status', {
@@ -41,7 +42,7 @@ const columns = [
 ];
 
 const story: ComponentMeta<typeof Table> = {
-  title: 'Layouts/New Table',
+  title: 'Layouts/Table',
   component: Table,
 };
 
@@ -61,9 +62,19 @@ WithToggleColumns.args = {
   showHeader: true,
   columnsControl: true,
 };
+
 export const WithRowSelection = Template.bind({});
 WithRowSelection.args = {
   columnsControl: true,
   selectableRows: true,
   showPagination: true,
+};
+
+export const Scrollable = Template.bind({});
+Scrollable.args = {
+  selectableRows: true,
+  showPagination: true,
+  background: 'var(--global-background)',
+  title: 'Scrollable table',
+  height: '400px',
 };

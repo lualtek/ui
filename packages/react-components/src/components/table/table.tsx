@@ -6,6 +6,7 @@ import {
   getPaginationRowModel,
   getSortedRowModel,
   Row,
+  RowData,
   SortingState,
   useReactTable,
 } from '@tanstack/react-table';
@@ -14,6 +15,7 @@ import {
   AnimatePresence, domMax, LazyMotion, m,
 } from 'framer-motion';
 import {
+  CSSProperties,
   ReactNode, useId, useMemo, useState,
 } from 'react';
 
@@ -29,6 +31,11 @@ import { TableHeader, TableHeaderProps } from './table-header';
 import { TablePagination, TablePaginationProps } from './table-pagination';
 import { TableRow } from './table-row';
 import { CustomColumnMeta } from './types';
+
+declare module '@tanstack/table-core' {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/naming-convention
+  interface ColumnMeta<TData extends RowData, TValue> extends CustomColumnMeta {}
+}
 
 type TableProps<T> = PropsWithClass<{
   /**
@@ -104,6 +111,15 @@ type TableProps<T> = PropsWithClass<{
    * Pass custom components to show when rows are selected.
    */
   renderSelectedActions?: (selectedRows: Array<Row<T>>) => ReactNode;
+  /**
+   * Set the table height after which the table will scroll.
+   */
+  height?: string;
+  /**
+   * Set the table background color. This must be set if `height` is set because
+   * the color is used as background for sticky headers.
+   */
+  background?: string;
 }>
 
 export const Table = <T extends Record<string, unknown>>({
@@ -125,6 +141,9 @@ export const Table = <T extends Record<string, unknown>>({
   selectableRows,
   renderSelectedLabel = selectedRows => `Selected items: ${selectedRows}`,
   renderSelectedActions,
+  height,
+  background,
+  style,
   ...otherProps
 }: TableProps<T>) => {
   const [columnVisibility, setColumnVisibility] = useState({});
@@ -177,9 +196,17 @@ export const Table = <T extends Record<string, unknown>>({
 
   const selectedRowsCount = useMemo(() => Object.keys(rowSelection).length, [rowSelection]);
 
+  const dynamicStyle: CSSProperties = {
+    '--table-height': height,
+    '--table-background': background,
+  };
+
   return (
     <ResponseContextProvider>
-      <div className={clsx(styles.Table, className)}>
+      <div
+        className={clsx(styles.Table, className)}
+        style={{ ...dynamicStyle, ...style }}
+      >
         <AnimatePresence>
           <LazyMotion features={domMax}>
             {selectableRows && selectedRowsCount > 0 && (
@@ -244,7 +271,7 @@ export const Table = <T extends Record<string, unknown>>({
         {/* TABLE */}
         {((data.length || loading) && table.getIsSomeColumnsVisible())
           ? (
-            <div className={styles.TableWrapper}>
+            <div className={styles.TableWrapper} data-table-scrolling={Boolean(height)}>
               <table
                 className={styles.TableElement}
                 data-table-stripes={stripes}
@@ -262,8 +289,8 @@ export const Table = <T extends Record<string, unknown>>({
                           width={header.column.columnDef.size}
                           canSort={header.column.getCanSort()}
                           sorting={header.column.getIsSorted()}
-                          collapsed={(header.column.columnDef.meta as CustomColumnMeta)?.collapsed}
-                          align={(header.column.columnDef.meta as CustomColumnMeta)?.align}
+                          collapsed={header.column.columnDef.meta?.collapsed}
+                          align={header.column.columnDef.meta?.align}
                           onClick={header.column.getToggleSortingHandler()}
                         >
                           {!header.isPlaceholder && flexRender(
@@ -288,8 +315,8 @@ export const Table = <T extends Record<string, unknown>>({
                         {row.getVisibleCells().map(cell => (
                           <TableCell
                             key={cell.id}
-                            collapsed={(cell.column.columnDef.meta as CustomColumnMeta)?.collapsed}
-                            align={(cell.column.columnDef.meta as CustomColumnMeta)?.align}
+                            collapsed={cell.column.columnDef.meta?.collapsed}
+                            align={cell.column.columnDef.meta?.align}
                             width={cell.column.columnDef.size}
                           >
                             {flexRender(cell.column.columnDef.cell, cell.getContext())}
@@ -323,3 +350,5 @@ export const Table = <T extends Record<string, unknown>>({
     </ResponseContextProvider>
   );
 };
+
+export { createColumnHelper } from '@tanstack/react-table';

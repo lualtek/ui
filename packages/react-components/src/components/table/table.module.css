@@ -35,6 +35,10 @@
     top: 0;
     z-index: 2;
 
+    @nest .TableWrapper[data-table-scrolling='true'] & {
+      background: var(--table-background);
+    }
+
     /* stylelint-disable number-max-precision */
 
     @media not all and (min-resolution: 0.001dpcm) {
