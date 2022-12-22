@@ -3,6 +3,7 @@ import {
   ColumnDef,
   flexRender,
   getCoreRowModel,
+  getPaginationRowModel,
   getSortedRowModel,
   SortingState,
   useReactTable,
@@ -16,6 +17,7 @@ import {
 
 import styles from './table.module.css';
 import { TableCell } from './table-cell';
+import { TablePagination, TablePaginationProps } from './table-pagination';
 import { TableRow } from './table-row';
 import { CustomColumnMeta } from './types';
 
@@ -45,6 +47,20 @@ type TableProps<T> = PropsWithClass<{
    * all columns have been toggled off.
    */
   emptyComponent?: ReactNode;
+  /**
+   * Show pagination below the table. This is recommended only for tables with a lot of rows.
+   */
+  showPagination?: boolean;
+  /**
+    * Set clusters of items to show in a single page. These values are used to
+    * compute the select options for the page size select.
+    */
+  pageClusters?: TablePaginationProps['clusters'];
+  /**
+   * Set the label for the clusters select.
+   * @note Use this propertu to translate the label of the select used to change visible items per page.
+   */
+  clustersLabel?: string;
 }>
 
 export const Table = <T extends Record<string, unknown>>({
@@ -55,6 +71,9 @@ export const Table = <T extends Record<string, unknown>>({
   separators = true,
   loading,
   emptyComponent,
+  showPagination,
+  pageClusters,
+  clustersLabel,
   ...otherProps
 }: TableProps<T>) => {
   const [sorting, setSorting] = useState<SortingState>([]);
@@ -69,6 +88,7 @@ export const Table = <T extends Record<string, unknown>>({
     onSortingChange: setSorting,
     getCoreRowModel: getCoreRowModel(),
     getSortedRowModel: getSortedRowModel(),
+    getPaginationRowModel: getPaginationRowModel(),
   });
 
   return (
@@ -138,6 +158,19 @@ export const Table = <T extends Record<string, unknown>>({
               {emptyComponent ?? 'No data'}
             </Stack>
           )}
+
+        {/* PAGINATION */}
+        {(showPagination && table.getIsSomeColumnsVisible() && table.getRowModel().rows.length > 0) && (
+          <TablePagination
+            clusters={pageClusters}
+            itemsPerPage={table.getState().pagination.pageSize}
+            totalItems={data.length}
+            currentPage={table.getState().pagination.pageIndex}
+            clustersLabel={clustersLabel}
+            onPageSizeChange={pageSize => table.setPageSize(pageSize)}
+            onPageClick={selected => table.setPageIndex(selected)}
+          />
+        )}
       </div>
     </ResponseContextProvider>
   );

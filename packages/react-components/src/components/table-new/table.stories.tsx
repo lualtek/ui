@@ -50,3 +50,8 @@ export default story;
 const Template: ComponentStory<typeof Table> = args => (<Table {...args} columns={columns} data={tableDataFixture} />);
 
 export const Default = Template.bind({});
+
+export const WithPagination = Template.bind({});
+WithPagination.args = {
+  showPagination: true,
+};
