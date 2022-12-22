@@ -61,3 +61,9 @@ WithToggleColumns.args = {
   showHeader: true,
   columnsControl: true,
 };
+export const WithRowSelection = Template.bind({});
+WithRowSelection.args = {
+  columnsControl: true,
+  selectableRows: true,
+  showPagination: true,
+};

@@ -5,6 +5,7 @@ import {
   getCoreRowModel,
   getPaginationRowModel,
   getSortedRowModel,
+  Row,
   SortingState,
   useReactTable,
 } from '@tanstack/react-table';
@@ -17,11 +18,12 @@ import {
 } from 'react';
 
 import {
-  PropsWithClass, ResponseContextProvider, Skeleton, Stack,
+  PropsWithClass, ResponseContextProvider, Skeleton, Stack, Text,
 } from '@/components';
 
 import styles from './table.module.css';
 import { TableCell } from './table-cell';
+import { TableCheckbox } from './table-checkbox';
 import { ToggleColumnsControl } from './table-controls';
 import { TableHeader, TableHeaderProps } from './table-header';
 import { TablePagination, TablePaginationProps } from './table-pagination';
@@ -89,6 +91,19 @@ type TableProps<T> = PropsWithClass<{
    * Set the label for the toggle columns control
    */
   toggleColumnsLabel?: string;
+  /**
+   * Enable row selection. This property will render an additiona column
+   * at the start of the table, containing a checkbox.
+   */
+  selectableRows?: boolean;
+  /**
+   * Set the label for selected items in the table. Default to "Selected items"
+   */
+  renderSelectedLabel?: (count: number) => ReactNode;
+  /**
+   * Pass custom components to show when rows are selected.
+   */
+  renderSelectedActions?: (selectedRows: Array<Row<T>>) => ReactNode;
 }>
 
 export const Table = <T extends Record<string, unknown>>({
@@ -107,16 +122,46 @@ export const Table = <T extends Record<string, unknown>>({
   showHeader = false,
   columnsControl = false,
   toggleColumnsLabel,
+  selectableRows,
+  renderSelectedLabel = selectedRows => `Selected items: ${selectedRows}`,
+  renderSelectedActions,
   ...otherProps
 }: TableProps<T>) => {
   const [columnVisibility, setColumnVisibility] = useState({});
   const [rowSelection, setRowSelection] = useState({});
   const [sorting, setSorting] = useState<SortingState>([]);
 
+  const finalColumns = useMemo(() => (selectableRows ? [
+    {
+      id: 'selection',
+      enableHiding: false,
+      header: ({ table }) => (
+        !loading ? (
+          <TableCheckbox
+            checked={table.getIsAllRowsSelected()}
+            indeterminate={table.getIsSomeRowsSelected()}
+            onChange={table.getToggleAllRowsSelectedHandler()}
+          />
+        ) : null
+      ),
+      cell: ({ row }) => (
+        <TableCheckbox
+          checked={row.getIsSelected()}
+          indeterminate={row.getIsSomeSelected()}
+          onChange={row.getToggleSelectedHandler()}
+        />
+      ),
+      meta: {
+        collapsed: true,
+      },
+    },
+    ...columns,
+  ] : columns) as Array<ColumnDef<T>>, [columns, loading, selectableRows]);
+
   const uid = useId();
   const table = useReactTable({
     data,
-    columns,
+    columns: finalColumns,
     state: {
       sorting,
       columnVisibility,
@@ -130,19 +175,49 @@ export const Table = <T extends Record<string, unknown>>({
     onColumnVisibilityChange: setColumnVisibility,
   });
 
-  const selectedFlatRows = useMemo(() => table.getSelectedRowModel().flatRows, [table]);
+  const selectedRowsCount = useMemo(() => Object.keys(rowSelection).length, [rowSelection]);
 
   return (
     <ResponseContextProvider>
       <div className={clsx(styles.Table, className)}>
         <AnimatePresence>
           <LazyMotion features={domMax}>
+            {selectableRows && selectedRowsCount > 0 && (
+              <Stack
+                as={m.div}
+                className={styles.Toast}
+                direction="row"
+                hAlign="space-between"
+                vAlign="center"
+                hPadding={16}
+                vPadding={8}
+                fill={false}
+                columnGap={16}
+                initial={{ y: '-16px', opacity: 0 }}
+                animate={{
+                  y: 0,
+                  opacity: 1,
+                  transition: {
+                    type: 'spring',
+                    stiffness: 700,
+                    damping: 30,
+                  },
+                }}
+                exit={{ y: '-16px', opacity: 0 }}
+              >
+                <Text as="span" size={14} weight="bold">
+                  {renderSelectedLabel(selectedRowsCount)}
+                </Text>
+                {renderSelectedActions?.(table.getSelectedRowModel().flatRows)}
+              </Stack>
+            )}
+
             {/* HEADER */}
-            {(showHeader) && (
+            {(showHeader || selectableRows) && (
               <m.div
                 animate={{
-                  y: selectedFlatRows?.length ? 20 : 0,
-                  opacity: selectedFlatRows?.length ? 0 : 1,
+                  y: selectedRowsCount > 0 ? 20 : 0,
+                  opacity: selectedRowsCount > 0 ? 0 : 1,
                   transition: {
                     type: 'spring',
                     stiffness: 700,

@@ -25,7 +25,7 @@ export const ToggleColumnsControl = <T extends Record<string, unknown>>({
       </Popover.Trigger>
       <Popover.Content side="bottom" align="start">
         <Menu>
-          {columns.map((column, i) => (
+          {columns.filter(column => column.getCanHide()).map((column, i) => (
             <Menu.ItemCheckbox
               key={column.id}
               value={column.id}
