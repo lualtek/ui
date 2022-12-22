@@ -1,5 +1,3 @@
-@import '../../core/utils/vibrancy.css';
-
 @layer components {
   .InputWrapper {
     line-height: 0;
@@ -8,8 +6,6 @@
   .CheckboxInput {
     --w: 24px;
     --h: 24px;
-
-    @mixin vibrancy;
 
     appearance: none;
     inline-size: var(--w);
