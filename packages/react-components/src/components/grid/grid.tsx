@@ -1,7 +1,9 @@
 import { TokensTypes } from '@lualtek/tokens/platforms/web';
 import tkns from '@lualtek/tokens/platforms/web/tokens.json';
 import clsx from 'clsx';
-import { CSSProperties, forwardRef, ReactNode } from 'react';
+import {
+  CSSProperties, forwardRef, ReactNode, useMemo,
+} from 'react';
 
 import { FCForwardRef, PropsWithClass } from '@/components/types';
 
@@ -66,14 +68,16 @@ export const Grid = forwardRef<HTMLUListElement, PropsWithClass<GridProps>>(({
   rowMinHeight = '1fr',
   ...otherProps
 }, forwardedRef) => {
-  const computedStyle: CSSProperties = {
-    '--row-gap': rowGap ? tkns.space[rowGap] : 0,
-    '--column-gap': columnGap ? tkns.space[columnGap] : 0,
-    '--columns': columns,
-    '--column-min-w': colMinWidth,
-    '--rows': rows,
-    '--row-min-h': rowMinHeight,
-  };
+  const computedStyle: CSSProperties = useMemo(() => (
+    {
+      '--row-gap': rowGap ? tkns.space[rowGap] : 0,
+      '--column-gap': columnGap ? tkns.space[columnGap] : 0,
+      '--columns': columns,
+      '--column-min-w': colMinWidth,
+      '--rows': rows,
+      '--row-min-h': rowMinHeight,
+    }
+  ), [colMinWidth, columnGap, columns, rowGap, rowMinHeight, rows]);
 
   return (
     <ul

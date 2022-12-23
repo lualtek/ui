@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { CSSProperties, forwardRef } from 'react';
+import { CSSProperties, forwardRef, useMemo } from 'react';
 
 import { Polymorphic } from '@/components';
 import { PropsClassChildren } from '@/components/types';
@@ -28,9 +28,9 @@ export const ClampText = forwardRef(({
   inline,
   ...otherProps
 }, forwardedRef) => {
-  const dynamicStyle: CSSProperties = {
+  const dynamicStyle: CSSProperties = useMemo(() => ({
     '--r': rows,
-  };
+  }), [rows]);
 
   return (
     <Wrapper

@@ -12,6 +12,11 @@
     overflow: hidden;
     position: relative;
 
+    &[data-menu-should-scroll='true'] {
+      max-height: var(--max-height);
+      overflow: auto;
+    }
+
     & hr {
       margin: 0 token(--space-8);
     }

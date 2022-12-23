@@ -1,5 +1,7 @@
 import clsx from 'clsx';
-import { CSSProperties, forwardRef, ReactNode } from 'react';
+import {
+  CSSProperties, forwardRef, ReactNode, useMemo,
+} from 'react';
 import { AutoFocusInside } from 'react-focus-on';
 
 import {
@@ -44,9 +46,11 @@ export const ModalContent = forwardRef<HTMLDivElement, ModalContentProps>(({
   const { onClose, titleId } = useOverlayContext();
   const { matches } = useResponsiveContext();
 
-  const dynamicStyle: CSSProperties = {
-    '--header-tint': headerTint,
-  };
+  const dynamicStyle: CSSProperties = useMemo(() => (
+    {
+      '--header-tint': headerTint,
+    }
+  ), [headerTint]);
 
   return (
     <Elevator resting={4} direction={matches.small ? 'bottom' : 'top'}>
