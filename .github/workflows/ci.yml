@@ -13,3 +13,5 @@ concurrency:
 jobs:
   ci:
     uses: lualtek/workflows/.github/workflows/ui_ci.yml@master
+    secrets:
+      DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
