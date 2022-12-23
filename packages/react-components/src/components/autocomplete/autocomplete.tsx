@@ -1,29 +1,23 @@
 import clsx from 'clsx';
 import {
+  Children,
   forwardRef, ForwardRefExoticComponent,
   ReactNode,
+  useCallback,
+  useMemo,
   useState,
 } from 'react';
 import { useDebouncedValue, useDimensionsRef } from 'rooks';
 
 import {
   Menu,
-  MenuProps, Popover, Textfield, TextfieldProps,
+  MenuProps, Popover, Skeleton, Stack, Text, Textfield, TextfieldProps,
 } from '@/components';
 
 import styles from './autocomplete.module.css';
 import { AutocompleteOption, AutocompleteOptionProps } from './autocomplete-option';
 
-type ValueType = {
-  query: string;
-  value: string;
-}
-
 export type AutocompleteProps = TextfieldProps & {
-  /**
-   * The callback called when an option is picked from the list
-   */
-  onChange?: (value: ValueType) => void;
   /**
    * Set the maximum height of the options list after which
    * it will scroll.
@@ -35,9 +29,13 @@ export type AutocompleteProps = TextfieldProps & {
    */
   emptyContent?: ReactNode;
   /**
-   * Show skeletons while loading options.
+   * Show skeletons while loading option is set to true.
    */
   loading?: boolean;
+  /**
+   * List of options to use as suggestion
+   */
+  options?: AutocompleteOptionProps[];
 };
 
 type AutocompleteComponent = ForwardRefExoticComponent<AutocompleteProps> & {
@@ -47,63 +45,92 @@ type AutocompleteComponent = ForwardRefExoticComponent<AutocompleteProps> & {
 export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(({
   className,
   children,
-  onChange,
   disabled,
   readOnly,
-  value,
+  options,
   loading,
+  value = '',
   maxHeight = '200px',
-  // emptyContent = 'No items to show',
+  emptyContent = 'No items to show',
   ...otherProps
 }, forwardedRef) => {
-  // const autocompleteRef = useRef<HTMLDivElement>(null);
+  const [currentValue, setCurrentValue] = useState(value);
+  const [isOpen, setIsOpen] = useState(false);
   const [ref, dimensions] = useDimensionsRef();
-  const [query] = useState(value ? String(value) : '');
-
   const [debouncedValue] = useDebouncedValue(
-    query,
+    currentValue,
     100,
   );
+
+  const onInteractOutside = useCallback((currentTarget: EventTarget | null) => {
+    if ((currentTarget as HTMLInputElement)?.id !== 'autocompleteInput') {
+      setIsOpen(false);
+    }
+  }, []);
+
+  const filteredOptions = useMemo(
+    () => (debouncedValue
+      ? options?.filter((item) => {
+        const childrenText = Children.toArray(item.children)?.[0] as string;
+        const debouncedLower = (debouncedValue as string).toLowerCase();
+        return (
+          item.value.toLowerCase().includes(debouncedLower)
+          || childrenText?.toLowerCase().includes(debouncedLower)
+        );
+      })
+      : options
+    ),
+    [debouncedValue, options],
+  );
+
+  const onClickOption = useCallback((text: string) => {
+    setCurrentValue(text);
+    setIsOpen(false);
+  }, []);
 
   return (
     <div
       ref={ref}
       className={clsx(styles.Autocomplete, className)}
     >
-      <Popover>
-        <Popover.Trigger>
+      <Popover open={isOpen}>
+        <Popover.Anchor>
           <Textfield
             ref={forwardedRef}
             autoComplete="off"
             disabled={disabled}
             readOnly={readOnly}
+            value={currentValue}
+            onChange={event => setCurrentValue(event.target.value)}
+            onFocus={() => setIsOpen(true)}
+            id="autocompleteInput"
             {...otherProps}
           />
-        </Popover.Trigger>
-        <Popover.Content onOpenAutoFocus={e => e.preventDefault()}>
+        </Popover.Anchor>
+        <Popover.Content
+          onOpenAutoFocus={event => event.preventDefault()}
+          onInteractOutside={({ currentTarget }) => onInteractOutside(currentTarget)}
+          onEscapeKeyDown={() => setIsOpen(false)}
+        >
           <Menu
             role="listbox"
             className={styles.OptionsList}
             style={{ width: dimensions ? (dimensions.width + 2) : 'auto' }}
             maxHeight={maxHeight}
           >
-            {/**
-             * EmptyState to show if no resulsts matching the search
-             * {(filteredOptions.length === 0 && !loading)
-             *  && <Text as="div" textAlign="center" dimmed={5}>{emptyContent}</Text>}
-             */}
-            {/*
+            {(filteredOptions?.length === 0 && !loading) && <Text as="div" textAlign="center" dimmed={5}>{emptyContent}</Text>}
             {loading
               ? <Stack hPadding={8} as="span"><Skeleton count={3} /></Stack>
-              : Children.map(filteredOptions, child => isValidElement(child) && cloneElement(
-                child as ReactElement<MenuItemProps>,
-                {
-                  // onClick: handleOptionClick,
-                },
+              : filteredOptions?.map(option => (
+                <Autocomplete.Option
+                  key={option.value}
+                  value={option.value}
+                  onClick={(_, text) => onClickOption(text!)}
+                >
+                  {option.children}
+                </Autocomplete.Option>
               ))
-            } */}
-            {debouncedValue}
-            {children}
+            }
           </Menu>
         </Popover.Content>
       </Popover>

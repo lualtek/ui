@@ -14,27 +14,30 @@ const story: ComponentMeta<typeof Autocomplete> = {
 
 export default story;
 
+const options = [
+  {
+    value: 'apple',
+    children: '🍎 Apple',
+    decoration: <Chip dimension="small" color="green">110 Cal</Chip>,
+  },
+  {
+    value: 'banana',
+    children: '🍌 Banana',
+  },
+  {
+    value: 'cherry',
+    children: '🍒 Cherry',
+  },
+];
+
 const Template: ComponentStory<typeof Autocomplete> = args => (
   <>
     <Autocomplete
-      onChange={value => console.log(value)}
       style={{ maxWidth: '300px' }}
       icon="zoom"
+      options={options}
       {...args}
-    >
-      <Autocomplete.Option value="apple">
-        Apple
-      </Autocomplete.Option>
-      <Autocomplete.Option
-        value="banana"
-        decoration={<Chip dimension="small" color="green">110 Cal</Chip>}
-      >
-        Banana
-      </Autocomplete.Option>
-      <Autocomplete.Option value="cherry">
-        Cherry
-      </Autocomplete.Option>
-    </Autocomplete>
+    />
     <List>
       <List.Li>
         Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -48,21 +51,10 @@ const Template: ComponentStory<typeof Autocomplete> = args => (
     </List>
   </>
 );
+
 export const Default = Template.bind({});
 
-const BusyTemplate: ComponentStory<typeof Autocomplete> = args => (
-  <Autocomplete
-    onChange={value => console.log(value)}
-    style={{ maxWidth: '300px' }}
-    icon="zoom"
-    busy
-    {...args}
-  />
-);
-
-export const Busy = BusyTemplate.bind({});
-
-export const WithValue = Template.bind({});
-WithValue.args = {
-  value: '1',
+export const Busy = Template.bind({});
+Busy.args = {
+  loading: true,
 };
