@@ -1,7 +1,9 @@
 import { TokensTypes } from '@lualtek/tokens/platforms/web';
 import tkns from '@lualtek/tokens/platforms/web/tokens.json';
 import clsx from 'clsx';
-import React, { CSSProperties, forwardRef, ReactNode } from 'react';
+import React, {
+  CSSProperties, forwardRef, ReactNode, useMemo,
+} from 'react';
 
 import { Polymorphic, Stack, StackProps } from '@/components';
 
@@ -64,10 +66,10 @@ export const Card = forwardRef(({
   style,
   ...otherProps
 }, forwardedRef) => {
-  const dynamicStyle: CSSProperties = {
+  const dynamicStyle: CSSProperties = useMemo(() => ({
     '--padding': padding && tkns.space[padding],
     '--radius': radius && tkns.radius[radius],
-  };
+  }), [padding, radius]);
 
   return (
     <Wrapper

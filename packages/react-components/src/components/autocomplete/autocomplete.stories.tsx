@@ -54,7 +54,12 @@ const Template: ComponentStory<typeof Autocomplete> = args => (
 
 export const Default = Template.bind({});
 
-export const Busy = Template.bind({});
-Busy.args = {
+export const Loading = Template.bind({});
+Loading.args = {
   loading: true,
+};
+
+export const CustomEvent = Template.bind({});
+CustomEvent.args = {
+  onClickOption: value => alert(value),
 };

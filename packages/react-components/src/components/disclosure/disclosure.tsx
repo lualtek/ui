@@ -5,7 +5,7 @@ import {
 import {
   CSSProperties,
   DetailsHTMLAttributes, forwardRef,
-  ReactNode, useCallback, useEffect, useId, useRef, useState,
+  ReactNode, useCallback, useEffect, useId, useMemo, useRef, useState,
 } from 'react';
 
 import {
@@ -87,9 +87,11 @@ export const Disclosure = forwardRef<HTMLDetailsElement, DisclosureProps>(({
     [expandable, onToggle, open],
   );
 
-  const dynamicStyle: CSSProperties = {
-    '--max-height': contentMaxHeight,
-  };
+  const dynamicStyle: CSSProperties = useMemo(() => (
+    {
+      '--max-height': contentMaxHeight,
+    }
+  ), [contentMaxHeight]);
 
   const sizes: SizesType = {
     small: {

@@ -36,6 +36,8 @@ export type AutocompleteProps = TextfieldProps & {
    * List of options to use as suggestion
    */
   options?: AutocompleteOptionProps[];
+
+  onClickOption?: (value: AutocompleteOptionProps['value'], text?: string | null) => void;
 };
 
 type AutocompleteComponent = ForwardRefExoticComponent<AutocompleteProps> & {
@@ -49,6 +51,7 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(({
   readOnly,
   options,
   loading,
+  onClickOption,
   value = '',
   maxHeight = '200px',
   emptyContent = 'No items to show',
@@ -74,7 +77,7 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(({
         const childrenText = Children.toArray(item.children)?.[0] as string;
         const debouncedLower = (debouncedValue as string).toLowerCase();
         return (
-          item.value.toLowerCase().includes(debouncedLower)
+          String(item.value).toLowerCase().includes(debouncedLower)
           || childrenText?.toLowerCase().includes(debouncedLower)
         );
       })
@@ -83,10 +86,16 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(({
     [debouncedValue, options],
   );
 
-  const onClickOption = useCallback((text: string) => {
-    setCurrentValue(text);
+  const handleClickOption = useCallback((value: string | number, text?: string) => {
     setIsOpen(false);
-  }, []);
+
+    if (onClickOption) {
+      onClickOption?.(value, text);
+      return;
+    }
+
+    setCurrentValue(text ?? value);
+  }, [onClickOption]);
 
   return (
     <div
@@ -120,14 +129,15 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(({
           >
             {(filteredOptions?.length === 0 && !loading) && <Text as="div" textAlign="center" dimmed={5}>{emptyContent}</Text>}
             {loading
-              ? <Stack hPadding={8} as="span"><Skeleton count={3} /></Stack>
-              : filteredOptions?.map(option => (
+              ? <Stack hPadding={16} vPadding={8} as="span"><Skeleton count={5} /></Stack>
+              : filteredOptions?.map(({ value, children, ...rest }) => (
                 <Autocomplete.Option
-                  key={option.value}
-                  value={option.value}
-                  onClick={(_, text) => onClickOption(text!)}
+                  key={value}
+                  value={value}
+                  onClick={handleClickOption}
+                  {...rest}
                 >
-                  {option.children}
+                  {children}
                 </Autocomplete.Option>
               ))
             }

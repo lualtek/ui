@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { CSSProperties, forwardRef } from 'react';
+import { CSSProperties, forwardRef, useMemo } from 'react';
 
 import { PropsClassChildren } from '@/components/types';
 
@@ -35,10 +35,12 @@ export const GridItem = forwardRef<HTMLLIElement, GridItemProps>(({
   row,
   ...otherProps
 }, forwardedRef) => {
-  const dynamicStyle: CSSProperties = {
-    '--column': column,
-    '--row': row,
-  };
+  const dynamicStyle: CSSProperties = useMemo(() => (
+    {
+      '--column': column,
+      '--row': row,
+    }
+  ), [column, row]);
 
   return (
     <li

@@ -14,7 +14,7 @@ MenuItemProps,
    * Callback called when the option is clicked.
    * It passes the value and the inner text of the option as arguments.
    */
-  onClick?: (value?: string, content?: string) => void;
+  onClick?: (value: string | number, content?: string) => void;
   /**
    * Label of the option. This is the text that will be displayed in the option, which can be
    * different from the value.

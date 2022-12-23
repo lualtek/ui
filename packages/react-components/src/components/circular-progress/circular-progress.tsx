@@ -50,10 +50,12 @@ export const CircularProgress = forwardRef<HTMLDivElement, CircularProgressProps
 
   const clamp = useMemo(() => (num: number, min: number, max: number) => Math.min(Math.max(num, min), max), []);
 
-  const dynamicStyle: CSSProperties = {
-    '--progress': `${getPercentage()}%`,
-    '--progress-color': color,
-  };
+  const dynamicStyle: CSSProperties = useMemo(() => (
+    {
+      '--progress': `${getPercentage()}%`,
+      '--progress-color': color,
+    }
+  ), [color, getPercentage]);
 
   return (
     <div

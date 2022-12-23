@@ -28,7 +28,7 @@ export type MenuItemProps = PropsClassChildren<{
   /**
    * Callback function to be called when the menu item is pressed.
    */
-  onClick?: (event: React.MouseEvent<HTMLElement>, value: string) => void;
+  onClick?: (event: React.MouseEvent<HTMLElement>, value: string | number) => void;
   /**
    * Set disabled state. The item is not interactive and grayed out.
    */
@@ -58,7 +58,7 @@ export type MenuItemProps = PropsClassChildren<{
   /**
    * Assign a string value to the menu option. This is returned when the menu item is clicked.
    */
-  value: string;
+  value: string | number;
   /**
    * Set the sentiment color for the item
    */

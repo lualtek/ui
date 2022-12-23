@@ -1,7 +1,7 @@
 import { TokensTypes } from '@lualtek/tokens/platforms/web';
 import tkns from '@lualtek/tokens/platforms/web/tokens.json';
 import clsx from 'clsx';
-import { CSSProperties, forwardRef } from 'react';
+import { CSSProperties, forwardRef, useMemo } from 'react';
 
 import { Polymorphic } from '@/components';
 
@@ -81,14 +81,16 @@ export const Stack = forwardRef(({
     return prop;
   };
 
-  const computedStyle: CSSProperties = {
-    '--r-gap': rowGap ? tkns.space[rowGap] : 0,
-    '--c-gap': columnGap ? tkns.space[columnGap] : 0,
-    '--v-align': vAlign && alignmentTemplate(vAlign),
-    '--h-align': hAlign && alignmentTemplate(hAlign),
-    '--v-padding': vPadding ? tkns.space[vPadding] : 0,
-    '--h-padding': hPadding ? tkns.space[hPadding] : 0,
-  };
+  const computedStyle: CSSProperties = useMemo(() => (
+    {
+      '--r-gap': rowGap ? tkns.space[rowGap] : 0,
+      '--c-gap': columnGap ? tkns.space[columnGap] : 0,
+      '--v-align': vAlign && alignmentTemplate(vAlign),
+      '--h-align': hAlign && alignmentTemplate(hAlign),
+      '--v-padding': vPadding ? tkns.space[vPadding] : 0,
+      '--h-padding': hPadding ? tkns.space[hPadding] : 0,
+    }
+  ), [columnGap, hAlign, hPadding, rowGap, vAlign, vPadding]);
 
   return (
     <Wrapper
