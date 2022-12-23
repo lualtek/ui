@@ -1,5 +1,20 @@
 # @lualtek/react-components
 
+## 2.0.0
+
+### Major Changes
+
+- 53ead71: Rework Table component
+
+### Minor Changes
+
+- accedb8: Add Autocomplete component
+
+### Patch Changes
+
+- 53ead71: Disable vibrancy in selection controls to improve performance.
+  - @lualtek/icons@2.0.0
+
 ## 1.40.3
 
 ### Patch Changes
