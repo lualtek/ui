@@ -1,12 +1,12 @@
+import { Column, flexRender } from '@tanstack/react-table';
+
 import {
   Button, IconButton,
   Menu, Popover, useResponsiveContext,
 } from '@/components';
 
-import { CustomColumnInstanceType } from '../types';
-
 type ToggleColumnsControlProps<T extends Record<string, unknown>> = {
-  columns: Array<CustomColumnInstanceType<T>>;
+  columns: Array<Column<T>>;
   label?: string;
 }
 
@@ -19,20 +19,22 @@ export const ToggleColumnsControl = <T extends Record<string, unknown>>({
   return (
     <Popover>
       <Popover.Trigger>
-        {matches.medium ? <Button kind="secondary" dimension="big">{label}</Button> : <IconButton icon="view" kind="secondary" dimension="big" />}
+        {matches.medium
+          ? <Button kind="secondary" dimension="big">{label}</Button>
+          : <IconButton icon="view" kind="secondary" dimension="big" />}
       </Popover.Trigger>
       <Popover.Content side="bottom" align="start">
         <Menu>
-          {columns.filter(col => !col.isToggable).map((column, i) => (
+          {columns.filter(column => column.getCanHide()).map((column, i) => (
             <Menu.ItemCheckbox
+              key={column.id}
               value={column.id}
               autoFocus={i === 0}
-              key={column.id}
-              checked={column.isVisible}
-              icon={column.isVisible ? 'check' : undefined}
-              onClick={() => column.toggleHidden()}
+              checked={column.getIsVisible()}
+              icon={column.getIsVisible() ? 'check' : undefined}
+              onClick={column.getToggleVisibilityHandler()}
             >
-              {column.render('Header')}
+              {flexRender<any>(column.columnDef.header, {})}
             </Menu.ItemCheckbox>
           ))}
         </Menu>

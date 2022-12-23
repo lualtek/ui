@@ -4,7 +4,6 @@ declare const styles: {
   readonly "TableElement": string;
   readonly "THead": string;
   readonly "Toast": string;
-  readonly "ExpandButton": string;
 };
 export = styles;
 

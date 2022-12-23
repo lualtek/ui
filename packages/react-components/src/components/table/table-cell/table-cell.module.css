@@ -31,4 +31,17 @@
   .HeadCellIcon {
     margin-inline-start: token(--space-8);
   }
+
+  .BlankButton {
+    appearance: none;
+    border: 0;
+    background: none;
+    font: unset;
+    cursor: pointer;
+    color: inherit;
+    text-align: inherit;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+  }
 }

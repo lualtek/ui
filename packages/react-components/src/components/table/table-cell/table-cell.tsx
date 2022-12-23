@@ -1,18 +1,18 @@
+import { SortDirection } from '@tanstack/react-table';
 import clsx from 'clsx';
-import { CSSProperties, forwardRef } from 'react';
+import { CSSProperties, forwardRef, useMemo } from 'react';
 
 import { Icon, Polymorphic } from '@/components';
 
-import { OptionalColumnTypes } from '../types';
+import { CustomColumnMeta } from '../types';
 import styles from './table-cell.module.css';
 
-type TableCellProps = {
-  collapsed?: OptionalColumnTypes['isCollapsed'];
-  isSorted?: boolean;
-  isSortedDesc?: boolean;
-  align?: OptionalColumnTypes['align'];
+type TableCellProps = CustomColumnMeta & {
+  sorting?: false | SortDirection;
+  canSort?: boolean;
   padding?: boolean;
   width?: string | number;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
 type PolymorphicCell = Polymorphic.ForwardRefComponent<'td', TableCellProps>;
@@ -21,22 +21,40 @@ export const TableCell = forwardRef(({
   children,
   className,
   collapsed,
-  isSorted,
   align = 'start',
   style,
-  isSortedDesc,
+  sorting = false,
+  canSort,
   as: Wrapper = 'td',
   padding = true,
   width,
+  onClick,
   ...otherProps
 }, forwardedRef) => {
-  const isWidthString = typeof width === 'string';
-  const computedWidthNumber = typeof width === 'number' ? `${width}px` : undefined;
+  const computedWidth = useMemo(() => {
+    if (!width) return undefined;
 
-  const dynamicStyle: CSSProperties = {
-    '--width': isWidthString ? width : computedWidthNumber,
+    return typeof width === 'string' ? width : `${width}px`;
+  }, [width]);
+
+  const dynamicStyle: CSSProperties = useMemo(() => ({
+    '--width': computedWidth,
     '--text-align': align,
-  };
+  }), [align, computedWidth]);
+
+  const content = useMemo(() => (
+    <>
+      {children}
+      {Boolean(sorting) && (
+        <Icon
+          dimension={12}
+          className={styles.HeadCellIcon}
+          fill="var(--highlight-red-foreground)"
+          source={sorting === 'desc' ? 'bars-sort-down' : 'bars-sort-up'}
+        />
+      )}
+    </>
+  ), [children, sorting]);
 
   return (
     <Wrapper
@@ -52,15 +70,15 @@ export const TableCell = forwardRef(({
       }}
       {...otherProps}
     >
-      {children}
-      {isSorted && (
-        <Icon
-          dimension={12}
-          className={styles.HeadCellIcon}
-          fill="var(--highlight-red-foreground)"
-          source={isSortedDesc ? 'bars-sort-down' : 'bars-sort-up'}
-        />
-      )}
+      {canSort ? (
+        <button
+          className={styles.BlankButton}
+          type="button"
+          onClick={onClick}
+        >
+          {content}
+        </button>
+      ) : content}
     </Wrapper>
   );
 }) as PolymorphicCell;

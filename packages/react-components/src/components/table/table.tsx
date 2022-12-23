@@ -1,117 +1,66 @@
+
+import {
+  ColumnDef,
+  FilterFnOption,
+  flexRender,
+  getCoreRowModel,
+  getFilteredRowModel,
+  getPaginationRowModel,
+  getSortedRowModel,
+  Row,
+  RowData,
+  SortingState,
+  useReactTable,
+} from '@tanstack/react-table';
 import clsx from 'clsx';
 import {
   AnimatePresence, domMax, LazyMotion, m,
 } from 'framer-motion';
 import {
-  ComponentType, CSSProperties, Fragment, ReactNode, useCallback, useId, useMemo,
+  CSSProperties,
+  ReactNode, useId, useMemo, useState,
 } from 'react';
-import {
-  Hooks, IdType, Row,
-  SortingRule,
-  useExpanded, usePagination,
-  useRowSelect, useSortBy, useTable,
-} from 'react-table';
-import { useDidUpdate } from 'rooks';
+import { useDebounce } from 'rooks';
 
 import {
-  ResponseContextProvider,
-  Skeleton, Stack, Text,
-  ToggleButton,
+  PropsWithClass, ResponseContextProvider, Skeleton, Stack, Text,
 } from '@/components';
-import { PropsWithClass } from '@/components/types';
 
 import styles from './table.module.css';
 import { TableCell } from './table-cell';
 import { TableCheckbox } from './table-checkbox';
-import { ToggleColumnsControl } from './table-controls';
-import { TableExpand } from './table-expand';
+import { FilterControl, ToggleColumnsControl } from './table-controls';
 import { TableHeader, TableHeaderProps } from './table-header';
 import { TablePagination, TablePaginationProps } from './table-pagination';
 import { TableRow } from './table-row';
-import {
-  CellType, CustomColumnInstanceType, CustomColumnsType,
-  CustomSortingRule, HeaderGroupType, OptionalDataTypes, PaginationPageType,
-} from './types';
+import { CustomColumnMeta } from './types';
 
-export type TableProps<T extends Record<string, unknown>> = PropsWithClass<{
-  /**
-   * Define the columns and headers of the table.
-   */
-  columns: CustomColumnsType<T>;
+declare module '@tanstack/table-core' {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/naming-convention
+  interface ColumnMeta<TData extends RowData, TValue> extends CustomColumnMeta {}
+}
+
+type CommonProps<T> = PropsWithClass<{
   /**
    * Pass the data structure to the table. Each object key can be used as `accessor` for a column.
    */
-  data: Array<T & OptionalDataTypes<T>>;
+  data: T[];
   /**
-   * Define the default visibility of the columns. This is an array of columns `id`,
+   * Define the columns and headers of the table.
    */
-  defaultHiddenColumns?: Array<IdType<T>>;
-  /**
-   * Enable row selection. This property will render an additiona column
-   * at the start of the table, containing a checkbox.
-   */
-  selectableRows?: boolean;
+  columns: Array<ColumnDef<T, any>>;
   /**
    * Add an alternate style to the table rows
    */
   stripes?: boolean;
   /**
+   * Enable horizontal separators between the table rows
+   */
+  separators?: boolean;
+  /**
    * Set the loading state of the table. This will sho skeleton loaders instead of the actual data.
    */
   loading?: boolean;
-  /**
-   * Enable horizontal separators between the table rows
-   */
-  showSeparators?: boolean;
-  /**
-   * Add an accessible title to the table component
-   */
-  title?: TableHeaderProps['title'];
-  /**
-   * Hide the header which includes the title and controls.
-   * This option is ignored and set to `true` if `selectableRows` is set to `true`.
-   */
-  showHeader?: boolean;
-  /**
-   * Hide the table header which includes columns names.
-   */
-  showTableHead?: boolean;
-  /**
-   * Enable the dropdown to choose the visibility of the column
-   */
-  columnsControl?: boolean;
-  /**
-   * Set the label for the toggle columns control
-   */
-  toggleColumnsLabel?: string;
-  /**
-   * Pass custom actions to the table header
-   */
-  actions?: ReactNode;
-  /**
-   * Set the label for selected items in the table. Default to "Selected items"
-   */
-  selectedLabel?: (selectedRowIds: Array<IdType<T>>) => ReactNode;
-  /**
-   * Pass custom components to show when rows are selected.
-   */
-  selectedActions?: (selectedRows: Array<Row<T>>) => ReactNode;
-  /**
-   * Set the table height after which the table will scroll.
-   */
-  height?: string;
-  /**
-   * Set the table background color. This must be set if `height` is set because
-   * the color is used as background for sticky headers.
-   */
-  background?: string;
-  /**
-   * A react component that add additional content when the row is expanded.
-   * By passing this prop, the row will be expandable. If fuction is passed,
-   * the function will be called with the `subRow` data and the function must return
-   * a component.
-   */
-  expandableRowComponent?: ComponentType<T>;
   /**
    * Custom component/empty state to show when the table has no data or
    * all columns have been toggled off.
@@ -121,18 +70,6 @@ export type TableProps<T extends Record<string, unknown>> = PropsWithClass<{
    * Show pagination below the table. This is recommended only for tables with a lot of rows.
    */
   showPagination?: boolean;
-  /**
-   * The index of the page that should be set as active when the table is rendered.
-   */
-  initialPageIndex?: number;
-  /**
-    * The amount of entries to show for each page.
-    */
-  itemsPerPage?: number;
-  /**
-    * Set the number of pages to show in the pagination. Used only when doing manual pagination.
-    */
-  totalRows?: number;
   /**
     * Set clusters of items to show in a single page. These values are used to
     * compute the select options for the page size select.
@@ -144,203 +81,180 @@ export type TableProps<T extends Record<string, unknown>> = PropsWithClass<{
    */
   clustersLabel?: string;
   /**
-    * The callback that is called when the active page index and page size change.
-    * Passing this property will enable manual pagination,
-    * disabling the automatic one.
-    */
-  onPaginationChange?: ({ pageIndex, pageSize }: PaginationPageType) => Promise<void> | void;
-  /**
-   * If true, disable the automatic column sorting of the table. Turn this on if you want to
-   * to control the sorting yourself.
+   * Pass custom actions to the table header
    */
-  isManualSorted?: boolean;
+  actions?: ReactNode;
   /**
-   * Set the initial sorted column and order by passing column id and order.
+   * Add an accessible title to the table component
    */
-  initialSortBy?: Array<SortingRule<T>>;
+  title?: TableHeaderProps['title'];
   /**
-    * Callback run when a column is sorted
-    */
-  onSortChange?: (sorting: Array<CustomSortingRule<T>>) => void;
+   * Hide the header which includes the title and controls.
+   * This option is ignored and set to `true` if `selectableRows` is set to `true`.
+   */
+  showHeader?: boolean;
+  /**
+ * Enable the dropdown to choose the visibility of the column
+ */
+  enableToggleColumns?: boolean;
+  /**
+   * Set the label for the toggle columns control
+   */
+  toggleColumnsLabel?: string;
+  /**
+   * Enable row selection. This property will render an additiona column
+   * at the start of the table, containing a checkbox.
+   */
+  selectableRows?: boolean;
+  /**
+   * Set the label for selected items in the table. Default to "Selected items"
+   */
+  renderSelectedLabel?: (count: number) => ReactNode;
+  /**
+   * Pass custom components to show when rows are selected.
+   */
+  renderSelectedActions?: (selectedRows: Array<Row<T>>) => ReactNode;
+  /**
+   * Set the table height after which the table will scroll.
+   */
+  height?: string;
+  /**
+   * Set the table background color. This must be set if `height` is set because
+   * the color is used as background for sticky headers.
+   */
+  background?: string;
 }>
 
+type ConditionalProps<T> =
+| {
+  /**
+   * Enable the global filter function
+   */
+  enableFilterControl: boolean;
+  /**
+   * Custom function used to filters table data.
+   */
+  filterFn: FilterFnOption<T>;
+  /**
+   * Set the label for the filter textfield control
+   */
+  filterControlLabel: string;
+  /**
+   * Set debounce time for filter search
+   * @default 230
+   */
+  filterDebounce?: number;
+} | {
+  /**
+   * Enable the global filter function
+   */
+  enableFilterControl?: never;
+  /**
+   * Custom function used to filters table data.
+   */
+  filterFn?: never;
+  /**
+   * Set the label for the filter textfield control
+   */
+  filterControlLabel?: never;
+  /**
+   * Set debounce time for filter search
+   * @default 230
+   */
+  filterDebounce?: never;
+}
+
+export type TableProps<T> = CommonProps<T> & ConditionalProps<T>
+
 export const Table = <T extends Record<string, unknown>>({
-  className,
-  style,
+  data,
   columns,
-  data = [],
-  selectableRows,
+  className,
   stripes,
-  showSeparators = true,
-  title,
-  actions,
-  selectedActions,
-  selectedLabel = selectedRows => `Selected items: ${selectedRows.length}`,
-  showHeader = false,
-  showTableHead = true,
-  columnsControl = false,
-  toggleColumnsLabel,
-  defaultHiddenColumns,
-  height,
+  separators = true,
   loading,
-  background,
-  expandableRowComponent,
   emptyComponent,
   showPagination,
-  isManualSorted,
-  itemsPerPage = 10,
-  totalRows,
-  initialPageIndex = 0,
-  onPaginationChange,
-  onSortChange,
   pageClusters,
   clustersLabel,
-  initialSortBy = [],
+  actions,
+  title,
+  showHeader = false,
+  enableToggleColumns = false,
+  toggleColumnsLabel,
+  selectableRows,
+  renderSelectedLabel = selectedRows => `Selected items: ${selectedRows}`,
+  renderSelectedActions,
+  height,
+  background,
+  enableFilterControl,
+  filterFn,
+  filterControlLabel = 'Search across data',
+  filterDebounce = 230,
+  style,
   ...otherProps
 }: TableProps<T>) => {
-  const uid = useId();
-  const hasSomeExpandableRows = useMemo(() => data.some(d => d.subRows), [data]);
-  const isManualPaginated = useMemo(() => Boolean(showPagination && onPaginationChange && totalRows),
-    [showPagination, totalRows, onPaginationChange]);
+  const [columnVisibility, setColumnVisibility] = useState({});
+  const [rowSelection, setRowSelection] = useState({});
+  const [sorting, setSorting] = useState<SortingState>([]);
+  const [globalFilter, setGlobalFilter] = useState('');
 
-  const manualPaginationPageCount = useMemo(() => ((isManualPaginated && totalRows)
-    ? Math.ceil(totalRows / itemsPerPage)
-    : -1
-  ), [isManualPaginated, totalRows, itemsPerPage]);
+  const setDebouncedGlobalFilter = useDebounce(setGlobalFilter, filterDebounce);
 
-  const getHiddenColumns = useCallback(() => {
-    const hiddenColumns = defaultHiddenColumns ? [...defaultHiddenColumns] : [];
-    if (!selectableRows) hiddenColumns.push('selection');
-    if (!hasSomeExpandableRows) hiddenColumns.push('expander');
-
-    return hiddenColumns;
-  }, [defaultHiddenColumns, selectableRows, hasSomeExpandableRows]);
-
-  const getRowId = useCallback(
-    (originalRow: T, relativeIndex: number, parent?: Row<T> | undefined) => originalRow?._id as string
-      || (parent && [parent.id, relativeIndex].join('.'))
-      || relativeIndex.toString(),
-    [],
-  );
-
-  const {
-    getTableProps,
-    getTableBodyProps,
-    headerGroups,
-    rows,
-    page,
-    pageCount,
-    gotoPage,
-    allColumns,
-    prepareRow,
-    selectedFlatRows,
-    visibleColumns,
-    setPageSize,
-    setHiddenColumns,
-    state: {
-      pageSize, pageIndex, selectedRowIds, sortBy,
-    },
-  } = useTable(
+  const finalColumns = useMemo(() => (selectableRows ? [
     {
-      columns,
-      data,
-      getRowId,
-      expandSubRows: Boolean(!expandableRowComponent),
-      manualPagination: isManualPaginated,
-      pageCount: manualPaginationPageCount,
-      manualSortBy: isManualSorted,
-      disableMultiSort: true,
-      autoResetHiddenColumns: false,
-      autoResetPage: false,
-      autoResetSortBy: false,
-      autoResetSelectedRows: false,
-      /**
-       * This `paginateExpandedRows` prop prevent expanded rows to
-       * be placed in the next page. But it breaks row selection
-       * paginateExpandedRows: !showPagination,
-       */
-      initialState: {
-        sortBy: initialSortBy,
-        pageIndex: initialPageIndex,
-        pageSize: showPagination ? itemsPerPage : data.length,
-        hiddenColumns: getHiddenColumns(),
+      id: 'selection',
+      enableHiding: false,
+      header: ({ table }) => (
+        !loading ? (
+          <TableCheckbox
+            checked={table.getIsAllRowsSelected()}
+            indeterminate={table.getIsSomeRowsSelected()}
+            onChange={table.getToggleAllRowsSelectedHandler()}
+          />
+        ) : null
+      ),
+      cell: ({ row }) => (
+        <TableCheckbox
+          checked={row.getIsSelected()}
+          indeterminate={row.getIsSomeSelected()}
+          onChange={row.getToggleSelectedHandler()}
+        />
+      ),
+      meta: {
+        collapsed: true,
       },
     },
-    useSortBy,
-    useExpanded,
-    usePagination,
-    useRowSelect,
-    (hooks: Hooks<T>) => {
-      const checkboxColumn: CustomColumnsType<T> = [{
-        id: 'selection',
-        isCollapsed: true,
-        isToggable: true,
-        Header: ({ getToggleAllPageRowsSelectedProps }) => (
-          !loading ? <TableCheckbox {...getToggleAllPageRowsSelectedProps()} /> : null
-        ),
-        Cell: ({ row }: { row: Row<T> }) => <TableCheckbox {...row.getToggleRowSelectedProps()} />,
-      }];
+    ...columns,
+  ] : columns) as Array<ColumnDef<T>>, [columns, loading, selectableRows]);
 
-      const expanderColumn: CustomColumnsType<T> = [{
-        id: 'expander',
-        isToggable: true,
-        expander: true,
-        minWidth: 40,
-        align: 'center',
-        Cell: ({ row }: { row: Row<T> }) => (row.canExpand
-          ? (
-            <ToggleButton
-              kind="secondary"
-              dimension="small"
-              restingIcon="ctrl-right"
-              pressedIcon="ctrl-down"
-              {...row.getToggleRowExpandedProps()}
-              onClick={() => {
-                const subRowsExpanded = row.subRows.filter(r => r.isExpanded);
-                subRowsExpanded.forEach(r => r.toggleRowExpanded(!r.isExpanded));
-                row.toggleRowExpanded(!row.isExpanded);
-              }}
-            />
-          )
-          : null),
-      }];
-
-      hooks.visibleColumns.push(columns => [
-        ...checkboxColumn,
-        ...expanderColumn,
-        ...columns,
-      ]);
+  const uid = useId();
+  const table = useReactTable({
+    data,
+    columns: finalColumns,
+    state: {
+      sorting,
+      columnVisibility,
+      rowSelection,
+      globalFilter,
     },
-  );
+    onSortingChange: setSorting,
+    onGlobalFilterChange: setGlobalFilter,
+    globalFilterFn: filterFn ?? 'auto',
+    getCoreRowModel: getCoreRowModel(),
+    getSortedRowModel: getSortedRowModel(),
+    getPaginationRowModel: getPaginationRowModel(),
+    getFilteredRowModel: getFilteredRowModel(),
+    onRowSelectionChange: setRowSelection,
+    onColumnVisibilityChange: setColumnVisibility,
+  });
 
-  useDidUpdate(() => {
-    const hiddenColumns = getHiddenColumns();
-    setHiddenColumns(hiddenColumns);
-  }, [
-    setHiddenColumns,
-    getHiddenColumns,
-  ]);
+  const selectedRowsCount = useMemo(() => Object.keys(rowSelection).length, [rowSelection]);
 
-  useDidUpdate(() => {
-    onSortChange?.(sortBy);
-  }, [onSortChange, sortBy]);
-
-  useDidUpdate(() => {
-    void onPaginationChange?.({ pageIndex, pageSize });
-  }, [onPaginationChange, pageIndex, pageSize]);
-
-  const rowEntries = useMemo(() => (showPagination ? page : rows), [page, rows, showPagination]);
-
-  const filteredVisibleColumns = useMemo(() => (
-    visibleColumns.filter((col: CustomColumnInstanceType<T>) => !col.isToggable)
-  ), [visibleColumns]);
-
-  const expandedRows = useMemo(() => rows.filter(row => row.canExpand && row.isExpanded).map(r => r.id), [rows]);
-
-  const dynamicStyle: CSSProperties = {
+  const dynamicStyle: CSSProperties = useMemo(() => ({
     '--table-height': height,
     '--table-background': background,
-  };
+  }), [height, background]);
 
   return (
     <ResponseContextProvider>
@@ -348,11 +262,9 @@ export const Table = <T extends Record<string, unknown>>({
         className={clsx(styles.Table, className)}
         style={{ ...dynamicStyle, ...style }}
       >
-
-        {/* CONTEXT TOAST */}
         <AnimatePresence>
           <LazyMotion features={domMax}>
-            {!!Object.keys(selectedRowIds).length && selectableRows && (
+            {selectableRows && selectedRowsCount > 0 && (
               <Stack
                 as={m.div}
                 className={styles.Toast}
@@ -376,9 +288,9 @@ export const Table = <T extends Record<string, unknown>>({
                 exit={{ y: '-16px', opacity: 0 }}
               >
                 <Text as="span" size={14} weight="bold">
-                  {selectedLabel(Object.keys(selectedRowIds))}
+                  {renderSelectedLabel(selectedRowsCount)}
                 </Text>
-                {selectedActions?.(selectedFlatRows)}
+                {renderSelectedActions?.(table.getSelectedRowModel().flatRows)}
               </Stack>
             )}
 
@@ -386,8 +298,8 @@ export const Table = <T extends Record<string, unknown>>({
             {(showHeader || selectableRows) && (
               <m.div
                 animate={{
-                  y: selectedFlatRows?.length ? 20 : 0,
-                  opacity: selectedFlatRows?.length ? 0 : 1,
+                  y: selectedRowsCount > 0 ? 20 : 0,
+                  opacity: selectedRowsCount > 0 ? 0 : 1,
                   transition: {
                     type: 'spring',
                     stiffness: 700,
@@ -397,10 +309,18 @@ export const Table = <T extends Record<string, unknown>>({
               >
                 <TableHeader title={title} id={`${uid}-table-title`}>
                   {actions}
-                  {(columnsControl && data.length)
+
+                  {(enableFilterControl && data.length) ? (
+                    <FilterControl
+                      label={filterControlLabel}
+                      onChange={event => setDebouncedGlobalFilter(event.target.value)}
+                    />
+                  ) : null}
+
+                  {(enableToggleColumns && data.length)
                     ? (
                       <ToggleColumnsControl
-                        columns={allColumns}
+                        columns={table.getAllLeafColumns()}
                         label={toggleColumnsLabel}
                       />
                     )
@@ -412,44 +332,40 @@ export const Table = <T extends Record<string, unknown>>({
         </AnimatePresence>
 
         {/* TABLE */}
-        {((data.length || loading) && filteredVisibleColumns.length)
+        {((data.length || loading) && table.getIsSomeColumnsVisible())
           ? (
             <div className={styles.TableWrapper} data-table-scrolling={Boolean(height)}>
               <table
                 className={styles.TableElement}
                 data-table-stripes={stripes}
-                data-table-separators={showSeparators}
-                data-table-loading={loading}
+                data-table-separators={separators}
                 aria-labelledby={`${uid}-table-title`}
-                {...getTableProps()}
                 {...otherProps}
               >
-
-                {/* THEAD */}
-                {showTableHead && (
-                  <thead role="rowgroup" className={styles.THead}>
-                    {headerGroups.map(headerGroup => (
-                      <TableRow {...headerGroup.getHeaderGroupProps()}>
-                        {headerGroup.headers.map((column: HeaderGroupType<T>) => (
-                          <TableCell
-                            as="th"
-                            width={column.minWidth === 0 ? undefined : column.minWidth}
-                            collapsed={column.isCollapsed}
-                            isSorted={column.isSorted}
-                            isSortedDesc={column.isSorted && column.isSortedDesc}
-                            align={column.align}
-                            {...column.getHeaderProps(column.getSortByToggleProps())}
-                          >
-                            {column.render('Header')}
-                          </TableCell>
-                        ))}
-                      </TableRow>
-                    ))}
-                  </thead>
-                )}
-
-                {/* TBODY */}
-                <tbody role="rowgroup" {...getTableBodyProps()}>
+                <thead role="rowgroup" className={styles.THead}>
+                  {table.getHeaderGroups().map(headerGroup => (
+                    <TableRow key={headerGroup.id}>
+                      {headerGroup.headers.map(header => (
+                        <TableCell
+                          key={header.id}
+                          as="th"
+                          width={header.column.columnDef.size}
+                          canSort={header.column.getCanSort()}
+                          sorting={header.column.getIsSorted()}
+                          collapsed={header.column.columnDef.meta?.collapsed}
+                          align={header.column.columnDef.meta?.align}
+                          onClick={header.column.getToggleSortingHandler()}
+                        >
+                          {!header.isPlaceholder && flexRender(
+                            header.column.columnDef.header,
+                            header.getContext(),
+                          )}
+                        </TableCell>
+                      ))}
+                    </TableRow>
+                  ))}
+                </thead>
+                <tbody role="rowgroup">
                   {loading
                     ? (
                       <TableRow>
@@ -457,40 +373,20 @@ export const Table = <T extends Record<string, unknown>>({
                           <Skeleton gap={16} height={24} count={10} />
                         </TableCell>
                       </TableRow>
-                    )
-                    : rowEntries.map((row) => {
-                      prepareRow(row);
-                      return (
-                        <Fragment key={row.id}>
-                          <TableRow
-                            {...row.getRowProps()}
-                            expanded={(
-                            row.isExpanded && !row.subRows.some(subrow => subrow.isExpanded && subrow.canExpand)
-                            )}
-                            rowData={row}
-                            expandedRows={expandedRows}
+                    ) : table.getRowModel().rows.map(row => (
+                      <TableRow key={row.id} rowData={row}>
+                        {row.getVisibleCells().map(cell => (
+                          <TableCell
+                            key={cell.id}
+                            collapsed={cell.column.columnDef.meta?.collapsed}
+                            align={cell.column.columnDef.meta?.align}
+                            width={cell.column.columnDef.size}
                           >
-                            {row.cells.map((cell: CellType<T>) => (
-                              <TableCell
-                                collapsed={cell.column.isCollapsed}
-                                width={cell.column.minWidth === 0 ? undefined : cell.column.minWidth}
-                                align={cell.column.align}
-                                {...cell.getCellProps()}
-                              >
-                                {cell.render('Cell')}
-                              </TableCell>
-                            ))}
-                          </TableRow>
-                          {(row.subRows && row.isExpanded && expandableRowComponent) && row.subRows.map(subRow => (
-                            <TableRow data-table-row-expander key={subRow.id}>
-                              <TableCell padding={false} colSpan={100}>
-                                <TableExpand data={subRow.original} component={expandableRowComponent} />
-                              </TableCell>
-                            </TableRow>
-                          ))}
-                        </Fragment>
-                      );
-                    })}
+                            {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                          </TableCell>
+                        ))}
+                      </TableRow>
+                    ))}
                 </tbody>
               </table>
             </div>
@@ -499,24 +395,23 @@ export const Table = <T extends Record<string, unknown>>({
             <Stack vAlign="center" hAlign="center">
               {emptyComponent ?? 'No data'}
             </Stack>
-          )
-      }
+          )}
 
         {/* PAGINATION */}
-        {(showPagination && filteredVisibleColumns.length > 0 && !!rows.length) && (
+        {(showPagination && table.getIsSomeColumnsVisible() && table.getRowModel().rows.length > 0) && (
           <TablePagination
             clusters={pageClusters}
-            pageSize={pageSize}
-            totalItems={totalRows ?? rows.length}
-            currentPage={pageIndex}
-            totalPages={pageCount}
+            itemsPerPage={table.getState().pagination.pageSize}
+            totalItems={data.length}
+            currentPage={table.getState().pagination.pageIndex}
             clustersLabel={clustersLabel}
-            isManual={Boolean(isManualPaginated && totalRows)}
-            onPageSizeChange={setPageSize}
-            onPageClick={selected => gotoPage(selected)}
+            onPageSizeChange={pageSize => table.setPageSize(pageSize)}
+            onPageClick={selected => table.setPageIndex(selected)}
           />
         )}
       </div>
     </ResponseContextProvider>
   );
 };
+
+export { createColumnHelper } from '@tanstack/react-table';

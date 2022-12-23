@@ -7,9 +7,8 @@ import { PropsWithClass } from '@/components/types';
 
 export type TablePaginationProps = PropsWithClass & {
   clusters?: number[];
-  pageSize: number;
+  itemsPerPage: number;
   totalItems: number;
-  totalPages: number;
   currentPage: number;
   onPageSizeChange?: (pageSize: number) => void;
   onPageClick?: (page: number) => void;
@@ -19,26 +18,22 @@ export type TablePaginationProps = PropsWithClass & {
 
 export const TablePagination: FC<TablePaginationProps> = ({
   children,
-  pageSize,
+  itemsPerPage,
   onPageSizeChange,
   clusters = [5, 10, 20, 30, 50, 100],
   totalItems,
   currentPage,
   isManual,
-  totalPages,
   onPageClick,
   clustersLabel = 'Items per page',
   ...otherProps
 }) => {
   const uid = useId();
-  const computedPageCount = useMemo(() => (
-    isManual ? Math.ceil(totalItems / pageSize) : totalPages
-  ), [isManual, pageSize, totalItems, totalPages]);
   const computedItemsInPageStart = useMemo(
-    () => (currentPage && pageSize) && currentPage * pageSize,
-    [currentPage, pageSize],
+    () => (currentPage && itemsPerPage) && currentPage * itemsPerPage,
+    [currentPage, itemsPerPage],
   );
-  const computedItemsInPageEnd = useMemo(() => currentPage * pageSize + pageSize, [currentPage, pageSize]);
+  const computedItemsInPageEnd = useMemo(() => currentPage * itemsPerPage + itemsPerPage, [currentPage, itemsPerPage]);
 
   return (
     <Stack
@@ -52,11 +47,11 @@ export const TablePagination: FC<TablePaginationProps> = ({
     >
       <Stack direction="row" columnGap={4}>
         <Select
-          value={pageSize}
+          value={itemsPerPage}
           label={clustersLabel}
           id={`${uid}-table-i-per-page`}
-          onChange={({ currentTarget }) => {
-            onPageSizeChange?.(Number(currentTarget.value));
+          onChange={({ target }) => {
+            onPageSizeChange?.(Number(target.value));
           }}
         >
           {clusters.map(cluster => (
@@ -69,8 +64,7 @@ export const TablePagination: FC<TablePaginationProps> = ({
       </Text>
       <Pagination
         itemsCount={totalItems}
-        itemsPerPage={pageSize}
-        pageCount={computedPageCount}
+        itemsPerPage={itemsPerPage}
         onPageClick={({ selected }) => onPageClick?.(selected)}
         renderOnZeroPageCount={() => null}
         forcePage={currentPage}
