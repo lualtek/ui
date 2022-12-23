@@ -1,8 +1,10 @@
 
 import {
   ColumnDef,
+  FilterFnOption,
   flexRender,
   getCoreRowModel,
+  getFilteredRowModel,
   getPaginationRowModel,
   getSortedRowModel,
   Row,
@@ -18,6 +20,7 @@ import {
   CSSProperties,
   ReactNode, useId, useMemo, useState,
 } from 'react';
+import { useDebounce } from 'rooks';
 
 import {
   PropsWithClass, ResponseContextProvider, Skeleton, Stack, Text,
@@ -26,7 +29,7 @@ import {
 import styles from './table.module.css';
 import { TableCell } from './table-cell';
 import { TableCheckbox } from './table-checkbox';
-import { ToggleColumnsControl } from './table-controls';
+import { FilterControl, ToggleColumnsControl } from './table-controls';
 import { TableHeader, TableHeaderProps } from './table-header';
 import { TablePagination, TablePaginationProps } from './table-pagination';
 import { TableRow } from './table-row';
@@ -37,7 +40,7 @@ declare module '@tanstack/table-core' {
   interface ColumnMeta<TData extends RowData, TValue> extends CustomColumnMeta {}
 }
 
-type TableProps<T> = PropsWithClass<{
+type CommonProps<T> = PropsWithClass<{
   /**
    * Pass the data structure to the table. Each object key can be used as `accessor` for a column.
    */
@@ -93,7 +96,7 @@ type TableProps<T> = PropsWithClass<{
   /**
  * Enable the dropdown to choose the visibility of the column
  */
-  columnsControl?: boolean;
+  enableToggleColumns?: boolean;
   /**
    * Set the label for the toggle columns control
    */
@@ -122,6 +125,47 @@ type TableProps<T> = PropsWithClass<{
   background?: string;
 }>
 
+type ConditionalProps<T> =
+| {
+  /**
+   * Enable the global filter function
+   */
+  enableFilterControl: boolean;
+  /**
+   * Custom function used to filters table data.
+   */
+  filterFn: FilterFnOption<T>;
+  /**
+   * Set the label for the filter textfield control
+   */
+  filterControlLabel: string;
+  /**
+   * Set debounce time for filter search
+   * @default 230
+   */
+  filterDebounce?: number;
+} | {
+  /**
+   * Enable the global filter function
+   */
+  enableFilterControl?: never;
+  /**
+   * Custom function used to filters table data.
+   */
+  filterFn?: never;
+  /**
+   * Set the label for the filter textfield control
+   */
+  filterControlLabel?: never;
+  /**
+   * Set debounce time for filter search
+   * @default 230
+   */
+  filterDebounce?: never;
+}
+
+export type TableProps<T> = CommonProps<T> & ConditionalProps<T>
+
 export const Table = <T extends Record<string, unknown>>({
   data,
   columns,
@@ -136,19 +180,26 @@ export const Table = <T extends Record<string, unknown>>({
   actions,
   title,
   showHeader = false,
-  columnsControl = false,
+  enableToggleColumns = false,
   toggleColumnsLabel,
   selectableRows,
   renderSelectedLabel = selectedRows => `Selected items: ${selectedRows}`,
   renderSelectedActions,
   height,
   background,
+  enableFilterControl,
+  filterFn,
+  filterControlLabel = 'Search across data',
+  filterDebounce = 230,
   style,
   ...otherProps
 }: TableProps<T>) => {
   const [columnVisibility, setColumnVisibility] = useState({});
   const [rowSelection, setRowSelection] = useState({});
   const [sorting, setSorting] = useState<SortingState>([]);
+  const [globalFilter, setGlobalFilter] = useState('');
+
+  const setDebouncedGlobalFilter = useDebounce(setGlobalFilter, filterDebounce);
 
   const finalColumns = useMemo(() => (selectableRows ? [
     {
@@ -185,21 +236,25 @@ export const Table = <T extends Record<string, unknown>>({
       sorting,
       columnVisibility,
       rowSelection,
+      globalFilter,
     },
     onSortingChange: setSorting,
+    onGlobalFilterChange: setGlobalFilter,
+    globalFilterFn: filterFn ?? 'auto',
     getCoreRowModel: getCoreRowModel(),
     getSortedRowModel: getSortedRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
+    getFilteredRowModel: getFilteredRowModel(),
     onRowSelectionChange: setRowSelection,
     onColumnVisibilityChange: setColumnVisibility,
   });
 
   const selectedRowsCount = useMemo(() => Object.keys(rowSelection).length, [rowSelection]);
 
-  const dynamicStyle: CSSProperties = {
+  const dynamicStyle: CSSProperties = useMemo(() => ({
     '--table-height': height,
     '--table-background': background,
-  };
+  }), [height, background]);
 
   return (
     <ResponseContextProvider>
@@ -254,7 +309,15 @@ export const Table = <T extends Record<string, unknown>>({
               >
                 <TableHeader title={title} id={`${uid}-table-title`}>
                   {actions}
-                  {(columnsControl && data.length)
+
+                  {(enableFilterControl && data.length) ? (
+                    <FilterControl
+                      label={filterControlLabel}
+                      onChange={event => setDebouncedGlobalFilter(event.target.value)}
+                    />
+                  ) : null}
+
+                  {(enableToggleColumns && data.length)
                     ? (
                       <ToggleColumnsControl
                         columns={table.getAllLeafColumns()}

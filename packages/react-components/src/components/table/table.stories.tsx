@@ -2,6 +2,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { createColumnHelper, Table } from '.';
 import { tableDataFixture } from './__fixture__/table-data';
+import { TableProps } from './table';
 
 type Person = {
   firstName: string;
@@ -15,14 +16,14 @@ const columnHelper = createColumnHelper<Person>();
 
 const columns = [
   columnHelper.accessor('firstName', {
-    cell: info => info.getValue(),
     header: () => 'First Name',
+    cell: info => info.getValue(),
     footer: info => info.column.id,
   }),
   columnHelper.accessor(row => row.lastName, {
     id: 'lastName',
-    cell: info => <i>{info.getValue()}</i>,
-    header: () => <span>Last Name</span>,
+    header: () => 'Last name',
+    cell: info => info.renderValue(),
     footer: info => info.column.id,
   }),
   columnHelper.accessor('age', {
@@ -48,7 +49,10 @@ const story: ComponentMeta<typeof Table> = {
 
 export default story;
 
-const Template: ComponentStory<typeof Table> = args => (<Table {...args} columns={columns} data={tableDataFixture} />);
+// @ts-expect-error Problem with generinc from the table
+const Template: ComponentStory<typeof Table> = (args: TableProps<Person>) => (
+  <Table {...args} columns={columns} data={tableDataFixture} />
+);
 
 export const Default = Template.bind({});
 
@@ -60,12 +64,20 @@ WithPagination.args = {
 export const WithToggleColumns = Template.bind({});
 WithToggleColumns.args = {
   showHeader: true,
-  columnsControl: true,
+  enableToggleColumns: true,
+};
+
+export const WithFilter = Template.bind({});
+WithFilter.args = {
+  showHeader: true,
+  selectableRows: true,
+  enableFilterControl: true,
+  filterFn: (row, columnId, value) => String(row.getValue(columnId)).toLowerCase().includes(value.toLowerCase()),
 };
 
 export const WithRowSelection = Template.bind({});
 WithRowSelection.args = {
-  columnsControl: true,
+  enableToggleColumns: true,
   selectableRows: true,
   showPagination: true,
 };
@@ -74,7 +86,8 @@ export const Scrollable = Template.bind({});
 Scrollable.args = {
   selectableRows: true,
   showPagination: true,
-  background: 'var(--global-background)',
   title: 'Scrollable table',
+  background: 'var(--global-background)',
   height: '400px',
 };
+
