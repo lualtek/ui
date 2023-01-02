@@ -8,6 +8,7 @@ export type PopoverContentProps = PopoverPrimitive.PopoverContentProps & {
   arrowColor?: string;
   side?: PopoverPrimitive.PopoverContentProps['side'];
   offset?: TokensTypes['space'];
+  usePortal?: boolean;
 }
 
 export const PopoverContent = ({
@@ -15,6 +16,7 @@ export const PopoverContent = ({
   arrowColor = 'var(--dimmed-2)',
   offset = 4,
   children,
+  usePortal = true,
   side,
   ...otherProps
 }: PopoverContentProps) => {
@@ -46,26 +48,28 @@ export const PopoverContent = ({
     },
   }), [computeOrigin]);
 
+  const renderContent = useMemo(() => (
+    <PopoverPrimitive.Content asChild sideOffset={Number(offset)} side={side} {...otherProps}>
+      <m.div
+        initial="hidden"
+        animate="visible"
+        exit="hidden"
+        variants={animation}
+        transition={{
+          type: 'spring',
+          stiffness: 700,
+          damping: 30,
+        }}
+      >
+        {children}
+        {showArrow && <PopoverPrimitive.Arrow fill={arrowColor} />}
+      </m.div>
+    </PopoverPrimitive.Content>
+  ), [animation, arrowColor, children, offset, otherProps, showArrow, side]);
+
   return (
     <LazyMotion features={domAnimation} strict>
-      <PopoverPrimitive.Portal>
-        <PopoverPrimitive.Content asChild sideOffset={Number(offset)} side={side} {...otherProps}>
-          <m.div
-            initial="hidden"
-            animate="visible"
-            exit="hidden"
-            variants={animation}
-            transition={{
-              type: 'spring',
-              stiffness: 700,
-              damping: 30,
-            }}
-          >
-            {children}
-            {showArrow && <PopoverPrimitive.Arrow fill={arrowColor} />}
-          </m.div>
-        </PopoverPrimitive.Content>
-      </PopoverPrimitive.Portal>
+      {usePortal ? <PopoverPrimitive.Portal>{renderContent}</PopoverPrimitive.Portal> : renderContent}
     </LazyMotion>
   );
 };
