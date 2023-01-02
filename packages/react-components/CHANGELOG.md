@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 2.1.1
+
+### Patch Changes
+
+- e0d3b22: Disable Portal for Autocomplete
+  - @lualtek/icons@2.1.1
+
 ## 2.1.0
 
 ### Minor Changes
