@@ -117,6 +117,7 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(({
           />
         </Popover.Anchor>
         <Popover.Content
+          usePortal={false}
           onOpenAutoFocus={event => event.preventDefault()}
           onInteractOutside={({ currentTarget }) => onInteractOutside(currentTarget)}
           onEscapeKeyDown={() => setIsOpen(false)}
