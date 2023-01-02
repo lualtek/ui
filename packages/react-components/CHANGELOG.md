@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 2.1.3
+
+### Patch Changes
+
+- 3146173: Fix button positioning
+  - @lualtek/icons@2.1.3
+
 ## 2.1.2
 
 ### Patch Changes
