@@ -1,5 +1,16 @@
 # @lualtek/react-components
 
+## 2.1.0
+
+### Minor Changes
+
+- 6c1555b: Add usePortal prop to Popover.Content to control Portal rendering
+- f3b718d: Add itemsPerPage prop
+
+### Patch Changes
+
+- @lualtek/icons@2.1.0
+
 ## 2.0.0
 
 ### Major Changes
