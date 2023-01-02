@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 2.1.4
+
+### Patch Changes
+
+- 8983eeb: Fix buttons
+  - @lualtek/icons@2.1.4
+
 ## 2.1.3
 
 ### Patch Changes
