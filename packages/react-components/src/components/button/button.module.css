@@ -18,6 +18,7 @@
     border: 0;
     appearance: none;
     font-weight: token(--font-weight-bold);
+    position: relative;
     overflow: hidden;
     background: none;
     gap: token(--space-8);
@@ -174,6 +175,7 @@
 
     &[aria-busy='true'] {
       box-shadow: none;
+      position: relative;
 
       & > :not(.SpinnerIndicator) {
         visibility: hidden;
