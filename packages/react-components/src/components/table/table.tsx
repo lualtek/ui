@@ -308,14 +308,14 @@ export const Table = <T extends Record<string, unknown>>({
                 }}
               >
                 <TableHeader title={title} id={`${uid}-table-title`}>
-                  {actions}
-
-                  {(enableFilterControl && data.length) ? (
+                  {(enableFilterControl) ? (
                     <FilterControl
                       label={filterControlLabel}
                       onChange={event => setDebouncedGlobalFilter(event.target.value)}
                     />
                   ) : null}
+
+                  {actions}
 
                   {(enableToggleColumns && data.length)
                     ? (
