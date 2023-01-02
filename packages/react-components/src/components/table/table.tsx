@@ -18,7 +18,7 @@ import {
 } from 'framer-motion';
 import {
   CSSProperties,
-  ReactNode, useId, useMemo, useState,
+  ReactNode, useEffect, useId, useMemo, useState,
 } from 'react';
 import { useDebounce } from 'rooks';
 
@@ -123,6 +123,10 @@ type CommonProps<T> = PropsWithClass<{
    * the color is used as background for sticky headers.
    */
   background?: string;
+  /**
+   * Set the initial page size picking a value from `pageClusters` array.
+   */
+  itemsPerPage?: number;
 }>
 
 type ConditionalProps<T> =
@@ -191,6 +195,7 @@ export const Table = <T extends Record<string, unknown>>({
   filterFn,
   filterControlLabel = 'Search across data',
   filterDebounce = 230,
+  itemsPerPage = 50,
   style,
   ...otherProps
 }: TableProps<T>) => {
@@ -255,6 +260,10 @@ export const Table = <T extends Record<string, unknown>>({
     '--table-height': height,
     '--table-background': background,
   }), [height, background]);
+
+  useEffect(() => {
+    table.setPageSize(itemsPerPage);
+  }, [itemsPerPage, table]);
 
   return (
     <ResponseContextProvider>

@@ -82,6 +82,9 @@ const columns = [
 const story: ComponentMeta<typeof Table> = {
   title: 'Layouts/Table',
   component: Table,
+  args: {
+    itemsPerPage: 50,
+  },
 };
 
 export default story;
