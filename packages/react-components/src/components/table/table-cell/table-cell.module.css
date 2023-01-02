@@ -45,3 +45,8 @@
     width: 100%;
   }
 }
+@layer overrides {
+  .TableCell *[data-button-kind] {
+    backdrop-filter: none;
+  }
+}
