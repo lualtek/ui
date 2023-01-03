@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 2.1.5
+
+### Patch Changes
+
+- 41d4226: Added getTableInstance prop to Table
+  - @lualtek/icons@2.1.5
+
 ## 2.1.4
 
 ### Patch Changes
