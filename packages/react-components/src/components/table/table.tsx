@@ -10,6 +10,7 @@ import {
   Row,
   RowData,
   SortingState,
+  Table as TableType,
   useReactTable,
 } from '@tanstack/react-table';
 import clsx from 'clsx';
@@ -127,6 +128,10 @@ type CommonProps<T> = PropsWithClass<{
    * Set the initial page size picking a value from `pageClusters` array.
    */
   itemsPerPage?: number;
+  /**
+   * Get Table instance
+  */
+  getTableInstance?: (instance: TableType<T>) => void;
 }>
 
 type ConditionalProps<T> =
@@ -196,6 +201,7 @@ export const Table = <T extends Record<string, unknown>>({
   filterControlLabel = 'Search across data',
   filterDebounce = 230,
   itemsPerPage = 50,
+  getTableInstance,
   style,
   ...otherProps
 }: TableProps<T>) => {
@@ -264,6 +270,12 @@ export const Table = <T extends Record<string, unknown>>({
   useEffect(() => {
     table.setPageSize(itemsPerPage);
   }, [itemsPerPage, table]);
+
+  useEffect(() => {
+    if (getTableInstance && table) {
+      getTableInstance(table);
+    }
+  }, [table, getTableInstance]);
 
   return (
     <ResponseContextProvider>
