@@ -1,5 +1,11 @@
 # @lualtek/themes
 
+## 2.1.5
+
+### Patch Changes
+
+- e8c5007: Fix light dimmed colors
+
 ## 2.1.4
 
 ## 2.1.3
