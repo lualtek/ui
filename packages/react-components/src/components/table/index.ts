@@ -1,2 +1,2 @@
-export type { TableProps } from './table';
+export type { TableProps, TableType } from './table';
 export { createColumnHelper, Table } from './table';

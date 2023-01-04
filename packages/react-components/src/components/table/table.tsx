@@ -435,4 +435,6 @@ export const Table = <T extends Record<string, unknown>>({
   );
 };
 
+export type { Table as TableType } from '@tanstack/react-table';
 export { createColumnHelper } from '@tanstack/react-table';
+
