@@ -19,7 +19,7 @@ import {
 } from 'framer-motion';
 import {
   CSSProperties,
-  ReactNode, useEffect, useId, useMemo, useState,
+  ReactNode, useCallback, useEffect, useId, useMemo, useState,
 } from 'react';
 import { useDebounce } from 'rooks';
 
@@ -262,6 +262,56 @@ export const Table = <T extends Record<string, unknown>>({
 
   const selectedRowsCount = useMemo(() => Object.keys(rowSelection).length, [rowSelection]);
 
+  const renderRows = useCallback((rows: Array<Row<T>>) => (rows.length > 0 ? rows.map(row => (
+    <TableRow key={row.id} rowData={row}>
+      {row.getVisibleCells().map(cell => (
+        <TableCell
+          key={cell.id}
+          collapsed={cell.column.columnDef.meta?.collapsed}
+          align={cell.column.columnDef.meta?.align}
+          width={cell.column.columnDef.size}
+        >
+          {flexRender(cell.column.columnDef.cell, cell.getContext())}
+        </TableCell>
+      ))}
+    </TableRow>
+  )) : (
+    <tr>
+      <td colSpan={table.getVisibleFlatColumns().length}>
+        <Stack vAlign="center" hAlign="center" vPadding={40}>
+          {emptyComponent ?? 'No data'}
+        </Stack>
+      </td>
+    </tr>
+  )), [emptyComponent, table]);
+
+  const renderThead = useCallback((rowsLength: number) => (rowsLength > 0 ? (
+    <thead role="rowgroup" className={styles.THead}>
+      {table.getHeaderGroups().map(headerGroup => (
+        <TableRow key={headerGroup.id}>
+          {headerGroup.headers.map(header => (
+            <TableCell
+              key={header.id}
+              as="th"
+              width={header.column.columnDef.size}
+              canSort={header.column.getCanSort()}
+              sorting={header.column.getIsSorted()}
+              collapsed={header.column.columnDef.meta?.collapsed}
+              align={header.column.columnDef.meta?.align}
+              onClick={header.column.getToggleSortingHandler()}
+            >
+              {!header.isPlaceholder && flexRender(
+                header.column.columnDef.header,
+                header.getContext(),
+              )}
+            </TableCell>
+          ))}
+        </TableRow>
+      ))}
+    </thead>
+  ) : null),
+  [table]);
+
   const dynamicStyle: CSSProperties = useMemo(() => ({
     '--table-height': height,
     '--table-background': background,
@@ -353,70 +403,29 @@ export const Table = <T extends Record<string, unknown>>({
         </AnimatePresence>
 
         {/* TABLE */}
-        {((data.length || loading) && table.getIsSomeColumnsVisible())
-          ? (
-            <div className={styles.TableWrapper} data-table-scrolling={Boolean(height)}>
-              <table
-                className={styles.TableElement}
-                data-table-stripes={stripes}
-                data-table-separators={separators}
-                aria-labelledby={`${uid}-table-title`}
-                {...otherProps}
-              >
-                <thead role="rowgroup" className={styles.THead}>
-                  {table.getHeaderGroups().map(headerGroup => (
-                    <TableRow key={headerGroup.id}>
-                      {headerGroup.headers.map(header => (
-                        <TableCell
-                          key={header.id}
-                          as="th"
-                          width={header.column.columnDef.size}
-                          canSort={header.column.getCanSort()}
-                          sorting={header.column.getIsSorted()}
-                          collapsed={header.column.columnDef.meta?.collapsed}
-                          align={header.column.columnDef.meta?.align}
-                          onClick={header.column.getToggleSortingHandler()}
-                        >
-                          {!header.isPlaceholder && flexRender(
-                            header.column.columnDef.header,
-                            header.getContext(),
-                          )}
-                        </TableCell>
-                      ))}
+        {table.getIsSomeColumnsVisible() && (
+          <div className={styles.TableWrapper} data-table-scrolling={Boolean(height)}>
+            <table
+              className={styles.TableElement}
+              data-table-stripes={stripes}
+              data-table-separators={separators}
+              aria-labelledby={`${uid}-table-title`}
+              {...otherProps}
+            >
+              {renderThead(table.getRowModel().rows.length)}
+              <tbody role="rowgroup">
+                {loading
+                  ? (
+                    <TableRow>
+                      <TableCell colSpan={100}>
+                        <Skeleton gap={16} height={24} count={10} />
+                      </TableCell>
                     </TableRow>
-                  ))}
-                </thead>
-                <tbody role="rowgroup">
-                  {loading
-                    ? (
-                      <TableRow>
-                        <TableCell colSpan={100}>
-                          <Skeleton gap={16} height={24} count={10} />
-                        </TableCell>
-                      </TableRow>
-                    ) : table.getRowModel().rows.map(row => (
-                      <TableRow key={row.id} rowData={row}>
-                        {row.getVisibleCells().map(cell => (
-                          <TableCell
-                            key={cell.id}
-                            collapsed={cell.column.columnDef.meta?.collapsed}
-                            align={cell.column.columnDef.meta?.align}
-                            width={cell.column.columnDef.size}
-                          >
-                            {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                          </TableCell>
-                        ))}
-                      </TableRow>
-                    ))}
-                </tbody>
-              </table>
-            </div>
-          )
-          : (
-            <Stack vAlign="center" hAlign="center">
-              {emptyComponent ?? 'No data'}
-            </Stack>
-          )}
+                  ) : renderRows(table.getRowModel().rows)}
+              </tbody>
+            </table>
+          </div>
+        )}
 
         {/* PAGINATION */}
         {(showPagination && table.getIsSomeColumnsVisible() && table.getRowModel().rows.length > 0) && (
