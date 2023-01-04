@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 2.1.7
+
+### Patch Changes
+
+- 2bba8c3: Fixed Table filterfn not triggered when Table hidden by empty state
+  - @lualtek/icons@2.1.7
+
 ## 2.1.6
 
 ### Patch Changes
