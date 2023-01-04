@@ -67,7 +67,7 @@ export const TablePagination: FC<TablePaginationProps> = ({
         itemsPerPage={itemsPerPage}
         onPageClick={({ selected }) => onPageClick?.(selected)}
         renderOnZeroPageCount={() => null}
-        forcePage={currentPage}
+        forcePage={currentPage < 0 ? 0 : currentPage}
       />
     </Stack>
   );
