@@ -1,5 +1,13 @@
 # @lualtek/react-components
 
+## 2.1.8
+
+### Patch Changes
+
+- e4278da: Fix button flat color
+- 7cc3778: Fix forcePage on pagination component wrong initializer to -1
+  - @lualtek/icons@2.1.8
+
 ## 2.1.7
 
 ### Patch Changes
