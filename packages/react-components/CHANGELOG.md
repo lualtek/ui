@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 2.1.6
+
+### Patch Changes
+
+- 761fa0d: Expose TableType from Table
+  - @lualtek/icons@2.1.6
+
 ## 2.1.5
 
 ### Patch Changes
