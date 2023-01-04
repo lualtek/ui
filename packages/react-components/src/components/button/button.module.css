@@ -116,7 +116,7 @@
     }
 
     &[data-button-kind='flat'] {
-      color: var(--vibrancy-foreground);
+      color: var(--global-foreground);
 
       &:not([aria-disabled='true'])[data-button-sentiment='positive'] {
         color: var(--highlight-green-foreground);
