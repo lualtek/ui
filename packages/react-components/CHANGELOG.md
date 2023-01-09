@@ -1,5 +1,15 @@
 # @lualtek/react-components
 
+## 2.2.0
+
+### Minor Changes
+
+- fc6bde8: Add label to Switch component
+
+### Patch Changes
+
+- @lualtek/icons@2.2.0
+
 ## 2.1.8
 
 ### Patch Changes
