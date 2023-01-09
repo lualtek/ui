@@ -26,3 +26,8 @@ DisabledChecked.args = {
   defaultChecked: true,
   disabled: true,
 };
+
+export const WithLabel = Template.bind({});
+WithLabel.args = {
+  label: 'Sample label',
+};

@@ -79,7 +79,18 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(({
             {...otherProps}
           />
         </m.span>
-        {label && <Text as="label" lineHeight={properties[dimension].text.lh} htmlFor={uid} size={properties[dimension].text.size}>{label}</Text>}
+        {label && (
+          <Text
+            as="label"
+            lineHeight={properties[dimension].text.lh}
+            htmlFor={uid}
+            size={properties[dimension].text.size}
+          >
+            {label}
+          </Text>
+        )}
+        {' '}
+
       </Stack>
     </LazyMotion>
   );
