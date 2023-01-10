@@ -1,8 +1,8 @@
 @layer components {
   .IconChip {
     border-radius: calc(token(--radius-8) + token(--radius-4));
-    block-size: var(--size, token(--space-32));
-    inline-size: var(--size, token(--space-32));
+    block-size: var(--size, token(--space-40));
+    inline-size: var(--size, token(--space-40));
 
     &[data-chip-dimension='small'] {
       --size: token(--space-24);
