@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 2.2.2
+
+### Patch Changes
+
+- a9323ba: Fix icon chip regular size
+  - @lualtek/icons@2.2.2
+
 ## 2.2.1
 
 ### Patch Changes
