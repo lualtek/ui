@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 2.2.1
+
+### Patch Changes
+
+- 942beb2: Fix icon size for small buttons
+  - @lualtek/icons@2.2.1
+
 ## 2.2.0
 
 ### Minor Changes
