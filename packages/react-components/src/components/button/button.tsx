@@ -60,6 +60,8 @@ export type ButtonProps = {
 
 type PolymorphicButton = Polymorphic.ForwardRefComponent<'button', ButtonProps>;
 
+type IconSizeProps = Record<NonNullable<ButtonProps['dimension']>, IconProps['dimension']>
+
 export const Button = forwardRef((
   {
     kind = 'primary',
@@ -87,10 +89,10 @@ export const Button = forwardRef((
     [disabled, onClick],
   );
 
-  const iconSize = {
+  const iconSize: IconSizeProps = {
     big: 18,
     regular: 18,
-    small: 12,
+    small: 14,
   };
 
   return (
@@ -115,7 +117,7 @@ export const Button = forwardRef((
           <Icon
             source={icon}
             fill={iconColor}
-            dimension={iconSize[dimension] as IconProps['dimension']}
+            dimension={iconSize[dimension]}
           />
         )}
         {(children && busy) ? <span>{children}</span> : children}
