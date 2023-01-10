@@ -1,5 +1,11 @@
 # @lualtek/icons
 
+## 2.3.0
+
+### Minor Changes
+
+- df7ab69: Add new hyperlink icon
+
 ## 2.2.2
 
 ## 2.2.1
