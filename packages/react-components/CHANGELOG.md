@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 2.3.1
+
+### Patch Changes
+
+- cd9a815: Remove vibrancy from inputs and fields
+  - @lualtek/icons@2.3.1
+
 ## 2.3.0
 
 ### Patch Changes
