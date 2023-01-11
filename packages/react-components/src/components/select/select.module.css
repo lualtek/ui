@@ -1,5 +1,3 @@
-@import '../../core/utils/vibrancy.css';
-
 @layer components {
   .Select {
     --field-height: token(--space-40);
@@ -37,9 +35,6 @@
   }
 
   .Field {
-
-    @mixin vibrancy;
-
     margin: 0;
     text-overflow: ellipsis;
     font-size: var(--font-size);
