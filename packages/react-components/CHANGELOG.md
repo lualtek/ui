@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 2.3.2
+
+### Patch Changes
+
+- e1a7c32: Prevent shrink to icon chip
+  - @lualtek/icons@2.3.2
+
 ## 2.3.1
 
 ### Patch Changes
