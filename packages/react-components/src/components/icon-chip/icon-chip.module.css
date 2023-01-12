@@ -3,6 +3,7 @@
     border-radius: calc(token(--radius-8) + token(--radius-4));
     block-size: var(--size, token(--space-40));
     inline-size: var(--size, token(--space-40));
+    flex-shrink: 0;
 
     &[data-chip-dimension='small'] {
       --size: token(--space-24);
