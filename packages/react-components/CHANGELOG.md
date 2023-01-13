@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 2.3.3
+
+### Patch Changes
+
+- 6cdb65f: Try to fix icon bumping on buttons
+  - @lualtek/icons@2.3.3
+
 ## 2.3.2
 
 ### Patch Changes
