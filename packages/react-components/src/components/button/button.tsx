@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import {
-  forwardRef, MouseEvent, useCallback,
+  forwardRef, MouseEvent, useCallback, useMemo,
 } from 'react';
 
 import {
@@ -62,38 +62,44 @@ type PolymorphicButton = Polymorphic.ForwardRefComponent<'button', ButtonProps>;
 
 type IconSizeProps = Record<NonNullable<ButtonProps['dimension']>, IconProps['dimension']>
 
-export const Button = forwardRef((
-  {
-    kind = 'primary',
-    dimension = 'regular',
-    className,
-    children,
-    fullWidth,
-    icon,
-    disabled,
-    iconPosition = 'left',
-    iconColor,
-    type = 'button',
-    onClick,
-    busy,
-    as: Wrapper = 'button',
-    sentiment,
-    ...otherProps
-  }, forwardedRef,
-) => {
+const iconSize: IconSizeProps = {
+  big: 18,
+  regular: 18,
+  small: 14,
+};
+
+export const Button = forwardRef(({
+  kind = 'primary',
+  dimension = 'regular',
+  className,
+  children,
+  fullWidth,
+  icon,
+  disabled,
+  iconPosition = 'left',
+  iconColor,
+  type = 'button',
+  onClick,
+  busy,
+  as: Wrapper = 'button',
+  sentiment,
+  ...otherProps
+}, forwardedRef) => {
   const handleClick = useCallback(
-    () => (event: any) => {
+    (event: MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {
       if (!disabled && onClick) onClick(event);
       if (disabled) event.preventDefault();
     },
     [disabled, onClick],
   );
 
-  const iconSize: IconSizeProps = {
-    big: 18,
-    regular: 18,
-    small: 14,
-  };
+  const withIcon = useMemo(() => icon && (
+    <Icon
+      source={icon}
+      fill={iconColor}
+      dimension={iconSize[dimension]}
+    />
+  ), [icon, dimension, iconColor]);
 
   return (
     <Elevator resting={kind === 'primary' ? 1 : 0}>
@@ -110,16 +116,10 @@ export const Button = forwardRef((
         disabled={busy}
         aria-busy={busy}
         aria-live={busy ? 'polite' : undefined}
-        onClick={handleClick()}
+        onClick={handleClick}
         {...otherProps}
       >
-        {icon && (
-          <Icon
-            source={icon}
-            fill={iconColor}
-            dimension={iconSize[dimension]}
-          />
-        )}
+        {withIcon}
         {(children && busy) ? <span>{children}</span> : children}
         {busy && (
           <span className={styles.SpinnerIndicator}>
