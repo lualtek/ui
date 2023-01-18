@@ -42,7 +42,7 @@ export const List = forwardRef(({
       data-list-no-marker={hideMarker}
       {...otherProps}
     >
-      {Children.map(children, child => isValidElement(child) && cloneElement(
+      {Children.map(children, child => isValidElement<ListItemProps>(child) && cloneElement(
         child,
         {
           hideMarker: !isUnordered && !hideMarker,
