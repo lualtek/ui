@@ -1,5 +1,11 @@
 # @lualtek/icons
 
+## 2.4.0
+
+### Minor Changes
+
+- 6436981: Add new social icons
+
 ## 2.3.3
 
 ## 2.3.2
