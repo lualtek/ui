@@ -13,6 +13,48 @@
           "category": "color"
         }
       }
+    },
+    "primary": {
+      "start": {
+        "value": "hsl({color.primary.80})",
+        "attributes": {
+          "category": "color"
+        }
+      },
+      "end": {
+        "value": "hsl({color.primary.90})",
+        "attributes": {
+          "category": "color"
+        }
+      }
+    },
+    "cyan": {
+      "start": {
+        "value": "hsl({color.cyan.30})",
+        "attributes": {
+          "category": "color"
+        }
+      },
+      "end": {
+        "value": "hsl({color.cyan.70})",
+        "attributes": {
+          "category": "color"
+        }
+      }
+    },
+    "dawn": {
+      "start": {
+        "value": "hsl({color.cyan.40})",
+        "attributes": {
+          "category": "color"
+        }
+      },
+      "end": {
+        "value": "hsl({color.purple.40})",
+        "attributes": {
+          "category": "color"
+        }
+      }
     }
   }
 }
