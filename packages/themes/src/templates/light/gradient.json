@@ -1,0 +1,18 @@
+{
+  "gradient": {
+    "brand": {
+      "start": {
+        "value": "hsl({color.brand.default})",
+        "attributes": {
+          "category": "color"
+        }
+      },
+      "end": {
+        "value": "hsl(245 80% 55%)",
+        "attributes": {
+          "category": "color"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "global": {
+    "foreground": {
+      "value": "hsl({color.primary.60})",
+      "attributes": {
+        "category": "color"
+      }
+    },
+    "background": {
+      "value": "hsl({color.support.white})",
+      "attributes": {
+        "category": "color"
+      }
+    },
+    "interactive-text": {
+      "value": "hsl({color.brand.default})",
+      "attributes": {
+        "category": "color"
+      }
+    },
+    "interactive-text-hover": {
+      "value": "hsl({color.brand.default})",
+      "attributes": {
+        "category": "color"
+      }
+    },
+    "disabled-foreground": {
+      "value": "hsl({color.primary.90} / 20%)",
+      "attributes": {
+        "category": "color"
+      }
+    },
+    "disabled-background": {
+      "value": "hsl({color.primary.90} / 5%)",
+      "attributes": {
+        "category": "color"
+      }
+    }
+  }
+}

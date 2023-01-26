@@ -1,0 +1,100 @@
+{
+  "highlight": {
+    "brand-background": {
+      "value": "hsl({color.brand.light})",
+      "attributes": {
+        "category": "color"
+      }
+    },
+    "brand-foreground": {
+      "value": "hsl({color.brand.default})",
+      "attributes": {
+        "category": "color"
+      }
+    },
+    "gray-background": {
+      "value": "hsl({color.primary.20})",
+      "attributes": {
+        "category": "color"
+      }
+    },
+    "gray-foreground": {
+      "value": "hsl({color.primary.60})",
+      "attributes": {
+        "category": "color"
+      }
+    },
+    "yellow-background": {
+      "value": "hsl({color.yellow.10})",
+      "attributes": {
+        "category": "color"
+      }
+    },
+    "yellow-foreground": {
+      "value": "hsl({color.yellow.70})",
+      "attributes": {
+        "category": "color"
+      }
+    },
+    "green-background": {
+      "value": "hsl({color.green.10})",
+      "attributes": {
+        "category": "color"
+      }
+    },
+    "green-foreground": {
+      "value": "hsl({color.green.70})",
+      "attributes": {
+        "category": "color"
+      }
+    },
+    "blue-background": {
+      "value": "hsl({color.blue.10})",
+      "attributes": {
+        "category": "color"
+      }
+    },
+    "blue-foreground": {
+      "value": "hsl({color.blue.60})",
+      "attributes": {
+        "category": "color"
+      }
+    },
+    "red-background": {
+      "value": "hsl({color.red.10})",
+      "attributes": {
+        "category": "color"
+      }
+    },
+    "red-foreground": {
+      "value": "hsl({color.red.50})",
+      "attributes": {
+        "category": "color"
+      }
+    },
+    "cyan-background": {
+      "value": "hsl({color.cyan.10})",
+      "attributes": {
+        "category": "color"
+      }
+    },
+    "cyan-foreground": {
+      "value": "hsl({color.cyan.60})",
+      "attributes": {
+        "category": "color"
+      }
+    },
+    "purple-background": {
+      "value": "hsl({color.purple.10})",
+      "attributes": {
+        "category": "color"
+      }
+    },
+    "purple-foreground": {
+      "value": "hsl({color.purple.60})",
+      "attributes": {
+        "category": "color"
+      }
+    }
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "vibrancy": {
+    "foreground": {
+      "value": "hsl({color.primary.100})",
+      "attributes": {
+        "category": "color"
+      }
+    },
+    "background": {
+      "value": "hsl({color.support.white} / 40%)",
+      "attributes": {
+        "category": "color"
+      }
+    },
+    "background-soft": {
+      "value": "hsl({color.primary.10} / 40%)",
+      "attributes": {
+        "category": "color"
+      }
+    },
+    "background-mid": {
+      "value": "hsl({color.primary.30} / 40%)",
+      "attributes": {
+        "category": "color"
+      }
+    },
+    "background-hard": {
+      "value": "hsl({color.primary.40} / 40%)",
+      "attributes": {
+        "category": "color"
+      }
+    },
+    "background-red": {
+      "value": "hsl({color.red.50} / 10%)",
+      "attributes": {
+        "category": "color"
+      }
+    },
+    "background-green": {
+      "value": "hsl({color.green.40} / 10%)",
+      "attributes": {
+        "category": "color"
+      }
+    },
+    "background-yellow": {
+      "value": "hsl({color.yellow.50} / 10%)",
+      "attributes": {
+        "category": "color"
+      }
+    },
+    "background-brand": {
+      "value": "hsl({color.brand.default} / 10%)",
+      "attributes": {
+        "category": "color"
+      }
+    }
+  }
+}

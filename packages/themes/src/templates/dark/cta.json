@@ -1,0 +1,22 @@
+{
+  "cta": {
+    "default": {
+      "value": "hsl({color.brand.default})",
+      "attributes": {
+        "category": "color"
+      }
+    },
+    "dark": {
+      "value": "hsl(245 80% 55%)",
+      "attributes": {
+        "category": "color"
+      }
+    },
+    "foreground": {
+      "value": "hsl({color.support.white})",
+      "attributes": {
+        "category": "color"
+      }
+    }
+  }
+}

@@ -2,13 +2,14 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable import/no-extraneous-dependencies */
 const yargs = require('yargs/yargs');
+// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
 const { hideBin } = require('yargs/helpers');
 
 const { argv } = yargs(hideBin(process.argv));
 const tkns = require('@lualtek/tokens/platforms/web/tokens.json');
 
 module.exports = {
-  source: [`./src/templates/${argv.name}.json`],
+  source: [`./src/templates/${argv.name}/*.json`],
   tokens: {
     ...tkns,
   },
