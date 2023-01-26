@@ -1,8 +1,11 @@
 import {
   SVGAttributes,
+  useMemo,
 } from 'react';
 
 import { FCClass } from '@/components/types';
+
+import { useBoundingBoxRef } from '../../lib/use-bounding-box-ref';
 
 export type LogoProps = SVGAttributes<SVGElement> & {
   /**
@@ -29,17 +32,17 @@ export type LogoProps = SVGAttributes<SVGElement> & {
   trim?: boolean;
 }
 
-// type ViewBoxType = {
-//   full: string;
-//   mark: string;
-//   wordmark: string;
-// }
+type ViewBoxType = {
+  full: string;
+  mark: string;
+  wordmark: string;
+}
 
-// const viewBoxes: ViewBoxType = {
-//   full: '0 0 420 138',
-//   mark: '0 0 80 80',
-//   wordmark: '0 0 146 48',
-// };
+const viewBoxes: ViewBoxType = {
+  full: '0 0 420 138',
+  mark: '0 0 80 80',
+  wordmark: '0 0 146 48',
+};
 
 export const Logo: FCClass<LogoProps> = ({
   className,
@@ -50,43 +53,28 @@ export const Logo: FCClass<LogoProps> = ({
   trim,
   ...otherProps
 }) => {
-  // const boundingBox = ref.current?.getBBox();
-  // if (boundingBox) {
-  //   return `${boundingBox.x},${boundingBox.y},${boundingBox.width},${boundingBox.height}`;
-  // }
+  const [ref, element] = useBoundingBoxRef();
 
-  // const [viewBox, setViewBox] = useState(viewBoxes[variant]);
+  const viewBox = useMemo(() => {
+    if (trim && element) {
+      const {
+        x, y, width, height,
+      } = element;
+      return `${x},${y},${width},${height}`;
+    }
 
-  // const refFull = useRef<SVGSVGElement>(null);
-  // const refMark = useRef<SVGSVGElement>(null);
-  // const refWordmark = useRef<SVGSVGElement>(null);
+    return viewBoxes[variant];
+  }, [element, trim, variant]);
 
-  // const refmap = {
-  //   full: refFull,
-
-  // }
-
-  // const viewBox = useMemo(() => {
-  //   console.log(trim, variant);
-  //   if (trim) {
-  //     const boundingBox = ref.current?.getBBox();
-  //     if (boundingBox) {
-  //       return `${boundingBox.x},${boundingBox.y},${boundingBox.width},${boundingBox.height}`;
-  //     }
-  //   }
-
-  //   console.log('cabio vriante', variant);
-
-  //   return viewBoxes[variant];
-  // }, [trim, variant]);
   switch (variant) {
     case 'full':
       return (
         <svg
+          ref={ref}
           className={className}
           width={width}
           height={height}
-          viewBox="0 0 420 138"
+          viewBox={viewBox}
           fill={fill}
           xmlns="http://www.w3.org/2000/svg"
           role="img"
@@ -100,10 +88,11 @@ export const Logo: FCClass<LogoProps> = ({
     case 'wordmark':
       return (
         <svg
+          ref={ref}
           className={className}
           width={width}
           height={height}
-          viewBox="0 0 146 48"
+          viewBox={viewBox}
           fill={fill}
           xmlns="http://www.w3.org/2000/svg"
           role="img"
@@ -116,10 +105,11 @@ export const Logo: FCClass<LogoProps> = ({
     default:
       return (
         <svg
+          ref={ref}
           className={className}
           width={width}
           height={height}
-          viewBox="0 0 80 80"
+          viewBox={viewBox}
           fill={fill}
           xmlns="http://www.w3.org/2000/svg"
           role="img"
