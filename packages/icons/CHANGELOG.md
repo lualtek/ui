@@ -1,5 +1,11 @@
 # @lualtek/icons
 
+## 2.6.0
+
+### Minor Changes
+
+- bc97c26: Add new icons
+
 ## 2.5.0
 
 ### Minor Changes

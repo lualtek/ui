@@ -1,5 +1,11 @@
 # @lualtek/themes
 
+## 2.6.0
+
+### Minor Changes
+
+- 0918d86: Add new gradients
+
 ## 2.5.0
 
 ## 2.4.0
