@@ -1,7 +1,9 @@
 import {
   AnimatePresence, domMax, LazyMotion, m,
 } from 'framer-motion';
-import { ReactNode, useEffect, useId } from 'react';
+import {
+  ReactNode, useEffect, useId, useMemo,
+} from 'react';
 import { createPortal } from 'react-dom';
 
 import { FCChildren } from '@/components/types';
@@ -43,7 +45,7 @@ export type OverlayContainerProps = {
 
 export const OverlayContainer: FCChildren<OverlayContainerProps> = ({
   children,
-  root = document.body,
+  root,
   theme = 'auto',
   index = 4,
   obfuscate = true,
@@ -51,11 +53,13 @@ export const OverlayContainer: FCChildren<OverlayContainerProps> = ({
 }) => {
   const uid = useId();
 
+  const defaultRoot = useMemo(() => (root ?? (typeof document !== 'undefined' ? document.body : null)), [root]);
+
   useEffect(() => {
-    if (root.closest('[data-overlay-container]')) {
+    if (defaultRoot?.closest('[data-overlay-container]')) {
       throw new Error('OverlayContainer: An OverlayContainer must not be inside another container. Please change the root prop.');
     }
-  }, [root]);
+  }, [defaultRoot]);
 
   const content = (
     <OverlayProvider onClose={onClose}>
@@ -86,5 +90,6 @@ export const OverlayContainer: FCChildren<OverlayContainerProps> = ({
       </AnimatePresence>
     </OverlayProvider>
   );
-  return createPortal(content, root);
+
+  return defaultRoot && createPortal(content, defaultRoot);
 };
