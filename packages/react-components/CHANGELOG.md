@@ -1,5 +1,13 @@
 # @lualtek/react-components
 
+## 2.6.0
+
+### Patch Changes
+
+- bc8c5d0: Logo component trim and variant
+- Updated dependencies [bc97c26]
+  - @lualtek/icons@2.6.0
+
 ## 2.5.0
 
 ### Patch Changes
