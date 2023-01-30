@@ -1,5 +1,11 @@
 # @lualtek/icons
 
+## 2.6.2
+
+### Patch Changes
+
+- f061e82: Update deps and fix switch animation on context change
+
 ## 2.6.1
 
 ## 2.6.0
