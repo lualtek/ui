@@ -59,7 +59,16 @@ SwitchProps
 
   return (
     <LazyMotion features={domMax} strict>
-      <Stack direction="row" vAlign="start" columnGap={8} fill={false} inline>
+      <Stack
+        as={m.div}
+        direction="row"
+        vAlign="start"
+        columnGap={8}
+        fill={false}
+        inline
+        layout
+        layoutRoot
+      >
         <SwitchPrimitive.Root
           className={clsx(styles.Switch, className)}
           data-switch-dimension={dimension}
