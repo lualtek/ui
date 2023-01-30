@@ -1,5 +1,13 @@
 # @lualtek/react-components
 
+## 2.6.2
+
+### Patch Changes
+
+- f061e82: Update deps and fix switch animation on context change
+- Updated dependencies [f061e82]
+  - @lualtek/icons@2.6.2
+
 ## 2.6.1
 
 ### Patch Changes
