@@ -1,6 +1,9 @@
+import { TokensTypes } from '@lualtek/tokens';
+import tkns from '@lualtek/tokens/platforms/web/tokens.json';
 import clsx from 'clsx';
 import {
-  Children, cloneElement, forwardRef, isValidElement, useMemo,
+  Children, cloneElement, CSSProperties,
+  forwardRef, isValidElement, useMemo,
 } from 'react';
 
 import { Polymorphic } from '@/components';
@@ -17,6 +20,10 @@ export type ListProps = {
    * Set to show or hide the marker indicator beside each item in the list.
    */
   hideMarker?: boolean;
+  /**
+   * Set the gap between each list item
+   */
+  gap?: TokensTypes['space'];
 }
 
 type PolymorphicList = Polymorphic.ForwardRefComponent<'ul', ListProps> & {
@@ -29,9 +36,17 @@ export const List = forwardRef(({
   dimension = 'regular',
   className,
   hideMarker = false,
+  gap,
+  style,
   ...otherProps
 }, forwardedRef) => {
   const isUnordered = useMemo(() => Wrapper === 'ul', [Wrapper]);
+
+  const computedStyle: CSSProperties = useMemo(() => (
+    {
+      '--gap': gap ? tkns.space[gap] : 0,
+    }
+  ), [gap]);
 
   return (
     <Wrapper
@@ -40,6 +55,7 @@ export const List = forwardRef(({
       data-list-size={dimension}
       data-list-ordered={!isUnordered}
       data-list-no-marker={hideMarker}
+      style={{ ...computedStyle, ...style }}
       {...otherProps}
     >
       {Children.map(children, child => isValidElement<ListItemProps>(child) && cloneElement(

@@ -7,6 +7,7 @@ const story: ComponentMeta<typeof List> = {
   component: List,
   args: {
     hideMarker: false,
+    gap: undefined,
   },
   argTypes: {
     dimension: {
