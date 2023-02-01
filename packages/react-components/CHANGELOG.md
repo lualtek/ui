@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 2.7.1
+
+### Patch Changes
+
+- 5e364de: Fix List font size
+  - @lualtek/icons@2.7.1
+
 ## 2.7.0
 
 ### Minor Changes
