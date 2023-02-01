@@ -61,7 +61,7 @@ export const ListItem = forwardRef<HTMLLIElement, ListItemProps>(({
     ref={forwardedRef}
     {...otherProps}
   >
-    {!hideMarker && (
+    {hideMarker ? null : (
       <Icon
         source={marker}
         className={styles.Marker}

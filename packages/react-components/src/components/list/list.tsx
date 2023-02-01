@@ -61,7 +61,7 @@ export const List = forwardRef(({
       {Children.map(children, child => isValidElement<ListItemProps>(child) && cloneElement(
         child,
         {
-          hideMarker: !isUnordered && !hideMarker,
+          hideMarker: !isUnordered || hideMarker,
           dimension,
         },
       ))}
