@@ -37,15 +37,15 @@ type ViewBoxType = Record<NonNullable<LogoProps['variant']>, {
 const viewBoxes: ViewBoxType = {
   full: {
     default: '0 0 420 138',
-    trim: '27,22,349,9',
+    trim: '27,22,349.00299072265625,91',
   },
   wordmark: {
     default: '0 0 146 48',
-    trim: '29.8,16.4,86.3,15.1',
+    trim: '29.845001220703125,16.44499969482422,86.32599639892578,15.110006332397461',
   },
   mark: {
     default: '0 0 80 80',
-    trim: '13.1,12,53.9,56.1',
+    trim: '13.142800331115723,12,53.90480041503906,56.19049835205078',
   },
 };
 
