@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import { forwardRef } from 'react';
 
 import {
-  Icon, IconProps, Stack, Text, TextProps,
+  Icon, IconProps, Stack,
 } from '@/components';
 import { PropsClassChildren } from '@/components/types';
 
@@ -21,6 +21,27 @@ export type ListItemProps = PropsClassChildren<Pick<ListProps, 'dimension' | 'hi
   markerColor?: string;
 }>
 
+const sizes = {
+  small: {
+    icon: {
+      size: 16,
+      weight: 'solid',
+    },
+  },
+  regular: {
+    icon: {
+      size: 16,
+      weight: 'duotone',
+    },
+  },
+  big: {
+    icon: {
+      size: 24,
+      weight: 'duotone',
+    },
+  },
+};
+
 export const ListItem = forwardRef<HTMLLIElement, ListItemProps>(({
   className,
   hideMarker,
@@ -29,54 +50,26 @@ export const ListItem = forwardRef<HTMLLIElement, ListItemProps>(({
   children,
   dimension = 'regular',
   ...otherProps
-}, forwardedRef) => {
-  const sizes = {
-    small: {
-      text: 16,
-      icon: {
-        size: 16,
-        weight: 'solid',
-      },
-    },
-    regular: {
-      text: 18,
-      icon: {
-        size: 16,
-        weight: 'duotone',
-      },
-    },
-    big: {
-      text: 22,
-      icon: {
-        size: 24,
-        weight: 'duotone',
-      },
-    },
-  };
-
-  return (
-    <Stack
-      className={clsx(styles.ListItem, className)}
-      as="li"
-      direction="row"
-      hAlign="start"
-      vAlign="start"
-      fill={false}
-      ref={forwardedRef}
-      {...otherProps}
-    >
-      {!hideMarker && (
-        <Icon
-          source={marker}
-          className={styles.Marker}
-          fill={markerColor}
-          data-list-default-marker={marker === 'circle'}
-          dimension={marker === 'circle' ? 12 : sizes[dimension].icon.size as IconProps['dimension']}
-        />
-      )}
-      <Text as="span" size={sizes[dimension].text as TextProps['size']}>
-        {children}
-      </Text>
-    </Stack>
-  );
-});
+}, forwardedRef) => (
+  <Stack
+    className={clsx(styles.ListItem, className)}
+    as="li"
+    direction="row"
+    hAlign="start"
+    vAlign="start"
+    fill={false}
+    ref={forwardedRef}
+    {...otherProps}
+  >
+    {!hideMarker && (
+      <Icon
+        source={marker}
+        className={styles.Marker}
+        fill={markerColor}
+        data-list-default-marker={marker === 'circle'}
+        dimension={marker === 'circle' ? 12 : sizes[dimension].icon.size as IconProps['dimension']}
+      />
+    )}
+    {children}
+  </Stack>
+));
