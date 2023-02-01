@@ -1,5 +1,11 @@
 # @lualtek/tokens
 
+## 2.7.2
+
+### Patch Changes
+
+- 75cd3f2: Fix generate types for tokens colors
+
 ## 2.7.1
 
 ## 2.7.0
