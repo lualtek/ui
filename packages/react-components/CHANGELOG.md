@@ -1,5 +1,16 @@
 # @lualtek/react-components
 
+## 2.7.0
+
+### Minor Changes
+
+- d2524d5: Add gap property to List component
+
+### Patch Changes
+
+- bbb87df: Fix logo's trim property
+  - @lualtek/icons@2.7.0
+
 ## 2.6.2
 
 ### Patch Changes
