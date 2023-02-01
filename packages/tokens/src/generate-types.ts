@@ -29,7 +29,7 @@ const run = () => {
   const tokens = require('../platforms/web/tokens.json') as Record<string, unknown>;
   const types = `export type TokensTypes = {
   ${reduceTokensJson(tokens)}
-  colors: ${Object.keys(tokens.color as Record<string, unknown>).filter(i => !!(colorsToExclude.indexOf(i) - 1)).map(item => `'${item}'`).join('|')};
+  colors: ${Object.keys(tokens.color as Record<string, unknown>).filter(i => !colorsToExclude.includes(i)).map(item => `'${item}'`).join('|')};
 };`;
 
   fs.writeFileSync(path.join('platforms', 'web', 'index.ts'), types);
