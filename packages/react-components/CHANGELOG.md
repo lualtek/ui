@@ -1,5 +1,15 @@
 # @lualtek/react-components
 
+## 2.8.0
+
+### Minor Changes
+
+- 5ff0430: Add Masonry component
+
+### Patch Changes
+
+- @lualtek/icons@2.8.0
+
 ## 2.7.2
 
 ### Patch Changes
