@@ -18,6 +18,7 @@ export * from './info-state';
 export * from './linear-progress';
 export * from './list';
 export * from './logo';
+export * from './masonry';
 export * from './menu';
 export * from './modal';
 export * from './overlay-container';
