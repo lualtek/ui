@@ -1,5 +1,11 @@
 # @lualtek/tokens
 
+## 2.9.0
+
+### Minor Changes
+
+- 447c6be: Add new font-size to Text
+
 ## 2.8.0
 
 ## 2.7.2
