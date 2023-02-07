@@ -81,8 +81,9 @@
     border: 2px solid var(--cta-default);
 
     @nest .Slider[data-slider-show-values='true'] &::after {
-      content: attr(aria-valuenow);
+      content: attr(data-slider-value-label);
       position: absolute;
+      white-space: nowrap;
       top: calc(100% + token(--space-8));
       left: 50%;
       transform: translateX(-50%);

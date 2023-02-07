@@ -36,3 +36,11 @@ export const Double = Template.bind({});
 Double.args = {
   defaultValue: [30, 70],
 };
+
+export const ValueLabel = Template.bind({});
+ValueLabel.args = {
+  defaultValue: [6000, 9000],
+  min: 5000,
+  max: 10000,
+  valueLabel: val => (val ? `${new Intl.NumberFormat('en-GB').format(val)}K` : ''),
+};
