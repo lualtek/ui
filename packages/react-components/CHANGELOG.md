@@ -1,5 +1,15 @@
 # @lualtek/react-components
 
+## 2.10.0
+
+### Minor Changes
+
+- efd3890: Add custom labels for Slider
+
+### Patch Changes
+
+- @lualtek/icons@2.10.0
+
 ## 2.9.0
 
 ### Minor Changes
