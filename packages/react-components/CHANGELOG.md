@@ -1,5 +1,15 @@
 # @lualtek/react-components
 
+## 2.9.0
+
+### Minor Changes
+
+- 447c6be: Add new font-size to Text
+
+### Patch Changes
+
+- @lualtek/icons@2.9.0
+
 ## 2.8.0
 
 ### Minor Changes
