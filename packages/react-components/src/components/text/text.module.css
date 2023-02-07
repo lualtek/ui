@@ -72,9 +72,39 @@
       --fs-max: token(--font-size-22);
     }
 
+    &[data-text-size='24'] {
+      --fs-min: token(--font-size-18);
+      --fs-max: token(--font-size-24);
+    }
+
     &[data-text-size='28'] {
       --fs-min: token(--font-size-22);
       --fs-max: token(--font-size-28);
+    }
+
+    &[data-text-size='32'] {
+      --fs-min: token(--font-size-28);
+      --fs-max: token(--font-size-32);
+    }
+
+    &[data-text-size='42'] {
+      --fs-min: token(--font-size-32);
+      --fs-max: token(--font-size-42);
+    }
+
+    &[data-text-size='56'] {
+      --fs-min: token(--font-size-42);
+      --fs-max: token(--font-size-56);
+    }
+
+    &[data-text-size='75'] {
+      --fs-min: token(--font-size-56);
+      --fs-max: token(--font-size-75);
+    }
+
+    &[data-text-size='100'] {
+      --fs-min: token(--font-size-75);
+      --fs-max: token(--font-size-100);
     }
 
     /* Weights */
