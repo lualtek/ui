@@ -1,5 +1,15 @@
 # @lualtek/react-components
 
+## 2.11.0
+
+### Minor Changes
+
+- 74390ed: Add paddings to Grid
+
+### Patch Changes
+
+- @lualtek/icons@2.11.0
+
 ## 2.10.0
 
 ### Minor Changes
