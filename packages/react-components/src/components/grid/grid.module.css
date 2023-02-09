@@ -17,5 +17,9 @@
     &[data-grid-filling-type='fit'] {
       grid-template-columns: repeat(auto-fit, var(--column-size));
     }
+
+    &:where([data-stack-has-padding='true']) {
+      padding: var(--v-padding, 0) var(--h-padding, 0);
+    }
   }
 }

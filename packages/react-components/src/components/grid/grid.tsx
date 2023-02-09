@@ -49,6 +49,14 @@ export type GridProps = {
    * Set the minimum rows height
    */
   rowMinHeight?: string;
+  /**
+   * Set the horizontal padding (left/right)
+   */
+  hPadding?: TokensTypes['space'];
+  /**
+   * Set the vertical padding (top/bottom)
+   */
+  vPadding?: TokensTypes['space'];
 }
 
 type GridComponent = FCForwardRef<GridProps> & {
@@ -66,6 +74,8 @@ export const Grid = forwardRef<HTMLUListElement, PropsWithClass<GridProps>>(({
   filling = 'fill',
   colMinWidth = '10rem',
   rowMinHeight = '1fr',
+  hPadding,
+  vPadding,
   ...otherProps
 }, forwardedRef) => {
   const computedStyle: CSSProperties = useMemo(() => (
@@ -76,14 +86,17 @@ export const Grid = forwardRef<HTMLUListElement, PropsWithClass<GridProps>>(({
       '--column-min-w': colMinWidth,
       '--rows': rows,
       '--row-min-h': rowMinHeight,
+      '--v-padding': vPadding ? tkns.space[vPadding] : 0,
+      '--h-padding': hPadding ? tkns.space[hPadding] : 0,
     }
-  ), [colMinWidth, columnGap, columns, rowGap, rowMinHeight, rows]);
+  ), [colMinWidth, columnGap, columns, hPadding, rowGap, rowMinHeight, rows, vPadding]);
 
   return (
     <ul
       className={clsx(styles.Grid, className)}
       style={{ ...computedStyle, ...style }}
       data-grid-filling-type={filling}
+      data-stack-has-padding={Boolean(hPadding ?? vPadding)}
       ref={forwardedRef}
       {...otherProps}
     >
