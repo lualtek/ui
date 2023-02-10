@@ -1,5 +1,15 @@
 # @lualtek/react-components
 
+## 2.12.0
+
+### Minor Changes
+
+- e518e72: Add Lightbox
+
+### Patch Changes
+
+- @lualtek/icons@2.12.0
+
 ## 2.11.0
 
 ### Minor Changes
