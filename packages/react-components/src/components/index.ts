@@ -15,6 +15,7 @@ export * from './icon-button';
 export * from './icon-chip';
 export * from './icon-meter';
 export * from './info-state';
+export * from './lightbox';
 export * from './linear-progress';
 export * from './list';
 export * from './logo';

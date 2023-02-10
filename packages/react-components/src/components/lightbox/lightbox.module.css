@@ -1,0 +1,64 @@
+.Lightbox {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100vh;
+  height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.CloseButton {
+  position: absolute;
+  top: token(--space-32);
+  right: token(--space-32);
+}
+
+
+.ArrowRight {
+  position: absolute;
+  top: 50%;
+  translate: 0 -50%;
+  right: token(--space-32);
+}
+
+.ArrowLeft {
+  position: absolute;
+  top: 50%;
+  left: token(--space-32);
+  translate: 0 -50%;
+}
+
+.Navigation {
+  position: fixed;
+  bottom: 10px;
+  display: flex;
+  flex-direction: row;
+
+  & > button {
+    width: var(--thumb-w);
+    height: var(--thumb-h);
+    margin: 0 token(--space-8);
+    border-radius: token(--radius-16);
+    overflow: hidden;
+
+    &[aria-current='true'] {
+      outline: 2px solid var(--highlight-brand-foreground);
+      outline-offset: 2px;
+    }
+  }
+
+  & > button > img {
+    object-fit: cover;
+  }
+}
+
+.Image {
+  max-width: var(--max-w);
+  max-height: var(--max-h);
+  border-radius: token(--radius-16);
+}
