@@ -25,7 +25,7 @@ const Template: ComponentStory<typeof Lightbox> = ({ selectedState, ...args }) =
       {args.data.map((item, index) => (
         <img
           style={{ width: 150, height: 150 }}
-          key={item.id}
+          key={item.image}
           src={item.image}
           alt={item.title}
           onClick={() => {
@@ -34,7 +34,7 @@ const Template: ComponentStory<typeof Lightbox> = ({ selectedState, ...args }) =
           }}
         />
       ))}
-      <Lightbox selectedState={state} isOpen={isOpen} {...args} />
+      <Lightbox {...args} onClose={() => setIsOpen(false)} selectedState={state} isOpen={isOpen} />
     </>
   );
 };
@@ -42,12 +42,13 @@ const Template: ComponentStory<typeof Lightbox> = ({ selectedState, ...args }) =
 export const Default = Template.bind({});
 Default.args = {
   data: [{
-    id: '1',
-    image: 'https://via.placeholder.com/150',
+    image: 'https://ik.imagekit.io/thingstek/photos/installations/aa-device-con-pannello_bJ5kjnb5SmR',
     title: 'Image 1',
   }, {
-    id: '2',
-    image: 'https://via.placeholder.com/250',
+    image: 'https://ik.imagekit.io/thingstek/photos/installations/aa-termoigrometro_4hIRcoH4bZcf.jpeg',
+    title: 'Image 1',
+  }, {
+    image: 'https://ik.imagekit.io/thingstek/photos/installations/aa-tensiometro_ysEqRIkGmne.jpeg',
     title: 'Image 2',
   }],
 };

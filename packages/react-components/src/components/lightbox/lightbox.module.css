@@ -1,83 +1,64 @@
-.reactLightboxContainer {
+.Lightbox {
   position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
   height: 100vh;
-  z-index: 1000;
+  height: 100dvh;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
 
-.reactLightboxContainer::before {
-  content: '';
+.CloseButton {
   position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 100vh;
-  z-index: -1;
-  background-color: hsl(0deg 0% 0% / 90%);
+  top: token(--space-32);
+  right: token(--space-32);
 }
 
-.reactLightboxCloseButtonContainer {
-  position: absolute;
-  top: 2rem;
-  right: 3rem;
-}
 
-.reactLightboxCloseButton {
-  width: 3rem;
-  height: 3rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #b61827;
-  border-radius: 50%;
-  border: none;
-  cursor: pointer;
-}
-
-.reactLightboxCloseButton:hover {
-  background-color: #911421;
-}
-
-.reactLightboxCloseButton:focus {
-  box-shadow: 0 0 0 3px #007c91;
-}
-
-.reactLightboxButton {
-  width: 3rem;
-  height: 3rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  border: none;
-  background-color: #fff;
-  cursor: pointer;
-}
-
-.reactLightboxButton:hover {
-  background-color: rgb(161 161 161);
-}
-
-.reactLightboxButton:focus {
-  box-shadow: 0 0 0 3px #007c91;
-}
-
-.reactLightboxArrowRight {
+.ArrowRight {
   position: absolute;
   top: 50%;
-  right: 1.5rem;
+  translate: 0 -50%;
+  right: token(--space-32);
 }
 
-.reactLightboxArrowLeft {
+.ArrowLeft {
   position: absolute;
   top: 50%;
-  left: 1.5rem;
+  left: token(--space-32);
+  translate: 0 -50%;
+}
+
+.Navigation {
+  position: fixed;
+  bottom: 10px;
+  display: flex;
+  flex-direction: row;
+
+  & > button {
+    width: var(--thumb-w);
+    height: var(--thumb-h);
+    margin: 0 token(--space-8);
+    border-radius: token(--radius-16);
+    overflow: hidden;
+
+    &[aria-current='true'] {
+      outline: 2px solid var(--highlight-brand-foreground);
+      outline-offset: 2px;
+    }
+  }
+
+  & > button > img {
+    object-fit: cover;
+  }
+}
+
+.Image {
+  max-width: var(--max-w);
+  max-height: var(--max-h);
+  border-radius: token(--radius-16);
 }
