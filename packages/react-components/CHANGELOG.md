@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 2.12.4
+
+### Patch Changes
+
+- 0baf5ff: Fix Lightbox focus trap
+  - @lualtek/icons@2.12.4
+
 ## 2.12.3
 
 ### Patch Changes
