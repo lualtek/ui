@@ -11,16 +11,40 @@ import { BlankButton } from '../blank-button';
 import styles from './lightbox.module.css';
 
 export type LightboxProps = {
+  /**
+   * Array of objects containing the image url and optional title
+   */
   data: Array<{
     image: string;
     title?: string;
   }>;
+  /**
+   * State for the active index of the lightbox
+   */
   selectedState: [number, React.Dispatch<SetStateAction<number>>];
+  /**
+   * Whether the lightbox is open or not
+   */
   isOpen?: boolean;
+  /**
+   * Callback function to close the lightbox
+   */
   onClose: () => void;
+  /**
+   * Width of the zoomed image
+   */
   imageWidth?: string;
+  /**
+   *  Height of the zoomed image
+   */
   imageHeight?: string;
+  /**
+   * Width of the thumbnail element inside the navigation
+   */
   thumbnailWidth?: string;
+  /**
+   * Height of the thumbnail element inside the navigation
+   */
   thumbnailHeight?: string;
 }
 
