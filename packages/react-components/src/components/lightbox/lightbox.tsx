@@ -24,6 +24,21 @@ export type LightboxProps = {
   thumbnailHeight?: string;
 }
 
+const navAnimation = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+const thumbAnimation = {
+  hidden: { opacity: 0 },
+  show: { opacity: 1 },
+};
+
 export const Lightbox = ({
   data,
   selectedState,
@@ -67,7 +82,7 @@ export const Lightbox = ({
   return (
     <OverlayContainer onClose={onClose}>
       {isOpen ? (
-        <div className={styles.Lightbox} style={dynamicStyles}>
+        <m.div className={styles.Lightbox} style={dynamicStyles}>
           <IconButton
             className={styles.CloseButton}
             icon="remove"
@@ -80,7 +95,16 @@ export const Lightbox = ({
             <LazyMotion features={domAnimation}>
               <m.img
                 className={styles.Image}
-                layout
+                initial={{
+                  scale: 0.8,
+                }}
+                animate={{
+                  scale: 1,
+                }}
+                exit={{
+                  scale: 0.8,
+                  opacity: 0,
+                }}
                 transition={{
                   type: 'spring',
                   stiffness: 1000,
@@ -107,22 +131,29 @@ export const Lightbox = ({
               onClick={() => goTo('prev')}
             />
           </div>
-          <div className={styles.Navigation}>
+          <m.div
+            className={styles.Navigation}
+            variants={navAnimation}
+            initial="hidden"
+            animate="show"
+            exit="hidden"
+          >
             {data.map((item, navIndex) => (
               <BlankButton
                 aria-hidden="true"
                 aria-current={navIndex === activeIndex}
                 onClick={() => setActiveIndex(navIndex)}
               >
-                <img
+                <m.img
+                  variants={thumbAnimation}
                   key={item.image}
                   src={item.image}
                   alt={item.title}
                 />
               </BlankButton>
             ))}
-          </div>
-        </div>
+          </m.div>
+        </m.div>
       ) : null}
     </OverlayContainer>
   );
