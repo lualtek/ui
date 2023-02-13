@@ -164,6 +164,7 @@ export const Lightbox = ({
           >
             {data.map((item, navIndex) => (
               <BlankButton
+                key={item.image}
                 aria-hidden="true"
                 aria-current={navIndex === activeIndex}
                 onClick={() => setActiveIndex(navIndex)}
@@ -172,7 +173,7 @@ export const Lightbox = ({
                   variants={thumbAnimation}
                   key={item.image}
                   src={item.image}
-                  alt={item.title}
+                  alt={item.title ?? ''}
                 />
               </BlankButton>
             ))}
