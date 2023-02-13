@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { forwardRef, InputHTMLAttributes } from 'react';
+import { forwardRef, InputHTMLAttributes, TextareaHTMLAttributes } from 'react';
 
 import { Polymorphic } from '@/components';
 
@@ -8,12 +8,12 @@ import styles from './base-field.module.css';
 /**
  * @internal
  */
-export type PrimitiveInputType = HTMLInputElement | HTMLTextAreaElement
+export type PrimitiveInputType = HTMLInputElement
 
 /**
  * @internal
  */
-export type BaseFieldProps = InputHTMLAttributes<PrimitiveInputType> & {
+export type BaseFieldProps = InputHTMLAttributes<PrimitiveInputType> & TextareaHTMLAttributes<HTMLTextAreaElement> & {
   invalid?: boolean;
 }
 

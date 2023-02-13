@@ -96,6 +96,7 @@ const TextareaTemplate: ComponentStory<typeof Textfield> = args => (
 export const Textarea = TextareaTemplate.bind({});
 Textarea.args = {
   disabled: false,
+  rows: 10,
   textarea: true,
 };
 Textarea.argTypes = {
