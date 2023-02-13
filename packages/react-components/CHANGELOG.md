@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 2.12.2
+
+### Patch Changes
+
+- 2ad2142: Fix lightbox missing key and alt
+  - @lualtek/icons@2.12.2
+
 ## 2.12.1
 
 ### Patch Changes
