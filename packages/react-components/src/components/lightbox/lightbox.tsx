@@ -3,6 +3,7 @@ import { domAnimation, LazyMotion, m } from 'framer-motion';
 import {
   CSSProperties, SetStateAction, useCallback, useMemo,
 } from 'react';
+import { FocusOn } from 'react-focus-on';
 import { useKeyBindings } from 'rooks';
 
 import { IconButton, OverlayContainer } from '@/components';
@@ -106,79 +107,81 @@ export const Lightbox = ({
   return (
     <OverlayContainer onClose={onClose}>
       {isOpen ? (
-        <m.div className={styles.Lightbox} style={dynamicStyles}>
-          <IconButton
-            className={styles.CloseButton}
-            icon="remove"
-            aria-label="Close gallery"
-            onClick={onClose}
-            dimension="big"
-            sentiment="danger"
-          />
-          <div>
-            <LazyMotion features={domAnimation}>
-              <m.img
-                className={styles.Image}
-                initial={{
-                  scale: 0.8,
-                }}
-                animate={{
-                  scale: 1,
-                }}
-                exit={{
-                  scale: 0.8,
-                  opacity: 0,
-                }}
-                transition={{
-                  type: 'spring',
-                  stiffness: 1000,
-                  damping: 50,
-                }}
-                src={data[activeIndex].image}
-                alt={data[activeIndex].title}
-              />
-            </LazyMotion>
+        <FocusOn onEscapeKey={onClose}>
+          <m.div className={styles.Lightbox} style={dynamicStyles}>
             <IconButton
-              className={styles.ArrowRight}
-              icon="ctrl-right"
+              className={styles.CloseButton}
+              icon="remove"
+              aria-label="Close gallery"
+              onClick={onClose}
               dimension="big"
-              kind="secondary"
-              aria-label="Next image"
-              onClick={() => goTo('next')}
+              sentiment="danger"
             />
-            <IconButton
-              className={styles.ArrowLeft}
-              icon="ctrl-left"
-              dimension="big"
-              kind="secondary"
-              aria-label="Previous image"
-              onClick={() => goTo('prev')}
-            />
-          </div>
-          <m.div
-            className={styles.Navigation}
-            variants={navAnimation}
-            initial="hidden"
-            animate="show"
-            exit="hidden"
-          >
-            {data.map((item, navIndex) => (
-              <BlankButton
-                key={item.image}
-                aria-hidden="true"
-                aria-current={navIndex === activeIndex}
-                onClick={() => setActiveIndex(navIndex)}
-              >
+            <div>
+              <LazyMotion features={domAnimation}>
                 <m.img
-                  variants={thumbAnimation}
-                  key={item.image}
-                  src={item.image}
-                  alt={item.title ?? ''}
+                  className={styles.Image}
+                  initial={{
+                    scale: 0.8,
+                  }}
+                  animate={{
+                    scale: 1,
+                  }}
+                  exit={{
+                    scale: 0.8,
+                    opacity: 0,
+                  }}
+                  transition={{
+                    type: 'spring',
+                    stiffness: 1000,
+                    damping: 50,
+                  }}
+                  src={data[activeIndex].image}
+                  alt={data[activeIndex].title}
                 />
-              </BlankButton>
-            ))}
+              </LazyMotion>
+              <IconButton
+                className={styles.ArrowRight}
+                icon="ctrl-right"
+                dimension="big"
+                kind="secondary"
+                aria-label="Next image"
+                onClick={() => goTo('next')}
+              />
+              <IconButton
+                className={styles.ArrowLeft}
+                icon="ctrl-left"
+                dimension="big"
+                kind="secondary"
+                aria-label="Previous image"
+                onClick={() => goTo('prev')}
+              />
+            </div>
+            <m.div
+              className={styles.Navigation}
+              variants={navAnimation}
+              initial="hidden"
+              animate="show"
+              exit="hidden"
+            >
+              {data.map((item, navIndex) => (
+                <BlankButton
+                  key={item.image}
+                  aria-hidden="true"
+                  aria-current={navIndex === activeIndex}
+                  onClick={() => setActiveIndex(navIndex)}
+                >
+                  <m.img
+                    variants={thumbAnimation}
+                    key={item.image}
+                    src={item.image}
+                    alt={item.title ?? ''}
+                  />
+                </BlankButton>
+              ))}
+            </m.div>
           </m.div>
-        </m.div>
+        </FocusOn>
       ) : null}
     </OverlayContainer>
   );
