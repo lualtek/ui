@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 2.12.3
+
+### Patch Changes
+
+- 85664ab: Fix textfield type
+  - @lualtek/icons@2.12.3
+
 ## 2.12.2
 
 ### Patch Changes
