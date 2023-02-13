@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 2.12.1
+
+### Patch Changes
+
+- d3fd26f: Update lightbox animations
+  - @lualtek/icons@2.12.1
+
 ## 2.12.0
 
 ### Minor Changes

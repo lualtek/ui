@@ -1,5 +1,11 @@
 # @lualtek/config
 
+## 2.12.1
+
+### Patch Changes
+
+- @lualtek/tokens@2.12.1
+
 ## 2.12.0
 
 ### Patch Changes
