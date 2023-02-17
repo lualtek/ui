@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import { forwardRef, Ref, useMemo } from 'react';
 
 import {
-  ClampText, Icon, IconProps, Stack, StackProps,
+  Icon, IconProps, Stack, StackProps,
 } from '@/components';
 import { FCChildrenClass } from '@/components/types';
 
@@ -81,10 +81,11 @@ export const Chip: FCChildrenClass<ChipProps> = forwardRef(({
         <Icon
           source={icon}
           dimension={sizes[dimension].icon}
+          className={styles.Icon}
         />
       )}
 
-      <ClampText as="b" rows={1}>{children}</ClampText>
+      <b>{children}</b>
       {(!interactive && dismissable) && (
         <button onClick={onDismissClick} className={styles.Action} type="button">
           <Icon

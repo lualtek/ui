@@ -5,6 +5,14 @@
     border-radius: 1e5px;
     font-size: token(--font-size-16);
     block-size: token(--space-24);
+    max-width: 100%;
+
+    & > b {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 100%;
+    }
 
     &:where(button) {
       appearance: none;
@@ -74,5 +82,9 @@
     font: inherit;
     margin-top: 1px;
     cursor: pointer;
+  }
+
+  .Icon {
+    flex-shrink: 0;
   }
 }
