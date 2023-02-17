@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 2.12.5
+
+### Patch Changes
+
+- f48c5f6: Fix chip truncation
+  - @lualtek/icons@2.12.5
+
 ## 2.12.4
 
 ### Patch Changes
