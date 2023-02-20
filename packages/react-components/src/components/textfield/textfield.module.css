@@ -99,8 +99,5 @@
       left: auto;
       right: var(--field-padding);
     }
-    @nest .Textfield[data-textfield-invalid='true'] & {
-      color: var(--highlight-red-foreground);
-    }
   }
 }
