@@ -69,42 +69,10 @@ export const Single = SingleTemplate.bind({});
 Single.args = {
   disabled: false,
 };
-Single.argTypes = {
-  textarea: {
-    table: {
-      disable: true,
-    },
-  },
-};
 
 export const Types = MultipleTemplate.bind({});
 Types.args = {
   disabled: false,
-};
-Types.argTypes = {
-  textarea: {
-    table: {
-      disable: true,
-    },
-  },
-};
-
-const TextareaTemplate: ComponentStory<typeof Textfield> = args => (
-  <Textfield {...args} defaultValue="123123klòasj" placeholder="Placeholder" />
-);
-
-export const Textarea = TextareaTemplate.bind({});
-Textarea.args = {
-  disabled: false,
-  rows: 10,
-  textarea: true,
-};
-Textarea.argTypes = {
-  textarea: {
-    table: {
-      disable: true,
-    },
-  },
 };
 
 export const WithIcon = SingleTemplate.bind({});

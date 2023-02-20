@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import {
-  ChangeEvent, forwardRef, Ref, useCallback, useId, useMemo, useState,
+  ChangeEvent, forwardRef, InputHTMLAttributes, Ref, useCallback, useId, useMemo, useState,
 } from 'react';
 
 import {
@@ -8,10 +8,10 @@ import {
   Icon, IconButton, IconProps, Stack, Text,
 } from '@/components';
 
-import { BaseField, BaseFieldProps, PrimitiveInputType } from './base-field';
+import { BaseField, BaseFieldProps } from '../base-field';
 import styles from './textfield.module.css';
 
-export type TextfieldProps = BaseFieldProps & {
+export type TextfieldProps = BaseFieldProps & InputHTMLAttributes<HTMLInputElement> & {
   /**
    * Set the icon to show on the left or right side of the input.
    */
@@ -34,11 +34,6 @@ export type TextfieldProps = BaseFieldProps & {
    */
   type?: string;
   /**
-   * Set the input to be a textarea instead of a single line field.
-   * This property completely changes the rendered element from an input to a textarea.
-   */
-  textarea?: boolean;
-  /**
    * Set the field into a readonly state. When readonly, the field value
    * cannot be edited but it can still be selected and copied.
    */
@@ -51,20 +46,19 @@ export type TextfieldProps = BaseFieldProps & {
   /**
    * The callback function that is called when the input value changes.
    */
-  onChange?: (event: ChangeEvent<PrimitiveInputType>) => void;
+  onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
   /**
    * Make the textfield full width, filling the available space.
    */
   fullWidth?: boolean;
 }
 
-export const Textfield = forwardRef<PrimitiveInputType, TextfieldProps>(({
+export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(({
   children,
   className,
   disabled = false,
   icon,
   label,
-  textarea,
   readOnly,
   invalid,
   id,
@@ -110,27 +104,14 @@ export const Textfield = forwardRef<PrimitiveInputType, TextfieldProps>(({
       style={style}
     >
       <div className={styles.FieldContainer}>
-        {textarea
-          ? (
-            <BaseField
-              ref={forwardedRef as Ref<HTMLTextAreaElement>}
-              as="textarea"
-              id={fieldID}
-              {...commonProps}
-              {...otherProps}
-            />
-          )
-          : (
-            <BaseField
-              className={styles.InputField}
-              id={fieldID}
-              ref={forwardedRef as Ref<HTMLInputElement>}
-              type={isPasswordVisible ? 'text' : type}
-              {...commonProps}
-              {...otherProps}
-            />
-          )
-          }
+        <BaseField
+          className={styles.InputField}
+          id={fieldID}
+          ref={forwardedRef as Ref<HTMLInputElement>}
+          type={isPasswordVisible ? 'text' : type}
+          {...commonProps}
+          {...otherProps}
+        />
         {isPassword && (
           <IconButton
             className={styles.IconButton}
@@ -141,7 +122,7 @@ export const Textfield = forwardRef<PrimitiveInputType, TextfieldProps>(({
           />
         )}
 
-        { !textarea && icon && !isPassword && (
+        { icon && !isPassword && (
           <Icon
             className={styles.Icon}
             source={icon}
