@@ -1,5 +1,17 @@
 # @lualtek/react-components
 
+## 3.0.0
+
+### Major Changes
+
+- 2f1a300: Separate Textfield and Textarea
+
+### Patch Changes
+
+- 2f1a300: Remove icon to type date inputs
+- 49db421: Fix lightbox navigation overflow
+  - @lualtek/icons@3.0.0
+
 ## 2.12.5
 
 ### Patch Changes

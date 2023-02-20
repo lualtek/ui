@@ -1,6 +1,6 @@
 {
   "name": "@lualtek/tokens",
-  "version": "2.12.5",
+  "version": "3.0.0",
   "description": "Design tokens from Lualtek design language",
   "main": "platforms/web/index",
   "publishConfig": {
