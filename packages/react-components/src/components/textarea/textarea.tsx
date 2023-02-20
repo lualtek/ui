@@ -12,9 +12,9 @@ import styles from './textarea.module.css';
 
 export type TextareaProps = BaseFieldProps & TextareaHTMLAttributes<HTMLTextAreaElement> & {
   /**
-   * Define the accessible label of the input. While this is not
-   * mandatory, an input should always have a label. If not using this property
-   * you can bind a custom label to the input by using an id.
+   * Define the accessible label of the textarea. While this is not
+   * mandatory, an textarea should always have a label. If not using this property
+   * you can bind a custom label to the textarea by using an id.
    */
   label: string;
   /**
@@ -28,7 +28,7 @@ export type TextareaProps = BaseFieldProps & TextareaHTMLAttributes<HTMLTextArea
    */
   disabled?: boolean;
   /**
-   * The callback function that is called when the input value changes.
+   * The callback function that is called when the textarea value changes.
    */
   onChange?: (event: ChangeEvent<HTMLTextAreaElement>) => void;
   /**

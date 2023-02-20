@@ -63,7 +63,7 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(({
   invalid,
   id,
   iconPosition = 'right',
-  type,
+  type = 'text',
   style,
   onChange,
   fullWidth,
@@ -72,6 +72,7 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(({
   const [isPasswordVisible, setPasswordVisible] = useState<boolean>(false);
   const uid = useId();
   const isPassword = type === 'password';
+  const isNotDate = !['date', 'datetime-local'].includes(type);
   const fieldID = useMemo(() => id ?? `${uid}-field`, [id, uid]);
 
   const handlePasswordVisibility = useCallback(
@@ -93,7 +94,7 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(({
       as="fieldset"
       rowGap={4}
       className={clsx(styles.Textfield, className)}
-      data-textfield-has-icon={isPassword || Boolean(icon)}
+      data-textfield-has-icon={isPassword || (Boolean(icon) && isNotDate)}
       data-textfield-icon-position={iconPosition}
       data-textfield-invalid={invalid}
       data-textfield-fullwidth={fullWidth}
@@ -122,7 +123,7 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(({
           />
         )}
 
-        { icon && !isPassword && (
+        { icon && (!isPassword && isNotDate) && (
           <Icon
             className={styles.Icon}
             source={icon}

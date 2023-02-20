@@ -78,5 +78,4 @@ Types.args = {
 export const WithIcon = SingleTemplate.bind({});
 WithIcon.args = {
   icon: 'chat',
-  type: 'date',
 };
