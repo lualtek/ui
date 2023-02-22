@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 3.0.2
+
+### Patch Changes
+
+- fef258d: Add missing semibold weight to Text
+  - @lualtek/icons@3.0.2
+
 ## 3.0.1
 
 ### Patch Changes
