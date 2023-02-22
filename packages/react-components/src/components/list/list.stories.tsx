@@ -20,7 +20,7 @@ const story: ComponentMeta<typeof List> = {
 export default story;
 
 const Template: ComponentStory<typeof List & typeof List.Li> = ({ marker, markerColor, ...args }) => (
-  <List {...args}>
+  <List as="ol" {...args}>
     <List.Li marker={marker} hideMarker markerColor={markerColor}>List item text</List.Li>
     <List.Li marker={marker} markerColor={markerColor}>List item text List item textList text</List.Li>
     <List.Li marker={marker} markerColor={markerColor}>List item text</List.Li>

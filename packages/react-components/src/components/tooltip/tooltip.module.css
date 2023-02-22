@@ -1,10 +1,9 @@
-@layer components {
-  .Tooltip {
-    padding: token(--space-8) token(--space-16);
-    background-color: var(--global-foreground);
-    color: var(--global-background);
-    border-radius: token(--radius-16);
-    font-size: token(--font-size-16);
-    pointer-events: none;
-  }
+.Tooltip {
+  padding: token(--space-8) token(--space-16);
+  background-color: var(--global-foreground);
+  color: var(--global-background);
+  border-radius: token(--radius-16);
+  font-size: token(--font-size-16);
+  pointer-events: none;
 }
+

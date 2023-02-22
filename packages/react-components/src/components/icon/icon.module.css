@@ -1,12 +1,10 @@
-@layer components {
-  .Icon {
-    & *[fill] {
-      fill: currentcolor;
-    }
+.Icon {
+  & *[fill] {
+    fill: currentcolor;
+  }
 
-    & *[fill='none'][stroke] {
-      fill: none;
-      stroke: currentcolor;
-    }
+  & *[fill='none'][stroke] {
+    fill: none;
+    stroke: currentcolor;
   }
 }

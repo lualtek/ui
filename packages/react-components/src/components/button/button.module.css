@@ -1,194 +1,193 @@
 @import '../../core/utils/vibrancy.css';
 
-@layer components {
-  .Button {
-    box-sizing: border-box;
-    user-select: none;
-    -webkit-touch-callout: none;
-    margin: 0;
-    cursor: pointer;
-    font-family: inherit;
-    display: inline-flex;
-    align-items: center;
-    line-height: 1;
-    min-inline-size: min-content;
-    justify-content: center;
-    text-decoration: none;
-    white-space: nowrap;
-    border: 0;
-    appearance: none;
-    font-weight: token(--font-weight-bold);
-    overflow: hidden;
-    background: none;
-    gap: token(--space-8);
+.Button {
+  box-sizing: border-box;
+  user-select: none;
+  -webkit-touch-callout: none;
+  margin: 0;
+  cursor: pointer;
+  font-family: inherit;
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+  min-inline-size: min-content;
+  justify-content: center;
+  text-decoration: none;
+  white-space: nowrap;
+  border: 0;
+  appearance: none;
+  font-weight: token(--font-weight-bold);
+  overflow: hidden;
+  background: none;
+  gap: token(--space-8);
 
-    /* Sizes */
+  /* Sizes */
 
-    &[data-button-dimension='big'] {
-      padding: 0.55rem token(--space-24) 0.66rem;
-      font-size: token(--font-size-18);
-      block-size: token(--space-48);
-      border-radius: token(--radius-16);
-      gap: token(--space-16);
+  &[data-button-dimension='big'] {
+    padding: 0.55rem token(--space-24) 0.66rem;
+    font-size: token(--font-size-18);
+    block-size: token(--space-48);
+    border-radius: token(--radius-16);
+    gap: token(--space-16);
+  }
+
+  &[data-button-dimension='regular'] {
+    padding: 0.33rem token(--space-16) token(--space-8);
+    font-size: token(--font-size-16);
+    block-size: token(--space-40);
+    border-radius: token(--radius-16);
+  }
+
+  &[data-button-dimension='small'] {
+    font-size: token(--font-size-14);
+    padding: 0 token(--space-8);
+    block-size: token(--space-24);
+    gap: token(--space-4);
+    border-radius: token(--radius-8);
+  }
+
+  /* Types */
+
+  &[data-button-kind='primary'] {
+    background:
+      radial-gradient(
+        farthest-side at 50% top,
+        var(--gradient-brand-start) 0%,
+        var(--gradient-brand-end) 100%
+      );
+    color: var(--cta-foreground);
+
+    &:not([aria-disabled='true'])[data-button-sentiment='positive'] {
+      background: hsl(token(--color-green-60));
     }
 
-    &[data-button-dimension='regular'] {
-      padding: 0.33rem token(--space-16) token(--space-8);
-      font-size: token(--font-size-16);
-      block-size: token(--space-40);
-      border-radius: token(--radius-16);
+    &:not([aria-disabled='true'])[data-button-sentiment='warning'] {
+      background: hsl(token(--color-yellow-60));
     }
 
-    &[data-button-dimension='small'] {
-      font-size: token(--font-size-14);
-      padding: 0 token(--space-8);
-      block-size: token(--space-24);
-      gap: token(--space-4);
-      border-radius: token(--radius-8);
+    &:not([aria-disabled='true'])[data-button-sentiment='danger'] {
+      background: hsl(token(--color-red-60));
     }
 
-    /* Types */
+    &:not([aria-disabled='true'], [aria-busy='true']):is(:hover) {
+      box-shadow: inset 0 -5px 25px hsl(token(--color-support-black) / 30%);
+    }
+  }
 
-    &[data-button-kind='primary'] {
-      background:
-        radial-gradient(
-          farthest-side at 50% top,
-          var(--gradient-brand-start) 0%,
-          var(--gradient-brand-end) 100%
-        );
-      color: var(--cta-foreground);
+  &[data-button-kind='secondary'] {
 
-      &:not([aria-disabled='true'])[data-button-sentiment='positive'] {
-        background: hsl(token(--color-green-60));
-      }
+    @mixin vibrancy;
 
-      &:not([aria-disabled='true'])[data-button-sentiment='warning'] {
-        background: hsl(token(--color-yellow-60));
-      }
+    background-color: var(--vibrancy-background-mid);
+    color: var(--vibrancy-foreground);
 
-      &:not([aria-disabled='true'])[data-button-sentiment='danger'] {
-        background: hsl(token(--color-red-60));
-      }
-
-      &:not([aria-disabled='true'], [aria-busy='true']):is(:hover) {
-        box-shadow: inset 0 -5px 25px hsl(token(--color-support-black) / 30%);
-      }
+    &:not([aria-disabled='true'])[data-button-sentiment='positive'] {
+      background: var(--vibrancy-background-green);
+      color: var(--highlight-green-foreground);
     }
 
-    &[data-button-kind='secondary'] {
+    &:not([aria-disabled='true'])[data-button-sentiment='warning'] {
+      background: var(--vibrancy-background-yellow);
+      color: var(--highlight-yellow-foreground);
+    }
+
+    &:not([aria-disabled='true'])[data-button-sentiment='danger'] {
+      background: var(--vibrancy-background-red);
+      color: var(--highlight-red-foreground);
+    }
+
+    &:not([aria-disabled='true'], [aria-busy='true'], [data-button-sentiment]):is(:hover) {
+      background-color: var(--vibrancy-background-hard);
+      color: var(--vibrancy-foreground);
+    }
+
+    &[data-button-sentiment='positive']:not([aria-disabled='true'], [aria-busy='true']):is(:hover) {
+      background: var(--highlight-green-background);
+    }
+
+    &[data-button-sentiment='warning']:not([aria-disabled='true'], [aria-busy='true']):is(:hover) {
+      background: var(--highlight-yellow-background);
+    }
+
+    &[data-button-sentiment='danger']:not([aria-disabled='true'], [aria-busy='true']):is(:hover) {
+      background: var(--highlight-red-background);
+    }
+  }
+
+  &[data-button-kind='flat'] {
+    color: var(--global-foreground);
+
+    &:not([aria-disabled='true'])[data-button-sentiment='positive'] {
+      color: var(--highlight-green-foreground);
+    }
+
+    &:not([aria-disabled='true'])[data-button-sentiment='warning'] {
+      color: var(--highlight-yellow-foreground);
+    }
+
+    &:not([aria-disabled='true'])[data-button-sentiment='danger'] {
+      color: var(--highlight-red-foreground);
+    }
+
+
+    &:not([aria-disabled='true'], [aria-busy='true'], [data-button-sentiment]):is(:hover) {
 
       @mixin vibrancy;
 
       background-color: var(--vibrancy-background-mid);
       color: var(--vibrancy-foreground);
-
-      &:not([aria-disabled='true'])[data-button-sentiment='positive'] {
-        background: var(--vibrancy-background-green);
-        color: var(--highlight-green-foreground);
-      }
-
-      &:not([aria-disabled='true'])[data-button-sentiment='warning'] {
-        background: var(--vibrancy-background-yellow);
-        color: var(--highlight-yellow-foreground);
-      }
-
-      &:not([aria-disabled='true'])[data-button-sentiment='danger'] {
-        background: var(--vibrancy-background-red);
-        color: var(--highlight-red-foreground);
-      }
-
-      &:not([aria-disabled='true'], [aria-busy='true'], [data-button-sentiment]):is(:hover) {
-        background-color: var(--vibrancy-background-hard);
-        color: var(--vibrancy-foreground);
-      }
-
-      &[data-button-sentiment='positive']:not([aria-disabled='true'], [aria-busy='true']):is(:hover) {
-        background: var(--highlight-green-background);
-      }
-
-      &[data-button-sentiment='warning']:not([aria-disabled='true'], [aria-busy='true']):is(:hover) {
-        background: var(--highlight-yellow-background);
-      }
-
-      &[data-button-sentiment='danger']:not([aria-disabled='true'], [aria-busy='true']):is(:hover) {
-        background: var(--highlight-red-background);
-      }
     }
 
-    &[data-button-kind='flat'] {
-      color: var(--global-foreground);
-
-      &:not([aria-disabled='true'])[data-button-sentiment='positive'] {
-        color: var(--highlight-green-foreground);
-      }
-
-      &:not([aria-disabled='true'])[data-button-sentiment='warning'] {
-        color: var(--highlight-yellow-foreground);
-      }
-
-      &:not([aria-disabled='true'])[data-button-sentiment='danger'] {
-        color: var(--highlight-red-foreground);
-      }
-
-
-      &:not([aria-disabled='true'], [aria-busy='true'], [data-button-sentiment]):is(:hover) {
-
-        @mixin vibrancy;
-
-        background-color: var(--vibrancy-background-mid);
-        color: var(--vibrancy-foreground);
-      }
-
-      &[data-button-sentiment='positive']:not([aria-disabled='true'], [aria-busy='true']):is(:hover) {
-        background-color: var(--vibrancy-background-green);
-      }
-
-      &[data-button-sentiment='warning']:not([aria-disabled='true'], [aria-busy='true']):is(:hover) {
-        background-color: var(--vibrancy-background-yellow);
-      }
-
-      &[data-button-sentiment='danger']:not([aria-disabled='true'], [aria-busy='true']):is(:hover) {
-        background-color: var(--vibrancy-background-red);
-      }
+    &[data-button-sentiment='positive']:not([aria-disabled='true'], [aria-busy='true']):is(:hover) {
+      background-color: var(--vibrancy-background-green);
     }
 
-    /* Styles */
-
-    &[data-button-fullwidth='true'] {
-      inline-size: 100%;
+    &[data-button-sentiment='warning']:not([aria-disabled='true'], [aria-busy='true']):is(:hover) {
+      background-color: var(--vibrancy-background-yellow);
     }
 
-    &[data-button-icon-position='right'] {
-      flex-direction: row-reverse;
-    }
-
-    &[aria-disabled='true'],
-    &[aria-disabled='true']:is(:hover, :focus, :active) {
-
-      @mixin vibrancy;
-
-      color: var(--global-disabled-foreground);
-      background: var(--global-disabled-background);
-      cursor: not-allowed;
-    }
-
-    &[aria-busy='true'] {
-      box-shadow: none;
-      position: relative;
-
-      & > :not(.SpinnerIndicator) {
-        visibility: hidden;
-      }
+    &[data-button-sentiment='danger']:not([aria-disabled='true'], [aria-busy='true']):is(:hover) {
+      background-color: var(--vibrancy-background-red);
     }
   }
 
-  .SpinnerIndicator {
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    display: grid;
-    place-content: center;
+  /* Styles */
+
+  &[data-button-fullwidth='true'] {
+    inline-size: 100%;
+  }
+
+  &[data-button-icon-position='right'] {
+    flex-direction: row-reverse;
+  }
+
+  &[aria-disabled='true'],
+  &[aria-disabled='true']:is(:hover, :focus, :active) {
+
+    @mixin vibrancy;
+
+    color: var(--global-disabled-foreground);
+    background: var(--global-disabled-background);
+    cursor: not-allowed;
+  }
+
+  &[aria-busy='true'] {
+    box-shadow: none;
+    position: relative;
+
+    & > :not(.SpinnerIndicator) {
+      visibility: hidden;
+    }
   }
 }
+
+.SpinnerIndicator {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: grid;
+  place-content: center;
+}
+

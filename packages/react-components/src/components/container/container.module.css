@@ -1,85 +1,84 @@
 @import '../../core/utils/media.css';
 
-@layer components {
-  .Container {
-    padding:
-      0
-      max(
-        token(--space-16),
-        calc(token(--space-16) + env(safe-area-inset-right))
-      )
-      0
-      max(
-        token(--space-16),
-        calc(token(--space-16) + env(safe-area-inset-left))
-      );
-    margin: 0 auto;
-    inline-size: 100%;
+.Container {
+  padding:
+    0
+    max(
+      token(--space-16),
+      calc(token(--space-16) + env(safe-area-inset-right))
+    )
+    0
+    max(
+      token(--space-16),
+      calc(token(--space-16) + env(safe-area-inset-left))
+    );
+  margin: 0 auto;
+  inline-size: 100%;
 
-    &[data-container-dimension='small'] {
-      max-inline-size: token(--container-small);
+  &[data-container-dimension='small'] {
+    max-inline-size: token(--container-small);
 
-      @media (--from-small) {
-        padding:
-          0
-          max(
-            token(--space-16),
-            calc(token(--space-16) + env(safe-area-inset-right))
-          )
-          0
-          max(
-            token(--space-16),
-            calc(token(--space-16) + env(safe-area-inset-left))
-          );
-      }
-    }
-
-    &[data-container-dimension='medium'] {
-      max-inline-size: token(--container-medium);
-
-      @media (--from-small) {
-        padding:
-          0
-          max(
-            token(--space-32),
-            calc(token(--space-32) + env(safe-area-inset-right))
-          )
-          0
-          max(
-            token(--space-32),
-            calc(token(--space-32) + env(safe-area-inset-left))
-          );
-      }
-    }
-
-    &[data-container-dimension='large'] {
-      max-inline-size: token(--container-large);
-
-      @media (--from-small) {
-        padding:
-          0
-          max(
-            token(--space-32),
-            calc(token(--space-32) + env(safe-area-inset-right))
-          )
-          0
-          max(
-            token(--space-32),
-            calc(token(--space-32) + env(safe-area-inset-left))
-          );
-      }
-    }
-
-    &[data-container-dimension='full'] {
-      max-inline-size: 100%;
-
-      @media (--from-small) {
-        padding: 0 token(--space-32);
-      }
-    }
-
-    &[data-container-padding='false'] {
-      padding: 0;
+    @media (--from-small) {
+      padding:
+        0
+        max(
+          token(--space-16),
+          calc(token(--space-16) + env(safe-area-inset-right))
+        )
+        0
+        max(
+          token(--space-16),
+          calc(token(--space-16) + env(safe-area-inset-left))
+        );
     }
   }
+
+  &[data-container-dimension='medium'] {
+    max-inline-size: token(--container-medium);
+
+    @media (--from-small) {
+      padding:
+        0
+        max(
+          token(--space-32),
+          calc(token(--space-32) + env(safe-area-inset-right))
+        )
+        0
+        max(
+          token(--space-32),
+          calc(token(--space-32) + env(safe-area-inset-left))
+        );
+    }
+  }
+
+  &[data-container-dimension='large'] {
+    max-inline-size: token(--container-large);
+
+    @media (--from-small) {
+      padding:
+        0
+        max(
+          token(--space-32),
+          calc(token(--space-32) + env(safe-area-inset-right))
+        )
+        0
+        max(
+          token(--space-32),
+          calc(token(--space-32) + env(safe-area-inset-left))
+        );
+    }
+  }
+
+  &[data-container-dimension='full'] {
+    max-inline-size: 100%;
+
+    @media (--from-small) {
+      padding: 0 token(--space-32);
+    }
+  }
+
+  &[data-container-padding='false'] {
+    padding: 0;
+  }
 }
+

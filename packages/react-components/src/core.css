@@ -1,10 +1,7 @@
 @import 'https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,200;0,600;0,800;1,200;1,600;1,800&display=swap';
-
-@layer core, utilties, components, overrides, themes;
-
-@import './core/basic.css' layer(core);
-@import './core/elevations.css' layer(core);
-@import './core/typography.css' layer(core);
+@import './core/basic.css';
+@import './core/elevations.css';
+@import './core/typography.css';
 @import './core/utils/media.css';
 @import './core/utils/vibrancy.css';
 @import './core/utils/elevation.css';

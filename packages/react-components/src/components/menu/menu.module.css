@@ -1,24 +1,23 @@
 @import '../../core/utils/vibrancy.css';
 
-@layer components {
-  .Menu {
+.Menu {
 
-    @mixin vibrancy;
+  @mixin vibrancy;
 
-    list-style-type: none;
-    background-color: var(--vibrancy-background);
-    border: 1px solid var(--dimmed-1);
-    border-radius: token(--radius-24);
-    overflow: hidden;
-    position: relative;
+  list-style-type: none;
+  background-color: var(--vibrancy-background);
+  border: 1px solid var(--dimmed-1);
+  border-radius: token(--radius-24);
+  overflow: hidden;
+  position: relative;
 
-    &[data-menu-should-scroll='true'] {
-      max-height: var(--max-height);
-      overflow: auto;
-    }
+  &[data-menu-should-scroll='true'] {
+    max-height: var(--max-height);
+    overflow: auto;
+  }
 
-    & hr {
-      margin: 0 token(--space-8);
-    }
+  & hr {
+    margin: 0 token(--space-8);
   }
 }
+

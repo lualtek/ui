@@ -1,8 +1,7 @@
-@layer components {
-  .Separator {
-    border: 0;
-    margin: var(--v-padding, 0) 0;
-    block-size: 1px;
-    border-bottom: 1px solid var(--dimmed-2);
-  }
+.Separator {
+  border: 0;
+  margin: var(--v-padding, 0) 0;
+  block-size: 1px;
+  border-bottom: 1px solid var(--dimmed-2);
 }
+
