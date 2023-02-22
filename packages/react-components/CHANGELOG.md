@@ -1,5 +1,13 @@
 # @lualtek/react-components
 
+## 3.0.1
+
+### Patch Changes
+
+- 9250e27: Fix default elevations
+- 9e10e3e: Remove css layering
+  - @lualtek/icons@3.0.1
+
 ## 3.0.0
 
 ### Major Changes
