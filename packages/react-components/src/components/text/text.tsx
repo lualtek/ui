@@ -25,7 +25,7 @@ export type TextProps = {
    * Set the font weight of the text. The values are
    * consistent with the typography system.
    */
-  weight?: 'light' | 'regular' | 'bold' ;
+  weight?: 'light' | 'regular' | 'semibold' | 'bold' ;
   /**
    * Set the maximum width of the text after which it will wrap.
    */

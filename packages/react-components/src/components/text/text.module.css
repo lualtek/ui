@@ -113,6 +113,10 @@
   }
 
   &[data-text-weight='regular'] {
+    font-weight: token(--font-weight-regular);
+  }
+
+  &[data-text-weight='semibold'] {
     font-weight: token(--font-weight-semi-bold);
   }
 
