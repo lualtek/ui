@@ -27,6 +27,7 @@ const Template: ComponentStory<typeof Popover> = args => (
           Lorem ipsum dolor sit amet consectetur adipisicing elit.
           Distinctio aliquam exercitationem ut? Molestias repellat facilis totam non.
         </div>
+        <div>ciao</div>
       </Popover.Content>
     </Popover>
   </Stack>

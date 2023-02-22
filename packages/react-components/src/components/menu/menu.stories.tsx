@@ -15,7 +15,12 @@ const Template: ComponentStory<typeof Menu> = args => (
   <Menu {...args}>
     <Menu.Item value="2" padding={false}>List item text</Menu.Item>
     <Menu.Item value="3" padding={false}>List item text</Menu.Item>
-    <Menu.Item value="4" padding={false}>List item text List item textList item textList item textList item text</Menu.Item>
+    <Menu.Item
+      value="4"
+      padding={false}
+    >
+      List item text List item textList item textList item textList item text
+    </Menu.Item>
     <Menu.Separator />
     <Menu.Item value="4" padding={false}>List item text</Menu.Item>
   </Menu>

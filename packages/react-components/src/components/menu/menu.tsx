@@ -5,7 +5,7 @@ import {
 } from 'react';
 import { RovingTabIndexProvider } from 'react-roving-tabindex';
 
-import { Elevator, Polymorphic, Stack } from '@/components';
+import { Polymorphic, Stack } from '@/components';
 
 import styles from './menu.module.css';
 import { MenuItem, MenuItemProps } from './menu-item/menu-item';
@@ -49,22 +49,20 @@ export const Menu = forwardRef<HTMLUListElement, MenuProps>(({
   ), [maxHeight]);
 
   return (
-    <Elevator resting={2}>
-      <Stack
-        as="ul"
-        ref={forwardedRef}
-        className={clsx(styles.Menu, className)}
-        style={{ ...computedStyle, ...style }}
-        data-menu-should-scroll={Boolean(maxHeight)}
-        vPadding={8}
-        role="menu"
-        {...otherProps}
-      >
-        <RovingTabIndexProvider options={{ direction: 'vertical', loopAround: true }}>
-          {children}
-        </RovingTabIndexProvider>
-      </Stack>
-    </Elevator>
+    <Stack
+      as="ul"
+      ref={forwardedRef}
+      className={clsx(styles.Menu, className)}
+      style={{ ...computedStyle, ...style }}
+      data-menu-should-scroll={Boolean(maxHeight)}
+      vPadding={8}
+      role="menu"
+      {...otherProps}
+    >
+      <RovingTabIndexProvider options={{ direction: 'vertical', loopAround: true }}>
+        {children}
+      </RovingTabIndexProvider>
+    </Stack>
   );
 }) as MenuComponent;
 

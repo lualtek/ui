@@ -3,6 +3,8 @@ import * as PopoverPrimitive from '@radix-ui/react-popover';
 import { domAnimation, LazyMotion, m } from 'framer-motion';
 import { useMemo } from 'react';
 
+import { Elevator } from '@/components';
+
 export type PopoverContentProps = PopoverPrimitive.PopoverContentProps & {
   showArrow?: boolean;
   arrowColor?: string;
@@ -50,6 +52,7 @@ export const PopoverContent = ({
 
   const renderContent = useMemo(() => (
     <PopoverPrimitive.Content asChild sideOffset={Number(offset)} side={side} {...otherProps}>
+
       <m.div
         initial="hidden"
         animate="visible"
@@ -61,7 +64,9 @@ export const PopoverContent = ({
           damping: 30,
         }}
       >
-        {children}
+        <Elevator resting={2}>
+          {children}
+        </Elevator>
         {showArrow && <PopoverPrimitive.Arrow fill={arrowColor} />}
       </m.div>
     </PopoverPrimitive.Content>
