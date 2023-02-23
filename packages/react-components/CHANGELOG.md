@@ -1,5 +1,15 @@
 # @lualtek/react-components
 
+## 3.1.0
+
+### Minor Changes
+
+- 08caf8e: Add labelPosition prop to selection controls
+
+### Patch Changes
+
+- @lualtek/icons@3.1.0
+
 ## 3.0.3
 
 ### Patch Changes
