@@ -18,6 +18,10 @@ export type SwitchProps = SwitchPrimitive.SwitchProps & {
    * Assign a label to the input. If passed an ID is automatically generated and used internally
    */
   label?: ReactNode;
+  /**
+   * Set the position of the label relative to the switch.
+   */
+  labelPosition?: 'start' | 'end';
 };
 
 type Properties = Record<NonNullable<SwitchProps['dimension']>, {
@@ -27,11 +31,9 @@ type Properties = Record<NonNullable<SwitchProps['dimension']>, {
   };
 }>
 
-export const Switch = forwardRef<
-ElementRef<typeof SwitchPrimitive.Root>,
-SwitchProps
->(({
+export const Switch = forwardRef<ElementRef<typeof SwitchPrimitive.Root>, SwitchProps>(({
   dimension = 'regular',
+  labelPosition = 'end',
   className,
   label,
   ...otherProps
@@ -61,7 +63,7 @@ SwitchProps
     <LazyMotion features={domMax} strict>
       <Stack
         as={m.div}
-        direction="row"
+        direction={labelPosition === 'end' ? 'row' : 'row-reverse'}
         vAlign="start"
         columnGap={8}
         fill={false}

@@ -31,6 +31,10 @@ export type CheckboxProps = InputHTMLAttributes<HTMLInputElement> & {
    * Assign a label to the input. If passed an ID is automatically generated and used internally
    */
   label?: ReactNode;
+  /**
+   * Set the position of the label relative to the checkbox.
+   */
+  labelPosition?: 'start' | 'end';
 }
 
 type Properties = Record<NonNullable<CheckboxProps['dimension']>, {
@@ -44,6 +48,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(({
   className,
   disabled,
   dimension = 'regular',
+  labelPosition = 'end',
   onChange,
   indeterminate,
   label,
@@ -74,7 +79,13 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(({
 
   return (
     <LazyMotion features={domAnimation} strict>
-      <Stack direction="row" vAlign="start" columnGap={8} fill={false} inline>
+      <Stack
+        direction={labelPosition === 'end' ? 'row' : 'row-reverse'}
+        vAlign="start"
+        columnGap={8}
+        fill={false}
+        inline
+      >
         <m.span
           className={styles.InputWrapper}
           whileTap={{ scale: 1.15 }}
