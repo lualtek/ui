@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/prefer-reduce-type-parameter */
 import jsonTokens from '@lualtek/tokens/platforms/web/tokens.json';
 import constate from 'constate';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 type Breakpoints = {
   extraSmall: string;
@@ -34,9 +34,15 @@ const DEFAULT_BREAKPOINTS_MATCHES: Record<BreakpointsKeys, boolean> = {
 const matchMediaFactory = (breakpointKey: BreakpointsKeys) => window.matchMedia(`(min-width: ${DEFAULT_BREAKPOINTS[breakpointKey]})`);
 
 const useResponsive = () => {
-  const [matches, setMatches] = useState<Record<BreakpointsKeys, boolean>>(() => {
+  const [matches, setMatches] = useState<Record<BreakpointsKeys, boolean>>(DEFAULT_BREAKPOINTS_MATCHES);
+
+  const onChange = useCallback((
+    key: BreakpointsKeys,
+  ) => (event: MediaQueryListEvent) => setMatches(old => ({ ...old, [key]: event.matches })), []);
+
+  useEffect(() => {
     if (typeof window === 'undefined') {
-      return DEFAULT_BREAKPOINTS_MATCHES;
+      return;
     }
 
     const results = breakpointKeys.reduce((acc, src) => {
@@ -44,14 +50,10 @@ const useResponsive = () => {
       return acc;
     }, {} as Record<BreakpointsKeys, boolean>);
 
-    return results;
-  });
+    setMatches(results);
+  }, []);
 
   useEffect(() => {
-    const onChange = (
-      key: BreakpointsKeys,
-    ) => (event: MediaQueryListEvent) => setMatches(old => ({ ...old, [key]: event.matches }));
-
     const mediaQueryList = breakpointKeys.reduce((acc, src) => {
       acc[src] = matchMediaFactory(src);
       acc[src].addEventListener('change', onChange(src));
@@ -63,7 +65,7 @@ const useResponsive = () => {
         src => mediaQueryList[src].removeEventListener('change', onChange(src)),
       );
     };
-  }, []);
+  }, [onChange]);
 
   return { matches };
 };
