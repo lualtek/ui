@@ -1,84 +1,86 @@
-.InputWrapper {
-  line-height: 0;
-}
-
-.CheckboxInput {
-  --w: 24px;
-  --h: 24px;
-
-  appearance: none;
-  inline-size: var(--w);
-  block-size: var(--h);
-  max-inline-size: var(--w);
-  max-block-size: var(--h);
-  color: var(--cta-foreground);
-  border-radius: token(--radius-8);
-  position: relative;
-  background-color: var(--vibrancy-background-mid);
-  box-shadow: 0 0 0 1px var(--global-background), inset 0 0 0 1px var(--dimmed-2);
-  flex-shrink: 0;
-  flex-grow: 0;
-
-  &::after {
-    content: '';
-    display: none;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -80%) rotate(-45deg);
-    inline-size: 50%;
-    block-size: 27%;
-    border-left: 2px solid currentcolor;
-    border-bottom: 2px solid currentcolor;
+@layer components {
+  .InputWrapper {
+    line-height: 0;
   }
 
-  &:active {
-    background-color: var(--vibrancy-background-hard);
-  }
+  .CheckboxInput {
+    --w: 24px;
+    --h: 24px;
 
-  &:checked,
-  &:indeterminate {
-    background: var(--cta-default);
-    box-shadow: 0 0 0 1px var(--global-background);
+    appearance: none;
+    inline-size: var(--w);
+    block-size: var(--h);
+    max-inline-size: var(--w);
+    max-block-size: var(--h);
+    color: var(--cta-foreground);
+    border-radius: token(--radius-8);
+    position: relative;
+    background-color: var(--vibrancy-background-mid);
+    box-shadow: 0 0 0 1px var(--global-background), inset 0 0 0 1px var(--dimmed-2);
+    flex-shrink: 0;
+    flex-grow: 0;
 
     &::after {
-      display: block;
+      content: '';
+      display: none;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -80%) rotate(-45deg);
+      inline-size: 50%;
+      block-size: 27%;
+      border-left: 2px solid currentcolor;
+      border-bottom: 2px solid currentcolor;
+    }
+
+    &:active {
+      background-color: var(--vibrancy-background-hard);
+    }
+
+    &:checked,
+    &:indeterminate {
+      background: var(--cta-default);
+      box-shadow: 0 0 0 1px var(--global-background);
+
+      &::after {
+        display: block;
+      }
+    }
+
+    &:disabled {
+      color: var(--global-disabled-foreground);
+      background-color: var(--global-disabled-background);
+      cursor: not-allowed;
+    }
+
+    &[data-control-dimension='small'] {
+      --w: 16px;
+      --h: 16px;
+
+      border-radius: token(--radius-4);
+    }
+
+    &:indeterminate::after {
+      border-left: 0;
+      block-size: 2px;
+      transform: translate(-50%, -50%);
     }
   }
-
-  &:disabled {
-    color: var(--global-disabled-foreground);
-    background-color: var(--global-disabled-background);
-    cursor: not-allowed;
-  }
-
-  &[data-control-dimension='small'] {
-    --w: 16px;
-    --h: 16px;
-
-    border-radius: token(--radius-8);
-  }
-
-  &:indeterminate::after {
-    border-left: 0;
-    block-size: 2px;
-    transform: translate(-50%, -50%);
-  }
 }
+@layer overrides {
+  .RadioInput {
 
-.RadioInput {
-
-  /* stylelint-disable-next-line value-keyword-case */
-  composes: CheckboxInput;
-  border-radius: 100%;
-
-  &::after {
-    border: 0;
+    /* stylelint-disable-next-line value-keyword-case */
+    composes: CheckboxInput;
     border-radius: 100%;
-    transform: translate(-50%, -50%);
-    inline-size: 50%;
-    block-size: 50%;
-    background-color: currentcolor;
+
+    &::after {
+      border: 0;
+      border-radius: 100%;
+      transform: translate(-50%, -50%);
+      inline-size: 50%;
+      block-size: 50%;
+      background-color: currentcolor;
+    }
   }
 }
-

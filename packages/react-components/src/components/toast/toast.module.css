@@ -1,79 +1,80 @@
 @import '../../core/utils/vibrancy.css';
 
-.Toast {
+@layer components {
+  .Toast {
 
-  @mixin vibrancy;
+    @mixin vibrancy;
 
-  background: var(--toast-bg);
-  border-radius: token(--radius-24);
-  overflow: hidden;
+    background: var(--toast-bg);
+    border-radius: token(--radius-24);
+    overflow: hidden;
 
-  & p {
-    font-size: token(--font-size-16);
+    & p {
+      font-size: token(--font-size-16);
+    }
+
+    &[data-toast-kind='neutral'] {
+      --toast-bg: var(--vibrancy-background-mid);
+      --toast-fg: var(--global-foreground);
+      --toast-action-fg: var(--global-background);
+    }
+
+    &[data-toast-kind='positive'] {
+      --toast-bg: var(--vibrancy-background-mid);
+      --toast-fg: var(--highlight-green-foreground);
+      --toast-action-fg: var(--highlight-green-background);
+    }
+
+    &[data-toast-kind='warning'] {
+      --toast-bg: var(--vibrancy-background-mid);
+      --toast-fg: var(--highlight-yellow-foreground);
+      --toast-action-fg: var(--highlight-yellow-background);
+    }
+
+    &[data-toast-kind='info'] {
+      --toast-bg: var(--vibrancy-background-mid);
+      --toast-fg: var(--highlight-blue-foreground);
+      --toast-action-fg: var(--highlight-blue-background);
+    }
+
+    &[data-toast-kind='danger'] {
+      --toast-bg: var(--vibrancy-background-mid);
+      --toast-fg: var(--highlight-red-foreground);
+      --toast-action-fg: var(--highlight-red-background);
+    }
   }
 
-  &[data-toast-kind='neutral'] {
-    --toast-bg: var(--vibrancy-background-mid);
-    --toast-fg: var(--global-foreground);
-    --toast-action-fg: var(--global-background);
-  }
-
-  &[data-toast-kind='positive'] {
-    --toast-bg: var(--vibrancy-background-mid);
-    --toast-fg: var(--highlight-green-foreground);
-    --toast-action-fg: var(--highlight-green-background);
-  }
-
-  &[data-toast-kind='warning'] {
-    --toast-bg: var(--vibrancy-background-mid);
-    --toast-fg: var(--highlight-yellow-foreground);
-    --toast-action-fg: var(--highlight-yellow-background);
-  }
-
-  &[data-toast-kind='info'] {
-    --toast-bg: var(--vibrancy-background-mid);
-    --toast-fg: var(--highlight-blue-foreground);
-    --toast-action-fg: var(--highlight-blue-background);
-  }
-
-  &[data-toast-kind='danger'] {
-    --toast-bg: var(--vibrancy-background-mid);
-    --toast-fg: var(--highlight-red-foreground);
-    --toast-action-fg: var(--highlight-red-background);
-  }
-}
-
-.Icon {
-  color: var(--toast-fg);
-  flex-shrink: 0;
-  flex-grow: 0;
-}
-
-
-.Viewport {
-  display: flex;
-  flex-direction: column;
-  gap: token(--space-8);
-  position: fixed;
-  inset: auto 0 0 auto;
-  padding: token(--space-24);
-  list-style: none;
-}
-
-
-.Title {
-  color: var(--toast-fg);
-}
-
-.Action {
-  color: var(--toast-action-fg);
-  background-color: var(--toast-fg);
-  flex-grow: 0;
-
-  &:active {
+  .Icon {
     color: var(--toast-fg);
-    background-color: var(--toast-action-fg);
-    opacity: 80%;
+    flex-shrink: 0;
+    flex-grow: 0;
+  }
+
+
+  .Viewport {
+    display: flex;
+    flex-direction: column;
+    gap: token(--space-8);
+    position: fixed;
+    inset: auto 0 0 auto;
+    padding: token(--space-24);
+    list-style: none;
   }
 }
+@layer overrides {
+  .Title {
+    color: var(--toast-fg);
+  }
 
+  .Action {
+    color: var(--toast-action-fg);
+    background-color: var(--toast-fg);
+    flex-grow: 0;
+
+    &:active {
+      color: var(--toast-fg);
+      background-color: var(--toast-action-fg);
+      opacity: 80%;
+    }
+  }
+}

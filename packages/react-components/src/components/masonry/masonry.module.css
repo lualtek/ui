@@ -1,14 +1,15 @@
-.Masonry {
-  display: flex;
-  width: auto;
-  grid-gap: var(--gap);
-}
+@layer components {
+  .Masonry {
+    display: flex;
+    width: auto;
+    grid-gap: var(--gap);
+  }
 
-.Column {
-  background-clip: padding-box;
+  .Column {
+    background-clip: padding-box;
 
-  & > * {
-    margin-bottom: var(--gap);
+    & > * {
+      margin-bottom: var(--gap);
+    }
   }
 }
-

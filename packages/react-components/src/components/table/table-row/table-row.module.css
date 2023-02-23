@@ -1,13 +1,14 @@
-.TableRow {
-  & + & {
-    border-top: 1px solid transparent;
-  }
+@layer components {
+  .TableRow {
+    & + & {
+      border-top: 1px solid transparent;
+    }
 
-  @nest [data-table-stripes='true'] &:nth-child(even) {
-    background-color: var(--dimmed-0);
-  }
-  @nest [data-table-separators='true'] & + & {
-    border-color: var(--dimmed-2);
+    @nest [data-table-stripes='true'] &:nth-child(even) {
+      background-color: var(--dimmed-0);
+    }
+    @nest [data-table-separators='true'] & + & {
+      border-color: var(--dimmed-2);
+    }
   }
 }
-

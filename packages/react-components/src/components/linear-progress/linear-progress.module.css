@@ -1,83 +1,85 @@
-.LinearProgress {
-  position: relative;
-}
-
-.Progress {
-  --progress-height: token(--space-4);
-  --track-color: var(--dimmed-1);
-  --fill-color: var(--cta-default);
-
-  position: relative;
-  width: 100%;
-  border: none;
-  vertical-align: baseline;
-  appearance: none;
-  overflow: hidden;
-  display: block;
-  background: var(--track-color);
-  height: var(--progress-height);
-  border-radius: 1e5px;
-
-  &[data-progress-dimension='big'] {
-    --progress-height: token(--space-8);
+@layer components {
+  .LinearProgress {
+    position: relative;
   }
 
-  &::-webkit-progress-bar {
-    background-color: transparent;
-  }
+  .Progress {
+    --progress-height: token(--space-4);
+    --track-color: var(--dimmed-1);
+    --fill-color: var(--cta-default);
 
-  &::-webkit-progress-value {
-    background: var(--fill-color);
+    position: relative;
+    width: 100%;
+    border: none;
+    vertical-align: baseline;
+    appearance: none;
+    overflow: hidden;
+    display: block;
+    background: var(--track-color);
+    height: var(--progress-height);
     border-radius: 1e5px;
-    transition: width 200ms ease-out;
+
+    &[data-progress-dimension='big'] {
+      --progress-height: token(--space-8);
+    }
+
+    &::-webkit-progress-bar {
+      background-color: transparent;
+    }
+
+    &::-webkit-progress-value {
+      background: var(--fill-color);
+      border-radius: 1e5px;
+      transition: width 200ms ease-out;
+    }
+
+    &::-moz-progress-bar {
+      background: var(--fill-color);
+    }
+
+    &:not([value])::-moz-progress-bar {
+      background: transparent;
+    }
+
+    &:indeterminate {
+      background-size: 200% 100%;
+      background-image:
+        linear-gradient(
+          to right,
+          transparent 50%,
+          var(--fill-color) 50%,
+          var(--fill-color) 60%,
+          transparent 60%,
+          transparent 71.5%,
+          var(--fill-color) 71.5%,
+          var(--fill-color) 84%,
+          transparent 84%
+        );
+      animation: progress-stripes 2s linear infinite;
+    }
   }
 
-  &::-moz-progress-bar {
-    background: var(--fill-color);
+  .Percentage {
+    position: absolute;
+    left: var(--offset);
+    transition: left 200ms ease-out;
+    transform: translateX(var(--translation));
   }
 
-  &:not([value])::-moz-progress-bar {
-    background: transparent;
-  }
+  @keyframes progress-stripes {
+    0% {
+      background-size: 200% 100%;
+      background-position: left -31.25% top 0%;
+    }
 
-  &:indeterminate {
-    background-size: 200% 100%;
-    background-image:
-      linear-gradient(
-        to right,
-        transparent 50%,
-        var(--fill-color) 50%,
-        var(--fill-color) 60%,
-        transparent 60%,
-        transparent 71.5%,
-        var(--fill-color) 71.5%,
-        var(--fill-color) 84%,
-        transparent 84%
-      );
-    animation: progress-stripes 2s linear infinite;
-  }
-}
+    50% {
+      background-size: 800% 100%;
+      background-position: left -49% top 0%;
+    }
 
-.Percentage {
-  position: absolute;
-  left: var(--offset);
-  transition: left 200ms ease-out;
-  transform: translateX(var(--translation));
-}
-
-@keyframes progress-stripes {
-  0% {
-    background-size: 200% 100%;
-    background-position: left -31.25% top 0%;
-  }
-
-  50% {
-    background-size: 800% 100%;
-    background-position: left -49% top 0%;
-  }
-
-  100% {
-    background-size: 400% 100%;
-    background-position: left -102% top 0%;
+    100% {
+      background-size: 400% 100%;
+      background-position: left -102% top 0%;
+    }
   }
 }

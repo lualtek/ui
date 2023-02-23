@@ -1,5 +1,6 @@
-.TableCheckbox {
-  display: block;
-  backdrop-filter: none;
+@layer components {
+  .TableCheckbox {
+    display: block;
+    backdrop-filter: none;
+  }
 }
-

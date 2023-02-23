@@ -1,152 +1,154 @@
-.BaseField {
-  --date-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none'%3E%3Cpath fill='%23000' fill-rule='evenodd' d='M4 12a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1ZM10 12a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-1ZM4 17a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1ZM10 17a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-1ZM16 12a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-1ZM6 0a1 1 0 0 1 1 1v3a1 1 0 0 1-2 0V1a1 1 0 0 1 1-1ZM18 0a1 1 0 0 1 1 1v3a1 1 0 1 1-2 0V1a1 1 0 0 1 1-1Z' clip-rule='evenodd'/%3E%3Cpath fill='%23000' fill-rule='evenodd' d='M2 5a1 1 0 0 1 1-1h18a1 1 0 0 1 1 1v2H2V5ZM0 8V5a3 3 0 0 1 3-3h18a3 3 0 0 1 3 3v15a3 3 0 0 1-3 3H3a3 3 0 0 1-3-3V8Zm22 1v11a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V9h20Z' clip-rule='evenodd' opacity='.55'/%3E%3C/svg%3E");
-  --time-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none'%3E%3Cg fill='%23000' fill-rule='evenodd' clip-path='url(%23a)' clip-rule='evenodd'%3E%3Cpath d='M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2ZM0 12C0 5.373 5.373 0 12 0s12 5.373 12 12-5.373 12-12 12S0 18.627 0 12Z' opacity='.55'/%3E%3Cpath d='M12 5a1 1 0 0 1 1 1v5h5a1 1 0 1 1 0 2h-6a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='a'%3E%3Cpath fill='%23fff' d='M0 0h24v24H0z'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E");
+@layer components {
+  .BaseField {
+    --date-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none'%3E%3Cpath fill='%23000' fill-rule='evenodd' d='M4 12a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1ZM10 12a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-1ZM4 17a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1ZM10 17a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-1ZM16 12a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-1ZM6 0a1 1 0 0 1 1 1v3a1 1 0 0 1-2 0V1a1 1 0 0 1 1-1ZM18 0a1 1 0 0 1 1 1v3a1 1 0 1 1-2 0V1a1 1 0 0 1 1-1Z' clip-rule='evenodd'/%3E%3Cpath fill='%23000' fill-rule='evenodd' d='M2 5a1 1 0 0 1 1-1h18a1 1 0 0 1 1 1v2H2V5ZM0 8V5a3 3 0 0 1 3-3h18a3 3 0 0 1 3 3v15a3 3 0 0 1-3 3H3a3 3 0 0 1-3-3V8Zm22 1v11a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V9h20Z' clip-rule='evenodd' opacity='.55'/%3E%3C/svg%3E");
+    --time-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none'%3E%3Cg fill='%23000' fill-rule='evenodd' clip-path='url(%23a)' clip-rule='evenodd'%3E%3Cpath d='M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2ZM0 12C0 5.373 5.373 0 12 0s12 5.373 12 12-5.373 12-12 12S0 18.627 0 12Z' opacity='.55'/%3E%3Cpath d='M12 5a1 1 0 0 1 1 1v5h5a1 1 0 1 1 0 2h-6a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='a'%3E%3Cpath fill='%23fff' d='M0 0h24v24H0z'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E");
 
-  margin: 0;
-  text-overflow: ellipsis;
-  font-size: var(--font-size);
-  font-weight: token(--font-weight-semi-bold);
-  font-family: inherit;
-  line-height: 1;
-  appearance: none;
-  inline-size: 100%;
-  box-sizing: border-box;
-  overflow: hidden;
-  color: inherit;
-  background-color: var(--vibrancy-background-soft);
-  padding: 0 var(--field-padding);
-  display: flex;
-  caret-color: var(--cta-default);
-  outline-offset: 2px;
-  min-block-size: token(--space-48);
-  border: 1px solid var(--vibrancy-background-mid);
-  border-radius: token(--radius-16);
+    margin: 0;
+    text-overflow: ellipsis;
+    font-size: var(--font-size);
+    font-weight: token(--font-weight-semi-bold);
+    font-family: inherit;
+    line-height: 1;
+    appearance: none;
+    inline-size: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    color: inherit;
+    background-color: var(--vibrancy-background-soft);
+    padding: 0 var(--field-padding);
+    display: flex;
+    caret-color: var(--cta-default);
+    outline-offset: 2px;
+    min-block-size: token(--space-48);
+    border: 1px solid var(--vibrancy-background-mid);
+    border-radius: token(--radius-16);
 
 
-  &::-webkit-calendar-picker-indicator {
-    background-image: none;
-    background-color: currentcolor;
-    mask-size: cover;
-    mask-origin: content-box;
-    mask-repeat: no-repeat;
-    width: 1.2em;
-    height: 1.2em;
-    padding: 0;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    right: var(--field-padding);
-  }
+    &::-webkit-calendar-picker-indicator {
+      background-image: none;
+      background-color: currentcolor;
+      mask-size: cover;
+      mask-origin: content-box;
+      mask-repeat: no-repeat;
+      width: 1.2em;
+      height: 1.2em;
+      padding: 0;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: var(--field-padding);
+    }
 
-  &[type='time']::-webkit-calendar-picker-indicator {
-    mask-image: var(--time-icon);
-  }
+    &[type='time']::-webkit-calendar-picker-indicator {
+      mask-image: var(--time-icon);
+    }
 
-  &:where([type='date'], [type='month'], [type='week'], [type='datetime-local'])::-webkit-calendar-picker-indicator {
-    mask-image: var(--date-icon);
-  }
+    &:where([type='date'], [type='month'], [type='week'], [type='datetime-local'])::-webkit-calendar-picker-indicator {
+      mask-image: var(--date-icon);
+    }
 
-  /* @nest [data-textfield-has-icon='true'] &::-webkit-calendar-picker-indicator {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    right: var(--field-padding);
-  } */
+    /* @nest [data-textfield-has-icon='true'] &::-webkit-calendar-picker-indicator {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: var(--field-padding);
+    } */
 
-  &:-moz-ui-invalid {
-    box-shadow: none;
-  }
-
-  &::placeholder {
-    color: var(--dimmed-5);
-  }
-
-  &:focus-visible {
-    background-color: transparent;
-  }
-
-  &:disabled {
-    cursor: not-allowed;
-    border-color: transparent;
-    color: var(--global-disabled-foreground);
-    background-color: var(--global-disabled-background);
+    &:-moz-ui-invalid {
+      box-shadow: none;
+    }
 
     &::placeholder {
-      color: var(--dimmed-6);
+      color: var(--dimmed-5);
+    }
+
+    &:focus-visible {
+      background-color: transparent;
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      border-color: transparent;
+      color: var(--global-disabled-foreground);
+      background-color: var(--global-disabled-background);
+
+      &::placeholder {
+        color: var(--dimmed-6);
+      }
+    }
+
+    &[readonly] {
+      border: 1px dashed var(--dimmed-4);
+      box-shadow: none;
+      cursor: default;
+    }
+
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus,
+    &:-webkit-autofill:active {
+      -webkit-text-fill-color: var(--vibrancy-foreground);
+      box-shadow: 0 0 0 100px var(--vibrancy-background-soft) inset, 0 0 0 100px var(--global-background) inset;
+
+      &::selection {
+        -webkit-text-fill-color: var(--dimmed-0);
+      }
+    }
+
+    /* stylelint-disable-next-line no-descending-specificity */
+    &:is(:invalid, [data-basefield-invalid='true'], :out-of-range),
+    &:is(:invalid, [data-basefield-invalid='true'], :out-of-range):focus-visible {
+      background-color: var(--vibrancy-background-red);
+      outline-color: var(--highlight-red-foreground);
+      border-color: transparent;
+    }
+
+
+    &[type='number'] {
+      appearance: textfield;
+    }
+
+    &[type='number']::-webkit-inner-spin-button,
+    &[type='number']::-webkit-outer-spin-button {
+      display: none;
+    }
+
+    &[type='search'] {
+      appearance: none;
+    }
+
+    &[type='search']::-webkit-search-cancel-button,
+    &[type='search']::-webkit-search-decoration {
+      appearance: none;
     }
   }
 
-  &[readonly] {
-    border: 1px dashed var(--dimmed-4);
-    box-shadow: none;
-    cursor: default;
-  }
 
-  &:-webkit-autofill,
-  &:-webkit-autofill:hover,
-  &:-webkit-autofill:focus,
-  &:-webkit-autofill:active {
-    -webkit-text-fill-color: var(--vibrancy-foreground);
-    box-shadow: 0 0 0 100px var(--vibrancy-background-soft) inset, 0 0 0 100px var(--global-background) inset;
+  textarea.BaseField {
+    block-size: auto;
+    min-block-size: token(--space-32);
+    line-height: token(--font-lh-standard);
+    resize: vertical;
+    padding:
+      calc(token(--space-24) - token(--space-4))
+      calc(var(--field-padding) + token(--space-16))
+      calc(var(--field-padding) / 2)
+      var(--field-padding);
 
-    &::selection {
-      -webkit-text-fill-color: var(--dimmed-0);
+    &::-webkit-datetime-edit-text {
+      opacity: 30%;
+    }
+
+    &::-webkit-calendar-picker-indicator {
+      color: var(--global-foreground);
+    }
+
+    &:-moz-ui-invalid {
+      box-shadow: none;
+    }
+
+    &::-webkit-calendar-picker-indicator:hover {
+      background-color: transparent;
     }
   }
-
-  /* stylelint-disable-next-line no-descending-specificity */
-  &:is(:invalid, [data-basefield-invalid='true'], :out-of-range),
-  &:is(:invalid, [data-basefield-invalid='true'], :out-of-range):focus-visible {
-    background-color: var(--vibrancy-background-red);
-    outline-color: var(--highlight-red-foreground);
-    border-color: transparent;
-  }
-
-
-  &[type='number'] {
-    appearance: textfield;
-  }
-
-  &[type='number']::-webkit-inner-spin-button,
-  &[type='number']::-webkit-outer-spin-button {
-    display: none;
-  }
-
-  &[type='search'] {
-    appearance: none;
-  }
-
-  &[type='search']::-webkit-search-cancel-button,
-  &[type='search']::-webkit-search-decoration {
-    appearance: none;
-  }
 }
-
-textarea.BaseField {
-  block-size: auto;
-  min-block-size: token(--space-32);
-  line-height: token(--font-lh-standard);
-  resize: vertical;
-  padding:
-    calc(token(--space-24) - token(--space-4))
-    calc(var(--field-padding) + token(--space-16))
-    calc(var(--field-padding) / 2)
-    var(--field-padding);
-
-  &::-webkit-datetime-edit-text {
-    opacity: 30%;
-  }
-
-  &::-webkit-calendar-picker-indicator {
-    color: var(--global-foreground);
-  }
-
-  &:-moz-ui-invalid {
-    box-shadow: none;
-  }
-
-  &::-webkit-calendar-picker-indicator:hover {
-    background-color: transparent;
-  }
-}
-

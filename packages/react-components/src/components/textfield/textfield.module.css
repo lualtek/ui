@@ -1,101 +1,103 @@
-.Textfield {
-  --factor: 3.5;
-  --field-padding: token(--space-16);
-  --font-size: token(--font-size-16);
+@layer components {
+  .Textfield {
+    --factor: 3.5;
+    --field-padding: token(--space-16);
+    --font-size: token(--font-size-16);
 
-  appearance: none;
-  position: relative;
-  padding: 0;
+    appearance: none;
+    position: relative;
+    padding: 0;
 
-  &[data-textfield-fullwidth='true'] {
-    inline-size: 100%;
+    &[data-textfield-fullwidth='true'] {
+      inline-size: 100%;
+    }
   }
-}
 
-.FieldContainer {
-  position: relative;
-  z-index: 0;
-}
-
-.Label {
-  position: absolute;
-  pointer-events: none;
-  top: token(--space-4);
-  left: var(--field-padding);
-  right: var(--field-padding);
-  transform: translateZ(0);
-
-  @nest [data-textfield-has-icon='true'][data-textfield-icon-position='left'] & {
-    left: calc(var(--field-padding) * var(--factor));
+  .FieldContainer {
+    position: relative;
+    z-index: 0;
   }
-  @nest [data-textfield-has-icon='true'][data-textfield-icon-position='right'] & {
+
+  .Label {
+    position: absolute;
+    pointer-events: none;
+    top: token(--space-4);
     left: var(--field-padding);
-    right: calc(var(--field-padding) * var(--factor));
-  }
-  @nest .Textfield[data-textfield-invalid='true'] & {
-    color: var(--highlight-red-foreground);
-  }
-}
-
-.InputField {
-  padding:
-    calc(token(--space-24) - token(--space-4))
-    var(--field-padding)
-    token(--space-4)
-    var(--field-padding);
-
-  @nest [data-textfield-has-icon='true'][data-textfield-icon-position='right'] & {
-    padding-right: calc(var(--field-padding) * (var(--factor) * 0.95));
-    padding-left: var(--field-padding);
-  }
-  @nest [data-textfield-has-icon='true'][data-textfield-icon-position='left'] & {
-    padding-right: var(--field-padding);
-    padding-left: calc(var(--field-padding) * (var(--factor) * 0.95));
-  }
-}
-
-.Icon {
-  border-radius: token(--radius-4);
-  pointer-events: none;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-
-  @nest [data-textfield-icon-position='left'] & {
-    right: auto;
-    left: calc(var(--field-padding) + (var(--field-padding) / 4));
-  }
-  @nest [data-textfield-icon-position='right'] & {
-    left: auto;
-    right: calc(var(--field-padding) + (var(--field-padding) / 4));
-  }
-  @nest .Textfield[data-textfield-invalid='true'] & {
-    fill: var(--highlight-red-foreground);
-  }
-}
-
-.IconButton {
-  --x: 25%;
-
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%) translateX(var(--x));
-  outline-offset: -0.5em;
-
-  &[data-button-kind='flat']:is(:hover, :active, :focus, [data-button-disabled='true']) {
-    background-color: transparent;
-    backdrop-filter: none;
-  }
-
-  @nest [data-textfield-icon-position='left'] & {
-    --x: -19%;
-
-    right: auto;
-    left: var(--field-padding);
-  }
-  @nest [data-textfield-icon-position='right'] & {
-    left: auto;
     right: var(--field-padding);
+    transform: translateZ(0);
+
+    @nest [data-textfield-has-icon='true'][data-textfield-icon-position='left'] & {
+      left: calc(var(--field-padding) * var(--factor));
+    }
+    @nest [data-textfield-has-icon='true'][data-textfield-icon-position='right'] & {
+      left: var(--field-padding);
+      right: calc(var(--field-padding) * var(--factor));
+    }
+    @nest .Textfield[data-textfield-invalid='true'] & {
+      color: var(--highlight-red-foreground);
+    }
+  }
+
+  .InputField {
+    padding:
+      calc(token(--space-24) - token(--space-4))
+      var(--field-padding)
+      token(--space-4)
+      var(--field-padding);
+
+    @nest [data-textfield-has-icon='true'][data-textfield-icon-position='right'] & {
+      padding-right: calc(var(--field-padding) * (var(--factor) * 0.95));
+      padding-left: var(--field-padding);
+    }
+    @nest [data-textfield-has-icon='true'][data-textfield-icon-position='left'] & {
+      padding-right: var(--field-padding);
+      padding-left: calc(var(--field-padding) * (var(--factor) * 0.95));
+    }
+  }
+
+  .Icon {
+    border-radius: token(--radius-4);
+    pointer-events: none;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+    @nest [data-textfield-icon-position='left'] & {
+      right: auto;
+      left: calc(var(--field-padding) + (var(--field-padding) / 4));
+    }
+    @nest [data-textfield-icon-position='right'] & {
+      left: auto;
+      right: calc(var(--field-padding) + (var(--field-padding) / 4));
+    }
+    @nest .Textfield[data-textfield-invalid='true'] & {
+      fill: var(--highlight-red-foreground);
+    }
   }
 }
+@layer overrides {
+  .IconButton {
+    --x: 25%;
 
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%) translateX(var(--x));
+    outline-offset: -0.5em;
+
+    &[data-button-kind='flat']:is(:hover, :active, :focus, [data-button-disabled='true']) {
+      background-color: transparent;
+      backdrop-filter: none;
+    }
+
+    @nest [data-textfield-icon-position='left'] & {
+      --x: -19%;
+
+      right: auto;
+      left: var(--field-padding);
+    }
+    @nest [data-textfield-icon-position='right'] & {
+      left: auto;
+      right: var(--field-padding);
+    }
+  }
+}
