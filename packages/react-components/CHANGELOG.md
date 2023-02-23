@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 3.1.1
+
+### Patch Changes
+
+- 4a44227: Restore CSS layers
+  - @lualtek/icons@3.1.1
+
 ## 3.1.0
 
 ### Minor Changes
