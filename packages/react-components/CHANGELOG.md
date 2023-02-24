@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 3.1.2
+
+### Patch Changes
+
+- 45b1632: Add missing font style
+  - @lualtek/icons@3.1.2
+
 ## 3.1.1
 
 ### Patch Changes
