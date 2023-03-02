@@ -1,5 +1,14 @@
 # @lualtek/react-components
 
+## 3.2.1
+
+### Patch Changes
+
+- 3a1ecaa: Fix split-button separator color
+- b2e57d5: Fix primary toggle-button hover style
+- 541d9f0: Fix sentiment prop for split-button
+  - @lualtek/icons@3.2.1
+
 ## 3.2.0
 
 ### Patch Changes
