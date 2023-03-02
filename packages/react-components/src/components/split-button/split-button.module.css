@@ -17,8 +17,8 @@
       border-bottom-left-radius: 0;
       box-shadow: inset 1px 0 0 0 var(--separator-color);
 
-      &[data-button-kind='primary'] {
-        --separator-color: hsl(0deg 0% 100% / 30%);
+      &[data-button-kind='primary']:not([aria-disabled='true']) {
+        --separator-color: var(--highlight-brand-background);
 
         background: var(--cta-dark);
       }
