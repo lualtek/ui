@@ -6,10 +6,25 @@ import { useMemo } from 'react';
 import { Elevator } from '@/components';
 
 export type PopoverContentProps = PopoverPrimitive.PopoverContentProps & {
+  /**
+   * Whether to show the arrow pointing to the anchor element.
+   */
   showArrow?: boolean;
+  /**
+   * The color of the arrow
+   */
   arrowColor?: string;
+  /**
+   * The side of the anchor element from which the popover will appear.
+   */
   side?: PopoverPrimitive.PopoverContentProps['side'];
+  /**
+   * The offset from the anchor element.
+   */
   offset?: TokensTypes['space'];
+  /**
+   * Whether to use a portal to render the popover.
+   */
   usePortal?: boolean;
 }
 

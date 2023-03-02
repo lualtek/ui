@@ -34,6 +34,7 @@ export const SplitButton = forwardRef(({
   side,
   align,
   offset,
+  sentiment,
   onClick,
   ...otherProps
 }, forwardedRef) => {
@@ -41,6 +42,7 @@ export const SplitButton = forwardRef(({
     kind,
     dimension,
     disabled,
+    sentiment,
   };
 
   return (
