@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 3.2.2
+
+### Patch Changes
+
+- 3e36693: Fix backdrop-filter glitch con chrome
+  - @lualtek/icons@3.2.2
+
 ## 3.2.1
 
 ### Patch Changes
