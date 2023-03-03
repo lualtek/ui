@@ -1,6 +1,8 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import { Button, IconButton, Stack } from '../..';
+import {
+  Button, Card, IconButton, Stack,
+} from '../..';
 import { Popover } from './popover';
 
 const story: ComponentMeta<typeof Popover> = {
@@ -15,21 +17,16 @@ const Template: ComponentStory<typeof Popover> = args => (
     <Popover {...args}>
       <Popover.Trigger><Button>Click me</Button></Popover.Trigger>
       <Popover.Content>
-        <div
-          data-elevation="2"
-          style={{
-            padding: 24, background: 'var(--dimmed-2)', width: 300, borderRadius: 16,
-          }}
-        >
+        <Card vibrant>
           <Popover.Close>
             <IconButton icon="remove" kind="secondary" dimension="small" />
           </Popover.Close>
           Lorem ipsum dolor sit amet consectetur adipisicing elit.
           Distinctio aliquam exercitationem ut? Molestias repellat facilis totam non.
-        </div>
-        <div>ciao</div>
+        </Card>
       </Popover.Content>
     </Popover>
+    <img src="https://thumbs.werkaandemuur.nl/1/ba341971be10956f5a74d6f46d0d5957/720x720/thumbnail/fit.jpg" />
   </Stack>
 );
 
