@@ -26,7 +26,6 @@ const Template: ComponentStory<typeof Popover> = args => (
         </Card>
       </Popover.Content>
     </Popover>
-    <img src="https://thumbs.werkaandemuur.nl/1/ba341971be10956f5a74d6f46d0d5957/720x720/thumbnail/fit.jpg" />
   </Stack>
 );
 

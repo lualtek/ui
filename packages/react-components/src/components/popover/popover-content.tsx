@@ -55,11 +55,9 @@ export const PopoverContent = ({
 
   const animation = useMemo(() => ({
     hidden: {
-      opacity: 0,
       ...computeOrigin,
     },
     visible: {
-      opacity: 1,
       y: 0,
       x: 0,
     },
