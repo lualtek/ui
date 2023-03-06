@@ -1,1 +1,1 @@
-export { ResponseContextProvider, useResponsiveContext } from './use-responsive-context';
+export { ResponsiveProvider, useResponsiveContext } from './use-responsive-context';

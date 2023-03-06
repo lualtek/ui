@@ -24,7 +24,7 @@ import {
 import { useDebounce } from 'rooks';
 
 import {
-  PropsWithClass, ResponseContextProvider, Skeleton, Stack, Text,
+  PropsWithClass, ResponsiveProvider, Skeleton, Stack, Text,
 } from '@/components';
 
 import styles from './table.module.css';
@@ -328,7 +328,7 @@ export const Table = <T extends Record<string, unknown>>({
   }, [table, getTableInstance]);
 
   return (
-    <ResponseContextProvider>
+    <ResponsiveProvider>
       <div
         className={clsx(styles.Table, className)}
         style={{ ...dynamicStyle, ...style }}
@@ -440,7 +440,7 @@ export const Table = <T extends Record<string, unknown>>({
           />
         )}
       </div>
-    </ResponseContextProvider>
+    </ResponsiveProvider>
   );
 };
 

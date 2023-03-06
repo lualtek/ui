@@ -71,6 +71,6 @@ const useResponsive = () => {
 };
 
 export const [
-  ResponseContextProvider,
+  ResponsiveProvider,
   useResponsiveContext,
 ] = constate(useResponsive);

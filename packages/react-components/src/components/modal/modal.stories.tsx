@@ -2,7 +2,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { useState } from 'react';
 
 import {
-  Button, IconButton, OverlayContainer, ResponseContextProvider,
+  Button, IconButton, OverlayContainer, ResponsiveProvider,
   Stack, Title, useOverlayContext,
 } from '../..';
 import { Modal } from './modal';
@@ -20,7 +20,7 @@ const ModalShell: ComponentStory<typeof Modal> = ({ children, ...otherProps }) =
   const [isVisible, setIsVisible] = useState(false);
 
   return (
-    <ResponseContextProvider>
+    <ResponsiveProvider>
       <Button onClick={() => setIsVisible(true)}>Show Modal</Button>
       <OverlayContainer onClose={() => setIsVisible(false)}>
         {isVisible && (
@@ -32,7 +32,7 @@ const ModalShell: ComponentStory<typeof Modal> = ({ children, ...otherProps }) =
           </Modal>
         )}
       </OverlayContainer>
-    </ResponseContextProvider>
+    </ResponsiveProvider>
   );
 };
 
