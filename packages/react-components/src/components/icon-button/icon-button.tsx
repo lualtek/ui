@@ -7,7 +7,7 @@ import styles from './icon-button.module.css';
 
 export type IconButtonProps = Pick<
 ButtonProps,
-'kind' | 'dimension' | 'icon' | 'disabled' | 'onClick' | 'busy' | 'sentiment'
+'kind' | 'dimension' | 'icon' | 'disabled' | 'onClick' | 'busy' | 'sentiment' | 'type'
 >
 
 type PolymorphicIconButton = Polymorphic.ForwardRefComponent<
