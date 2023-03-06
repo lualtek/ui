@@ -1,5 +1,16 @@
 # @lualtek/react-components
 
+## 4.0.0
+
+### Major Changes
+
+- 87a0682: Rename ResponseContextProvider into ResponsiveProvider
+
+### Patch Changes
+
+- 9ea3951: Fix buttons type
+  - @lualtek/icons@4.0.0
+
 ## 3.2.2
 
 ### Patch Changes
