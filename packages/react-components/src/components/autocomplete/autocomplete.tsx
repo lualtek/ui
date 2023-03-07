@@ -36,7 +36,9 @@ export type AutocompleteProps = TextfieldProps & {
    * List of options to use as suggestion
    */
   options?: AutocompleteOptionProps[];
-
+  /**
+   * Callback called when an option is selected.
+   */
   onClickOption?: (value: AutocompleteOptionProps['value'], text?: string | null) => void;
 };
 
@@ -128,7 +130,15 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(({
             style={{ width: dimensions ? (dimensions.width + 2) : 'auto' }}
             maxHeight={maxHeight}
           >
-            {(filteredOptions?.length === 0 && !loading) && <Text as="div" textAlign="center" dimmed={5}>{emptyContent}</Text>}
+            {(filteredOptions?.length === 0 && !loading) && (
+              <Text
+                as="div"
+                textAlign="center"
+                dimmed={5}
+              >
+                {emptyContent}
+              </Text>
+            )}
             {loading
               ? <Stack hPadding={16} vPadding={8} as="span"><Skeleton count={5} /></Stack>
               : filteredOptions?.map(({ value, children, ...rest }) => (
