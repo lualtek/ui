@@ -15,3 +15,7 @@ export type FCChildrenClass<P = Record<string, unknown>> = FCChildren<PropsWithC
 export type FCForwardRef<P = Record<string, unknown>> = React.ForwardRefExoticComponent<PropsWithClass<P>>
 
 export type PropsClassChildren<P = Record<string, unknown>> = React.PropsWithChildren<PropsWithClass<P>>
+
+export type Prettify<T> = {
+  [K in keyof T]: T[K]
+} & Record<string, unknown>
