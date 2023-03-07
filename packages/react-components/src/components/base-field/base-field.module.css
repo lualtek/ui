@@ -62,10 +62,6 @@
       color: var(--dimmed-5);
     }
 
-    &:focus-visible {
-      background-color: transparent;
-    }
-
     &:disabled {
       cursor: not-allowed;
       border-color: transparent;
