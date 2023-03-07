@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 4.0.1
+
+### Patch Changes
+
+- 529ace3: Fix textfield background on focus
+  - @lualtek/icons@4.0.1
+
 ## 4.0.0
 
 ### Major Changes
