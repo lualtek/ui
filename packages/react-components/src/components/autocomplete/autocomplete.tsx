@@ -7,11 +7,12 @@ import {
   useMemo,
   useState,
 } from 'react';
-import { useDebouncedValue, useDimensionsRef } from 'rooks';
+import { useDebouncedValue } from 'rooks';
 
 import {
   Menu,
   MenuProps, Popover, Skeleton, Stack, Text, Textfield, TextfieldProps,
+  useDimensionsRef,
 } from '@/components';
 
 import styles from './autocomplete.module.css';
