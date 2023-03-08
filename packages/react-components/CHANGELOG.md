@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 4.0.2
+
+### Patch Changes
+
+- 295157a: Fix internal hooks
+  - @lualtek/icons@4.0.2
+
 ## 4.0.1
 
 ### Patch Changes
