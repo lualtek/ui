@@ -1,5 +1,16 @@
 # @lualtek/react-components
 
+## 4.1.0
+
+### Minor Changes
+
+- ec93414: Align Lighbox to Modal
+
+### Patch Changes
+
+- 171631f: Add default valueLabel to Slider
+  - @lualtek/icons@4.1.0
+
 ## 4.0.3
 
 ### Patch Changes
