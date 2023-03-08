@@ -13,6 +13,7 @@
     touch-action: none;
     cursor: pointer;
     font-variant-numeric: tabular-nums;
+    flex-grow: 1;
 
     &[data-orientation='horizontal'] {
       block-size: token(--space-24);
