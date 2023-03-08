@@ -1,6 +1,7 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { useState } from 'react';
 
+import { OverlayContainer } from '../..';
 import { Lightbox } from './lightbox';
 
 const story: ComponentMeta<typeof Lightbox> = {
@@ -34,7 +35,9 @@ const Template: ComponentStory<typeof Lightbox> = ({ selectedState, ...args }) =
           }}
         />
       ))}
-      <Lightbox {...args} onClose={() => setIsOpen(false)} selectedState={state} isOpen={isOpen} />
+      <OverlayContainer onClose={() => setIsOpen(false)}>
+        {isOpen && <Lightbox {...args} selectedState={state} />}
+      </OverlayContainer>
     </>
   );
 };
