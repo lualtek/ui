@@ -27,7 +27,7 @@ SliderProps
   defaultValue,
   orientation = 'horizontal',
   showValues,
-  valueLabel,
+  valueLabel = val => val,
   onValueChange,
   max = 100,
   ...otherProps
