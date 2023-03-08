@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 4.0.3
+
+### Patch Changes
+
+- 1f0b97c: Fix slider size
+  - @lualtek/icons@4.0.3
+
 ## 4.0.2
 
 ### Patch Changes
