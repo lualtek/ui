@@ -1,7 +1,7 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { useState } from 'react';
 
-import { OverlayContainer } from '../..';
+import { BlankButton, OverlayContainer } from '../..';
 import { Lightbox } from './lightbox';
 
 const story: ComponentMeta<typeof Lightbox> = {
@@ -24,16 +24,19 @@ const Template: ComponentStory<typeof Lightbox> = ({ selectedState, ...args }) =
   return (
     <>
       {args.data.map((item, index) => (
-        <img
-          style={{ width: 150, height: 150 }}
+        <BlankButton
           key={item.image}
-          src={item.image}
-          alt={item.title}
           onClick={() => {
             setIndex(index);
             setIsOpen(true);
           }}
-        />
+        >
+          <img
+            style={{ width: 150, height: 150 }}
+            src={item.image}
+            alt={item.title}
+          />
+        </BlankButton>
       ))}
       <OverlayContainer onClose={() => setIsOpen(false)}>
         {isOpen && <Lightbox {...args} selectedState={state} />}
