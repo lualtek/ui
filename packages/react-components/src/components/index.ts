@@ -1,5 +1,6 @@
 export * from './autocomplete';
 export * from './avatar';
+export * from './blank-button';
 export * from './button';
 export * from './card';
 export * from './chip';
