@@ -8,13 +8,13 @@ import {
   Button, Icon, IconProps, Stack, Text,
   Title,
 } from '@/components';
-import { FCChildren } from '@/components/types';
+import { FCChildren, PropsWithClass } from '@/components/types';
 
 import styles from './toast.module.css';
 
 const PrimitiveNoopComponent: FCChildren<{ asChild?: boolean }> = ({ children }) => <>{children}</>;
 
-export type InlineToastProps = ToastPrimitive.ToastProps & {
+export type InlineToastProps = PropsWithClass<{
   /**
    * The message to display. Describes the action that the toast takes
    * or the feedback that the user has received.
@@ -61,7 +61,7 @@ export type InlineToastProps = ToastPrimitive.ToastProps & {
    * @private
    */
   isPrimitive?: boolean;
-}
+}>
 
 const defaultIcons: Record<string, IconProps['source']> = {
   info: 'c-info',
@@ -71,7 +71,7 @@ const defaultIcons: Record<string, IconProps['source']> = {
   danger: 'c-remove',
 };
 
-export const InlineToast = forwardRef<HTMLLIElement, InlineToastProps>(({
+export const InlineToast = forwardRef<HTMLOutputElement, InlineToastProps>(({
   children,
   className,
   title,
@@ -89,7 +89,7 @@ export const InlineToast = forwardRef<HTMLLIElement, InlineToastProps>(({
   return (
     <Stack
       ref={forwardedRef}
-      as="li"
+      as="output"
       className={clsx(styles.Toast, className)}
       data-toast-kind={kind}
       hPadding={24}

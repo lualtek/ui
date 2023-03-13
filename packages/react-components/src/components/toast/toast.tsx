@@ -13,7 +13,7 @@ import { PropsWithClass } from '@/components/types';
 import { InlineToast, InlineToastProps } from './inline-toast';
 import styles from './toast.module.css';
 
-export type ToastProps = InlineToastProps
+export type ToastProps = ToastPrimitive.ToastProps & InlineToastProps
 
 export const Toast = forwardRef<
 ElementRef<typeof ToastPrimitive.Root>,
