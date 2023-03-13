@@ -1,20 +1,20 @@
 import * as ToastPrimitive from '@radix-ui/react-toast';
 import clsx from 'clsx';
 import {
-  forwardRef, PropsWithChildren, ReactNode, useMemo,
+  forwardRef, ReactNode, useMemo,
 } from 'react';
 
 import {
   Button, Icon, IconProps, Stack, Text,
   Title,
 } from '@/components';
-import { FCChildren, PropsWithClass } from '@/components/types';
+import { FCChildren } from '@/components/types';
 
 import styles from './toast.module.css';
 
 const PrimitiveNoopComponent: FCChildren<{ asChild?: boolean }> = ({ children }) => <>{children}</>;
 
-export type InlineToastProps = PropsWithChildren<PropsWithClass> & {
+export type InlineToastProps = ToastPrimitive.ToastProps & {
   /**
    * The message to display. Describes the action that the toast takes
    * or the feedback that the user has received.
@@ -23,7 +23,7 @@ export type InlineToastProps = PropsWithChildren<PropsWithClass> & {
   /**
    * Custom actions to display in the toast.
    */
-  action?: ReactNode;
+  actions?: ReactNode;
   /**
    * Set the icon to be displaye alongside the title.
    * This icon have to enforce the message in a not misleading way.
@@ -71,7 +71,7 @@ const defaultIcons: Record<string, IconProps['source']> = {
   danger: 'c-remove',
 };
 
-export const InlineToast = forwardRef<HTMLOutputElement, InlineToastProps>(({
+export const InlineToast = forwardRef<HTMLLIElement, InlineToastProps>(({
   children,
   className,
   title,
@@ -81,7 +81,7 @@ export const InlineToast = forwardRef<HTMLOutputElement, InlineToastProps>(({
   dismissLabel = 'Dismiss',
   singleLine,
   onDismiss,
-  action,
+  actions,
   isPrimitive,
   ...otherProps
 }, forwardedRef) => {
@@ -89,7 +89,7 @@ export const InlineToast = forwardRef<HTMLOutputElement, InlineToastProps>(({
   return (
     <Stack
       ref={forwardedRef}
-      as="output"
+      as="li"
       className={clsx(styles.Toast, className)}
       data-toast-kind={kind}
       hPadding={24}
@@ -113,20 +113,25 @@ export const InlineToast = forwardRef<HTMLOutputElement, InlineToastProps>(({
             <Text size={16}>{children}</Text>
           </ToastPrimitive.Description>
         </Stack>
-        {dismissable && (
-          <Stack inline direction="row" hAlign="start">
-            <ActionWrapper
-              asChild
-            >
-              <Button
-                onClick={onDismiss}
-                dimension="small"
-                kind="secondary"
-                className={styles.Action}
-              >
-                {dismissLabel}
-              </Button>
-            </ActionWrapper>
+        {(actions || dismissable) && (
+          <Stack direction="row" columnGap={8} rowGap={8} fill={false} hAlign="start" wrap>
+            {actions}
+            {dismissable && (
+              <Stack inline direction="row" hAlign="start">
+                <ActionWrapper
+                  asChild
+                >
+                  <Button
+                    onClick={onDismiss}
+                    dimension="small"
+                    kind="secondary"
+                    className={styles.Action}
+                  >
+                    {dismissLabel}
+                  </Button>
+                </ActionWrapper>
+              </Stack>
+            )}
           </Stack>
         )}
       </Stack>

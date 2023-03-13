@@ -3,13 +3,10 @@ import { useState } from '@storybook/addons';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { useRef } from 'react';
 
-import { Button } from '../button';
 import {
-  InlineToast,
-} from './inline-toast';
-import {
-  Toast, ToastProvider, ToastViewport,
-} from './toast';
+  Button, InlineToast, Toast, ToastAction,
+  ToastProvider, ToastViewport,
+} from '../..';
 
 const story: ComponentMeta<typeof InlineToast> = {
   title: 'Dialogs/Inline Toast',
@@ -41,6 +38,21 @@ Single.args = {
 export const Dismissable = Template.bind({});
 Dismissable.args = {
   dismissable: true,
+};
+
+export const WithActions = Template.bind({});
+WithActions.args = {
+  dismissable: true,
+  actions: (
+    <>
+      <ToastAction altText="Click me" onClick={() => alert('dio')}>
+        Click Me
+      </ToastAction>
+      <ToastAction altText="Click me" onClick={() => alert('dio')}>
+        Click Me
+      </ToastAction>
+    </>
+  ),
 };
 
 export const SingleLine = Template.bind({});
