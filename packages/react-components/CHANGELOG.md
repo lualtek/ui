@@ -1,5 +1,15 @@
 # @lualtek/react-components
 
+## 4.3.0
+
+### Minor Changes
+
+- 19608b7: Add ToastAction and update Toast
+
+### Patch Changes
+
+- @lualtek/icons@4.3.0
+
 ## 4.2.0
 
 ### Patch Changes
