@@ -1,5 +1,11 @@
 # @lualtek/icons
 
+## 4.4.0
+
+### Minor Changes
+
+- 8c7827e: Add new icons
+
 ## 4.3.1
 
 ## 4.3.0
