@@ -31,6 +31,10 @@ export type ModalContentProps = PropsClassChildren<{
    * and prevend double scrolling.
    */
   scrollInside?: boolean;
+  /**
+   * Enable or disable autofocus on the first focusable element inside the modal.
+   */
+  autoFocusInside?: boolean;
 }>
 
 export const ModalContent = forwardRef<HTMLDivElement, ModalContentProps>(({
@@ -39,6 +43,7 @@ export const ModalContent = forwardRef<HTMLDivElement, ModalContentProps>(({
   title,
   theme = 'auto',
   scrollInside = true,
+  autoFocusInside = true,
   headerTint,
   style,
   ...otherProps
@@ -66,7 +71,7 @@ export const ModalContent = forwardRef<HTMLDivElement, ModalContentProps>(({
           <Title responsive={false} level="5" id={titleId}>{title}</Title>
           {onClose && <IconButton onClick={onClose} className={styles.CloseButton} icon="remove" kind="flat" />}
         </Stack>
-        <AutoFocusInside>
+        <AutoFocusInside disabled={!autoFocusInside}>
           {children}
         </AutoFocusInside>
       </div>

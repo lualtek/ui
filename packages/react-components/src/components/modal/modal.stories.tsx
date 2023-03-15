@@ -11,8 +11,6 @@ import { Modal } from './modal';
 const story: ComponentMeta<typeof Modal> = {
   title: 'Dialogs/Modal',
   component: Modal,
-  argTypes: {
-  },
 };
 
 export default story;

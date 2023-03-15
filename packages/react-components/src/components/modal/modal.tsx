@@ -17,10 +17,6 @@ export type ModalProps = PropsClassChildren<{
    * it to `true` as it ensures the accessibility of the modal.
    */
   closeOnClickOutside?: boolean;
-  /**
- * Enable or disable autofocus on the first focusable element inside the modal.
- */
-  autoFocus?: boolean;
 }>
 
 type ModalComponent = React.ForwardRefExoticComponent<ModalProps> & {
@@ -36,7 +32,6 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>(({
   children,
   className,
   closeOnClickOutside = true,
-  autoFocus = true,
   ...otherProps
 }, forwardedRef) => {
   const { titleId, onClose } = useOverlayContext();
@@ -74,7 +69,6 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>(({
       <FocusOn
         onClickOutside={closeOnClickOutside ? onClose : undefined}
         onEscapeKey={onClose}
-        autoFocus={autoFocus}
       >
         <LazyMotion features={domMax}>
           <m.div
