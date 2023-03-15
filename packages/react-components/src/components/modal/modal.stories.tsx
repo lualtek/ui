@@ -3,7 +3,8 @@ import { useState } from 'react';
 
 import {
   Button, IconButton, OverlayContainer, ResponsiveProvider,
-  Stack, Title, useOverlayContext,
+  Stack, Textfield,
+  Title, useOverlayContext,
 } from '../..';
 import { Modal } from './modal';
 
@@ -39,6 +40,7 @@ const ModalShell: ComponentStory<typeof Modal> = ({ children, ...otherProps }) =
 const DefaultTemplate: ComponentStory<typeof Modal> = args => (
   <ModalShell {...args}>
     <Modal.Content title="Modal title">
+      <Textfield label="Test" />
       <Stack hPadding={24} vPadding={24}>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
         distinctio qui quod ducimus libero magni earum perspiciatis.
