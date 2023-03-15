@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 4.5.1
+
+### Patch Changes
+
+- 7c2c6b5: Fix Modal autofocus
+  - @lualtek/icons@4.5.1
+
 ## 4.5.0
 
 ### Minor Changes
