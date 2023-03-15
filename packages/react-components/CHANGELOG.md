@@ -1,5 +1,17 @@
 # @lualtek/react-components
 
+## 4.5.0
+
+### Minor Changes
+
+- 24ffacb: Add new autoFocus prop on Modal
+
+### Patch Changes
+
+- b7e5239: Clean Pagination props
+- 02022b0: Try to fix modal dynamic height
+  - @lualtek/icons@4.5.0
+
 ## 4.4.0
 
 ### Patch Changes
