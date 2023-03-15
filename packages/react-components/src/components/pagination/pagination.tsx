@@ -1,13 +1,14 @@
 import clsx from 'clsx';
 import { useEffect, useState } from 'react';
 import ReactPaginate, { ReactPaginateProps } from 'react-paginate';
+import { Except } from 'type-fest';
 
 import { Icon } from '@/components';
 import { FCChildrenClass } from '@/components/types';
 
 import styles from './pagination.module.css';
 
-export type PaginationProps = ReactPaginateProps & {
+export type PaginationProps = Except<ReactPaginateProps, 'pageCount'> & {
   /**
    * Set the total number of items to paginate through.
    */
@@ -17,12 +18,25 @@ export type PaginationProps = ReactPaginateProps & {
    */
   itemsPerPage?: number;
   /**
+   * Set the number of pages to display. If missing this is computed by
+   * the `itemsCount` divided by `itemsPerPage`.
+   */
+  pageCount?: number;
+  /**
    * Callback function to be called when the page is changed. A an `object`
    * is passed with the following properties:
    * - `selected`: The index of the selected page.
    * - `offset`: The offset of the selected page.
    */
   onPageClick?: (data: Record<string, number>) => void;
+  /**
+   * Set how many pages to show in the visible page range (between the "..." break)
+   */
+  pageRangeDisplayed?: ReactPaginateProps['pageRangeDisplayed'];
+  /**
+   * The number of visible pages to display on the sides.
+   */
+  marginPagesDisplayed?: ReactPaginateProps['marginPagesDisplayed'];
 }
 
 export const Pagination: FCChildrenClass<PaginationProps> = ({
