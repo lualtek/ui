@@ -9,6 +9,7 @@
     inline-size: 100vw;
     overflow: hidden;
     -webkit-overflow-scrolling: touch;
+    max-block-size: 95vh;
     max-block-size: 95dvh;
     border-radius: token(--radius-24) token(--radius-24) 0 0;
     justify-self: center;
@@ -17,6 +18,7 @@
 
     @media (--from-small) {
       max-inline-size: 600px;
+      max-block-size: 80vh;
       max-block-size: 80dvh;
       border-radius: token(--radius-24);
       justify-self: center;
