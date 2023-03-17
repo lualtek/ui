@@ -3,7 +3,7 @@ import { ButtonHTMLAttributes, forwardRef } from 'react';
 
 import styles from './blank-button.module.css';
 
-type BlankButtonProps = ButtonHTMLAttributes<HTMLButtonElement & {
+export type BlankButtonProps = ButtonHTMLAttributes<HTMLButtonElement & {
   onClick?: () => void;
 }>
 
