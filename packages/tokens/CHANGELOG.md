@@ -1,5 +1,11 @@
 # @lualtek/tokens
 
+## 4.5.2
+
+### Patch Changes
+
+- 5aaea93: Update dependencies
+
 ## 4.5.1
 
 ## 4.5.0
