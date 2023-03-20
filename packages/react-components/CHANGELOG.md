@@ -1,5 +1,14 @@
 # @lualtek/react-components
 
+## 4.5.2
+
+### Patch Changes
+
+- 5aaea93: Update dependencies
+- d5860ed: Export BlankButton props
+- Updated dependencies [5aaea93]
+  - @lualtek/icons@4.5.2
+
 ## 4.5.1
 
 ### Patch Changes

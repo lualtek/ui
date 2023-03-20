@@ -1,5 +1,13 @@
 # @lualtek/config
 
+## 4.5.2
+
+### Patch Changes
+
+- 5aaea93: Update dependencies
+- Updated dependencies [5aaea93]
+  - @lualtek/tokens@4.5.2
+
 ## 4.5.1
 
 ### Patch Changes
