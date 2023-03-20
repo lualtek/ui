@@ -31,7 +31,7 @@
     "@types/tinycolor2": "1.4.3",
     "fs-extra": "10.1.0",
     "style-dictionary": "3.7.2",
-    "tinycolor2": "1.5.2",
+    "tinycolor2": "1.6.0",
     "tsconfig": "*"
   }
 }
