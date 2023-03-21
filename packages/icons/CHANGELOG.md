@@ -1,5 +1,7 @@
 # @lualtek/icons
 
+## 4.6.0
+
 ## 4.5.2
 
 ### Patch Changes

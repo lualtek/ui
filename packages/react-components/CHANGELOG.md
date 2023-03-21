@@ -1,5 +1,15 @@
 # @lualtek/react-components
 
+## 4.6.0
+
+### Minor Changes
+
+- 3084c2f: Add Datetime component
+
+### Patch Changes
+
+- @lualtek/icons@4.6.0
+
 ## 4.5.2
 
 ### Patch Changes
