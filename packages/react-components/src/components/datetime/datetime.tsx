@@ -19,21 +19,25 @@ export type DatetimeProps = HTMLAttributes<HTMLTimeElement> & {
   options?: Intl.DateTimeFormatOptions;
 }
 
+const defaultOptions: Partial<Intl.DateTimeFormatOptions> = {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+};
+
 export const Datetime: FC<DatetimeProps> = ({
   date,
   locale = 'en-US',
   options,
   ...otherProps
 }) => {
+  const hasDateTimeStyle = useMemo(() => options?.timeStyle ?? options?.dateStyle, [options]);
   const humanDate = useMemo(() => {
     const timeDate: Date = new Date(date);
-    return new Intl.DateTimeFormat(locale, {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-      ...options,
-    }).format(timeDate);
-  }, [date, locale, options]);
+    return new Intl.DateTimeFormat(
+      locale, hasDateTimeStyle ? { ...options } : { ...defaultOptions, ...options },
+    ).format(timeDate);
+  }, [date, hasDateTimeStyle, locale, options]);
 
   return (
     <time dateTime={date} {...otherProps}>
