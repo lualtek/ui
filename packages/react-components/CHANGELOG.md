@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 4.6.1
+
+### Patch Changes
+
+- 46b3534: Fix Datetime default options
+  - @lualtek/icons@4.6.1
+
 ## 4.6.0
 
 ### Minor Changes
