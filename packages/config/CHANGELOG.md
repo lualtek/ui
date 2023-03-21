@@ -1,5 +1,12 @@
 # @lualtek/config
 
+## 4.6.1
+
+### Patch Changes
+
+- 46b3534: Fix Datetime default options
+  - @lualtek/tokens@4.6.1
+
 ## 4.6.0
 
 ### Patch Changes
