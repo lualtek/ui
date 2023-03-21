@@ -1,5 +1,5 @@
 import {
-  FC, HTMLAttributes, useEffect, useState,
+  FC, HTMLAttributes, useMemo,
 } from 'react';
 
 export type DatetimeProps = HTMLAttributes<HTMLTimeElement> & {
@@ -25,23 +25,19 @@ export const Datetime: FC<DatetimeProps> = ({
   options,
   ...otherProps
 }) => {
-  const [datetime, setDateTime] = useState<string>('');
-
-  useEffect(() => {
+  const humanDate = useMemo(() => {
     const timeDate: Date = new Date(date);
-    const humanDate = new Intl.DateTimeFormat(locale, {
+    return new Intl.DateTimeFormat(locale, {
       year: 'numeric',
       month: 'long',
       day: 'numeric',
       ...options,
     }).format(timeDate);
-
-    setDateTime(humanDate);
   }, [date, locale, options]);
 
   return (
     <time dateTime={date} {...otherProps}>
-      {datetime}
+      {humanDate}
     </time>
   );
 };
