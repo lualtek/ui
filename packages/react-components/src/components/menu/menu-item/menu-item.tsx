@@ -39,7 +39,6 @@ export type MenuItemProps = PropsClassChildren<{
    * We suggest to not remove the padding if you have items with icons in the same menu to
    * keep a good readability.
    *
-   * Read more: https://design.wonderflow.ai/design/recipes/menu/#items-with-icons
    */
   padding?: boolean;
   /**

@@ -7,6 +7,7 @@ export * from './chip';
 export * from './circular-progress';
 export * from './clamp-text';
 export * from './container';
+export * from './datetime';
 export * from './disclosure';
 export * from './drawer';
 export * from './elevator';
