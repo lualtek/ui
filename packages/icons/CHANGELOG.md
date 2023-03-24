@@ -1,5 +1,11 @@
 # @lualtek/icons
 
+## 4.7.0
+
+### Minor Changes
+
+- bbbe3c2: Add new icons
+
 ## 4.6.1
 
 ## 4.6.0
