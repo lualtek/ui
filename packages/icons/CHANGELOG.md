@@ -1,5 +1,11 @@
 # @lualtek/icons
 
+## 4.7.1
+
+### Patch Changes
+
+- e1af8d9: Fix pulse icon
+
 ## 4.7.0
 
 ### Minor Changes
