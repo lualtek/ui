@@ -1,5 +1,11 @@
 # @lualtek/icons
 
+## 4.7.2
+
+### Patch Changes
+
+- e2571ee: Fix pulse icon size
+
 ## 4.7.1
 
 ### Patch Changes
