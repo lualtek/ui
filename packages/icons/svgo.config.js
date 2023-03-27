@@ -1,3 +1,6 @@
+/**
+ * @type {import('svgo').Config}
+ */
 module.exports = {
   multipass: true,
   js2svg: {
@@ -8,7 +11,7 @@ module.exports = {
       name: 'preset-default',
       params: {
         overrides: {
-          cleanupIDs: {
+          cleanupIds: {
             minify: true,
           },
           cleanupNumericValues: {
