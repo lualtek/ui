@@ -26,7 +26,13 @@ const story: ComponentMeta<typeof Container> = {
 
 export default story;
 
-const Template: ComponentStory<typeof Container> = args => <Container {...args} />;
+const Template: ComponentStory<typeof Container> = args => <Container {...args}>A</Container>;
+
+export const Small = Template.bind({});
+Small.args = {
+  dimension: 'small',
+  className: 'ContainerEx',
+};
 
 export const Medium = Template.bind({});
 Medium.args = {

@@ -23,13 +23,13 @@
         padding:
           0
           max(
-            token(--space-16),
-            calc(token(--space-16) + env(safe-area-inset-right))
+            token(--space-32),
+            calc(token(--space-32) + env(safe-area-inset-right))
           )
           0
           max(
-            token(--space-16),
-            calc(token(--space-16) + env(safe-area-inset-left))
+            token(--space-32),
+            calc(token(--space-32) + env(safe-area-inset-left))
           );
       }
     }
