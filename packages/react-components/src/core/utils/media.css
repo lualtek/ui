@@ -9,11 +9,11 @@
 
 /* Mobile First Media Queries */
 
-@custom-media --from-extra-small (min-width: token(--breakpoint-extra-small));
-@custom-media --from-small      (min-width: token(--breakpoint-small));
-@custom-media --from-medium     (min-width: token(--breakpoint-medium));
-@custom-media --from-large      (min-width: token(--breakpoint-large));
-@custom-media --from-extra-large (min-width: token(--breakpoint-extra-large));
+@custom-media --from-extra-small (token(--breakpoint-extra-small) <= width);
+@custom-media --from-small      (token(--breakpoint-small) <= width);
+@custom-media --from-medium     (token(--breakpoint-medium) <= width);
+@custom-media --from-large      (token(--breakpoint-large) <= width);
+@custom-media --from-extra-large (token(--breakpoint-extra-large) <= width);
 
 /* Orientation Media Queries */
 
