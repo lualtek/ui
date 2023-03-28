@@ -1,5 +1,13 @@
 # @lualtek/config
 
+## 4.7.3
+
+### Patch Changes
+
+- b4136a6: Update deps
+- Updated dependencies [b4136a6]
+  - @lualtek/tokens@4.7.3
+
 ## 4.7.2
 
 ### Patch Changes
