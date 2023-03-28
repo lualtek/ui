@@ -54,6 +54,7 @@ const MultipleTemplate: ComponentStory<typeof Textfield> = args => (
     <Textfield {...args} label="Filled read only" defaultValue="Sample value" readOnly />
     <Textfield {...args} label="Empty disbled" placeholder="Placeholder" disabled />
     <Textfield {...args} label="Filled disabled" defaultValue="Sample value" disabled />
+    <Textfield {...args} type="email" required label="Type email" defaultValue="" />
     <Textfield {...args} type="password" label="Type password" defaultValue="912435jh345" />
     <Textfield {...args} type="number" label="Type number" defaultValue={100} />
     <Textfield {...args} type="search" label="Type search" />

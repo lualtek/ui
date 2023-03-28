@@ -7,7 +7,6 @@ const story: ComponentMeta<typeof Area> = {
   component: Area,
   args: {
     readOnly: false,
-    defaultValue: 'Sample value',
   },
   argTypes: {
     onChange: {
@@ -34,7 +33,7 @@ const story: ComponentMeta<typeof Area> = {
 export default story;
 
 const TextareaTemplate: ComponentStory<typeof Area> = args => (
-  <Area {...args} defaultValue="123123klòasj" placeholder="Placeholder" />
+  <Area {...args} required placeholder="Placeholder" />
 );
 
 export const Textarea = TextareaTemplate.bind({});
