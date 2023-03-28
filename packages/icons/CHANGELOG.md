@@ -1,5 +1,11 @@
 # @lualtek/icons
 
+## 4.7.3
+
+### Patch Changes
+
+- b4136a6: Update deps
+
 ## 4.7.2
 
 ### Patch Changes
