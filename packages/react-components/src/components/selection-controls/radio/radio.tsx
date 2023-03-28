@@ -76,6 +76,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(({
         <m.span
           className={styles.InputWrapper}
           whileTap={{ scale: 1.15 }}
+          tabIndex={-1}
           transition={{ duration: 0.3, ease: 'backOut' }}
         >
           <input
