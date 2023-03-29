@@ -1,5 +1,13 @@
 # @lualtek/react-components
 
+## 4.8.0
+
+### Patch Changes
+
+- bb9d112: Fix selection controls focus
+- Updated dependencies [741bbe3]
+  - @lualtek/icons@4.8.0
+
 ## 4.7.3
 
 ### Patch Changes
