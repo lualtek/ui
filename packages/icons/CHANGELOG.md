@@ -1,5 +1,11 @@
 # @lualtek/icons
 
+## 4.8.0
+
+### Minor Changes
+
+- 741bbe3: Add new icons
+
 ## 4.7.3
 
 ### Patch Changes
