@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 4.8.1
+
+### Patch Changes
+
+- a816e3a: Fix Select ghost label option
+  - @lualtek/icons@4.8.1
+
 ## 4.8.0
 
 ### Patch Changes
