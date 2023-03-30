@@ -1,5 +1,7 @@
 # @lualtek/icons
 
+## 4.8.1
+
 ## 4.8.0
 
 ### Minor Changes
