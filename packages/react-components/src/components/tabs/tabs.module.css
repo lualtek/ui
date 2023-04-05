@@ -39,9 +39,11 @@
       color: var(--global-disabled-foreground);
       backdrop-filter: none;
     }
+  }
 
-    &[data-state='active'] {
-      -webkit-text-stroke: 0.4px var(--global-foreground);
+  .Label {
+
+    @nest .Trigger[data-state='active'] & {
       color: var(--global-foreground);
     }
   }
@@ -54,7 +56,7 @@
     background: hsl(token(--color-cyan-40));
     pointer-events: none;
 
-    &:nth-child(2) {
+    &[data-highlight-alt] {
       background: var(--cta-default);
       z-index: 1;
     }

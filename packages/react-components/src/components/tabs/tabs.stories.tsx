@@ -1,7 +1,7 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { useState } from 'react';
 
-import { Button } from '../..';
+import { Button, Chip } from '../..';
 import { Tabs } from './tabs';
 
 const story: ComponentMeta<typeof Tabs> = {
@@ -40,6 +40,21 @@ export const InitialTab = Template.bind({});
 InitialTab.args = {
   defaultValue: '3',
 };
+
+const TemplateDecorator: ComponentStory<typeof Tabs> = args => (
+  <>
+    <Tabs {...args}>
+      <Tabs.Panel value="1" label="Tab 1">Panel 1</Tabs.Panel>
+      <Tabs.Panel value="2" label="Tab mid long 2" decorator={<Chip>10</Chip>}>Panel 2</Tabs.Panel>
+      <Tabs.Panel value="3" label="Tab short 3">Panel 3</Tabs.Panel>
+      <Tabs.Panel value="4" label="Tab veryy long 4" decorator={<Chip dimension="small">8</Chip>}>Panel 4</Tabs.Panel>
+      <Tabs.Panel value="5" label="Tab 5">Panel 5</Tabs.Panel>
+      <Tabs.Panel value="6" label="Tab 6">Panel 6</Tabs.Panel>
+    </Tabs>
+  </>
+);
+
+export const WithDecorator = TemplateDecorator.bind({});
 
 // export const ProgrammaticTab = () => {
 //   const state = useState(0);

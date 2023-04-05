@@ -1,4 +1,5 @@
 import * as TabsPrimitive from '@radix-ui/react-tabs';
+import { ReactNode } from 'react';
 
 import { IconProps } from '@/components';
 
@@ -11,6 +12,10 @@ export type TabPanelProps = TabsPrimitive.TabsContentProps & TabsPrimitive.TabsT
    * An optional icon to show in the tab list next to the label.
    */
   icon?: IconProps['source'];
+  /**
+   * Add a decorator beside the tab label
+   */
+  decorator?: ReactNode;
 };
 
 export const TabPanel = ({

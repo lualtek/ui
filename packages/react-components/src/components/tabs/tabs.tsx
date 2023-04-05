@@ -47,11 +47,12 @@ export const Tabs = ({
               <Button kind="flat" dimension="big">
                 {/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
                 {child.props.icon && <Icon source={child.props.icon} dimension={18} />}
-                {child.props.label}
+                <span className={styles.Label}>{child.props.label}</span>
+                {child.props.decorator}
                 {(child.props.value === activeItem) && (
                   <>
                     <m.span className={styles.Highlight} layoutId={`${uid}-tab-highlight-lazy`} />
-                    <m.span className={styles.Highlight} transition={{ ease: 'easeOut', delay: 0.01 }} layoutId={`${uid}-tab-highlight`} />
+                    <m.span className={styles.Highlight} data-highlight-alt transition={{ ease: 'easeOut', delay: 0.01 }} layoutId={`${uid}-tab-highlight`} />
                   </>
                 )}
               </Button>
