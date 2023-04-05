@@ -1,5 +1,15 @@
 # @lualtek/react-components
 
+## 4.9.0
+
+### Minor Changes
+
+- 346e5e1: Add new decorator prop to Tabs
+
+### Patch Changes
+
+- @lualtek/icons@4.9.0
+
 ## 4.8.1
 
 ### Patch Changes
