@@ -1,5 +1,15 @@
 # @lualtek/react-components
 
+## 4.10.0
+
+### Minor Changes
+
+- e768482: Add new padding prop to tabs
+
+### Patch Changes
+
+- @lualtek/icons@4.10.0
+
 ## 4.9.0
 
 ### Minor Changes
