@@ -1,10 +1,10 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import { Slider } from './slider';
+import { Range } from './range';
 
-const story: ComponentMeta<typeof Slider> = {
-  title: 'Inputs/Slider',
-  component: Slider,
+const story: ComponentMeta<typeof Range> = {
+  title: 'Inputs/Range',
+  component: Range,
   args: {
     orientation: 'horizontal',
     defaultValue: [30],
@@ -24,9 +24,9 @@ const story: ComponentMeta<typeof Slider> = {
 
 export default story;
 
-const Template: ComponentStory<typeof Slider> = args => (
+const Template: ComponentStory<typeof Range> = args => (
   <div style={{ height: 300 }}>
-    <Slider {...args} />
+    <Range {...args} />
   </div>
 );
 

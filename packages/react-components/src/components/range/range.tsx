@@ -6,9 +6,9 @@ import {
 
 import { Elevator } from '@/components';
 
-import styles from './slider.module.css';
+import styles from './range.module.css';
 
-export type SliderProps = SliderPrimitive.SliderProps & {
+export type RangeProps = SliderPrimitive.SliderProps & {
   /**
    * Show values beside the thumbs
    */
@@ -18,9 +18,9 @@ export type SliderProps = SliderPrimitive.SliderProps & {
    */
   valueLabel?: (value: number) => string;
 };
-export const Slider = forwardRef<
+export const Range = forwardRef<
 ElementRef<typeof SliderPrimitive.Root>,
-SliderProps
+RangeProps
 >(({
   className,
   value,
@@ -46,9 +46,9 @@ SliderProps
 
   return (
     <SliderPrimitive.Root
-      className={clsx(styles.Slider, className)}
+      className={clsx(styles.Range, className)}
       orientation={orientation}
-      data-slider-show-values={showValues}
+      data-range-show-values={showValues}
       minStepsBetweenThumbs={1}
       ref={forwardedRef}
       defaultValue={defaultValue}
@@ -58,14 +58,14 @@ SliderProps
       {...otherProps}
     >
       <SliderPrimitive.Track className={styles.Track}>
-        <SliderPrimitive.Range className={styles.Range} />
+        <SliderPrimitive.Range className={styles.ValueTrack} />
       </SliderPrimitive.Track>
 
       {val?.map((value, index) => (
         <Elevator resting={1} key={`${uid}-${value}`}>
           <SliderPrimitive.Thumb
             className={styles.Thumb}
-            data-slider-value-label={valueLabel?.(changedValue?.[index] ?? 0)}
+            data-range-value-label={valueLabel?.(changedValue?.[index] ?? 0)}
           />
         </Elevator>
       ))}

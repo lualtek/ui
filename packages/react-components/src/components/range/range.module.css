@@ -1,7 +1,7 @@
 @import '../../core/utils/vibrancy.css';
 
 @layer components {
-  .Slider {
+  .Range {
     --thumb-size: token(--space-24);
     --thumb-radius: token(--radius-8);
     --track-h: token(--space-8);
@@ -55,7 +55,7 @@
     }
   }
 
-  .Range {
+  .ValueTrack {
     position: absolute;
     background-color: var(--cta-default);
 
@@ -81,8 +81,8 @@
     border-radius: var(--thumb-radius);
     border: 2px solid var(--cta-default);
 
-    @nest .Slider[data-slider-show-values='true'] &::after {
-      content: attr(data-slider-value-label);
+    @nest .Range[data-range-show-values='true'] &::after {
+      content: attr(data-range-value-label);
       position: absolute;
       white-space: nowrap;
       top: calc(100% + token(--space-8));
@@ -93,7 +93,7 @@
       color: var(--dimmed-6);
       font-weight: token(--font-weight-bold);
     }
-    @nest .Slider[data-slider-show-values='true'] &[data-orientation='vertical']::after {
+    @nest .Range[data-range-show-values='true'] &[data-orientation='vertical']::after {
       left: calc(100% + token(--space-8));
       top: 50%;
       transform: translateY(-50%);
