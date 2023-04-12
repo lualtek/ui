@@ -1,5 +1,15 @@
 # @lualtek/react-components
 
+## 5.1.0
+
+### Minor Changes
+
+- a871045: Rename Slider into Snaplist and restore old Slider name
+
+### Patch Changes
+
+- @lualtek/icons@5.1.0
+
 ## 5.0.0
 
 ### Major Changes
