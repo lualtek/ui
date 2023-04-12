@@ -1,5 +1,20 @@
 # @lualtek/react-components
 
+## 5.0.0
+
+### Major Changes
+
+- 3408b7b: Rename Slider to Range
+
+### Minor Changes
+
+- 3ec64e6: Add Slider component
+- 583ad52: Make Autocomplete use Portal
+
+### Patch Changes
+
+- @lualtek/icons@5.0.0
+
 ## 4.10.0
 
 ### Minor Changes
