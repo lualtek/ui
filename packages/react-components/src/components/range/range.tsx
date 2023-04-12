@@ -1,4 +1,4 @@
-import * as SliderPrimitive from '@radix-ui/react-slider';
+import * as RangePrimitive from '@radix-ui/react-slider';
 import clsx from 'clsx';
 import {
   ElementRef, forwardRef, useCallback, useId, useState,
@@ -8,7 +8,7 @@ import { Elevator } from '@/components';
 
 import styles from './range.module.css';
 
-export type RangeProps = SliderPrimitive.SliderProps & {
+export type RangeProps = RangePrimitive.SliderProps & {
   /**
    * Show values beside the thumbs
    */
@@ -19,7 +19,7 @@ export type RangeProps = SliderPrimitive.SliderProps & {
   valueLabel?: (value: number) => string;
 };
 export const Range = forwardRef<
-ElementRef<typeof SliderPrimitive.Root>,
+ElementRef<typeof RangePrimitive.Root>,
 RangeProps
 >(({
   className,
@@ -45,7 +45,7 @@ RangeProps
   );
 
   return (
-    <SliderPrimitive.Root
+    <RangePrimitive.Root
       className={clsx(styles.Range, className)}
       orientation={orientation}
       data-range-show-values={showValues}
@@ -57,18 +57,18 @@ RangeProps
       onValueChange={handleChange}
       {...otherProps}
     >
-      <SliderPrimitive.Track className={styles.Track}>
-        <SliderPrimitive.Range className={styles.ValueTrack} />
-      </SliderPrimitive.Track>
+      <RangePrimitive.Track className={styles.Track}>
+        <RangePrimitive.Range className={styles.ValueTrack} />
+      </RangePrimitive.Track>
 
       {val?.map((value, index) => (
         <Elevator resting={1} key={`${uid}-${value}`}>
-          <SliderPrimitive.Thumb
+          <RangePrimitive.Thumb
             className={styles.Thumb}
             data-range-value-label={valueLabel?.(changedValue?.[index] ?? 0)}
           />
         </Elevator>
       ))}
-    </SliderPrimitive.Root>
+    </RangePrimitive.Root>
   );
 });
