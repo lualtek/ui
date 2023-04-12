@@ -12,8 +12,19 @@ import styles from './snaplist.module.css';
 import { SnaplistItem } from './snaplist-item';
 
 export type SnaplistProps = {
+  /**
+   * The alignment of the snap element.
+   * This define which side the snap element is anchored when srcolling.
+   */
   snapAlign: 'start' | 'center' | 'end';
+  /**
+   * Horizontal negative margin used to offset the list.
+   * Used to align list edges to the viewport or containers.
+   */
   bleed?: TokensTypes['space'];
+  /**
+   * The distance between the snap element and the scroller edges..
+   */
   scrollPadding?: string;
 }
 
