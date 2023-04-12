@@ -1,55 +1,74 @@
-import { TokensTypes } from '@lualtek/tokens';
-import tkns from '@lualtek/tokens/platforms/web/tokens.json';
+import * as SliderPrimitive from '@radix-ui/react-slider';
 import clsx from 'clsx';
 import {
-  Children, CSSProperties, forwardRef, isValidElement, useMemo,
+  ElementRef, forwardRef, useCallback, useId, useState,
 } from 'react';
-import { Except } from 'type-fest';
 
-import { Polymorphic, Stack } from '@/components';
+import { Elevator } from '@/components';
 
 import styles from './slider.module.css';
-import { SliderItem } from './slider-item';
 
-export type SliderProps = {
-  snapAlign: 'start' | 'center' | 'end';
-  bleed?: TokensTypes['space'];
-  scrollPadding?: string;
-}
-
-type PolymorphicSlider = Polymorphic.ForwardRefComponent<
-Polymorphic.IntrinsicElement<typeof Stack>,
-Except<Polymorphic.OwnProps<typeof Stack>, 'wrap' | 'fill'> & SliderProps
->;
-
-export const Slider = forwardRef(({
-  children,
+export type SliderProps = SliderPrimitive.SliderProps & {
+  /**
+   * Show values beside the thumbs
+   */
+  showValues?: boolean;
+  /**
+   * Show custom value label instead of raw value
+   */
+  valueLabel?: (value: number) => string;
+};
+export const Slider = forwardRef<
+ElementRef<typeof SliderPrimitive.Root>,
+SliderProps
+>(({
   className,
-  rowGap = 32,
-  columnGap = 32,
-  bleed,
-  snapAlign = 'center',
-  scrollPadding,
-  style,
+  value,
+  defaultValue,
+  orientation = 'horizontal',
+  showValues,
+  valueLabel = val => val,
+  onValueChange,
+  max = 100,
   ...otherProps
 }, forwardedRef) => {
-  const dynamicStyle: CSSProperties = useMemo(() => ({
-    '--snap-align': snapAlign,
-    '--scroll-padding': scrollPadding,
-    '--bleed': bleed ? tkns.space[bleed] : 0,
-  }), [bleed, snapAlign, scrollPadding]);
+  const val = value ?? defaultValue;
+  const uid = useId();
+  const [changedValue, setChangedValue] = useState<number[] | undefined>(val);
+
+  const handleChange = useCallback(
+    (value: number[]) => {
+      setChangedValue(value);
+      onValueChange?.(value);
+    },
+    [onValueChange],
+  );
 
   return (
-    <Stack
-      ref={forwardedRef}
-      direction="row"
-      rowGap={rowGap}
-      columnGap={columnGap}
+    <SliderPrimitive.Root
       className={clsx(styles.Slider, className)}
-      style={{ ...dynamicStyle, ...style }}
+      orientation={orientation}
+      data-slider-show-values={showValues}
+      minStepsBetweenThumbs={1}
+      ref={forwardedRef}
+      defaultValue={defaultValue}
+      value={value}
+      max={max}
+      onValueChange={handleChange}
       {...otherProps}
     >
-      {Children.map(children, child => isValidElement(child) && <SliderItem>{child}</SliderItem>)}
-    </Stack>
+      <SliderPrimitive.Track className={styles.Track}>
+        <SliderPrimitive.Range className={styles.ValueTrack} />
+      </SliderPrimitive.Track>
+
+      {val?.map((value, index) => (
+        <Elevator resting={1} key={`${uid}-${value}`}>
+          <SliderPrimitive.Thumb
+            className={styles.Thumb}
+            data-slider-value-label={valueLabel?.(changedValue?.[index] ?? 0)}
+          />
+        </Elevator>
+      ))}
+    </SliderPrimitive.Root>
   );
-}) as PolymorphicSlider;
+});

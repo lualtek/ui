@@ -1,2 +1,2 @@
-export type { SliderProps } from './slider';
-export { Slider } from './slider';
+export type { RangeProps } from './slider';
+export { Range } from './slider';

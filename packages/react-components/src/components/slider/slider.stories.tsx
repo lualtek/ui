@@ -3,14 +3,20 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Slider } from './slider';
 
 const story: ComponentMeta<typeof Slider> = {
-  title: 'Navigation/Slider',
+  title: 'Inputs/Slider',
   component: Slider,
   args: {
-    snapAlign: 'center',
+    orientation: 'horizontal',
+    defaultValue: [30],
+    showValues: true,
   },
   argTypes: {
-    snapAlign: {
-      options: ['start', 'center', 'end'],
+    disabled: {
+      options: [true, false],
+      control: { type: 'inline-radio' },
+    },
+    orientation: {
+      options: ['vertical', 'horizontal'],
       control: { type: 'inline-radio' },
     },
   },
@@ -18,24 +24,23 @@ const story: ComponentMeta<typeof Slider> = {
 
 export default story;
 
-const style = {
-  background: 'var(--dimmed-3)',
-  padding: 24,
-};
-
 const Template: ComponentStory<typeof Slider> = args => (
-  <Slider {...args}>
-    <div style={{ minWidth: '30vw', ...style }}>Aaskdjfhasdf </div>
-    <div style={style}>Bsdfasdfa sdfsdfg</div>
-    <div style={style}>Caasdfgasfg</div>
-    <div style={style}>afgafgafgag afga dfgadfgD</div>
-    <div style={style}>Ea gfgasdf gafgafgadfg</div>
-    <div style={style}>F afgafgafg</div>
-    <div style={style}>a gfafgafgafg afga fdgasdfg afga sG</div>
-    <div style={style}>gf H</div>
-    <div style={style}>ga fgagI</div>
-    <div style={style}>Ja fgagafgafg</div>
-  </Slider>
+  <div style={{ height: 300 }}>
+    <Slider {...args} />
+  </div>
 );
 
 export const Default = Template.bind({});
+
+export const Double = Template.bind({});
+Double.args = {
+  defaultValue: [30, 70],
+};
+
+export const ValueLabel = Template.bind({});
+ValueLabel.args = {
+  defaultValue: [6000, 9000],
+  min: 5000,
+  max: 10000,
+  valueLabel: val => (val ? `${new Intl.NumberFormat('en-GB').format(val)}K` : ''),
+};

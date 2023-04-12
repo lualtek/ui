@@ -4,11 +4,11 @@ import {
 import { useInViewRef } from 'rooks';
 import { FCChildren } from 'src/types/custom';
 
-import styles from './slider.module.css';
+import styles from './snaplist.module.css';
 
-type SliderItemProps = Record<string, unknown>
+type SnaplistItemProps = Record<string, unknown>
 
-export const SliderItem: FCChildren<SliderItemProps> = ({
+export const SnaplistItem: FCChildren<SnaplistItemProps> = ({
   className,
   children,
   ...otherProps
@@ -19,7 +19,7 @@ export const SliderItem: FCChildren<SliderItemProps> = ({
     <div ref={myRef} className={styles.Slide} {...otherProps}>
       {Children.map(
         children,
-        child => isValidElement(child) && cloneElement(child as ReactElement, { 'data-slider-active': isInView }),
+        child => isValidElement(child) && cloneElement(child as ReactElement, { 'data-snaplist-active': isInView }),
       )}
     </div>
   );
