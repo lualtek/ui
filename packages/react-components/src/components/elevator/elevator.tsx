@@ -1,5 +1,5 @@
 import {
-  Children, cloneElement, ReactElement,
+  Children, cloneElement, isValidElement, ReactElement,
 } from 'react';
 
 import { FCChildren } from '@/components/types';
@@ -26,7 +26,7 @@ export const Elevator: FCChildren<ElevatorProps> = ({
   hover,
 }) => (
   <>
-    {Children.map(children, child => cloneElement(
+    {Children.map(children, child => isValidElement(child) && cloneElement(
       child as ReactElement,
       {
         'data-elevation': resting,

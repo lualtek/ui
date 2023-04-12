@@ -6,7 +6,6 @@ const story: ComponentMeta<typeof Slider> = {
   title: 'Navigation/Slider',
   component: Slider,
   args: {
-    colMinWidth: 'max(200px, 20vw)',
     snapAlign: 'center',
   },
   argTypes: {
@@ -26,7 +25,7 @@ const style = {
 
 const Template: ComponentStory<typeof Slider> = args => (
   <Slider {...args}>
-    <div style={style}>Aaskdjfhasdf </div>
+    <div style={{ minWidth: '30vw', ...style }}>Aaskdjfhasdf </div>
     <div style={style}>Bsdfasdfa sdfsdfg</div>
     <div style={style}>Caasdfgasfg</div>
     <div style={style}>afgafgafgag afga dfgadfgD</div>

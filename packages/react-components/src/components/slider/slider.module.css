@@ -1,33 +1,32 @@
-@import '../../core/utils/media.css';
 
-.Slider {
-  --column-size: minmax(min(var(--column-min-w), 100%), 1fr);
+@layer components {
+  .Slider {
+    -webkit-overflow-scrolling: touch;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-padding: var(--scroll-padding);
+    overscroll-behavior-x: contain;
+    margin: 0 calc(var(--bleed, 0) * -1);
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    scrollbar-color: transparent transparent;
 
-  -webkit-overflow-scrolling: touch;
-  overflow-x: auto;
-  overflow-y: hidden;
-  scroll-snap-type: x mandatory;
-  scroll-padding: var(--scroll-padding);
-  overscroll-behavior-x: contain;
-  margin: 0 calc(var(--bleed, 0) * -1);
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-  scrollbar-color: transparent transparent;
+    &::-webkit-scrollbar {
+      display: none;
+    }
 
-  &::-webkit-scrollbar {
-    display: none;
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: transparent;
+      border: 1px solid transparent;
+    }
   }
 
-  &::-webkit-scrollbar-track {
-    background: transparent;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background-color: transparent;
-    border: 1px solid transparent;
-  }
-
-  & > * {
+  .Slide {
     scroll-snap-align: var(--snap-align);
     min-width: max-content;
   }
