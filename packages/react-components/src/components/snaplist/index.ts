@@ -1,2 +1,2 @@
-export type { SliderProps } from './snaplist';
-export { Slider } from './snaplist';
+export type { SnaplistProps } from './snaplist';
+export { Snaplist } from './snaplist';
