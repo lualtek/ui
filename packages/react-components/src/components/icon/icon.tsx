@@ -33,7 +33,7 @@ export const Icon = forwardRef<SVGSVGElement, IconProps>(({
   fill,
   ...otherProps
 }: IconProps, forwardedRef) => {
-  const computedStyle = useMemo(() => (Number(dimension) < 18 ? 'solid' : 'duotone'), [dimension]);
+  const dynamicStyle = useMemo(() => (Number(dimension) < 18 ? 'solid' : 'duotone'), [dimension]);
 
   return (typeof source === 'string')
     ? (
@@ -46,7 +46,7 @@ export const Icon = forwardRef<SVGSVGElement, IconProps>(({
         ref={forwardedRef}
         {...otherProps}
       >
-        <use href={`${sprite}#${computedStyle}/${source}`} />
+        <use href={`${sprite}#${dynamicStyle}/${source}`} />
       </svg>
     )
     : (

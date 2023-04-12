@@ -62,7 +62,7 @@ export const Masonry: FCChildrenClass<MasonryProps> = ({
   style,
   ...otherProps
 }) => {
-  const computedStyle: CSSProperties = useMemo(() => (
+  const dynamicStyle: CSSProperties = useMemo(() => (
     {
       '--gap': gap ? tkns.space[gap as keyof typeof tkns.space] : 0,
     }
@@ -94,7 +94,7 @@ export const Masonry: FCChildrenClass<MasonryProps> = ({
       className={clsx(styles.Masonry, className)}
       columnClassName={styles.Column}
       breakpointCols={typeof columns === 'number' ? columns : computedColumnsGiuste}
-      style={{ ...computedStyle, ...style } as CSSProperties}
+      style={{ ...dynamicStyle, ...style } as CSSProperties}
       {...otherProps}
     >
       {Children.map(children, child => isValidElement(child) && cloneElement(

@@ -42,7 +42,7 @@ export const List = forwardRef(({
 }, forwardedRef) => {
   const isUnordered = useMemo(() => Wrapper === 'ul', [Wrapper]);
 
-  const computedStyle: CSSProperties = useMemo(() => (
+  const dynamicStyle: CSSProperties = useMemo(() => (
     {
       '--gap': gap ? tkns.space[gap] : 0,
     }
@@ -55,7 +55,7 @@ export const List = forwardRef(({
       data-list-size={dimension}
       data-list-ordered={!isUnordered}
       data-list-no-marker={hideMarker}
-      style={{ ...computedStyle, ...style }}
+      style={{ ...dynamicStyle, ...style }}
       {...otherProps}
     >
       {Children.map(children, child => isValidElement<ListItemProps>(child) && cloneElement(

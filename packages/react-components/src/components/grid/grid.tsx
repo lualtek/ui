@@ -78,7 +78,7 @@ export const Grid = forwardRef<HTMLUListElement, PropsWithClass<GridProps>>(({
   vPadding,
   ...otherProps
 }, forwardedRef) => {
-  const computedStyle: CSSProperties = useMemo(() => (
+  const dynamicStyle: CSSProperties = useMemo(() => (
     {
       '--row-gap': rowGap ? tkns.space[rowGap] : 0,
       '--column-gap': columnGap ? tkns.space[columnGap] : 0,
@@ -94,7 +94,7 @@ export const Grid = forwardRef<HTMLUListElement, PropsWithClass<GridProps>>(({
   return (
     <ul
       className={clsx(styles.Grid, className)}
-      style={{ ...computedStyle, ...style }}
+      style={{ ...dynamicStyle, ...style }}
       data-grid-filling-type={filling}
       data-stack-has-padding={Boolean(hPadding ?? vPadding)}
       ref={forwardedRef}

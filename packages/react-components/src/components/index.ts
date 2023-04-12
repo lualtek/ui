@@ -34,6 +34,7 @@ export * from './selection-controls/checkbox';
 export * from './selection-controls/radio';
 export * from './separator';
 export * from './skeleton';
+export * from './slider';
 export * from './spinner';
 export * from './split-button';
 export * from './stack';

@@ -20,7 +20,7 @@ export const Separator = forwardRef<HTMLHRElement, SeparatorProps>(({
   style,
   ...otherProps
 }, forwardedRef) => {
-  const computedStyle: CSSProperties = useMemo(() => (
+  const dynamicStyle: CSSProperties = useMemo(() => (
     {
       '--v-padding': vPadding ? tkns.space[vPadding] : 0,
     }
@@ -30,7 +30,7 @@ export const Separator = forwardRef<HTMLHRElement, SeparatorProps>(({
     <hr
       ref={forwardedRef}
       className={clsx(styles.Separator, className)}
-      style={{ ...computedStyle, ...style }}
+      style={{ ...dynamicStyle, ...style }}
       {...otherProps}
     />
   );

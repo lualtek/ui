@@ -81,7 +81,7 @@ export const Stack = forwardRef(({
     return prop;
   };
 
-  const computedStyle: CSSProperties = useMemo(() => (
+  const dynamicStyle: CSSProperties = useMemo(() => (
     {
       '--r-gap': rowGap ? tkns.space[rowGap] : 0,
       '--c-gap': columnGap ? tkns.space[columnGap] : 0,
@@ -95,7 +95,7 @@ export const Stack = forwardRef(({
   return (
     <Wrapper
       ref={forwardedRef}
-      style={{ ...computedStyle, ...style }}
+      style={{ ...dynamicStyle, ...style }}
       data-stack-inline={inline}
       data-stack-wrap={wrap}
       data-stack-direction={direction}

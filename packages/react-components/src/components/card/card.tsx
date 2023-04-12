@@ -1,7 +1,7 @@
 import { TokensTypes } from '@lualtek/tokens/platforms/web';
 import tkns from '@lualtek/tokens/platforms/web/tokens.json';
 import clsx from 'clsx';
-import React, {
+import {
   CSSProperties, forwardRef, ReactNode, useMemo,
 } from 'react';
 

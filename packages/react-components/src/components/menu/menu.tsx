@@ -42,7 +42,7 @@ export const Menu = forwardRef<HTMLUListElement, MenuProps>(({
   style,
   ...otherProps
 }, forwardedRef) => {
-  const computedStyle: CSSProperties = useMemo(() => (
+  const dynamicStyle: CSSProperties = useMemo(() => (
     {
       '--max-height': maxHeight,
     }
@@ -53,7 +53,7 @@ export const Menu = forwardRef<HTMLUListElement, MenuProps>(({
       as="ul"
       ref={forwardedRef}
       className={clsx(styles.Menu, className)}
-      style={{ ...computedStyle, ...style }}
+      style={{ ...dynamicStyle, ...style }}
       data-menu-should-scroll={Boolean(maxHeight)}
       vPadding={8}
       role="menu"
