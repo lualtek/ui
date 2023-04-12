@@ -1,10 +1,10 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 
 import { Stack } from '@/components';
 
 import { Textfield } from './textfield';
 
-const story: ComponentMeta<typeof Textfield> = {
+const story: Meta<typeof Textfield> = {
   title: 'Inputs/Textfield',
   component: Textfield,
   args: {
@@ -39,7 +39,7 @@ const story: ComponentMeta<typeof Textfield> = {
 
 export default story;
 
-const SingleTemplate: ComponentStory<typeof Textfield> = args => (
+const SingleTemplate: StoryFn<typeof Textfield> = args => (
   <Stack rowGap={24}>
     <Textfield {...args} size={4} label="Empty" placeholder="Placeholder" />
     <Textfield {...args} size={4} label="Empty" placeholder="Placeholder" />
@@ -48,7 +48,7 @@ const SingleTemplate: ComponentStory<typeof Textfield> = args => (
   </Stack>
 );
 
-const MultipleTemplate: ComponentStory<typeof Textfield> = args => (
+const MultipleTemplate: StoryFn<typeof Textfield> = args => (
   <Stack rowGap={24}>
     <Textfield {...args} label="Filled" defaultValue="Sample value" />
     <Textfield {...args} label="Filled read only" defaultValue="Sample value" readOnly />

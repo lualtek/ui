@@ -1,9 +1,9 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 
 import { Container } from '../..';
 import { ClampText } from './clamp-text';
 
-const story: ComponentMeta<typeof ClampText> = {
+const story: Meta<typeof ClampText> = {
   title: 'Typography/Clamp Text',
   component: ClampText,
   argTypes: {
@@ -15,7 +15,7 @@ const story: ComponentMeta<typeof ClampText> = {
 
 export default story;
 
-const Template: ComponentStory<typeof ClampText> = args => (
+const Template: StoryFn<typeof ClampText> = args => (
   <Container dimension="medium">
     <ClampText {...args}>
       Lorem ipsum dolor sit amet consectetur adipisicing elit.

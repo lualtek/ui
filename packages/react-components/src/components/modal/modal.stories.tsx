@@ -1,4 +1,4 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import { useState } from 'react';
 
 import {
@@ -8,7 +8,7 @@ import {
 } from '../..';
 import { Modal } from './modal';
 
-const story: ComponentMeta<typeof Modal> = {
+const story: Meta<typeof Modal> = {
   title: 'Dialogs/Modal',
   component: Modal,
   args: {
@@ -18,7 +18,7 @@ const story: ComponentMeta<typeof Modal> = {
 
 export default story;
 
-const ModalShell: ComponentStory<typeof Modal> = ({ children, ...otherProps }) => {
+const ModalShell: StoryFn<typeof Modal> = ({ children, ...otherProps }) => {
   const [isVisible, setIsVisible] = useState(false);
 
   return (
@@ -38,7 +38,7 @@ const ModalShell: ComponentStory<typeof Modal> = ({ children, ...otherProps }) =
   );
 };
 
-const DefaultTemplate: ComponentStory<typeof Modal> = args => (
+const DefaultTemplate: StoryFn<typeof Modal> = args => (
   <ModalShell {...args}>
     <Modal.Content title="Modal title">
       <Textfield label="Test" />
@@ -95,7 +95,7 @@ const CustomContentModal = () => {
   );
 };
 
-const CustomTemplate: ComponentStory<typeof Modal> = args => (
+const CustomTemplate: StoryFn<typeof Modal> = args => (
   <ModalShell {...args}>
     <CustomContentModal />
   </ModalShell>

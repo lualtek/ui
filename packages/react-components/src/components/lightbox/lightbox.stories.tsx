@@ -1,10 +1,10 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import { useState } from 'react';
 
 import { BlankButton, OverlayContainer } from '../..';
 import { Lightbox } from './lightbox';
 
-const story: ComponentMeta<typeof Lightbox> = {
+const story: Meta<typeof Lightbox> = {
   title: 'Dialogs/Lightbox',
   component: Lightbox,
   args: {
@@ -17,7 +17,7 @@ const story: ComponentMeta<typeof Lightbox> = {
 
 export default story;
 
-const Template: ComponentStory<typeof Lightbox> = ({ selectedState, ...args }) => {
+const Template: StoryFn<typeof Lightbox> = ({ selectedState, ...args }) => {
   const state = useState(0);
   const [isOpen, setIsOpen] = useState(false);
   const [, setIndex] = state;

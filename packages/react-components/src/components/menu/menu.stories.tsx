@@ -1,17 +1,17 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import { useState } from 'react';
 
 import { Chip } from '../..';
 import { Menu } from './menu';
 
-const story: ComponentMeta<typeof Menu> = {
+const story: Meta<typeof Menu> = {
   title: 'Navigation/Menu',
   component: Menu,
 };
 
 export default story;
 
-const Template: ComponentStory<typeof Menu> = args => (
+const Template: StoryFn<typeof Menu> = args => (
   <Menu {...args}>
     <Menu.Item value="2" padding={false}>List item text</Menu.Item>
     <Menu.Item value="3" padding={false}>List item text</Menu.Item>
@@ -28,7 +28,7 @@ const Template: ComponentStory<typeof Menu> = args => (
 
 export const Default = Template.bind({});
 
-const WithIconsTemplate: ComponentStory<typeof Menu> = args => (
+const WithIconsTemplate: StoryFn<typeof Menu> = args => (
   <Menu {...args}>
     <Menu.Item value="1" icon="sun">List item text</Menu.Item>
     <Menu.Item value="2" icon="chat">List item text List item</Menu.Item>
@@ -40,7 +40,7 @@ const WithIconsTemplate: ComponentStory<typeof Menu> = args => (
 
 export const WithIcons = WithIconsTemplate.bind({});
 
-const WithCheckboxTemplate: ComponentStory<typeof Menu> = (args) => {
+const WithCheckboxTemplate: StoryFn<typeof Menu> = (args) => {
   const [isChecked, setIsChecked] = useState<boolean>(false);
 
   return (
@@ -66,7 +66,7 @@ const WithCheckboxTemplate: ComponentStory<typeof Menu> = (args) => {
 
 export const WithCheckboxes = WithCheckboxTemplate.bind({});
 
-const LinksTemplate: ComponentStory<typeof Menu> = args => (
+const LinksTemplate: StoryFn<typeof Menu> = args => (
   <Menu {...args}>
     <Menu.Item value="1" as="a" href="https://www.lualtek.io" icon="view">List item text</Menu.Item>
     <Menu.Item value="2" icon="chat">List item text List item</Menu.Item>

@@ -1,8 +1,8 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 
 import { Datetime } from './datetime';
 
-const story: ComponentMeta<typeof Datetime> = {
+const story: Meta<typeof Datetime> = {
   title: 'Widgets/Datetime',
   component: Datetime,
   argTypes: {
@@ -16,7 +16,7 @@ const story: ComponentMeta<typeof Datetime> = {
 
 export default story;
 
-const Template: ComponentStory<typeof Datetime> = args => <Datetime {...args} />;
+const Template: StoryFn<typeof Datetime> = args => <Datetime {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {

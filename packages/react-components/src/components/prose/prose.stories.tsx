@@ -1,4 +1,4 @@
-import { ComponentStory, Meta } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import React from 'react';
 
 import {
@@ -17,7 +17,7 @@ const story: Meta<Polymorphic.OwnProps<typeof Prose>> = {
 
 export default story;
 
-export const Default: ComponentStory<typeof Prose> = args => (
+export const Default: StoryFn<typeof Prose> = args => (
   <Container dimension="medium">
     <Prose {...args}>
       <Title as="h1" level="display">Title</Title>

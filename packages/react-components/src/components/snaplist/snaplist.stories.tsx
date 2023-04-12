@@ -1,8 +1,8 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 
 import { Snaplist } from './snaplist';
 
-const story: ComponentMeta<typeof Snaplist> = {
+const story: Meta<typeof Snaplist> = {
   title: 'Navigation/Snaplist',
   component: Snaplist,
   args: {
@@ -23,7 +23,7 @@ const style = {
   padding: 24,
 };
 
-const Template: ComponentStory<typeof Snaplist> = args => (
+const Template: StoryFn<typeof Snaplist> = args => (
   <Snaplist {...args}>
     <div style={{ minWidth: '30vw', ...style }}>Aaskdjfhasdf </div>
     <div style={style}>Bsdfasdfa sdfsdfg</div>

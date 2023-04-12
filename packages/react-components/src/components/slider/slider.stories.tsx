@@ -1,8 +1,8 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 
 import { Slider } from './slider';
 
-const story: ComponentMeta<typeof Slider> = {
+const story: Meta<typeof Slider> = {
   title: 'Inputs/Slider',
   component: Slider,
   args: {
@@ -24,7 +24,7 @@ const story: ComponentMeta<typeof Slider> = {
 
 export default story;
 
-const Template: ComponentStory<typeof Slider> = args => (
+const Template: StoryFn<typeof Slider> = args => (
   <div style={{ height: 300 }}>
     <Slider {...args} />
   </div>

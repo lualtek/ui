@@ -1,15 +1,17 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 
 import { Container } from '@/components';
 
 import { Text } from './text';
 
-const story: ComponentMeta<typeof Text> = {
+const story: Meta<typeof Text> = {
   title: 'Typography/Text',
   component: Text,
   args: {
     maxWidth: 'auto',
-    children: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius dolores, tempore quas labore officiis praesentium. Porro sed dolorem, numquam temporibus consequuntur quam doloremque ducimus error tempora illo aliquam nesciunt nostrum!',
+    children: `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius dolores,
+    tempore quas labore officiis praesentium. Porro sed dolorem, numquam temporibus
+    consequuntur quam doloremque ducimus error tempora illo aliquam nesciunt nostrum!`,
     textAlign: 'start',
     responsive: true,
     lineHeight: 'small',
@@ -40,7 +42,7 @@ const story: ComponentMeta<typeof Text> = {
 
 export default story;
 
-const Template: ComponentStory<typeof Text> = args => <Container dimension="medium"><Text {...args} /></Container>;
+const Template: StoryFn<typeof Text> = args => <Container dimension="medium"><Text {...args} /></Container>;
 
 export const Default = Template.bind({});
 export const Weight = Template.bind({});

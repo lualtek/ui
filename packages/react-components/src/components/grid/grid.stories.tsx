@@ -1,8 +1,8 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 
 import { Grid } from './grid';
 
-const story: ComponentMeta<typeof Grid> = {
+const story: Meta<typeof Grid> = {
   title: 'Layouts/Grid',
   component: Grid,
   args: {
@@ -15,7 +15,7 @@ const story: ComponentMeta<typeof Grid> = {
 
 export default story;
 
-const Template: ComponentStory<typeof Grid> = args => (
+const Template: StoryFn<typeof Grid> = args => (
   <Grid {...args}>
     <Grid.Item style={{ background: 'var(--dimmed-2)', padding: 24 }}>1</Grid.Item>
     <Grid.Item style={{ background: 'var(--dimmed-2)', padding: 24 }}>2</Grid.Item>

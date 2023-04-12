@@ -1,9 +1,9 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 
 import { Chip } from '../..';
 import { Checkbox } from './checkbox';
 
-const story: ComponentMeta<typeof Checkbox> = {
+const story: Meta<typeof Checkbox> = {
   title: 'Inputs/Checkbox',
   component: Checkbox,
   argTypes: {
@@ -22,7 +22,7 @@ const story: ComponentMeta<typeof Checkbox> = {
 
 export default story;
 
-const Template: ComponentStory<typeof Checkbox> = args => (
+const Template: StoryFn<typeof Checkbox> = args => (
   <Checkbox {...args} />
 );
 
@@ -46,7 +46,10 @@ Indeterminate.args = {
 
 export const WithLabel = Template.bind({});
 WithLabel.args = {
-  label: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Et blanditiis dolore natus itaque fugiat eos harum ea veritatis consequatur deserunt, maxime similique unde ad veniam quas tempore, laboriosam accusamus nihil.',
+  label: `
+    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Etblanditiis dolore natus itaque
+    fugiat eos harum ea veritatis consequatur deserunt, maxime similique unde ad veniam quas
+    tempore, laboriosam accusamus nihil.`,
 };
 
 export const WithCustomLabel = Template.bind({});

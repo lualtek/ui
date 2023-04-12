@@ -141,7 +141,14 @@ export const Drawer: FCChildrenClass<DrawerProps> = forwardRef(({
                     columnGap={24}
                   >
                     <Title responsive={false} level="6" id={titleId}>{title}</Title>
-                    {onClose && <IconButton onClick={onClose} className={styles.CloseButton} icon="remove" kind="flat" />}
+                    {onClose && (
+                      <IconButton
+                        onClick={onClose}
+                        className={styles.CloseButton}
+                        icon="remove"
+                        kind="flat"
+                      />
+                    )}
                   </Stack>
                 )}
                 <AutoFocusInside>

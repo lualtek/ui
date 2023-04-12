@@ -1,4 +1,4 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import { useEffect, useMemo, useState } from 'react';
 
 import { Pagination } from './pagination';
@@ -13,7 +13,7 @@ type PaginationType = Array<{
   application: string;
 }>
 
-const story: ComponentMeta<typeof Pagination> = {
+const story: Meta<typeof Pagination> = {
   title: 'Navigation/Pagination',
   component: Pagination,
   args: {
@@ -23,7 +23,7 @@ const story: ComponentMeta<typeof Pagination> = {
 
 export default story;
 
-export const Default: ComponentStory<typeof Pagination> = ({
+export const Default: StoryFn<typeof Pagination> = ({
   itemsPerPage,
   ...args
 }) => {

@@ -1,4 +1,4 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 
 import {
   IconButton, Menu, Popover, Stack,
@@ -79,7 +79,7 @@ const columns = [
   }),
 ];
 
-const story: ComponentMeta<typeof Table> = {
+const story: Meta<typeof Table> = {
   title: 'Layouts/Table',
   component: Table,
   args: {
@@ -90,7 +90,7 @@ const story: ComponentMeta<typeof Table> = {
 export default story;
 
 // @ts-expect-error Problem with generinc from the table
-const Template: ComponentStory<typeof Table> = (args: TableProps<Person>) => (
+const Template: StoryFn<typeof Table> = (args: TableProps<Person>) => (
   <Table {...args} columns={columns} data={tableDataFixture} />
 );
 

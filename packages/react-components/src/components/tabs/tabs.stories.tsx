@@ -1,10 +1,10 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import { useState } from 'react';
 
 import { Button, Chip } from '../..';
 import { Tabs } from './tabs';
 
-const story: ComponentMeta<typeof Tabs> = {
+const story: Meta<typeof Tabs> = {
   title: 'Navigation/Tabs',
   component: Tabs,
   args: {
@@ -13,7 +13,7 @@ const story: ComponentMeta<typeof Tabs> = {
 };
 export default story;
 
-const Template: ComponentStory<typeof Tabs> = args => (
+const Template: StoryFn<typeof Tabs> = args => (
   <>
     <Tabs {...args}>
       <Tabs.Panel value="1" label="Tab 1">Panel 1</Tabs.Panel>
@@ -41,7 +41,7 @@ InitialTab.args = {
   defaultValue: '3',
 };
 
-const TemplateDecorator: ComponentStory<typeof Tabs> = args => (
+const TemplateDecorator: StoryFn<typeof Tabs> = args => (
   <>
     <Tabs {...args}>
       <Tabs.Panel value="1" label="Tab 1">Panel 1</Tabs.Panel>
@@ -108,7 +108,7 @@ export const ConditionalTab = () => {
   );
 };
 
-export const DisabledTabs: ComponentStory<typeof Tabs> = args => (
+export const DisabledTabs: StoryFn<typeof Tabs> = args => (
   <Tabs defaultValue="1" {...args}>
     <Tabs.Panel value="1" label="Tab 1">Panel 1</Tabs.Panel>
     <Tabs.Panel value="2" label="Tab mid long 2">Panel 2</Tabs.Panel>
@@ -119,7 +119,7 @@ export const DisabledTabs: ComponentStory<typeof Tabs> = args => (
   </Tabs>
 );
 
-export const WithIcons: ComponentStory<typeof Tabs> = args => (
+export const WithIcons: StoryFn<typeof Tabs> = args => (
   <Tabs defaultValue="1" {...args}>
     <Tabs.Panel icon="star" value="1" label="Tab 1">Panel 1</Tabs.Panel>
     <Tabs.Panel icon="view" value="2" label="Tab mid long 2">Panel 2</Tabs.Panel>

@@ -1,9 +1,9 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { ComponentStory, Meta } from '@storybook/react';
 
 import { Chip, List } from '../..';
 import { Autocomplete } from './autocomplete';
 
-const story: ComponentMeta<typeof Autocomplete> = {
+const story: Meta<typeof Autocomplete> = {
   title: 'Inputs/Autocomplete',
   component: Autocomplete,
   args: {
@@ -61,5 +61,6 @@ Loading.args = {
 
 export const CustomEvent = Template.bind({});
 CustomEvent.args = {
+  // eslint-disable-next-line no-alert
   onClickOption: value => alert(value),
 };

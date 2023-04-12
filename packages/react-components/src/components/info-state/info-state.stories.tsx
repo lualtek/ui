@@ -1,9 +1,9 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 
 import { Button } from '../..';
 import { InfoState } from './info-state';
 
-const story: ComponentMeta<typeof InfoState> = {
+const story: Meta<typeof InfoState> = {
   title: 'Dialogs/InfoState',
   component: InfoState,
   args: {
@@ -19,7 +19,7 @@ const story: ComponentMeta<typeof InfoState> = {
 
 export default story;
 
-const Template: ComponentStory<typeof InfoState> = args => (
+const Template: StoryFn<typeof InfoState> = args => (
   <InfoState {...args}>
     Cras ultricies, elit sit amet cursus consectetur,
     risus felis ullamcorper nulla, ut scelerisque sapien lorem non sem.

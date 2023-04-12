@@ -1,8 +1,8 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 
 import { Container } from './container';
 
-const story: ComponentMeta<typeof Container> = {
+const story: Meta<typeof Container> = {
   title: 'Layouts/Container',
   component: Container,
   argTypes: {
@@ -26,7 +26,7 @@ const story: ComponentMeta<typeof Container> = {
 
 export default story;
 
-const Template: ComponentStory<typeof Container> = args => <Container {...args}>A</Container>;
+const Template: StoryFn<typeof Container> = args => <Container {...args}>A</Container>;
 
 export const Small = Template.bind({});
 Small.args = {

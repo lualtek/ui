@@ -1,8 +1,8 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 
 import { SplitButton } from './split-button';
 
-const story: ComponentMeta<typeof SplitButton> = {
+const story: Meta<typeof SplitButton> = {
   title: 'Actions/Split button',
   component: SplitButton,
   args: {
@@ -34,7 +34,7 @@ const story: ComponentMeta<typeof SplitButton> = {
 
 export default story;
 
-const Template: ComponentStory<typeof SplitButton> = args => (
+const Template: StoryFn<typeof SplitButton> = args => (
   <SplitButton {...args}>
     <div
       style={{
