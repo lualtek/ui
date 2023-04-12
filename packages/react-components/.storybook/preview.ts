@@ -3,8 +3,10 @@ import '@lualtek/themes';
 import '../src/core.css';
 import './overrides.css';
 
-export const parameters = {
-  actions: { argTypesRegex: '^on[A-Z].*' },
+const preview = {
+  parameters: {
+    actions: { argTypesRegex: '^on[A-Z].*' },
+  },
   previewTabs: {
     'storybook/docs/panel': {
       hidden: true,
@@ -26,11 +28,15 @@ export const parameters = {
       const iframe = document.querySelector('#storybook-preview-iframe');
       if (theme) {
         // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+        // @ts-expect-error
         iframe.contentDocument.documentElement.dataset.theme = theme.name;
       } else {
+        // @ts-expect-error
         iframe.contentDocument.documentElement.dataset.theme = 'auto';
       }
     },
     target: 'root',
   },
 };
+
+export default preview;
