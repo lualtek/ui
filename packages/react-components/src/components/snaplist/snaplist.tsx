@@ -25,7 +25,7 @@ export type SnaplistProps = {
   /**
    * The distance between the snap element and the scroller edges..
    */
-  scrollPadding?: string;
+  scrollPadding?: TokensTypes['space'];
 }
 
 type PolymorphicSnaplist = Polymorphic.ForwardRefComponent<
@@ -46,7 +46,7 @@ export const Snaplist = forwardRef(({
 }, forwardedRef) => {
   const dynamicStyle: CSSProperties = useMemo(() => ({
     '--snap-align': snapAlign,
-    '--scroll-padding': scrollPadding,
+    '--scroll-padding': scrollPadding ? tkns.space[scrollPadding] : 0,
     '--bleed': bleed ? tkns.space[bleed] : 0,
   }), [bleed, snapAlign, scrollPadding]);
 
