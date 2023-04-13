@@ -16,7 +16,7 @@ export type SnaplistProps = {
    * The alignment of the snap element.
    * This define which side the snap element is anchored when srcolling.
    */
-  snapAlign: 'start' | 'center' | 'end';
+  snapAlign?: 'start' | 'center' | 'end';
   /**
    * Horizontal negative margin used to offset the list.
    * Used to align list edges to the viewport or containers.
