@@ -1,5 +1,14 @@
 # @lualtek/react-components
 
+## 5.1.1
+
+### Patch Changes
+
+- d14ff16: Fix scrollPadding and make it a token space value
+- 54a8b24: Fix Snaplist's snapAlign prop as optional
+- b356239: Add Snaplist props descriptions
+  - @lualtek/icons@5.1.1
+
 ## 5.1.0
 
 ### Minor Changes
