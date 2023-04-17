@@ -25,6 +25,7 @@ const Template: StoryFn<typeof StickySpy> = (args) => {
           style={{ position: 'sticky', top: 0, background: isSticky && 'red' }}
         >
           Sticky title
+          {isSticky && 'dio'}
         </Title>
       </StickySpy>
       {/* eslint-disable max-len */}
