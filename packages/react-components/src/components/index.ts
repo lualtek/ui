@@ -11,6 +11,7 @@ export * from './datetime';
 export * from './disclosure';
 export * from './drawer';
 export * from './elevator';
+export * from './gradient-text';
 export * from './grid';
 export * from './icon';
 export * from './icon-button';
