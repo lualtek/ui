@@ -1,5 +1,11 @@
 # @lualtek/config
 
+## 5.2.1
+
+### Patch Changes
+
+- @lualtek/tokens@5.2.1
+
 ## 5.2.0
 
 ### Minor Changes

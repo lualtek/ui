@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 5.2.1
+
+### Patch Changes
+
+- 6c2eed3: Fix StickySpy
+  - @lualtek/icons@5.2.1
+
 ## 5.2.0
 
 ### Minor Changes
