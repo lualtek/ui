@@ -38,6 +38,7 @@ export * from './snaplist';
 export * from './spinner';
 export * from './split-button';
 export * from './stack';
+export * from './sticky-spy';
 export * from './switch';
 export * from './table';
 export * from './tabs';
