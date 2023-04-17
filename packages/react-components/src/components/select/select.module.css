@@ -60,7 +60,7 @@
       calc(token(--space-24) - token(--space-4))
       calc(var(--field-padding) * var(--factor))
       token(--space-4)
-      calc(var(--field-padding) * 0.7);
+      var(--field-padding);
 
     &:disabled {
       cursor: not-allowed;
