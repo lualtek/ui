@@ -1,5 +1,15 @@
 # @lualtek/config
 
+## 5.2.0
+
+### Minor Changes
+
+- 8015e30: Add new GradientText component
+
+### Patch Changes
+
+- @lualtek/tokens@5.2.0
+
 ## 5.1.1
 
 ### Patch Changes

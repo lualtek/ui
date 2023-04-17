@@ -1,5 +1,17 @@
 # @lualtek/react-components
 
+## 5.2.0
+
+### Minor Changes
+
+- 399ba7a: Add StickySy
+- 8015e30: Add new GradientText component
+
+### Patch Changes
+
+- 62fcc34: Fix Select alignment
+  - @lualtek/icons@5.2.0
+
 ## 5.1.1
 
 ### Patch Changes
