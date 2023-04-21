@@ -30,8 +30,8 @@
   },
   "dependencies": {
     "@lualtek/tokens": "*",
-    "cssnano": "6.0.0",
-    "cssnano-preset-default": "6.0.0",
+    "cssnano": "5.1.15",
+    "cssnano-preset-default": "5.2.14",
     "flat": "5.0.2",
     "postcss-import": "15.1.0",
     "postcss-mixins": "9.0.4",
