@@ -1,8 +1,8 @@
-import { Meta, StoryFn } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import { Select, SelectProps } from './select';
+import { Select } from './select';
 
-const story: Meta<SelectProps> = {
+const story: ComponentMeta<typeof Select> = {
   title: 'Inputs/Select',
   component: Select,
   argTypes: {
@@ -25,7 +25,7 @@ const story: Meta<SelectProps> = {
 
 export default story;
 
-const SingleTemplate: StoryFn<typeof Select> = args => (
+const SingleTemplate: ComponentStory<typeof Select> = args => (
   <Select defaultValue="placeholder" {...args}>
     <option value="placeholder" hidden disabled>Pick an option</option>
     <optgroup label="Option Group One">
@@ -40,7 +40,7 @@ const SingleTemplate: StoryFn<typeof Select> = args => (
   </Select>
 );
 
-const MultipleTemplate: StoryFn<typeof Select> = args => (
+const MultipleTemplate: ComponentStory<typeof Select> = args => (
   <Select {...args} kind="multiple">
     <optgroup label="Option Group">
       <option>Option 1</option>

@@ -1,8 +1,8 @@
-import { Meta, StoryFn } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { List } from './list';
 
-const story: Meta<typeof List> = {
+const story: ComponentMeta<typeof List> = {
   title: 'Typography/List',
   component: List,
   args: {
@@ -19,7 +19,7 @@ const story: Meta<typeof List> = {
 
 export default story;
 
-const Template: StoryFn<typeof List & typeof List.Li> = ({ marker, markerColor, ...args }) => (
+const Template: ComponentStory<typeof List & typeof List.Li> = ({ marker, markerColor, ...args }) => (
   <List {...args}>
     <List.Li marker={marker} hideMarker markerColor={markerColor}>List item text</List.Li>
     <List.Li marker={marker} markerColor={markerColor}>List item text List item textList text</List.Li>

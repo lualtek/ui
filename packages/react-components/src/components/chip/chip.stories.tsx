@@ -1,8 +1,8 @@
-import { Meta, StoryFn } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { Chip } from './chip';
 
-const story: Meta<typeof Chip> = {
+const story: ComponentMeta<typeof Chip> = {
   title: 'Widgets/Chip',
   component: Chip,
   argTypes: {
@@ -29,7 +29,7 @@ const story: Meta<typeof Chip> = {
 
 export default story;
 
-const Template: StoryFn<typeof Chip> = args => (
+const Template: ComponentStory<typeof Chip> = args => (
   <>
     <Chip {...args}>Chip text</Chip>
     <Chip>Chip text</Chip>

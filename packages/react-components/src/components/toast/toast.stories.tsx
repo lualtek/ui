@@ -1,6 +1,6 @@
 // import { Toast, ToastProvider, ToastViewport } from '@radix-ui/react-toast';
 import { useState } from '@storybook/addons';
-import { Meta, StoryFn } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { useRef } from 'react';
 
 import {
@@ -8,7 +8,7 @@ import {
   ToastProvider, ToastViewport,
 } from '../..';
 
-const story: Meta<typeof InlineToast> = {
+const story: ComponentMeta<typeof InlineToast> = {
   title: 'Dialogs/Inline Toast',
   component: InlineToast,
   args: {
@@ -24,7 +24,7 @@ const story: Meta<typeof InlineToast> = {
 
 export default story;
 
-const Template: StoryFn<typeof InlineToast> = ({ ...args }) => (
+const Template: ComponentStory<typeof InlineToast> = ({ ...args }) => (
   <InlineToast {...args}>
     Cras ultricies, elit sit amet cursus consectetur.
   </InlineToast>
@@ -62,7 +62,7 @@ SingleLine.args = {
   singleLine: true,
 };
 
-const TemplateToast: StoryFn<typeof Toast> = ({ ...args }) => {
+const TemplateToast: ComponentStory<typeof Toast> = ({ ...args }) => {
   const [toasts, setToasts] = useState<Array<{ title: string }>>([]);
   const toastsShown = useRef(0);
 

@@ -1,8 +1,8 @@
-import { Meta, StoryFn } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { Elevator } from './elevator';
 
-const story: Meta<typeof Elevator> = {
+const story: ComponentMeta<typeof Elevator> = {
   title: 'Widgets/Elevator',
   component: Elevator,
   argTypes: {
@@ -23,7 +23,7 @@ const story: Meta<typeof Elevator> = {
 
 export default story;
 
-const Template: StoryFn<typeof Elevator> = args => (
+const Template: ComponentStory<typeof Elevator> = args => (
   <Elevator {...args}>
     <div style={{ padding: 32, background: 'var(--dimmed-0)' }}>
       Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maxime, unde.

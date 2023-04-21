@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import { Meta, StoryFn } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { useState } from 'react';
 
 import {
@@ -7,7 +7,7 @@ import {
 } from '../..';
 import { Drawer } from './drawer';
 
-const story: Meta<typeof Drawer> = {
+const story: ComponentMeta<typeof Drawer> = {
   title: 'Dialogs/Drawer',
   component: Drawer,
   args: {
@@ -26,7 +26,7 @@ const story: Meta<typeof Drawer> = {
 
 export default story;
 
-const DrawerShell: StoryFn<typeof Drawer> = ({ children, ...args }) => {
+const DrawerShell: ComponentStory<typeof Drawer> = ({ children, ...args }) => {
   const [isVisible, setIsVisible] = useState(false);
 
   return (
@@ -93,7 +93,7 @@ const DrawerShell: StoryFn<typeof Drawer> = ({ children, ...args }) => {
   );
 };
 
-const CustomContentDrawer: StoryFn<typeof Drawer> = () => {
+const CustomContentDrawer: ComponentStory<typeof Drawer> = () => {
   const { onClose } = useOverlayContext();
 
   return (
@@ -113,7 +113,7 @@ const CustomContentDrawer: StoryFn<typeof Drawer> = () => {
   );
 };
 
-const DefaultTemplate: StoryFn<typeof Drawer> = args => (
+const DefaultTemplate: ComponentStory<typeof Drawer> = args => (
   <DrawerShell {...args}>
     <CustomContentDrawer />
   </DrawerShell>

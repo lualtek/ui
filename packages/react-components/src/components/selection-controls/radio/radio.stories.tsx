@@ -1,16 +1,16 @@
-import { Meta, StoryFn } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { Chip } from '../..';
 import { Radio } from './radio';
 
-const story: Meta<typeof Radio> = {
+const story: ComponentMeta<typeof Radio> = {
   title: 'Inputs/Radio',
   component: Radio,
 };
 
 export default story;
 
-const Template: StoryFn<typeof Radio> = args => (
+const Template: ComponentStory<typeof Radio> = args => (
   <fieldset>
     <Radio {...args} defaultChecked value="1" name="story" />
     <Radio {...args} value="2" name="story" />

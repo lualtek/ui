@@ -1,9 +1,9 @@
-import { Meta, StoryFn } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { Chip } from '../..';
 import { Checkbox } from './checkbox';
 
-const story: Meta<typeof Checkbox> = {
+const story: ComponentMeta<typeof Checkbox> = {
   title: 'Inputs/Checkbox',
   component: Checkbox,
   argTypes: {
@@ -22,7 +22,7 @@ const story: Meta<typeof Checkbox> = {
 
 export default story;
 
-const Template: StoryFn<typeof Checkbox> = args => (
+const Template: ComponentStory<typeof Checkbox> = args => (
   <Checkbox {...args} />
 );
 

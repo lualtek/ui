@@ -1,9 +1,9 @@
-import { Meta, StoryFn } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { SVGAttributes } from 'react';
 
 import { Button } from '.';
 
-const story: Meta<typeof Button> = {
+const story: ComponentMeta<typeof Button> = {
   title: 'Actions/Button',
   component: Button,
   args: {
@@ -53,7 +53,7 @@ const CustomReactIcon = ({ ...props }: SVGAttributes<SVGElement | SVGSVGElement>
   </svg>
 );
 
-const Template: StoryFn<typeof Button> = args => <Button {...args} />;
+const Template: ComponentStory<typeof Button> = args => <Button {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {

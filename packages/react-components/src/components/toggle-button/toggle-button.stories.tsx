@@ -1,8 +1,8 @@
-import { Meta, StoryFn } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { ToggleButton } from './toggle-button';
 
-const story: Meta<typeof ToggleButton> = {
+const story: ComponentMeta<typeof ToggleButton> = {
   title: 'Actions/Toggle button',
   component: ToggleButton,
   args: {
@@ -26,7 +26,7 @@ const story: Meta<typeof ToggleButton> = {
 
 export default story;
 
-const Template: StoryFn<typeof ToggleButton> = args => <ToggleButton {...args} />;
+const Template: ComponentStory<typeof ToggleButton> = args => <ToggleButton {...args} />;
 
 export const Default = Template.bind({});
 

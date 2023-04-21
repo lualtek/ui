@@ -1,9 +1,9 @@
-import { Meta, StoryFn } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { Stack } from '../..';
 import { IconMeter } from './icon-meter';
 
-const story: Meta<typeof IconMeter> = {
+const story: ComponentMeta<typeof IconMeter> = {
   title: 'Widgets/Icon meter',
   component: IconMeter,
   args: {
@@ -20,7 +20,7 @@ const story: Meta<typeof IconMeter> = {
 
 export default story;
 
-const Template: StoryFn<typeof IconMeter> = args => <Stack><IconMeter {...args} /></Stack>;
+const Template: ComponentStory<typeof IconMeter> = args => <Stack><IconMeter {...args} /></Stack>;
 
 export const Default = Template.bind({});
 

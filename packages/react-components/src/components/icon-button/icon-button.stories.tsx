@@ -1,8 +1,8 @@
-import { Meta, StoryFn } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { IconButton } from './icon-button';
 
-const story: Meta<typeof IconButton> = {
+const story: ComponentMeta<typeof IconButton> = {
   title: 'Actions/IconButton',
   component: IconButton,
   args: {
@@ -30,7 +30,7 @@ const story: Meta<typeof IconButton> = {
 
 export default story;
 
-const Template: StoryFn<typeof IconButton> = args => <IconButton {...args} />;
+const Template: ComponentStory<typeof IconButton> = args => <IconButton {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {

@@ -1,8 +1,8 @@
-import { Meta, StoryFn } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { Stack } from './stack';
 
-const story: Meta<typeof Stack> = {
+const story: ComponentMeta<typeof Stack> = {
   title: 'Layouts/Stack',
   component: Stack,
   argTypes: {
@@ -32,7 +32,7 @@ const story: Meta<typeof Stack> = {
 
 export default story;
 
-const Template: StoryFn<typeof Stack> = args => (
+const Template: ComponentStory<typeof Stack> = args => (
   <Stack rowGap={80} {...args}>
     <div className="DivEx">01</div>
     <div className="DivEx">02</div>

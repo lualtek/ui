@@ -1,8 +1,8 @@
-import { Meta, StoryFn } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { Textarea as Area } from './textarea';
 
-const story: Meta<typeof Area> = {
+const story: ComponentMeta<typeof Area> = {
   title: 'Inputs/Textarea',
   component: Area,
   args: {
@@ -32,7 +32,7 @@ const story: Meta<typeof Area> = {
 
 export default story;
 
-const TextareaTemplate: StoryFn<typeof Area> = args => (
+const TextareaTemplate: ComponentStory<typeof Area> = args => (
   <Area {...args} required placeholder="Placeholder" />
 );
 

@@ -1,9 +1,9 @@
-import { ComponentStory, Meta } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { Chip, List } from '../..';
 import { Autocomplete } from './autocomplete';
 
-const story: Meta<typeof Autocomplete> = {
+const story: ComponentMeta<typeof Autocomplete> = {
   title: 'Inputs/Autocomplete',
   component: Autocomplete,
   args: {

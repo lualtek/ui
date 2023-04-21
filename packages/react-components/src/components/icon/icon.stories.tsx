@@ -1,9 +1,9 @@
-import { Meta, StoryFn } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { SVGAttributes } from 'react';
 
 import { Icon } from './icon';
 
-const story: Meta<typeof Icon> = {
+const story: ComponentMeta<typeof Icon> = {
   title: 'Widgets/Icon',
   component: Icon,
   args: {
@@ -14,7 +14,7 @@ const story: Meta<typeof Icon> = {
 
 export default story;
 
-const Template: StoryFn<typeof Icon> = args => <Icon {...args} />;
+const Template: ComponentStory<typeof Icon> = args => <Icon {...args} />;
 
 const CustomReactIcon = ({ ...props }: SVGAttributes<SVGElement | SVGSVGElement>) => (
   <svg

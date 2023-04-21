@@ -1,10 +1,10 @@
-import { Meta, StoryFn } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { useState } from 'react';
 
 import { Chip, Text } from '../..';
 import { Menu } from '..';
 
-const story: Meta<typeof Menu.Item> = {
+const story: ComponentMeta<typeof Menu.Item> = {
   title: 'Navigation/Menu/Menu Item',
   component: Menu.Item,
   args: {
@@ -30,7 +30,7 @@ const story: Meta<typeof Menu.Item> = {
 
 export default story;
 
-const TemplateItem: StoryFn<typeof Menu.Item> = args => (
+const TemplateItem: ComponentStory<typeof Menu.Item> = args => (
   <>
     <Menu.Item
       {...args}
@@ -52,7 +52,7 @@ const TemplateItem: StoryFn<typeof Menu.Item> = args => (
 
 export const DefaultItem = TemplateItem.bind({});
 
-const WithCheckboxTemplate: StoryFn<typeof Menu.ItemCheckbox> = (args) => {
+const WithCheckboxTemplate: ComponentStory<typeof Menu.ItemCheckbox> = (args) => {
   const [isChecked, setIsChecked] = useState<boolean>(false);
 
   return (
@@ -80,7 +80,7 @@ const WithCheckboxTemplate: StoryFn<typeof Menu.ItemCheckbox> = (args) => {
 
 export const WithCheckboxes = WithCheckboxTemplate.bind({});
 
-const WithDecoratorsTemplate: StoryFn<typeof Menu.Item> = args => (
+const WithDecoratorsTemplate: ComponentStory<typeof Menu.Item> = args => (
   <>
     <Menu.Item
       {...args}

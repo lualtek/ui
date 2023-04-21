@@ -1,8 +1,8 @@
-import { Meta, StoryFn } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { Disclosure } from './disclosure';
 
-const story: Meta<typeof Disclosure> = {
+const story: ComponentMeta<typeof Disclosure> = {
   title: 'Actions/Disclosure',
   component: Disclosure,
   args: {
@@ -30,7 +30,7 @@ const story: Meta<typeof Disclosure> = {
 
 export default story;
 
-const Template: StoryFn<typeof Disclosure> = args => (
+const Template: ComponentStory<typeof Disclosure> = args => (
   <Disclosure {...args}>
     Lorem ipsum dolor sit amet consectetur adipisicing elit.
     Doloribus corporis nobis ipsum natus laudantium dolorem sapiente,
@@ -40,7 +40,7 @@ const Template: StoryFn<typeof Disclosure> = args => (
 
 export const Default = Template.bind({});
 
-const NestedTemplate: StoryFn<typeof Disclosure> = args => (
+const NestedTemplate: ComponentStory<typeof Disclosure> = args => (
   <Disclosure {...args}>
     Lorem ipsum dolor sit amet consectetur adipisicing elit.
     Doloribus corporis nobis ipsum natus laudantium dolorem sapiente,

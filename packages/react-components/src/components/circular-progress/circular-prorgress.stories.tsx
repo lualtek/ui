@@ -1,8 +1,8 @@
-import { Meta, StoryFn } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { CircularProgress } from './circular-progress';
 
-const story: Meta<typeof CircularProgress> = {
+const story: ComponentMeta<typeof CircularProgress> = {
   title: 'Loading/Circular progress',
   component: CircularProgress,
   args: {
@@ -27,7 +27,7 @@ const story: Meta<typeof CircularProgress> = {
 
 export default story;
 
-const Template: StoryFn<typeof CircularProgress> = args => <CircularProgress {...args} />;
+const Template: ComponentStory<typeof CircularProgress> = args => <CircularProgress {...args} />;
 
 export const Determinate = Template.bind({});
 Determinate.args = {

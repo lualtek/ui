@@ -1,8 +1,8 @@
-import { Meta, StoryFn } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { Switch } from './switch';
 
-const story: Meta<typeof Switch> = {
+const story: ComponentMeta<typeof Switch> = {
   title: 'Inputs/Switch',
   component: Switch,
   argTypes: {
@@ -15,7 +15,7 @@ const story: Meta<typeof Switch> = {
 
 export default story;
 
-const Template: StoryFn<typeof Switch> = args => (
+const Template: ComponentStory<typeof Switch> = args => (
   <Switch {...args} />
 );
 

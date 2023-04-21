@@ -1,9 +1,9 @@
-import type { Meta, StoryFn } from '@storybook/react';
+import type { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { Title } from '../..';
 import { GradientText } from './gradient-text';
 
-const story: Meta<typeof GradientText> = {
+const story: ComponentMeta<typeof GradientText> = {
   title: 'Typography/Gradient Text',
   component: GradientText,
   args: {
@@ -19,7 +19,7 @@ const story: Meta<typeof GradientText> = {
 
 export default story;
 
-const Template: StoryFn<typeof GradientText> = args => (
+const Template: ComponentStory<typeof GradientText> = args => (
   <Title level="4">
     <GradientText {...args}>
       Gradient Title

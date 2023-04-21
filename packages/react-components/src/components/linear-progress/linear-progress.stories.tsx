@@ -1,8 +1,8 @@
-import { Meta, StoryFn } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { LinearProgress } from './linear-progress';
 
-const story: Meta<typeof LinearProgress> = {
+const story: ComponentMeta<typeof LinearProgress> = {
   title: 'Loading/Linear progress',
   component: LinearProgress,
   args: {
@@ -23,7 +23,7 @@ const story: Meta<typeof LinearProgress> = {
 
 export default story;
 
-const Template: StoryFn<typeof LinearProgress> = args => <LinearProgress {...args} />;
+const Template: ComponentStory<typeof LinearProgress> = args => <LinearProgress {...args} />;
 
 export const Determinate = Template.bind({});
 Determinate.args = {

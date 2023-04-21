@@ -1,10 +1,10 @@
-import { Meta, StoryFn } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { useState } from 'react';
 
 import { Button, Stack } from '../..';
 import { OverlayContainer } from './overlay-container';
 
-const story: Meta<typeof OverlayContainer> = {
+const story: ComponentMeta<typeof OverlayContainer> = {
   title: 'Layouts/Overlay container',
   component: OverlayContainer,
   args: {
@@ -14,7 +14,7 @@ const story: Meta<typeof OverlayContainer> = {
 
 export default story;
 
-const Template: StoryFn<typeof OverlayContainer> = ({ children, ...otherProps }) => {
+const Template: ComponentStory<typeof OverlayContainer> = ({ children, ...otherProps }) => {
   const [isVisible, setVisible] = useState(false);
   return (
     <>

@@ -1,11 +1,11 @@
-import { Meta, StoryFn } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import {
   Icon, Stack, Text, Title,
 } from '../..';
 import { Card } from './card';
 
-const story: Meta<typeof Card> = {
+const story: ComponentMeta<typeof Card> = {
   title: 'Layouts/Card',
   component: Card,
   args: {
@@ -25,7 +25,7 @@ const story: Meta<typeof Card> = {
 
 export default story;
 
-const Template: StoryFn<typeof Card> = args => <Card {...args} />;
+const Template: ComponentStory<typeof Card> = args => <Card {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {

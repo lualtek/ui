@@ -1,9 +1,9 @@
-import { Meta, StoryFn } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { Text } from '../..';
 import { Tooltip, TooltipProvider } from './tooltip';
 
-const story: Meta<typeof Tooltip> = {
+const story: ComponentMeta<typeof Tooltip> = {
   title: 'Dialogs/Tooltip',
   component: Tooltip,
   args: {
@@ -19,7 +19,7 @@ const story: Meta<typeof Tooltip> = {
 
 export default story;
 
-const Template: StoryFn<typeof Tooltip> = args => (
+const Template: ComponentStory<typeof Tooltip> = args => (
   <TooltipProvider>
     Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit expedita,
     saepe numquam illo quas, Lorem ipsum dolor, sit amet consectetur adipisicing elit.

@@ -1,10 +1,10 @@
-import { Meta, StoryFn } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { Container } from '@/components';
 
 import { Title } from './title';
 
-const story: Meta<typeof Title> = {
+const story: ComponentMeta<typeof Title> = {
   title: 'Typography/Title',
   component: Title,
   parameters: {
@@ -31,7 +31,7 @@ const story: Meta<typeof Title> = {
 
 export default story;
 
-export const Default: StoryFn<typeof Title> = ({ lineHeight }) => (
+export const Default: ComponentStory<typeof Title> = ({ lineHeight }) => (
   <Container>
     <Title lineHeight={lineHeight} as="h1" level="display">Sample title</Title>
     <Title lineHeight={lineHeight} as="h1" level="1">Sample title</Title>
@@ -43,7 +43,7 @@ export const Default: StoryFn<typeof Title> = ({ lineHeight }) => (
   </Container>
 );
 
-const Template: StoryFn<typeof Title> = args => (
+const Template: ComponentStory<typeof Title> = args => (
   <Container dimension="medium">
     <Title {...args}>Sample title</Title>
   </Container>

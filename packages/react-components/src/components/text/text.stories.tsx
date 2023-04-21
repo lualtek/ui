@@ -1,10 +1,10 @@
-import { Meta, StoryFn } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { Container } from '@/components';
 
 import { Text } from './text';
 
-const story: Meta<typeof Text> = {
+const story: ComponentMeta<typeof Text> = {
   title: 'Typography/Text',
   component: Text,
   args: {
@@ -42,7 +42,7 @@ const story: Meta<typeof Text> = {
 
 export default story;
 
-const Template: StoryFn<typeof Text> = args => <Container dimension="medium"><Text {...args} /></Container>;
+const Template: ComponentStory<typeof Text> = args => <Container dimension="medium"><Text {...args} /></Container>;
 
 export const Default = Template.bind({});
 export const Weight = Template.bind({});
