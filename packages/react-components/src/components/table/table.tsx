@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import {
   ColumnDef,
   FilterFnOption,
@@ -38,7 +37,7 @@ import { CustomColumnMeta } from './types';
 
 declare module '@tanstack/table-core' {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/naming-convention
-  interface ColumnComponentMeta<TData extends RowData, TValue> extends CustomColumnMeta {}
+  interface ColumnMeta<TData extends RowData, TValue> extends CustomColumnMeta {}
 }
 
 type CommonProps<T> = PropsWithClass<{
@@ -267,9 +266,7 @@ export const Table = <T extends Record<string, unknown>>({
       {row.getVisibleCells().map(cell => (
         <TableCell
           key={cell.id}
-          // @ts-expect-error si é rotto a cazzo
           collapsed={cell.column.columnDef.meta?.collapsed}
-          // @ts-expect-error si é rotto a cazzo
           align={cell.column.columnDef.meta?.align}
           width={cell.column.columnDef.size}
         >
@@ -298,9 +295,7 @@ export const Table = <T extends Record<string, unknown>>({
               width={header.column.columnDef.size}
               canSort={header.column.getCanSort()}
               sorting={header.column.getIsSorted()}
-              // @ts-expect-error si é rotto a cazzo
               collapsed={header.column.columnDef.meta?.collapsed}
-              // @ts-expect-error si é rotto a cazzo
               align={header.column.columnDef.meta?.align}
               onClick={header.column.getToggleSortingHandler()}
             >
