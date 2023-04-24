@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 5.2.3
+
+### Patch Changes
+
+- 7f6364b: Add missing css layer to some component
+  - @lualtek/icons@5.2.3
+
 ## 5.2.2
 
 ### Patch Changes
