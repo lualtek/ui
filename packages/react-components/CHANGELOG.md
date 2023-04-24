@@ -1,5 +1,15 @@
 # @lualtek/react-components
 
+## 5.3.0
+
+### Minor Changes
+
+- a065764: Add new hPadding to Separator
+
+### Patch Changes
+
+- @lualtek/icons@5.3.0
+
 ## 5.2.3
 
 ### Patch Changes
