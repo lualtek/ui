@@ -12,19 +12,25 @@ export type SeparatorProps = HTMLAttributes<HTMLHRElement> & {
    * Add top and bottom space using margins.
    */
   vPadding?: TokensTypes['space'];
+  /**
+   * Add left and right space using margins.
+   */
+  hPadding?: TokensTypes['space'];
 }
 
 export const Separator = forwardRef<HTMLHRElement, SeparatorProps>(({
   className,
   vPadding,
+  hPadding,
   style,
   ...otherProps
 }, forwardedRef) => {
   const dynamicStyle: CSSProperties = useMemo(() => (
     {
       '--v-padding': vPadding ? tkns.space[vPadding] : 0,
+      '--h-padding': hPadding ? tkns.space[hPadding] : 0,
     }
-  ), [vPadding]);
+  ), [vPadding, hPadding]);
 
   return (
     <hr
