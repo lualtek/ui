@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 5.2.2
+
+### Patch Changes
+
+- 148a06f: Make autocomplete using portal
+  - @lualtek/icons@5.2.2
+
 ## 5.2.1
 
 ### Patch Changes
