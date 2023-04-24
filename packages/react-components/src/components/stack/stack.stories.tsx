@@ -1,5 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
+import { BlankButton } from '../..';
 import { Stack } from './stack';
 
 const story: ComponentMeta<typeof Stack> = {
@@ -26,7 +27,8 @@ const story: ComponentMeta<typeof Stack> = {
   args: {
     direction: 'row',
     wrap: true,
-    as: 'div',
+    vPadding: 32,
+    as: BlankButton,
   },
 };
 
