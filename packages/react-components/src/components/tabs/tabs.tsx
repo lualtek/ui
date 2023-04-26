@@ -64,8 +64,18 @@ export const Tabs = ({
             >
               <Button kind="flat" dimension="big">
                 {child.props.icon && <Icon source={child.props.icon} dimension={18} />}
-                <span className={styles.Label}>{child.props.label}</span>
-                {child.props.decorator}
+                <Stack
+                  as="span"
+                  className={styles.Label}
+                  direction="row"
+                  vAlign="center"
+                  hAlign="center"
+                  columnGap={8}
+                  inline
+                >
+                  {child.props.label}
+                  {child.props.decorator}
+                </Stack>
                 {(child.props.value === activeItem) && (
                   <>
                     <m.span className={styles.Highlight} layoutId={`${uid}-tab-highlight-lazy`} />
