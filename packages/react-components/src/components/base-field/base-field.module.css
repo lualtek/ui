@@ -33,7 +33,6 @@
       width: 1.2em;
       height: 1.2em;
       padding: 0;
-      position: absolute;
       top: 50%;
       transform: translateY(-50%);
       right: var(--field-padding);
