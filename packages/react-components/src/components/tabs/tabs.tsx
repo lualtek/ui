@@ -6,7 +6,7 @@ import {
 } from 'react';
 
 import {
-  Button, Icon, Stack, StackProps,
+  Button, Stack, StackProps,
 } from '@/components';
 
 import styles from './tabs.module.css';
@@ -18,6 +18,11 @@ export type TabsProps = TabsPrimitive.TabsProps & {
    * align the tab list with the surrounding content.
    */
   padding?: StackProps['hPadding'];
+  /**
+   * Set the dimension of the tabs.
+   * @default 'regular'
+   */
+  dimension?: 'small' | 'regular' | 'big';
 };
 
 export const Tabs = ({
@@ -26,6 +31,7 @@ export const Tabs = ({
   onValueChange,
   defaultValue,
   padding,
+  dimension = 'big',
   ...otherProps
 }: TabsProps) => {
   const [activeItem, setActiveItem] = useState<string>(defaultValue ?? '');
@@ -62,8 +68,7 @@ export const Tabs = ({
               className={styles.Trigger}
               asChild
             >
-              <Button kind="flat" dimension="big">
-                {child.props.icon && <Icon source={child.props.icon} dimension={18} />}
+              <Button kind="flat" dimension={dimension} icon={child.props.icon}>
                 <Stack
                   as="span"
                   className={styles.Label}
