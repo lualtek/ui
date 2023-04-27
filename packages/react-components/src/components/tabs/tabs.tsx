@@ -20,7 +20,7 @@ export type TabsProps = TabsPrimitive.TabsProps & {
   padding?: StackProps['hPadding'];
   /**
    * Set the dimension of the tabs.
-   * @default 'regular'
+   * @default 'big'
    */
   dimension?: 'small' | 'regular' | 'big';
 };
