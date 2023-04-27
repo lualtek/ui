@@ -1,5 +1,16 @@
 # @lualtek/react-components
 
+## 5.4.0
+
+### Minor Changes
+
+- 1ec0f86: Add dimension prop to tabs
+
+### Patch Changes
+
+- f168b1b: Fix textfield icon position
+  - @lualtek/icons@5.4.0
+
 ## 5.3.1
 
 ### Patch Changes
