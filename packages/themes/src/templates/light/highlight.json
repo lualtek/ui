@@ -95,6 +95,54 @@
       "attributes": {
         "category": "color"
       }
+    },
+    "indigo-background": {
+      "value": "hsl({color.indigo.5})",
+      "attributes": {
+        "category": "color"
+      }
+    },
+    "indigo-foreground": {
+      "value": "hsl({color.indigo.40})",
+      "attributes": {
+        "category": "color"
+      }
+    },
+    "dipsy-background": {
+      "value": "hsl({color.dipsy.10})",
+      "attributes": {
+        "category": "color"
+      }
+    },
+    "dipsy-foreground": {
+      "value": "hsl({color.dipsy.60})",
+      "attributes": {
+        "category": "color"
+      }
+    },
+    "salmon-background": {
+      "value": "hsl({color.salmon.5})",
+      "attributes": {
+        "category": "color"
+      }
+    },
+    "salmon-foreground": {
+      "value": "hsl({color.salmon.60})",
+      "attributes": {
+        "category": "color"
+      }
+    },
+    "magenta-background": {
+      "value": "hsl({color.magenta.5})",
+      "attributes": {
+        "category": "color"
+      }
+    },
+    "magenta-foreground": {
+      "value": "hsl({color.magenta.60})",
+      "attributes": {
+        "category": "color"
+      }
     }
   }
 }
