@@ -7,7 +7,7 @@
       }
     },
     "brand-foreground": {
-      "value": "hsl(246 100% 72%)",
+      "value": "hsl({color.brand.50})",
       "attributes": {
         "category": "color"
       }
