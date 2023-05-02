@@ -1,0 +1,78 @@
+{
+  "color": {
+    "salmon": {
+      "0": {
+        "value": "#fcf4f1",
+        "attributes": {
+          "category": "color"
+        }
+      },
+      "5": {
+        "value": "#f8e0d7",
+        "attributes": {
+          "category": "color"
+        }
+      },
+      "10": {
+        "value": "#f1c4b5",
+        "attributes": {
+          "category": "color"
+        }
+      },
+      "20": {
+        "value": "#ecb09b",
+        "attributes": {
+          "category": "color"
+        }
+      },
+      "30": {
+        "value": "#e69074",
+        "attributes": {
+          "category": "color"
+        }
+      },
+      "40": {
+        "value": "#e07251",
+        "attributes": {
+          "category": "color"
+        }
+      },
+      "50": {
+        "value": "#d25e3b",
+        "attributes": {
+          "category": "color"
+        }
+      },
+      "60": {
+        "value": "#be4c27",
+        "attributes": {
+          "category": "color"
+        }
+      },
+      "70": {
+        "value": "#a03d1c",
+        "attributes": {
+          "category": "color"
+        }
+      },
+      "80": {
+        "value": "#7d2e16",
+        "attributes": {
+          "category": "color"
+        }
+      },
+      "90": {
+        "value": "#511e0f",
+        "attributes": {
+          "category": "color"
+        }
+      },
+      "100": {
+        "value": "#341309",
+        "attributes": {
+          "category": "color"
+        }
+      }
+    }
+  }
+}

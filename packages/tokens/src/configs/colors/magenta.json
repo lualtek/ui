@@ -1,0 +1,78 @@
+{
+  "color": {
+    "magenta": {
+      "0": {
+        "value": "#fffbfe",
+        "attributes": {
+          "category": "color"
+        }
+      },
+      "5": {
+        "value": "#fdd8f1",
+        "attributes": {
+          "category": "color"
+        }
+      },
+      "10": {
+        "value": "#fbb6e3",
+        "attributes": {
+          "category": "color"
+        }
+      },
+      "20": {
+        "value": "#f373c4",
+        "attributes": {
+          "category": "color"
+        }
+      },
+      "30": {
+        "value": "#e93aa4",
+        "attributes": {
+          "category": "color"
+        }
+      },
+      "40": {
+        "value": "#db0e85",
+        "attributes": {
+          "category": "color"
+        }
+      },
+      "50": {
+        "value": "#c70071",
+        "attributes": {
+          "category": "color"
+        }
+      },
+      "60": {
+        "value": "#ad0060",
+        "attributes": {
+          "category": "color"
+        }
+      },
+      "70": {
+        "value": "#8d004d",
+        "attributes": {
+          "category": "color"
+        }
+      },
+      "80": {
+        "value": "#6a0039",
+        "attributes": {
+          "category": "color"
+        }
+      },
+      "90": {
+        "value": "#460025",
+        "attributes": {
+          "category": "color"
+        }
+      },
+      "100": {
+        "value": "#240013",
+        "attributes": {
+          "category": "color"
+        }
+      }
+    }
+  }
+}
