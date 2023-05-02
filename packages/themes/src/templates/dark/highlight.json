@@ -55,7 +55,7 @@
       }
     },
     "blue-foreground": {
-      "value": "hsl({color.blue.30})",
+      "value": "hsl({color.blue.20})",
       "attributes": {
         "category": "color"
       }
@@ -103,7 +103,7 @@
       }
     },
     "indigo-foreground": {
-      "value": "hsl({color.indigo.30})",
+      "value": "hsl({color.indigo.20})",
       "attributes": {
         "category": "color"
       }
@@ -139,7 +139,7 @@
       }
     },
     "magenta-foreground": {
-      "value": "hsl({color.magenta.20})",
+      "value": "hsl({color.magenta.10})",
       "attributes": {
         "category": "color"
       }

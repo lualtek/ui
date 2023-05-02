@@ -1,6 +1,8 @@
 import type { TokensTypes } from '@lualtek/tokens/platforms/web';
 import clsx from 'clsx';
-import { forwardRef, Ref, useMemo } from 'react';
+import {
+  CSSProperties, forwardRef, Ref, useMemo,
+} from 'react';
 
 import {
   Icon, IconProps, Stack, StackProps,
@@ -54,6 +56,7 @@ const sizes: Sizes = {
 };
 
 export const Chip: FCChildrenClass<ChipProps> = forwardRef(({
+  style,
   children,
   className,
   dimension = 'regular',
@@ -69,11 +72,15 @@ export const Chip: FCChildrenClass<ChipProps> = forwardRef(({
     columnGap: 8,
     inline: true,
     fill: false,
-    'data-chip-color': color,
     'data-chip-dimension': dimension,
     className: clsx(styles.Chip, className),
     vAlign: 'center',
-  }), [className, color, dimension]);
+  }), [className, dimension]);
+
+  const dynamicStyle: CSSProperties = useMemo(() => ({
+    '--background': `var(--highlight-${color}-background)`,
+    '--foreground': `var(--highlight-${color}-foreground)`,
+  }), [color]);
 
   const Content = useMemo(() => (
     <>
@@ -101,6 +108,7 @@ export const Chip: FCChildrenClass<ChipProps> = forwardRef(({
     <Stack
       as="button"
       ref={forwardedRef}
+      style={{ ...dynamicStyle, ...style }}
       {...commonProps}
       {...otherProps}
     >
@@ -110,6 +118,7 @@ export const Chip: FCChildrenClass<ChipProps> = forwardRef(({
     <Stack
       as="span"
       ref={forwardedRef}
+      style={{ ...dynamicStyle, ...style }}
       {...commonProps}
       {...otherProps}
     >

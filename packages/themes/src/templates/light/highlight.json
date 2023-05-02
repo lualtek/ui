@@ -115,7 +115,7 @@
       }
     },
     "dipsy-foreground": {
-      "value": "hsl({color.dipsy.60})",
+      "value": "hsl({color.dipsy.70})",
       "attributes": {
         "category": "color"
       }

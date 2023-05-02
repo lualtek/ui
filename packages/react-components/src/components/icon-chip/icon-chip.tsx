@@ -1,5 +1,6 @@
 import { TokensTypes } from '@lualtek/tokens';
 import clsx from 'clsx';
+import { CSSProperties, useMemo } from 'react';
 
 import {
   Icon, IconProps, Stack,
@@ -27,24 +28,30 @@ type Sizes = Record<string, {
   icon: IconProps['dimension'];
 }>
 
+const sizes: Sizes = {
+  small: {
+    icon: 12,
+  },
+  regular: {
+    icon: 18,
+  },
+  big: {
+    icon: 24,
+  },
+};
+
 export const IconChip: FCClass<IconChipProps> = ({
+  style,
   className,
   dimension = 'regular',
   color = 'gray',
   icon,
   ...otherProps
 }) => {
-  const sizes: Sizes = {
-    small: {
-      icon: 12,
-    },
-    regular: {
-      icon: 18,
-    },
-    big: {
-      icon: 24,
-    },
-  };
+  const dynamicStyle: CSSProperties = useMemo(() => ({
+    '--background': `var(--highlight-${color}-background)`,
+    '--foreground': `var(--highlight-${color}-foreground)`,
+  }), [color]);
 
   return (
     <Stack
@@ -52,11 +59,11 @@ export const IconChip: FCClass<IconChipProps> = ({
       direction="row"
       inline
       fill={false}
-      data-chip-color={color}
       data-chip-dimension={dimension}
       className={clsx(styles.IconChip, className)}
       vAlign="center"
       hAlign="center"
+      style={{ ...dynamicStyle, ...style }}
       {...otherProps}
     >
       <Icon

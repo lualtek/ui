@@ -11,7 +11,8 @@ const story: ComponentMeta<typeof IconChip> = {
       control: { type: 'radio' },
     },
     color: {
-      options: ['brand', 'gray', 'cyan', 'green', 'purple', 'yellow', 'red', 'blue'],
+      options: [
+        'brand', 'gray', 'cyan', 'green', 'purple', 'yellow', 'red', 'blue', 'indigo', 'salmon', 'dipsy', 'magenta'],
       control: { type: 'select' },
     },
   },
