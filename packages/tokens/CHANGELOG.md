@@ -1,5 +1,11 @@
 # @lualtek/tokens
 
+## 6.0.1
+
+### Patch Changes
+
+- 012eb11: Fix brand-30 color
+
 ## 6.0.0
 
 ### Major Changes
