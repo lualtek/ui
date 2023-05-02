@@ -49,7 +49,7 @@
       }
     },
     "background-brand": {
-      "value": "hsl({color.brand.default} / 20%)",
+      "value": "hsl({color.brand.60} / 20%)",
       "attributes": {
         "category": "color"
       }

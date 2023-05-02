@@ -13,13 +13,13 @@
       }
     },
     "interactive-text": {
-      "value": "hsl({color.brand.default})",
+      "value": "hsl({color.brand.60})",
       "attributes": {
         "category": "color"
       }
     },
     "interactive-text-hover": {
-      "value": "hsl({color.brand.default})",
+      "value": "hsl({color.brand.60})",
       "attributes": {
         "category": "color"
       }

@@ -17,7 +17,7 @@
     }
 
     &[data-gradient-text='rainbow'] {
-      background-image: linear-gradient(92deg, hsl(token(--color-brand-default)) 10%, hsl(token(--color-purple-40)) 60%, hsl(token(--color-yellow-50)) 100%);
+      background-image: linear-gradient(92deg, hsl(token(--color-brand-60)) 10%, hsl(token(--color-purple-40)) 60%, hsl(token(--color-yellow-50)) 100%);
     }
 
     &[data-gradient-text='brand'] {

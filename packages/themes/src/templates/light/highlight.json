@@ -1,13 +1,13 @@
 {
   "highlight": {
     "brand-background": {
-      "value": "hsl({color.brand.light})",
+      "value": "hsl({color.brand.10})",
       "attributes": {
         "category": "color"
       }
     },
     "brand-foreground": {
-      "value": "hsl({color.brand.default})",
+      "value": "hsl({color.brand.60})",
       "attributes": {
         "category": "color"
       }

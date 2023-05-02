@@ -1,7 +1,7 @@
 {
   "highlight": {
     "brand-background": {
-      "value": "hsl({color.brand.dark})",
+      "value": "hsl({color.brand.100})",
       "attributes": {
         "category": "color"
       }
