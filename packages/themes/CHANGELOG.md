@@ -1,5 +1,19 @@
 # @lualtek/themes
 
+## 6.0.0
+
+### Major Changes
+
+- bf46366: Rename color brand tokens to match other color scales
+
+### Minor Changes
+
+- 3ec7fd2: Add new highlight keys based on new colors
+
+### Patch Changes
+
+- 115cc18: Upadte colors system style
+
 ## 5.4.0
 
 ## 5.3.1
