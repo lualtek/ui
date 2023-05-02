@@ -1,5 +1,19 @@
 # @lualtek/tokens
 
+## 6.0.0
+
+### Major Changes
+
+- bf46366: Rename color brand tokens to match other color scales
+
+### Minor Changes
+
+- 5a3a70c: Add new colors Indigo, Dipsy, Salmon and Magenta
+
+### Patch Changes
+
+- 845be1a: Update color gray value
+
 ## 5.4.0
 
 ## 5.3.1

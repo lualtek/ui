@@ -1,5 +1,11 @@
 # @lualtek/icons
 
+## 6.0.0
+
+### Minor Changes
+
+- 56b1feb: Add new block icon
+
 ## 5.4.0
 
 ## 5.3.1

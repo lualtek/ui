@@ -1,5 +1,17 @@
 # @lualtek/react-components
 
+## 6.0.0
+
+### Major Changes
+
+- bf46366: Rename color brand tokens to match other color scales
+
+### Patch Changes
+
+- 115cc18: Upadte colors system style
+- Updated dependencies [56b1feb]
+  - @lualtek/icons@6.0.0
+
 ## 5.4.0
 
 ### Minor Changes
