@@ -1,5 +1,11 @@
 # @lualtek/themes
 
+## 6.0.2
+
+### Patch Changes
+
+- 8771b42: Fix colors and themes
+
 ## 6.0.1
 
 ## 6.0.0
