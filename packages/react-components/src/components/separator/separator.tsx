@@ -16,12 +16,18 @@ export type SeparatorProps = HTMLAttributes<HTMLHRElement> & {
    * Add left and right space using margins.
    */
   hPadding?: TokensTypes['space'];
+  /**
+   * Set the dimmed color for the seperator.
+   * @default 2
+   */
+  dimmed?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
 }
 
 export const Separator = forwardRef<HTMLHRElement, SeparatorProps>(({
   className,
   vPadding,
   hPadding,
+  dimmed = 2,
   style,
   ...otherProps
 }, forwardedRef) => {
@@ -29,8 +35,9 @@ export const Separator = forwardRef<HTMLHRElement, SeparatorProps>(({
     {
       '--v-padding': vPadding ? tkns.space[vPadding] : 0,
       '--h-padding': hPadding ? tkns.space[hPadding] : 0,
+      '--color': `var(--dimmed-${dimmed})`,
     }
-  ), [vPadding, hPadding]);
+  ), [vPadding, hPadding, dimmed]);
 
   return (
     <hr
