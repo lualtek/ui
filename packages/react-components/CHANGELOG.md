@@ -1,5 +1,15 @@
 # @lualtek/react-components
 
+## 6.1.0
+
+### Minor Changes
+
+- 9fae638: Add new dimmed prop to Separator
+
+### Patch Changes
+
+- @lualtek/icons@6.1.0
+
 ## 6.0.2
 
 ### Patch Changes
