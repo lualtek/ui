@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 6.1.1
+
+### Patch Changes
+
+- 8f27b2e: Fix info-state icon colors
+  - @lualtek/icons@6.1.1
+
 ## 6.1.0
 
 ### Minor Changes
