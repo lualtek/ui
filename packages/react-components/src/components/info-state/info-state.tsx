@@ -1,6 +1,8 @@
 import { TokensTypes } from '@lualtek/tokens';
 import { domMax, LazyMotion, m } from 'framer-motion';
-import { forwardRef, PropsWithChildren, ReactNode } from 'react';
+import {
+  CSSProperties, forwardRef, PropsWithChildren, ReactNode, useMemo,
+} from 'react';
 
 import {
   IconChip, IconChipProps, Stack, StackProps, Text, Title,
@@ -42,6 +44,7 @@ export type InfoStateProps = PropsWithChildren<PropsWithClass<{
 
 export const InfoState = forwardRef<HTMLDivElement, InfoStateProps>(({
   className,
+  style,
   children,
   title,
   icon,
@@ -52,6 +55,10 @@ export const InfoState = forwardRef<HTMLDivElement, InfoStateProps>(({
   ...otherProps
 }, forwardedRef) => {
   const isHorizontal = direction === 'row';
+
+  const dynamicStyle: CSSProperties = useMemo(() => ({
+    '--icon-color': `var(--highlight-${iconColor}-background)`,
+  }), [iconColor]);
 
   return (
     <Stack
@@ -64,6 +71,7 @@ export const InfoState = forwardRef<HTMLDivElement, InfoStateProps>(({
       vAlign={(isHorizontal && image) ? 'center' : 'start'}
       fill={false}
       wrap={!!image}
+      style={{ ...dynamicStyle, ...style }}
       {...otherProps}
     >
       <LazyMotion features={domMax}>
@@ -83,14 +91,22 @@ export const InfoState = forwardRef<HTMLDivElement, InfoStateProps>(({
             <IconChip
               icon={icon}
               dimension="big"
-              data-info-state-icon-color={iconColor}
               color={iconColor}
               className={styles.IconWrapper}
             />
           </m.span>
         )}
 
-        {(image && !icon) && <img className={styles.Image} alt="" width="400" src={image} loading="lazy" decoding="async" />}
+        {(image && !icon) && (
+          <img
+            className={styles.Image}
+            alt=""
+            width="400"
+            src={image}
+            loading="lazy"
+            decoding="async"
+          />
+        )}
 
         <Stack
           rowGap={16}
