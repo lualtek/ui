@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable @typescript-eslint/no-var-requires */
 
@@ -33,7 +34,6 @@ StyleDictionary.registerTransformGroup({
     'content/icon',
     'size/px-rootem',
     'size/px-rem',
-    // 'color/hslvalue',
     'color/oklchvalue',
     'easing/cubic-bezier',
   ],
@@ -42,4 +42,5 @@ StyleDictionary.registerTransformGroup({
 /**
  * Manually run StyleDictionary for all the configured platforms
  */
+console.clear();
 StyleDictionary.buildAllPlatforms();

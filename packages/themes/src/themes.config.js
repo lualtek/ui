@@ -16,7 +16,7 @@ module.exports = {
   platforms: {
     web: {
       buildPath: 'dist/themes/',
-      transformGroup: 'css',
+      transformGroup: 'custom-web',
       files: [
         {
           format: 'css/variables',

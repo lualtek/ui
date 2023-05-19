@@ -1,37 +1,37 @@
 {
   "global": {
     "foreground": {
-      "value": "hsl({color.primary.60})",
+      "value": "oklch({color.primary.60})",
       "attributes": {
         "category": "color"
       }
     },
     "background": {
-      "value": "hsl({color.support.white})",
+      "value": "oklch({color.support.white})",
       "attributes": {
         "category": "color"
       }
     },
     "interactive-text": {
-      "value": "hsl({color.brand.60})",
+      "value": "oklch({color.brand.60})",
       "attributes": {
         "category": "color"
       }
     },
     "interactive-text-hover": {
-      "value": "hsl({color.brand.60})",
+      "value": "oklch({color.brand.60})",
       "attributes": {
         "category": "color"
       }
     },
     "disabled-foreground": {
-      "value": "hsl({color.primary.90} / 20%)",
+      "value": "oklch({color.primary.90} / 20%)",
       "attributes": {
         "category": "color"
       }
     },
     "disabled-background": {
-      "value": "hsl({color.primary.90} / 5%)",
+      "value": "oklch({color.primary.90} / 5%)",
       "attributes": {
         "category": "color"
       }
