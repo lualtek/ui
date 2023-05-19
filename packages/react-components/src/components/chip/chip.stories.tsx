@@ -33,7 +33,7 @@ export default story;
 const Template: ComponentStory<typeof Chip> = args => (
   <>
     <Chip {...args}>Chip text</Chip>
-    <Chip>Chip text</Chip>
+    <Chip {...args}>Chip text</Chip>
   </>
 );
 
