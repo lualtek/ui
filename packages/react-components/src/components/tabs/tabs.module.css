@@ -75,7 +75,7 @@
     bottom: 0;
     width: 100%;
     height: var(--separator-size);
-    background: hsl(token(--color-cyan-40));
+    background: oklch(token(--color-cyan-40));
     pointer-events: none;
 
     &[data-highlight-alt] {

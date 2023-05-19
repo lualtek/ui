@@ -1,55 +1,55 @@
 {
   "vibrancy": {
     "foreground": {
-      "value": "hsl({color.primary.100})",
+      "value": "oklch({color.primary.100})",
       "attributes": {
         "category": "color"
       }
     },
     "background": {
-      "value": "hsl({color.support.white} / 40%)",
+      "value": "oklch({color.support.white} / 40%)",
       "attributes": {
         "category": "color"
       }
     },
     "background-soft": {
-      "value": "hsl({color.primary.10} / 40%)",
+      "value": "oklch({color.primary.10} / 40%)",
       "attributes": {
         "category": "color"
       }
     },
     "background-mid": {
-      "value": "hsl({color.primary.30} / 40%)",
+      "value": "oklch({color.primary.30} / 40%)",
       "attributes": {
         "category": "color"
       }
     },
     "background-hard": {
-      "value": "hsl({color.primary.40} / 40%)",
+      "value": "oklch({color.primary.40} / 40%)",
       "attributes": {
         "category": "color"
       }
     },
     "background-red": {
-      "value": "hsl({color.red.50} / 10%)",
+      "value": "oklch({color.red.50} / 10%)",
       "attributes": {
         "category": "color"
       }
     },
     "background-green": {
-      "value": "hsl({color.green.40} / 10%)",
+      "value": "oklch({color.green.40} / 10%)",
       "attributes": {
         "category": "color"
       }
     },
     "background-yellow": {
-      "value": "hsl({color.yellow.50} / 10%)",
+      "value": "oklch({color.yellow.50} / 10%)",
       "attributes": {
         "category": "color"
       }
     },
     "background-brand": {
-      "value": "hsl({color.brand.60} / 10%)",
+      "value": "oklch({color.brand.60} / 10%)",
       "attributes": {
         "category": "color"
       }

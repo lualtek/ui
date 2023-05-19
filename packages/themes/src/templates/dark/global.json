@@ -1,37 +1,37 @@
 {
   "global": {
     "foreground": {
-      "value": "hsl({color.primary.30})",
+      "value": "oklch({color.primary.30})",
       "attributes": {
         "category": "color"
       }
     },
     "background": {
-      "value": "hsl({color.primary.100})",
+      "value": "oklch({color.primary.100})",
       "attributes": {
         "category": "color"
       }
     },
     "interactive-text": {
-      "value": "hsl(246 100% 72%)",
+      "value": "oklch({color.brand.40})",
       "attributes": {
         "category": "color"
       }
     },
     "interactive-text-hover": {
-      "value": "hsl(246 100% 68%)",
+      "value": "oklch({color.brand.60})",
       "attributes": {
         "category": "color"
       }
     },
     "disabled-foreground": {
-      "value": "hsl({color.primary.5} / 20%)",
+      "value": "oklch({color.primary.5} / 20%)",
       "attributes": {
         "category": "color"
       }
     },
     "disabled-background": {
-      "value": "hsl({color.primary.50} / 15%)",
+      "value": "oklch({color.primary.50} / 15%)",
       "attributes": {
         "category": "color"
       }

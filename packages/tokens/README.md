@@ -24,12 +24,12 @@ Currently we ship tokens only for the `web` platform, others may be added in the
 
 ### Inside javascript
 
-If you want to import and use tokens inside your javascript-based project, you can import the `json` version and use it. Note that the color tokens are provided in HSL format, without the css `hsl()` notation, which you have to add each time.
+If you want to import and use tokens inside your javascript-based project, you can import the `json` version and use it. Note that the color tokens are provided in HSL format, without the css `oklch()` notation, which you have to add each time.
 
 ```jsx
 import tkns from "@lualtek/tokens/platforms/web/tokens.json";
 
-<div style={{ color: `hsl(${tkns.color.blue["50"]} / 10%)` }} />;
+<div style={{ color: `oklch(${tkns.color.blue["50"]} / 10%)` }} />;
 ```
 
 #### Typescript
@@ -53,8 +53,8 @@ Inside css files the tokens are available as custom env variables (`token(--[TOK
 @import "@lualtek/tokens/platforms/web/tokens.css";
 
 div {
-  /* Colors are defined as HSL-4 but without the hsl() notation */
-  color: hsl(token(--color-gray-80) / 50%);
+  /* Colors are defined as HSL-4 but without the oklch() notation */
+  color: oklch(token(--color-gray-80) / 50%);
 }
 ```
 

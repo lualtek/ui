@@ -8,9 +8,9 @@
     calc(var(--x1) * var(--shadow-direction))
     calc(var(--y1) * var(--shadow-direction))
     8px
-    hsl($color / calc(4% + var(--shadow-opacity-factor))),
-    0 0 2px hsl($color / calc(6% + var(--shadow-opacity-factor))),
-    0 0 1px hsl($color / calc(4% + var(--shadow-opacity-factor)));
+    oklch($color / calc(4% + var(--shadow-opacity-factor))),
+    0 0 2px oklch($color / calc(6% + var(--shadow-opacity-factor))),
+    0 0 1px oklch($color / calc(4% + var(--shadow-opacity-factor)));
 
   &:where([data-elevation-direction='left'], [data-elevation-direction='right']) {
     --y1: 0;
@@ -29,12 +29,12 @@
     calc(var(--x1) * var(--shadow-direction))
     calc(var(--y1) * var(--shadow-direction))
     20px
-    hsl($color / calc(4% + var(--shadow-opacity-factor))),
+    oklch($color / calc(4% + var(--shadow-opacity-factor))),
     calc(var(--x2) * var(--shadow-direction))
     calc(var(--y2) * var(--shadow-direction))
     6px
-    hsl($color / calc(4% + var(--shadow-opacity-factor))),
-    0 0 1px hsl($color / calc(4% + var(--shadow-opacity-factor)));
+    oklch($color / calc(4% + var(--shadow-opacity-factor))),
+    0 0 1px oklch($color / calc(4% + var(--shadow-opacity-factor)));
 
   &:where([data-elevation-direction='left'], [data-elevation-direction='right']) {
     --y1: 0;
@@ -55,12 +55,12 @@
     calc(var(--x1) * var(--shadow-direction))
     calc(var(--y1) * var(--shadow-direction))
     24px
-    hsl($color / calc(6% + var(--shadow-opacity-factor))),
+    oklch($color / calc(6% + var(--shadow-opacity-factor))),
     calc(var(--x2) * var(--shadow-direction))
     calc(var(--y2) * var(--shadow-direction))
     6px
-    hsl($color / calc(4% + var(--shadow-opacity-factor))),
-    0 0 1px hsl($color / calc(4% + var(--shadow-opacity-factor)));
+    oklch($color / calc(4% + var(--shadow-opacity-factor))),
+    0 0 1px oklch($color / calc(4% + var(--shadow-opacity-factor)));
 
   &:where([data-elevation-direction='left'], [data-elevation-direction='right']) {
     --y1: 0;
@@ -83,16 +83,16 @@
     calc(var(--x1) * var(--shadow-direction))
     calc(var(--y1) * var(--shadow-direction))
     32px
-    hsl($color / calc(4% + var(--shadow-opacity-factor))),
+    oklch($color / calc(4% + var(--shadow-opacity-factor))),
     calc(var(--x2) * var(--shadow-direction))
     calc(var(--y2) * var(--shadow-direction))
     24px
-    hsl($color / calc(4% + var(--shadow-opacity-factor))),
+    oklch($color / calc(4% + var(--shadow-opacity-factor))),
     calc(var(--x2) * var(--shadow-direction))
     calc(var(--y3) * var(--shadow-direction))
     8px
-    hsl($color / calc(4% + var(--shadow-opacity-factor))),
-    0 0 1px hsl($color / calc(4% + var(--shadow-opacity-factor)));
+    oklch($color / calc(4% + var(--shadow-opacity-factor))),
+    0 0 1px oklch($color / calc(4% + var(--shadow-opacity-factor)));
 
   &:where([data-elevation-direction='left'], [data-elevation-direction='right']) {
     --y1: 0;

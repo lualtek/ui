@@ -1,145 +1,145 @@
 {
   "highlight": {
     "brand-background": {
-      "value": "hsl({color.brand.10})",
+      "value": "oklch({color.brand.10})",
       "attributes": {
         "category": "color"
       }
     },
     "brand-foreground": {
-      "value": "hsl({color.brand.60})",
+      "value": "oklch({color.brand.60})",
       "attributes": {
         "category": "color"
       }
     },
     "gray-background": {
-      "value": "hsl({color.primary.20})",
+      "value": "oklch({color.primary.20})",
       "attributes": {
         "category": "color"
       }
     },
     "gray-foreground": {
-      "value": "hsl({color.primary.60})",
+      "value": "oklch({color.primary.60})",
       "attributes": {
         "category": "color"
       }
     },
     "yellow-background": {
-      "value": "hsl({color.yellow.10})",
+      "value": "oklch({color.yellow.10})",
       "attributes": {
         "category": "color"
       }
     },
     "yellow-foreground": {
-      "value": "hsl({color.yellow.70})",
+      "value": "oklch({color.yellow.70})",
       "attributes": {
         "category": "color"
       }
     },
     "green-background": {
-      "value": "hsl({color.green.10})",
+      "value": "oklch({color.green.10})",
       "attributes": {
         "category": "color"
       }
     },
     "green-foreground": {
-      "value": "hsl({color.green.70})",
+      "value": "oklch({color.green.70})",
       "attributes": {
         "category": "color"
       }
     },
     "blue-background": {
-      "value": "hsl({color.blue.10})",
+      "value": "oklch({color.blue.10})",
       "attributes": {
         "category": "color"
       }
     },
     "blue-foreground": {
-      "value": "hsl({color.blue.60})",
+      "value": "oklch({color.blue.60})",
       "attributes": {
         "category": "color"
       }
     },
     "red-background": {
-      "value": "hsl({color.red.10})",
+      "value": "oklch({color.red.10})",
       "attributes": {
         "category": "color"
       }
     },
     "red-foreground": {
-      "value": "hsl({color.red.50})",
+      "value": "oklch({color.red.50})",
       "attributes": {
         "category": "color"
       }
     },
     "cyan-background": {
-      "value": "hsl({color.cyan.10})",
+      "value": "oklch({color.cyan.10})",
       "attributes": {
         "category": "color"
       }
     },
     "cyan-foreground": {
-      "value": "hsl({color.cyan.60})",
+      "value": "oklch({color.cyan.60})",
       "attributes": {
         "category": "color"
       }
     },
     "purple-background": {
-      "value": "hsl({color.purple.10})",
+      "value": "oklch({color.purple.10})",
       "attributes": {
         "category": "color"
       }
     },
     "purple-foreground": {
-      "value": "hsl({color.purple.60})",
+      "value": "oklch({color.purple.60})",
       "attributes": {
         "category": "color"
       }
     },
     "indigo-background": {
-      "value": "hsl({color.indigo.5})",
+      "value": "oklch({color.indigo.5})",
       "attributes": {
         "category": "color"
       }
     },
     "indigo-foreground": {
-      "value": "hsl({color.indigo.40})",
+      "value": "oklch({color.indigo.40})",
       "attributes": {
         "category": "color"
       }
     },
     "dipsy-background": {
-      "value": "hsl({color.dipsy.10})",
+      "value": "oklch({color.dipsy.10})",
       "attributes": {
         "category": "color"
       }
     },
     "dipsy-foreground": {
-      "value": "hsl({color.dipsy.70})",
+      "value": "oklch({color.dipsy.70})",
       "attributes": {
         "category": "color"
       }
     },
     "salmon-background": {
-      "value": "hsl({color.salmon.5})",
+      "value": "oklch({color.salmon.5})",
       "attributes": {
         "category": "color"
       }
     },
     "salmon-foreground": {
-      "value": "hsl({color.salmon.60})",
+      "value": "oklch({color.salmon.60})",
       "attributes": {
         "category": "color"
       }
     },
     "magenta-background": {
-      "value": "hsl({color.magenta.5})",
+      "value": "oklch({color.magenta.5})",
       "attributes": {
         "category": "color"
       }
     },
     "magenta-foreground": {
-      "value": "hsl({color.magenta.60})",
+      "value": "oklch({color.magenta.60})",
       "attributes": {
         "category": "color"
       }
