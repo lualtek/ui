@@ -59,7 +59,7 @@ export const IconChip: FCClass<IconChipProps> = ({
       direction="row"
       inline
       fill={false}
-      data-chip-dimension={dimension}
+      data-icon-chip-dimension={dimension}
       className={clsx(styles.IconChip, className)}
       vAlign="center"
       hAlign="center"

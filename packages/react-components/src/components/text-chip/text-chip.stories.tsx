@@ -1,10 +1,10 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import { IconChip } from './icon-chip';
+import { TextChip } from './text-chip';
 
-const story: ComponentMeta<typeof IconChip> = {
-  title: 'Badges/Icon Chip',
-  component: IconChip,
+const story: ComponentMeta<typeof TextChip> = {
+  title: 'Badges/Text Chip',
+  component: TextChip,
   argTypes: {
     dimension: {
       options: ['small', 'regular', 'big'],
@@ -18,14 +18,20 @@ const story: ComponentMeta<typeof IconChip> = {
   },
   args: {
     dimension: 'regular',
-    icon: 'sensor',
+    tinted: true,
   },
 };
 
 export default story;
 
-const Template: ComponentStory<typeof IconChip> = args => <IconChip {...args} />;
+const Template: ComponentStory<typeof TextChip> = args => <TextChip {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
+  text: '1.11',
+};
+
+export const WithEmoji = Template.bind({});
+WithEmoji.args = {
+  text: '🥲',
 };

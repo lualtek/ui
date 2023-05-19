@@ -44,6 +44,7 @@ export * from './switch';
 export * from './table';
 export * from './tabs';
 export * from './text';
+export * from './text-chip';
 export * from './textarea';
 export * from './textfield';
 export * from './title';
