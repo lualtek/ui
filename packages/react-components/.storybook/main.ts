@@ -1,24 +1,20 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-/* eslint-disable global-require */
-/* eslint-disable import/no-extraneous-dependencies */
-const path = require('path');
+import type { StorybookConfig } from '@storybook/react-webpack5';
+import path from 'node:path'
 
-module.exports = {
-  stories: [
-    '../src/**/*.stories.mdx',
-    '../src/**/*.stories.@(js|jsx|ts|tsx)',
-  ],
+const config: StorybookConfig = {
+  stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
+  docs: {
+    autodocs: true,
+  },
   features: {
     storyStoreV7: true,
-  },
-  core: {
-    builder: 'webpack5',
   },
   addons: [
     '@storybook/addon-actions',
     '@storybook/addon-links',
     'storybook-css-modules-preset',
-    'storybook-addon-themes', {
+    'storybook-addon-themes',
+    {
       name: '@storybook/addon-essentials',
       options: {
         backgrounds: false,
@@ -26,11 +22,13 @@ module.exports = {
     }, {
       name: '@storybook/addon-postcss',
       options: {
+
         postcssLoaderOptions: {
           implementation: require('postcss'),
         },
       },
-    }],
+    },
+  ],
   typescript: {
     check: false,
     checkOptions: {},
@@ -41,10 +39,16 @@ module.exports = {
     },
   },
   webpackFinal: async (config) => {
-    // eslint-disable-next-line no-param-reassign
-    config.resolve.alias['@/components'] = path.resolve(__dirname, '../src/');
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+    if (config && config.resolve && config.resolve.alias) {
+      config.resolve.alias['@/components'] = path.resolve(__dirname, '../src/');
+      return config;
+    }
     return config;
   },
-  framework: '@storybook/react',
+  framework: {
+    name: '@storybook/react-webpack5',
+    options: {},
+  },
 };
+
+export default config;

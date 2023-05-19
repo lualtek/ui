@@ -8,6 +8,7 @@
   "include": [
     "**/.eslintrc.js",
     "**/.storybook/*.js",
+    "**/.storybook/*.ts",
     "**/*.mjs",
     "**/*.cjs",
     "**/*.js",
