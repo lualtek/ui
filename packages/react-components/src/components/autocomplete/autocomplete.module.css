@@ -1,6 +1,6 @@
 @layer components {
   .Autocomplete {
-    display: inline-flex;
+    display: unset;
   }
 
   .OptionsList {

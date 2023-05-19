@@ -26,7 +26,7 @@ const options = [
   },
   {
     value: 'cherry',
-    children: '🍒 Cherry',
+    children: '🍒 Cherry al;kj asdfjka s;ldfja dflkjlka; fsdk fsdlkkljd klasj fkasjl ',
   },
 ];
 

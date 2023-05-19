@@ -4,7 +4,7 @@ import {
 } from 'react';
 import { Except } from 'type-fest';
 
-import { Menu, MenuItemProps } from '@/components';
+import { ClampText, Menu, MenuItemProps } from '@/components';
 
 export type AutocompleteOptionProps = Except<
 MenuItemProps,
@@ -45,7 +45,11 @@ export const AutocompleteOption = forwardRef<HTMLButtonElement, AutocompleteOpti
       onClick={handleClick}
       {...otherProps}
     >
-      <span ref={contentRef}>{children}</span>
+      <span ref={contentRef}>
+        <ClampText rows={1}>
+          {children}
+        </ClampText>
+      </span>
     </Menu.Item>
   );
 });

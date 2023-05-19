@@ -7,11 +7,12 @@ import {
   useMemo,
   useState,
 } from 'react';
+import { mergeRefs } from 'react-merge-refs';
 import { useDebouncedValue } from 'rooks';
 
 import {
   Menu,
-  MenuProps, Popover, Skeleton, Stack, Text, Textfield, TextfieldProps,
+  MenuProps, Popover, PopoverContentProps, Skeleton, Stack, Text, Textfield, TextfieldProps,
   useDimensionsRef,
 } from '@/components';
 
@@ -25,8 +26,14 @@ export type AutocompleteProps = TextfieldProps & {
    */
   maxHeight?: MenuProps['maxHeight'];
   /**
+   * Set the alignment of the options list.
+   * @default center
+   */
+  align?: PopoverContentProps['align'];
+  /**
    * Custom empty content to display when there are no options or
    * when the value does not match any of the options.
+   * @default 'No items to show'
    */
   emptyContent?: ReactNode;
   /**
@@ -37,6 +44,11 @@ export type AutocompleteProps = TextfieldProps & {
    * List of options to use as suggestion
    */
   options?: AutocompleteOptionProps[];
+  /**
+   * Whether the menu is forced to match the width of the field by clipping overflowing items.\
+   * @default false
+   */
+  matchFieldWidth?: boolean;
   /**
    * Callback called when an option is selected.
    */
@@ -58,6 +70,8 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(({
   value = '',
   maxHeight = '200px',
   emptyContent = 'No items to show',
+  matchFieldWidth = false,
+  align = 'center',
   ...otherProps
 }, forwardedRef) => {
   const [currentValue, setCurrentValue] = useState(value);
@@ -101,11 +115,11 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(({
   }, [onClickOption]);
 
   return (
-    <div ref={ref} className={clsx(styles.Autocomplete, className)}>
+    <div className={clsx(styles.Autocomplete, className)}>
       <Popover open={isOpen}>
         <Popover.Anchor>
           <Textfield
-            ref={forwardedRef}
+            ref={mergeRefs([ref ?? null, forwardedRef])}
             autoComplete="off"
             disabled={disabled}
             readOnly={readOnly}
@@ -122,11 +136,12 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(({
             onOpenAutoFocus={event => event.preventDefault()}
             onInteractOutside={({ currentTarget }) => onInteractOutside(currentTarget)}
             onEscapeKeyDown={() => setIsOpen(false)}
+            align={align}
           >
             <Menu
               role="listbox"
               className={styles.OptionsList}
-              style={{ width: dimensions ? (dimensions.width + 2) : 'auto' }}
+              style={{ width: dimensions && matchFieldWidth ? (dimensions.width + 2) : 'auto' }}
               maxHeight={maxHeight}
             >
               {(filteredOptions?.length === 0 && !loading) && (
