@@ -1,5 +1,5 @@
 @layer components {
-  .IconChip {
+  .TextChip {
     border-radius: calc(token(--radius-8) + token(--radius-4));
     block-size: var(--size, token(--space-40));
     inline-size: var(--size, token(--space-40));
@@ -7,16 +7,29 @@
     background-color: var(--background, var(--highlight-gray-background));
     color: var(--foreground, var(--highlight-gray-foreground));
 
-    &[data-icon-chip-dimension='small'] {
+    &[data-text-chip-dimension='small'] {
       --size: token(--space-24);
 
       border-radius: token(--radius-8);
     }
 
-    &[data-icon-chip-dimension='big'] {
+    &[data-text-chip-dimension='big'] {
       border-radius: token(--radius-16);
 
       --size: token(--space-48);
     }
+  }
+
+  .TextWrapper {
+    user-select: none;
+
+    @nest .TextChip[data-text-chip-tinted='true'] & {
+      mix-blend-mode: luminosity;
+    }
+  }
+}
+@layer overrides {
+  .TextWrapper {
+    line-height: 0;
   }
 }
