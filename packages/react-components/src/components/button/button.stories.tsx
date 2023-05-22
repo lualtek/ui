@@ -10,7 +10,7 @@ const meta = {
     dimension: 'regular',
     kind: 'primary',
     children: 'Click me',
-    iconPosition: 'left',
+    iconPosition: 'start',
     fullWidth: false,
     disabled: false,
     busy: false,
@@ -35,7 +35,7 @@ const meta = {
       control: { type: 'radio' },
     },
     iconPosition: {
-      options: ['left', 'right'],
+      options: ['start', 'end'],
       control: { type: 'inline-radio' },
     },
   },
