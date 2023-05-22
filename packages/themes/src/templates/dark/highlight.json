@@ -7,7 +7,7 @@
       }
     },
     "brand-foreground": {
-      "value": "oklch({color.brand.50})",
+      "value": "oklch({color.brand.40})",
       "attributes": {
         "category": "color"
       }
@@ -55,7 +55,7 @@
       }
     },
     "blue-foreground": {
-      "value": "oklch({color.blue.20})",
+      "value": "oklch({color.blue.40})",
       "attributes": {
         "category": "color"
       }
