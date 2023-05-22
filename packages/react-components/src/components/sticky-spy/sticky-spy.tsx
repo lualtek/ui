@@ -7,6 +7,7 @@ import React, {
   PropsWithChildren,
   useEffect,
   useId,
+  useMemo,
   useRef,
   useState,
 } from 'react';
@@ -21,13 +22,19 @@ export type StickySpyProps = PropsWithChildren<{
    * Callback function that is called when the sticky element changes
    */
   onStickyChange?: (isSticky: boolean) => void;
+  /**
+   * Set the root element to observe. Must be a sticky element's ancestor.
+   */
+  root?: HTMLElement;
 }>
 
 export const StickySpy: FC<StickySpyProps> = ({
   children,
   onStickyChange,
   attribute = 'data-react-is-sticky',
+  root,
 }) => {
+  const defaultRoot = useMemo(() => (root ?? (typeof document !== 'undefined' ? document : null)), [root]);
   const spyRef = useRef<HTMLDivElement>(null);
   const [isSticky, setIsSticky] = useState(false);
   const uid = useId();
@@ -37,6 +44,8 @@ export const StickySpy: FC<StickySpyProps> = ({
     const observer = new IntersectionObserver(([entry]) => {
       setIsSticky(!entry.isIntersecting);
       onStickyChange?.(!entry.isIntersecting);
+    }, {
+      root: defaultRoot,
     });
 
     if (spy) {
@@ -44,7 +53,7 @@ export const StickySpy: FC<StickySpyProps> = ({
     }
 
     return () => (spy ? observer.unobserve(spy) : undefined);
-  }, [children, spyRef, onStickyChange]);
+  }, [children, spyRef, onStickyChange, defaultRoot]);
 
   return (
     <Fragment key={uid}>
