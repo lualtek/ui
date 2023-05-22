@@ -18,6 +18,7 @@ const meta = {
     dimension: 'regular',
     summary: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
     open: false,
+    iconPosition: 'start',
   },
   argTypes: {
     expandable: {

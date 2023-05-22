@@ -42,7 +42,7 @@ export type DisclosureProps = DetailsHTMLAttributes<HTMLDetailsElement> & {
    * Set the position of the icon indicator. The content padding is automatically
    * applied based on the icon position.
    */
-  iconPosition?: 'left' | 'right';
+  iconPosition?: 'start' | 'end';
   /**
    * Set or disable the interactivity of the summary toggle.
    * Eg. If `open` is set to `true` the content can't be toggled.
@@ -63,7 +63,7 @@ export const Disclosure = forwardRef<HTMLDetailsElement, DisclosureProps>(({
   summary,
   contentMaxHeight,
   dimension = 'regular',
-  iconPosition = 'left',
+  iconPosition = 'start',
   expandable = true,
   style,
   onToggle,
