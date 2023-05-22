@@ -31,7 +31,7 @@ const meta = {
       control: { type: 'inline-radio' },
     },
     iconPosition: {
-      options: ['start', 'end', undefined],
+      options: ['start', 'end'],
       control: { type: 'inline-radio' },
     },
   },

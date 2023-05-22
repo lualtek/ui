@@ -10,7 +10,7 @@ const meta = {
   args: {
     dimension: 'regular',
     padding: true,
-    iconPosition: 'left',
+    iconPosition: 'start',
   },
   argTypes: {
     dimension: {
@@ -22,7 +22,7 @@ const meta = {
       control: { type: 'radio' },
     },
     iconPosition: {
-      options: ['left', 'right'],
+      options: ['start', 'end'],
       control: { type: 'inline-radio' },
     },
   },

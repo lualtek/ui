@@ -19,7 +19,7 @@ export type MenuItemProps = PropsClassChildren<{
   /**
    * Set the position of the icon. Used only when icon is defined.
    */
-  iconPosition?: 'left' | 'right';
+  iconPosition?: 'start' | 'end';
   /**
    * Set the size of the menu item.
    * Font size and icon style will be adjusted to match the size.
@@ -73,7 +73,7 @@ export const MenuItem = forwardRef(({
   icon,
   dimension = 'regular',
   as: Wrapper = 'button',
-  iconPosition = 'left',
+  iconPosition = 'start',
   padding = true,
   disabled = false,
   autoFocus,
@@ -84,7 +84,7 @@ export const MenuItem = forwardRef(({
 }, forwardedRef) => {
   const itemRef = useRef<any>(forwardedRef);
   const [tabIndex, isFocused, handleKeyDown, handleClick] = useRovingTabIndex(itemRef, disabled);
-  const isIconRight = iconPosition === 'right';
+  const isIconAtEnd = iconPosition === 'end';
 
   useFocusEffect(isFocused, itemRef);
 
@@ -100,15 +100,15 @@ export const MenuItem = forwardRef(({
 
   const InnerContent = useMemo(() => (
     <Stack
-      direction={isIconRight ? 'row-reverse' : 'row'}
+      direction={isIconAtEnd ? 'row-reverse' : 'row'}
       fill={false}
       className={styles.ItemContent}
-      hAlign={isIconRight ? 'space-between' : 'start'}
+      hAlign={isIconAtEnd ? 'space-between' : 'start'}
       vAlign="center"
       columnGap={8}
       hPadding={24}
       vPadding={8}
-      data-menu-item-icon-right={isIconRight}
+      data-menu-item-icon-right={isIconAtEnd}
       data-menu-item-has-icon={Boolean(icon)}
       data-menu-item-padding={padding}
       style={{ inlineSize: '100%' }}
@@ -132,7 +132,7 @@ export const MenuItem = forwardRef(({
         {decoration}
       </Stack>
     </Stack>
-  ), [children, dimension, icon, isIconRight, decoration, padding]);
+  ), [children, dimension, icon, isIconAtEnd, decoration, padding]);
 
   return (
     <Stack as="li" role="none">
