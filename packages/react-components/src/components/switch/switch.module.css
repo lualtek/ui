@@ -12,6 +12,7 @@
     padding: var(--padding);
     max-block-size: token(--space-24);
     background-color: var(--vibrancy-background-mid);
+    box-shadow: 0 0 0 1px var(--global-background), inset 0 0 0 1px var(--dimmed-2);
     color: var(--dimmed-6);
     border-radius: 1e5px;
     justify-content: flex-start;
