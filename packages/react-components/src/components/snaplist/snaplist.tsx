@@ -18,6 +18,11 @@ export type SnaplistProps = {
    */
   snapAlign?: 'start' | 'center' | 'end';
   /**
+   * The type of snap.
+   * @default 'mandatory'
+   */
+  snapType?: 'mandatory' | 'proximity';
+  /**
    * Horizontal negative margin used to offset the list.
    * Used to align list edges to the viewport or containers.
    */
@@ -40,15 +45,17 @@ export const Snaplist = forwardRef(({
   columnGap = 32,
   bleed,
   snapAlign = 'center',
+  snapType = 'mandatory',
   scrollPadding,
   style,
   ...otherProps
 }, forwardedRef) => {
   const dynamicStyle: CSSProperties = useMemo(() => ({
     '--snap-align': snapAlign,
+    '--snap-type': snapType,
     '--scroll-padding': scrollPadding ? tkns.space[scrollPadding] : 0,
     '--bleed': bleed ? tkns.space[bleed] : 0,
-  }), [bleed, snapAlign, scrollPadding]);
+  }), [bleed, snapAlign, snapType, scrollPadding]);
 
   return (
     <Stack
