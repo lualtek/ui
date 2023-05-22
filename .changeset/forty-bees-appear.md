@@ -1,0 +1,5 @@
+---
+"@lualtek/react-components": major
+---
+
+Rename Button iconPosition values to start/end instead of left/right

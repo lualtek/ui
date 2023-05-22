@@ -158,7 +158,7 @@
       inline-size: 100%;
     }
 
-    &[data-button-icon-position='right'] {
+    &[data-button-icon-position='end'] {
       flex-direction: row-reverse;
     }
 

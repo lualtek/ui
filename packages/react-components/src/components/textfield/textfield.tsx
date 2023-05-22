@@ -62,7 +62,7 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(({
   readOnly,
   invalid,
   id,
-  iconPosition = 'right',
+  iconPosition = 'end',
   type = 'text',
   style,
   onChange,

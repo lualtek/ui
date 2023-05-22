@@ -30,7 +30,7 @@ export type ButtonProps = {
   /**
    * Set the position of the icon. Used only when icon is defined.
    */
-  iconPosition?: 'left' | 'right';
+  iconPosition?: 'start' | 'end';
   /**
    * Override the color of the icon. Used only when icon is defined.
    */
@@ -76,7 +76,7 @@ export const Button = forwardRef(({
   fullWidth,
   icon,
   disabled,
-  iconPosition = 'left',
+  iconPosition = 'start',
   iconColor,
   type = 'button',
   onClick,
@@ -130,3 +130,5 @@ export const Button = forwardRef(({
     </Elevator>
   );
 }) as PolymorphicButton;
+
+Button.displayName = 'Button';

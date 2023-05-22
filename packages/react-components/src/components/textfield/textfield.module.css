@@ -26,10 +26,10 @@
     right: var(--field-padding);
     transform: translateZ(0);
 
-    @nest [data-textfield-has-icon='true'][data-textfield-icon-position='left'] & {
+    @nest [data-textfield-has-icon='true'][data-textfield-icon-position='start'] & {
       left: calc(var(--field-padding) * var(--factor));
     }
-    @nest [data-textfield-has-icon='true'][data-textfield-icon-position='right'] & {
+    @nest [data-textfield-has-icon='true'][data-textfield-icon-position='end'] & {
       left: var(--field-padding);
       right: calc(var(--field-padding) * var(--factor));
     }
@@ -45,11 +45,11 @@
       token(--space-4)
       var(--field-padding);
 
-    @nest [data-textfield-has-icon='true'][data-textfield-icon-position='right'] & {
+    @nest [data-textfield-has-icon='true'][data-textfield-icon-position='end'] & {
       padding-right: calc(var(--field-padding) * (var(--factor) * 0.95));
       padding-left: var(--field-padding);
     }
-    @nest [data-textfield-has-icon='true'][data-textfield-icon-position='left'] & {
+    @nest [data-textfield-has-icon='true'][data-textfield-icon-position='start'] & {
       padding-right: var(--field-padding);
       padding-left: calc(var(--field-padding) * (var(--factor) * 0.95));
     }
@@ -62,11 +62,11 @@
     top: 50%;
     transform: translateY(-50%);
 
-    @nest [data-textfield-icon-position='left'] & {
+    @nest [data-textfield-icon-position='start'] & {
       right: auto;
       left: calc(var(--field-padding) + (var(--field-padding) / 4));
     }
-    @nest [data-textfield-icon-position='right'] & {
+    @nest [data-textfield-icon-position='end'] & {
       left: auto;
       right: calc(var(--field-padding) + (var(--field-padding) / 4));
     }
@@ -89,13 +89,13 @@
       backdrop-filter: none;
     }
 
-    @nest [data-textfield-icon-position='left'] & {
+    @nest [data-textfield-icon-position='start'] & {
       --x: -19%;
 
       right: auto;
       left: var(--field-padding);
     }
-    @nest [data-textfield-icon-position='right'] & {
+    @nest [data-textfield-icon-position='end'] & {
       left: auto;
       right: var(--field-padding);
     }
