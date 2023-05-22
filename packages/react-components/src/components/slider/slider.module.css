@@ -36,6 +36,7 @@
     @mixin vibrancy;
 
     background-color: var(--vibrancy-background-mid);
+    box-shadow: 0 0 0 1px var(--global-background), inset 0 0 0 1px var(--dimmed-2);
     position: relative;
     flex-grow: 1;
     border-radius: 1e5px;
