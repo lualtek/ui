@@ -19,7 +19,7 @@ export type TextfieldProps = BaseFieldProps & InputHTMLAttributes<HTMLInputEleme
   /**
    * Set in which side of the field the icon should be displayed.
    */
-  iconPosition?: 'left' | 'right';
+  iconPosition?: 'start' | 'end';
   /**
    * Define the accessible label of the input. While this is not
    * mandatory, an input should always have a label. If not using this property
