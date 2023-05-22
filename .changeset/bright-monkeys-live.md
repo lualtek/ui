@@ -1,7 +1,7 @@
 ---
-"@lualtek/react-components": minor
-"@lualtek/themes": minor
-"@lualtek/tokens": minor
+"@lualtek/react-components": major
+"@lualtek/themes": major
+"@lualtek/tokens": major
 ---
 
 Upgrade color tokens and themes to lch
