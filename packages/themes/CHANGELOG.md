@@ -1,5 +1,12 @@
 # @lualtek/themes
 
+## 7.0.0
+
+### Major Changes
+
+- 460e6cb: Upgrade color tokens and themes to lch
+- 317763b: Fix dark highlight colors
+
 ## 6.1.1
 
 ## 6.1.0

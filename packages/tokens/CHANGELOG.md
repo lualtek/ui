@@ -1,5 +1,11 @@
 # @lualtek/tokens
 
+## 7.0.0
+
+### Major Changes
+
+- 460e6cb: Upgrade color tokens and themes to lch
+
 ## 6.1.1
 
 ## 6.1.0
