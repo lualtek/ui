@@ -1,10 +1,17 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 
 import { Disclosure } from './disclosure';
 
-const story: ComponentMeta<typeof Disclosure> = {
+const meta = {
   title: 'Actions/Disclosure',
   component: Disclosure,
+  render: args => (
+    <Disclosure {...args}>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+      Doloribus corporis nobis ipsum natus laudantium dolorem sapiente,
+      sint adipisci at asperiores quia ex voluptatum veniam! Quos rerum natus eos excepturi atque!
+    </Disclosure>
+  ),
   args: {
     padding: true,
     expandable: true,
@@ -26,32 +33,26 @@ const story: ComponentMeta<typeof Disclosure> = {
       control: { type: 'inline-radio' },
     },
   },
-};
+} satisfies Meta<typeof Disclosure>;
 
-export default story;
+export default meta;
 
-const Template: ComponentStory<typeof Disclosure> = args => (
-  <Disclosure {...args}>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-    Doloribus corporis nobis ipsum natus laudantium dolorem sapiente,
-    sint adipisci at asperiores quia ex voluptatum veniam! Quos rerum natus eos excepturi atque!
-  </Disclosure>
-);
+type Story = StoryObj<typeof meta>;
 
-export const Default = Template.bind({});
+export const Default = {} satisfies Story;
 
-const NestedTemplate: ComponentStory<typeof Disclosure> = args => (
-  <Disclosure {...args}>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-    Doloribus corporis nobis ipsum natus laudantium dolorem sapiente,
-    sint adipisci at asperiores quia ex voluptatum veniam! Quos rerum natus eos excepturi atque!
-
-    <Disclosure summary="Nested">
+export const Nested = {
+  render: args => (
+    <Disclosure {...args}>
       Lorem ipsum dolor sit amet consectetur adipisicing elit.
       Doloribus corporis nobis ipsum natus laudantium dolorem sapiente,
       sint adipisci at asperiores quia ex voluptatum veniam! Quos rerum natus eos excepturi atque!
-    </Disclosure>
-  </Disclosure>
-);
 
-export const Nested = NestedTemplate.bind({});
+      <Disclosure summary="Nested">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        Doloribus corporis nobis ipsum natus laudantium dolorem sapiente,
+        sint adipisci at asperiores quia ex voluptatum veniam! Quos rerum natus eos excepturi atque!
+      </Disclosure>
+    </Disclosure>
+  ),
+} satisfies Story;

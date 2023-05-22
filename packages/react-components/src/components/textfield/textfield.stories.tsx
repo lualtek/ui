@@ -1,10 +1,10 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 
 import { Stack } from '@/components';
 
 import { Textfield } from './textfield';
 
-const story: ComponentMeta<typeof Textfield> = {
+const meta = {
   title: 'Inputs/Textfield',
   component: Textfield,
   args: {
@@ -31,52 +31,52 @@ const story: ComponentMeta<typeof Textfield> = {
       control: { type: 'inline-radio' },
     },
     iconPosition: {
-      options: ['left', 'right', undefined],
+      options: ['start', 'end', undefined],
       control: { type: 'inline-radio' },
     },
   },
-};
+  render: args => <Textfield {...args} size={4} label="Empty" placeholder="Placeholder" />,
+} satisfies Meta<typeof Textfield>;
 
-export default story;
+export default meta;
 
-const SingleTemplate: ComponentStory<typeof Textfield> = args => (
-  <Stack rowGap={24}>
-    <Textfield {...args} size={4} label="Empty" placeholder="Placeholder" />
-    <Textfield {...args} size={4} label="Empty" placeholder="Placeholder" />
-    <Textfield {...args} size={4} label="Empty" placeholder="Placeholder" />
-    <Textfield {...args} type="password" autoComplete="current-password" label="Password" placeholder="Placeholder" />
-  </Stack>
-);
+type Story = StoryObj<typeof meta>;
 
-const MultipleTemplate: ComponentStory<typeof Textfield> = args => (
-  <Stack rowGap={24}>
-    <Textfield {...args} label="Filled" defaultValue="Sample value" />
-    <Textfield {...args} label="Filled read only" defaultValue="Sample value" readOnly />
-    <Textfield {...args} label="Empty disbled" placeholder="Placeholder" disabled />
-    <Textfield {...args} label="Filled disabled" defaultValue="Sample value" disabled />
-    <Textfield {...args} type="email" required label="Type email" defaultValue="" />
-    <Textfield {...args} type="password" label="Type password" defaultValue="912435jh345" />
-    <Textfield {...args} type="number" label="Type number" defaultValue={100} />
-    <Textfield {...args} type="search" label="Type search" />
-    <Textfield {...args} type="date" label="Type date" />
-    <Textfield {...args} type="time" label="Type time" />
-    <Textfield {...args} type="month" label="Type month" />
-    <Textfield {...args} type="week" label="Type week" />
-    <Textfield {...args} type="datetime-local" label="Type datetime-local" />
-  </Stack>
-);
+export const Single = {
+  args: {
+    label: 'Sample label',
+    disabled: false,
+  },
+} satisfies Story;
 
-export const Single = SingleTemplate.bind({});
-Single.args = {
-  disabled: false,
-};
+export const Types = {
+  render: args => (
+    <Stack rowGap={24}>
+      <Textfield {...args} label="Filled" defaultValue="Sample value" />
+      <Textfield {...args} label="Filled read only" defaultValue="Sample value" readOnly />
+      <Textfield {...args} label="Empty disbled" placeholder="Placeholder" disabled />
+      <Textfield {...args} label="Filled disabled" defaultValue="Sample value" disabled />
+      <Textfield {...args} type="email" required label="Type email" defaultValue="" />
+      <Textfield {...args} type="password" label="Type password" defaultValue="912435jh345" />
+      <Textfield {...args} type="number" label="Type number" defaultValue={100} />
+      <Textfield {...args} type="search" label="Type search" />
+      <Textfield {...args} type="date" label="Type date" />
+      <Textfield {...args} type="time" label="Type time" />
+      <Textfield {...args} type="month" label="Type month" />
+      <Textfield {...args} type="week" label="Type week" />
+      <Textfield {...args} type="datetime-local" label="Type datetime-local" />
+    </Stack>
+  ),
+  args: {
+    label: 'Sample label',
+    disabled: false,
+  },
+} satisfies Story;
 
-export const Types = MultipleTemplate.bind({});
-Types.args = {
-  disabled: false,
-};
-
-export const WithIcon = SingleTemplate.bind({});
-WithIcon.args = {
-  icon: 'chat',
-};
+export const WithIcon = {
+  args: {
+    label: 'Sample label',
+    iconPosition: 'start',
+    icon: 'chat',
+  },
+} satisfies Story;

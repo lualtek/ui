@@ -1,38 +1,42 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 
 import { Chip } from '../..';
 import { Radio } from './radio';
 
-const story: ComponentMeta<typeof Radio> = {
+const meta = {
   title: 'Inputs/Radio',
   component: Radio,
-};
+  render: args => (
+    <fieldset>
+      <Radio {...args} defaultChecked value="1" name="story" />
+      <Radio {...args} value="2" name="story" />
+      <Radio {...args} value="3" name="story" />
+    </fieldset>
+  ),
+} satisfies Meta<typeof Radio>;
 
-export default story;
+export default meta;
 
-const Template: ComponentStory<typeof Radio> = args => (
-  <fieldset>
-    <Radio {...args} defaultChecked value="1" name="story" />
-    <Radio {...args} value="2" name="story" />
-    <Radio {...args} value="3" name="story" />
-  </fieldset>
-);
+type Story = StoryObj<typeof meta>;
 
-export const Default = Template.bind({});
+export const Default = {} satisfies Story;
 
-export const DisabledChecked = Template.bind({});
-DisabledChecked.args = {
-  disabled: true,
-};
+export const DisabledChecked = {
+  args: {
+    disabled: true,
+  },
+} satisfies Story;
 
-export const WithLabel = Template.bind({});
-WithLabel.args = {
-  label: `Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-  Et blanditiis dolore natus itaque fugiat eos harum ea veritatis consequatur
-  deserunt, maxime similique unde ad veniam quas tempore, laboriosam accusamus nihil.`,
-};
+export const WithLabel = {
+  args: {
+    label: `Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+    Et blanditiis dolore natus itaque fugiat eos harum ea veritatis consequatur
+    deserunt, maxime similique unde ad veniam quas tempore, laboriosam accusamus nihil.`,
+  },
+} satisfies Story;
 
-export const WithCustomLabel = Template.bind({});
-WithCustomLabel.args = {
-  label: <Chip color="green">Rich label</Chip>,
-};
+export const WithCustomLabel = {
+  args: {
+    label: <Chip color="green">Rich label</Chip>,
+  },
+} satisfies Story;

@@ -1,10 +1,18 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 
 import { Container } from './container';
 
-const story: ComponentMeta<typeof Container> = {
+const meta = {
   title: 'Layouts/Container',
   component: Container,
+  render: args => (
+    <Container {...args}>
+      Content
+    </Container>
+  ),
+  args: {
+    className: 'ContainerEx',
+  },
   argTypes: {
     padding: {
       options: [true, false],
@@ -19,45 +27,34 @@ const story: ComponentMeta<typeof Container> = {
       options: ['full', 'medium', 'large'],
     },
   },
+} satisfies Meta<typeof Container>;
+
+export default meta;
+
+type Story = StoryObj<typeof meta>;
+
+export const Small = {
   args: {
-    dimension: 'full',
+    dimension: 'small',
   },
-};
+} satisfies Story;
 
-export default story;
+export const Medium = {
+  args: {
+    dimension: 'medium',
+  },
+} satisfies Story;
 
-const Template: ComponentStory<typeof Container> = args => <Container {...args}>A</Container>;
+export const Large = {
+  args: {
+    dimension: 'large',
+  },
+} satisfies Story;
 
-export const Small = Template.bind({});
-Small.args = {
-  dimension: 'small',
-  className: 'ContainerEx',
-};
+export const FullWidth = {} satisfies Story;
 
-export const Medium = Template.bind({});
-Medium.args = {
-  dimension: 'medium',
-  className: 'ContainerEx',
-};
-
-export const Large = Template.bind({});
-Large.args = {
-  dimension: 'large',
-  className: 'ContainerEx',
-};
-
-export const FullWidth = Template.bind({});
-FullWidth.args = {
-  className: 'ContainerEx',
-};
-
-export const NoPadding = Template.bind({});
-NoPadding.args = {
-  padding: false,
-  className: 'ContainerEx',
-};
-
-export const AsSection = Template.bind({});
-AsSection.args = {
-  className: 'ContainerEx',
-};
+export const NoPadding = {
+  args: {
+    padding: false,
+  },
+} satisfies Story;

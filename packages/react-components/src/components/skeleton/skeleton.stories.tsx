@@ -1,8 +1,8 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 
 import { Skeleton } from './skeleton';
 
-const story: ComponentMeta<typeof Skeleton> = {
+const meta = {
   title: 'Loading/Skeleton',
   component: Skeleton,
   args: {
@@ -11,36 +11,40 @@ const story: ComponentMeta<typeof Skeleton> = {
     enableAnimation: true,
     inline: false,
   },
-};
+  render: args => <Skeleton {...args} />,
+} satisfies Meta<typeof Skeleton>;
 
-export default story;
+export default meta;
+type Story = StoryObj<typeof meta>;
 
-const Template: ComponentStory<typeof Skeleton> = args => <Skeleton {...args} />;
+export const Default = {
+  args: {
+    width: '400px',
+    count: 4,
+    height: '48px',
+  },
+} satisfies Story;
 
-export const Default = Template.bind({});
-Default.args = {
-  width: '400px',
-  count: 4,
-  height: '48px',
-};
+export const Circle = {
+  args: {
+    circle: true,
+    width: '80px',
+    height: '80px',
+  },
+} satisfies Story;
 
-export const Circle = Template.bind({});
-Circle.args = {
-  circle: true,
-  width: '80px',
-  height: '80px',
-};
+export const Rounded = {
+  args: {
+    width: '400px',
+    height: '48px',
+    borderRadius: 16,
+  },
+} satisfies Story;
 
-export const Rounded = Template.bind({});
-Rounded.args = {
-  width: '400px',
-  height: '48px',
-  borderRadius: 16,
-};
-
-export const WithGap = Template.bind({});
-WithGap.args = {
-  gap: 32,
-  count: 4,
-  height: '48px',
-};
+export const WithGap = {
+  args: {
+    gap: 32,
+    count: 4,
+    height: '48px',
+  },
+} satisfies Story;

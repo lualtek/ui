@@ -1,12 +1,13 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 
 import { Textarea as Area } from './textarea';
 
-const story: ComponentMeta<typeof Area> = {
+const meta = {
   title: 'Inputs/Textarea',
   component: Area,
   args: {
     readOnly: false,
+    label: 'Textarea',
   },
   argTypes: {
     onChange: {
@@ -28,19 +29,21 @@ const story: ComponentMeta<typeof Area> = {
       control: { type: 'inline-radio' },
     },
   },
-};
+  render: args => <Area {...args} required placeholder="Placeholder" />,
+} satisfies Meta<typeof Area>;
 
-export default story;
+export default meta;
 
-const TextareaTemplate: ComponentStory<typeof Area> = args => (
-  <Area {...args} required placeholder="Placeholder" />
-);
+type Story = StoryObj<typeof meta>;
 
-export const Textarea = TextareaTemplate.bind({});
-Textarea.args = {
-  rows: 10,
-};
-export const WithLabel = TextareaTemplate.bind({});
-WithLabel.args = {
-  label: 'Sample label',
-};
+export const Textarea = {
+  args: {
+    rows: 10,
+  },
+} satisfies Story;
+
+export const WithLabel = {
+  args: {
+    label: 'Sample label',
+  },
+} satisfies Story;

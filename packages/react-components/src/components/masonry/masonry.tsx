@@ -106,3 +106,5 @@ export const Masonry: FCChildrenClass<MasonryProps> = ({
     </MasonryLayout>
   );
 };
+
+Masonry.displayName = 'Masonry';

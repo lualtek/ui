@@ -1,8 +1,8 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 
 import { Switch } from './switch';
 
-const story: ComponentMeta<typeof Switch> = {
+const meta = {
   title: 'Inputs/Switch',
   component: Switch,
   argTypes: {
@@ -11,23 +11,24 @@ const story: ComponentMeta<typeof Switch> = {
       control: { type: 'inline-radio' },
     },
   },
-};
+  render: args => <Switch {...args} />,
+} satisfies Meta<typeof Switch>;
 
-export default story;
+export default meta;
 
-const Template: ComponentStory<typeof Switch> = args => (
-  <Switch {...args} />
-);
+type Story = StoryObj<typeof meta>;
 
-export const Default = Template.bind({});
+export const Default = {} satisfies Story;
 
-export const DisabledChecked = Template.bind({});
-DisabledChecked.args = {
-  defaultChecked: true,
-  disabled: true,
-};
+export const DisabledChecked = {
+  args: {
+    defaultChecked: true,
+    disabled: true,
+  },
+} satisfies Story;
 
-export const WithLabel = Template.bind({});
-WithLabel.args = {
-  label: 'Sample label',
-};
+export const WithLabel = {
+  args: {
+    label: 'Sample label',
+  },
+} satisfies Story;

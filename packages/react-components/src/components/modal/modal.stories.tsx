@@ -1,4 +1,4 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 
 import {
@@ -8,17 +8,7 @@ import {
 } from '../..';
 import { Modal } from './modal';
 
-const story: ComponentMeta<typeof Modal> = {
-  title: 'Dialogs/Modal',
-  component: Modal,
-  args: {
-    autoFocus: true,
-  },
-};
-
-export default story;
-
-const ModalShell: ComponentStory<typeof Modal> = ({ children, ...otherProps }) => {
+const ModalShell = ({ ...args }) => {
   const [isVisible, setIsVisible] = useState(false);
 
   return (
@@ -28,9 +18,9 @@ const ModalShell: ComponentStory<typeof Modal> = ({ children, ...otherProps }) =
         {isVisible && (
           <Modal
             key="dynamic-modal"
-            {...otherProps}
+            {...args}
           >
-            {children}
+            {args.children}
           </Modal>
         )}
       </OverlayContainer>
@@ -38,45 +28,36 @@ const ModalShell: ComponentStory<typeof Modal> = ({ children, ...otherProps }) =
   );
 };
 
-const DefaultTemplate: ComponentStory<typeof Modal> = args => (
-  <ModalShell {...args}>
-    <Modal.Content title="Modal title">
-      <Textfield label="Test" />
-      <Stack hPadding={24} vPadding={24}>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
-        distinctio qui quod ducimus libero magni earum perspiciatis.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
-        distinctio qui quod ducimus libero magni earum perspiciatis.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
-        distinctio qui quod ducimus libero magni earum perspiciatis.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
-        distinctio qui quod ducimus libero magni earum perspiciatis.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
-        distinctio qui quod ducimus libero magni earum perspiciatis.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
-        distinctio qui quod ducimus libero magni earum perspiciatis.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
-        distinctio qui quod ducimus libero magni earum perspiciatis.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
-        distinctio qui quod ducimus libero magni earum perspiciatis.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
-        distinctio qui quod ducimus libero magni earum perspiciatis.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
-        distinctio qui quod ducimus libero magni earum perspiciatis.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
-        distinctio qui quod ducimus libero magni earum perspiciatis.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
-        distinctio qui quod ducimus libero magni earum perspiciatis.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
-        distinctio qui quod ducimus libero magni earum perspiciatis.
-        <img width="100%" height="400" src="https://images.unsplash.com/photo-1579332649290-10b7da0cd111?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=cover&w=1600&q=80" />
-        <button type="button">click</button>
-      </Stack>
-    </Modal.Content>
-  </ModalShell>
-);
+const meta = {
+  title: 'Dialogs/Modal',
+  component: Modal,
+  args: {
+    autoFocus: true,
+  },
+  render: args => (
+    <ModalShell {...args}>
+      <Modal.Content title="Modal title">
+        <Textfield label="Test" />
+        <Stack hPadding={24} vPadding={24}>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
+          distinctio qui quod ducimus libero magni earum perspiciatis.
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
+          distinctio qui quod ducimus libero magni earum perspiciatis.
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
+          distinctio qui quod ducimus libero magni earum perspiciatis.
+          <img width="100%" height="400" src="https://images.unsplash.com/photo-1579332649290-10b7da0cd111?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=cover&w=1600&q=80" />
+          <button type="button">click</button>
+        </Stack>
+      </Modal.Content>
+    </ModalShell>
+  ),
+} satisfies Meta<typeof Modal>;
 
-export const Default = DefaultTemplate.bind({});
+export default meta;
+
+type Story = StoryObj<typeof meta>;
+
+export const Default = {} satisfies Story;
 
 const CustomContentModal = () => {
   const { onClose, titleId } = useOverlayContext();
@@ -95,9 +76,10 @@ const CustomContentModal = () => {
   );
 };
 
-const CustomTemplate: ComponentStory<typeof Modal> = args => (
-  <ModalShell {...args}>
-    <CustomContentModal />
-  </ModalShell>
-);
-export const Custom = CustomTemplate.bind({});
+export const CustomContent = {
+  render: args => (
+    <ModalShell {...args}>
+      <CustomContentModal />
+    </ModalShell>
+  ),
+} satisfies Story;

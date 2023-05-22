@@ -73,3 +73,5 @@ export const ListItem = forwardRef<HTMLLIElement, ListItemProps>(({
     {children}
   </Stack>
 ));
+
+ListItem.displayName = 'List.Li';

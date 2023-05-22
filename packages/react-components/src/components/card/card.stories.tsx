@@ -1,18 +1,23 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 
 import {
-  Icon, Stack, Text, Title,
+  Icon, Text, Title,
 } from '../..';
 import { Card } from './card';
 
-const story: ComponentMeta<typeof Card> = {
+const meta = {
   title: 'Layouts/Card',
   component: Card,
   args: {
     bordered: false,
     vibrant: false,
-    highlightOnHover: true,
     dimmed: 0,
+    children: (
+      <>
+        <Title level="3">Card title</Title>
+        <Text>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</Text>
+      </>
+    ),
   },
   argTypes: {
     children: {
@@ -21,62 +26,35 @@ const story: ComponentMeta<typeof Card> = {
       },
     },
   },
+} satisfies Meta<typeof Card>;
+
+export default meta;
+
+type Story = StoryObj<typeof meta>;
+
+export const Default = {} satisfies Story;
+
+export const Vibrant = {
+  args: {
+    vibrant: true,
+  },
 };
 
-export default story;
-
-const Template: ComponentStory<typeof Card> = args => <Card {...args} />;
-
-export const Default = Template.bind({});
-Default.args = {
-  children: (
-    <>
-      <Title level="3">Card title</Title>
-      <Text>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</Text>
-    </>
-  ),
-};
-export const Vibrant = Template.bind({});
-Vibrant.args = {
-  vibrant: true,
-  children: (
-    <>
-      <Title level="3">Card title</Title>
-      <Text>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</Text>
-    </>
-  ),
+export const WithLeft = {
+  args: {
+    left: <Icon source="sun" dimension={32} />,
+  },
 };
 
-export const WithLeft = Template.bind({});
-WithLeft.args = {
-  left: <Icon source="sun" dimension={32} />,
-  children: (
-    <Stack>
-      <Title level="5">Title</Title>
-      <Text>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</Text>
-    </Stack>
-  ),
+export const WithRight = {
+  args: {
+    right: <Icon source="sun" dimension={32} />,
+  },
 };
 
-export const WithRight = Template.bind({});
-WithRight.args = {
-  right: <Icon source="sun" dimension={32} />,
-  children: (
-    <Stack>
-      <Title level="5">Title</Title>
-      <Text>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</Text>
-    </Stack>
-  ),
-};
-
-export const WithLeftAndRight = Template.bind({});
-WithLeftAndRight.args = {
-  left: <Icon source="sun" dimension={32} />,
-  children: (
-    <Stack>
-      <Title level="5">Title</Title>
-      <Text>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</Text>
-    </Stack>
-  ),
-  right: <Icon source="moon-stars" dimension={32} />,
+export const WithLeftAndRight = {
+  args: {
+    left: <Icon source="sun" dimension={32} />,
+    right: <Icon source="moon-stars" dimension={32} />,
+  },
 };

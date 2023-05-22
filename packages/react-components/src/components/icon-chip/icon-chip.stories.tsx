@@ -1,8 +1,8 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 
 import { IconChip } from './icon-chip';
 
-const story: ComponentMeta<typeof IconChip> = {
+const meta = {
   title: 'Badges/Icon Chip',
   component: IconChip,
   argTypes: {
@@ -18,14 +18,13 @@ const story: ComponentMeta<typeof IconChip> = {
   },
   args: {
     dimension: 'regular',
+    color: 'cyan',
     icon: 'sensor',
   },
-};
+} satisfies Meta<typeof IconChip>;
 
-export default story;
+export default meta;
 
-const Template: ComponentStory<typeof IconChip> = args => <IconChip {...args} />;
+type Story = StoryObj<typeof meta>;
 
-export const Default = Template.bind({});
-Default.args = {
-};
+export const Default = {} satisfies Story;

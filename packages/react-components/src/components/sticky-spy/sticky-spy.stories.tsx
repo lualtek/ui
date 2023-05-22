@@ -1,20 +1,10 @@
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 
 import { Title } from '../..';
 import { StickySpy } from './sticky-spy';
 
-const story: ComponentMeta<typeof StickySpy> = {
-  title: 'Widgets/Sticky Spy',
-  component: StickySpy,
-  args: {},
-  argTypes: {
-  },
-};
-
-export default story;
-
-const Template: ComponentStory<typeof StickySpy> = (args) => {
+const Template = ({ ...args }) => {
   const [isSticky, setIsSticky] = useState(false);
 
   return (
@@ -83,4 +73,17 @@ const Template: ComponentStory<typeof StickySpy> = (args) => {
   );
 };
 
-export const Default = Template.bind({});
+const meta = {
+  title: 'Widgets/Sticky Spy',
+  component: StickySpy,
+  args: {},
+  argTypes: {
+  },
+  render: args => <Template {...args} />,
+} satisfies Meta<typeof StickySpy>;
+
+export default meta;
+
+type Story = StoryObj<typeof meta>;
+
+export const Default = {} satisfies Story;

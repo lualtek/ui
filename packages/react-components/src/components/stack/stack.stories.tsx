@@ -1,8 +1,8 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 
 import { Stack } from './stack';
 
-const story: ComponentMeta<typeof Stack> = {
+const meta = {
   title: 'Layouts/Stack',
   component: Stack,
   argTypes: {
@@ -28,26 +28,28 @@ const story: ComponentMeta<typeof Stack> = {
     wrap: true,
     as: 'div',
   },
-};
+  render: args => (
+    <Stack rowGap={80} columnGap={24} {...args}>
+      <div className="DivEx">01</div>
+      <div className="DivEx">02</div>
+      <div className="DivEx">03</div>
+      <div className="DivEx">04</div>
+      <div className="DivEx">05</div>
+      <div className="DivEx">06</div>
+      <div className="DivEx">07</div>
+      <div className="DivEx">08</div>
+      <div className="DivEx">09</div>
+    </Stack>
+  ),
+} satisfies Meta<typeof Stack>;
 
-export default story;
+export default meta;
 
-const Template: ComponentStory<typeof Stack> = args => (
-  <Stack rowGap={80} {...args}>
-    <div className="DivEx">01</div>
-    <div className="DivEx">02</div>
-    <div className="DivEx">03</div>
-    <div className="DivEx">04</div>
-    <div className="DivEx">05</div>
-    <div className="DivEx">06</div>
-    <div className="DivEx">07</div>
-    <div className="DivEx">08</div>
-    <div className="DivEx">09</div>
-  </Stack>
-);
+type Story = StoryObj<typeof meta>;
 
-export const Default = Template.bind({});
-Default.args = {
-  hAlign: 'start',
-  vAlign: 'start',
-};
+export const Default = {
+  args: {
+    hAlign: 'start',
+    vAlign: 'start',
+  },
+} satisfies Story;

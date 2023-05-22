@@ -78,3 +78,5 @@ export const Pagination: FCChildrenClass<PaginationProps> = ({
     />
   );
 };
+
+Pagination.displayName = 'Pagination';

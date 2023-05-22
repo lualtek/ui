@@ -1,8 +1,8 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 
 import { Slider } from './slider';
 
-const story: ComponentMeta<typeof Slider> = {
+const meta = {
   title: 'Inputs/Slider',
   component: Slider,
   args: {
@@ -20,27 +20,30 @@ const story: ComponentMeta<typeof Slider> = {
       control: { type: 'inline-radio' },
     },
   },
-};
+  render: args => (
+    <div style={{ height: 50 }}>
+      <Slider {...args} />
+    </div>
+  ),
+} satisfies Meta<typeof Slider>;
 
-export default story;
+export default meta;
 
-const Template: ComponentStory<typeof Slider> = args => (
-  <div style={{ height: 300 }}>
-    <Slider {...args} />
-  </div>
-);
+type Story = StoryObj<typeof meta>;
 
-export const Default = Template.bind({});
+export const Default = {} satisfies Story;
 
-export const Double = Template.bind({});
-Double.args = {
-  defaultValue: [30, 70],
-};
+export const Double = {
+  args: {
+    defaultValue: [30, 70],
+  },
+} satisfies Story;
 
-export const ValueLabel = Template.bind({});
-ValueLabel.args = {
-  defaultValue: [6000, 9000],
-  min: 5000,
-  max: 10000,
-  valueLabel: val => (val ? `${new Intl.NumberFormat('en-GB').format(val)}K` : ''),
-};
+export const ValueLabel = {
+  args: {
+    defaultValue: [6000, 9000],
+    min: 5000,
+    max: 10000,
+    valueLabel: val => (val ? `${new Intl.NumberFormat('en-GB').format(val)}K` : ''),
+  },
+} satisfies Story;

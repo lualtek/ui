@@ -71,3 +71,5 @@ export const Snaplist = forwardRef(({
     </Stack>
   );
 }) as PolymorphicSnaplist;
+
+Snaplist.displayName = 'Snaplist';

@@ -165,8 +165,10 @@ export const IconMeter = forwardRef(({
         lineHeight="none"
         weight="bold"
       >
-        {!hideLabel && <>{label ?? value.toString()}</>}
+        {!hideLabel && <>{label ?? (value > iconCount ? iconCount : value.toString())}</>}
       </Text>
     </Stack>
   );
 }) as PolymorphicIconMeter;
+
+IconMeter.displayName = 'IconMeter';

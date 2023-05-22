@@ -1,18 +1,21 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 
 import { Logo } from './logo';
 
-const story: ComponentMeta<typeof Logo> = {
+const meta = {
   title: 'Widgets/Logo',
   component: Logo,
+  args: {
+    width: '300px',
+    trim: true,
+  },
   parameters: {
     controls: { hideNoControlsWarning: true },
   },
-};
+} satisfies Meta<typeof Logo>;
 
-export default story;
+export default meta;
 
-export const Default: ComponentStory<typeof Logo> = args => <Logo width="300px" {...args} />;
-Default.args = {
-  trim: false,
-};
+type Story = StoryObj<typeof meta>;
+
+export const Default = {} satisfies Story;

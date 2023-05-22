@@ -1,10 +1,17 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 
 import { Elevator } from './elevator';
 
-const story: ComponentMeta<typeof Elevator> = {
+const meta = {
   title: 'Widgets/Elevator',
   component: Elevator,
+  render: args => (
+    <Elevator {...args}>
+      <div style={{ padding: 32, background: 'var(--dimmed-0)' }}>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maxime, unde.
+      </div>
+    </Elevator>
+  ),
   argTypes: {
     resting: {
       options: ['0', '1', '2', '3', '4'],
@@ -19,24 +26,21 @@ const story: ComponentMeta<typeof Elevator> = {
       control: { type: 'select' },
     },
   },
-};
+} satisfies Meta<typeof Elevator>;
 
-export default story;
+export default meta;
 
-const Template: ComponentStory<typeof Elevator> = args => (
-  <Elevator {...args}>
-    <div style={{ padding: 32, background: 'var(--dimmed-0)' }}>
-      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maxime, unde.
-    </div>
-  </Elevator>
-);
+type Story = StoryObj<typeof meta>;
 
-export const Default = Template.bind({});
-Default.args = {
-  resting: 1,
-};
-export const WithHover = Template.bind({});
-WithHover.args = {
-  resting: 1,
-  hover: 3,
+export const Default = {
+  args: {
+    resting: 1,
+  },
+} satisfies Story;
+
+export const WithHover = {
+  args: {
+    resting: 1,
+    hover: 3,
+  },
 };

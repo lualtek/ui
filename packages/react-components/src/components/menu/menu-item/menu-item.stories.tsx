@@ -1,10 +1,10 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 
 import { Chip, Text } from '../..';
-import { Menu } from '..';
+import { Menu, MenuItemCheckboxProps } from '..';
 
-const story: ComponentMeta<typeof Menu.Item> = {
+const meta = {
   title: 'Navigation/Menu/Menu Item',
   component: Menu.Item,
   args: {
@@ -26,33 +26,32 @@ const story: ComponentMeta<typeof Menu.Item> = {
       control: { type: 'inline-radio' },
     },
   },
-};
+  render: args => (
+    <>
+      <Menu.Item
+        {...args}
+        value="1"
+        icon="sun"
+      >
+        List item text
+      </Menu.Item>
+      <Menu.Item
+        {...args}
+        icon="sun"
+        value="2"
+        decoration={<Chip dimension="small" color="blue">Decoration</Chip>}
+      >
+        List item text
+      </Menu.Item>
+    </>
+  ),
+} satisfies Meta<typeof Menu.Item>;
 
-export default story;
+export default meta;
 
-const TemplateItem: ComponentStory<typeof Menu.Item> = args => (
-  <>
-    <Menu.Item
-      {...args}
-      value="1"
-      icon="sun"
-    >
-      List item text
-    </Menu.Item>
-    <Menu.Item
-      {...args}
-      icon="sun"
-      value="2"
-      decoration={<Chip dimension="small" color="blue">Decoration</Chip>}
-    >
-      List item text
-    </Menu.Item>
-  </>
-);
+type Story = StoryObj<typeof meta>;
 
-export const DefaultItem = TemplateItem.bind({});
-
-const WithCheckboxTemplate: ComponentStory<typeof Menu.ItemCheckbox> = (args) => {
+const WithCheckboxTemplate = (args: MenuItemCheckboxProps) => {
   const [isChecked, setIsChecked] = useState<boolean>(false);
 
   return (
@@ -78,47 +77,55 @@ const WithCheckboxTemplate: ComponentStory<typeof Menu.ItemCheckbox> = (args) =>
   );
 };
 
-export const WithCheckboxes = WithCheckboxTemplate.bind({});
+export const WithCheckboxes = {
+  args: {
+    value: '1',
+  },
+  render: args => <WithCheckboxTemplate {...args} />,
+} satisfies Story;
 
-const WithDecoratorsTemplate: ComponentStory<typeof Menu.Item> = args => (
-  <>
-    <Menu.Item
-      {...args}
-      value="1"
-      decoration={
-        <Chip dimension="small" color="yellow">Good</Chip>}
-      icon="sun"
-    >
-      List item text
-    </Menu.Item>
-    <Menu.Item
-      {...args}
-      value="2"
-      decoration={
-        <Chip dimension="small" color="blue">Example</Chip>}
-      icon="chat"
-    >
-      List item text List item
-    </Menu.Item>
-    <Menu.Item
-      {...args}
-      value="3"
-      decoration={
-        <Text size={14} sentiment="danger">Warning</Text>}
-      icon="view"
-    >
-      List item text
-    </Menu.Item>
-    <Menu.Item
-      {...args}
-      value="4"
-      decoration={
-        <Chip dimension="small" color="purple">Decoration</Chip>}
-      icon="file"
-    >
-      List item text
-    </Menu.Item>
-  </>
-);
-
-export const WithDecorations = WithDecoratorsTemplate.bind({});
+export const WithDecorations = {
+  args: {
+    value: '1',
+  },
+  render: args => (
+    <>
+      <Menu.Item
+        {...args}
+        value="1"
+        decoration={
+          <Chip dimension="small" color="yellow">Good</Chip>}
+        icon="sun"
+      >
+        List item text
+      </Menu.Item>
+      <Menu.Item
+        {...args}
+        value="2"
+        decoration={
+          <Chip dimension="small" color="blue">Example</Chip>}
+        icon="chat"
+      >
+        List item text List item
+      </Menu.Item>
+      <Menu.Item
+        {...args}
+        value="3"
+        decoration={
+          <Text size={14} sentiment="danger">Warning</Text>}
+        icon="view"
+      >
+        List item text
+      </Menu.Item>
+      <Menu.Item
+        {...args}
+        value="4"
+        decoration={
+          <Chip dimension="small" color="purple">Decoration</Chip>}
+        icon="file"
+      >
+        List item text
+      </Menu.Item>
+    </>
+  ),
+} satisfies Story;

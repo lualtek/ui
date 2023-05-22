@@ -1,8 +1,8 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 
 import { SplitButton } from './split-button';
 
-const story: ComponentMeta<typeof SplitButton> = {
+const meta = {
   title: 'Actions/Split button',
   component: SplitButton,
   args: {
@@ -30,21 +30,22 @@ const story: ComponentMeta<typeof SplitButton> = {
       control: { type: 'radio' },
     },
   },
-};
+  render: args => (
+    <SplitButton {...args}>
+      <div
+        style={{
+          padding: 24, background: 'var(--dimmed-2)', width: 300, borderRadius: 16,
+        }}
+      >
+        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        Distinctio aliquam exercitationem ut? Molestias repellat facilis totam non.
+      </div>
+    </SplitButton>
+  ),
+} satisfies Meta<typeof SplitButton>;
 
-export default story;
+export default meta;
 
-const Template: ComponentStory<typeof SplitButton> = args => (
-  <SplitButton {...args}>
-    <div
-      style={{
-        padding: 24, background: 'var(--dimmed-2)', width: 300, borderRadius: 16,
-      }}
-    >
-      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-      Distinctio aliquam exercitationem ut? Molestias repellat facilis totam non.
-    </div>
-  </SplitButton>
-);
+type Story = StoryObj<typeof meta>;
 
-export const Basic = Template.bind({});
+export const Basic = {} satisfies Story;

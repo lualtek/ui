@@ -1,18 +1,8 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+/* eslint-disable no-alert */
+import type { Meta, StoryObj } from '@storybook/react';
 
-import { Chip, List } from '../..';
+import { Chip } from '../..';
 import { Autocomplete } from './autocomplete';
-
-const story: ComponentMeta<typeof Autocomplete> = {
-  title: 'Inputs/Autocomplete',
-  component: Autocomplete,
-  args: {
-    label: 'Autocomplete',
-    invalid: false,
-  },
-};
-
-export default story;
 
 const options = [
   {
@@ -30,37 +20,33 @@ const options = [
   },
 ];
 
-const Template: ComponentStory<typeof Autocomplete> = args => (
-  <>
-    <Autocomplete
-      style={{ maxWidth: '300px' }}
-      icon="zoom"
-      options={options}
-      {...args}
-    />
-    <List>
-      <List.Li>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Necessitatibus non laboriosam facere?
-        {' '}
-      </List.Li>
-      <List.Li>
-        Eum, assumenda ad sunt dolorum aspernatur quia sit! Mollitia eligendi
-        accusantium alias non enim quaerat quidem fugiat architecto.
-      </List.Li>
-    </List>
-  </>
-);
+const meta = {
+  title: 'Inputs/Autocomplete',
+  component: Autocomplete,
+  args: {
+    label: 'Autocomplete',
+    invalid: false,
+    icon: 'zoom',
+    options,
+    matchFieldWidth: false,
+    style: { maxWidth: '300px' },
+  },
+} satisfies Meta<typeof Autocomplete>;
 
-export const Default = Template.bind({});
+export default meta;
 
-export const Loading = Template.bind({});
-Loading.args = {
-  loading: true,
-};
+type Story = StoryObj<typeof meta>;
 
-export const CustomEvent = Template.bind({});
-CustomEvent.args = {
-  // eslint-disable-next-line no-alert
-  onClickOption: value => alert(value),
-};
+export const Default = {} satisfies Story;
+
+export const Loading = {
+  args: {
+    loading: true,
+  },
+} satisfies Story;
+
+export const CustomEvent = {
+  args: {
+    onClickOption: value => alert(value),
+  },
+} satisfies Story;

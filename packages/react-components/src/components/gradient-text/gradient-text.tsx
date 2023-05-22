@@ -47,3 +47,5 @@ export const GradientText = forwardRef<HTMLSpanElement, GradientTextProps>(({
     </span>
   );
 });
+
+GradientText.displayName = 'GradientText';

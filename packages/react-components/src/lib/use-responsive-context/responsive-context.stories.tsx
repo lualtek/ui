@@ -1,26 +1,27 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 
 import { ResponsiveProvider, useResponsiveContext } from '../..';
 
-const story: ComponentMeta<typeof ResponsiveProvider> = {
+const meta = {
   title: 'Utils/ResponsiveContext',
   component: ResponsiveProvider,
   argTypes: {
   },
-};
+} satisfies Meta<typeof ResponsiveProvider>;
 
-export default story;
+export default meta;
 
-const ModalShell: ComponentStory<typeof ResponsiveProvider> = () => {
+type Story = StoryObj<typeof meta>;
+
+const CustomComponent = () => {
   const { matches } = useResponsiveContext();
-
   return <pre style={{ whiteSpace: 'pre' }}>{JSON.stringify(matches, null, 2)}</pre>;
 };
 
-const DefaultTemplate: ComponentStory<typeof ResponsiveProvider> = () => (
-  <ResponsiveProvider>
-    <ModalShell />
-  </ResponsiveProvider>
-);
-
-export const Matches = DefaultTemplate.bind({});
+export const Matches = {
+  render: () => (
+    <ResponsiveProvider>
+      <CustomComponent />
+    </ResponsiveProvider>
+  ),
+} satisfies Story;

@@ -1,8 +1,8 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 
 import { Spinner } from './spinner';
 
-const story: ComponentMeta<typeof Spinner> = {
+const meta = {
   title: 'Loading/Spinner',
   component: Spinner,
   args: {
@@ -15,10 +15,11 @@ const story: ComponentMeta<typeof Spinner> = {
       control: { type: 'radio' },
     },
   },
-};
+  render: args => <Spinner {...args} />,
+} satisfies Meta<typeof Spinner>;
 
-export default story;
+export default meta;
 
-const Template: ComponentStory<typeof Spinner> = args => <Spinner {...args} />;
+type Story = StoryObj<typeof meta>;
 
-export const Default = Template.bind({});
+export const Default = {} satisfies Story;

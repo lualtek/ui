@@ -35,3 +35,5 @@ export const IconButton = forwardRef(({
     {...otherProps}
   />
 )) as PolymorphicIconButton;
+
+IconButton.displayName = 'IconButton';

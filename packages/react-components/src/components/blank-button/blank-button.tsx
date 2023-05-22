@@ -23,3 +23,5 @@ export const BlankButton = forwardRef<HTMLButtonElement, BlankButtonProps>(({
     {children}
   </button>
 ));
+
+BlankButton.displayName = 'BlankButton';

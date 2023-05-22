@@ -36,3 +36,5 @@ export const Elevator: FCChildren<ElevatorProps> = ({
     ))}
   </>
 );
+
+Elevator.displayName = 'Elevator';

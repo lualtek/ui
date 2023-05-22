@@ -1,35 +1,39 @@
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 
 import { Title } from '../..';
 import { GradientText } from './gradient-text';
 
-const story: ComponentMeta<typeof GradientText> = {
+const meta = {
   title: 'Typography/Gradient Text',
   component: GradientText,
-  args: {
-    gradient: 'rainbow',
-  },
+  render: args => (
+    <Title level="4">
+      <GradientText {...args}>
+        Gradient Title
+      </GradientText>
+    </Title>
+  ),
   argTypes: {
     gradient: {
       options: ['rainbow', 'brand', 'primary', 'cyan', 'dawn'],
       control: { type: 'select' },
     },
   },
-};
+} satisfies Meta<typeof GradientText>;
 
-export default story;
+export default meta;
 
-const Template: ComponentStory<typeof GradientText> = args => (
-  <Title level="4">
-    <GradientText {...args}>
-      Gradient Title
-    </GradientText>
-  </Title>
-);
+type Story = StoryObj<typeof meta>;
 
-export const Default = Template.bind({});
-export const CustomColors = Template.bind({});
-CustomColors.args = {
-  colorStart: 'red',
-  colorEnd: 'blue',
-};
+export const Default = {
+  args: {
+    gradient: 'rainbow',
+  },
+} satisfies Story;
+
+export const CustomColors = {
+  args: {
+    colorStart: 'red',
+    colorEnd: 'blue',
+  },
+} satisfies Story;

@@ -44,3 +44,5 @@ export const ClampText = forwardRef(({
     </Wrapper>
   );
 }) as PolymorphicClampText;
+
+ClampText.displayName = 'ClampText';

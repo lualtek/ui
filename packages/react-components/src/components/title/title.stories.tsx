@@ -1,10 +1,8 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-
-import { Container } from '@/components';
+import type { Meta, StoryObj } from '@storybook/react';
 
 import { Title } from './title';
 
-const story: ComponentMeta<typeof Title> = {
+const meta = {
   title: 'Typography/Title',
   component: Title,
   parameters: {
@@ -12,6 +10,7 @@ const story: ComponentMeta<typeof Title> = {
   },
   args: {
     responsive: true,
+    textAlign: 'center',
   },
   argTypes: {
     level: {
@@ -27,33 +26,21 @@ const story: ComponentMeta<typeof Title> = {
       control: { type: 'inline-radio' },
     },
   },
-};
-
-export default story;
-
-export const Default: ComponentStory<typeof Title> = ({ lineHeight }) => (
-  <Container>
-    <Title lineHeight={lineHeight} as="h1" level="display">Sample title</Title>
-    <Title lineHeight={lineHeight} as="h1" level="1">Sample title</Title>
-    <Title lineHeight={lineHeight} as="h2" level="2">Sample title</Title>
-    <Title lineHeight={lineHeight} as="h3" level="3">Sample title</Title>
-    <Title lineHeight={lineHeight} as="h4" level="4">Sample title</Title>
-    <Title lineHeight={lineHeight} as="h5" level="5">Sample title</Title>
-    <Title lineHeight={lineHeight} as="h6" level="6">Sample title</Title>
-  </Container>
-);
-
-const Template: ComponentStory<typeof Title> = args => (
-  <Container dimension="medium">
+  render: args => (
     <Title {...args}>Sample title</Title>
-  </Container>
-);
+  ),
+} satisfies Meta<typeof Title>;
 
-export const Single = Template.bind({});
-Single.args = {
-  as: 'span',
-  lineHeight: 'small',
-  level: '1',
-  maxWidth: 'auto',
-  textAlign: 'center',
-};
+export default meta;
+
+type Story = StoryObj<typeof meta>;
+
+export const Default = {
+  args: {
+    as: 'span',
+    lineHeight: 'small',
+    level: '1',
+    maxWidth: 'auto',
+    textAlign: 'center',
+  },
+} satisfies Story;

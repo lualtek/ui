@@ -1,8 +1,8 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 
 import { IconButton } from './icon-button';
 
-const story: ComponentMeta<typeof IconButton> = {
+const meta = {
   title: 'Actions/IconButton',
   component: IconButton,
   args: {
@@ -10,11 +10,16 @@ const story: ComponentMeta<typeof IconButton> = {
     kind: 'primary',
     icon: 'chat',
     busy: false,
+    disabled: false,
   },
   argTypes: {
     onClick: { action: 'clicked' },
     dimension: {
       options: ['small', 'regular', 'big'],
+      control: { type: 'radio' },
+    },
+    sentiment: {
+      options: [undefined, 'positive', 'warning', 'danger'],
       control: { type: 'radio' },
     },
     busy: {
@@ -26,13 +31,11 @@ const story: ComponentMeta<typeof IconButton> = {
       control: { type: 'radio' },
     },
   },
-};
+} satisfies Meta<typeof IconButton>;
 
-export default story;
+export default meta;
 
-const Template: ComponentStory<typeof IconButton> = args => <IconButton {...args} />;
+type Story = StoryObj<typeof meta>;
 
-export const Default = Template.bind({});
-Default.args = {
-  disabled: false,
-};
+export const Default = {} satisfies Story;
+

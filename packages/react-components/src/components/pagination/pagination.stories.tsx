@@ -1,4 +1,4 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import { useEffect, useMemo, useState } from 'react';
 
 import { Pagination } from './pagination';
@@ -13,20 +13,7 @@ type PaginationType = Array<{
   application: string;
 }>
 
-const story: ComponentMeta<typeof Pagination> = {
-  title: 'Navigation/Pagination',
-  component: Pagination,
-  args: {
-    itemsPerPage: 3,
-  },
-};
-
-export default story;
-
-export const Default: ComponentStory<typeof Pagination> = ({
-  itemsPerPage,
-  ...args
-}) => {
+const Template = ({ ...args }) => {
   const items = useMemo((): PaginationType => [
     {
       ip: '212.5.90.2',
@@ -430,9 +417,9 @@ export const Default: ComponentStory<typeof Pagination> = ({
   const [itemOffset, setItemOffset] = useState(0);
 
   useEffect(() => {
-    const endOffset = itemOffset + Number(itemsPerPage ?? 10);
+    const endOffset = itemOffset + Number(args.itemsPerPage ?? 10);
     setCurrentItems(items.slice(itemOffset, endOffset));
-  }, [itemOffset, items, itemsPerPage]);
+  }, [itemOffset, items, args.itemsPerPage]);
 
   const handlePageClick = (data: any) => {
     setItemOffset(data.offset);
@@ -453,3 +440,20 @@ export const Default: ComponentStory<typeof Pagination> = ({
     </>
   );
 };
+
+const meta = {
+  title: 'Navigation/Pagination',
+  component: Pagination,
+  args: {},
+  render: args => <Template {...args} />,
+} satisfies Meta<typeof Pagination>;
+
+export default meta;
+
+type Story = StoryObj<typeof meta>;
+
+export const Default = {
+  args: {
+    itemsPerPage: 3,
+  },
+} satisfies Story;

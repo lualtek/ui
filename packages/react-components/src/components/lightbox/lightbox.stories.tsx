@@ -1,26 +1,14 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 
 import { BlankButton, OverlayContainer } from '../..';
-import { Lightbox } from './lightbox';
+import { Lightbox, LightboxProps } from './lightbox';
 
-const story: ComponentMeta<typeof Lightbox> = {
-  title: 'Dialogs/Lightbox',
-  component: Lightbox,
-  args: {
-
-  },
-  argTypes: {
-
-  },
-};
-
-export default story;
-
-const Template: ComponentStory<typeof Lightbox> = ({ selectedState, ...args }) => {
+const Template = ({ selectedState, ...args }: LightboxProps) => {
   const state = useState(0);
   const [isOpen, setIsOpen] = useState(false);
   const [, setIndex] = state;
+
   return (
     <>
       {args.data.map((item, index) => (
@@ -39,70 +27,84 @@ const Template: ComponentStory<typeof Lightbox> = ({ selectedState, ...args }) =
         </BlankButton>
       ))}
       <OverlayContainer onClose={() => setIsOpen(false)}>
-        {isOpen && <Lightbox {...args} selectedState={state} />}
+        {isOpen && <Lightbox selectedState={state} {...args} />}
       </OverlayContainer>
     </>
   );
 };
 
-export const Default = Template.bind({});
-Default.args = {
-  data: [{
-    image: 'https://ik.imagekit.io/thingstek/photos/installations/aa-device-con-pannello_bJ5kjnb5SmR',
-    title: 'Image 1',
-  }, {
-    image: 'https://ik.imagekit.io/thingstek/photos/installations/aa-termoigrometro_4hIRcoH4bZcf.jpeg',
-    title: 'Image 1',
-  }, {
-    image: 'https://ik.imagekit.io/thingstek/photos/installations/aa-tensiometro_ysEqRIkGmne.jpeg',
-    title: 'Image 2',
-  }, {
-    image: 'https://ik.imagekit.io/thingstek/photos/installations/aa-termoigrometro_4hIRcoH4bZcf.jpeg',
-    title: 'Image 1',
-  }, {
-    image: 'https://ik.imagekit.io/thingstek/photos/installations/aa-tensiometro_ysEqRIkGmne.jpeg',
-    title: 'Image 2',
-  }, {
-    image: 'https://ik.imagekit.io/thingstek/photos/installations/aa-termoigrometro_4hIRcoH4bZcf.jpeg',
-    title: 'Image 1',
-  }, {
-    image: 'https://ik.imagekit.io/thingstek/photos/installations/aa-tensiometro_ysEqRIkGmne.jpeg',
-    title: 'Image 2',
-  }, {
-    image: 'https://ik.imagekit.io/thingstek/photos/installations/aa-termoigrometro_4hIRcoH4bZcf.jpeg',
-    title: 'Image 1',
-  }, {
-    image: 'https://ik.imagekit.io/thingstek/photos/installations/aa-tensiometro_ysEqRIkGmne.jpeg',
-    title: 'Image 2',
-  }, {
-    image: 'https://ik.imagekit.io/thingstek/photos/installations/aa-termoigrometro_4hIRcoH4bZcf.jpeg',
-    title: 'Image 1',
-  }, {
-    image: 'https://ik.imagekit.io/thingstek/photos/installations/aa-tensiometro_ysEqRIkGmne.jpeg',
-    title: 'Image 2',
-  }, {
-    image: 'https://ik.imagekit.io/thingstek/photos/installations/aa-termoigrometro_4hIRcoH4bZcf.jpeg',
-    title: 'Image 1',
-  }, {
-    image: 'https://ik.imagekit.io/thingstek/photos/installations/aa-tensiometro_ysEqRIkGmne.jpeg',
-    title: 'Image 2',
-  }, {
-    image: 'https://ik.imagekit.io/thingstek/photos/installations/aa-termoigrometro_4hIRcoH4bZcf.jpeg',
-    title: 'Image 1',
-  }, {
-    image: 'https://ik.imagekit.io/thingstek/photos/installations/aa-tensiometro_ysEqRIkGmne.jpeg',
-    title: 'Image 2',
-  }, {
-    image: 'https://ik.imagekit.io/thingstek/photos/installations/aa-termoigrometro_4hIRcoH4bZcf.jpeg',
-    title: 'Image 1',
-  }, {
-    image: 'https://ik.imagekit.io/thingstek/photos/installations/aa-tensiometro_ysEqRIkGmne.jpeg',
-    title: 'Image 2',
-  }, {
-    image: 'https://ik.imagekit.io/thingstek/photos/installations/aa-termoigrometro_4hIRcoH4bZcf.jpeg',
-    title: 'Image 1',
-  }, {
-    image: 'https://ik.imagekit.io/thingstek/photos/installations/aa-tensiometro_ysEqRIkGmne.jpeg',
-    title: 'Image 2',
-  }],
-};
+const meta = {
+  title: 'Dialogs/Lightbox',
+  component: Lightbox,
+  render: args => <Template {...args} />,
+  args: {
+    data: [{
+      image: 'https://ik.imagekit.io/thingstek/photos/installations/aa-device-con-pannello_bJ5kjnb5SmR',
+      title: 'Image 1',
+    }, {
+      image: 'https://ik.imagekit.io/thingstek/photos/installations/aa-termoigrometro_4hIRcoH4bZcf.jpeg',
+      title: 'Image 1',
+    }, {
+      image: 'https://ik.imagekit.io/thingstek/photos/installations/aa-tensiometro_ysEqRIkGmne.jpeg',
+      title: 'Image 2',
+    }, {
+      image: 'https://ik.imagekit.io/thingstek/photos/installations/aa-termoigrometro_4hIRcoH4bZcf.jpeg',
+      title: 'Image 1',
+    }, {
+      image: 'https://ik.imagekit.io/thingstek/photos/installations/aa-tensiometro_ysEqRIkGmne.jpeg',
+      title: 'Image 2',
+    }, {
+      image: 'https://ik.imagekit.io/thingstek/photos/installations/aa-termoigrometro_4hIRcoH4bZcf.jpeg',
+      title: 'Image 1',
+    }, {
+      image: 'https://ik.imagekit.io/thingstek/photos/installations/aa-tensiometro_ysEqRIkGmne.jpeg',
+      title: 'Image 2',
+    }, {
+      image: 'https://ik.imagekit.io/thingstek/photos/installations/aa-termoigrometro_4hIRcoH4bZcf.jpeg',
+      title: 'Image 1',
+    }, {
+      image: 'https://ik.imagekit.io/thingstek/photos/installations/aa-tensiometro_ysEqRIkGmne.jpeg',
+      title: 'Image 2',
+    }, {
+      image: 'https://ik.imagekit.io/thingstek/photos/installations/aa-termoigrometro_4hIRcoH4bZcf.jpeg',
+      title: 'Image 1',
+    }, {
+      image: 'https://ik.imagekit.io/thingstek/photos/installations/aa-tensiometro_ysEqRIkGmne.jpeg',
+      title: 'Image 2',
+    }, {
+      image: 'https://ik.imagekit.io/thingstek/photos/installations/aa-termoigrometro_4hIRcoH4bZcf.jpeg',
+      title: 'Image 1',
+    }, {
+      image: 'https://ik.imagekit.io/thingstek/photos/installations/aa-tensiometro_ysEqRIkGmne.jpeg',
+      title: 'Image 2',
+    }, {
+      image: 'https://ik.imagekit.io/thingstek/photos/installations/aa-termoigrometro_4hIRcoH4bZcf.jpeg',
+      title: 'Image 1',
+    }, {
+      image: 'https://ik.imagekit.io/thingstek/photos/installations/aa-tensiometro_ysEqRIkGmne.jpeg',
+      title: 'Image 2',
+    }, {
+      image: 'https://ik.imagekit.io/thingstek/photos/installations/aa-termoigrometro_4hIRcoH4bZcf.jpeg',
+      title: 'Image 1',
+    }, {
+      image: 'https://ik.imagekit.io/thingstek/photos/installations/aa-tensiometro_ysEqRIkGmne.jpeg',
+      title: 'Image 2',
+    }, {
+      image: 'https://ik.imagekit.io/thingstek/photos/installations/aa-termoigrometro_4hIRcoH4bZcf.jpeg',
+      title: 'Image 1',
+    }, {
+      image: 'https://ik.imagekit.io/thingstek/photos/installations/aa-tensiometro_ysEqRIkGmne.jpeg',
+      title: 'Image 2',
+    }],
+  },
+} satisfies Meta<typeof Lightbox>;
+
+export default meta;
+
+type Story = StoryObj<typeof meta>;
+
+export const Default = {
+  args: {
+    selectedState: [0, () => 0],
+  },
+} satisfies Story;

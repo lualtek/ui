@@ -1,12 +1,13 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 
 import { CircularProgress } from './circular-progress';
 
-const story: ComponentMeta<typeof CircularProgress> = {
+const meta = {
   title: 'Loading/Circular progress',
   component: CircularProgress,
   args: {
     max: 100,
+    value: 75,
     dimension: 'regular',
     showProgress: true,
   },
@@ -23,18 +24,14 @@ const story: ComponentMeta<typeof CircularProgress> = {
       control: { type: 'inline-radio' },
     },
   },
-};
+} satisfies Meta<typeof CircularProgress>;
 
-export default story;
+export default meta;
 
-const Template: ComponentStory<typeof CircularProgress> = args => <CircularProgress {...args} />;
+type Story = StoryObj<typeof meta>;
 
-export const Determinate = Template.bind({});
-Determinate.args = {
-  value: 2000,
-};
-
-export const CustomColor = Template.bind({});
-CustomColor.args = {
-  color: 'red',
-};
+export const Determinate = {
+  args: {
+    value: 75,
+  },
+} satisfies Story;

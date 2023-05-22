@@ -2,14 +2,14 @@ import { Meta } from '@storybook/react';
 
 import { Container } from '../components/container';
 
-const story: Meta = {
+const meta = {
   title: 'Core/Typograhy',
   parameters: {
     controls: { hideNoControlsWarning: true },
   },
-};
+} satisfies Meta;
 
-export default story;
+export default meta;
 
 export const Basic = () => (
   <Container dimension="medium">

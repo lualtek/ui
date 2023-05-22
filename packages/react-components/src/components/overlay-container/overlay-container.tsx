@@ -57,7 +57,10 @@ export const OverlayContainer: FCChildren<OverlayContainerProps> = ({
 
   useEffect(() => {
     if (defaultRoot?.closest('[data-overlay-container]')) {
-      throw new Error('OverlayContainer: An OverlayContainer must not be inside another container. Please change the root prop.');
+      throw new Error(`
+        OverlayContainer: An OverlayContainer must not be inside another container.
+        Please change the root prop.
+      `);
     }
   }, [defaultRoot]);
 
@@ -93,3 +96,5 @@ export const OverlayContainer: FCChildren<OverlayContainerProps> = ({
 
   return defaultRoot && createPortal(content, defaultRoot);
 };
+
+OverlayContainer.displayName = 'OverlayContainer';

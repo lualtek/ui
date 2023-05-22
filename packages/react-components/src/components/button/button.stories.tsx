@@ -1,15 +1,16 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import { SVGAttributes } from 'react';
 
 import { Button } from '.';
 
-const story: ComponentMeta<typeof Button> = {
+const meta = {
   title: 'Actions/Button',
   component: Button,
   args: {
     dimension: 'regular',
     kind: 'primary',
     children: 'Click me',
+    iconPosition: 'left',
     fullWidth: false,
     disabled: false,
     busy: false,
@@ -38,7 +39,11 @@ const story: ComponentMeta<typeof Button> = {
       control: { type: 'inline-radio' },
     },
   },
-};
+} satisfies Meta<typeof Button>;
+
+export default meta;
+
+type Story = StoryObj<typeof meta>;
 
 const CustomReactIcon = ({ ...props }: SVGAttributes<SVGElement | SVGSVGElement>) => (
   <svg
@@ -46,6 +51,7 @@ const CustomReactIcon = ({ ...props }: SVGAttributes<SVGElement | SVGSVGElement>
     width={48}
     height={48}
     viewBox="0 0 256 256"
+    fill="currentColor"
     {...props}
   >
     {/* eslint-disable-next-line max-len */}
@@ -53,26 +59,17 @@ const CustomReactIcon = ({ ...props }: SVGAttributes<SVGElement | SVGSVGElement>
   </svg>
 );
 
-const Template: ComponentStory<typeof Button> = args => <Button {...args} />;
+export const Default = {} satisfies Story;
 
-export const Default = Template.bind({});
-Default.args = {
-  disabled: false,
-  children: 'Ciao',
-};
+export const WithIcon = {
+  args: {
+    icon: 'chat',
+    iconColor: 'currentColor',
+  },
+} satisfies Story;
 
-export const WithIcon = Template.bind({});
-WithIcon.args = {
-  children: 'Ciao',
-  icon: 'chat',
-  iconPosition: 'left',
-  iconColor: 'currentColor',
-};
-
-export const WithCustomIcon = Template.bind({});
-WithCustomIcon.args = {
-  children: 'Ciao',
-  icon: <CustomReactIcon />,
-};
-
-export default story;
+export const WithCustomIcon = {
+  args: {
+    icon: <CustomReactIcon />,
+  },
+} satisfies Story;

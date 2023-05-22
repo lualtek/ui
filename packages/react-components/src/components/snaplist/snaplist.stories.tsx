@@ -1,8 +1,13 @@
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 
 import { Snaplist } from './snaplist';
 
-const story: ComponentMeta<typeof Snaplist> = {
+const style = {
+  background: 'var(--dimmed-3)',
+  padding: 24,
+};
+
+const meta = {
   title: 'Navigation/Snaplist',
   component: Snaplist,
   args: {
@@ -13,29 +18,29 @@ const story: ComponentMeta<typeof Snaplist> = {
       options: ['start', 'center', 'end'],
       control: { type: 'inline-radio' },
     },
+    snapType: {
+      options: ['mandatory', 'proximity'],
+      control: { type: 'inline-radio' },
+    },
   },
-};
+  render: args => (
+    <Snaplist {...args}>
+      <div style={{ minWidth: '30vw', ...style }}>Aaskdjfhasdf </div>
+      <div style={style}>Bsdfasdfa sdfsdfg</div>
+      <div style={style}>Caasdfgasfg</div>
+      <div style={style}>afgafgafgag afga dfgadfgD</div>
+      <div style={style}>Ea gfgasdf gafgafgadfg</div>
+      <div style={style}>F afgafgafg</div>
+      <div style={style}>a gfafgafgafg afga fdgasdfg afga sG</div>
+      <div style={style}>gf H</div>
+      <div style={style}>ga fgagI</div>
+      <div style={style}>Ja fgagafgafg</div>
+    </Snaplist>
+  ),
+} satisfies Meta<typeof Snaplist>;
 
-export default story;
+export default meta;
 
-const style = {
-  background: 'var(--dimmed-3)',
-  padding: 24,
-};
+type Story = StoryObj<typeof meta>;
 
-const Template: ComponentStory<typeof Snaplist> = args => (
-  <Snaplist {...args}>
-    <div style={{ minWidth: '30vw', ...style }}>Aaskdjfhasdf </div>
-    <div style={style}>Bsdfasdfa sdfsdfg</div>
-    <div style={style}>Caasdfgasfg</div>
-    <div style={style}>afgafgafgag afga dfgadfgD</div>
-    <div style={style}>Ea gfgasdf gafgafgadfg</div>
-    <div style={style}>F afgafgafg</div>
-    <div style={style}>a gfafgafgafg afga fdgasdfg afga sG</div>
-    <div style={style}>gf H</div>
-    <div style={style}>ga fgagI</div>
-    <div style={style}>Ja fgagafgafg</div>
-  </Snaplist>
-);
-
-export const Default = Template.bind({});
+export const Default = {} satisfies Story;

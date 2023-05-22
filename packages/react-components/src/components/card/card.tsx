@@ -108,3 +108,5 @@ export const Card = forwardRef(({
     </Wrapper>
   );
 }) as PolymorphicCard;
+
+Card.displayName = 'Card';

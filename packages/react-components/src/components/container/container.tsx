@@ -36,3 +36,5 @@ export const Container = forwardRef(({
     {children}
   </Wrapper>
 )) as PolymorphicContainer;
+
+Container.displayName = 'Container';

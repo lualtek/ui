@@ -1,10 +1,16 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 
 import { Chip } from './chip';
 
-const story: ComponentMeta<typeof Chip> = {
+const meta = {
   title: 'Badges/Chip',
   component: Chip,
+  args: {
+    dimension: 'regular',
+    dismissable: false,
+    interactive: false,
+    children: 'chip',
+  },
   argTypes: {
     onDismissClick: {
       action: 'dismissed',
@@ -22,26 +28,22 @@ const story: ComponentMeta<typeof Chip> = {
       control: { type: 'select' },
     },
   },
+} satisfies Meta<typeof Chip>;
+
+export default meta;
+
+type Story = StoryObj<typeof meta>;
+
+export const Default = {} satisfies Story;
+
+export const WithIcon = {
   args: {
-    dimension: 'regular',
-    dismissable: false,
+    icon: 'device',
   },
-};
+} satisfies Story;
 
-export default story;
-
-const Template: ComponentStory<typeof Chip> = args => (
-  <>
-    <Chip {...args}>Chip text</Chip>
-    <Chip {...args}>Chip text</Chip>
-  </>
-);
-
-export const Default = Template.bind({});
-Default.args = {
-};
-
-export const WithIcon = Template.bind({});
-WithIcon.args = {
-  icon: 'device',
-};
+export const Dismissale = {
+  args: {
+    dismissable: true,
+  },
+} satisfies Story;

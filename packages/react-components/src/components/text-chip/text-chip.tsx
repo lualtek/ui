@@ -10,10 +10,12 @@ import styles from './text-chip.module.css';
 export type TextChipProps = {
   /**
    * Set the dimension of the component.
+   * @default 'regular'
    */
   dimension?: 'small' | 'regular' | 'big';
   /**
    * Set a color from one of the provided values.
+   * @default 'gray'
    */
   color?: TokensTypes['colors'];
   /**

@@ -1,15 +1,18 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 
 import { Separator } from './separator';
 
-const story: ComponentMeta<typeof Separator> = {
+const meta = {
   title: 'Layouts/Separator',
   component: Separator,
-};
+  render: args => <Separator {...args} />,
+} satisfies Meta<typeof Separator>;
 
-export default story;
+export default meta;
+type Story = StoryObj<typeof meta>;
 
-export const Default: ComponentStory<typeof Separator> = args => <Separator {...args} />;
-Default.args = {
-  vPadding: 32,
-};
+export const Default = {
+  args: {
+    vPadding: 32,
+  },
+} satisfies Story;

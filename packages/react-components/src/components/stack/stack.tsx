@@ -108,3 +108,5 @@ export const Stack = forwardRef(({
     </Wrapper>
   );
 }) as PolymorphicStack;
+
+Stack.displayName = 'Stack';

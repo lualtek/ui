@@ -1,9 +1,9 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 
 import { Stack } from '../..';
 import { IconMeter } from './icon-meter';
 
-const story: ComponentMeta<typeof IconMeter> = {
+const meta = {
   title: 'Widgets/Icon meter',
   component: IconMeter,
   args: {
@@ -16,15 +16,17 @@ const story: ComponentMeta<typeof IconMeter> = {
       control: { type: 'radio' },
     },
   },
-};
+  render: args => <Stack><IconMeter {...args} /></Stack>,
+} satisfies Meta<typeof IconMeter>;
 
-export default story;
+export default meta;
 
-const Template: ComponentStory<typeof IconMeter> = args => <Stack><IconMeter {...args} /></Stack>;
+type Story = StoryObj<typeof meta>;
 
-export const Default = Template.bind({});
+export const Default = {} satisfies Story;
 
-export const CustomLabel = Template.bind({});
-CustomLabel.args = {
-  label: 'Hello there 👋',
-};
+export const CustomLabel = {
+  args: {
+    label: 'Hello there 👋',
+  },
+} satisfies Story;

@@ -1,9 +1,9 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 
-import { Button } from '../..';
+import { Button, Text } from '../..';
 import { InfoState } from './info-state';
 
-const story: ComponentMeta<typeof InfoState> = {
+const meta = {
   title: 'Dialogs/InfoState',
   component: InfoState,
   args: {
@@ -16,44 +16,51 @@ const story: ComponentMeta<typeof InfoState> = {
       control: { type: 'select' },
     },
   },
-};
+  render: args => (
+    <InfoState {...args}>
+      <Text maxWidth="40ch">
+        Cras ultricies, elit sit amet cursus consectetur,
+        risus felis ullamcorper nulla, ut scelerisque sapien lorem non sem.
+      </Text>
+    </InfoState>
+  ),
+} satisfies Meta<typeof InfoState>;
 
-export default story;
+export default meta;
 
-const Template: ComponentStory<typeof InfoState> = args => (
-  <InfoState {...args}>
-    Cras ultricies, elit sit amet cursus consectetur,
-    risus felis ullamcorper nulla, ut scelerisque sapien lorem non sem.
-  </InfoState>
-);
+type Story = StoryObj<typeof meta>;
 
-export const Default = Template.bind({});
-Default.args = {
-  icon: 'bell',
-};
+export const Default = {
+  args: {
+    icon: 'bell',
+  },
+} satisfies Story;
 
-export const Horizontal = Template.bind({});
-Horizontal.args = {
-  direction: 'row',
-  icon: 'bell',
-};
+export const Horizontal = {
+  args: {
+    direction: 'row',
+    icon: 'bell',
+  },
+} satisfies Story;
 
-export const WithImage = Template.bind({});
-WithImage.args = {
-  image: 'https://svgshare.com/i/b5f.svg',
-};
+export const WithImage = {
+  args: {
+    image: 'https://svgshare.com/i/b5f.svg',
+  },
+} satisfies Story;
 
-export const WithImageHorizontal = Template.bind({});
-WithImageHorizontal.args = {
-  direction: 'row',
-  image: 'https://svgshare.com/i/b5f.svg',
-};
+export const WithImageHorizontal = {
+  args: {
+    direction: 'row',
+    image: 'https://svgshare.com/i/b5f.svg',
+  },
+} satisfies Story;
 
-export const WithActions = Template.bind({});
-WithActions.args = {
-  actions:
-  <>
-    <Button>Primary</Button>
-    <Button kind="flat">Secondary</Button>
-  </>,
-};
+export const WithActions = {
+  args: {
+    actions: [
+      <Button>Primary</Button>,
+      <Button kind="flat">Secondary</Button>,
+    ],
+  },
+} satisfies Story;

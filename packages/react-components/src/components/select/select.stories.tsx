@@ -1,8 +1,8 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 
 import { Select } from './select';
 
-const story: ComponentMeta<typeof Select> = {
+const meta = {
   title: 'Inputs/Select',
   component: Select,
   argTypes: {
@@ -21,49 +21,51 @@ const story: ComponentMeta<typeof Select> = {
       control: { type: 'inline-radio' },
     },
   },
-};
+  render: args => (
+    <Select defaultValue="placeholder" {...args}>
+      <option value="placeholder" hidden disabled>Pick an option</option>
+      <optgroup label="Option Group One">
+        <option value="1">This is a very long option selected</option>
+        <option value="2">Option 2</option>
+      </optgroup>
+      <optgroup label="Option Group Two">
+        <option value="3">Option 1</option>
+        <option value="4">Option 2</option>
+        <option value="5">Option 3</option>
+      </optgroup>
+    </Select>
+  ),
+} satisfies Meta<typeof Select>;
 
-export default story;
+export default meta;
 
-const SingleTemplate: ComponentStory<typeof Select> = args => (
-  <Select defaultValue="placeholder" {...args}>
-    <option value="placeholder" hidden disabled>Pick an option</option>
-    <optgroup label="Option Group One">
-      <option value="1">This is a very long option selected</option>
-      <option value="2">Option 2</option>
-    </optgroup>
-    <optgroup label="Option Group Two">
-      <option value="3">Option 1</option>
-      <option value="4">Option 2</option>
-      <option value="5">Option 3</option>
-    </optgroup>
-  </Select>
-);
+type Story = StoryObj<typeof meta>;
 
-const MultipleTemplate: ComponentStory<typeof Select> = args => (
-  <Select {...args} kind="multiple">
-    <optgroup label="Option Group">
-      <option>Option 1</option>
-      <option>Option 2</option>
-      <option>Option 3</option>
-    </optgroup>
-    <optgroup label="Option Group 2">
-      <option>Option 4</option>
-      <option>Option 5</option>
-      <option>Option 6</option>
-    </optgroup>
-  </Select>
-);
+export const Single = {
+  args: {
+    disabled: false,
+    kind: 'single',
+    label: 'Label',
+  },
+} satisfies Story;
 
-export const Single = SingleTemplate.bind({});
-Single.args = {
-  disabled: false,
-  kind: 'single',
-  label: 'Label',
-};
-
-export const Multiple = MultipleTemplate.bind({});
-Multiple.args = {
-  label: 'Label',
-  kind: 'multiple',
-};
+export const Multiple = {
+  args: {
+    label: 'Label',
+    kind: 'multiple',
+  },
+  render: args => (
+    <Select {...args} kind="multiple">
+      <optgroup label="Option Group">
+        <option>Option 1</option>
+        <option>Option 2</option>
+        <option>Option 3</option>
+      </optgroup>
+      <optgroup label="Option Group 2">
+        <option>Option 4</option>
+        <option>Option 5</option>
+        <option>Option 6</option>
+      </optgroup>
+    </Select>
+  ),
+} satisfies Story;

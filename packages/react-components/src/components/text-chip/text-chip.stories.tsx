@@ -1,8 +1,8 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 
 import { TextChip } from './text-chip';
 
-const story: ComponentMeta<typeof TextChip> = {
+const meta = {
   title: 'Badges/Text Chip',
   component: TextChip,
   argTypes: {
@@ -19,19 +19,23 @@ const story: ComponentMeta<typeof TextChip> = {
   args: {
     dimension: 'regular',
     tinted: true,
+    color: 'cyan',
   },
-};
+  render: args => <TextChip {...args} />,
+} satisfies Meta<typeof TextChip>;
 
-export default story;
+export default meta;
 
-const Template: ComponentStory<typeof TextChip> = args => <TextChip {...args} />;
+type Story = StoryObj<typeof meta>;
 
-export const Default = Template.bind({});
-Default.args = {
-  text: '1.11',
-};
+export const Default = {
+  args: {
+    text: '1.11',
+  },
+} satisfies Story;
 
-export const WithEmoji = Template.bind({});
-WithEmoji.args = {
-  text: '🥲',
-};
+export const WithEmoji = {
+  args: {
+    text: '🥲',
+  },
+} satisfies Story;

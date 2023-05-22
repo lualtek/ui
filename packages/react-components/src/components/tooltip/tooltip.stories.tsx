@@ -1,13 +1,15 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 
 import { Text } from '../..';
 import { Tooltip, TooltipProvider } from './tooltip';
 
-const story: ComponentMeta<typeof Tooltip> = {
+const meta = {
   title: 'Dialogs/Tooltip',
   component: Tooltip,
   args: {
     side: 'bottom',
+    children: 'Tooltip',
+    trigger: <Text as="mark" sentiment="informative">HTML</Text>,
   },
   argTypes: {
     side: {
@@ -15,26 +17,32 @@ const story: ComponentMeta<typeof Tooltip> = {
       control: { type: 'radio' },
     },
   },
-};
-
-export default story;
-
-const Template: ComponentStory<typeof Tooltip> = args => (
-  <TooltipProvider>
-    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit expedita,
-    saepe numquam illo quas, Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-    Impedit expedita, saepe numquam illo quas, Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-    Impedit expedita, saepe numquam illo quas, Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-    Impedit expedita, saepe numquam illo quas,Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-    Impedit expedita, saepe numquam illo quas,
-    {' '}
-    <Tooltip {...args} trigger={<Text as="span" sentiment="informative">HTML</Text>}>
-      HTML stands for HyperText Markup Language.
+  render: args => (
+    <Tooltip {...args}>
+      {args.children}
     </Tooltip>
-    {' '}
-    eos dolorum modi earum quidem molestias recusandae, voluptas delectus aliquam nemo temporibus.
-    Quas perspiciatis sunt ut.
-  </TooltipProvider>
-);
+  ),
+  decorators: [
+    Story => (
+      <TooltipProvider>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit expedita,
+        saepe numquam illo quas, Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+        Impedit expedita, saepe numquam illo quas, Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+        Impedit expedita, saepe numquam illo quas, Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+        Impedit expedita, saepe numquam illo quas,Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+        Impedit expedita, saepe numquam illo quas,
+        {' '}
+        <Story />
+        {' '}
+        eos dolorum modi earum quidem molestias recusandae, voluptas delectus aliquam nemo temporibus.
+        Quas perspiciatis sunt ut.
+      </TooltipProvider>
+    ),
+  ],
+} satisfies Meta<typeof Tooltip>;
 
-export const Default = Template.bind({});
+export default meta;
+
+type Story = StoryObj<typeof meta>;
+
+export const Default = {} satisfies Story;

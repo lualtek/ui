@@ -70,3 +70,5 @@ export const List = forwardRef(({
 }) as PolymorphicList;
 
 List.Li = ListItem;
+
+List.displayName = 'List';

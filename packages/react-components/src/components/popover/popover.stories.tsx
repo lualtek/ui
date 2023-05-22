@@ -1,19 +1,14 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 
 import {
-  Button, Card, IconButton, Stack,
+  Button, Card, IconButton,
 } from '../..';
 import { Popover } from './popover';
 
-const story: ComponentMeta<typeof Popover> = {
+const meta = {
   title: 'Dialogs/Popover',
   component: Popover,
-};
-
-export default story;
-
-const Template: ComponentStory<typeof Popover> = args => (
-  <Stack hAlign="center" vPadding={200}>
+  render: args => (
     <Popover {...args}>
       <Popover.Trigger><Button>Click me</Button></Popover.Trigger>
       <Popover.Content>
@@ -26,13 +21,17 @@ const Template: ComponentStory<typeof Popover> = args => (
         </Card>
       </Popover.Content>
     </Popover>
-  </Stack>
-);
+  ),
+} satisfies Meta<typeof Popover>;
 
-export const Default: ComponentStory<typeof Popover> = Template.bind({});
+export default meta;
 
-const TemplateAnchor: ComponentStory<typeof Popover> = args => (
-  <Stack hAlign="center" vPadding={200}>
+type Story = StoryObj<typeof meta>;
+
+export const Default = {} satisfies Story;
+
+export const CustomAnchor = {
+  render: args => (
     <Popover {...args}>
       <Popover.Anchor>
         <div>
@@ -59,7 +58,5 @@ const TemplateAnchor: ComponentStory<typeof Popover> = args => (
         </div>
       </Popover.Content>
     </Popover>
-  </Stack>
-);
-
-export const CustomAnchor = TemplateAnchor.bind({});
+  ),
+} satisfies Story;

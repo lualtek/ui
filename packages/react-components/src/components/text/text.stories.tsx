@@ -1,14 +1,12 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-
-import { Container } from '@/components';
+import type { Meta, StoryObj } from '@storybook/react';
 
 import { Text } from './text';
 
-const story: ComponentMeta<typeof Text> = {
+const meta = {
   title: 'Typography/Text',
   component: Text,
   args: {
-    maxWidth: 'auto',
+    maxWidth: '40ch',
     children: `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius dolores,
     tempore quas labore officiis praesentium. Porro sed dolorem, numquam temporibus
     consequuntur quam doloremque ducimus error tempora illo aliquam nesciunt nostrum!`,
@@ -18,7 +16,7 @@ const story: ComponentMeta<typeof Text> = {
   },
   argTypes: {
     size: {
-      options: [14, 16, 18, 22, 28],
+      options: ['12', '14', '16', '18', '22', '24', '28', '32', '42', '56', '75', '100'],
       control: { type: 'select' },
     },
     sentiment: {
@@ -38,14 +36,17 @@ const story: ComponentMeta<typeof Text> = {
       control: { type: 'inline-radio' },
     },
   },
-};
+  render: args => <Text {...args} />,
+} satisfies Meta<typeof Text>;
 
-export default story;
+export default meta;
 
-const Template: ComponentStory<typeof Text> = args => <Container dimension="medium"><Text {...args} /></Container>;
+type Story = StoryObj<typeof meta>;
 
-export const Default = Template.bind({});
-export const Weight = Template.bind({});
-Weight.args = {
-  weight: 'bold',
-};
+export const Default = {} satisfies Story;
+
+export const Weight = {
+  args: {
+    weight: 'bold',
+  },
+} satisfies Story;

@@ -1,13 +1,12 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 
 import { List } from './list';
 
-const story: ComponentMeta<typeof List> = {
+const meta = {
   title: 'Typography/List',
   component: List,
   args: {
     hideMarker: false,
-    gap: undefined,
   },
   argTypes: {
     dimension: {
@@ -15,26 +14,28 @@ const story: ComponentMeta<typeof List> = {
       control: { type: 'radio' },
     },
   },
-};
+  render: ({ marker, markerColor, ...args }) => (
+    <List {...args}>
+      <List.Li marker={marker} hideMarker markerColor={markerColor}>List item text</List.Li>
+      <List.Li marker={marker} markerColor={markerColor}>List item text List item textList text</List.Li>
+      <List.Li marker={marker} markerColor={markerColor}>List item text</List.Li>
+    </List>
+  ),
+} satisfies Meta<typeof List & typeof List.Li>;
 
-export default story;
+export default meta;
 
-const Template: ComponentStory<typeof List & typeof List.Li> = ({ marker, markerColor, ...args }) => (
-  <List {...args}>
-    <List.Li marker={marker} hideMarker markerColor={markerColor}>List item text</List.Li>
-    <List.Li marker={marker} markerColor={markerColor}>List item text List item textList text</List.Li>
-    <List.Li marker={marker} markerColor={markerColor}>List item text</List.Li>
-  </List>
-);
+type Story = StoryObj<typeof meta>;
 
-export const Default = Template.bind({});
-export const CustomMarker = Template.bind({});
-CustomMarker.args = {
-  marker: 'check',
-};
+export const Default = {} satisfies Story;
+export const CustomMarker = {
+  args: {
+    marker: 'check',
+  },
+} satisfies Story;
 
-export const MarkerColor = Template.bind({});
-MarkerColor.args = {
-  marker: 'check',
-  markerColor: 'var(--highlight-green-foreground)',
-};
+export const MarkerColor = {
+  args: {
+    marker: 'check',
+  },
+} satisfies Story;

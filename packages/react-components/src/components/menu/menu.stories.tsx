@@ -1,46 +1,52 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 
 import { Chip } from '../..';
-import { Menu } from './menu';
+import { Menu, MenuProps } from './menu';
 
-const story: ComponentMeta<typeof Menu> = {
+const meta = {
   title: 'Navigation/Menu',
   component: Menu,
-};
+  args: {
+    children: (
+      <>
+        <Menu.Item value="2" padding={false}>List item text</Menu.Item>
+        <Menu.Item value="3" padding={false}>List item text</Menu.Item>
+        <Menu.Item
+          value="4"
+          padding={false}
+        >
+          List item text List item textList item textList item textList item text
+        </Menu.Item>
+        <Menu.Separator />
+        <Menu.Item value="4" padding={false}>List item text</Menu.Item>
+      </>
+    ),
+  },
+  render: args => (
+    <Menu {...args} />
+  ),
+} satisfies Meta<typeof Menu>;
 
-export default story;
+export default meta;
 
-const Template: ComponentStory<typeof Menu> = args => (
-  <Menu {...args}>
-    <Menu.Item value="2" padding={false}>List item text</Menu.Item>
-    <Menu.Item value="3" padding={false}>List item text</Menu.Item>
-    <Menu.Item
-      value="4"
-      padding={false}
-    >
-      List item text List item textList item textList item textList item text
-    </Menu.Item>
-    <Menu.Separator />
-    <Menu.Item value="4" padding={false}>List item text</Menu.Item>
-  </Menu>
-);
+type Story = StoryObj<typeof meta>;
 
-export const Default = Template.bind({});
+export const Default = {};
 
-const WithIconsTemplate: ComponentStory<typeof Menu> = args => (
-  <Menu {...args}>
-    <Menu.Item value="1" icon="sun">List item text</Menu.Item>
-    <Menu.Item value="2" icon="chat">List item text List item</Menu.Item>
-    <Menu.Separator />
-    <Menu.Item value="3">List item text</Menu.Item>
-    <Menu.Item value="4" icon="view">List item text</Menu.Item>
-  </Menu>
-);
+export const WithIcons = {
+  render: args => (
+    <Menu {...args}>
+      <Menu.Item value="1" icon="sun">List item text</Menu.Item>
+      <Menu.Item value="2" icon="chat">List item text List item</Menu.Item>
+      <Menu.Separator />
+      <Menu.Item value="3">List item text</Menu.Item>
+      <Menu.Item value="4" icon="view">List item text</Menu.Item>
+    </Menu>
+  ),
+} satisfies Story;
 
-export const WithIcons = WithIconsTemplate.bind({});
-
-const WithCheckboxTemplate: ComponentStory<typeof Menu> = (args) => {
+const WithCheckboxTemplate = ({ ...args }: MenuProps) => {
   const [isChecked, setIsChecked] = useState<boolean>(false);
 
   return (
@@ -64,16 +70,18 @@ const WithCheckboxTemplate: ComponentStory<typeof Menu> = (args) => {
   );
 };
 
-export const WithCheckboxes = WithCheckboxTemplate.bind({});
+export const WithCheckboxes = {
+  render: args => <WithCheckboxTemplate {...args} />,
+} satisfies Story;
 
-const LinksTemplate: ComponentStory<typeof Menu> = args => (
-  <Menu {...args}>
-    <Menu.Item value="1" as="a" href="https://www.lualtek.io" icon="view">List item text</Menu.Item>
-    <Menu.Item value="2" icon="chat">List item text List item</Menu.Item>
-    <Menu.Separator />
-    <Menu.Item value="3">List item text</Menu.Item>
-    <Menu.Item value="4" as="a" href="https://www.lualtek.io" icon="star">List item text</Menu.Item>
-  </Menu>
-);
-
-export const AsLink = LinksTemplate.bind({});
+export const WithLinks = {
+  render: args => (
+    <Menu {...args}>
+      <Menu.Item value="1" as="a" href="https://www.lualtek.io" icon="view">List item text</Menu.Item>
+      <Menu.Item value="2" icon="chat">List item text List item</Menu.Item>
+      <Menu.Separator />
+      <Menu.Item value="3">List item text</Menu.Item>
+      <Menu.Item value="4" as="a" href="https://www.lualtek.io" icon="star">List item text</Menu.Item>
+    </Menu>
+  ),
+} satisfies Story;

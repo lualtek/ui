@@ -174,3 +174,4 @@ export const Lightbox = ({
   );
 };
 
+Lightbox.displayName = 'LightBox';

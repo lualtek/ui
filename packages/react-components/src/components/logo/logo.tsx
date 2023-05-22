@@ -101,3 +101,5 @@ export const Logo: FCClass<LogoProps> = ({
     )}
   </svg>
 );
+
+Logo.displayName = 'Logo';

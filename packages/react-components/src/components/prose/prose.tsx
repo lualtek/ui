@@ -24,3 +24,5 @@ export const Prose = forwardRef(({
     {children}
   </Wrapper>
 )) as PolymorphicProse;
+
+Prose.displayName = 'Prose';
