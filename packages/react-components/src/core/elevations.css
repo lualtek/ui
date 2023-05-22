@@ -1,6 +1,6 @@
 /* stylelint-disable length-zero-no-unit */
 [data-elevation] {
-  --shadow-color: 0deg 0% 0%;
+  --shadow-color: 0% 0 0;
   --shadow-direction: 1;
 
   &:where([data-elevation-direction='bottom'], [data-elevation-direction='right']) {

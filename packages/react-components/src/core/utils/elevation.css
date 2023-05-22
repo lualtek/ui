@@ -1,4 +1,4 @@
-@define-mixin elevation-1 $color: 0deg 0% 0% {
+@define-mixin elevation-1 $color: 0% 0 0 {
 
   /* Default shadow offsets. */
   --x1: 0;
