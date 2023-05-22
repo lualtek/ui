@@ -1,5 +1,12 @@
 # @lualtek/config
 
+## 7.0.0
+
+### Patch Changes
+
+- Updated dependencies [460e6cb]
+  - @lualtek/tokens@7.0.0
+
 ## 6.1.1
 
 ### Patch Changes

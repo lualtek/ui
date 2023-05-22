@@ -1,5 +1,33 @@
 # @lualtek/react-components
 
+## 7.0.0
+
+### Major Changes
+
+- 460e6cb: Upgrade color tokens and themes to lch
+- 3bf97fc: Rename Disclosure iconPosition values to start/end instead of left/right
+- aefad8b: Rename Button iconPosition values to start/end instead of left/right
+- 317763b: Fix dark highlight colors
+- 4d47ed1: Rename MenuItem iconPosition values to start/end instead of left/right
+- c042daa: Rename Textfield iconPosition values to start/end instead of left/right
+- e9ed6de: Fix elevations with oklch
+
+### Minor Changes
+
+- 1a8ef27: Add new root property to StickySpy
+- 65e6e4e: Add new snapType prop to Snaplist
+- 4384143: Add new TextChip component
+- 70639f8: Add new align and matchFieldWidth prop to Autocomplete
+
+### Patch Changes
+
+- 5dd86c0: Update switch style
+- d96f910: Fix spacing for selection controls
+- 13975aa: Update Slider style
+- c987712: Restore select placeholder option (still bugged on Safari)
+- cb7d3f5: Fix autocomplete display
+  - @lualtek/icons@7.0.0
+
 ## 6.1.1
 
 ### Patch Changes
