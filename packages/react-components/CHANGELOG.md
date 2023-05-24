@@ -1,5 +1,15 @@
 # @lualtek/react-components
 
+## 7.1.0
+
+### Minor Changes
+
+- d744d1b: Update lineHeight values for Text and Title
+
+### Patch Changes
+
+- @lualtek/icons@7.1.0
+
 ## 7.0.0
 
 ### Major Changes
