@@ -12,7 +12,6 @@ const config: StorybookConfig = {
   addons: [
     '@storybook/addon-actions',
     '@storybook/addon-links',
-    'storybook-css-modules-preset',
     'storybook-addon-themes',
     {
       name: '@storybook/addon-essentials',
@@ -20,10 +19,10 @@ const config: StorybookConfig = {
         backgrounds: false,
       },
     }, {
-      name: '@storybook/addon-postcss',
+      name: '@storybook/addon-styling',
       options: {
-
-        postcssLoaderOptions: {
+        cssModules: true,
+        postCss: {
           implementation: require('postcss'),
         },
       },
