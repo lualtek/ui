@@ -32,7 +32,7 @@ const meta = {
       control: { type: 'inline-radio' },
     },
     lineHeight: {
-      options: ['none', 'small', 'large'],
+      options: ['none', 'extra-small', 'small', 'standard', 'large'],
       control: { type: 'inline-radio' },
     },
   },

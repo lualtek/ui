@@ -13,7 +13,7 @@ const meta = {
   render: args => (
     <Container dimension="medium">
       <Prose {...args}>
-        <Title as="h1" level="display" lineHeight="none">Title</Title>
+        <Title as="h1" level="display" lineHeight="extra-small">Title</Title>
         <Text size={28}>
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius dolores,
           tempore quas labore officiis praesentium.

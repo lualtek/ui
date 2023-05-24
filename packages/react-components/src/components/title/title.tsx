@@ -16,8 +16,9 @@ export type TitleProps = {
   /**
    * Set the text line-height of the title. This uses
    * the predefined tokens from the typography system.
+   * @default 'standard'
    */
-  lineHeight?: 'none' | 'small' | 'large';
+  lineHeight?: 'none' | 'extra-small' | 'small' | 'standard' |'large';
   /**
    * Set the text alignment of the title based on the text direction.
    */
@@ -39,7 +40,7 @@ export const Title = forwardRef(({
   children,
   className,
   as: Wrapper = 'span',
-  lineHeight = 'small',
+  lineHeight = 'standard',
   level = '1',
   textAlign = 'start',
   maxWidth,

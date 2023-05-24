@@ -162,7 +162,7 @@ export const IconMeter = forwardRef(({
         dimmed={6}
         id={`${uid}-icon-meter`}
         size={properties[dimension].labelSize as TextProps['size']}
-        lineHeight="none"
+        lineHeight="extra-small"
         weight="bold"
       >
         {!hideLabel && <>{label ?? (value > iconCount ? iconCount : value.toString())}</>}

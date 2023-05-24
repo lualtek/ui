@@ -67,7 +67,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(({
     small: {
       text: {
         size: 16,
-        lh: 'none',
+        lh: 'extra-small',
       },
     },
     regular: {

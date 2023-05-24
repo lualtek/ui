@@ -44,7 +44,7 @@ export const Switch = forwardRef<ElementRef<typeof SwitchPrimitive.Root>, Switch
     small: {
       text: {
         size: 16,
-        lh: 'none',
+        lh: 'extra-small',
       },
     },
     regular: {

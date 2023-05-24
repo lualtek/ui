@@ -43,8 +43,9 @@ export type TextProps = {
   /**
    * Set the text line-height of the text. This uses
    * the predefined tokens from the typography system.
+   * @default 'standard'
    */
-  lineHeight?: 'none' | 'small' | 'large';
+  lineHeight?: 'none' | 'extra-small' | 'small' | 'standard' |'large';
 }
 
 type PolymorphicText = Polymorphic.ForwardRefComponent<'p', TextProps>;
@@ -60,7 +61,7 @@ export const Text = forwardRef(({
   textAlign = 'start',
   as: Wrapper = 'p',
   responsive = true,
-  lineHeight = 'large',
+  lineHeight = 'standard',
   style,
   ...otherProps
 }, forwardedRef) => {

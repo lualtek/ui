@@ -54,7 +54,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(({
     small: {
       text: {
         size: 16,
-        lh: 'none',
+        lh: 'extra-small',
       },
     },
     regular: {

@@ -18,7 +18,7 @@ const meta = {
       control: { type: 'select' },
     },
     lineHeight: {
-      options: ['none', 'small', 'large'],
+      options: ['none', 'extra-small', 'small', 'standard', 'large'],
       control: { type: 'inline-radio' },
     },
     textAlign: {

@@ -8,7 +8,7 @@
       --lh: token(--font-lh-standard);
 
       display: block;
-      line-height: token(--font-lh-small);
+      line-height: var(--lh);
       color: var(--heading-foreground, var(--dimmed-8));
       min-block-size: 0.01vh;
       font-size: var(--fs-max);
@@ -16,14 +16,26 @@
       text-align: var(--t-align);
       overflow-wrap: break-word;
 
+      &[data-title-line-height='none'] {
+        --lh: 0;
+      }
+
+      &[data-title-line-height='extra-small'] {
+        line-height: token(--font-lh-extra-small);
+      }
 
       &[data-title-line-height='small'] {
         --lh: token(--font-lh-small);
       }
 
-      &[data-title-line-height='large'] {
-        line-height: token(--font-lh-standard);
+      &[data-title-line-height='standard'] {
+        --lh: token(--font-lh-standard);
       }
+
+      &[data-title-line-height='large'] {
+        --lh: token(--font-lh-large);
+      }
+
     }
 
     &:is(.H6) {

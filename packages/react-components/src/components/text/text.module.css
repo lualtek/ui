@@ -137,15 +137,23 @@
     /* Line Height */
 
     &[data-text-line-height='none'] {
-      line-height: 1;
+      line-height: 0;
+    }
+
+    &[data-text-line-height='extra-small'] {
+      line-height: token(--font-lh-extra-small);
     }
 
     &[data-text-line-height='small'] {
       line-height: token(--font-lh-small);
     }
 
-    &[data-text-line-height='large'] {
+    &[data-text-line-height='standard'] {
       line-height: token(--font-lh-standard);
+    }
+
+    &[data-text-line-height='large'] {
+      line-height: token(--font-lh-large);
     }
   }
 }
