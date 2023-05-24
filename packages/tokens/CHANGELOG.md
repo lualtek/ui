@@ -1,5 +1,11 @@
 # @lualtek/tokens
 
+## 7.1.0
+
+### Minor Changes
+
+- d744d1b: Update lineHeight values for Text and Title
+
 ## 7.0.0
 
 ### Major Changes
