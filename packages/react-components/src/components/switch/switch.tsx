@@ -1,3 +1,5 @@
+'use client';
+
 import * as SwitchPrimitive from '@radix-ui/react-switch';
 import clsx from 'clsx';
 import { domMax, LazyMotion, m } from 'framer-motion';
@@ -31,6 +33,25 @@ type Properties = Record<NonNullable<SwitchProps['dimension']>, {
   };
 }>
 
+const properties: Properties = {
+  small: {
+    text: {
+      size: 16,
+      lh: 'extra-small',
+    },
+  },
+  regular: {
+    text: {
+      size: 18,
+    },
+  },
+  big: {
+    text: {
+      size: 22,
+    },
+  },
+};
+
 export const Switch = forwardRef<ElementRef<typeof SwitchPrimitive.Root>, SwitchProps>(({
   dimension = 'regular',
   labelPosition = 'end',
@@ -39,25 +60,6 @@ export const Switch = forwardRef<ElementRef<typeof SwitchPrimitive.Root>, Switch
   ...otherProps
 }, forwardedRef) => {
   const uid = useId();
-
-  const properties: Properties = {
-    small: {
-      text: {
-        size: 16,
-        lh: 'extra-small',
-      },
-    },
-    regular: {
-      text: {
-        size: 18,
-      },
-    },
-    big: {
-      text: {
-        size: 22,
-      },
-    },
-  };
 
   return (
     <LazyMotion features={domMax} strict>

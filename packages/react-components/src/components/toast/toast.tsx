@@ -1,3 +1,5 @@
+'use client';
+
 import * as ToastPrimitive from '@radix-ui/react-toast';
 import clsx from 'clsx';
 import {
@@ -15,6 +17,15 @@ import styles from './toast.module.css';
 
 export type ToastProps = ToastPrimitive.ToastProps & InlineToastProps
 
+const animation = {
+  hidden: {
+    x: 20,
+  },
+  visible: {
+    x: 0,
+  },
+};
+
 export const Toast = forwardRef<
 ElementRef<typeof ToastPrimitive.Root>,
 ToastProps
@@ -29,14 +40,6 @@ ToastProps
   ...otherProps
 }, forwardedRef) => {
   const uid = useId();
-  const animation = {
-    hidden: {
-      x: 20,
-    },
-    visible: {
-      x: 0,
-    },
-  };
 
   return (
     <LazyMotion features={domAnimation}>

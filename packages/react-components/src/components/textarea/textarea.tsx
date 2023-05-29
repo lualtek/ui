@@ -1,3 +1,5 @@
+'use client';
+
 import clsx from 'clsx';
 import {
   ChangeEvent, forwardRef, TextareaHTMLAttributes, useId, useMemo,

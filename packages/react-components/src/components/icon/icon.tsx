@@ -1,3 +1,5 @@
+'use client';
+
 import { IconNames } from '@lualtek/icons';
 import sprite from '@lualtek/icons/sprite';
 import { TokensTypes } from '@lualtek/tokens/platforms/web';

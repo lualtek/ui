@@ -1,3 +1,5 @@
+'use client';
+
 import { TokensTypes } from '@lualtek/tokens';
 import clsx from 'clsx';
 import { CSSProperties, useMemo } from 'react';

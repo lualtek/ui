@@ -1,3 +1,5 @@
+'use client';
+
 import clsx from 'clsx';
 import {
   CSSProperties, forwardRef, HTMLAttributes, useMemo,

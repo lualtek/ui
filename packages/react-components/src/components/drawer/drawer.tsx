@@ -1,3 +1,5 @@
+'use client';
+
 import tkns from '@lualtek/tokens/platforms/web/tokens.json';
 import clsx from 'clsx';
 import { domMax, LazyMotion, m } from 'framer-motion';

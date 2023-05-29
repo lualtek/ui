@@ -1,3 +1,5 @@
+'use client';
+
 import { TokensTypes } from '@lualtek/tokens';
 import { domMax, LazyMotion, m } from 'framer-motion';
 import {

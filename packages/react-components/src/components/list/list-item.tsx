@@ -21,23 +21,26 @@ export type ListItemProps = PropsClassChildren<Pick<ListProps, 'dimension' | 'hi
   markerColor?: string;
 }>
 
-const sizes = {
+type SizesType = Record<NonNullable<ListProps['dimension']>, {
+  icon: {
+    size: IconProps['dimension'];
+  };
+}>
+
+const sizes: SizesType = {
   small: {
     icon: {
       size: 16,
-      weight: 'solid',
     },
   },
   regular: {
     icon: {
       size: 16,
-      weight: 'duotone',
     },
   },
   big: {
     icon: {
       size: 24,
-      weight: 'duotone',
     },
   },
 };
@@ -67,7 +70,7 @@ export const ListItem = forwardRef<HTMLLIElement, ListItemProps>(({
         className={styles.Marker}
         fill={markerColor}
         data-list-default-marker={marker === 'circle'}
-        dimension={marker === 'circle' ? 12 : sizes[dimension].icon.size as IconProps['dimension']}
+        dimension={marker === 'circle' ? 12 : sizes[dimension].icon.size}
       />
     )}
     {children}

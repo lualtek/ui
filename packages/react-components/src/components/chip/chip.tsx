@@ -1,3 +1,5 @@
+'use client';
+
 import type { TokensTypes } from '@lualtek/tokens/platforms/web';
 import clsx from 'clsx';
 import {

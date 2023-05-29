@@ -1,3 +1,7 @@
+'use client';
+
+'use client';
+
 import { TokensTypes } from '@lualtek/tokens/platforms/web';
 import clsx from 'clsx';
 import { CSSProperties, forwardRef, useMemo } from 'react';

@@ -1,3 +1,5 @@
+'use client';
+
 import {
   AnimatePresence, domMax, LazyMotion, m,
 } from 'framer-motion';

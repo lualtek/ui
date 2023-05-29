@@ -1,3 +1,5 @@
+'use client';
+
 import { IconNames } from '@lualtek/icons';
 import clsx from 'clsx';
 import {

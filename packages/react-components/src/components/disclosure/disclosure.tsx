@@ -1,3 +1,5 @@
+'use client';
+
 import clsx from 'clsx';
 import {
   domMax, LazyMotion, m,
@@ -55,6 +57,21 @@ type SizesType = Record<NonNullable<DisclosureProps['dimension']>, {
   icon: IconProps['dimension'];
 }>
 
+const sizes: SizesType = {
+  small: {
+    summary: 16,
+    icon: 16,
+  },
+  regular: {
+    summary: 18,
+    icon: 18,
+  },
+  big: {
+    summary: 22,
+    icon: 24,
+  },
+};
+
 export const Disclosure = forwardRef<HTMLDetailsElement, DisclosureProps>(({
   children,
   open = false,
@@ -92,21 +109,6 @@ export const Disclosure = forwardRef<HTMLDetailsElement, DisclosureProps>(({
       '--max-height': contentMaxHeight,
     }
   ), [contentMaxHeight]);
-
-  const sizes: SizesType = {
-    small: {
-      summary: 16,
-      icon: 16,
-    },
-    regular: {
-      summary: 18,
-      icon: 18,
-    },
-    big: {
-      summary: 22,
-      icon: 24,
-    },
-  };
 
   return (
     <details

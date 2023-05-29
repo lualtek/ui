@@ -1,3 +1,5 @@
+'use client';
+
 import clsx from 'clsx';
 import { domAnimation, LazyMotion, m } from 'framer-motion';
 import {
