@@ -1,5 +1,15 @@
 # @lualtek/react-components
 
+## 7.2.0
+
+### Minor Changes
+
+- 7d15367: Add support to client/server components
+
+### Patch Changes
+
+- @lualtek/icons@7.2.0
+
 ## 7.1.0
 
 ### Minor Changes
