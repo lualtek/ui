@@ -60,6 +60,10 @@ export type DrawerProps = {
    * the page is not blocked when the drawer is open.
    */
   isModal?: boolean;
+  /**
+   * Enable or disable autofocus on the first focusable element inside the drawer.
+   */
+  autoFocus?: boolean;
 }
 
 export const Drawer: FCChildrenClass<DrawerProps> = forwardRef(({
@@ -71,6 +75,7 @@ export const Drawer: FCChildrenClass<DrawerProps> = forwardRef(({
   side = 'right',
   theme = 'auto',
   isModal = true,
+  autoFocus = true,
   title,
   ...otherProps
 }, forwardedRef: Ref<HTMLDivElement>) => {
@@ -117,6 +122,7 @@ export const Drawer: FCChildrenClass<DrawerProps> = forwardRef(({
         enabled={isModal}
         onClickOutside={closeOnClickOutside ? onClose : undefined}
         onEscapeKey={onClose}
+        autoFocus={autoFocus}
       >
         <LazyMotion features={domMax}>
           <m.div

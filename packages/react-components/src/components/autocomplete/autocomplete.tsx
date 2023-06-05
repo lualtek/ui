@@ -132,50 +132,48 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(({
             {...otherProps}
           />
         </Popover.Anchor>
-        <Popover.Portal>
-          <Popover.Content
-            usePortal={false}
-            onOpenAutoFocus={event => event.preventDefault()}
-            onInteractOutside={({ currentTarget }) => onInteractOutside(currentTarget)}
-            onEscapeKeyDown={() => setIsOpen(false)}
-            align={align}
-          >
-            <Menu
-              role="listbox"
-              className={styles.OptionsList}
-              style={{
-                width:
+        <Popover.Content
+          usePortal={false}
+          onOpenAutoFocus={event => event.preventDefault()}
+          onInteractOutside={({ currentTarget }) => onInteractOutside(currentTarget)}
+          onEscapeKeyDown={() => setIsOpen(false)}
+          align={align}
+        >
+          <Menu
+            role="listbox"
+            className={styles.OptionsList}
+            style={{
+              width:
                   ((dimensions && matchFieldWidth) || (dimensions && loading))
                     ? (dimensions.width + 2)
                     : 'auto',
-              }}
-              maxHeight={maxHeight}
-            >
-              {(filteredOptions?.length === 0 && !loading) && (
-                <Text
-                  as="div"
-                  textAlign="center"
-                  dimmed={5}
+            }}
+            maxHeight={maxHeight}
+          >
+            {(filteredOptions?.length === 0 && !loading) && (
+              <Text
+                as="div"
+                textAlign="center"
+                dimmed={5}
+              >
+                {emptyContent}
+              </Text>
+            )}
+            {loading
+              ? <Stack hPadding={16} vPadding={8} as="span"><Skeleton count={5} /></Stack>
+              : filteredOptions?.map(({ value, children, ...rest }) => (
+                <Autocomplete.Option
+                  key={value}
+                  value={value}
+                  onClick={handleClickOption}
+                  {...rest}
                 >
-                  {emptyContent}
-                </Text>
-              )}
-              {loading
-                ? <Stack hPadding={16} vPadding={8} as="span"><Skeleton count={5} /></Stack>
-                : filteredOptions?.map(({ value, children, ...rest }) => (
-                  <Autocomplete.Option
-                    key={value}
-                    value={value}
-                    onClick={handleClickOption}
-                    {...rest}
-                  >
-                    {children}
-                  </Autocomplete.Option>
-                ))
+                  {children}
+                </Autocomplete.Option>
+              ))
             }
-            </Menu>
-          </Popover.Content>
-        </Popover.Portal>
+          </Menu>
+        </Popover.Content>
       </Popover>
     </div>
   );
