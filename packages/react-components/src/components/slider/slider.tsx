@@ -3,10 +3,10 @@
 import * as SliderPrimitive from '@radix-ui/react-slider';
 import clsx from 'clsx';
 import {
-  ElementRef, forwardRef, useCallback, useId, useState,
+  ElementRef, forwardRef, ReactNode, useCallback, useId, useState,
 } from 'react';
 
-import { Elevator } from '@/components';
+import { Elevator, Text } from '@/components';
 
 import styles from './slider.module.css';
 
@@ -19,6 +19,10 @@ export type SliderProps = SliderPrimitive.SliderProps & {
    * Show custom value label instead of raw value
    */
   valueLabel?: (value: number) => string;
+  /**
+   * Assign a label to the input. If passed an ID is automatically generated and used internally
+   */
+  label?: ReactNode;
 };
 export const Slider = forwardRef<
 ElementRef<typeof SliderPrimitive.Root>,
@@ -32,6 +36,7 @@ SliderProps
   valueLabel = val => val,
   onValueChange,
   max = 100,
+  label,
   ...otherProps
 }, forwardedRef) => {
   const val = value ?? defaultValue;
@@ -47,30 +52,42 @@ SliderProps
   );
 
   return (
-    <SliderPrimitive.Root
-      className={clsx(styles.Slider, className)}
-      orientation={orientation}
-      data-slider-show-values={showValues}
-      minStepsBetweenThumbs={1}
-      ref={forwardedRef}
-      defaultValue={defaultValue}
-      value={value}
-      max={max}
-      onValueChange={handleChange}
-      {...otherProps}
-    >
-      <SliderPrimitive.Track className={styles.Track}>
-        <SliderPrimitive.Range className={styles.ValueTrack} />
-      </SliderPrimitive.Track>
+    <>
+      {label && (
+        <Text
+          as="span"
+          lineHeight="none"
+          size={16}
+        >
+          {label}
+        </Text>
+      )}
+      <SliderPrimitive.Root
+        className={clsx(styles.Slider, className)}
+        orientation={orientation}
+        id={uid}
+        data-slider-show-values={showValues}
+        minStepsBetweenThumbs={1}
+        ref={forwardedRef}
+        defaultValue={defaultValue}
+        value={value}
+        max={max}
+        onValueChange={handleChange}
+        {...otherProps}
+      >
+        <SliderPrimitive.Track className={styles.Track}>
+          <SliderPrimitive.Range className={styles.ValueTrack} />
+        </SliderPrimitive.Track>
 
-      {val?.map((value, index) => (
-        <Elevator resting={1} key={`${uid}-${value}`}>
-          <SliderPrimitive.Thumb
-            className={styles.Thumb}
-            data-slider-value-label={valueLabel?.(changedValue?.[index] ?? 0)}
-          />
-        </Elevator>
-      ))}
-    </SliderPrimitive.Root>
+        {val?.map((value, index) => (
+          <Elevator resting={1} key={`${uid}-${value}`}>
+            <SliderPrimitive.Thumb
+              className={styles.Thumb}
+              data-slider-value-label={valueLabel?.(changedValue?.[index] ?? 0)}
+            />
+          </Elevator>
+        ))}
+      </SliderPrimitive.Root>
+    </>
   );
 });

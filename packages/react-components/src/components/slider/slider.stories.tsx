@@ -32,6 +32,11 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default = {} satisfies Story;
+export const WithLabel = {
+  args: {
+    label: 'Slider',
+  },
+} satisfies Story;
 
 export const Double = {
   args: {
