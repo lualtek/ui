@@ -6,7 +6,7 @@ import {
   ElementRef, forwardRef, ReactNode, useCallback, useId, useState,
 } from 'react';
 
-import { Elevator, Text } from '@/components';
+import { Elevator, Stack, Text } from '@/components';
 
 import styles from './slider.module.css';
 
@@ -20,7 +20,7 @@ export type SliderProps = SliderPrimitive.SliderProps & {
    */
   valueLabel?: (value: number) => string;
   /**
-   * Assign a label to the input. If passed an ID is automatically generated and used internally
+   * Assign a label to the input.
    */
   label?: ReactNode;
 };
@@ -52,7 +52,7 @@ SliderProps
   );
 
   return (
-    <>
+    <Stack rowGap={16}>
       {label && (
         <Text
           as="span"
@@ -88,6 +88,6 @@ SliderProps
           </Elevator>
         ))}
       </SliderPrimitive.Root>
-    </>
+    </Stack>
   );
 });
