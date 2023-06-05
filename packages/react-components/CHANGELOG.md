@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 8.0.2
+
+### Patch Changes
+
+- 5e8e91f: Fix Drawer autofocus and remove portal from Autocomplete
+  - @lualtek/icons@8.0.2
+
 ## 8.0.1
 
 ### Patch Changes
