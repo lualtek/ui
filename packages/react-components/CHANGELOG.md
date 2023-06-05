@@ -1,5 +1,16 @@
 # @lualtek/react-components
 
+## 7.3.0
+
+### Minor Changes
+
+- 449643a: Add label prop to Slider component
+
+### Patch Changes
+
+- f32ae23: Fix InlineToast children wrapper
+  - @lualtek/icons@7.3.0
+
 ## 7.2.0
 
 ### Minor Changes
