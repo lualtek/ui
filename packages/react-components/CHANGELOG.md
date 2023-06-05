@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 7.3.1
+
+### Patch Changes
+
+- b2d0e5c: Fix Slider label position
+  - @lualtek/icons@7.3.1
+
 ## 7.3.0
 
 ### Minor Changes
