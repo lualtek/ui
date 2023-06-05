@@ -1,5 +1,12 @@
 # @lualtek/config
 
+## 8.0.1
+
+### Patch Changes
+
+- af9c5f0: Fix config deps
+  - @lualtek/tokens@8.0.1
+
 ## 8.0.0
 
 ### Major Changes
