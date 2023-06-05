@@ -1,5 +1,15 @@
 # @lualtek/config
 
+## 8.0.0
+
+### Major Changes
+
+- 4772d50: Tentative to fix deps
+
+### Patch Changes
+
+- @lualtek/tokens@8.0.0
+
 ## 7.3.1
 
 ### Patch Changes
