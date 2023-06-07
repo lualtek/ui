@@ -134,9 +134,11 @@ export const Drawer: FCChildrenClass<DrawerProps> = forwardRef(({
             data-drawer-side={side}
           >
             <Elevator resting={4} direction="left">
-              <div
+              <Stack
                 className={styles.Content}
                 style={dynamicStyle}
+                fill={false}
+                vAlign="start"
                 ref={forwardedRef}
                 {...otherProps}
               >
@@ -148,7 +150,7 @@ export const Drawer: FCChildrenClass<DrawerProps> = forwardRef(({
                     className={styles.Header}
                     columnGap={24}
                   >
-                    <Title responsive={false} level="6" id={titleId}>{title}</Title>
+                    <Title responsive={false} level="5" id={titleId} lineHeight="small">{title}</Title>
                     {onClose && (
                       <IconButton
                         onClick={onClose}
@@ -159,10 +161,12 @@ export const Drawer: FCChildrenClass<DrawerProps> = forwardRef(({
                     )}
                   </Stack>
                 )}
-                <AutoFocusInside>
-                  {children}
-                </AutoFocusInside>
-              </div>
+                <div className={styles.Scroller}>
+                  <AutoFocusInside>
+                    {children}
+                  </AutoFocusInside>
+                </div>
+              </Stack>
             </Elevator>
           </m.div>
         </LazyMotion>

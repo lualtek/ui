@@ -21,7 +21,10 @@ const config: StorybookConfig = {
     }, {
       name: '@storybook/addon-styling',
       options: {
-        cssModules: true,
+        cssModules: {
+          auto: true,
+          localIdentName: '[local]--[hash:base64:5]',
+        },
         postCss: {
           implementation: require('postcss'),
         },

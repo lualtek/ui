@@ -7,25 +7,25 @@
       }
     },
     "background": {
-      "value": "oklch({color.primary.100} / 70%)",
+      "value": "oklch({color.primary.100} / 60%)",
       "attributes": {
         "category": "color"
       }
     },
     "background-soft": {
-      "value": "oklch({color.primary.90} / 70%)",
+      "value": "oklch({color.primary.90} / 60%)",
       "attributes": {
         "category": "color"
       }
     },
     "background-mid": {
-      "value": "oklch({color.primary.80} / 70%)",
+      "value": "oklch({color.primary.80} / 60%)",
       "attributes": {
         "category": "color"
       }
     },
     "background-hard": {
-      "value": "oklch({color.primary.70} / 70%)",
+      "value": "oklch({color.primary.70} / 60%)",
       "attributes": {
         "category": "color"
       }

@@ -1,4 +1,5 @@
 @import '../../core/utils/media.css';
+@import '../../core/utils/vibrancy.css';
 
 @layer components {
   .Drawer {
@@ -8,10 +9,7 @@
   .Container {
     position: absolute;
     display: grid;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
+    inset: 0;
     pointer-events: none;
     align-items: stretch;
 
@@ -29,25 +27,28 @@
   }
 
   .Content {
-    background-color: var(--global-background);
-    overscroll-behavior: contain;
+
+    @mixin vibrancy;
+
+    background-color: var(--vibrancy-background-soft);
     inline-size: 100vw;
-    overflow: auto;
-    -webkit-overflow-scrolling: touch;
     padding-bottom: env(safe-area-inset-bottom);
     max-inline-size: var(--max-w);
+    height: 100dvh;
+  }
+
+  .Scroller {
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+    overflow: auto;
   }
 
   .Header {
-    position: sticky;
-    top: 0;
-    z-index: 1;
-    background-color: inherit;
-    border-bottom: 1px solid var(--dimmed-1);
+    border-bottom: 1px solid var(--vibrancy-background-hard);
     padding:
       calc(env(safe-area-inset-top) + token(--space-16))
       calc(env(safe-area-inset-right) + token(--space-16))
-      calc(env(safe-area-inset-bottom) + token(--space-24))
+      calc(env(safe-area-inset-bottom) + token(--space-16))
       calc(env(safe-area-inset-left) + token(--space-24));
   }
 }
