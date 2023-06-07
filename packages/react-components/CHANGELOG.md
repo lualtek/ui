@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 8.1.4
+
+### Patch Changes
+
+- 704760a: Fix title leading trim
+  - @lualtek/icons@8.1.4
+
 ## 8.1.3
 
 ### Patch Changes
