@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 8.1.2
+
+### Patch Changes
+
+- 30d19e7: Fix modal display issues
+  - @lualtek/icons@8.1.2
+
 ## 8.1.1
 
 ### Patch Changes
