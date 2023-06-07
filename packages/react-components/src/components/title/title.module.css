@@ -36,6 +36,21 @@
         --lh: token(--font-lh-large);
       }
 
+      &::before {
+        content: '';
+        display: block;
+        height: 0;
+        width: 0;
+        margin-top: calc((1 - var(--lh)) * 0.6em);
+      }
+
+      &::after {
+        content: '';
+        display: block;
+        height: 0;
+        width: 0;
+        margin-bottom: calc((1 - var(--lh)) * 0.6em);
+      }
     }
 
     &:is(.H6) {
@@ -50,14 +65,6 @@
       --fs-max: 1.33rem;
 
       font-weight: 700;
-
-      &::before {
-        content: '';
-        display: block;
-        height: 0;
-        width: 0;
-        margin-top: calc((1 - var(--lh)) * 0.6em);
-      }
     }
 
     &:is(.H4) {
@@ -65,14 +72,6 @@
       --fs-max: 1.77rem;
 
       font-weight: 700;
-
-      &::before {
-        content: '';
-        display: block;
-        height: 0;
-        width: 0;
-        margin-top: calc((1 - var(--lh)) * 0.6em);
-      }
     }
 
     &:is(.H3) {
@@ -80,14 +79,6 @@
       --fs-max: 2.37rem;
 
       font-weight: token(--font-weight-light);
-
-      &::before {
-        content: '';
-        display: block;
-        height: 0;
-        width: 0;
-        margin-top: calc((1 - var(--lh)) * 0.6em);
-      }
     }
 
     &:is(.H2) {
@@ -95,14 +86,6 @@
       --fs-max: 3.16rem;
 
       font-weight: token(--font-weight-light);
-
-      &::before {
-        content: '';
-        display: block;
-        height: 0;
-        width: 0;
-        margin-top: calc((1 - var(--lh)) * 0.6em);
-      }
     }
 
     &:is(.H1) {
@@ -110,14 +93,6 @@
       --fs-max: 4.2rem;
 
       font-weight: token(--font-weight-light);
-
-      &::before {
-        content: '';
-        display: block;
-        height: 0;
-        width: 0;
-        margin-top: calc((1 - var(--lh)) * 0.6em);
-      }
     }
 
     &.Display {
@@ -125,14 +100,6 @@
       --fs-max: 5.6rem;
 
       font-weight: token(--font-weight-light);
-
-      &::before {
-        content: '';
-        display: block;
-        height: 0;
-        width: 0;
-        margin-top: calc((1 - var(--lh)) * 0.6em);
-      }
     }
 
     &[data-title-responsive='true'] {
