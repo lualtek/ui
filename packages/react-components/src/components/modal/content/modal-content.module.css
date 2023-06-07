@@ -42,6 +42,7 @@
     border-radius: token(--radius-24) token(--radius-24) 0 0;
     border-bottom: 1px solid var(--vibrancy-background-mid);
     background-color: var(--header-tint);
+    position: relative;
     padding:
       token(--space-16)
       token(--space-80)
