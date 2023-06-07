@@ -55,6 +55,11 @@ export type AutocompleteProps = TextfieldProps & {
    * Callback called when an option is selected.
    */
   onClickOption?: (value: AutocompleteOptionProps['value'], text?: string | null) => void;
+  /**
+   * Set the css `z-index` of the popup. This must be used only
+   * if necessary.
+   */
+  index?: number;
 };
 
 type AutocompleteComponent = ForwardRefExoticComponent<AutocompleteProps> & {
@@ -74,6 +79,7 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(({
   emptyContent = 'No items to show',
   matchFieldWidth = false,
   align = 'center',
+  index,
   ...otherProps
 }, forwardedRef) => {
   const [currentValue, setCurrentValue] = useState(value);
@@ -133,7 +139,7 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(({
           />
         </Popover.Anchor>
         <Popover.Content
-          usePortal={false}
+          usePortal
           onOpenAutoFocus={event => event.preventDefault()}
           onInteractOutside={({ currentTarget }) => onInteractOutside(currentTarget)}
           onEscapeKeyDown={() => setIsOpen(false)}

@@ -64,8 +64,13 @@ export const PopoverContent = ({
   }), [computeOrigin]);
 
   const renderContent = useMemo(() => (
-    <PopoverPrimitive.Content asChild sideOffset={Number(offset)} side={side} {...otherProps}>
-
+    <PopoverPrimitive.Content
+      asChild
+      sideOffset={Number(offset)}
+      side={side}
+      style={{ zIndex: 'var(--overlay-z-index)' }}
+      {...otherProps}
+    >
       <m.div
         initial="hidden"
         animate="visible"

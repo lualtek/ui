@@ -66,9 +66,16 @@ export const OverlayContainer: FCChildren<OverlayContainerProps> = ({
   }, [defaultRoot]);
 
   useEffect(() => {
-    if (children) defaultRoot?.setAttribute('data-overlay-open', 'true');
-    else defaultRoot?.removeAttribute('data-overlay-open');
-  }, [children, defaultRoot]);
+    if (typeof document !== 'undefined') {
+      if (children) {
+        document.body?.setAttribute('data-overlay-open', 'true');
+        document.body?.style.setProperty('--overlay-z-index', String(index));
+      } else {
+        document.body?.style.removeProperty('--overlay-z-index');
+        document.body?.removeAttribute('data-overlay-open');
+      }
+    }
+  }, [children, defaultRoot, index]);
 
   const content = (
     <OverlayProvider onClose={onClose}>

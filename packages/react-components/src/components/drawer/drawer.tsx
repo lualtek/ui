@@ -134,11 +134,9 @@ export const Drawer: FCChildrenClass<DrawerProps> = forwardRef(({
             data-drawer-side={side}
           >
             <Elevator resting={4} direction="left">
-              <Stack
+              <div
                 className={styles.Content}
                 style={dynamicStyle}
-                fill={false}
-                vAlign="start"
                 ref={forwardedRef}
                 {...otherProps}
               >
@@ -161,12 +159,10 @@ export const Drawer: FCChildrenClass<DrawerProps> = forwardRef(({
                     )}
                   </Stack>
                 )}
-                <div className={styles.Scroller}>
-                  <AutoFocusInside>
-                    {children}
-                  </AutoFocusInside>
-                </div>
-              </Stack>
+                <AutoFocusInside>
+                  {children}
+                </AutoFocusInside>
+              </div>
             </Elevator>
           </m.div>
         </LazyMotion>
