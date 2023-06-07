@@ -9,9 +9,8 @@
     pointer-events: none;
     align-items: center;
     justify-content: center;
-    container: ltk-modal-container / inline-size;
 
-    @media (--from-medium) {
+    @media (--from-small) {
       overflow: auto;
       padding: 0 token(--space-24);
     }

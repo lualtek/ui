@@ -1,3 +1,4 @@
+@import '../../../core/utils/media.css';
 @import '../../../core/utils/vibrancy.css';
 
 @layer components {
@@ -15,7 +16,7 @@
     align-self: end;
     padding-block-end: env(safe-area-inset-bottom);
 
-    @container ltk-modal-container (width > token(--breakpoint-small-px)) {
+    @media (--from-small) {
       max-inline-size: 600px;
       max-block-size: 80vh;
       max-block-size: 80dvh;
