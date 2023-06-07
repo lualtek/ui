@@ -1,5 +1,15 @@
 # @lualtek/react-components
 
+## 8.1.0
+
+### Minor Changes
+
+- a2b245e: Update Modal design
+
+### Patch Changes
+
+- @lualtek/icons@8.1.0
+
 ## 8.0.2
 
 ### Patch Changes
