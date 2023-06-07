@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 8.1.5
+
+### Patch Changes
+
+- f06d713: Fix autocomplete auto index when inside overlay container
+  - @lualtek/icons@8.1.5
+
 ## 8.1.4
 
 ### Patch Changes
