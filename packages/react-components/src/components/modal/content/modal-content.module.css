@@ -2,11 +2,11 @@
 
 @layer components {
   .Content {
-    background-color: var(--global-background);
-    border: 1px solid var(--dimmed-0);
-    overscroll-behavior: contain;
+
+    @mixin vibrancy;
+
+    background-color: var(--vibrancy-background-soft);
     inline-size: 100vw;
-    overflow: hidden;
     -webkit-overflow-scrolling: touch;
     max-block-size: 95vh;
     max-block-size: 95dvh;
@@ -23,6 +23,11 @@
       justify-self: center;
       align-self: center;
     }
+  }
+
+  .Scroller {
+    overflow: hidden;
+    overscroll-behavior: contain;
 
     &[data-modal-content-scroll='true'] {
       overflow: auto;
@@ -30,16 +35,12 @@
   }
 
   .Header {
-
-    @mixin vibrancy;
-
+    flex-shrink: 0;
+    height: token(--space-56);
     overflow: hidden;
     border-radius: token(--radius-24) token(--radius-24) 0 0;
     border-bottom: 1px solid var(--vibrancy-background-mid);
-    position: sticky;
-    top: 0;
-    background-color: var(--header-tint, var(--vibrancy-background-soft));
-    z-index: 1;
+    background-color: var(--header-tint);
     padding:
       token(--space-16)
       token(--space-80)

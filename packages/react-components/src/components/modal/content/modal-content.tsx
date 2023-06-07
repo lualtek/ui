@@ -56,22 +56,23 @@ export const ModalContent = forwardRef<HTMLDivElement, ModalContentProps>(({
 
   return (
     <Elevator resting={4} direction={matches.small ? 'bottom' : 'top'}>
-      <div
+      <Stack
         className={clsx(styles.Content, className)}
         style={{ ...dynamicStyle, ...style }}
         ref={forwardedRef}
         data-theme={theme}
-        data-modal-content-scroll={scrollInside}
         {...otherProps}
       >
         <Stack vAlign="center" fill={false} hAlign="space-between" direction="row" className={styles.Header}>
-          <Title responsive={false} level="5" id={titleId}>{title}</Title>
+          <Title lineHeight="small" responsive={false} level="5" id={titleId}>{title}</Title>
           {onClose && <IconButton onClick={onClose} className={styles.CloseButton} icon="remove" kind="flat" />}
         </Stack>
-        <AutoFocusInside>
-          {children}
-        </AutoFocusInside>
-      </div>
+        <div className={styles.Scroller} data-modal-content-scroll={scrollInside}>
+          <AutoFocusInside>
+            {children}
+          </AutoFocusInside>
+        </div>
+      </Stack>
     </Elevator>
   );
 });

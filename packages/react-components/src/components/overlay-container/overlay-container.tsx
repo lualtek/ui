@@ -54,7 +54,6 @@ export const OverlayContainer: FCChildren<OverlayContainerProps> = ({
   onClose,
 }) => {
   const uid = useId();
-
   const defaultRoot = useMemo(() => (root ?? (typeof document !== 'undefined' ? document.body : null)), [root]);
 
   useEffect(() => {
@@ -65,6 +64,11 @@ export const OverlayContainer: FCChildren<OverlayContainerProps> = ({
       `);
     }
   }, [defaultRoot]);
+
+  useEffect(() => {
+    if (children) defaultRoot?.setAttribute('data-overlay-open', 'true');
+    else defaultRoot?.removeAttribute('data-overlay-open');
+  }, [children, defaultRoot]);
 
   const content = (
     <OverlayProvider onClose={onClose}>
@@ -83,7 +87,7 @@ export const OverlayContainer: FCChildren<OverlayContainerProps> = ({
                   className={styles.Backdrop}
                   data-overlay-color={theme}
                   initial={{ opacity: 0 }}
-                  animate={{ opacity: 0.9 }}
+                  animate={{ opacity: 0.7 }}
                   transition={{ duration: 0.2 }}
                   exit={{ opacity: 0 }}
                 />

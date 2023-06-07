@@ -2,7 +2,7 @@
 
 @layer components {
   .Modal {
-    display: contents;
+    display: block;
   }
 
   .Container {

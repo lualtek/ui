@@ -4,7 +4,14 @@
   "editor.formatOnSave": false,
   "javascript.validate.enable": false,
   "typescript.tsdk": "node_modules/typescript/lib",
-  "cssEnvVarsAutocomplete.varFiles": ["./node_modules/@lualtek/themes/dist/themes/light.css"],
+  "cssvar.files": [
+    "./node_modules/@lualtek/themes/dist/themes/light.css"
+  ],
+  // Do not ignore node_modules css files, which is ignored by default
+  "cssvar.ignore": [],
+  "cssvar.extensions": [
+    "css", "postcss","jsx", "tsx"
+  ],
   "cssEnvVarsAutocomplete.envFiles": ["./node_modules/@lualtek/tokens/platforms/web/tokens.css"],
   "explorer.fileNesting.patterns": {
     "*.ts": "${capture}.js",
