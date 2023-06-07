@@ -1,5 +1,13 @@
 # @lualtek/react-components
 
+## 8.1.6
+
+### Patch Changes
+
+- 06e9eb6: Remove autocomplete unused props
+- 4e0634d: Fix autocomplete auto index when inside overlay container
+  - @lualtek/icons@8.1.6
+
 ## 8.1.5
 
 ### Patch Changes
