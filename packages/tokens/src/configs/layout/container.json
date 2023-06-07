@@ -3,19 +3,19 @@
     "large": {
       "value": 1440,
       "attributes": {
-        "category": "size"
+        "category": "size/rem"
       }
     },
     "medium": {
       "value": 1000,
       "attributes": {
-        "category": "size"
+        "category": "size/rem"
       }
     },
     "small": {
       "value": 640,
       "attributes": {
-        "category": "size"
+        "category": "size/rem"
       }
     }
   }

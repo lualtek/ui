@@ -3,43 +3,43 @@
     "4": {
       "value": 4,
       "attributes": {
-        "category": "size"
+        "category": "size/rem"
       }
     },
     "8": {
       "value": 8,
       "attributes": {
-        "category": "size"
+        "category": "size/rem"
       }
     },
     "16": {
       "value": 16,
       "attributes": {
-        "category": "size"
+        "category": "size/rem"
       }
     },
     "24": {
       "value": 24,
       "attributes": {
-        "category": "size"
+        "category": "size/rem"
       }
     },
     "32": {
       "value": 32,
       "attributes": {
-        "category": "size"
+        "category": "size/rem"
       }
     },
     "40": {
       "value": 40,
       "attributes": {
-        "category": "size"
+        "category": "size/rem"
       }
     },
     "48": {
       "value": 48,
       "attributes": {
-        "category": "size"
+        "category": "size/rem"
       }
     }
   }
