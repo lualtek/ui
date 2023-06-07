@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 8.1.3
+
+### Patch Changes
+
+- 2080104: Fix Drawer style
+  - @lualtek/icons@8.1.3
+
 ## 8.1.2
 
 ### Patch Changes
