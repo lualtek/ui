@@ -14,11 +14,11 @@ type Breakpoints = {
 type BreakpointsKeys = keyof Breakpoints;
 
 const DEFAULT_BREAKPOINTS: Breakpoints = {
-  extraSmall: jsonTokens.breakpoint['extra-small'],
-  small: jsonTokens.breakpoint.small,
-  medium: jsonTokens.breakpoint.medium,
-  large: jsonTokens.breakpoint.large,
-  extraLarge: jsonTokens.breakpoint['extra-large'],
+  extraSmall: jsonTokens.breakpoint['extra-small'].em,
+  small: jsonTokens.breakpoint.small.em,
+  medium: jsonTokens.breakpoint.medium.em,
+  large: jsonTokens.breakpoint.large.em,
+  extraLarge: jsonTokens.breakpoint['extra-large'].em,
 };
 
 const breakpointKeys = Object.keys(DEFAULT_BREAKPOINTS) as BreakpointsKeys[];
@@ -31,7 +31,7 @@ const DEFAULT_BREAKPOINTS_MATCHES: Record<BreakpointsKeys, boolean> = {
   extraLarge: false,
 };
 
-const matchMediaFactory = (breakpointKey: BreakpointsKeys) => window.matchMedia(`(min-width: ${DEFAULT_BREAKPOINTS[breakpointKey]})`);
+const matchMediaFactory = (breakpointKey: BreakpointsKeys) => window.matchMedia(`(${DEFAULT_BREAKPOINTS[breakpointKey]} <= width)`);
 
 const useResponsive = () => {
   const [matches, setMatches] = useState<Record<BreakpointsKeys, boolean>>(DEFAULT_BREAKPOINTS_MATCHES);

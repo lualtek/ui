@@ -2,10 +2,6 @@
 
 @layer components {
   .Modal {
-    display: block;
-  }
-
-  .Container {
     position: absolute;
     display: grid;
     inset: 0;

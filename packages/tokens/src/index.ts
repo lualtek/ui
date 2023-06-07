@@ -33,6 +33,7 @@ SDWithConfig.registerTransformGroup({
     'content/icon',
     'size/px-rootem',
     'size/px-rem',
+    'size/px',
     'color/oklchvalue',
     'easing/cubic-bezier',
   ],

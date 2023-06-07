@@ -15,13 +15,14 @@
     align-self: end;
     padding-block-end: env(safe-area-inset-bottom);
 
-    @container ltk-modal-container (width > token(--breakpoint-small)) {
+    @container ltk-modal-container (width > token(--breakpoint-small-px)) {
       max-inline-size: 600px;
       max-block-size: 80vh;
       max-block-size: 80dvh;
       border-radius: token(--radius-24);
       justify-self: center;
       align-self: center;
+      border: 1px solid var(--dimmed-1);
     }
   }
 
