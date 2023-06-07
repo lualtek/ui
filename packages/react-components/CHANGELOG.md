@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 8.1.1
+
+### Patch Changes
+
+- 4fff083: Fix modal close button position
+  - @lualtek/icons@8.1.1
+
 ## 8.1.0
 
 ### Minor Changes
