@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 8.1.7
+
+### Patch Changes
+
+- 78574e3: Fix Drawer scrolling
+  - @lualtek/icons@8.1.7
+
 ## 8.1.6
 
 ### Patch Changes
