@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 8.1.8
+
+### Patch Changes
+
+- 78050c7: Fix Slider layout
+  - @lualtek/icons@8.1.8
+
 ## 8.1.7
 
 ### Patch Changes
