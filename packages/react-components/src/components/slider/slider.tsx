@@ -52,7 +52,7 @@ SliderProps
   );
 
   return (
-    <Stack rowGap={16}>
+    <Stack rowGap={16} inline className={clsx(styles.Slider, className)}>
       {label && (
         <Text
           as="span"
@@ -63,7 +63,7 @@ SliderProps
         </Text>
       )}
       <SliderPrimitive.Root
-        className={clsx(styles.Slider, className)}
+        className={styles.Input}
         orientation={orientation}
         id={uid}
         data-slider-show-values={showValues}
