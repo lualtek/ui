@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 8.1.9
+
+### Patch Changes
+
+- 8e5fa78: Fix dimmed 8 text property
+  - @lualtek/icons@8.1.9
+
 ## 8.1.8
 
 ### Patch Changes
