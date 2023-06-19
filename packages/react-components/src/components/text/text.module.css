@@ -27,7 +27,7 @@
     }
 
     &[data-text-dimmed='8'] {
-      color: var(--dimmed-7);
+      color: var(--dimmed-8);
     }
 
     &[data-text-sentiment='positive'] {
