@@ -1,5 +1,11 @@
 # @lualtek/tokens
 
+## 8.2.0
+
+### Patch Changes
+
+- 7bab4f9: Update deps
+
 ## 8.1.9
 
 ## 8.1.8
