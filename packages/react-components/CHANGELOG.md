@@ -1,5 +1,11 @@
 # @lualtek/react-components
 
+## 8.2.3
+
+### Patch Changes
+
+- @lualtek/icons@8.2.3
+
 ## 8.2.2
 
 ### Patch Changes

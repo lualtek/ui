@@ -1,5 +1,11 @@
 # @lualtek/themes
 
+## 8.2.3
+
+### Patch Changes
+
+- 9e46602: Restore color override in themes
+
 ## 8.2.2
 
 ### Patch Changes
