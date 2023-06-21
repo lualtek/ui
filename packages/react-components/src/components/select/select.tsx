@@ -34,6 +34,11 @@ export type SelectProps = PropsClassChildren<SelectHTMLAttributes<HTMLSelectElem
    * Callback function to be called when a new value is selected.
    */
   onChange?: (event: ChangeEvent<HTMLSelectElement>) => void;
+  /**
+   * Force the select to take the full width of its container.
+   * @default false
+   */
+  fullWidth?: boolean;
 }>
 
 export const Select = forwardRef<HTMLSelectElement, SelectProps>(({
@@ -44,6 +49,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(({
   label,
   kind = 'single',
   onChange,
+  fullWidth = false,
   ...otherProps
 }, forwardedRef) => {
   const uid = useId();
@@ -58,7 +64,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(({
       aria-disabled={disabled}
       hAlign="start"
       vAlign="start"
-      inline
+      inline={!fullWidth}
       tabIndex={disabled ? 0 : undefined}
     >
       <div className={styles.FieldContainer}>
