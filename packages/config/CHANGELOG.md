@@ -1,5 +1,13 @@
 # @lualtek/config
 
+## 8.2.0
+
+### Patch Changes
+
+- 7bab4f9: Update deps
+- Updated dependencies [7bab4f9]
+  - @lualtek/tokens@8.2.0
+
 ## 8.1.9
 
 ### Patch Changes

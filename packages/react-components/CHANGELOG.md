@@ -1,5 +1,17 @@
 # @lualtek/react-components
 
+## 8.2.0
+
+### Minor Changes
+
+- f063e83: Add new fullWidth prop to Select
+
+### Patch Changes
+
+- ddef20d: Remove @nest from code
+- 7bab4f9: Update deps
+  - @lualtek/icons@8.2.0
+
 ## 8.1.9
 
 ### Patch Changes
