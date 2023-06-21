@@ -61,10 +61,10 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(({
       className={clsx(styles.Select, className)}
       data-select-is-multiple={kind === 'multiple'}
       data-select-has-label={Boolean(label)}
+      data-select-is-full-width={fullWidth}
       aria-disabled={disabled}
       hAlign="start"
       vAlign="start"
-      inline={!fullWidth}
       tabIndex={disabled ? 0 : undefined}
     >
       <div className={styles.FieldContainer}>
