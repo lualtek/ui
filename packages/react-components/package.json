@@ -1,6 +1,6 @@
 {
   "name": "@lualtek/react-components",
-  "version": "8.2.1",
+  "version": "8.2.2",
   "types": "dist/index.d.ts",
   "main": "dist/index.js",
   "exports": {

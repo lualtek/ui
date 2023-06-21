@@ -1,5 +1,11 @@
 # @lualtek/themes
 
+## 8.2.2
+
+### Patch Changes
+
+- a6f0c2d: Remove color overrides from theme
+
 ## 8.2.1
 
 ## 8.2.0
