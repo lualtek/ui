@@ -1,5 +1,11 @@
 # @lualtek/themes
 
+## 8.2.4
+
+### Patch Changes
+
+- ed8d688: Fix themes color override
+
 ## 8.2.3
 
 ### Patch Changes
