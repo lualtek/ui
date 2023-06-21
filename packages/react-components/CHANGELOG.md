@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 8.2.1
+
+### Patch Changes
+
+- c7f6d21: Fix fullWidth select
+  - @lualtek/icons@8.2.1
+
 ## 8.2.0
 
 ### Minor Changes
