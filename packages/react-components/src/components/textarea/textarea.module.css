@@ -26,7 +26,7 @@
     right: var(--field-padding);
     transform: translateZ(0);
 
-    @nest .Textarea[data-textfield-invalid='true'] & {
+    .Textarea[data-textfield-invalid='true'] & {
       color: var(--highlight-red-foreground);
     }
   }

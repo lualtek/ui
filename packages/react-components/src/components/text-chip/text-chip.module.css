@@ -23,7 +23,7 @@
   .TextWrapper {
     user-select: none;
 
-    @nest .TextChip[data-text-chip-tinted='true'] & {
+    .TextChip[data-text-chip-tinted='true'] & {
       mix-blend-mode: luminosity;
     }
   }

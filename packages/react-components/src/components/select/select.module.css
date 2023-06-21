@@ -17,7 +17,7 @@
     inline-size: 100%;
     z-index: 0;
 
-    @nest .Select[aria-disabled='true'] & {
+    .Select[aria-disabled='true'] & {
       color: var(--global-disabled-foreground);
     }
   }
@@ -29,7 +29,7 @@
     left: var(--field-padding);
     transform: translateZ(0);
 
-    @nest [data-textfield-has-icon='true'][data-textfield-icon-position='left'] & {
+    [data-textfield-has-icon='true'][data-textfield-icon-position='left'] & {
       right: var(--field-padding);
     }
   }

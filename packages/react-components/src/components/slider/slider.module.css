@@ -91,7 +91,7 @@
       width: 100%;
     }
 
-    @nest .Input[data-slider-show-values='true'] &::after {
+    .Input[data-slider-show-values='true'] &::after {
       content: attr(data-slider-value-label);
       position: absolute;
       white-space: nowrap;
@@ -103,7 +103,8 @@
       color: var(--dimmed-6);
       font-weight: token(--font-weight-bold);
     }
-    @nest .Input[data-slider-show-values='true'] &[data-orientation='vertical']::after {
+
+    .Input[data-slider-show-values='true'] &[data-orientation='vertical']::after {
       left: calc(100% + token(--space-8));
       top: 50%;
       transform: translateY(-50%);

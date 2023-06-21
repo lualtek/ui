@@ -39,15 +39,18 @@
     user-select: none;
     color: var(--dimmed-9);
 
-    @nest .Disclosure[data-disclosure-icon-position='end'][data-disclosure-expandable='true'] & {
-      padding-inline-end: var(--padding);
-    }
-    @nest .Disclosure[data-disclosure-icon-position='start'][data-disclosure-expandable='true'] & {
-      padding-inline-start: var(--padding);
-    }
-    @nest .Disclosure[data-disclosure-expandable='true'] & {
+    .Disclosure[data-disclosure-expandable='true'] & {
       cursor: pointer;
     }
+
+    .Disclosure[data-disclosure-icon-position='end'][data-disclosure-expandable='true'] & {
+      padding-inline-end: var(--padding);
+    }
+
+    .Disclosure[data-disclosure-icon-position='start'][data-disclosure-expandable='true'] & {
+      padding-inline-start: var(--padding);
+    }
+
 
     &::marker {
       content: '';
@@ -69,11 +72,12 @@
     transition: transform token(--duration-100) token(--easing-standard);
     transform-origin: 50% center;
 
-    @nest .Disclosure[data-disclosure-icon-position='start'] & {
+    .Disclosure[data-disclosure-icon-position='start'] & {
       left: calc(var(--icon-size) / 2);
       right: auto;
     }
-    @nest .Disclosure[open] > .Summary > & {
+
+    .Disclosure[open] > .Summary > & {
       transform: rotate(90deg);
     }
   }
@@ -81,10 +85,11 @@
   .Content {
     box-sizing: border-box;
 
-    @nest .Disclosure[data-disclosure-icon-position='start'] &[data-disclosure-padding='true'] {
+    .Disclosure[data-disclosure-icon-position='start'] &[data-disclosure-padding='true'] {
       padding-inline-start: var(--padding);
     }
-    @nest .Disclosure[data-disclosure-icon-position='end'] &[data-disclosure-padding='true'] {
+
+    .Disclosure[data-disclosure-icon-position='end'] &[data-disclosure-padding='true'] {
       padding-right: var(--padding);
     }
 

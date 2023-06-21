@@ -99,10 +99,11 @@
     align-self: flex-start;
     flex-grow: 0;
 
-    @nest .MenuItem[data-menu-item-dimension='small'] & {
+    .MenuItem[data-menu-item-dimension='small'] & {
       margin-top: 4px;
     }
-    @nest .MenuItem[data-menu-item-dimension='regular'] & {
+
+    .MenuItem[data-menu-item-dimension='regular'] & {
       margin-top: 2px;
     }
   }

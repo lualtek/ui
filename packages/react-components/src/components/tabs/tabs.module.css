@@ -64,8 +64,7 @@
   }
 
   .Label {
-
-    @nest .Trigger[data-state='active'] & {
+    .Trigger[data-state='active'] & {
       color: var(--global-foreground);
     }
   }

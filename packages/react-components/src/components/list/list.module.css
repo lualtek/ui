@@ -47,7 +47,7 @@
       margin-block-start: calc(var(--marker-size) / 3);
     }
 
-    @nest .List[data-list-size='big'] & {
+    .List[data-list-size='big'] & {
       margin-block-start: calc(var(--marker-size) / 3);
     }
   }
@@ -56,8 +56,7 @@
   .ListItem {
     gap: var(--marker-gap);
 
-
-    @nest [data-list-ordered='true'] & {
+    [data-list-ordered='true'] & {
       display: list-item;
 
       &::marker {
