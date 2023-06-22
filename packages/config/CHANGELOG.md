@@ -1,5 +1,11 @@
 # @lualtek/config
 
+## 8.2.4
+
+### Patch Changes
+
+- @lualtek/tokens@8.2.4
+
 ## 8.2.3
 
 ### Patch Changes
