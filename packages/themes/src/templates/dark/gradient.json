@@ -2,13 +2,13 @@
   "gradient": {
     "brand": {
       "start": {
-        "value": "oklch({color.brand.50})",
+        "value": "oklch({color.brand.60})",
         "attributes": {
           "category": "color"
         }
       },
       "end": {
-        "value": "oklch({color.brand.60})",
+        "value": "oklch({color.brand.70})",
         "attributes": {
           "category": "color"
         }
@@ -22,7 +22,7 @@
         }
       },
       "end": {
-        "value": "oklch({color.primary.90})",
+        "value": "oklch({color.primary.100})",
         "attributes": {
           "category": "color"
         }
@@ -36,7 +36,7 @@
         }
       },
       "end": {
-        "value": "oklch({color.cyan.70})",
+        "value": "oklch({color.cyan.60})",
         "attributes": {
           "category": "color"
         }
@@ -44,7 +44,7 @@
     },
     "dawn": {
       "start": {
-        "value": "oklch({color.cyan.40})",
+        "value": "oklch({color.cyan.50})",
         "attributes": {
           "category": "color"
         }
