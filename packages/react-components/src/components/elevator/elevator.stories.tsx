@@ -43,4 +43,4 @@ export const WithHover = {
     resting: 1,
     hover: 3,
   },
-};
+} satisfies Story;

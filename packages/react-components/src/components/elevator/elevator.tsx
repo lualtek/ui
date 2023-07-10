@@ -1,5 +1,5 @@
 import {
-  Children, cloneElement, isValidElement, ReactElement,
+  Children, cloneElement, CSSProperties, isValidElement, ReactElement,
 } from 'react';
 
 import { FCChildren } from '@/components/types';
@@ -15,14 +15,21 @@ export type ElevatorProps = {
   hover?: 0 | 1 | 2 | 3 | 4;
   /**
    * Set the direction of shadow casting
+   * @default 'bottom'
   */
   direction?: 'top' | 'bottom' | 'left' | 'right';
+  /**
+   * Set the color of the shadow
+   * @default 'oklch(0% 0 0)'
+   */
+  shadowColor?: string;
 }
 
 export const Elevator: FCChildren<ElevatorProps> = ({
   children,
   resting,
   direction = 'bottom',
+  shadowColor = 'oklch(0% 0 0)',
   hover,
 }) => (
   <>
@@ -32,6 +39,7 @@ export const Elevator: FCChildren<ElevatorProps> = ({
         'data-elevation': resting,
         'data-elevation-direction': direction,
         'data-elevation-hover': hover,
+        style: { ...child.props.style as CSSProperties, '--shadow-color': shadowColor },
       },
     ))}
   </>
