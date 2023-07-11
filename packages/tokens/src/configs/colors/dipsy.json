@@ -2,19 +2,19 @@
   "color": {
     "dipsy": {
       "0": {
-        "value": "#fffced",
+        "value": "#faffed",
         "attributes": {
           "category": "color"
         }
       },
       "5": {
-        "value": "#fdf9db",
+        "value": "#f6fddb",
         "attributes": {
           "category": "color"
         }
       },
       "10": {
-        "value": "#faf8c9",
+        "value": "#f1f9be",
         "attributes": {
           "category": "color"
         }
@@ -62,13 +62,13 @@
         }
       },
       "90": {
-        "value": "#1d3d00",
+        "value": "#244D00",
         "attributes": {
           "category": "color"
         }
       },
       "100": {
-        "value": "#0c1900",
+        "value": "#183300",
         "attributes": {
           "category": "color"
         }

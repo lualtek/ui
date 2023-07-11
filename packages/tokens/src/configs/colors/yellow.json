@@ -14,7 +14,7 @@
         }
       },
       "10": {
-        "value": "#fef3c7",
+        "value": "#fef0b9",
         "attributes": {
           "category": "color"
         }
@@ -26,13 +26,13 @@
         }
       },
       "30": {
-        "value": "#fcd34d",
+        "value": "#ECA993",
         "attributes": {
           "category": "color"
         }
       },
       "40": {
-        "value": "#fbbf24",
+        "value": "#E48467",
         "attributes": {
           "category": "color"
         }

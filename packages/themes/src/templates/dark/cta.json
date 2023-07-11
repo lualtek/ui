@@ -1,13 +1,13 @@
 {
   "cta": {
     "default": {
-      "value": "oklch({color.brand.50})",
+      "value": "oklch({color.brand.40})",
       "attributes": {
         "category": "color"
       }
     },
     "dark": {
-      "value": "oklch({color.brand.60})",
+      "value": "oklch({color.brand.50})",
       "attributes": {
         "category": "color"
       }

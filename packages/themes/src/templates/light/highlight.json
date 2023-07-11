@@ -103,7 +103,7 @@
       }
     },
     "indigo-foreground": {
-      "value": "oklch({color.indigo.40})",
+      "value": "oklch({color.indigo.50})",
       "attributes": {
         "category": "color"
       }

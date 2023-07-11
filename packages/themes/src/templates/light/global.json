@@ -19,7 +19,7 @@
       }
     },
     "interactive-text-hover": {
-      "value": "oklch({color.brand.60})",
+      "value": "oklch({color.brand.50})",
       "attributes": {
         "category": "color"
       }
