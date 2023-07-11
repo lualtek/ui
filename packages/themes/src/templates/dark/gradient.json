@@ -22,7 +22,7 @@
         }
       },
       "end": {
-        "value": "oklch({color.primary.100})",
+        "value": "oklch({color.primary.90})",
         "attributes": {
           "category": "color"
         }
