@@ -24,7 +24,7 @@ const meta = {
       },
     },
     dimension: {
-      options: ['full', 'medium', 'large'],
+      options: ['full', 'medium', 'large', 'extra-large'],
     },
   },
 } satisfies Meta<typeof Container>;
@@ -48,6 +48,12 @@ export const Medium = {
 export const Large = {
   args: {
     dimension: 'large',
+  },
+} satisfies Story;
+
+export const ExtraLarge = {
+  args: {
+    dimension: 'extra-large',
   },
 } satisfies Story;
 

@@ -1,5 +1,11 @@
 {
   "container": {
+    "extra-large": {
+      "value": 1800,
+      "attributes": {
+        "category": "size/rem"
+      }
+    },
     "large": {
       "value": 1440,
       "attributes": {

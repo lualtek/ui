@@ -9,7 +9,7 @@ export type ContainerProps = {
   /**
    * Set the horizontal max-width of the container.
    */
-  dimension?: 'full' | 'small' | 'medium' | 'large';
+  dimension?: 'full' | 'small' | 'medium' | 'large' | 'extra-large';
   /**
    * Set or remove the container's predefined horizontal padding.
    */
