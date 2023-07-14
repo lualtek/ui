@@ -29,7 +29,6 @@
       font-size: token(--font-size-18);
       block-size: token(--space-48);
       border-radius: token(--radius-16);
-      gap: token(--space-16);
     }
 
     &[data-button-dimension='regular'] {
@@ -50,12 +49,7 @@
     /* Types */
 
     &[data-button-kind='primary'] {
-      background:
-        radial-gradient(
-          farthest-side at 50% top,
-          var(--gradient-brand-start) 0%,
-          var(--gradient-brand-end) 100%
-        );
+      background: var(--cta-dark);
       color: var(--cta-foreground);
 
       &:not([aria-disabled='true'])[data-button-sentiment='positive'] {
