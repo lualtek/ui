@@ -4,7 +4,7 @@
 
 	// List of extensions which should be recommended for users of this workspace.
 	"recommendations": [
-		"vunguyentuan.vscode-postcss",
+		"csstools.postcss",
 		"dbaeumer.vscode-eslint",
     "stylelint.vscode-stylelint",
 		"kamikillerto.vscode-colorize",
