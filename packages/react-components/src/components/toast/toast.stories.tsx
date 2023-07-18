@@ -63,9 +63,7 @@ export const WithActions = {
 } satisfies Story;
 
 export const SingleLine = {
-  args: {
-    singleLine: true,
-  },
+  args: {},
 } satisfies Story;
 
 const TemplateToast = ({ ...args }) => {

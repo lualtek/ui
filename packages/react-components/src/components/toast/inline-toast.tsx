@@ -55,10 +55,6 @@ export type InlineToastProps = PropsWithClass<{
    */
   onDismiss?: () => void;
   /**
-   * Set content and actions on the same line
-   */
-  singleLine?: boolean;
-  /**
    * Wrap the close action inside internal primitive component
    * @private
    */
@@ -81,7 +77,6 @@ export const InlineToast = forwardRef<HTMLOutputElement, InlineToastProps>(({
   kind = 'neutral',
   dismissable,
   dismissLabel = 'Dismiss',
-  singleLine,
   onDismiss,
   actions,
   isPrimitive,
@@ -104,7 +99,7 @@ export const InlineToast = forwardRef<HTMLOutputElement, InlineToastProps>(({
       {...otherProps}
     >
       <Icon className={styles.Icon} source={icon ?? defaultIcons[kind]} dimension={24} />
-      <Stack direction={singleLine ? 'row' : undefined} columnGap={24} rowGap={8} hAlign="start" fill={!!singleLine}>
+      <Stack direction="row" columnGap={24} rowGap={8} hAlign="start">
         <Stack>
           {title && (
             <ToastPrimitive.Title asChild>
