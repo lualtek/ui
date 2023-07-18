@@ -29,6 +29,10 @@ const meta = {
       options: ['primary', 'secondary', 'flat'],
       control: { type: 'radio' },
     },
+    sentiment: {
+      options: [undefined, 'positive', 'warning', 'danger'],
+      control: { type: 'radio' },
+    },
   },
   render: args => (
     <SplitButton {...args}>

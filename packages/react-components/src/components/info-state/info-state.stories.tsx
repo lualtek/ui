@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Button, Text } from '../..';
+import { Button } from '../..';
 import { InfoState } from './info-state';
 
 const meta = {
@@ -18,10 +18,8 @@ const meta = {
   },
   render: args => (
     <InfoState {...args}>
-      <Text maxWidth="40ch">
-        Cras ultricies, elit sit amet cursus consectetur,
-        risus felis ullamcorper nulla, ut scelerisque sapien lorem non sem.
-      </Text>
+      Cras ultricies, elit sit amet cursus consectetur,
+      risus felis ullamcorper nulla, ut scelerisque sapien lorem non sem.
     </InfoState>
   ),
 } satisfies Meta<typeof InfoState>;
@@ -59,8 +57,8 @@ export const WithImageHorizontal = {
 export const WithActions = {
   args: {
     actions: [
-      <Button>Primary</Button>,
-      <Button kind="flat">Secondary</Button>,
+      <Button key="primary">Primary</Button>,
+      <Button kind="flat" key="secondary">Secondary</Button>,
     ],
   },
 } satisfies Story;

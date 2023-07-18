@@ -90,7 +90,7 @@
     }
 
     .Disclosure[data-disclosure-icon-position='end'] &[data-disclosure-padding='true'] {
-      padding-right: var(--padding);
+      padding-inline-end: var(--padding);
     }
 
     &[data-disclosure-height='true'] {
