@@ -92,9 +92,9 @@ export const InlineToast = forwardRef<HTMLOutputElement, InlineToastProps>(({
     <Stack
       ref={forwardedRef}
       as="output"
-      className={clsx(styles.Toast, className)}
+      className={clsx(styles.InlineToast, className)}
       data-toast-kind={kind}
-      hPadding={24}
+      hPadding={16}
       vPadding={16}
       role="status"
       vAlign="start"
@@ -115,14 +115,12 @@ export const InlineToast = forwardRef<HTMLOutputElement, InlineToastProps>(({
             <Text size={16} as="div">{children}</Text>
           </ToastPrimitive.Description>
         </Stack>
-        {(actions || dismissable) && (
+        {(actions ?? dismissable) && (
           <Stack direction="row" columnGap={8} rowGap={8} fill={false} hAlign="start" wrap>
             {actions}
             {dismissable && (
               <Stack inline direction="row" hAlign="start">
-                <ActionWrapper
-                  asChild
-                >
+                <ActionWrapper asChild>
                   <Button
                     onClick={onDismiss}
                     dimension="small"

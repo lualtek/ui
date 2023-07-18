@@ -1,5 +1,5 @@
 declare const styles: {
-  readonly "Toast": string;
+  readonly "InlineToast": string;
   readonly "Icon": string;
   readonly "Viewport": string;
   readonly "Title": string;
