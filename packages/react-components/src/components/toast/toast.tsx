@@ -3,9 +3,6 @@
 import * as ToastPrimitive from '@radix-ui/react-toast';
 import clsx from 'clsx';
 import {
-  domAnimation, LazyMotion, m,
-} from 'framer-motion';
-import {
   ElementRef, forwardRef, useId,
 } from 'react';
 
@@ -16,15 +13,6 @@ import { InlineToast, InlineToastProps } from './inline-toast';
 import styles from './toast.module.css';
 
 export type ToastProps = ToastPrimitive.ToastProps & InlineToastProps
-
-const animation = {
-  hidden: {
-    x: 20,
-  },
-  visible: {
-    x: 0,
-  },
-};
 
 export const Toast = forwardRef<
 ElementRef<typeof ToastPrimitive.Root>,
@@ -42,37 +30,24 @@ ToastProps
   const uid = useId();
 
   return (
-    <LazyMotion features={domAnimation}>
-      <ToastPrimitive.Root
-        asChild
-        ref={forwardedRef}
-        open={open}
-        type={type}
-        duration={duration}
-        forceMount={forceMount}
-        onOpenChange={onOpenChange}
-        defaultOpen={defaultOpen}
-      >
-        <m.li
-          key={`${uid}-toast`}
-          initial="hidden"
-          animate="visible"
-          exit="hidden"
-          variants={animation}
-          transition={{
-            type: 'spring',
-            stiffness: 700,
-            damping: 30,
-          }}
-        >
-          <Elevator resting={4}>
-            <InlineToast isPrimitive {...otherProps}>
-              {children}
-            </InlineToast>
-          </Elevator>
-        </m.li>
-      </ToastPrimitive.Root>
-    </LazyMotion>
+    <ToastPrimitive.Root
+      asChild
+      ref={forwardedRef}
+      open={open}
+      type={type}
+      duration={duration}
+      forceMount={forceMount}
+      onOpenChange={onOpenChange}
+      defaultOpen={defaultOpen}
+    >
+      <li key={`${uid}-toast`} className={styles.ToastRoot}>
+        <Elevator resting={4}>
+          <InlineToast isPrimitive {...otherProps}>
+            {children}
+          </InlineToast>
+        </Elevator>
+      </li>
+    </ToastPrimitive.Root>
   );
 });
 

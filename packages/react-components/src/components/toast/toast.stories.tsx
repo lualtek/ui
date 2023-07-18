@@ -84,7 +84,7 @@ const TemplateToast = ({ ...args }) => {
   };
 
   return (
-    <ToastProvider duration={3000}>
+    <ToastProvider duration={3000} swipeDirection="right">
       <Button onClick={onShowToast}>Click me</Button>
 
       {toasts.map(({ title, children }) => (
