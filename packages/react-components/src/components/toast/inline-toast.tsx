@@ -104,7 +104,13 @@ export const InlineToast = forwardRef<HTMLOutputElement, InlineToastProps>(({
       {...otherProps}
     >
       <Icon className={styles.Icon} source={icon ?? defaultIcons[kind]} dimension={24} />
-      <Stack direction={singleLine ? 'row' : undefined} columnGap={24} rowGap={8} hAlign="start" fill={!!singleLine}>
+      <Stack
+        direction={singleLine ? 'row' : undefined}
+        columnGap={24}
+        rowGap={8}
+        hAlign={singleLine ? 'space-between' : 'start'}
+        fill={false}
+      >
         <Stack>
           {title && (
             <ToastPrimitive.Title asChild>

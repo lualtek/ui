@@ -40,6 +40,7 @@ export const Single = {
 
 export const Dismissable = {
   args: {
+    singleLine: true,
     dismissable: true,
   },
 } satisfies Story;
