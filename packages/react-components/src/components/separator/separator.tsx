@@ -23,6 +23,11 @@ export type SeparatorProps = HTMLAttributes<HTMLHRElement> & {
    * @default 2
    */
   dimmed?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
+  /**
+   * Set the seperator to be vertical.
+   * @default false
+   */
+  vertical?: boolean;
 }
 
 export const Separator = forwardRef<HTMLHRElement, SeparatorProps>(({
@@ -30,6 +35,7 @@ export const Separator = forwardRef<HTMLHRElement, SeparatorProps>(({
   vPadding,
   hPadding,
   dimmed = 2,
+  vertical,
   style,
   ...otherProps
 }, forwardedRef) => {
@@ -45,6 +51,7 @@ export const Separator = forwardRef<HTMLHRElement, SeparatorProps>(({
     <hr
       ref={forwardedRef}
       className={clsx(styles.Separator, className)}
+      data-separator-vertical={vertical}
       style={{ ...dynamicStyle, ...style }}
       {...otherProps}
     />

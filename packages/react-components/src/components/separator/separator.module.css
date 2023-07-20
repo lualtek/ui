@@ -2,7 +2,17 @@
   .Separator {
     border: 0;
     margin: var(--v-padding, 0) var(--h-padding);
-    block-size: 1px;
-    border-bottom: 1px solid var(--color);
+
+    &[data-separator-vertical='false'] {
+      block-size: 1px;
+      border-bottom: 1px solid var(--color);
+    }
+
+    &[data-separator-vertical='true'] {
+      inline-size: 1px;
+      block-size: 100%;
+      border-right: 1px solid var(--color);
+      border-bottom: 0;
+    }
   }
 }
