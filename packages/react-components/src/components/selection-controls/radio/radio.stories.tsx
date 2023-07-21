@@ -6,6 +6,10 @@ import { Radio } from './radio';
 const meta = {
   title: 'Inputs/Radio',
   component: Radio,
+  args: {
+    disabled: false,
+    dimension: 'regular',
+  },
   render: args => (
     <fieldset>
       <Radio {...args} defaultChecked value="1" name="story" />

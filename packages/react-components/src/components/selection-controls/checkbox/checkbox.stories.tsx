@@ -6,6 +6,10 @@ import { Checkbox } from './checkbox';
 const meta = {
   title: 'Inputs/Checkbox',
   component: Checkbox,
+  args: {
+    disabled: false,
+    dimension: 'regular',
+  },
   argTypes: {
     onChange: {
       action: 'changed',
