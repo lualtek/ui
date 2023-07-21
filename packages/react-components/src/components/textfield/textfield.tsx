@@ -133,7 +133,14 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(({
           />
         )}
 
-        <Text as="label" responsive={false} dimmed={5} className={styles.Label} size={14} htmlFor={fieldID}>
+        <Text
+          as="label"
+          responsive={false}
+          dimmed={5}
+          className={styles.Label}
+          size={14}
+          htmlFor={fieldID}
+        >
           <ClampText rows={1}>{label}</ClampText>
         </Text>
       </div>
