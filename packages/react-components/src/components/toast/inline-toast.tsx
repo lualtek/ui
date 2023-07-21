@@ -66,7 +66,7 @@ export type InlineToastProps = PropsWithClass<{
 }>
 
 const defaultIcons: Record<string, IconProps['source']> = {
-  info: 'c-info',
+  info: 'bulb',
   warning: 'c-warning',
   neutral: 'c-info',
   positive: 'check',

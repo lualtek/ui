@@ -5,6 +5,10 @@ import { Switch } from './switch';
 const meta = {
   title: 'Inputs/Switch',
   component: Switch,
+  args: {
+    disabled: false,
+    dimension: 'regular',
+  },
   argTypes: {
     disabled: {
       options: [true, false],

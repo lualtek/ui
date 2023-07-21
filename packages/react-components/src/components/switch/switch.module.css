@@ -16,6 +16,7 @@
     color: var(--dimmed-6);
     border-radius: 1e5px;
     justify-content: flex-start;
+    align-items: center;
     flex-shrink: 0;
     flex-grow: 0;
 
@@ -28,19 +29,20 @@
     &[data-disabled] {
       background-color: var(--global-disabled-background);
       color: var(--global-disabled-foreground);
+      cursor: not-allowed;
     }
 
     &[data-switch-dimension='small'] {
       --padding: 2px;
-      --thumb-size: 0.66rem;
+      --thumb-size: 0.55rem;
 
       inline-size: 1.55rem;
       block-size: token(--space-16);
     }
 
     &[data-switch-dimension='regular'] {
-      --padding: 2px;
-      --thumb-size: 1.11rem;
+      --padding: 4px;
+      --thumb-size: 0.94rem;
 
       inline-size: 2.44rem;
       block-size: token(--space-24);
@@ -48,8 +50,8 @@
     }
 
     &[data-switch-dimension='big'] {
-      --padding: 3px;
-      --thumb-size: 1.44rem;
+      --padding: 5px;
+      --thumb-size: 1.33rem;
 
       inline-size: 3.22rem;
       block-size: token(--space-32);
