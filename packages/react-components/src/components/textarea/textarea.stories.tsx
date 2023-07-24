@@ -41,9 +41,3 @@ export const Textarea = {
     rows: 10,
   },
 } satisfies Story;
-
-export const WithLabel = {
-  args: {
-    label: 'Sample label',
-  },
-} satisfies Story;
