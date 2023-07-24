@@ -90,12 +90,21 @@
       }
     }
 
-    /* stylelint-disable-next-line no-descending-specificity */
-    &:is(:user-invalid, [data-basefield-invalid='true'], :out-of-range),
-    &:is(:user-invalid, [data-basefield-invalid='true'], :out-of-range):focus-visible {
-      background-color: var(--vibrancy-background-red);
-      outline-color: var(--highlight-red-foreground);
-      border-color: transparent;
+    @supports not selector(:user-invalid) {
+      &:is(:invalid, [data-basefield-invalid='true'], :out-of-range),
+      &:is(:invalid, [data-basefield-invalid='true'], :out-of-range):focus-visible {
+        background-color: var(--vibrancy-background-red);
+        outline-color: var(--highlight-red-foreground);
+        border-color: transparent;
+      }
+    }
+    @supports selector(:user-invalid) {
+      &:is(:user-invalid, [data-basefield-invalid='true'], :out-of-range),
+      &:is(:user-invalid, [data-basefield-invalid='true'], :out-of-range):focus-visible {
+        background-color: var(--vibrancy-background-red);
+        outline-color: var(--highlight-red-foreground);
+        border-color: transparent;
+      }
     }
 
 
