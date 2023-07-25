@@ -5,7 +5,7 @@
 
   .Progress {
     --progress-height: token(--space-4);
-    --track-color: var(--dimmed-1);
+    --track-color: var(--vibrancy-background-mid);
     --fill-color: var(--cta-default);
 
     position: relative;
@@ -16,6 +16,7 @@
     overflow: hidden;
     display: block;
     background: var(--track-color);
+    box-shadow: 0 0 0 1px var(--global-background), inset 0 0 0 1px var(--dimmed-2);
     height: var(--progress-height);
     border-radius: 1e5px;
 
