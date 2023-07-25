@@ -6,7 +6,7 @@ import {
 } from 'react';
 
 import {
-  Elevator, Icon, IconProps, Polymorphic, Spinner,
+  Icon, IconProps, Polymorphic, Spinner,
 } from '@/components';
 
 import styles from './button.module.css';
@@ -104,32 +104,30 @@ export const Button = forwardRef(({
   ), [icon, dimension, iconColor]);
 
   return (
-    <Elevator resting={kind === 'primary' ? 1 : 0}>
-      <Wrapper
-        ref={forwardedRef}
-        type={Wrapper === 'button' ? type : undefined}
-        className={clsx(styles.Button, className)}
-        data-button-icon-position={iconPosition}
-        data-button-dimension={dimension}
-        data-button-kind={kind}
-        data-button-sentiment={sentiment}
-        data-button-fullwidth={fullWidth}
-        aria-disabled={disabled}
-        disabled={busy}
-        aria-busy={busy}
-        aria-live={busy ? 'polite' : undefined}
-        onClick={handleClick}
-        {...otherProps}
-      >
-        {withIcon}
-        {(children && busy) ? <span>{children}</span> : children}
-        {busy && (
-          <span className={styles.SpinnerIndicator}>
-            <Spinner dimension={dimension} />
-          </span>
-        )}
-      </Wrapper>
-    </Elevator>
+    <Wrapper
+      ref={forwardedRef}
+      type={Wrapper === 'button' ? type : undefined}
+      className={clsx(styles.Button, className)}
+      data-button-icon-position={iconPosition}
+      data-button-dimension={dimension}
+      data-button-kind={kind}
+      data-button-sentiment={sentiment}
+      data-button-fullwidth={fullWidth}
+      aria-disabled={disabled}
+      disabled={busy}
+      aria-busy={busy}
+      aria-live={busy ? 'polite' : undefined}
+      onClick={handleClick}
+      {...otherProps}
+    >
+      {withIcon}
+      {(children && busy) ? <span>{children}</span> : children}
+      {busy && (
+        <span className={styles.SpinnerIndicator}>
+          <Spinner dimension={dimension} />
+        </span>
+      )}
+    </Wrapper>
   );
 }) as PolymorphicButton;
 

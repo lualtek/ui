@@ -6,6 +6,12 @@ import { Button } from '.';
 const meta = {
   title: 'Actions/Button',
   component: Button,
+  render: args => (
+    <>
+      <Button {...args} />
+      <Button {...args} kind="secondary" />
+    </>
+  ),
   args: {
     dimension: 'regular',
     kind: 'primary',

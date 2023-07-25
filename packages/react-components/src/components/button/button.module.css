@@ -21,6 +21,7 @@
     overflow: hidden;
     background: none;
     gap: token(--space-8);
+    position: relative;
 
     /* Sizes */
 
@@ -49,23 +50,58 @@
     /* Types */
 
     &[data-button-kind='primary'] {
-      background: var(--cta-dark);
-      color: var(--cta-foreground);
+      --border-color: var(--cta-default);
+      --background-color: var(--vibrancy-background-brand);
+      --shine-color: var(--highlight-brand-foreground);
+      --border-opacity: 40%;
+      --foreground: var(--vibrancy-foreground);
+
+      @mixin vibrancy;
+
+      box-shadow: inset 0 0 0 1px color-mix(in oklch, var(--border-color), transparent calc(100% - var(--border-opacity)));
+      background: radial-gradient(50% 70% at 65% 0%, var(--background-color), transparent);
+      transition: all 0.2s ease-out;
+      color: var(--foreground);
+
+      &::after {
+        position: absolute;
+        content: '';
+        height: 1px;
+        width: 40%;
+        background: linear-gradient(to right, transparent 0%, var(--shine-color) 50%, transparent);
+        right: 15%;
+        transition: right 0.2s ease-out;
+        top: 0;
+      }
+
+      &:hover {
+        background: radial-gradient(50% 70% at 45% 0%, var(--background-color), transparent);
+      }
+
+      &:hover::after {
+        right: 45%;
+      }
 
       &:not([aria-disabled='true'])[data-button-sentiment='positive'] {
-        background: oklch(token(--color-green-60));
+        --border-color: var(--highlight-green-foreground);
+        --background-color: var(--vibrancy-background-green);
+        --shine-color: var(--highlight-green-foreground);
       }
 
       &:not([aria-disabled='true'])[data-button-sentiment='warning'] {
-        background: oklch(token(--color-yellow-60));
+        --border-color: var(--highlight-yellow-foreground);
+        --background-color: var(--vibrancy-background-yellow);
+        --shine-color: var(--highlight-yellow-foreground);
       }
 
       &:not([aria-disabled='true'])[data-button-sentiment='danger'] {
-        background: oklch(token(--color-red-60));
+        --border-color: var(--highlight-red-foreground);
+        --background-color: var(--vibrancy-background-red);
+        --shine-color: var(--highlight-red-foreground);
       }
 
       &:not([aria-disabled='true'], [aria-busy='true']):is(:hover) {
-        box-shadow: inset 0 -5px 25px oklch(token(--color-support-black) / 30%);
+        --border-opacity: 70%;
       }
     }
 

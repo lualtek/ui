@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { IconButton } from './icon-button';
 
 const meta = {
-  title: 'Actions/IconButton',
+  title: 'Actions/Icon Button',
   component: IconButton,
   args: {
     dimension: 'regular',
