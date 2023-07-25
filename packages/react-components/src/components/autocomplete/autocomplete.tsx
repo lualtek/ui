@@ -9,13 +9,11 @@ import {
   useMemo,
   useState,
 } from 'react';
-import { mergeRefs } from 'react-merge-refs';
 import { useDebouncedValue } from 'rooks';
 
 import {
   Menu,
   MenuProps, Popover, PopoverContentProps, Skeleton, Stack, Text, Textfield, TextfieldProps,
-  useDimensionsRef,
 } from '@/components';
 
 import styles from './autocomplete.module.css';
@@ -78,7 +76,6 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(({
 }, forwardedRef) => {
   const [currentValue, setCurrentValue] = useState(value);
   const [isOpen, setIsOpen] = useState(false);
-  const [ref, dimensions] = useDimensionsRef();
   const [debouncedValue] = useDebouncedValue(
     currentValue,
     100,
@@ -121,7 +118,7 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(({
       <Popover open={isOpen}>
         <Popover.Anchor>
           <Textfield
-            ref={mergeRefs([ref ?? null, forwardedRef])}
+            ref={forwardedRef}
             autoComplete="off"
             disabled={disabled}
             readOnly={readOnly}
@@ -142,12 +139,7 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(({
           <Menu
             role="listbox"
             className={styles.OptionsList}
-            style={{
-              width:
-                  ((dimensions && matchFieldWidth) || (dimensions && loading))
-                    ? (dimensions.width + 2)
-                    : 'auto',
-            }}
+            data-autocomplete-match-width={matchFieldWidth}
             maxHeight={maxHeight}
           >
             {(filteredOptions?.length === 0 && !loading) && (
