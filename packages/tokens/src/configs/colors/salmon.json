@@ -2,7 +2,7 @@
   "color": {
     "salmon": {
       "0": {
-        "value": "#fcf4f1",
+        "value": "#FCF4F1",
         "attributes": {
           "category": "color"
         }
@@ -26,37 +26,37 @@
         }
       },
       "30": {
-        "value": "#E89B82",
+        "value": "#ECA993",
         "attributes": {
           "category": "color"
         }
       },
       "40": {
-        "value": "#E27A5B",
+        "value": "#E48467",
         "attributes": {
           "category": "color"
         }
       },
       "50": {
-        "value": "#d25e3b",
+        "value": "#D25E3B",
         "attributes": {
           "category": "color"
         }
       },
       "60": {
-        "value": "#be4c27",
+        "value": "#BE4C27",
         "attributes": {
           "category": "color"
         }
       },
       "70": {
-        "value": "#a03d1c",
+        "value": "#A03D1C",
         "attributes": {
           "category": "color"
         }
       },
       "80": {
-        "value": "#7d2e16",
+        "value": "#7D2E16",
         "attributes": {
           "category": "color"
         }
@@ -68,7 +68,7 @@
         }
       },
       "100": {
-        "value": "#4a1b0d",
+        "value": "#4A1B0D",
         "attributes": {
           "category": "color"
         }
