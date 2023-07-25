@@ -57,7 +57,8 @@ SliderProps
         <Text
           as="span"
           lineHeight="none"
-          size={16}
+          dimmed={5}
+          size={14}
         >
           {label}
         </Text>

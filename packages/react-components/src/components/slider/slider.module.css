@@ -58,6 +58,7 @@
     &[data-disabled] {
       background-color: var(--global-disabled-background);
       cursor: not-allowed;
+      box-shadow: none;
     }
   }
 

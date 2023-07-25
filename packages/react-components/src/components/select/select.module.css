@@ -53,7 +53,8 @@
     block-size: var(--field-height);
     font-weight: token(--font-weight-semi-bold);
     border-radius: var(--field-radius);
-    border: 1px solid var(--vibrancy-background-mid);
+    border: 0;
+    box-shadow: 0 0 0 1px var(--global-background), inset 0 0 0 1px var(--dimmed-2);
     background:
       linear-gradient(
         to bottom,
@@ -96,7 +97,7 @@
     &[multiple] {
       block-size: auto;
       padding:
-        calc(token(--space-24) - token(--space-4))
+        calc(token(--space-32) - token(--space-4))
         var(--field-padding)
         token(--space-4)
         var(--field-padding);
@@ -104,8 +105,16 @@
 
       & option {
         color: currentcolor;
-        padding: calc(var(--field-padding) / 2) var(--field-padding);
+        padding:
+        calc(var(--field-padding) / 2)
+        var(--field-padding)
+        calc(var(--field-padding) / 2)
+        0;
         font-weight: token(--font-weight-semi-bold);
+      }
+
+      & optgroup > option {
+        padding: calc(var(--field-padding) / 2) var(--field-padding);
       }
 
       & option:checked {
