@@ -1,5 +1,15 @@
 # @lualtek/react-components
 
+## 9.0.0-next.2
+
+### Minor Changes
+
+- 84e981b: Update button design
+
+### Patch Changes
+
+- @lualtek/icons@9.0.0-next.2
+
 ## 9.0.0-next.1
 
 ### Major Changes
