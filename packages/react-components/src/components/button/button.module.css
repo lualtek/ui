@@ -9,6 +9,7 @@
     -webkit-touch-callout: none;
     margin: 0;
     cursor: pointer;
+    color: var(--foreground);
     font-family: inherit;
     display: inline-flex;
     align-items: center;
@@ -66,30 +67,29 @@
 
       transition: all 0.2s ease-out;
       background: linear-gradient(to top, var(--background), var(--global-background));
-      color: var(--foreground);
 
       &::before,
       &::after {
         position: absolute;
         content: '';
         height: 1px;
-        width: 40%;
         background: var(--border-color);
-        mask-image: radial-gradient(circle at center, black, transparent);
+        background: radial-gradient(circle at center, var(--shine-color), transparent);
         right: 45%;
         transition: right, bottom, opacity, 0.3s ease-out;
-        box-shadow: 0 10px 20px 15px var(--glow-color);
       }
 
       &::before {
-        right: 45%;
-        bottom: 0;
+        right: 15%;
+        width: 40%;
+        box-shadow: 0 0 20px 10px var(--glow-color);
+        top: 0;
       }
 
       &::after {
-        right: 15%;
-        box-shadow: 0 -10px 20px 15px var(--glow-color);
-        top: 0;
+        width: 60%;
+        right: 20%;
+        bottom: 0;
       }
 
       &:hover {
@@ -98,12 +98,12 @@
       }
 
       &:hover::before {
-        right: 15%;
+        right: 45%;
         opacity: 0%;
       }
 
       &:hover::after {
-        right: 45%;
+        right: 5%;
         opacity: 0%;
       }
 
@@ -142,25 +142,22 @@
 
       --border-color: var(--dimmed-5);
       --background: transparent;
-
-      color: var(--dimmed-6);
+      --border-opacity: 40%;
+      --foreground: var(--dimmed-6);
 
       &:not([aria-disabled='true'])[data-button-sentiment='positive'] {
         --border-color: var(--highlight-green-foreground);
-
-        color: var(--highlight-green-foreground);
+        --foreground: var(--highlight-green-foreground);
       }
 
       &:not([aria-disabled='true'])[data-button-sentiment='warning'] {
         --border-color: var(--highlight-yellow-foreground);
-
-        color: var(--highlight-yellow-foreground);
+        --foreground: var(--highlight-yellow-foreground);
       }
 
       &:not([aria-disabled='true'])[data-button-sentiment='danger'] {
         --border-color: var(--highlight-red-foreground);
-
-        color: var(--highlight-red-foreground);
+        --foreground: var(--highlight-red-foreground);
       }
 
       &:not([aria-disabled='true'], [aria-busy='true'], [data-button-sentiment]):is(:hover) {

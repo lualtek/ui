@@ -31,7 +31,7 @@
   }
 
   .ToggleButton[data-button-kind='secondary'] {
-    --border-color: var(--dimmed-5);
+    --border-color: var(--dimmed-3);
 
     &[aria-pressed='true'] {
       color: var(--global-vibrancy-foreground);
@@ -40,7 +40,7 @@
   }
 
   .ToggleButton[data-button-kind='flat'] {
-    --border-color: var(--dimmed-5);
+    --border-color: var(--dimmed-3);
 
     &[aria-pressed='true'] {
       color: var(--global-vibrancy-foreground);
