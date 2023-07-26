@@ -1,17 +1,18 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { SVGAttributes } from 'react';
 
+import { Stack } from '..';
 import { Button } from '.';
 
 const meta = {
   title: 'Actions/Button',
   component: Button,
   render: args => (
-    <>
+    <Stack columnGap={16} direction="row" fill={false}>
       <Button {...args} />
       <Button {...args} kind="secondary" />
       <Button {...args} kind="flat" />
-    </>
+    </Stack>
   ),
   args: {
     dimension: 'regular',
