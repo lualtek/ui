@@ -1,5 +1,7 @@
 # @lualtek/tokens
 
+## 9.0.0-next.1
+
 ## 8.3.0-next.0
 
 ### Minor Changes

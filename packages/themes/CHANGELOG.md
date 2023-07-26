@@ -1,5 +1,11 @@
 # @lualtek/themes
 
+## 9.0.0-next.1
+
+### Major Changes
+
+- 5084306: Test new button design
+
 ## 8.3.0-next.0
 
 ### Patch Changes

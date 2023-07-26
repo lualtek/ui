@@ -10,6 +10,7 @@
     "tsconfig": "0.2.0"
   },
   "changesets": [
+    "cool-crabs-buy",
     "eighty-wolves-kiss",
     "eleven-eggs-smoke",
     "empty-tomatoes-press",
