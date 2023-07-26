@@ -1,5 +1,17 @@
 # @lualtek/config
 
+## 8.3.0-next.0
+
+### Patch Changes
+
+- 0121c76: Update deps
+- Updated dependencies [aeea8b7]
+- Updated dependencies [0758198]
+- Updated dependencies [e3a55c5]
+- Updated dependencies [c6a5402]
+- Updated dependencies [6256b60]
+  - @lualtek/tokens@8.3.0-next.0
+
 ## 8.2.4
 
 ### Patch Changes

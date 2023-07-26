@@ -1,0 +1,38 @@
+{
+  "mode": "pre",
+  "tag": "next",
+  "initialVersions": {
+    "@lualtek/config": "8.2.4",
+    "@lualtek/icons": "8.2.4",
+    "@lualtek/react-components": "8.2.4",
+    "@lualtek/themes": "8.2.4",
+    "@lualtek/tokens": "8.2.4",
+    "tsconfig": "0.2.0"
+  },
+  "changesets": [
+    "eighty-wolves-kiss",
+    "eleven-eggs-smoke",
+    "empty-tomatoes-press",
+    "fair-waves-share",
+    "fast-mangos-grin",
+    "hip-ties-argue",
+    "lemon-beds-relax",
+    "lucky-insects-sparkle",
+    "mighty-pears-camp",
+    "ninety-moons-repair",
+    "rare-houses-greet",
+    "real-goats-sniff",
+    "red-terms-carry",
+    "rude-planes-battle",
+    "rude-wombats-beg",
+    "selfish-starfishes-live",
+    "serious-months-argue",
+    "shaggy-students-sin",
+    "silent-sloths-lick",
+    "smart-goats-reflect",
+    "smooth-clouds-clap",
+    "stale-comics-fly",
+    "sweet-cats-cheer",
+    "thick-buckets-destroy"
+  ]
+}

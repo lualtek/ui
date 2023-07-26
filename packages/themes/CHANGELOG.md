@@ -1,5 +1,12 @@
 # @lualtek/themes
 
+## 8.3.0-next.0
+
+### Patch Changes
+
+- 65bbf72: Uniform light/dark gradients stops
+- 2319135: Fix gradient-primary-end theme color
+
 ## 8.2.4
 
 ### Patch Changes

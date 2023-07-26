@@ -1,7 +1,7 @@
 {
   "name": "@lualtek/themes",
   "description": "Lualtek design system themes",
-  "version": "8.2.4",
+  "version": "8.3.0-next.0",
   "author": "Lualtek",
   "main": "dist/themes.css",
   "style": "dist/themes.css",
@@ -36,7 +36,7 @@
     "url": "https://github.com/lualtek/ui/issues"
   },
   "devDependencies": {
-    "@lualtek/tokens": "*",
+    "@lualtek/tokens": "8.3.0-next.0",
     "fs-extra": "11.1.1",
     "style-dictionary": "3.8.0",
     "yargs": "17.7.2",

@@ -1,5 +1,16 @@
 # @lualtek/icons
 
+## 8.3.0-next.0
+
+### Minor Changes
+
+- 9599c99: Add new list and grid icons
+- 356b56a: Updated icons sprite generation to support Figma variants
+
+### Patch Changes
+
+- 93500ca: Fix file-text duotone icon
+
 ## 8.2.4
 
 ## 8.2.3

@@ -10,6 +10,10 @@
       inset
       0 0 0 var(--border-width) var(--border-color),
       0 0 0 var(--border-width) var(--border-color);
+
+      &::after {
+        opacity: 0%;
+      }
   }
 
   .ToggleButton[data-button-kind='primary'] {

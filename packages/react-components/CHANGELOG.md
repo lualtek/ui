@@ -1,5 +1,33 @@
 # @lualtek/react-components
 
+## 8.3.0-next.0
+
+### Minor Changes
+
+- 6a166b6: Fix buttons
+- 40695e2: Update info toast default icon
+- fd39af3: Fix input and field style
+- c53bccc: Add shadowColor to elevator and deprecate elevation mixins
+- 0758198: Add new extra-large container token and update Container component
+- 8cd49b7: Add support for :user-invalid feedback where available
+- 2af9d55: Add new vertical prop to Separator
+- e3a55c5: Fix color tokens
+- f670577: Remove tap animation on disabled selection control
+- 08fce45: Fix singleLine toast filling
+- fc44bf7: Update design for primary buttons
+- e0396e0: Fix drawer header style
+- 48dc3e7: Add swipe out action to floating toast
+
+### Patch Changes
+
+- 18fc7ea: Remove useless deps and hooks
+- 0fc3c34: Minor fixes
+- 0121c76: Update deps
+- Updated dependencies [93500ca]
+- Updated dependencies [9599c99]
+- Updated dependencies [356b56a]
+  - @lualtek/icons@8.3.0-next.0
+
 ## 8.2.4
 
 ### Patch Changes
