@@ -19,7 +19,7 @@
       }
     },
     "background-mid": {
-      "value": "oklch({color.primary.30} / 30%)",
+      "value": "oklch({color.primary.20} / 40%)",
       "attributes": {
         "category": "color"
       }

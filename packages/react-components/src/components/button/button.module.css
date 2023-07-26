@@ -2,6 +2,8 @@
 
 @layer components {
   .Button {
+    --border-opacity: 40%;
+
     box-sizing: border-box;
     user-select: none;
     -webkit-touch-callout: none;
@@ -19,9 +21,12 @@
     appearance: none;
     font-weight: token(--font-weight-bold);
     overflow: hidden;
-    background: none;
+    background: var(--background);
     gap: token(--space-8);
     position: relative;
+    box-shadow:
+    inset 0 0 0 1px color-mix(in oklab, var(--border-color), transparent calc(100% - var(--border-opacity))),
+    inset 0 0 0 3px color-mix(in oklab, var(--global-background), transparent 40%);
 
     /* Sizes */
 
@@ -50,16 +55,15 @@
     /* Types */
 
     &[data-button-kind='primary'] {
-      --border-color: var(--cta-default);
-      --background-color: var(--vibrancy-background-brand);
+      --foreground: var(--border-color);
+      --background: var(--vibrancy-background-brand);
       --shine-color: var(--highlight-brand-foreground);
-      --border-opacity: 40%;
-      --foreground: var(--vibrancy-foreground);
+      --border-color: var(--cta-default);
+      --glow-color: color-mix(in oklab, var(--highlight-brand-foreground), transparent 70%);
+      --shine-position: 65%;
 
       @mixin vibrancy;
 
-      box-shadow: inset 0 0 0 1px color-mix(in oklch, var(--border-color), transparent calc(100% - var(--border-opacity)));
-      background: radial-gradient(50% 70% at 65% 0%, var(--background-color), transparent);
       transition: all 0.2s ease-out;
       color: var(--foreground);
 
@@ -68,14 +72,15 @@
         content: '';
         height: 1px;
         width: 40%;
-        background: linear-gradient(to right, transparent 0%, var(--shine-color) 50%, transparent);
+        background: radial-gradient(circle at center, var(--shine-color), color-mix(in oklab, var(--border-color), transparent calc(100% - var(--border-opacity))));
         right: 15%;
         transition: right 0.2s ease-out;
+        box-shadow: 0 -10px 20px 15px var(--glow-color);
         top: 0;
       }
 
       &:hover {
-        background: radial-gradient(50% 70% at 45% 0%, var(--background-color), transparent);
+        --shine-position: 45%;
       }
 
       &:hover::after {
@@ -84,19 +89,22 @@
 
       &:not([aria-disabled='true'])[data-button-sentiment='positive'] {
         --border-color: var(--highlight-green-foreground);
-        --background-color: var(--vibrancy-background-green);
+        --glow-color: var(--vibrancy-background-green);
+        --background: var(--vibrancy-background-green);
         --shine-color: var(--highlight-green-foreground);
       }
 
       &:not([aria-disabled='true'])[data-button-sentiment='warning'] {
         --border-color: var(--highlight-yellow-foreground);
-        --background-color: var(--vibrancy-background-yellow);
+        --glow-color: var(--vibrancy-background-yellow);
+        --background: var(--vibrancy-background-yellow);
         --shine-color: var(--highlight-yellow-foreground);
       }
 
       &:not([aria-disabled='true'])[data-button-sentiment='danger'] {
         --border-color: var(--highlight-red-foreground);
-        --background-color: var(--vibrancy-background-red);
+        --glow-color: var(--vibrancy-background-red);
+        --background: var(--vibrancy-background-red);
         --shine-color: var(--highlight-red-foreground);
       }
 
@@ -109,44 +117,49 @@
 
       @mixin vibrancy;
 
-      background-color: var(--vibrancy-background-mid);
-      color: var(--vibrancy-foreground);
+      --border-color: var(--highlight-gray-foreground);
+      --background: transparent;
+
+      color: var(--dimmed-6);
 
       &:not([aria-disabled='true'])[data-button-sentiment='positive'] {
-        background: var(--vibrancy-background-green);
+        --border-color: var(--highlight-green-foreground);
+
         color: var(--highlight-green-foreground);
       }
 
       &:not([aria-disabled='true'])[data-button-sentiment='warning'] {
-        background: var(--vibrancy-background-yellow);
+        --border-color: var(--highlight-yellow-foreground);
+
         color: var(--highlight-yellow-foreground);
       }
 
       &:not([aria-disabled='true'])[data-button-sentiment='danger'] {
-        background: var(--vibrancy-background-red);
+        --border-color: var(--highlight-red-foreground);
+
         color: var(--highlight-red-foreground);
       }
 
       &:not([aria-disabled='true'], [aria-busy='true'], [data-button-sentiment]):is(:hover) {
-        background-color: var(--vibrancy-background-hard);
-        color: var(--vibrancy-foreground);
+        --background: var(--vibrancy-background-mid);
       }
 
       &[data-button-sentiment='positive']:not([aria-disabled='true'], [aria-busy='true']):is(:hover) {
-        background: var(--highlight-green-background);
+        --background: var(--vibrancy-background-green);
       }
 
       &[data-button-sentiment='warning']:not([aria-disabled='true'], [aria-busy='true']):is(:hover) {
-        background: var(--highlight-yellow-background);
+        --background: var(--vibrancy-background-yellow);
       }
 
       &[data-button-sentiment='danger']:not([aria-disabled='true'], [aria-busy='true']):is(:hover) {
-        background: var(--highlight-red-background);
+        --background: var(--vibrancy-background-red);
       }
     }
 
     &[data-button-kind='flat'] {
       color: var(--global-foreground);
+      box-shadow: none;
 
       &:not([aria-disabled='true'])[data-button-sentiment='positive'] {
         color: var(--highlight-green-foreground);

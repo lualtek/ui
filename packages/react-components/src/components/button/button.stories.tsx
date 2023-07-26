@@ -10,6 +10,7 @@ const meta = {
     <>
       <Button {...args} />
       <Button {...args} kind="secondary" />
+      <Button {...args} kind="flat" />
     </>
   ),
   args: {
