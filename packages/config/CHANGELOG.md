@@ -1,5 +1,11 @@
 # @lualtek/config
 
+## 9.0.0-next.1
+
+### Patch Changes
+
+- @lualtek/tokens@9.0.0-next.1
+
 ## 8.3.0-next.0
 
 ### Patch Changes

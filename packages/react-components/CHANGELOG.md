@@ -1,5 +1,15 @@
 # @lualtek/react-components
 
+## 9.0.0-next.1
+
+### Major Changes
+
+- 5084306: Test new button design
+
+### Patch Changes
+
+- @lualtek/icons@9.0.0-next.1
+
 ## 8.3.0-next.0
 
 ### Minor Changes
