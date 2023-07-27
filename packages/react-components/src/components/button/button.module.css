@@ -82,7 +82,7 @@
       &::before {
         right: 15%;
         width: 40%;
-        box-shadow: 0 0 20px 10px var(--glow-color);
+        box-shadow: 0 0 20px 5px var(--glow-color);
         top: 0;
       }
 
