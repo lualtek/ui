@@ -40,7 +40,7 @@
 
     &:checked,
     &:indeterminate {
-      background: var(--cta-default);
+      background: var(--cta-dark);
       box-shadow: 0 0 0 1px var(--global-background);
 
       &::after {

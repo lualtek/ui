@@ -21,8 +21,9 @@
     flex-grow: 0;
 
     &:is([data-state='checked']) {
-      background: var(--cta-default);
+      background: var(--cta-dark);
       color: oklch(token(--color-support-white));
+      box-shadow: 0 0 0 1px var(--global-background), inset 0 0 0 1px var(--cta-default);
       justify-content: flex-end;
     }
 
