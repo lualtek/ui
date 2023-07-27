@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 9.0.0-next.4
+
+### Patch Changes
+
+- aaa448d: Fix switch colors
+  - @lualtek/icons@9.0.0-next.4
+
 ## 9.0.0-next.3
 
 ### Minor Changes
