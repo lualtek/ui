@@ -55,6 +55,7 @@ export const CircularProgress = forwardRef<HTMLDivElement, CircularProgressProps
   const dynamicStyle: CSSProperties = useMemo(() => (
     {
       '--progress': `${getPercentage()}%`,
+      '--rotation': `${getPercentage() / 100}turn`,
       '--progress-color': color,
     }
   ), [color, getPercentage]);
@@ -72,7 +73,10 @@ export const CircularProgress = forwardRef<HTMLDivElement, CircularProgressProps
       data-circular-progress-show-progress={showProgress}
       style={{ ...dynamicStyle, ...style }}
       {...otherProps}
-    />
+    >
+      <span className={styles.Start} />
+      <span className={styles.End} />
+    </div>
   );
 });
 

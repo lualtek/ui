@@ -94,7 +94,6 @@
 
       &:hover {
         --shine-position: 45%;
-        --background: color-mix(in oklab, var(--highlight-brand-foreground), transparent 70%);
       }
 
       &:hover::before {
