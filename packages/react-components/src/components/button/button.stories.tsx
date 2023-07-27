@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { SVGAttributes } from 'react';
 
-import { Stack } from '..';
+import { Stack, ToggleButton } from '..';
 import { Button } from '.';
 
 const meta = {
@@ -10,6 +10,7 @@ const meta = {
   render: args => (
     <Stack columnGap={16} direction="row" fill={false}>
       <Button {...args} />
+      <ToggleButton {...args} restingIcon="sun" kind="flat" />
       <Button {...args} kind="secondary" />
       <Button {...args} kind="flat" />
     </Stack>

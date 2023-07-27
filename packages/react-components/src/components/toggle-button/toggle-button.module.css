@@ -31,16 +31,18 @@
   }
 
   .ToggleButton[data-button-kind='secondary'] {
-    --border-color: var(--dimmed-3);
+    --border-color: var(--dimmed-5);
 
     &[aria-pressed='true'] {
+      --border-color: var(--dimmed-5);
+
       color: var(--global-vibrancy-foreground);
       background: none;
     }
   }
 
   .ToggleButton[data-button-kind='flat'] {
-    --border-color: var(--dimmed-3);
+    --border-color: var(--dimmed-5);
 
     &[aria-pressed='true'] {
       color: var(--global-vibrancy-foreground);
