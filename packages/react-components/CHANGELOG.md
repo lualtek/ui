@@ -1,5 +1,15 @@
 # @lualtek/react-components
 
+## 9.0.0-next.3
+
+### Minor Changes
+
+- 96e1e37: Update circular progress style
+
+### Patch Changes
+
+- @lualtek/icons@9.0.0-next.3
+
 ## 9.0.0-next.2
 
 ### Minor Changes
