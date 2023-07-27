@@ -35,7 +35,7 @@ export const Separator = forwardRef<HTMLHRElement, SeparatorProps>(({
   vPadding,
   hPadding,
   dimmed = 2,
-  vertical,
+  vertical = false,
   style,
   ...otherProps
 }, forwardedRef) => {
