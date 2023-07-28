@@ -1,13 +1,12 @@
 'use client';
 
-import { IconNames } from '@lualtek/icons';
 import clsx from 'clsx';
 import {
   forwardRef, ReactNode, useCallback, useId, useMemo,
 } from 'react';
 
 import {
-  Icon, Polymorphic, Stack, Text, TextProps,
+  Icon, IconProps, Polymorphic, Stack, Text, TextProps,
 } from '@/components';
 
 import styles from './icon-meter.module.css';
@@ -45,7 +44,7 @@ export type IconMeterProps = {
   /**
    * Set the icon to use as indicator
    */
-  icon?: IconNames;
+  icon?: IconProps['source'];
   /**
    * Set the color to use as accent
    */
@@ -121,13 +120,13 @@ export const IconMeter = forwardRef(({
         <Icon
           source={icon}
           className={styles.Icon}
-          dimension={12}
+          dimension={dimension === 'big' ? 18 : 12}
           fill={fillType}
           key={iconIndex}
         />
       );
     });
-  }, [icon, iconColor, roundValue]);
+  }, [icon, iconColor, dimension, roundValue]);
 
   return (
     <Stack

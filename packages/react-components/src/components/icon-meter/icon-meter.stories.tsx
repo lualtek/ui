@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Stack } from '../..';
 import { IconMeter } from './icon-meter';
 
 const meta = {
@@ -8,6 +7,7 @@ const meta = {
   component: IconMeter,
   args: {
     dimension: 'regular',
+    icon: 'star',
     value: 3.5,
   },
   argTypes: {
@@ -16,7 +16,7 @@ const meta = {
       control: { type: 'radio' },
     },
   },
-  render: args => <Stack><IconMeter {...args} /></Stack>,
+  render: args => <IconMeter {...args} />,
 } satisfies Meta<typeof IconMeter>;
 
 export default meta;
