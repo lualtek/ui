@@ -1,5 +1,15 @@
 # @lualtek/icons
 
+## 9.0.0-next.5
+
+### Major Changes
+
+- bffeb35: Remove shape-oval from icons as duplicate of circle
+
+### Minor Changes
+
+- 8a246c3: Update icons
+
 ## 9.0.0-next.4
 
 ## 9.0.0-next.3

@@ -1,5 +1,20 @@
 # @lualtek/react-components
 
+## 9.0.0-next.5
+
+### Minor Changes
+
+- e5a9953: fix list marker sizes
+- 66e49de: Clean tabs code
+- f5b13d0: Add border to disbled textfield and select
+
+### Patch Changes
+
+- b6c3901: Fix separator
+- Updated dependencies [8a246c3]
+- Updated dependencies [bffeb35]
+  - @lualtek/icons@9.0.0-next.5
+
 ## 9.0.0-next.4
 
 ### Patch Changes
