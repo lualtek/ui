@@ -6,7 +6,6 @@ declare const styles: {
   readonly "slide-in": string;
   readonly "swipe-out": string;
   readonly "Title": string;
-  readonly "Action": string;
 };
 export = styles;
 

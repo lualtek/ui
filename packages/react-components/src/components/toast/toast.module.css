@@ -75,18 +75,6 @@
   .Title {
     color: var(--toast-fg);
   }
-
-  .Action {
-    color: var(--toast-action-fg);
-    background-color: var(--toast-fg);
-    flex-grow: 0;
-
-    &:active {
-      color: var(--toast-fg);
-      background-color: var(--toast-action-fg);
-      opacity: 80%;
-    }
-  }
 }
 
 @keyframes slide-in {

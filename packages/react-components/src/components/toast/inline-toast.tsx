@@ -131,7 +131,6 @@ export const InlineToast = forwardRef<HTMLOutputElement, InlineToastProps>(({
                     onClick={onDismiss}
                     dimension="small"
                     kind="secondary"
-                    className={styles.Action}
                   >
                     {dismissLabel}
                   </Button>
