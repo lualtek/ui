@@ -10,7 +10,6 @@
     white-space: nowrap;
     overflow-x: auto;
     scrollbar-width: none;
-    scrollbar-color: transparent transparent;
 
     &::-webkit-scrollbar {
       display: none;
@@ -24,42 +23,6 @@
       background-color: transparent;
       border-radius: 6px;
       border: 3px solid transparent;
-    }
-  }
-
-  .Trigger {
-    position: relative;
-    overflow: unset;
-    border-radius: 0;
-    backdrop-filter: none;
-    background: none;
-    font-weight: token(--font-weight-semi-bold);
-    outline-offset: calc((var(--separator-size) * 2) * -1);
-    color: var(--dimmed-6);
-    appearance: none;
-    padding: token(--space-8) token(--space-16);
-    block-size: token(--space-48);
-    border: 0;
-    background-color: transparent;
-    font-family: inherit;
-    font-size: inherit;
-    white-space: nowrap;
-    flex-shrink: 0;
-
-    &:not([aria-disabled='true']) {
-      color: var(--dimmed-5);
-    }
-
-    &.Trigger:not([aria-disabled='true']):is(:hover, :focus, :active) {
-      background: none;
-      color: var(--global-foreground);
-      backdrop-filter: none;
-    }
-
-    &.Trigger[aria-disabled='true'] {
-      background: none;
-      color: var(--global-disabled-foreground);
-      backdrop-filter: none;
     }
   }
 
@@ -80,6 +43,28 @@
     &[data-highlight-alt] {
       background: var(--cta-default);
       z-index: 1;
+    }
+  }
+}
+@layer overrides {
+  .Trigger {
+    overflow: unset;
+    outline-offset: calc((var(--separator-size) * 2) * -1);
+
+    &:not([aria-disabled='true']) {
+      color: var(--dimmed-5);
+    }
+
+    &.Trigger:not([aria-disabled='true']):is(:hover, :focus, :active) {
+      background: none;
+      color: var(--global-foreground);
+      backdrop-filter: none;
+    }
+
+    &.Trigger[aria-disabled='true'] {
+      background: none;
+      color: var(--global-disabled-foreground);
+      backdrop-filter: none;
     }
   }
 }
