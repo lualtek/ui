@@ -1,6 +1,6 @@
 @layer components {
   .List {
-    --marker-size: token(--space-16);
+    --marker-size: token(--icon-size-16);
     --marker-gap: token(--space-8);
     --font-size: token(--font-size-18);
 
@@ -15,13 +15,13 @@
     }
 
     &[data-list-size='small'] {
-      --marker-size: 0.77rem;
+      --marker-size: token(--icon-size-14);
       --marker-gap: token(--space-8);
       --font-size: token(--font-size-16);
     }
 
     &[data-list-size='big'] {
-      --marker-size: 1.11rem;
+      --marker-size: token(--icon-size-18);
       --marker-gap: token(--space-16);
       --font-size: token(--font-size-22);
     }
