@@ -1,5 +1,16 @@
 # @lualtek/react-components
 
+## 9.0.0-next.6
+
+### Minor Changes
+
+- ec602a6: Update toast actions style
+- 7957d62: Update icon meter style
+
+### Patch Changes
+
+- @lualtek/icons@9.0.0-next.6
+
 ## 9.0.0-next.5
 
 ### Minor Changes
