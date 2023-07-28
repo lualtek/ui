@@ -64,8 +64,9 @@
     }
 
     &:disabled {
+      --inner-border-color: var(--global-disabled-foreground);
+
       cursor: not-allowed;
-      box-shadow: none;
       color: var(--global-disabled-foreground);
       background-color: var(--global-disabled-background);
 

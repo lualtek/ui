@@ -39,6 +39,8 @@
   }
 
   .Field {
+    --inner-border-color: var(--dimmed-2);
+
     margin: 0;
     text-overflow: ellipsis;
     font-size: var(--font-size);
@@ -54,7 +56,7 @@
     font-weight: token(--font-weight-semi-bold);
     border-radius: var(--field-radius);
     border: 0;
-    box-shadow: 0 0 0 1px var(--global-background), inset 0 0 0 1px var(--dimmed-2);
+    box-shadow: 0 0 0 1px var(--global-background), inset 0 0 0 1px var(--inner-border-color);
     background:
       linear-gradient(
         to bottom,
@@ -68,6 +70,8 @@
       var(--field-padding);
 
     &:disabled {
+      --inner-border-color: var(--global-disabled-foreground);
+
       cursor: not-allowed;
       color: var(--global-disabled-foreground);
       background:
