@@ -1,19 +1,19 @@
 {
   "cta": {
     "default": {
-      "value": "oklch({color.brand.60})",
+      "value": "{color.brand.60}",
       "attributes": {
         "category": "color"
       }
     },
     "dark": {
-      "value": "oklch({color.brand.70})",
+      "value": "{color.brand.70}",
       "attributes": {
         "category": "color"
       }
     },
     "foreground": {
-      "value": "oklch({color.support.white})",
+      "value": "{color.support.white}",
       "attributes": {
         "category": "color"
       }

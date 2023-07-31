@@ -3,10 +3,7 @@ import StyleDictionary from 'style-dictionary';
 
 import OkLCH from './transformers/oklch';
 
-// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-// const StyleDictionary = require('style-dictionary').extend('src/themes.config.js');
-
-const SDWithConfig = StyleDictionary.extend('src/themes.config.js');
+const SDWithConfig = StyleDictionary.extend('src/themes.config');
 
 /**
  * Register custom transformers to process token values for

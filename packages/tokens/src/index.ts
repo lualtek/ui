@@ -2,20 +2,19 @@
 import StyleDictionary from 'style-dictionary';
 
 import CssBezier from './transformers/css-bezier';
-// import HexHslValues from './transformers/hex-hslvalues';
-import HexOklchValues from './transformers/hex-oklchvalues';
+import OklchValues from './transformers/oklch-values';
 import SizePxToRem from './transformers/px-rem';
 import SizePxToRootEm from './transformers/px-rootem';
 
 // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-const SDWithConfig = StyleDictionary.extend('src/tokens.config.json');
+const SDWithConfig = StyleDictionary.extend('src/tokens.config.js');
 
 /**
  * Register custom transformers to process token values for
  * the web platform
  */
 // StyleDictionary.registerTransform(HexHslValues);
-SDWithConfig.registerTransform(HexOklchValues);
+SDWithConfig.registerTransform(OklchValues);
 SDWithConfig.registerTransform(SizePxToRem);
 SDWithConfig.registerTransform(SizePxToRootEm);
 SDWithConfig.registerTransform(CssBezier);
@@ -34,7 +33,7 @@ SDWithConfig.registerTransformGroup({
     'size/px-rootem',
     'size/px-rem',
     'size/px',
-    'color/oklchvalue',
+    'color/oklchvalues',
     'easing/cubic-bezier',
   ],
 });

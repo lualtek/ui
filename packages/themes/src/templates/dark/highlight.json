@@ -1,145 +1,145 @@
 {
   "highlight": {
     "brand-background": {
-      "value": "oklch({color.brand.100})",
+      "value": "{color.brand.100}",
       "attributes": {
         "category": "color"
       }
     },
     "brand-foreground": {
-      "value": "oklch({color.brand.40})",
+      "value": "{color.brand.40}",
       "attributes": {
         "category": "color"
       }
     },
     "gray-background": {
-      "value": "oklch({color.primary.80})",
+      "value": "{color.primary.80}",
       "attributes": {
         "category": "color"
       }
     },
     "gray-foreground": {
-      "value": "oklch({color.primary.40})",
+      "value": "{color.primary.40}",
       "attributes": {
         "category": "color"
       }
     },
     "yellow-background": {
-      "value": "oklch({color.yellow.100})",
+      "value": "{color.yellow.100}",
       "attributes": {
         "category": "color"
       }
     },
     "yellow-foreground": {
-      "value": "oklch({color.yellow.40})",
+      "value": "{color.yellow.40}",
       "attributes": {
         "category": "color"
       }
     },
     "green-background": {
-      "value": "oklch({color.green.100})",
+      "value": "{color.green.100}",
       "attributes": {
         "category": "color"
       }
     },
     "green-foreground": {
-      "value": "oklch({color.green.40})",
+      "value": "{color.green.40}",
       "attributes": {
         "category": "color"
       }
     },
     "blue-background": {
-      "value": "oklch({color.blue.100})",
+      "value": "{color.blue.100}",
       "attributes": {
         "category": "color"
       }
     },
     "blue-foreground": {
-      "value": "oklch({color.blue.40})",
+      "value": "{color.blue.40}",
       "attributes": {
         "category": "color"
       }
     },
     "red-background": {
-      "value": "oklch({color.red.100})",
+      "value": "{color.red.100}",
       "attributes": {
         "category": "color"
       }
     },
     "red-foreground": {
-      "value": "oklch({color.red.30})",
+      "value": "{color.red.30}",
       "attributes": {
         "category": "color"
       }
     },
     "cyan-background": {
-      "value": "oklch({color.cyan.100})",
+      "value": "{color.cyan.100}",
       "attributes": {
         "category": "color"
       }
     },
     "cyan-foreground": {
-      "value": "oklch({color.cyan.40})",
+      "value": "{color.cyan.40}",
       "attributes": {
         "category": "color"
       }
     },
     "purple-background": {
-      "value": "oklch({color.purple.100})",
+      "value": "{color.purple.100}",
       "attributes": {
         "category": "color"
       }
     },
     "purple-foreground": {
-      "value": "oklch({color.purple.40})",
+      "value": "{color.purple.40}",
       "attributes": {
         "category": "color"
       }
     },
     "indigo-background": {
-      "value": "oklch({color.indigo.80})",
+      "value": "{color.indigo.80}",
       "attributes": {
         "category": "color"
       }
     },
     "indigo-foreground": {
-      "value": "oklch({color.indigo.20})",
+      "value": "{color.indigo.20}",
       "attributes": {
         "category": "color"
       }
     },
     "dipsy-background": {
-      "value": "oklch({color.dipsy.90})",
+      "value": "{color.dipsy.90}",
       "attributes": {
         "category": "color"
       }
     },
     "dipsy-foreground": {
-      "value": "oklch({color.dipsy.40})",
+      "value": "{color.dipsy.40}",
       "attributes": {
         "category": "color"
       }
     },
     "salmon-background": {
-      "value": "oklch({color.salmon.90})",
+      "value": "{color.salmon.90}",
       "attributes": {
         "category": "color"
       }
     },
     "salmon-foreground": {
-      "value": "oklch({color.salmon.20})",
+      "value": "{color.salmon.20}",
       "attributes": {
         "category": "color"
       }
     },
     "magenta-background": {
-      "value": "oklch({color.magenta.90})",
+      "value": "{color.magenta.90}",
       "attributes": {
         "category": "color"
       }
     },
     "magenta-foreground": {
-      "value": "oklch({color.magenta.10})",
+      "value": "{color.magenta.10}",
       "attributes": {
         "category": "color"
       }

@@ -1,55 +1,55 @@
 {
   "dimmed": {
     "0": {
-      "value": "oklch({color.primary.90})",
+      "value": "{color.primary.90}",
       "attributes": {
         "category": "color"
       }
     },
     "1": {
-      "value": "oklch({color.primary.80})",
+      "value": "{color.primary.80}",
       "attributes": {
         "category": "color"
       }
     },
     "2": {
-      "value": "oklch({color.primary.70})",
+      "value": "{color.primary.70}",
       "attributes": {
         "category": "color"
       }
     },
     "3": {
-      "value": "oklch({color.primary.60})",
+      "value": "{color.primary.60}",
       "attributes": {
         "category": "color"
       }
     },
     "4": {
-      "value": "oklch({color.primary.50})",
+      "value": "{color.primary.50}",
       "attributes": {
         "category": "color"
       }
     },
     "5": {
-      "value": "oklch({color.primary.40})",
+      "value": "{color.primary.40}",
       "attributes": {
         "category": "color"
       }
     },
     "6": {
-      "value": "oklch({color.primary.30})",
+      "value": "{color.primary.30}",
       "attributes": {
         "category": "color"
       }
     },
     "7": {
-      "value": "oklch({color.primary.20})",
+      "value": "{color.primary.20}",
       "attributes": {
         "category": "color"
       }
     },
     "8": {
-      "value": "oklch({color.primary.0})",
+      "value": "{color.primary.0}",
       "attributes": {
         "category": "color"
       }

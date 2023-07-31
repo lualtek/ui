@@ -1,8 +1,8 @@
 import Color from 'colorjs.io';
 import * as StyleDictionary from 'style-dictionary';
 
-const okLCHValue: StyleDictionary.Named<StyleDictionary.Transform> = {
-  name: 'color/oklchvalue',
+const okLCHValues: StyleDictionary.Named<StyleDictionary.Transform> = {
+  name: 'color/oklchvalues',
   type: 'value',
   matcher: prop => prop.attributes?.category === 'color',
   transformer: (token) => {
@@ -17,4 +17,4 @@ const okLCHValue: StyleDictionary.Named<StyleDictionary.Transform> = {
   },
 };
 
-export default okLCHValue;
+export default okLCHValues;

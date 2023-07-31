@@ -1,20 +1,22 @@
-/* eslint-disable @typescript-eslint/restrict-template-expressions */
-/* eslint-disable @typescript-eslint/no-var-requires */
-/* eslint-disable import/no-extraneous-dependencies */
-const yargs = require('yargs/yargs');
-// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+/* eslint-disable
+  @typescript-eslint/no-unsafe-assignment,
+  @typescript-eslint/no-var-requires,
+  @typescript-eslint/no-unsafe-return
+*/
 const { hideBin } = require('yargs/helpers');
 
-const { argv } = yargs(hideBin(process.argv));
-const tkns = require('@lualtek/tokens/platforms/web/tokens.json');
+const yargs = require('yargs/yargs');
+const ColorTokens = require('../../tokens/src/configs/colors');
 
+const { argv } = yargs(hideBin(process.argv));
 module.exports = {
   source: [`./src/templates/${argv.name}/*.json`],
   tokens: {
-    ...tkns,
+    ...ColorTokens,
   },
   platforms: {
     web: {
+      basePxFontSize: 18,
       buildPath: 'dist/themes/',
       transformGroup: 'custom-web',
       files: [
@@ -29,6 +31,10 @@ module.exports = {
       ],
       options: {
         showFileHeader: true,
+        fileHeader: defaultMessage => [
+          ...defaultMessage,
+          '© Lualtek Srl. All rights reserved.',
+        ],
       },
     },
   },

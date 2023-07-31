@@ -11,7 +11,7 @@
     "platforms/"
   ],
   "scripts": {
-    "prebuild": "rimraf platforms/",
+    "prebuild": "rimraf platforms/ && ts-node src/generate-indexes",
     "build": "run-s build:tokens build:types",
     "build:tokens": "ts-node src/index",
     "build:types": "ts-node src/generate-types"

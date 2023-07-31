@@ -2,13 +2,13 @@
   "gradient": {
     "brand": {
       "start": {
-        "value": "oklch({color.brand.60})",
+        "value": "{color.brand.60}",
         "attributes": {
           "category": "color"
         }
       },
       "end": {
-        "value": "oklch({color.brand.70})",
+        "value": "{color.brand.70}",
         "attributes": {
           "category": "color"
         }
@@ -16,13 +16,13 @@
     },
     "primary": {
       "start": {
-        "value": "oklch({color.primary.80})",
+        "value": "{color.primary.80}",
         "attributes": {
           "category": "color"
         }
       },
       "end": {
-        "value": "oklch({color.primary.90})",
+        "value": "{color.primary.90}",
         "attributes": {
           "category": "color"
         }
@@ -30,13 +30,13 @@
     },
     "cyan": {
       "start": {
-        "value": "oklch({color.cyan.30})",
+        "value": "{color.cyan.30}",
         "attributes": {
           "category": "color"
         }
       },
       "end": {
-        "value": "oklch({color.cyan.60})",
+        "value": "{color.cyan.60}",
         "attributes": {
           "category": "color"
         }
@@ -44,13 +44,13 @@
     },
     "dawn": {
       "start": {
-        "value": "oklch({color.cyan.50})",
+        "value": "{color.cyan.50}",
         "attributes": {
           "category": "color"
         }
       },
       "end": {
-        "value": "oklch({color.purple.40})",
+        "value": "{color.purple.40}",
         "attributes": {
           "category": "color"
         }
