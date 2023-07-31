@@ -35,6 +35,18 @@
       "attributes": {
         "category": "color"
       }
+    },
+    "inner-contrast-border": {
+      "value": "oklch({color.support.white} / 15%)",
+      "attributes": {
+        "category": "color"
+      }
+    },
+    "outer-contrast-border": {
+      "value": "oklch({color.support.black} / 30%)",
+      "attributes": {
+        "category": "color"
+      }
     }
   }
 }

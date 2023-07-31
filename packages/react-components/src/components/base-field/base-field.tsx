@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { ComponentPropsWithRef, forwardRef } from 'react';
+import { forwardRef } from 'react';
 
 import { Polymorphic } from '@/components';
 
@@ -8,7 +8,7 @@ import styles from './base-field.module.css';
 /**
  * @internal
  */
-export type BaseFieldProps = ComponentPropsWithRef<'input' | 'textarea'> & {
+export type BaseFieldProps = {
   invalid?: boolean;
 }
 

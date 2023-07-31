@@ -5,7 +5,7 @@
 
     @mixin vibrancy;
 
-    background: var(--vibrancy-background-mid);
+    background: var(--vibrancy-background-soft);
     border-radius: token(--radius-24);
     overflow: hidden;
 

@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import StyleDictionary from 'style-dictionary';
 
-import OkLch from './transformers/oklch';
+import OkLCH from './transformers/oklch';
 
 // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
 // const StyleDictionary = require('style-dictionary').extend('src/themes.config.js');
@@ -12,7 +12,7 @@ const SDWithConfig = StyleDictionary.extend('src/themes.config.js');
  * Register custom transformers to process token values for
  * the web platform
  */
-SDWithConfig.registerTransform(OkLch);
+SDWithConfig.registerTransform(OkLCH);
 
 /**
  * Add the custom transformers to a new transformGroup `custom-web`
