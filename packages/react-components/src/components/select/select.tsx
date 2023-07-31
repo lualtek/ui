@@ -2,18 +2,17 @@
 
 import clsx from 'clsx';
 import {
-  ChangeEvent, forwardRef, ReactNode, SelectHTMLAttributes, useId,
+  ChangeEvent, ComponentPropsWithRef, forwardRef, ReactNode, useId,
 } from 'react';
 
 import {
   Icon, IconProps, Stack,
   Text,
 } from '@/components';
-import { PropsClassChildren } from '@/components/types';
 
 import styles from './select.module.css';
 
-export type SelectProps = PropsClassChildren<SelectHTMLAttributes<HTMLSelectElement> & {
+export type SelectProps = ComponentPropsWithRef<'select'> & {
   /**
    * Change the default icon displayed on the side of the select.
    */
@@ -39,7 +38,7 @@ export type SelectProps = PropsClassChildren<SelectHTMLAttributes<HTMLSelectElem
    * @default false
    */
   fullWidth?: boolean;
-}>
+}
 
 export const Select = forwardRef<HTMLSelectElement, SelectProps>(({
   children,

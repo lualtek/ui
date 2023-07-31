@@ -1,7 +1,7 @@
 import { TokensTypes } from '@lualtek/tokens';
 import * as PopoverPrimitive from '@radix-ui/react-popover';
 import { domAnimation, LazyMotion, m } from 'framer-motion';
-import { useMemo } from 'react';
+import { FC, useMemo } from 'react';
 
 import { Elevator } from '@/components';
 
@@ -28,7 +28,7 @@ export type PopoverContentProps = PopoverPrimitive.PopoverContentProps & {
   usePortal?: boolean;
 }
 
-export const PopoverContent = ({
+export const PopoverContent: FC<PopoverContentProps> = ({
   showArrow = false,
   arrowColor = 'var(--dimmed-2)',
   offset = 4,
@@ -36,7 +36,7 @@ export const PopoverContent = ({
   usePortal = true,
   side,
   ...otherProps
-}: PopoverContentProps) => {
+}) => {
   const computeOrigin = useMemo(() => {
     if (side === 'left') {
       return { x: 8, y: 0 };

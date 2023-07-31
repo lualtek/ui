@@ -1,6 +1,7 @@
 'use client';
 
 import * as PopoverPrimitive from '@radix-ui/react-popover';
+import { FC } from 'react';
 
 import { PropsWithClass } from '@/components/types';
 
@@ -11,7 +12,16 @@ import { PopoverPortal } from './popover-portal';
 import { PopoverTrigger } from './popover-trigger';
 
 export type PopoverProps = PropsWithClass<PopoverPrimitive.PopoverProps>
-export const Popover = ({
+
+type PopoverComponentProps = FC<PopoverProps> & {
+  Anchor: typeof PopoverAnchor;
+  Close: typeof PopoverClose;
+  Content: typeof PopoverContent;
+  Portal: typeof PopoverPortal;
+  Trigger: typeof PopoverTrigger;
+}
+
+export const Popover: PopoverComponentProps = ({
   children,
   className,
   ...otherProps

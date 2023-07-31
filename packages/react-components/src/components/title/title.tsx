@@ -1,13 +1,15 @@
 'use client';
 
 import clsx from 'clsx';
-import { CSSProperties, forwardRef, useMemo } from 'react';
+import {
+  ComponentPropsWithRef, CSSProperties, forwardRef, useMemo,
+} from 'react';
 
 import { Polymorphic } from '@/components';
 
 import styles from './title.module.css';
 
-export type TitleProps = {
+export type TitleProps = ComponentPropsWithRef<'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'> & {
   /**
    * Set the level of the title. This property only
    * affects the visual appearance of the title and not the

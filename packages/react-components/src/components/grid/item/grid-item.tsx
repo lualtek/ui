@@ -1,11 +1,11 @@
 import clsx from 'clsx';
-import { CSSProperties, forwardRef, useMemo } from 'react';
-
-import { PropsClassChildren } from '@/components/types';
+import {
+  ComponentPropsWithRef, CSSProperties, forwardRef, useMemo,
+} from 'react';
 
 import styles from './grid-item.module.css';
 
-export type GridItemProps = PropsClassChildren<{
+export type GridItemProps = ComponentPropsWithRef<'li'> & {
   /**
    * Make the item span the entire row.
    */
@@ -24,7 +24,7 @@ export type GridItemProps = PropsClassChildren<{
    * Read more: https://developer.mozilla.org/en-US/docs/Web/CSS/grid-row
    */
   row?: string;
-}>
+}
 
 export const GridItem = forwardRef<HTMLLIElement, GridItemProps>(({
   style,

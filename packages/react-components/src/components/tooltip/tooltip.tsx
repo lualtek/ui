@@ -9,18 +9,16 @@ import {
   Children, cloneElement, isValidElement, ReactNode, useEffect, useMemo, useRef, useState,
 } from 'react';
 
-import { PropsWithClass } from '@/components/types';
+import { FCChildrenClass } from '@/components/types';
 
 import styles from './tooltip.module.css';
 
-export type TooltipProps = PropsWithClass<
-TooltipPrimitive.TooltipProps &
-TooltipPrimitive.TooltipContentProps & {
+export type TooltipProps = TooltipPrimitive.TooltipProps & TooltipPrimitive.TooltipContentProps & {
   trigger: ReactNode;
   side?: TooltipPrimitive.TooltipContentProps['side'];
-}>
+}
 
-export const Tooltip = ({
+export const Tooltip: FCChildrenClass<TooltipProps> = ({
   children,
   className,
   trigger,
@@ -30,7 +28,7 @@ export const Tooltip = ({
   alignOffset,
   delayDuration,
   ...otherProps
-}: TooltipProps) => {
+}) => {
   const [triggerCenter, setTriggerCenter] = useState<number>(0);
   const triggerRef = useRef<HTMLHtmlElement>();
 

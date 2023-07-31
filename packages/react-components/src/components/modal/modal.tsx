@@ -6,8 +6,7 @@ import { domMax, LazyMotion, m } from 'framer-motion';
 import { forwardRef, useMemo } from 'react';
 import { FocusOn } from 'react-focus-on';
 
-import { useOverlayContext, useResponsiveContext } from '@/components';
-import { PropsClassChildren } from '@/components/types';
+import { PropsClassChildren, useOverlayContext, useResponsiveContext } from '@/components';
 
 import { ModalContent, ModalContentProps } from './content/modal-content';
 import styles from './modal.module.css';

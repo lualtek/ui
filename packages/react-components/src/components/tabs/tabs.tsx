@@ -4,7 +4,7 @@ import * as TabsPrimitive from '@radix-ui/react-tabs';
 import clsx from 'clsx';
 import { domMax, LazyMotion, m } from 'framer-motion';
 import {
-  Children, isValidElement, useCallback, useId, useState,
+  Children, FC, isValidElement, useCallback, useId, useState,
 } from 'react';
 
 import {
@@ -27,7 +27,11 @@ export type TabsProps = TabsPrimitive.TabsProps & {
   dimension?: 'small' | 'regular' | 'big';
 };
 
-export const Tabs = ({
+type TabsComponent = FC<TabsProps> & {
+  Panel: typeof TabPanel;
+}
+
+export const Tabs: TabsComponent = ({
   className,
   children,
   onValueChange,
@@ -35,7 +39,7 @@ export const Tabs = ({
   padding,
   dimension = 'big',
   ...otherProps
-}: TabsProps) => {
+}) => {
   const [activeItem, setActiveItem] = useState<string>(defaultValue ?? '');
   const uid = useId();
 

@@ -9,11 +9,13 @@ import {
 import {
   Icon, IconProps, Stack, StackProps,
 } from '@/components';
-import { FCChildrenClass } from '@/components/types';
+import { PropsClassChildren } from '@/components/types';
 
 import styles from './chip.module.css';
 
-export type ChipProps = {
+type ForwardedElementType<T extends boolean> = T extends true ? HTMLButtonElement : HTMLSpanElement;
+
+export type ChipProps = PropsClassChildren<{
   /**
    * Set the dimension of the component.
    */
@@ -39,7 +41,7 @@ export type ChipProps = {
    * @important The icon is not rendered if `dismissable` is `true`
    */
   icon?: IconProps['source'];
-}
+}>
 
 type Sizes = Record<NonNullable<ChipProps['dimension']>, {
   icon: IconProps['dimension'];
@@ -57,7 +59,7 @@ const sizes: Sizes = {
   },
 };
 
-export const Chip: FCChildrenClass<ChipProps> = forwardRef(({
+export const Chip = forwardRef<ForwardedElementType<NonNullable<ChipProps['interactive']>>, ChipProps>(({
   style,
   children,
   className,
@@ -68,7 +70,7 @@ export const Chip: FCChildrenClass<ChipProps> = forwardRef(({
   dismissable,
   onDismissClick,
   ...otherProps
-}, forwardedRef: Ref<HTMLButtonElement>) => {
+}, forwardedRef) => {
   const commonProps: StackProps & Record<string, unknown> = useMemo(() => ({
     direction: 'row',
     columnGap: 8,
@@ -109,7 +111,7 @@ export const Chip: FCChildrenClass<ChipProps> = forwardRef(({
   return interactive ? (
     <Stack
       as="button"
-      ref={forwardedRef}
+      ref={forwardedRef as Ref<HTMLButtonElement>}
       style={{ ...dynamicStyle, ...style }}
       {...commonProps}
       {...otherProps}
@@ -119,7 +121,7 @@ export const Chip: FCChildrenClass<ChipProps> = forwardRef(({
   ) : (
     <Stack
       as="span"
-      ref={forwardedRef}
+      ref={forwardedRef as Ref<HTMLSpanElement>}
       style={{ ...dynamicStyle, ...style }}
       {...commonProps}
       {...otherProps}

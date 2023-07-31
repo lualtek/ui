@@ -2,14 +2,14 @@
 
 import clsx from 'clsx';
 import {
-  CSSProperties, forwardRef, useCallback, useMemo,
+  ComponentPropsWithRef, CSSProperties, forwardRef, useCallback, useMemo,
 } from 'react';
 
-import { PropsWithClass } from '@/components/types';
+import { FCChildrenClass } from '@/components/types';
 
 import styles from './circular-progress.module.css';
 
-export type CircularProgressProps = PropsWithClass<{
+export type CircularProgressProps = ComponentPropsWithRef<'div'> & {
   /**
    * Set the current progress of the progress bar.
    * This value should be between 0 and 'max'. The percentage is
@@ -33,9 +33,9 @@ export type CircularProgressProps = PropsWithClass<{
    * Change the color of the progress bar.
    */
   color?: string;
-}>
+}
 
-export const CircularProgress = forwardRef<HTMLDivElement, CircularProgressProps>(({
+export const CircularProgress: FCChildrenClass<CircularProgressProps> = forwardRef(({
   className,
   value,
   max = 100,

@@ -9,11 +9,10 @@ import { useFocusEffect, useRovingTabIndex } from 'react-roving-tabindex';
 import {
   Icon, IconProps, Polymorphic, Stack,
 } from '@/components';
-import { PropsClassChildren } from '@/components/types';
 
 import styles from './menu-item.module.css';
 
-export type MenuItemProps = PropsClassChildren<{
+export type MenuItemProps = {
   /**
    * Whether the menu item should have an icon
    */
@@ -64,7 +63,7 @@ export type MenuItemProps = PropsClassChildren<{
    * Set the sentiment color for the item
    */
   sentiment?: 'positive' | 'warning' | 'danger';
-}>
+}
 
 type PolymorphicMenuItem = Polymorphic.ForwardRefComponent<'button', MenuItemProps>;
 

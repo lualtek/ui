@@ -1,5 +1,5 @@
 import * as TabsPrimitive from '@radix-ui/react-tabs';
-import { ReactNode } from 'react';
+import { FC, ReactNode } from 'react';
 
 import { IconProps } from '@/components';
 
@@ -18,11 +18,11 @@ export type TabPanelProps = TabsPrimitive.TabsContentProps & TabsPrimitive.TabsT
   decorator?: ReactNode;
 };
 
-export const TabPanel = ({
+export const TabPanel: FC<TabPanelProps> = ({
   children,
   label,
   ...otherProps
-}: TabPanelProps) => (
+}) => (
   <TabsPrimitive.Content data-tabs-label={label} {...otherProps}>
     {children}
   </TabsPrimitive.Content>

@@ -3,14 +3,14 @@
 import clsx from 'clsx';
 import { domAnimation, LazyMotion, m } from 'framer-motion';
 import {
-  ChangeEvent, forwardRef, InputHTMLAttributes, ReactNode, useId,
+  ChangeEvent, ComponentPropsWithRef, forwardRef, ReactNode, useId,
 } from 'react';
 
 import { Stack, Text, TextProps } from '@/components';
 
 import styles from '../selection-controls.module.css';
 
-export type RadioProps = InputHTMLAttributes<HTMLInputElement> & {
+export type RadioProps = ComponentPropsWithRef<'input'> & {
   /**
    * Set disabled state. The component is not interactive and grayed out.
    */

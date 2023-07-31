@@ -3,17 +3,17 @@
 import { TokensTypes } from '@lualtek/tokens';
 import { domMax, LazyMotion, m } from 'framer-motion';
 import {
-  CSSProperties, forwardRef, PropsWithChildren, ReactNode, useMemo,
+  ComponentPropsWithRef,
+  CSSProperties, forwardRef, ReactNode, useMemo,
 } from 'react';
 
 import {
   IconChip, IconChipProps, Stack, StackProps, Text, Title,
 } from '@/components';
-import { PropsWithClass } from '@/components/types';
 
 import styles from './info-state.module.css';
 
-export type InfoStateProps = PropsWithChildren<PropsWithClass<{
+export type InfoStateProps = ComponentPropsWithRef<'div'> & {
   /**
    * Set the main tagline of the info state. This should be catchy and short
    * as much as possible.
@@ -42,7 +42,7 @@ export type InfoStateProps = PropsWithChildren<PropsWithClass<{
    * as many elements as you want, we suggest to add no more than two actions.
    */
   actions?: ReactNode;
-}>>
+}
 
 export const InfoState = forwardRef<HTMLDivElement, InfoStateProps>(({
   className,

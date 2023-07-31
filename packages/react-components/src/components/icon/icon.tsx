@@ -7,15 +7,15 @@ import clsx from 'clsx';
 import {
   Children,
   cloneElement,
+  ComponentPropsWithRef,
   forwardRef,
   ReactElement,
-  SVGAttributes,
   useMemo,
 } from 'react';
 
 import styles from './icon.module.css';
 
-export type IconProps = SVGAttributes<SVGElement | SVGSVGElement> & {
+export type IconProps = ComponentPropsWithRef<'svg'> & {
   /**
    * Set the icon name to display. Icon names are defined in
    * the `IconNames` enum and are part of Lualtek iconography system.
@@ -34,7 +34,7 @@ export const Icon = forwardRef<SVGSVGElement, IconProps>(({
   dimension = 18,
   fill,
   ...otherProps
-}: IconProps, forwardedRef) => {
+}, forwardedRef) => {
   const dynamicStyle = useMemo(() => (Number(dimension) < 18 ? 'solid' : 'duotone'), [dimension]);
 
   return (typeof source === 'string')

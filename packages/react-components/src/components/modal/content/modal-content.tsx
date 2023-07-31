@@ -2,6 +2,7 @@
 
 import clsx from 'clsx';
 import {
+  ComponentPropsWithRef,
   CSSProperties, forwardRef, ReactNode, useMemo,
 } from 'react';
 import { AutoFocusInside } from 'react-focus-on';
@@ -9,11 +10,10 @@ import { AutoFocusInside } from 'react-focus-on';
 import {
   Elevator, IconButton, Stack, Title, useOverlayContext, useResponsiveContext,
 } from '@/components';
-import { PropsClassChildren } from '@/components/types';
 
 import styles from './modal-content.module.css';
 
-export type ModalContentProps = PropsClassChildren<{
+export type ModalContentProps = ComponentPropsWithRef<'div'> & {
   /**
    * Set the accessible title of the modal. This is used by screen readers to
    * announce the title of the modal when opened.
@@ -33,7 +33,7 @@ export type ModalContentProps = PropsClassChildren<{
    * and prevend double scrolling.
    */
   scrollInside?: boolean;
-}>
+}
 
 export const ModalContent = forwardRef<HTMLDivElement, ModalContentProps>(({
   children,

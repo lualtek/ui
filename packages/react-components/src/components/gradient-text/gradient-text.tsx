@@ -2,12 +2,13 @@
 
 import clsx from 'clsx';
 import {
-  CSSProperties, forwardRef, HTMLAttributes, useMemo,
+  ComponentPropsWithRef,
+  CSSProperties, forwardRef, useMemo,
 } from 'react';
 
 import styles from './gradient-text.module.css';
 
-export type GradientTextProps = HTMLAttributes<HTMLSpanElement> & {
+export type GradientTextProps = ComponentPropsWithRef<'span'> & {
   /**
    * The gradient name to use from predefined gradients.
    * @default 'rainbow'

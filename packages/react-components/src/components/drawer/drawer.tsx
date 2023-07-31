@@ -4,7 +4,8 @@ import tkns from '@lualtek/tokens/platforms/web/tokens.json';
 import clsx from 'clsx';
 import { domMax, LazyMotion, m } from 'framer-motion';
 import {
-  CSSProperties, forwardRef, ReactNode, Ref, useMemo,
+  ComponentPropsWithRef,
+  CSSProperties, forwardRef, ReactNode, useMemo,
 } from 'react';
 import { AutoFocusInside, FocusOn } from 'react-focus-on';
 import { useKeys } from 'rooks';
@@ -16,11 +17,10 @@ import {
   Title,
   useOverlayContext,
 } from '@/components';
-import { FCChildrenClass } from '@/components/types';
 
 import styles from './drawer.module.css';
 
-export type DrawerProps = {
+export type DrawerProps = ComponentPropsWithRef<'div'> & {
   /**
    * This enable the drawer to be closed by clicking on the overlay.
    * Even if this can be set to `false` we strongly recommend to leave
@@ -66,7 +66,7 @@ export type DrawerProps = {
   autoFocus?: boolean;
 }
 
-export const Drawer: FCChildrenClass<DrawerProps> = forwardRef(({
+export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(({
   children,
   className,
   closeOnClickOutside = true,
@@ -78,7 +78,7 @@ export const Drawer: FCChildrenClass<DrawerProps> = forwardRef(({
   autoFocus = true,
   title,
   ...otherProps
-}, forwardedRef: Ref<HTMLDivElement>) => {
+}, forwardedRef) => {
   const { titleId, onClose } = useOverlayContext();
 
   useKeys(['esc'], () => (!isModal && onClose) && onClose());

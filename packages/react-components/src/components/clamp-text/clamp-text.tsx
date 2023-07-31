@@ -1,14 +1,15 @@
 'use client';
 
 import clsx from 'clsx';
-import { CSSProperties, forwardRef, useMemo } from 'react';
+import {
+  CSSProperties, forwardRef, useMemo,
+} from 'react';
 
 import { Polymorphic } from '@/components';
-import { PropsClassChildren } from '@/components/types';
 
 import styles from './clamp-text.module.css';
 
-export type ClampTextProps = PropsClassChildren<{
+export type ClampTextProps = {
   /**
    * Define how many lines the text should be clamped to.
    */
@@ -17,7 +18,7 @@ export type ClampTextProps = PropsClassChildren<{
    * Put the text as inline element instead of block.
    */
   inline?: boolean;
-}>
+}
 
 type PolymorphicClampText = Polymorphic.ForwardRefComponent<'span', ClampTextProps>;
 

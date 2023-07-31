@@ -2,7 +2,7 @@
 
 import { domAnimation, LazyMotion, m } from 'framer-motion';
 import {
-  CSSProperties, SetStateAction, useCallback, useMemo,
+  CSSProperties, FC, SetStateAction, useCallback, useMemo,
 } from 'react';
 import { FocusOn } from 'react-focus-on';
 import { useKeyBindings } from 'rooks';
@@ -57,14 +57,14 @@ const thumbAnimation = {
   show: { opacity: 1 },
 };
 
-export const Lightbox = ({
+export const Lightbox: FC<LightboxProps> = ({
   data,
   selectedState,
   imageWidth = '50vw',
   imageHeight = '80vh',
   thumbnailHeight = '50px',
   thumbnailWidth = '50px',
-}: LightboxProps) => {
+}) => {
   const { onClose } = useOverlayContext();
   const [activeIndex, setActiveIndex] = selectedState;
 
