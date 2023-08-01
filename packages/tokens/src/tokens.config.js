@@ -24,5 +24,23 @@ module.exports = {
         ],
       },
     },
+    raw: {
+      basePxFontSize: 18,
+      buildPath: 'platforms/raw/',
+      transformGroup: '',
+      files: [
+        {
+          format: 'json/nested',
+          destination: 'tokens.json',
+        },
+      ],
+      options: {
+        showFileHeader: true,
+        fileHeader: defaultMessage => [
+          ...defaultMessage,
+          '© Lualtek Srl. All rights reserved.',
+        ],
+      },
+    },
   },
 };

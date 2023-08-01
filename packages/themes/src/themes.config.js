@@ -6,7 +6,8 @@
 const { hideBin } = require('yargs/helpers');
 
 const yargs = require('yargs/yargs');
-const ColorTokens = require('../../tokens/src/configs/colors');
+// const ColorTokens = require('../../tokens/src/configs/colors');
+const ColorTokens = require('@lualtek/tokens/platforms/raw/tokens.json');
 
 const { argv } = yargs(hideBin(process.argv));
 module.exports = {
