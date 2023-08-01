@@ -139,7 +139,7 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(({
           <Menu
             role="listbox"
             className={styles.OptionsList}
-            data-autocomplete-match-width={matchFieldWidth}
+            data-autocomplete-match-width={matchFieldWidth || loading}
             maxHeight={maxHeight}
           >
             {(filteredOptions?.length === 0 && !loading) && (
