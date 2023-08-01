@@ -1,5 +1,11 @@
 # @lualtek/themes
 
+## 9.0.0-next.7
+
+### Major Changes
+
+- df14633: Update themes structure to support multiple platforms. Import for web is now @lualtek/themes/web
+
 ## 9.0.0-next.6
 
 ## 9.0.0-next.5
