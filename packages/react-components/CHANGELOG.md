@@ -1,5 +1,19 @@
 # @lualtek/react-components
 
+## 9.0.0-next.7
+
+### Major Changes
+
+- df14633: Update themes structure to support multiple platforms. Import for web is now @lualtek/themes/web
+
+### Minor Changes
+
+- c89068d: Update component types
+
+### Patch Changes
+
+- @lualtek/icons@9.0.0-next.7
+
 ## 9.0.0-next.6
 
 ### Minor Changes

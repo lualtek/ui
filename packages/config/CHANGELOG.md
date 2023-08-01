@@ -1,5 +1,16 @@
 # @lualtek/config
 
+## 9.0.0-next.7
+
+### Major Changes
+
+- df14633: Update themes structure to support multiple platforms. Import for web is now @lualtek/themes/web
+
+### Patch Changes
+
+- 5b882cd: Fix postcss config
+  - @lualtek/tokens@9.0.0-next.7
+
 ## 9.0.0-next.6
 
 ### Patch Changes
