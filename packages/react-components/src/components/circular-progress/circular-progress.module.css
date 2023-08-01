@@ -3,6 +3,7 @@
     --hue: 220;
     --track-size: 4px;
     --track-bg: var(--vibrancy-background-mid);
+    --thumb-size: calc(var(--track-size) - 2px);
 
     inline-size: token(--space-64);
     min-inline-size: 64px;
@@ -18,7 +19,7 @@
       display: grid;
       inset: var(--track-size);
       position: absolute;
-      box-shadow: 0 0 0 1px var(--dimmed-2), inset 0 0 0 1px var(--global-background);
+      box-shadow: 0 0 0 1px var(--global-inner-contrast-border), inset 0 0 0 1px var(--global-outer-contrast-border);
       place-content: center;
       border-radius: 50%;
     }
@@ -48,7 +49,7 @@
       border-radius: 50%;
       z-index: -1;
       border: 1px solid var(--global-background);
-      box-shadow: inset 0 0 0 1px var(--dimmed-2);
+      box-shadow: inset 0 0 0 1px var(--global-inner-contrast-border);
       background:
         conic-gradient(
           var(--progress-color, var(--cta-default)),
@@ -74,10 +75,10 @@
       position: absolute;
       border-radius: 50%;
       background: var(--progress-color, var(--cta-default));
-      left: calc(50% - (var(--track-size) / 2));
-      top: 2px;
-      width: calc(var(--track-size) - 3px);
-      height: calc(var(--track-size) - 3px);
+      left: calc(50% - calc(var(--thumb-size) / 2));
+      top: 1px;
+      width: var(--thumb-size);
+      height: var(--thumb-size);
     }
   }
 
@@ -88,14 +89,16 @@
     rotate: var(--rotation);
 
     &::after {
+      --size: calc(var(--track-size) - 2px);
+
       content: '';
       position: absolute;
       border-radius: 50%;
       background: var(--progress-color, var(--cta-default));
-      left: calc(50% - (var(--track-size) / 2));
-      top: 2px;
-      width: calc(var(--track-size) - 3px);
-      height: calc(var(--track-size) - 3px);
+      left: calc(50% - calc(var(--thumb-size) / 2));
+      top: 1px;
+      width: var(--thumb-size);
+      height: var(--thumb-size);
     }
   }
 }

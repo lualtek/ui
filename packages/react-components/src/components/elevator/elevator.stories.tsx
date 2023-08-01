@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
+import { Card } from '../..';
 import { Elevator } from './elevator';
 
 const meta = {
@@ -7,9 +8,9 @@ const meta = {
   component: Elevator,
   render: args => (
     <Elevator {...args}>
-      <div style={{ padding: 32, background: 'var(--dimmed-0)' }}>
+      <Card bordered>
         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maxime, unde.
-      </div>
+      </Card>
     </Elevator>
   ),
   argTypes: {

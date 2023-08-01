@@ -47,7 +47,7 @@
     },
     "outer-contrast-border": {
       "value": "{color.support.black}",
-      "transparency": "30%",
+      "transparency": "40%",
       "attributes": {
         "category": "color"
       }

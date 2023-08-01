@@ -16,7 +16,7 @@
     overflow: hidden;
     display: block;
     background: var(--track-color);
-    box-shadow: 0 0 0 1px var(--global-background), inset 0 0 0 1px var(--dimmed-2);
+    box-shadow: 0 0 0 1px var(--global-outer-contrast-border), inset 0 0 0 1px var(--global-inner-contrast-border);
     height: var(--progress-height);
     border-radius: 1e5px;
 

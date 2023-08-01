@@ -16,7 +16,7 @@
     border-radius: token(--radius-8);
     position: relative;
     background-color: var(--vibrancy-background-mid);
-    box-shadow: 0 0 0 1px var(--global-background), inset 0 0 0 1px var(--dimmed-2);
+    box-shadow: 0 0 0 1px var(--global-outer-contrast-border), inset 0 0 0 1px var(--global-inner-contrast-border);
     flex-shrink: 0;
     flex-grow: 0;
     margin: 1px;
@@ -41,7 +41,7 @@
     &:checked,
     &:indeterminate {
       background: var(--cta-dark);
-      box-shadow: 0 0 0 1px var(--global-background);
+      box-shadow: 0 0 0 1px var(--global-outer-contrast-border);
 
       &::after {
         display: block;
@@ -51,7 +51,7 @@
     &:disabled {
       color: var(--global-disabled-foreground);
       background-color: var(--global-disabled-background);
-      box-shadow: 0 0 0 1px var(--global-background), inset 0 0 0 1px var(--global-disabled-background);
+      box-shadow: none;
       cursor: not-allowed;
     }
 

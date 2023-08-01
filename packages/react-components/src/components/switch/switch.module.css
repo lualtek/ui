@@ -12,7 +12,7 @@
     padding: var(--padding);
     max-block-size: token(--space-24);
     background-color: var(--vibrancy-background-mid);
-    box-shadow: 0 0 0 1px var(--global-background), inset 0 0 0 1px var(--dimmed-2);
+    box-shadow: 0 0 0 1px var(--global-outer-contrast-border), inset 0 0 0 1px var(--global-inner-contrast-border);
     color: var(--dimmed-6);
     border-radius: 1e5px;
     justify-content: flex-start;
@@ -23,13 +23,12 @@
     &:is([data-state='checked']) {
       background: var(--cta-dark);
       color: oklch(token(--color-support-white));
-      box-shadow: 0 0 0 1px var(--global-background), inset 0 0 0 1px var(--cta-default);
       justify-content: flex-end;
     }
 
     &[data-disabled] {
       background-color: var(--global-disabled-background);
-      box-shadow: 0 0 0 1px var(--global-background), inset 0 0 0 1px var(--dimmed-2);
+      box-shadow: none;
       color: var(--global-disabled-foreground);
       cursor: not-allowed;
     }

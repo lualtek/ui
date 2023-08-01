@@ -27,11 +27,12 @@
       opacity: 60%;
       z-index: 0;
       display: none;
-      background-color: var(--vibrancy-background-brand);
+      background-color: var(--vibrancy-background-mid);
     }
 
     &:is(:hover, :focus-visible, [aria-pressed='true']):not([aria-disabled='true']) {
-      outline: none;
+      outline-offset: -8px;
+      border-radius: token(--radius-16);
 
       &::before {
         display: block;
