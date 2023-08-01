@@ -11,7 +11,7 @@ const meta = {
   args: {
     bordered: false,
     vibrant: false,
-    dimmed: 0,
+    highlightOnHover: false,
     children: (
       <>
         <Title level="3">Card title</Title>
@@ -37,6 +37,11 @@ export const Default = {} satisfies Story;
 export const Vibrant = {
   args: {
     vibrant: true,
+  },
+};
+export const Dimmed = {
+  args: {
+    dimmed: 0,
   },
 };
 

@@ -11,6 +11,7 @@ import {
 
 import { FCChildrenClass } from '@/components/types';
 
+import { Elevator } from '../elevator';
 import styles from './tooltip.module.css';
 
 export type TooltipProps = TooltipPrimitive.TooltipProps & TooltipPrimitive.TooltipContentProps & {
@@ -70,6 +71,7 @@ export const Tooltip: FCChildrenClass<TooltipProps> = ({
 
   return (
     <TooltipPrimitive.Root
+      open
       delayDuration={delayDuration}
       {...otherProps}
     >
@@ -87,29 +89,31 @@ export const Tooltip: FCChildrenClass<TooltipProps> = ({
       ))}
 
       <LazyMotion features={domAnimation}>
-        <TooltipPrimitive.Content
-          asChild
-          side={side}
-          align={align}
-          sideOffset={sideOffset}
-          alignOffset={alignOffset}
-          className={clsx(styles.Tooltip, className)}
-        >
-          <m.div
-            initial="hidden"
-            animate="visible"
-            exit="hidden"
-            variants={animation}
-            transition={{
-              type: 'spring',
-              stiffness: 700,
-              damping: 30,
-            }}
+        <Elevator resting={3}>
+          <TooltipPrimitive.Content
+            asChild
+            side={side}
+            align={align}
+            sideOffset={sideOffset}
+            alignOffset={alignOffset}
+            className={clsx(styles.Tooltip, className)}
           >
-            {children}
-            <TooltipPrimitive.Arrow offset={triggerCenter} fill="var(--global-foreground)" />
-          </m.div>
-        </TooltipPrimitive.Content>
+            <m.div
+              initial="hidden"
+              animate="visible"
+              exit="hidden"
+              variants={animation}
+              transition={{
+                type: 'spring',
+                stiffness: 700,
+                damping: 30,
+              }}
+            >
+              {children}
+              <TooltipPrimitive.Arrow offset={triggerCenter} fill="var(--global-foreground)" className={styles.Arrow} />
+            </m.div>
+          </TooltipPrimitive.Content>
+        </Elevator>
       </LazyMotion>
     </TooltipPrimitive.Root>
   );

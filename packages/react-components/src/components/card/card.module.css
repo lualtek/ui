@@ -12,7 +12,8 @@
     }
 
     &[data-card-bordered='true'] {
-      border: solid 1px var(--dimmed-1);
+      border: solid 1px var(--global-inner-contrast-border);
+      outline: solid 1px var(--global-outer-contrast-border);
     }
 
     &[data-card-dimmed='0'] {
@@ -29,10 +30,6 @@
       &[data-card-highlight-hover='true']:is(:hover, :focus-visible) {
         background-color: var(--dimmed-0);
       }
-
-      &[data-card-bordered='true'] {
-        border: solid 1px var(--dimmed-2);
-      }
     }
 
     &[data-card-dimmed='2'] {
@@ -40,10 +37,6 @@
 
       &[data-card-highlight-hover='true']:is(:hover, :focus-visible) {
         background-color: var(--dimmed-1);
-      }
-
-      &[data-card-bordered='true'] {
-        border: solid 1px var(--dimmed-3);
       }
     }
 

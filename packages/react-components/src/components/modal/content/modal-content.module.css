@@ -15,6 +15,8 @@
     justify-self: center;
     align-self: end;
     padding-block-end: env(safe-area-inset-bottom);
+    border-top: 1px solid var(--global-inner-contrast-border);
+    outline: 1px solid var(--global-outer-contrast-border);
 
     @media (--from-small) {
       max-inline-size: 600px;
@@ -23,7 +25,8 @@
       border-radius: token(--radius-24);
       justify-self: center;
       align-self: center;
-      border: 1px solid var(--dimmed-1);
+      border: 1px solid var(--global-inner-contrast-border);
+      outline: 1px solid var(--global-outer-contrast-border);
     }
   }
 

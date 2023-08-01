@@ -35,6 +35,16 @@
     padding-bottom: env(safe-area-inset-bottom);
     max-inline-size: var(--max-w);
     height: 100dvh;
+    outline: 1px solid var(--global-outer-contrast-border);
+
+
+    .Container[data-drawer-side='right'] & {
+      border-left: 1px solid var(--global-inner-contrast-border);
+    }
+
+    .Container[data-drawer-side='left'] & {
+      border-right: 1px solid var(--global-inner-contrast-border);
+    }
   }
 
   .Scroller {

@@ -133,7 +133,7 @@ export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(({
             className={styles.Container}
             data-drawer-side={side}
           >
-            <Elevator resting={4} direction="left">
+            <Elevator resting={4} direction={side === 'left' ? 'right' : 'left'}>
               <Stack
                 className={styles.Content}
                 style={dynamicStyle}

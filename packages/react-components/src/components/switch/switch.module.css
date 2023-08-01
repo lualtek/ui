@@ -29,6 +29,7 @@
 
     &[data-disabled] {
       background-color: var(--global-disabled-background);
+      box-shadow: 0 0 0 1px var(--global-background), inset 0 0 0 1px var(--dimmed-2);
       color: var(--global-disabled-foreground);
       cursor: not-allowed;
     }

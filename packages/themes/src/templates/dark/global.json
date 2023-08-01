@@ -40,7 +40,7 @@
     },
     "inner-contrast-border": {
       "value": "{color.support.white}",
-      "transparency": "15%",
+      "transparency": "12%",
       "attributes": {
         "category": "color"
       }
