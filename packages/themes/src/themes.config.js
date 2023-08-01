@@ -17,7 +17,7 @@ module.exports = {
   platforms: {
     web: {
       basePxFontSize: 18,
-      buildPath: 'dist/themes/',
+      buildPath: 'platforms/web/',
       transformGroup: 'custom-web',
       files: [
         {

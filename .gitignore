@@ -14,6 +14,7 @@ out/
 build
 dist
 packages/tokens/platforms
+packages/themes/platforms
 
 # misc
 .DS_Store

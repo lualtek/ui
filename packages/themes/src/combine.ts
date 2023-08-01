@@ -8,8 +8,8 @@ const formatTheme = (path: string) => {
 };
 
 const run = () => {
-  const lightTheme = formatTheme(path.join('dist', 'themes', 'light.css'));
-  const darkTheme = formatTheme(path.join('dist', 'themes', 'dark.css'));
+  const lightTheme = formatTheme(path.join('platforms', 'web', 'light.css'));
+  const darkTheme = formatTheme(path.join('platforms', 'web', 'dark.css'));
 
   const template = `
   :root,
@@ -29,7 +29,7 @@ const run = () => {
   }
   `;
 
-  fs.writeFileSync(path.join('dist', 'themes.css'), template);
+  fs.writeFileSync(path.join('platforms', 'web', 'themes.css'), template);
 };
 
 try {
