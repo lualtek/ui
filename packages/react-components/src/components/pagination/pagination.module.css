@@ -18,10 +18,46 @@
       align-items: center;
       justify-content: center;
       height: token(--space-32);
+      position: relative;
 
       &[aria-current='page'] {
-        background-color: var(--cta-default);
-        color: var(--cta-foreground);
+        --border-opacity: 40%;
+        --foreground: var(--highlight-brand-foreground);
+        --background: var(--vibrancy-background-brand);
+        --shine-color: var(--highlight-brand-foreground);
+        --border-color: var(--cta-default);
+        --glow-color: color-mix(in oklab, var(--highlight-brand-foreground), transparent 70%);
+        --shine-position: 65%;
+
+        color: var(--foreground);
+        background: linear-gradient(to top, var(--background), var(--global-background));
+        box-shadow:
+        inset 0 0 0 1px color-mix(in oklab, var(--border-color), transparent calc(100% - var(--border-opacity))),
+        inset 0 0 0 3px color-mix(in oklab, var(--global-background), transparent 40%);
+      }
+
+      &[aria-current='page']::before,
+      &[aria-current='page']::after {
+        position: absolute;
+        content: '';
+        height: 1px;
+        background: var(--border-color);
+        background: radial-gradient(circle at center, var(--shine-color), transparent);
+        right: 45%;
+        transition: right, bottom, opacity, 0.3s ease-out;
+      }
+
+      &[aria-current='page']::before {
+        right: 15%;
+        width: 40%;
+        box-shadow: 0 0 20px 5px var(--glow-color);
+        top: 0;
+      }
+
+      &[aria-current='page']::after {
+        width: 60%;
+        right: 20%;
+        bottom: 0;
       }
 
       &[aria-disabled='true'] {
