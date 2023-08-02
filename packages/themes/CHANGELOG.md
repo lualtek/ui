@@ -1,5 +1,11 @@
 # @lualtek/themes
 
+## 9.0.0-next.8
+
+### Minor Changes
+
+- 7bcf1c8: Add contrast border to some components
+
 ## 9.0.0-next.7
 
 ### Major Changes

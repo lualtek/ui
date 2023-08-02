@@ -1,5 +1,16 @@
 # @lualtek/react-components
 
+## 9.0.0-next.8
+
+### Minor Changes
+
+- 7bcf1c8: Add contrast border to some components
+- b5ba683: Fix autocomplete loading state
+
+### Patch Changes
+
+- @lualtek/icons@9.0.0-next.8
+
 ## 9.0.0-next.7
 
 ### Major Changes
