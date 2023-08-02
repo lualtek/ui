@@ -43,6 +43,7 @@
     },
     "background-green": {
       "value": "{color.green.40}",
+      "transparency": "20%",
       "attributes": {
         "category": "color"
       }

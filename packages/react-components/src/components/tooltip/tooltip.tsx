@@ -71,7 +71,6 @@ export const Tooltip: FCChildrenClass<TooltipProps> = ({
 
   return (
     <TooltipPrimitive.Root
-      open
       delayDuration={delayDuration}
       {...otherProps}
     >

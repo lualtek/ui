@@ -22,7 +22,7 @@ export type TabsProps = TabsPrimitive.TabsProps & {
   padding?: StackProps['hPadding'];
   /**
    * Set the dimension of the tabs.
-   * @default 'big'
+   * @default 'regular'
    */
   dimension?: 'small' | 'regular' | 'big';
 };
@@ -37,7 +37,7 @@ export const Tabs: TabsComponent = ({
   onValueChange,
   defaultValue,
   padding,
-  dimension = 'big',
+  dimension = 'regular',
   ...otherProps
 }) => {
   const [activeItem, setActiveItem] = useState<string>(defaultValue ?? '');
@@ -55,6 +55,7 @@ export const Tabs: TabsComponent = ({
     <TabsPrimitive.Root
       defaultValue={defaultValue}
       onValueChange={handleOnVlaueChange}
+      data-tabs-dimension={dimension}
       className={clsx(styles.Tabs, className)}
       {...otherProps}
     >
@@ -88,10 +89,7 @@ export const Tabs: TabsComponent = ({
                   {child.props.decorator}
                 </Stack>
                 {(child.props.value === activeItem) && (
-                  <>
-                    <m.span className={styles.Highlight} layoutId={`${uid}-tab-highlight-lazy`} />
-                    <m.span className={styles.Highlight} data-highlight-alt transition={{ ease: 'easeOut', delay: 0.01 }} layoutId={`${uid}-tab-highlight`} />
-                  </>
+                  <m.span className={styles.Highlight} layoutId={`${uid}-tab-highlight-lazy`} />
                 )}
               </Button>
             </TabsPrimitive.Trigger>
