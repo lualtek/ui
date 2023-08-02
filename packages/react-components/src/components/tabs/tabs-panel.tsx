@@ -3,6 +3,8 @@ import { FC, ReactNode } from 'react';
 
 import { IconProps } from '@/components';
 
+import styles from './tabs.module.css';
+
 export type TabPanelProps = TabsPrimitive.TabsContentProps & TabsPrimitive.TabsTriggerProps & {
   /**
    * The label of the tab to show in the tab list.
@@ -23,7 +25,7 @@ export const TabPanel: FC<TabPanelProps> = ({
   label,
   ...otherProps
 }) => (
-  <TabsPrimitive.Content data-tabs-label={label} {...otherProps}>
+  <TabsPrimitive.Content className={styles.Panel} data-tabs-label={label} {...otherProps}>
     {children}
   </TabsPrimitive.Content>
 );

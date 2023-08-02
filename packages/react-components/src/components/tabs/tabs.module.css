@@ -65,6 +65,20 @@
       border-radius: calc(token(--radius-16) + token(--radius-4));
     }
   }
+
+  .Panel {
+    animation: fade-in token(--duration-200) ease-in-out;
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0%;
+    }
+
+    to {
+      opacity: 100%;
+    }
+  }
 }
 @layer overrides {
   .Trigger {

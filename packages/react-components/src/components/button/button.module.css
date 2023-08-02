@@ -65,7 +65,7 @@
 
       @mixin vibrancy;
 
-      transition: all 0.2s ease-out;
+      transition: all token(--duration-200) ease-out;
       background: linear-gradient(to top, var(--background), var(--global-background));
 
       &::before,
