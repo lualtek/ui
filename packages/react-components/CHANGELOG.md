@@ -1,5 +1,15 @@
 # @lualtek/react-components
 
+## 9.0.0-next.9
+
+### Minor Changes
+
+- 86b7202: Update chip design
+
+### Patch Changes
+
+- @lualtek/icons@9.0.0-next.9
+
 ## 9.0.0-next.8
 
 ### Minor Changes
