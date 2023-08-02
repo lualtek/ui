@@ -1,5 +1,15 @@
 # @lualtek/react-components
 
+## 9.0.0-next.10
+
+### Minor Changes
+
+- b6f07f8: Update tabs design
+
+### Patch Changes
+
+- @lualtek/icons@9.0.0-next.10
+
 ## 9.0.0-next.9
 
 ### Minor Changes
