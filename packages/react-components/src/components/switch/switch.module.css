@@ -43,7 +43,7 @@
 
     &[data-switch-dimension='regular'] {
       --padding: 4px;
-      --thumb-size: 0.94rem;
+      --thumb-size: 20px;
 
       inline-size: 2.44rem;
       block-size: token(--space-24);
