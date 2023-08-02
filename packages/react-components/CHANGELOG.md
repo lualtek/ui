@@ -1,5 +1,15 @@
 # @lualtek/react-components
 
+## 9.0.0-next.11
+
+### Major Changes
+
+- 57966a8: rename tabs padding prop to listGap
+
+### Patch Changes
+
+- @lualtek/icons@9.0.0-next.11
+
 ## 9.0.0-next.10
 
 ### Minor Changes
