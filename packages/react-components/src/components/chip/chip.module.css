@@ -8,6 +8,7 @@
     max-width: 100%;
     background-color: var(--background, var(--highlight-gray-background));
     color: var(--foreground, var(--highlight-gray-foreground));
+    border: 1px solid color-mix(in oklch, var(--foreground, var(--highlight-gray-foreground)), transparent 80%);
 
     & > b {
       white-space: nowrap;
