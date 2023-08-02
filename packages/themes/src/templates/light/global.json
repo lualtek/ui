@@ -26,8 +26,8 @@
     },
     "disabled-foreground": {
       "value": "{color.primary.90}",
+      "transparency": "20%",
       "attributes": {
-        "transparency": "20%",
         "category": "color"
       }
     },
