@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 9.0.0-next.13
+
+### Patch Changes
+
+- db1486f: Fix switch thumb size
+  - @lualtek/icons@9.0.0-next.13
+
 ## 9.0.0-next.12
 
 ### Patch Changes
