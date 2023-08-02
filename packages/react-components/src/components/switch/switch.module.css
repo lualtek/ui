@@ -42,7 +42,7 @@
     }
 
     &[data-switch-dimension='regular'] {
-      --padding: 4px;
+      --padding: 2px;
       --thumb-size: 20px;
 
       inline-size: 2.44rem;
