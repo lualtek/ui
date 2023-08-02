@@ -1,5 +1,11 @@
 # @lualtek/themes
 
+## 9.0.0-next.10
+
+### Minor Changes
+
+- b6f07f8: Update tabs design
+
 ## 9.0.0-next.9
 
 ## 9.0.0-next.8
