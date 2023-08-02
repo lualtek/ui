@@ -1,5 +1,11 @@
 # @lualtek/themes
 
+## 9.0.0-next.12
+
+### Patch Changes
+
+- 8aa2531: Fix themes
+
 ## 9.0.0-next.11
 
 ## 9.0.0-next.10
