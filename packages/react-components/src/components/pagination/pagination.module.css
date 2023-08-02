@@ -7,11 +7,12 @@
     align-items: center;
 
     & > li > a {
-      border-radius: token(--radius-4);
+      border-radius: token(--radius-8);
       line-height: 1;
       padding: 0 token(--space-8);
       cursor: pointer;
       font-weight: 700;
+      oveerflow: hidden;
       user-select: none;
       color: var(--dimmed-5);
       display: inline-flex;

@@ -21,7 +21,6 @@
     border: 0;
     appearance: none;
     font-weight: token(--font-weight-bold);
-    overflow: hidden;
     background: var(--background);
     gap: token(--space-8);
     position: relative;
@@ -82,7 +81,7 @@
       &::before {
         right: 15%;
         width: 40%;
-        box-shadow: 0 0 20px 5px var(--glow-color);
+        box-shadow: 0 5px 20px 5px var(--glow-color);
         top: 0;
       }
 
