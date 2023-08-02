@@ -12,6 +12,7 @@
     padding: token(--space-4);
     background: var(--vibrancy-background-soft);
     border-radius: token(--radius-16);
+    margin: var(--tabs-list-gap) var(--tabs-list-gap) 0 var(--tabs-list-gap);
     box-shadow: 0 0 0 1px var(--global-outer-contrast-border), inset 0 0 0 1px var(--global-inner-contrast-border);
 
     .Tabs[data-tabs-dimension='small'] & {

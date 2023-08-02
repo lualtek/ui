@@ -1,14 +1,16 @@
 'use client';
 
+import { TokensTypes } from '@lualtek/tokens/platforms/web';
+import tkns from '@lualtek/tokens/platforms/web/tokens.json';
 import * as TabsPrimitive from '@radix-ui/react-tabs';
 import clsx from 'clsx';
 import { domMax, LazyMotion, m } from 'framer-motion';
 import {
-  Children, FC, isValidElement, useCallback, useId, useState,
+  Children, CSSProperties, FC, isValidElement, useCallback, useId, useState,
 } from 'react';
 
 import {
-  Button, Stack, StackProps,
+  Button, Stack,
 } from '@/components';
 
 import styles from './tabs.module.css';
@@ -16,10 +18,10 @@ import { TabPanel, TabPanelProps } from './tabs-panel';
 
 export type TabsProps = TabsPrimitive.TabsProps & {
   /**
-   * Add extra space before and after the tab list. This property can be used to
-   * align the tab list with the surrounding content.
+   * Add extra space around the tab list. This property can be used to
+   * add extra space between tab list and surrounding edges.
    */
-  padding?: StackProps['hPadding'];
+  listGap?: TokensTypes['space'];
   /**
    * Set the dimension of the tabs.
    * @default 'regular'
@@ -36,8 +38,9 @@ export const Tabs: TabsComponent = ({
   children,
   onValueChange,
   defaultValue,
-  padding,
+  listGap,
   dimension = 'regular',
+  style,
   ...otherProps
 }) => {
   const [activeItem, setActiveItem] = useState<string>(defaultValue ?? '');
@@ -51,12 +54,17 @@ export const Tabs: TabsComponent = ({
     [onValueChange],
   );
 
+  const dynamicStyle: CSSProperties = {
+    '--tabs-list-gap': listGap && tkns.space[listGap],
+  };
+
   return (
     <TabsPrimitive.Root
       defaultValue={defaultValue}
       onValueChange={handleOnVlaueChange}
       data-tabs-dimension={dimension}
       className={clsx(styles.Tabs, className)}
+      style={{ ...style, ...dynamicStyle }}
       {...otherProps}
     >
       <LazyMotion features={domMax} strict>
@@ -65,7 +73,6 @@ export const Tabs: TabsComponent = ({
           direction="row"
           fill={false}
           hAlign="start"
-          hPadding={padding}
           className={styles.List}
         >
           {Children.map(children, child => isValidElement<TabPanelProps>(child) && (
