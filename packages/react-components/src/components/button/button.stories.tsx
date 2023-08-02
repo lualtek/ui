@@ -10,7 +10,7 @@ const meta = {
   render: args => (
     <Stack columnGap={16} direction="row" fill={false}>
       <Button {...args} />
-      <ToggleButton {...args} restingIcon="sun" kind="flat" />
+      <ToggleButton restingIcon="sun" kind="secondary" />
       <Button {...args} kind="secondary" />
       <Button {...args} kind="flat" />
     </Stack>
