@@ -3,13 +3,9 @@ import { ComponentPropsWithRef, forwardRef } from 'react';
 
 import styles from './blank-button.module.css';
 
-export type BlankButtonProps = ComponentPropsWithRef<'button'> & {
-  onClick?: () => void;
-}
+export type BlankButtonProps = ComponentPropsWithRef<'button'>
 
-export const BlankButton = forwardRef<
-HTMLButtonElement, ComponentPropsWithRef<'button'> & BlankButtonProps
->(({
+export const BlankButton = forwardRef<HTMLButtonElement, BlankButtonProps>(({
   children,
   className,
   onClick,
