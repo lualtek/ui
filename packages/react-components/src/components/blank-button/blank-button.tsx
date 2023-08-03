@@ -3,7 +3,7 @@ import { ComponentPropsWithRef, forwardRef } from 'react';
 
 import styles from './blank-button.module.css';
 
-export type BlankButtonProps = {
+export type BlankButtonProps = ComponentPropsWithRef<'button'> & {
   onClick?: () => void;
 }
 
