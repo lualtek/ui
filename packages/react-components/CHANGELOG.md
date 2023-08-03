@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 9.0.2
+
+### Patch Changes
+
+- 76bd03c: Fix typography
+  - @lualtek/icons@9.0.2
+
 ## 9.0.1
 
 ### Patch Changes
