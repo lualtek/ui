@@ -116,3 +116,7 @@ code {
   font-family: token(--font-family-mono);
   vertical-align: top;
 }
+
+pre code {
+  boxh-shadow: none;
+}
