@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 9.0.4
+
+### Patch Changes
+
+- fd2d522: Fix types
+  - @lualtek/icons@9.0.4
+
 ## 9.0.3
 
 ### Patch Changes
