@@ -70,8 +70,7 @@
       var(--field-padding);
 
     &:disabled {
-      --inner-border-color: var(--global-disabled-foreground);
-
+      box-shadow: none;
       cursor: not-allowed;
       color: var(--global-disabled-foreground);
       background:
