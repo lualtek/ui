@@ -1,5 +1,18 @@
 # @lualtek/tokens
 
+## 9.0.0
+
+### Minor Changes
+
+- 0758198: Add new extra-large container token and update Container component
+- e3a55c5: Fix color tokens
+- c6a5402: Tweak colors inconsistencies
+
+### Patch Changes
+
+- aeea8b7: Fix indigo 30 color
+- 6256b60: Fix magenta 5,10,20,30 color tokens
+
 ## 9.0.0-next.14
 
 ## 9.0.0-next.13
