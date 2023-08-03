@@ -2,14 +2,14 @@
 
 import clsx from 'clsx';
 import {
-  CSSProperties, forwardRef, HTMLAttributes, useMemo,
+  CSSProperties, forwardRef, useMemo,
 } from 'react';
 
 import { Polymorphic } from '@/components';
 
 import styles from './title.module.css';
 
-export type TitleProps = HTMLAttributes<HTMLHeadingElement> & {
+export type TitleProps = {
   /**
    * Set the level of the title. This property only
    * affects the visual appearance of the title and not the
