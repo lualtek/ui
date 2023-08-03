@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 9.0.6
+
+### Patch Changes
+
+- 0cefea7: Porcodio
+  - @lualtek/icons@9.0.6
+
 ## 9.0.5
 
 ### Patch Changes
