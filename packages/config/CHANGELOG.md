@@ -1,5 +1,12 @@
 # @lualtek/config
 
+## 9.0.1
+
+### Patch Changes
+
+- 68155c6: Fix postcss config and typography
+  - @lualtek/tokens@9.0.1
+
 ## 9.0.0
 
 ### Major Changes
