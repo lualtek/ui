@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 9.0.7
+
+### Patch Changes
+
+- c64c280: readd titles attributes
+  - @lualtek/icons@9.0.7
+
 ## 9.0.6
 
 ### Patch Changes
