@@ -1,9 +1,9 @@
 import clsx from 'clsx';
-import { ComponentPropsWithRef, forwardRef } from 'react';
+import { forwardRef, ImgHTMLAttributes } from 'react';
 
 import styles from './avatar.module.css';
 
-export type AvatarProps = ComponentPropsWithRef<'img'> & {
+export type AvatarProps = ImgHTMLAttributes<HTMLImageElement> & {
   /**
    * The source of the image to use as avatar
    */

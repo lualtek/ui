@@ -2,8 +2,7 @@
 
 import clsx from 'clsx';
 import {
-  ComponentPropsWithRef,
-  CSSProperties, forwardRef, ReactNode, useMemo,
+  CSSProperties, forwardRef, HTMLAttributes, ReactNode, useMemo,
 } from 'react';
 import { AutoFocusInside } from 'react-focus-on';
 
@@ -13,7 +12,7 @@ import {
 
 import styles from './modal-content.module.css';
 
-export type ModalContentProps = ComponentPropsWithRef<'div'> & {
+export type ModalContentProps = HTMLAttributes<HTMLDivElement> & {
   /**
    * Set the accessible title of the modal. This is used by screen readers to
    * announce the title of the modal when opened.

@@ -1,11 +1,11 @@
 /* eslint-disable max-len */
 import {
-  ComponentPropsWithRef,
+  SVGAttributes,
 } from 'react';
 
 import { FCClass } from '@/components/types';
 
-export type LogoProps = ComponentPropsWithRef<'svg'> & {
+export type LogoProps = SVGAttributes<SVGElement> & {
   /**
    * Set the fil color as string
    */

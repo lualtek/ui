@@ -1,8 +1,8 @@
 import clsx from 'clsx';
 import { motion } from 'framer-motion';
-import { ComponentPropsWithRef, forwardRef } from 'react';
+import { forwardRef, SVGAttributes } from 'react';
 
-export type SpinnerProps = ComponentPropsWithRef<'svg'> & {
+export type SpinnerProps = SVGAttributes<SVGElement> & {
   /**
    * Set the size of the spinner
    */

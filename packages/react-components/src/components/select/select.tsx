@@ -2,7 +2,7 @@
 
 import clsx from 'clsx';
 import {
-  ChangeEvent, ComponentPropsWithRef, forwardRef, ReactNode, useId,
+  ChangeEvent, forwardRef, ReactNode, SelectHTMLAttributes, useId,
 } from 'react';
 
 import {
@@ -12,7 +12,7 @@ import {
 
 import styles from './select.module.css';
 
-export type SelectProps = ComponentPropsWithRef<'select'> & {
+export type SelectProps = SelectHTMLAttributes<HTMLSelectElement> & {
   /**
    * Change the default icon displayed on the side of the select.
    */

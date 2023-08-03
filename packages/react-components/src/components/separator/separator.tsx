@@ -4,13 +4,12 @@ import { TokensTypes } from '@lualtek/tokens';
 import tkns from '@lualtek/tokens/platforms/web/tokens.json';
 import clsx from 'clsx';
 import {
-  ComponentPropsWithRef,
-  CSSProperties, forwardRef, useMemo,
+  CSSProperties, forwardRef, HTMLAttributes, useMemo,
 } from 'react';
 
 import styles from './separator.module.css';
 
-export type SeparatorProps = ComponentPropsWithRef<'hr'> & {
+export type SeparatorProps = HTMLAttributes<HTMLHRElement> & {
   /**
    * Add top and bottom space using margins.
    */

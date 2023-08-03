@@ -7,15 +7,15 @@ import clsx from 'clsx';
 import {
   Children,
   cloneElement,
-  ComponentPropsWithRef,
   forwardRef,
   ReactElement,
+  SVGAttributes,
   useMemo,
 } from 'react';
 
 import styles from './icon.module.css';
 
-export type IconProps = ComponentPropsWithRef<'svg'> & {
+export type IconProps = SVGAttributes<SVGElement | SVGSVGElement> & {
   /**
    * Set the icon name to display. Icon names are defined in
    * the `IconNames` enum and are part of Lualtek iconography system.

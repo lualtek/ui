@@ -4,8 +4,7 @@ import { TokensTypes } from '@lualtek/tokens/platforms/web';
 import tkns from '@lualtek/tokens/platforms/web/tokens.json';
 import clsx from 'clsx';
 import {
-  ComponentPropsWithRef,
-  CSSProperties, forwardRef, ReactNode, useMemo,
+  CSSProperties, forwardRef, HTMLAttributes, ReactNode, useMemo,
 } from 'react';
 
 import { FCForwardRef } from '@/components/types';
@@ -13,7 +12,7 @@ import { FCForwardRef } from '@/components/types';
 import styles from './grid.module.css';
 import { GridItem, GridItemProps } from './item/grid-item';
 
-export type GridProps = ComponentPropsWithRef<'ul'> & {
+export type GridProps = HTMLAttributes<HTMLUListElement> &{
   /**
    * The children to be rendered in the grid.
    * Even though this component doesn't block you to use any elements as children,

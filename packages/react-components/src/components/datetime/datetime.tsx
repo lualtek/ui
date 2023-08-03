@@ -1,11 +1,10 @@
 'use client';
 
 import {
-  ComponentPropsWithRef,
-  FC, useMemo,
+  FC, TimeHTMLAttributes, useMemo,
 } from 'react';
 
-export type DatetimeProps = ComponentPropsWithRef<'time'> & {
+export type DatetimeProps = TimeHTMLAttributes<HTMLTimeElement> & {
   /**
    * The date to format and display.
    */

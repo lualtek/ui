@@ -2,7 +2,7 @@
 
 import clsx from 'clsx';
 import {
-  ChangeEvent, ComponentPropsWithRef, forwardRef, Ref, useCallback, useId, useMemo, useState,
+  ChangeEvent, forwardRef, InputHTMLAttributes, Ref, useCallback, useId, useMemo, useState,
 } from 'react';
 
 import {
@@ -13,7 +13,7 @@ import {
 import { BaseField, BaseFieldProps } from '../base-field';
 import styles from './textfield.module.css';
 
-export type TextfieldProps = BaseFieldProps & ComponentPropsWithRef<'input'> & {
+export type TextfieldProps = BaseFieldProps & InputHTMLAttributes<HTMLInputElement> & {
   /**
    * Set the icon to show on the left or right side of the input.
    */

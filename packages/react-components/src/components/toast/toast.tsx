@@ -5,7 +5,6 @@ import clsx from 'clsx';
 import {
   ElementRef, forwardRef, useId,
 } from 'react';
-import { Except } from 'type-fest';
 
 import { Elevator } from '@/components';
 import { PropsWithClass } from '@/components/types';
@@ -13,7 +12,7 @@ import { PropsWithClass } from '@/components/types';
 import { InlineToast, InlineToastProps } from './inline-toast';
 import styles from './toast.module.css';
 
-export type ToastProps = ToastPrimitive.ToastProps & Except<InlineToastProps, 'ref'>
+export type ToastProps = ToastPrimitive.ToastProps & InlineToastProps
 
 export const Toast = forwardRef<
 ElementRef<typeof ToastPrimitive.Root>,

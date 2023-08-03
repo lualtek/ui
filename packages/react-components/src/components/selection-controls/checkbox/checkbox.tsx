@@ -3,14 +3,14 @@
 import clsx from 'clsx';
 import { domAnimation, LazyMotion, m } from 'framer-motion';
 import {
-  ChangeEvent, ComponentPropsWithRef, forwardRef, ReactNode, useEffect, useId, useRef,
+  ChangeEvent, forwardRef, InputHTMLAttributes, ReactNode, useEffect, useId, useRef,
 } from 'react';
 
 import { Stack, Text, TextProps } from '@/components';
 
 import styles from '../selection-controls.module.css';
 
-export type CheckboxProps = ComponentPropsWithRef<'input'> & {
+export type CheckboxProps = InputHTMLAttributes<HTMLInputElement> & {
   /**
    * Set disabled state. The component is not interactive and grayed out.
    */

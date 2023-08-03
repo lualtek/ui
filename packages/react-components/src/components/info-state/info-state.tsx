@@ -3,8 +3,7 @@
 import { TokensTypes } from '@lualtek/tokens';
 import { domMax, LazyMotion, m } from 'framer-motion';
 import {
-  ComponentPropsWithRef,
-  CSSProperties, forwardRef, ReactNode, useMemo,
+  CSSProperties, forwardRef, HTMLAttributes, ReactNode, useMemo,
 } from 'react';
 
 import {
@@ -13,7 +12,7 @@ import {
 
 import styles from './info-state.module.css';
 
-export type InfoStateProps = ComponentPropsWithRef<'div'> & {
+export type InfoStateProps = HTMLAttributes<HTMLDivElement> & {
   /**
    * Set the main tagline of the info state. This should be catchy and short
    * as much as possible.

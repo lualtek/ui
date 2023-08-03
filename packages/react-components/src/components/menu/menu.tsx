@@ -2,8 +2,7 @@
 
 import clsx from 'clsx';
 import {
-  ComponentPropsWithRef,
-  CSSProperties, forwardRef, ForwardRefExoticComponent, ReactNode, useMemo,
+  CSSProperties, forwardRef, ForwardRefExoticComponent, HTMLAttributes, ReactNode, useMemo,
 } from 'react';
 import { RovingTabIndexProvider } from 'react-roving-tabindex';
 
@@ -14,7 +13,7 @@ import { MenuItem, MenuItemProps } from './menu-item/menu-item';
 import { MenuItemCheckbox, MenuItemCheckboxProps } from './menu-item/menu-item-checkbox';
 import { MenuSeparator } from './menu-separator/menu-separator';
 
-export type MenuProps = ComponentPropsWithRef<'ul'> & {
+export type MenuProps = HTMLAttributes<HTMLUListElement> & {
   /**
    * The items of the menu.
    */

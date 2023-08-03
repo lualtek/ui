@@ -4,7 +4,6 @@ import tkns from '@lualtek/tokens/platforms/web/tokens.json';
 import clsx from 'clsx';
 import { domMax, LazyMotion, m } from 'framer-motion';
 import {
-  ComponentPropsWithRef,
   CSSProperties, forwardRef, ReactNode, useMemo,
 } from 'react';
 import { AutoFocusInside, FocusOn } from 'react-focus-on';
@@ -13,6 +12,7 @@ import { useKeys } from 'rooks';
 import {
   Elevator,
   IconButton,
+  PropsClassChildren,
   Stack,
   Title,
   useOverlayContext,
@@ -20,7 +20,7 @@ import {
 
 import styles from './drawer.module.css';
 
-export type DrawerProps = ComponentPropsWithRef<'div'> & {
+export type DrawerProps = PropsClassChildren<{
   /**
    * This enable the drawer to be closed by clicking on the overlay.
    * Even if this can be set to `false` we strongly recommend to leave
@@ -64,7 +64,7 @@ export type DrawerProps = ComponentPropsWithRef<'div'> & {
    * Enable or disable autofocus on the first focusable element inside the drawer.
    */
   autoFocus?: boolean;
-}
+}>
 
 export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(({
   children,

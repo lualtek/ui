@@ -2,15 +2,15 @@
 
 import clsx from 'clsx';
 import {
-  ComponentPropsWithRef,
-  forwardRef, useCallback, useMemo,
+  forwardRef, ProgressHTMLAttributes,
+  useCallback, useMemo,
 } from 'react';
 
 import { Text } from '@/components';
 
 import styles from './linear-progress.module.css';
 
-export type LinearProgressProps = ComponentPropsWithRef<'progress'> & {
+export type LinearProgressProps = ProgressHTMLAttributes<HTMLProgressElement> & {
   /**
    * Set the current progress of the progress bar.
    * This value should be between 0 and 'max'. The percentage is
