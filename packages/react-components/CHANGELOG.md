@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 9.0.5
+
+### Patch Changes
+
+- ac09ee7: Update types again
+  - @lualtek/icons@9.0.5
+
 ## 9.0.4
 
 ### Patch Changes
