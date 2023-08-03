@@ -1,5 +1,58 @@
 # @lualtek/react-components
 
+## 9.0.0
+
+### Major Changes
+
+- 5084306: Test new button design
+- 57966a8: rename tabs padding prop to listGap
+- df14633: Update themes structure to support multiple platforms. Import for web is now @lualtek/themes/web
+
+### Minor Changes
+
+- 84e981b: Update button design
+- 96e1e37: Update circular progress style
+- 86b7202: Update chip design
+- 6a166b6: Fix buttons
+- 40695e2: Update info toast default icon
+- fd39af3: Fix input and field style
+- 7bcf1c8: Add contrast border to some components
+- e5a9953: fix list marker sizes
+- c53bccc: Add shadowColor to elevator and deprecate elevation mixins
+- 0758198: Add new extra-large container token and update Container component
+- 8cd49b7: Add support for :user-invalid feedback where available
+- 2af9d55: Add new vertical prop to Separator
+- e3a55c5: Fix color tokens
+- f670577: Remove tap animation on disabled selection control
+- 08fce45: Fix singleLine toast filling
+- fc44bf7: Update design for primary buttons
+- b6f07f8: Update tabs design
+- ec602a6: Update toast actions style
+- c89068d: Update component types
+- e0396e0: Fix drawer header style
+- b5ba683: Fix autocomplete loading state
+- 48dc3e7: Add swipe out action to floating toast
+- 66e49de: Clean tabs code
+- 7957d62: Update icon meter style
+- 72d8c1e: Update pagination design
+- f5b13d0: Add border to disbled textfield and select
+
+### Patch Changes
+
+- 18fc7ea: Remove useless deps and hooks
+- b6c3901: Fix separator
+- 7d2aa92: Update select design
+- aaa448d: Fix switch colors
+- b35afae: Minor fixes
+- db1486f: Fix switch thumb size
+- 0121c76: Update deps
+- Updated dependencies [8a246c3]
+- Updated dependencies [bffeb35]
+- Updated dependencies [93500ca]
+- Updated dependencies [9599c99]
+- Updated dependencies [356b56a]
+  - @lualtek/icons@9.0.0
+
 ## 9.0.0-next.14
 
 ### Minor Changes

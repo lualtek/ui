@@ -1,5 +1,21 @@
 # @lualtek/icons
 
+## 9.0.0
+
+### Major Changes
+
+- bffeb35: Remove shape-oval from icons as duplicate of circle
+
+### Minor Changes
+
+- 8a246c3: Update icons
+- 9599c99: Add new list and grid icons
+- 356b56a: Updated icons sprite generation to support Figma variants
+
+### Patch Changes
+
+- 93500ca: Fix file-text duotone icon
+
 ## 9.0.0-next.14
 
 ## 9.0.0-next.13

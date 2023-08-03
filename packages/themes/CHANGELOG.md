@@ -1,5 +1,23 @@
 # @lualtek/themes
 
+## 9.0.0
+
+### Major Changes
+
+- 5084306: Test new button design
+- df14633: Update themes structure to support multiple platforms. Import for web is now @lualtek/themes/web
+
+### Minor Changes
+
+- 7bcf1c8: Add contrast border to some components
+- b6f07f8: Update tabs design
+
+### Patch Changes
+
+- 65bbf72: Uniform light/dark gradients stops
+- 2319135: Fix gradient-primary-end theme color
+- 8aa2531: Fix themes
+
 ## 9.0.0-next.14
 
 ## 9.0.0-next.13
