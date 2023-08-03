@@ -1,11 +1,9 @@
 import clsx from 'clsx';
-import { ComponentPropsWithRef, forwardRef } from 'react';
+import { forwardRef } from 'react';
 
 import { Polymorphic } from '@/components';
 
 import styles from './prose.module.css';
-
-export type ProseProps = ComponentPropsWithRef<'div'>
 
 // eslint-disable-next-line
 type PolymorphicProse = Polymorphic.ForwardRefComponent<'div', {}>;

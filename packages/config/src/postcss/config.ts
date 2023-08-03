@@ -8,7 +8,9 @@ export const postcssConfig = (tokens: Record<string, unknown>) => ({
       data: tokens,
     },
     'postcss-mixins': {},
-    'postcss-preset-env': {},
+    'postcss-preset-env': {
+      stage: 0,
+    },
     cssnano: {
       preset: [
         'default',
