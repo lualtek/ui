@@ -13,7 +13,7 @@ b {
   font-weight: token(--font-weight-bold);
 }
 
-:where(a:any-link) {
+:where(a:any-link):not([data-no-link-style]) {
   text-decoration: none;
   color: var(--global-interactive-text);
   word-break: break-word;
@@ -34,20 +34,20 @@ b {
 
 
 del {
-  padding: 2px 4px;
+  padding: 0 4px;
   background-color: var(--highlight-red-background);
   box-shadow: 0 0 0 2px var(--highlight-red-background);
   color: var(--highlight-red-foreground);
-  border-radius: token(--radius-4);
+  border-radius: token(--radius-8);
 }
 
 ins {
-  padding: 2px 4px;
+  padding: 0 4px;
   background-color: var(--highlight-green-background);
   box-shadow: 0 0 0 2px var(--highlight-green-background);
   text-decoration: none;
   color: var(--highlight-green-foreground);
-  border-radius: token(--radius-4);
+  border-radius: token(--radius-8);
 }
 
 address {
@@ -85,11 +85,11 @@ ol {
 }
 
 kbd {
-  border: 1px solid var(--dimmed-1);
   padding: 2px 4px;
-  box-shadow: 0 2px 0 var(--dimmed-1);
-  border-radius: token(--radius-4);
+  border-radius: token(--radius-8);
   font-weight: 600;
+  box-shadow: 0 0 0 1px var(--global-outer-contrast-border), inset 0 0 0 1px var(--global-inner-contrast-border);
+  background: var(--vibrancy-background-mid);
 }
 
 mark {
@@ -109,9 +109,11 @@ legend {
 
 code {
   background-color: var(--vibrancy-background-mid);
-  border-radius: token(--radius-4);
+  border-radius: token(--radius-8);
+  box-shadow: 0 0 0 1px var(--global-outer-contrast-border), inset 0 0 0 1px var(--global-inner-contrast-border);
   padding: 0 4px 3px;
   font-size: 1em;
+  color: var(--highlight-cyan-foreground);
   font-family: token(--font-family-mono);
   vertical-align: top;
 }
