@@ -1,5 +1,15 @@
 # @lualtek/react-components
 
+## 9.1.0
+
+### Minor Changes
+
+- 7600b96: Add extraShadow prop to Elevator
+
+### Patch Changes
+
+- @lualtek/icons@9.1.0
+
 ## 9.0.6
 
 ### Patch Changes
