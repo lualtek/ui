@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 9.1.1
+
+### Patch Changes
+
+- e55f3ff: Fix disabled shine color
+  - @lualtek/icons@9.1.1
+
 ## 9.1.0
 
 ### Minor Changes
