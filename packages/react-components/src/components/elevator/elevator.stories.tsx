@@ -45,3 +45,10 @@ export const WithHover = {
     hover: 3,
   },
 } satisfies Story;
+
+export const WithExtraShadow = {
+  args: {
+    resting: 1,
+    extraShadow: '0 0 0 10px red',
+  },
+} satisfies Story;

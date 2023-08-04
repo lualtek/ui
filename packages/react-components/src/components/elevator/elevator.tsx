@@ -23,6 +23,11 @@ export type ElevatorProps = {
    * @default 'oklch(0% 0 0)'
    */
   shadowColor?: string;
+  /**
+   * Add extra shadow to the component.
+   * Whis shadow is added to the elevation shadow.
+   */
+  extraShadow?: string;
 }
 
 export const Elevator: FCChildren<ElevatorProps> = ({
@@ -30,6 +35,7 @@ export const Elevator: FCChildren<ElevatorProps> = ({
   resting,
   direction = 'bottom',
   shadowColor = 'oklch(0% 0 0)',
+  extraShadow,
   hover,
 }) => (
   <>
@@ -39,7 +45,11 @@ export const Elevator: FCChildren<ElevatorProps> = ({
         'data-elevation': resting,
         'data-elevation-direction': direction,
         'data-elevation-hover': hover,
-        style: { ...child.props.style as CSSProperties, '--shadow-color': shadowColor },
+        style: {
+          ...child.props.style as CSSProperties,
+          '--shadow-color': shadowColor,
+          '--extra-shadow': extraShadow,
+        },
       },
     ))}
   </>

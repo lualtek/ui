@@ -1,6 +1,7 @@
 /* stylelint-disable length-zero-no-unit */
 [data-elevation] {
   --shadow-direction: 1;
+  --extra-shadow: 0 0 0 1px transparent;
 
   transition: box-shadow token(--duration-100) token(--easing-standard);
 
@@ -15,7 +16,7 @@
 
 [data-elevation='0'],
 [data-elevation-hover='0']:hover {
-  box-shadow: none;
+  box-shadow: var(--extra-shadow);
 }
 
 [data-elevation='1'],
@@ -39,11 +40,15 @@
       var(--shadow-color),
       transparent calc(94% - var(--shadow-opacity-factor))
     ),
-    0 0 1px color-mix(
+    0
+    0
+    1px
+    color-mix(
       in oklch,
       var(--shadow-color),
       transparent calc(96% - var(--shadow-opacity-factor))
-    );
+    ),
+    var(--extra-shadow);
 
   &:where([data-elevation-direction='left'], [data-elevation-direction='right']) {
     --y1: 0px;
@@ -78,11 +83,14 @@
       var(--shadow-color),
       transparent calc(96% - var(--shadow-opacity-factor))
     ),
-    0 0 1px color-mix(
+    0
+    0
+    1px color-mix(
       in oklch,
       var(--shadow-color),
       transparent calc(96% - var(--shadow-opacity-factor))
-    );
+    ),
+    var(--extra-shadow);
 
   &:where([data-elevation-direction='left'], [data-elevation-direction='right']) {
     --y1: 0px;
@@ -118,11 +126,15 @@
       var(--shadow-color),
       transparent calc(96% - var(--shadow-opacity-factor))
     ),
-    0 0 1px color-mix(
-    in oklch,
-    var(--shadow-color),
-    transparent calc(96% - var(--shadow-opacity-factor))
-  );
+    0
+    0
+    1px
+    color-mix(
+      in oklch,
+      var(--shadow-color),
+      transparent calc(96% - var(--shadow-opacity-factor))
+    ),
+    var(--extra-shadow);
 
   &:where([data-elevation-direction='left'], [data-elevation-direction='right']) {
     --y1: 0px;
@@ -168,11 +180,15 @@
       var(--shadow-color),
       transparent calc(96% - var(--shadow-opacity-factor))
     ),
-    0 0 1px color-mix(
+    0
+    0
+    1px
+    color-mix(
       in oklch,
       var(--shadow-color),
       transparent calc(96% - var(--shadow-opacity-factor))
-    );
+    ),
+    var(--extra-shadow);
 
   &:where([data-elevation-direction='left'], [data-elevation-direction='right']) {
     --y1: 0px;
