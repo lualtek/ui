@@ -234,7 +234,8 @@
       background: var(--global-disabled-background);
       cursor: not-allowed;
 
-      &::after {
+      &::after,
+      &::before {
         display: none;
       }
     }
