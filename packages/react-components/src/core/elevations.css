@@ -16,7 +16,32 @@
 
 [data-elevation='0'],
 [data-elevation-hover='0']:hover {
-  box-shadow: var(--extra-shadow);
+  --y1: 0px;
+  --x1: 0px;
+
+  box-shadow:
+    calc(var(--x1) * var(--shadow-direction))
+    calc(var(--y1) * var(--shadow-direction))
+    0
+    color-mix(
+      in oklch,
+      var(--shadow-color),
+      transparent calc(96% - var(--shadow-opacity-factor))
+    ),
+    0 0 0 color-mix(
+      in oklch,
+      var(--shadow-color),
+      transparent calc(94% - var(--shadow-opacity-factor))
+    ),
+    0
+    0
+    0
+    color-mix(
+      in oklch,
+      var(--shadow-color),
+      transparent calc(96% - var(--shadow-opacity-factor))
+    ),
+    var(--extra-shadow);
 }
 
 [data-elevation='1'],
