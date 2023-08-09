@@ -1,5 +1,13 @@
 # @lualtek/react-components
 
+## 9.1.2
+
+### Patch Changes
+
+- 73b3507: Fix shadow 0 transition
+- 2e513e2: Fix card transparent border when elevated
+  - @lualtek/icons@9.1.2
+
 ## 9.1.1
 
 ### Patch Changes
