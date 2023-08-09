@@ -12,8 +12,16 @@
     }
 
     &[data-card-bordered='true'] {
-      border: solid 1px var(--global-inner-contrast-border);
       outline: solid 1px var(--global-outer-contrast-border);
+    }
+
+    &[data-card-bordered='true']:not([data-elevation]) {
+      box-shadow: inset 0 0 0 1px var(--global-inner-contrast-border);
+      outline: solid 1px var(--global-outer-contrast-border);
+    }
+
+    &[data-card-bordered='true'][data-elevation] {
+      --extra-shadow: inset 0 0 0 1px var(--global-inner-contrast-border);
     }
 
     &[data-card-dimmed='0'] {
