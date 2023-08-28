@@ -14,22 +14,22 @@
       }
     },
     "background-soft": {
-      "value": "{color.primary.10}",
-      "transparency": "30%",
+      "value": "{color.primary.0}",
+      "transparency": "60%",
       "attributes": {
         "category": "color"
       }
     },
     "background-mid": {
-      "value": "{color.primary.20}",
-      "transparency": "40%",
+      "value": "{color.primary.10}",
+      "transparency": "60%",
       "attributes": {
         "category": "color"
       }
     },
     "background-hard": {
-      "value": "{color.primary.40}",
-      "transparency": "30%",
+      "value": "{color.primary.30}",
+      "transparency": "60%",
       "attributes": {
         "category": "color"
       }
