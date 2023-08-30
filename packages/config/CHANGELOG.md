@@ -1,5 +1,12 @@
 # @lualtek/config
 
+## 9.1.3
+
+### Patch Changes
+
+- Updated dependencies [fa43a46]
+  - @lualtek/tokens@9.1.3
+
 ## 9.1.2
 
 ### Patch Changes
