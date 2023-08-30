@@ -54,6 +54,7 @@
   }
 
   .Header {
+    max-height: token(--space-72);
     border-bottom: 1px solid var(--vibrancy-background-mid);
     padding:
       calc(env(safe-area-inset-top) + token(--space-16))
