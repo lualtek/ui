@@ -1,5 +1,11 @@
 # @lualtek/tokens
 
+## 9.1.3
+
+### Patch Changes
+
+- fa43a46: Update primary-80 color
+
 ## 9.1.2
 
 ## 9.1.1

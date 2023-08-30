@@ -1,5 +1,13 @@
 # @lualtek/react-components
 
+## 9.1.3
+
+### Patch Changes
+
+- a085a7e: Fix drawer header height on mobile
+- b161e39: Add :focus-within support on hoverable cards
+  - @lualtek/icons@9.1.3
+
 ## 9.1.2
 
 ### Patch Changes

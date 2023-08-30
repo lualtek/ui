@@ -1,5 +1,11 @@
 # @lualtek/themes
 
+## 9.1.3
+
+### Patch Changes
+
+- e89dc34: Update light vibrancy soft, mid and dark transparency
+
 ## 9.1.2
 
 ## 9.1.1
