@@ -50,6 +50,10 @@ export type TextProps = {
    * @default 'standard'
    */
   lineHeight?: 'none' | 'extra-small' | 'small' | 'standard' |'large';
+  /**
+   * Assign a custom color to the text when `dimmed` or `sentiment` are not set.
+   */
+  textColor?: string;
 }
 
 type PolymorphicText = Polymorphic.ForwardRefComponent<'p', TextProps>;
@@ -66,6 +70,7 @@ export const Text = forwardRef(({
   as: Wrapper = 'p',
   responsive = true,
   lineHeight = 'standard',
+  textColor,
   style,
   ...otherProps
 }, forwardedRef) => {
@@ -73,8 +78,9 @@ export const Text = forwardRef(({
     {
       '--max-w': maxWidth,
       '--t-align': textAlign,
+      '--text-color': textColor,
     }
-  ), [maxWidth, textAlign]);
+  ), [maxWidth, textAlign, textColor]);
 
   return (
     <Wrapper

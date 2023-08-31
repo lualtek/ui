@@ -13,6 +13,7 @@ const meta = {
     textAlign: 'start',
     responsive: true,
     lineHeight: 'small',
+    textColor: '',
   },
   argTypes: {
     size: {
@@ -24,7 +25,7 @@ const meta = {
       control: { type: 'select' },
     },
     dimmed: {
-      options: [5, 6, 7],
+      options: [4, 5, 6, 7, 8],
       control: { type: 'select' },
     },
     textAlign: {
