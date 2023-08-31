@@ -1,5 +1,15 @@
 # @lualtek/react-components
 
+## 9.2.0
+
+### Minor Changes
+
+- c61f808: Add new textColor to Text component
+
+### Patch Changes
+
+- @lualtek/icons@9.2.0
+
 ## 9.1.3
 
 ### Patch Changes
