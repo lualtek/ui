@@ -10,6 +10,14 @@ export const postcssConfig = (tokens: Record<string, unknown>) => ({
     'postcss-mixins': {},
     'postcss-preset-env': {
       stage: 0,
+      features: {
+        'logical-properties-and-values': false,
+        'prefers-color-scheme-query': false,
+        'postcss-oklab-function': false,
+        'gap-properties': false,
+        'cascade-layers': false,
+        'nesting-rules': true,
+      },
     },
     cssnano: {
       preset: [

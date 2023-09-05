@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Text } from '../..';
 import { Tooltip, TooltipProvider } from './tooltip';
 
-const meta = {
+const meta: Meta<typeof Tooltip> = {
   title: 'Dialogs/Tooltip',
   component: Tooltip,
   args: {
