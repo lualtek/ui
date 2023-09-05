@@ -13,10 +13,10 @@ export const postcssConfig = (tokens: Record<string, unknown>) => ({
       features: {
         'logical-properties-and-values': false,
         'prefers-color-scheme-query': false,
-        'postcss-oklab-function': false,
+        'oklab-function': false,
         'gap-properties': false,
         'cascade-layers': false,
-        'nesting-rules': true,
+        'nesting-rules': false,
       },
     },
     cssnano: {
