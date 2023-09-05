@@ -1,5 +1,15 @@
 # @lualtek/config
 
+## 9.3.0
+
+### Minor Changes
+
+- f1c297c: Disable css-nesting polyfill
+
+### Patch Changes
+
+- @lualtek/tokens@9.3.0
+
 ## 9.2.0
 
 ### Patch Changes

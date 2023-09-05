@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 9.3.0
+
+### Patch Changes
+
+- 5f0f17c: Fix menu-item hover color
+  - @lualtek/icons@9.3.0
+
 ## 9.2.0
 
 ### Minor Changes
