@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 9.3.2
+
+### Patch Changes
+
+- f191f47: Fix responsive text and set default size to 18
+  - @lualtek/icons@9.3.2
+
 ## 9.3.1
 
 ### Patch Changes
