@@ -1,5 +1,12 @@
 # @lualtek/config
 
+## 9.3.1
+
+### Patch Changes
+
+- 6800c5d: Restore postcss obsolete polyfills
+  - @lualtek/tokens@9.3.1
+
 ## 9.3.0
 
 ### Minor Changes
