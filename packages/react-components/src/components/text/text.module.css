@@ -2,6 +2,9 @@
 
 @layer components {
   .Text {
+    --fs-min: token(--font-size-16);
+    --fs-max: token(--font-size-18);
+
     min-block-size: 0.01vh;
     font-size: var(--fs-max);
     max-inline-size: var(--max-w, initial);
@@ -114,13 +117,13 @@
       font-weight: token(--font-weight-light);
     }
 
-  &[data-text-weight='regular'] {
-    font-weight: token(--font-weight-regular);
-  }
+    &[data-text-weight='regular'] {
+      font-weight: token(--font-weight-regular);
+    }
 
-  &[data-text-weight='semibold'] {
-    font-weight: token(--font-weight-semi-bold);
-  }
+    &[data-text-weight='semibold'] {
+      font-weight: token(--font-weight-semi-bold);
+    }
 
     &[data-text-weight='bold'] {
       font-weight: token(--font-weight-bold);
