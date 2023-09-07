@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 9.3.3
+
+### Patch Changes
+
+- 9683153: Fix code style
+  - @lualtek/icons@9.3.3
+
 ## 9.3.2
 
 ### Patch Changes
