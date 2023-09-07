@@ -118,5 +118,5 @@ code {
 }
 
 pre code {
-  boxh-shadow: none;
+  box-shadow: none;
 }

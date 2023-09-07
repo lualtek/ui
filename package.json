@@ -43,7 +43,6 @@
     "rimraf": "5.0.1",
     "stylelint": "15.10.3",
     "stylelint-config-equinusocio": "1.8.0",
-    "stylelint-config-standard": "34",
     "stylelint-design-tokens-plugin": "0.0.14",
     "ts-node": "10.9.1",
     "tsc-alias": "1.8.7",
