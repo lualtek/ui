@@ -6,7 +6,6 @@ import {
 } from 'react';
 
 import {
-  ClampText,
   Icon, IconButton, IconProps, Stack, Text,
 } from '@/components';
 
@@ -141,7 +140,7 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(({
           size={14}
           htmlFor={fieldID}
         >
-          <ClampText rows={1}>{label}</ClampText>
+          {label}
         </Text>
       </div>
     </Stack>

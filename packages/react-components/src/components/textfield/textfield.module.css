@@ -25,6 +25,9 @@
     left: var(--field-padding);
     right: var(--field-padding);
     transform: translateZ(0);
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 
     [data-textfield-has-icon='true'][data-textfield-icon-position='start'] & {
       left: calc(var(--field-padding) * var(--factor));

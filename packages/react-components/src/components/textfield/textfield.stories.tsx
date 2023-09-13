@@ -35,7 +35,7 @@ const meta = {
       control: { type: 'inline-radio' },
     },
   },
-  render: args => <Textfield {...args} size={4} label="Empty" placeholder="Placeholder" />,
+  render: args => <Textfield {...args} size={4} placeholder="Placeholder" />,
 } satisfies Meta<typeof Textfield>;
 
 export default meta;
