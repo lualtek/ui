@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 9.3.4
+
+### Patch Changes
+
+- d8e72c9: Fix textfield span overflow and wrap
+  - @lualtek/icons@9.3.4
+
 ## 9.3.3
 
 ### Patch Changes
