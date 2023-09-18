@@ -1,5 +1,15 @@
 # @lualtek/react-components
 
+## 9.4.0
+
+### Minor Changes
+
+- e2aa8e0: Add new Bleed component
+
+### Patch Changes
+
+- @lualtek/icons@9.4.0
+
 ## 9.3.4
 
 ### Patch Changes
