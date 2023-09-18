@@ -1,0 +1,8 @@
+.Bleed {
+  margin: 0 calc(var(--bleed, 0) * -1);
+
+  &[data-bleed-full='true'] {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+  }
+}
