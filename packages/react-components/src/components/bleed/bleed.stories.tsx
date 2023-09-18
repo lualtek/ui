@@ -23,7 +23,7 @@ const meta = {
     </Container>
   ),
   args: {
-    amount: '10rem',
+    amount: undefined,
     full: false,
   },
 } satisfies Meta<typeof Bleed>;

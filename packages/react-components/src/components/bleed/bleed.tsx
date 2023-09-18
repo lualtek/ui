@@ -13,10 +13,10 @@ export type BleedProps = HTMLAttributes<HTMLDivElement> &{
   /**
    * Sets the amount of bleed on each inline side.
    */
-  amount: string | Exclude<TokensTypes['space'], string>;
+  amount?: string | Exclude<TokensTypes['space'], string>;
 
   /**
-   * Set if the bleed should be full width.
+   * Make the content bleed to the edges of the viewport.
    * @importatnt This will ignore the `amount` prop.
    */
   full?: boolean;
@@ -27,14 +27,15 @@ export const Bleed = forwardRef<HTMLDivElement, BleedProps>(({
   children,
   style,
   full = false,
-  amount = 16,
+  amount,
   ...otherProps
 }, forwardedRef) => {
+  const amountType = (typeof amount === 'string') ? amount : tkns.space[amount as TokensTypes['space']];
   const dynamicStyle: CSSProperties = useMemo(() => (
     {
-      '--bleed': (typeof amount === 'string') ? amount : tkns.space[amount],
+      '--bleed': amount ? amountType : 0,
     }
-  ), [amount]);
+  ), [amount, amountType]);
 
   return (
     <div
