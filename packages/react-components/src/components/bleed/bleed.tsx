@@ -32,7 +32,7 @@ export const Bleed: FCChildrenClass<BleedProps> = ({
   const dynamicStyle: CSSProperties = useMemo(() => (
     {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-      '--bleed': typeof amount === 'string' ? amount : tkns.space[amount],
+      '--bleed': (typeof amount === 'string') ? amount : tkns.space[amount],
     }
   ), [amount]);
 
