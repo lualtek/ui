@@ -5,7 +5,6 @@ import { Bleed } from './bleed';
 
 const meta = {
   title: 'Layouts/Bleed',
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   component: Bleed,
   render: args => (
     <Container dimension="medium" className="ContainerEx">
