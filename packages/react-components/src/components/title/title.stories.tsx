@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
+import { Stack } from '..';
 import { Title } from './title';
 
 const meta = {
@@ -43,4 +44,19 @@ export const Default = {
     maxWidth: 'auto',
     textAlign: 'center',
   },
+} satisfies Story;
+
+export const Scale = {
+  args: {},
+  render: () => (
+    <Stack rowGap={32}>
+      <Title level="display">Display Title</Title>
+      <Title level="1">H1 Heading Title</Title>
+      <Title level="2">H2 Heading Title</Title>
+      <Title level="3">H3 Heading Title</Title>
+      <Title level="4">H4 Heading Title</Title>
+      <Title level="5">H5 Heading Title</Title>
+      <Title level="6">H6 Heading Title</Title>
+    </Stack>
+  ),
 } satisfies Story;
