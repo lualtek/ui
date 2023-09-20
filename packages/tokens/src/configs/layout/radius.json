@@ -41,6 +41,12 @@
       "attributes": {
         "category": "size/rem"
       }
+    },
+    "full": {
+      "value": 10000,
+      "attributes": {
+        "category": "size/rem"
+      }
     }
   }
 }

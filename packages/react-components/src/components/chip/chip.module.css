@@ -2,7 +2,7 @@
   .Chip {
     font: unset;
     padding: 0 token(--space-8);
-    border-radius: 1e5px;
+    border-radius: token(--radius-full);
     font-size: token(--font-size-16);
     block-size: token(--space-24);
     max-width: 100%;

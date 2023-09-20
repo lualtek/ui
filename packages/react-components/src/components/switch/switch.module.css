@@ -14,7 +14,7 @@
     background-color: var(--vibrancy-background-mid);
     box-shadow: 0 0 0 1px var(--global-outer-contrast-border), inset 0 0 0 1px var(--global-inner-contrast-border);
     color: var(--dimmed-6);
-    border-radius: 1e5px;
+    border-radius: token(--radius-full);
     justify-content: flex-start;
     align-items: center;
     flex-shrink: 0;
