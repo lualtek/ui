@@ -85,6 +85,7 @@
 
       font-family: token(--font-family-heading);
       font-weight: token(--font-weight-regular);
+      letter-spacing: -0.03em;
     }
 
     &:is(.H1) {
@@ -93,6 +94,7 @@
 
       font-family: token(--font-family-heading);
       font-weight: token(--font-weight-regular);
+      letter-spacing: -0.03em;
     }
 
     &.Display {
@@ -101,6 +103,7 @@
 
       font-family: token(--font-family-heading);
       font-weight: token(--font-weight-regular);
+      letter-spacing: -0.03em;
     }
 
     &[data-title-responsive='true'] {
