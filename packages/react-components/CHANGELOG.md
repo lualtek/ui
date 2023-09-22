@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 10.0.0-next.2
+
+### Patch Changes
+
+- 7721e56: Fix vibrancy brightness and titles weight
+  - @lualtek/icons@10.0.0-next.2
+
 ## 10.0.0-next.1
 
 ### Major Changes
