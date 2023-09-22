@@ -1,5 +1,7 @@
 # @lualtek/tokens
 
+## 10.0.0-next.1
+
 ## 10.0.0-next.0
 
 ### Major Changes
