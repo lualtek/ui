@@ -9,5 +9,12 @@
     "@lualtek/tokens": "9.4.1",
     "tsconfig": "0.2.0"
   },
-  "changesets": []
+  "changesets": [
+    "brown-poems-compare",
+    "curly-rats-flash",
+    "large-sloths-walk",
+    "pretty-ghosts-swim",
+    "strong-suns-grab",
+    "two-news-watch"
+  ]
 }

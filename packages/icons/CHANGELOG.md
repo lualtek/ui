@@ -1,5 +1,22 @@
 # @lualtek/icons
 
+## 10.0.0-next.0
+
+### Major Changes
+
+- 0783fc0: Rename `textAlign` prop to `align` for Title component
+- 0783fc0: Rename textAlign prop to align for Text component
+
+### Minor Changes
+
+- 0783fc0: Update fonts and Title component
+- 0783fc0: Add new AspectRatio component
+- 0783fc0: Add new full radius token
+
+### Patch Changes
+
+- 0783fc0: Fix titles letter spacing
+
 ## 9.4.1
 
 ## 9.4.0
