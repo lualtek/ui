@@ -10,7 +10,7 @@ const meta = {
     children: `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius dolores,
     tempore quas labore officiis praesentium. Porro sed dolorem, numquam temporibus
     consequuntur quam doloremque ducimus error tempora illo aliquam nesciunt nostrum!`,
-    textAlign: 'start',
+    align: 'start',
     responsive: true,
     lineHeight: 'small',
     textColor: '',
@@ -28,7 +28,7 @@ const meta = {
       options: [4, 5, 6, 7, 8],
       control: { type: 'select' },
     },
-    textAlign: {
+    align: {
       options: ['start', 'center', 'end'],
       control: { type: 'inline-radio' },
     },

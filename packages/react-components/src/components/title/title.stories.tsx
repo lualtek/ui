@@ -11,7 +11,7 @@ const meta = {
   },
   args: {
     responsive: true,
-    textAlign: 'center',
+    align: 'center',
   },
   argTypes: {
     level: {
@@ -22,7 +22,7 @@ const meta = {
       options: ['none', 'extra-small', 'small', 'standard', 'large'],
       control: { type: 'inline-radio' },
     },
-    textAlign: {
+    align: {
       options: ['start', 'center', 'end'],
       control: { type: 'inline-radio' },
     },
@@ -42,7 +42,7 @@ export const Default = {
     lineHeight: 'small',
     level: '1',
     maxWidth: 'auto',
-    textAlign: 'center',
+    align: 'center',
   },
 } satisfies Story;
 
