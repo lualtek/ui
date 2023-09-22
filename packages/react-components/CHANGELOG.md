@@ -1104,7 +1104,7 @@
 
 ### Patch Changes
 
-- de5f9bb: Fix OverlayContainer to be ssr compatible
+- de5f9bb: Fix Overlay to be ssr compatible
   - @lualtek/icons@2.6.1
 
 ## 2.6.0

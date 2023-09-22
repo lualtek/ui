@@ -2,23 +2,23 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 
 import { Button, Stack } from '../..';
-import { OverlayContainer } from './overlay-container';
+import { Overlay } from './overlay';
 
 const Template = ({ ...args }) => {
   const [isVisible, setVisible] = useState(false);
   return (
     <>
       <Button onClick={() => setVisible(true)}>Open Overlay</Button>
-      <OverlayContainer onClose={() => setVisible(false)} {...args}>
+      <Overlay onClose={() => setVisible(false)} {...args}>
         {isVisible && args.children}
-      </OverlayContainer>
+      </Overlay>
     </>
   );
 };
 
 const meta = {
   title: 'Layouts/Overlay container',
-  component: OverlayContainer,
+  component: Overlay,
   args: {
     obfuscate: true,
     children: (
@@ -32,7 +32,7 @@ const meta = {
     ),
   },
   render: args => <Template {...args} />,
-} satisfies Meta<typeof OverlayContainer>;
+} satisfies Meta<typeof Overlay>;
 
 export default meta;
 

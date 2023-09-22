@@ -2,4 +2,4 @@
 "@lualtek/react-components": minor
 ---
 
-Update vibrancy and add new vibrancy-saturate mixin
+Update vibrancy mixin with `saturation` and `blur` parameters

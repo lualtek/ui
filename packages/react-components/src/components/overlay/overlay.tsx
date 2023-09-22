@@ -10,10 +10,10 @@ import { createPortal } from 'react-dom';
 
 import { FCChildren } from '@/components/types';
 
-import styles from './overlay-container.module.css';
+import styles from './overlay.module.css';
 import { OverlayProvider } from './overlay-context';
 
-export type OverlayContainerProps = {
+export type OverlayProps = {
   /**
    * The children to render inside the overlay container. This content
    * will be rendered in a React `portal`, which means that it will be
@@ -45,7 +45,7 @@ export type OverlayContainerProps = {
   obfuscate?: boolean;
 }
 
-export const OverlayContainer: FCChildren<OverlayContainerProps> = ({
+export const Overlay: FCChildren<OverlayProps> = ({
   children,
   root,
   theme = 'auto',
@@ -57,9 +57,9 @@ export const OverlayContainer: FCChildren<OverlayContainerProps> = ({
   const defaultRoot = useMemo(() => (root ?? (typeof document !== 'undefined' ? document.body : null)), [root]);
 
   useEffect(() => {
-    if (defaultRoot?.closest('[data-overlay-container]')) {
+    if (defaultRoot?.closest('[data-overlay]')) {
       throw new Error(`
-        OverlayContainer: An OverlayContainer must not be inside another container.
+        Overlay: An Overlay must not be inside another container.
         Please change the root prop.
       `);
     }
@@ -82,9 +82,9 @@ export const OverlayContainer: FCChildren<OverlayContainerProps> = ({
       <AnimatePresence mode="wait">
         {children && (
           <div
-            data-overlay-container
-            data-overlay-container-obfuscate={obfuscate}
-            className={styles.OverlayContainer}
+            data-overlay
+            data-overlay-obfuscate={obfuscate}
+            className={styles.Overlay}
             style={{ zIndex: index }}
           >
             <LazyMotion features={domMax}>
@@ -110,4 +110,4 @@ export const OverlayContainer: FCChildren<OverlayContainerProps> = ({
   return defaultRoot && createPortal(content, defaultRoot);
 };
 
-OverlayContainer.displayName = 'OverlayContainer';
+Overlay.displayName = 'Overlay';

@@ -27,7 +27,7 @@ export * from './logo';
 export * from './masonry';
 export * from './menu';
 export * from './modal';
-export * from './overlay-container';
+export * from './overlay';
 export * from './pagination';
 export * from './popover';
 export * from './prose';
