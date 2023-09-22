@@ -70,13 +70,13 @@
     &:is(.H4) {
       --fs-min: 1.33rem;
       --fs-max: 1.77rem;
-
-      font-weight: token(--font-weight-light);
     }
 
     &:is(.H3) {
       --fs-min: 1.77rem;
       --fs-max: 2.37rem;
+
+      font-weight: token(--font-weight-light);
     }
 
     &:is(.H2) {
