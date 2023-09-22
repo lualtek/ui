@@ -1,5 +1,7 @@
 # @lualtek/themes
 
+## 10.0.0-next.2
+
 ## 10.0.0-next.1
 
 ## 10.0.0-next.0
