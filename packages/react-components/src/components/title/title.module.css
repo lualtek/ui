@@ -71,7 +71,7 @@
       --fs-min: 1.33rem;
       --fs-max: 1.77rem;
 
-      font-weight: token(--font-weight-bold);
+      font-weight: token(--font-weight-light);
     }
 
     &:is(.H3) {
@@ -83,18 +83,14 @@
       --fs-min: 2.37rem;
       --fs-max: 3.16rem;
 
-      font-family: token(--font-family-heading);
-      font-weight: token(--font-weight-regular);
-      letter-spacing: -0.03em;
+      font-weight: token(--font-weight-light);
     }
 
     &:is(.H1) {
       --fs-min: 3.16rem;
       --fs-max: 4.2rem;
 
-      font-family: token(--font-family-heading);
-      font-weight: token(--font-weight-regular);
-      letter-spacing: -0.03em;
+      font-weight: token(--font-weight-light);
     }
 
     &.Display {

@@ -1,5 +1,27 @@
 # @lualtek/config
 
+## 10.0.0-next.0
+
+### Major Changes
+
+- 0783fc0: Rename `textAlign` prop to `align` for Title component
+- 0783fc0: Rename textAlign prop to align for Text component
+
+### Minor Changes
+
+- 0783fc0: Add new AspectRatio component
+
+### Patch Changes
+
+- 0783fc0: Fix titles letter spacing
+- Updated dependencies [0783fc0]
+- Updated dependencies [0783fc0]
+- Updated dependencies [0783fc0]
+- Updated dependencies [0783fc0]
+- Updated dependencies [0783fc0]
+- Updated dependencies [0783fc0]
+  - @lualtek/tokens@10.0.0-next.0
+
 ## 9.4.1
 
 ### Patch Changes
