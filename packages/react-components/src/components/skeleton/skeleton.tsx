@@ -15,9 +15,9 @@ export type SkeletonProps = {
    * Set the edge radius of each skeleton block.
    * This value must be one of the available `radius` tokens
    */
-  borderRadius?: TokensTypes['radius'];
+  radius?: TokensTypes['radius'];
   /**
-   * Set the block to be a circle, ignoring the `borderRadius` property.
+   * Set the block to be a circle, ignoring the `radius` property.
    */
   circle?: boolean;
   /**
@@ -50,7 +50,7 @@ export type SkeletonProps = {
 
 export const Skeleton: FCClass<SkeletonProps> = ({
   className,
-  borderRadius = 4,
+  radius = 4,
   style,
   width,
   height,
@@ -67,7 +67,7 @@ export const Skeleton: FCClass<SkeletonProps> = ({
 
   const SkeletonItem = useCallback(() => {
     const dynamicStyle: CSSProperties = {
-      '--radius': borderRadius && tkns.radius[borderRadius],
+      '--radius': radius && tkns.radius[radius],
       '--width': width && computedWidth,
       '--height': height && computedHeight,
       '--gap': gap ? tkns.space[gap] : undefined,
@@ -83,7 +83,7 @@ export const Skeleton: FCClass<SkeletonProps> = ({
         &zwnj;
       </span>
     );
-  }, [borderRadius, width, computedWidth, height, computedHeight, gap, circle, enableAnimation, style]);
+  }, [radius, width, computedWidth, height, computedHeight, gap, circle, enableAnimation, style]);
 
   return (
     <span
