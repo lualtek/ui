@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 
-import { BlankButton, OverlayContainer } from '../..';
+import { BlankButton, Overlay } from '../..';
 import { Lightbox, LightboxProps } from './lightbox';
 
 const Template = ({ selectedState, ...args }: LightboxProps) => {
@@ -26,9 +26,9 @@ const Template = ({ selectedState, ...args }: LightboxProps) => {
           />
         </BlankButton>
       ))}
-      <OverlayContainer onClose={() => setIsOpen(false)}>
+      <Overlay onClose={() => setIsOpen(false)}>
         {isOpen && <Lightbox selectedState={state} {...args} />}
-      </OverlayContainer>
+      </Overlay>
     </>
   );
 };

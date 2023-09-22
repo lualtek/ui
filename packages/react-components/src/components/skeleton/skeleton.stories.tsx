@@ -6,7 +6,7 @@ const meta = {
   title: 'Loading/Skeleton',
   component: Skeleton,
   args: {
-    borderRadius: 8,
+    radius: 8,
     gap: 8,
     enableAnimation: true,
     inline: false,
@@ -37,7 +37,7 @@ export const Rounded = {
   args: {
     width: '400px',
     height: '48px',
-    borderRadius: 16,
+    radius: 16,
   },
 } satisfies Story;
 

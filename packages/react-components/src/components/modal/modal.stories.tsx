@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 
 import {
-  Button, IconButton, OverlayContainer, ResponsiveProvider,
+  Button, IconButton, Overlay, ResponsiveProvider,
   Stack, Textfield,
   Title, useOverlayContext,
 } from '../..';
@@ -14,7 +14,7 @@ const ModalShell = ({ ...args }) => {
   return (
     <ResponsiveProvider>
       <Button onClick={() => setIsVisible(true)}>Show Modal</Button>
-      <OverlayContainer onClose={() => setIsVisible(false)}>
+      <Overlay onClose={() => setIsVisible(false)}>
         {isVisible && (
           <Modal
             key="dynamic-modal"
@@ -23,7 +23,7 @@ const ModalShell = ({ ...args }) => {
             {args.children}
           </Modal>
         )}
-      </OverlayContainer>
+      </Overlay>
     </ResponsiveProvider>
   );
 };

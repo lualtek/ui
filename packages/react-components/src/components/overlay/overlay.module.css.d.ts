@@ -1,5 +1,5 @@
 declare const styles: {
-  readonly "OverlayContainer": string;
+  readonly "Overlay": string;
   readonly "Backdrop": string;
 };
 export = styles;

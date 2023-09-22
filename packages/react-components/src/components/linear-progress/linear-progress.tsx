@@ -2,6 +2,7 @@
 
 import clsx from 'clsx';
 import {
+  CSSProperties,
   forwardRef, ProgressHTMLAttributes,
   useCallback, useMemo,
 } from 'react';
@@ -34,6 +35,7 @@ export type LinearProgressProps = ProgressHTMLAttributes<HTMLProgressElement> & 
 
 export const LinearProgress = forwardRef<HTMLProgressElement, LinearProgressProps>(({
   className,
+  style,
   value,
   max = 100,
   dimension = 'regular',
@@ -47,8 +49,15 @@ export const LinearProgress = forwardRef<HTMLProgressElement, LinearProgressProp
 
   const clamp = useMemo(() => (num: number, min: number, max: number) => Math.min(Math.max(num, min), max), []);
 
+  const dynamicStyle: CSSProperties = useMemo(() => (
+    {
+      '--percentage-offset': `${getPercentage()}%`,
+      '--percentage-translation': value !== 0 ? '-100%' : '-50%',
+    }
+  ), [getPercentage, value]);
+
   return (
-    <div className={clsx(styles.LinearProgress, className)}>
+    <div className={clsx(styles.LinearProgress, className)} style={{ ...dynamicStyle, ...style }}>
       <progress
         role="progressbar"
         ref={forwardedRef}
@@ -65,10 +74,6 @@ export const LinearProgress = forwardRef<HTMLProgressElement, LinearProgressProp
         <Text
           as="span"
           className={styles.Percentage}
-          style={{
-            '--offset': `${getPercentage()}%`,
-            '--translation': value !== 0 ? '-100%' : '-50%',
-          }}
           weight="bold"
           size={dimension === 'regular' ? 16 : 18}
         >

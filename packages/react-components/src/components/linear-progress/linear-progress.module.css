@@ -61,9 +61,10 @@
 
   .Percentage {
     position: absolute;
-    left: var(--offset);
+    left: var(--percentage-offset);
     transition: left 200ms ease-out;
-    transform: translateX(var(--translation));
+    transform: translateX(var(--percentage-translation));
+    white-space: nowrap;
   }
 
   @keyframes progress-stripes {

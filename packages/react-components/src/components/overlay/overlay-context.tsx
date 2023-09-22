@@ -4,9 +4,9 @@ import {
   createContext, PropsWithChildren, useContext, useId,
 } from 'react';
 
-import { OverlayContainerProps } from './overlay-container';
+import { OverlayProps } from './overlay';
 
-type OverlayContextProps = Pick<OverlayContainerProps, 'onClose'> & {
+type OverlayContextProps = Pick<OverlayProps, 'onClose'> & {
   titleId?: string;
 }
 

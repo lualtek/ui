@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 import {
   Autocomplete,
-  Button, Chip, OverlayContainer, Stack,
+  Button, Chip, Overlay, Stack,
 } from '../..';
 import { Drawer } from './drawer';
 
@@ -30,7 +30,7 @@ const DrawerShell = ({ ...args }) => {
     <>
       <Button onClick={() => setIsVisible(true)}>Show Drawer</Button>
       {/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
-      <OverlayContainer obfuscate={args.isModal} onClose={() => setIsVisible(false)}>
+      <Overlay obfuscate={args.isModal} onClose={() => setIsVisible(false)}>
         {isVisible && (
           <Drawer {...args}>
             <Stack
@@ -48,7 +48,7 @@ const DrawerShell = ({ ...args }) => {
             </Stack>
           </Drawer>
         )}
-      </OverlayContainer>
+      </Overlay>
     </>
   );
 };

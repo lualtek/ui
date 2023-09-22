@@ -3,7 +3,7 @@
     --hue: 220;
     --track-size: 4px;
     --track-bg: var(--vibrancy-background-mid);
-    --thumb-size: calc(var(--track-size) - 2px);
+    --thumb-size: calc(var(--track-size) - 2.5px);
 
     inline-size: token(--space-64);
     min-inline-size: 64px;

@@ -35,3 +35,9 @@ export const Determinate = {
     value: 75,
   },
 } satisfies Story;
+
+export const WithCustomLabel = {
+  args: {
+    progressLabel: val => `${val}%`,
+  },
+} satisfies Story;

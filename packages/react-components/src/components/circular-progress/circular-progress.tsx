@@ -28,6 +28,10 @@ export type CircularProgressProps = HTMLAttributes<HTMLDivElement> & {
    */
   showProgress?: boolean;
   /**
+   * Show custom value label instead of raw value
+   */
+  progressLabel?: (value: number) => string;
+  /**
    * Change the color of the progress bar.
    */
   color?: string;
@@ -39,6 +43,7 @@ export const CircularProgress = forwardRef<HTMLDivElement, CircularProgressProps
   max = 100,
   dimension = 'regular',
   showProgress,
+  progressLabel = val => val,
   color,
   style,
   ...otherProps
@@ -66,7 +71,7 @@ export const CircularProgress = forwardRef<HTMLDivElement, CircularProgressProps
       aria-valuemin={0}
       aria-valuemax={max}
       className={clsx(styles.CircularProgress, className)}
-      data-circular-progress={clamp(getPercentage(), 0, 100)}
+      data-circular-progress={progressLabel?.(clamp(getPercentage(), 0, 100))}
       data-circular-progress-dimension={dimension}
       data-circular-progress-show-progress={showProgress}
       style={{ ...dynamicStyle, ...style }}
