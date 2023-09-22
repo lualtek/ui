@@ -84,7 +84,7 @@ export const TextChip: FCClass<TextChipProps> = ({
     >
       <Text
         className={styles.TextWrapper}
-        textAlign="center"
+        align="center"
         size={isEmoji ? sizes[dimension].emoji : sizes[dimension].text}
         weight="bold"
         as="span"

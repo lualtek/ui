@@ -1,7 +1,10 @@
 {
   "font": {
     "family": {
-      "sans": {
+      "heading": {
+        "value": "\"Adobe Text Pro\", system-ui, sans-serif"
+      },
+      "body": {
         "value": "\"Nunito Sans\", system-ui, sans-serif"
       },
       "mono": {

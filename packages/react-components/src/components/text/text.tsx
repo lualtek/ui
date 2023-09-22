@@ -40,7 +40,7 @@ export type TextProps = {
    * Set the text alignment of the text. This is a logical property
    * based on the direction of the text.
    */
-  textAlign?: 'start' | 'center' | 'end';
+  align?: 'start' | 'center' | 'end';
   /**
    * Enable or disable the responsiveness of the text. If disabled,
    * the text will be always the same size across all breakpoints.
@@ -68,7 +68,7 @@ export const Text = forwardRef(({
   dimmed,
   weight,
   maxWidth,
-  textAlign = 'start',
+  align = 'start',
   as: Wrapper = 'p',
   responsive = true,
   lineHeight = 'standard',
@@ -79,10 +79,10 @@ export const Text = forwardRef(({
   const dynamicStyle: CSSProperties = useMemo(() => (
     {
       '--max-w': maxWidth,
-      '--t-align': textAlign,
+      '--t-align': align,
       '--text-color': textColor,
     }
-  ), [maxWidth, textAlign, textColor]);
+  ), [maxWidth, align, textColor]);
 
   return (
     <Wrapper

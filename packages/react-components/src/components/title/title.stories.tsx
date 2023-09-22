@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
+import { Stack } from '..';
 import { Title } from './title';
 
 const meta = {
@@ -10,7 +11,7 @@ const meta = {
   },
   args: {
     responsive: true,
-    textAlign: 'center',
+    align: 'center',
   },
   argTypes: {
     level: {
@@ -21,7 +22,7 @@ const meta = {
       options: ['none', 'extra-small', 'small', 'standard', 'large'],
       control: { type: 'inline-radio' },
     },
-    textAlign: {
+    align: {
       options: ['start', 'center', 'end'],
       control: { type: 'inline-radio' },
     },
@@ -41,6 +42,21 @@ export const Default = {
     lineHeight: 'small',
     level: '1',
     maxWidth: 'auto',
-    textAlign: 'center',
+    align: 'center',
   },
+} satisfies Story;
+
+export const Scale = {
+  args: {},
+  render: () => (
+    <Stack rowGap={32}>
+      <Title level="display">Display Title</Title>
+      <Title level="1">H1 Heading Title</Title>
+      <Title level="2">H2 Heading Title</Title>
+      <Title level="3">H3 Heading Title</Title>
+      <Title level="4">H4 Heading Title</Title>
+      <Title level="5">H5 Heading Title</Title>
+      <Title level="6">H6 Heading Title</Title>
+    </Stack>
+  ),
 } satisfies Story;

@@ -37,22 +37,18 @@ export const Elevator: FCChildren<ElevatorProps> = ({
   shadowColor = 'oklch(0% 0 0)',
   extraShadow,
   hover,
-}) => (
-  <>
-    {Children.map(children, child => isValidElement(child) && cloneElement(
-      child as ReactElement,
-      {
-        'data-elevation': resting,
-        'data-elevation-direction': direction,
-        'data-elevation-hover': hover,
-        style: {
-          ...child.props.style as CSSProperties,
-          '--shadow-color': shadowColor,
-          '--extra-shadow': extraShadow,
-        },
-      },
-    ))}
-  </>
-);
+}) => Children.map(children, child => isValidElement(child) && cloneElement(
+  child as ReactElement,
+  {
+    'data-elevation': resting,
+    'data-elevation-direction': direction,
+    'data-elevation-hover': hover,
+    style: {
+      ...child.props.style as CSSProperties,
+      '--shadow-color': shadowColor,
+      '--extra-shadow': extraShadow,
+    },
+  },
+));
 
 Elevator.displayName = 'Elevator';

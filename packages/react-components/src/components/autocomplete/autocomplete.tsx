@@ -145,7 +145,7 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(({
             {(filteredOptions?.length === 0 && !loading) && (
               <Text
                 as="div"
-                textAlign="center"
+                align="center"
                 dimmed={5}
               >
                 {emptyContent}

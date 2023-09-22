@@ -26,7 +26,7 @@ export type TitleProps = {
   /**
    * Set the text alignment of the title based on the text direction.
    */
-  textAlign?: 'start' | 'center' | 'end';
+  align?: 'start' | 'center' | 'end';
   /**
    * Set the maximum width of the text after which it will wrap.
    */
@@ -46,7 +46,7 @@ export const Title = forwardRef(({
   as: Wrapper = 'span',
   lineHeight = 'standard',
   level = '1',
-  textAlign = 'start',
+  align = 'start',
   maxWidth,
   responsive = true,
   style,
@@ -59,9 +59,9 @@ export const Title = forwardRef(({
   const dynamicStyle: CSSProperties = useMemo(() => (
     {
       '--max-w': maxWidth,
-      '--t-align': textAlign,
+      '--t-align': align,
     }
-  ), [maxWidth, textAlign]);
+  ), [maxWidth, align]);
 
   return (
     <Wrapper

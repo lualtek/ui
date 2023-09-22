@@ -22,7 +22,7 @@ html {
 
 body {
   color: var(--global-foreground);
-  font-family: token(--font-family-sans);
+  font-family: token(--font-family-body);
   font-weight: token(--font-weight-semi-bold);
   font-feature-settings: 'calt' off;
   font-size: 1rem;

@@ -11,14 +11,13 @@
     position: relative;
     width: 100%;
     border: none;
-    vertical-align: baseline;
     appearance: none;
     overflow: hidden;
     display: block;
     background: var(--track-color);
     box-shadow: 0 0 0 1px var(--global-outer-contrast-border), inset 0 0 0 1px var(--global-inner-contrast-border);
     height: var(--progress-height);
-    border-radius: 1e5px;
+    border-radius: token(--radius-full);
 
     &[data-progress-dimension='big'] {
       --progress-height: token(--space-8);
@@ -30,7 +29,7 @@
 
     &::-webkit-progress-value {
       background: var(--fill-color);
-      border-radius: 1e5px;
+      border-radius: token(--radius-full);
       transition: width 200ms ease-out;
     }
 

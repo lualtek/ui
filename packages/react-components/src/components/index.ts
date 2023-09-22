@@ -1,3 +1,4 @@
+export * from './aspect-ratio';
 export * from './autocomplete';
 export * from './avatar';
 export * from './blank-button';

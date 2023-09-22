@@ -1,5 +1,5 @@
 import jsonTokens from '@lualtek/tokens/platforms/web/tokens.json';
-import flatten from 'flat';
+import { flatten } from 'flat';
 
 import { postcssConfig } from './config';
 
