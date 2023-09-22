@@ -1,5 +1,24 @@
 # @lualtek/react-components
 
+## 10.0.0-next.1
+
+### Major Changes
+
+- 43dc2f5: Rename OverlayContainer into Overlay
+- 43dc2f5: Rename Skeleton borderRadius prop to radius
+
+### Minor Changes
+
+- 43dc2f5: Fix h2 title style
+- 43dc2f5: Update vibrancy mixin with `saturation` and `blur` parameters
+- 43dc2f5: Add `ProgressLabel` prop to `CircularProgress`
+
+### Patch Changes
+
+- 43dc2f5: Upadte title styles
+- 43dc2f5: Fix LinearProgress percentage wrap and update style
+  - @lualtek/icons@10.0.0-next.1
+
 ## 10.0.0-next.0
 
 ### Major Changes
