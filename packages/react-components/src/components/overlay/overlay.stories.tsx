@@ -17,7 +17,7 @@ const Template = ({ ...args }) => {
 };
 
 const meta = {
-  title: 'Layouts/Overlay container',
+  title: 'Layouts/Overlay',
   component: Overlay,
   args: {
     obfuscate: true,
