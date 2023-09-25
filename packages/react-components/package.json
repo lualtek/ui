@@ -5,7 +5,8 @@
   "main": "dist/index.js",
   "exports": {
     ".": "./dist/index.js",
-    "./core.css": "./dist/core.css"
+    "./core.css": "./dist/core.css",
+    "./api-reference.json": "./dist/api-reference"
   },
   "files": [
     "dist"
@@ -16,9 +17,10 @@
   },
   "scripts": {
     "dev": "run-p storybook watch:csstypes",
-    "prebuild": "run-s clean build:csstypes",
-    "build": "run-s build:ts build:css copy:fonts",
+    "prebuild": "run-s clean build:csstypes build:api",
+    "build": "run-s build:ts build:css copy:fonts build:api",
     "build:css": "cpy '**/*.css' '../dist' --parents --cwd=src && postcss dist/*.css \"dist/**/!(utils)/!(_mixins).css\" --replace",
+    "build:api": "typedoc && typedoc-json-parser --json dist/api-reference.json",
     "copy:fonts": "cpy 'fonts/*' '../dist' --parents --cwd=src",
     "postbuild:css": "rimraf dist/**/_mixins.css",
     "build:ts": "tsc && tsc-alias",
@@ -53,9 +55,9 @@
     "@babel/preset-react": "7.22.15",
     "@babel/preset-typescript": "7.22.15",
     "@lualtek/config": "10.0.0-next.2",
-    "@storybook/addon-links": "7.4.3",
-    "@storybook/addon-essentials": "7.4.3",
     "@storybook/addon-actions": "7.4.3",
+    "@storybook/addon-essentials": "7.4.3",
+    "@storybook/addon-links": "7.4.3",
     "@storybook/addon-styling": "1.3.7",
     "@storybook/addons": "7.4.3",
     "@storybook/react": "7.4.3",
@@ -72,6 +74,8 @@
     "storybook-addon-themes": "6.1.0",
     "tsconfig": "*",
     "typed-css-modules": "0.7.2",
+    "typedoc": "0.25.1",
+    "typedoc-json-parser": "9.0.0",
     "typescript": "5.2.2"
   },
   "dependencies": {

@@ -35,7 +35,7 @@ export type SelectProps = SelectHTMLAttributes<HTMLSelectElement> & {
   onChange?: (event: ChangeEvent<HTMLSelectElement>) => void;
   /**
    * Force the select to take the full width of its container.
-   * @default false
+   * @defaultValue false
    */
   fullWidth?: boolean;
 }

@@ -12,12 +12,12 @@ import styles from './text-chip.module.css';
 export type TextChipProps = {
   /**
    * Set the dimension of the component.
-   * @default 'regular'
+   * @defaultValue 'regular'
    */
   dimension?: 'small' | 'regular' | 'big';
   /**
    * Set a color from one of the provided values.
-   * @default 'gray'
+   * @defaultValue 'gray'
    */
   color?: TokensTypes['colors'];
   /**
@@ -26,7 +26,7 @@ export type TextChipProps = {
   text: string;
   /**
    * Match the emoji color with the chip color.
-   * @default true
+   * @defaultValue true
    */
   tinted?: boolean;
 }
