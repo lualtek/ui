@@ -5,7 +5,7 @@ import { ResponsiveProvider } from '@/components';
 import { Stepper } from './stepper';
 
 const meta = {
-  title: 'Widgets/Stepper',
+  title: 'Navigation/Stepper',
   component: Stepper,
   args: {},
   decorators: [
