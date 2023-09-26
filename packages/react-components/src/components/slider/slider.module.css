@@ -46,6 +46,7 @@
     flex-grow: 1;
     border-radius: token(--radius-full);
     overflow: hidden;
+    backdrop-filter: brightness(1.35);
 
     &[data-orientation='horizontal'] {
       block-size: var(--track-h);

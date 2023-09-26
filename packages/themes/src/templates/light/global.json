@@ -25,15 +25,15 @@
       }
     },
     "disabled-foreground": {
-      "value": "{color.primary.90}",
-      "transparency": "20%",
+      "value": "{color.primary.50}",
+      "transparency": "60%",
       "attributes": {
         "category": "color"
       }
     },
     "disabled-background": {
-      "value": "{color.primary.90}",
-      "transparency": "5%",
+      "value": "{color.primary.20}",
+      "transparency": "60%",
       "attributes": {
         "category": "color"
       }

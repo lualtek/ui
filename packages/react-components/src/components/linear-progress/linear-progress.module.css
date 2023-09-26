@@ -18,6 +18,7 @@
     box-shadow: 0 0 0 1px var(--global-outer-contrast-border), inset 0 0 0 1px var(--global-inner-contrast-border);
     height: var(--progress-height);
     border-radius: token(--radius-full);
+    backdrop-filter: brightness(1.35);
 
     &[data-progress-dimension='big'] {
       --progress-height: token(--space-8);
