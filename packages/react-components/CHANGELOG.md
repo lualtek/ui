@@ -1,5 +1,17 @@
 # @lualtek/react-components
 
+## 10.0.0-next.3
+
+### Minor Changes
+
+- e7f085d: Add new Stepper component
+- e7f085d: Update some contrast
+- e7f085d: Add api-reference
+
+### Patch Changes
+
+- @lualtek/icons@10.0.0-next.3
+
 ## 10.0.0-next.2
 
 ### Patch Changes
