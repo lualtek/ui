@@ -15,17 +15,17 @@ import { OverlayProvider } from './overlay-context';
 
 export type OverlayProps = {
   /**
-   * The children to render inside the overlay container. This content
+   * The children to render inside the overlay. This content
    * will be rendered in a React `portal`, which means that it will be
    * rendered outside of the DOM hierarchy of the parent component.
    */
   children: ReactNode;
   /**
-   * Set the root element to render the overlay container into.
+   * Set the root element to render the overlay into.
    */
   root?: HTMLElement;
   /**
-   * Set the css `z-index` of the overlay container. This must be used only
+   * Set the css `z-index` of the overlay. This must be used only
    * if necessary.
    */
   index?: number;

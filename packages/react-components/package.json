@@ -5,7 +5,8 @@
   "main": "dist/index.js",
   "exports": {
     ".": "./dist/index.js",
-    "./core.css": "./dist/core.css"
+    "./core.css": "./dist/core.css",
+    "./api-reference.json": "./dist/api-reference"
   },
   "files": [
     "dist"
@@ -53,14 +54,14 @@
     "@babel/preset-react": "7.22.15",
     "@babel/preset-typescript": "7.22.15",
     "@lualtek/config": "10.0.0-next.2",
-    "@storybook/addon-links": "7.4.3",
-    "@storybook/addon-essentials": "7.4.3",
-    "@storybook/addon-actions": "7.4.3",
+    "@storybook/addon-actions": "7.4.2",
+    "@storybook/addon-essentials": "7.4.2",
+    "@storybook/addon-links": "7.4.2",
     "@storybook/addon-styling": "1.3.7",
-    "@storybook/addons": "7.4.3",
-    "@storybook/react": "7.4.3",
-    "@storybook/react-webpack5": "7.4.3",
-    "@storybook/theming": "7.4.3",
+    "@storybook/addons": "7.4.2",
+    "@storybook/react": "7.4.2",
+    "@storybook/react-webpack5": "7.4.2",
+    "@storybook/theming": "7.4.2",
     "@types/react": "18.2.22",
     "@types/react-dom": "18.2.7",
     "babel-loader": "9.1.3",
@@ -68,7 +69,7 @@
     "postcss-cli": "10.1.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "storybook": "7.4.3",
+    "storybook": "7.4.2",
     "storybook-addon-themes": "6.1.0",
     "tsconfig": "*",
     "typed-css-modules": "0.7.2",

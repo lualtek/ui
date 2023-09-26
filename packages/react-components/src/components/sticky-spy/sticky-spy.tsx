@@ -17,7 +17,7 @@ import React, {
 export type StickySpyProps = PropsWithChildren<{
   /**
    * Set a custom name for the attribute
-   * @default "data-react-is-sticky"
+   * @defaultValue "data-react-is-sticky"
    */
   attribute?: string;
   /**

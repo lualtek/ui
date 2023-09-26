@@ -24,7 +24,7 @@ export type TabsProps = TabsPrimitive.TabsProps & {
   listGap?: TokensTypes['space'];
   /**
    * Set the dimension of the tabs.
-   * @default 'regular'
+   * @defaultValue 'regular'
    */
   dimension?: 'small' | 'regular' | 'big';
 };

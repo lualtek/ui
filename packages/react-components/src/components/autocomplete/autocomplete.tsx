@@ -27,13 +27,13 @@ export type AutocompleteProps = TextfieldProps & {
   maxHeight?: MenuProps['maxHeight'];
   /**
    * Set the alignment of the options list.
-   * @default center
+   * @defaultValue center
    */
   align?: PopoverContentProps['align'];
   /**
    * Custom empty content to display when there are no options or
    * when the value does not match any of the options.
-   * @default 'No items to show'
+   * @defaultValue 'No items to show'
    */
   emptyContent?: ReactNode;
   /**
@@ -46,7 +46,7 @@ export type AutocompleteProps = TextfieldProps & {
   options?: AutocompleteOptionProps[];
   /**
    * Whether the menu is forced to match the width of the field by clipping overflowing items.\
-   * @default false
+   * @defaultValue false
    */
   matchFieldWidth?: boolean;
   /**

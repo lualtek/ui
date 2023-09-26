@@ -151,7 +151,7 @@ type ConditionalProps<T> =
   filterControlLabel: string;
   /**
    * Set debounce time for filter search
-   * @default 230
+   * @defaultValue 230
    */
   filterDebounce?: number;
 } | {
@@ -169,7 +169,7 @@ type ConditionalProps<T> =
   filterControlLabel?: never;
   /**
    * Set debounce time for filter search
-   * @default 230
+   * @defaultValue 230
    */
   filterDebounce?: never;
 }

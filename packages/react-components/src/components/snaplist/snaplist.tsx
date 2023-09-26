@@ -21,7 +21,7 @@ export type SnaplistProps = {
   snapAlign?: 'start' | 'center' | 'end';
   /**
    * The type of snap.
-   * @default 'mandatory'
+   * @defaultValue 'mandatory'
    */
   snapType?: 'mandatory' | 'proximity';
   /**

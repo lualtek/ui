@@ -12,7 +12,7 @@ const ModalShell = ({ ...args }) => {
   const [isVisible, setIsVisible] = useState(false);
 
   return (
-    <ResponsiveProvider>
+    <>
       <Button onClick={() => setIsVisible(true)}>Show Modal</Button>
       <Overlay onClose={() => setIsVisible(false)}>
         {isVisible && (
@@ -24,7 +24,7 @@ const ModalShell = ({ ...args }) => {
           </Modal>
         )}
       </Overlay>
-    </ResponsiveProvider>
+    </>
   );
 };
 
@@ -34,6 +34,13 @@ const meta = {
   args: {
     autoFocus: true,
   },
+  decorators: [
+    Story => (
+      <ResponsiveProvider>
+        <Story />
+      </ResponsiveProvider>
+    ),
+  ],
   render: args => (
     <ModalShell {...args}>
       <Modal.Content title="Modal title">

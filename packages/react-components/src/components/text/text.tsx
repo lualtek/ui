@@ -15,7 +15,7 @@ export type TextProps = {
    * Set the dimension of the text from one of
    * the typography system values
    *
-   * @default 18
+   * @defaultValue 18
    */
   size?: TokensTypes['font']['size'];
   /**
@@ -49,7 +49,7 @@ export type TextProps = {
   /**
    * Set the text line-height of the text. This uses
    * the predefined tokens from the typography system.
-   * @default 'standard'
+   * @defaultValue 'standard'
    */
   lineHeight?: 'none' | 'extra-small' | 'small' | 'standard' |'large';
   /**
