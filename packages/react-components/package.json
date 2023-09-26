@@ -5,8 +5,7 @@
   "main": "dist/index.js",
   "exports": {
     ".": "./dist/index.js",
-    "./core.css": "./dist/core.css",
-    "./api-reference.json": "./dist/api-reference"
+    "./core.css": "./dist/core.css"
   },
   "files": [
     "dist"
