@@ -1,5 +1,7 @@
 # @lualtek/tokens
 
+## 10.0.0-next.4
+
 ## 10.0.0-next.3
 
 ## 10.0.0-next.2
