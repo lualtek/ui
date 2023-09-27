@@ -49,7 +49,7 @@ export type TextProps = {
   /**
    * Set the text line-height of the text. This uses
    * the predefined tokens from the typography system.
-   * @defaultValue 'standard'
+   * @defaultValue "standard"
    */
   lineHeight?: 'none' | 'extra-small' | 'small' | 'standard' |'large';
   /**

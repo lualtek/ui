@@ -70,6 +70,8 @@
     &:is(.H4) {
       --fs-min: 1.33rem;
       --fs-max: 1.77rem;
+
+      font-weight: token(--font-weight-bold);
     }
 
     &:is(.H3) {

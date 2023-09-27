@@ -10,8 +10,18 @@ import {
 import styles from './stepper.module.css';
 
 export type StepperProps = ComponentPropsWithoutRef<'div'> & {
+  /**
+   * The title of the step.
+   */
   title: ReactNode;
+  /**
+   * The step number.
+   */
   step: number;
+  /**
+   * The content gap between the step number and the content.
+   * @defaultValue 16
+   */
   contentGap?: StackProps['rowGap'];
 }
 
