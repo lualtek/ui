@@ -17,11 +17,12 @@
   "scripts": {
     "dev": "run-p storybook watch:csstypes",
     "prebuild": "run-s clean build:csstypes",
-    "build": "run-s build:ts build:css copy:fonts",
-    "build:css": "cpy '**/*.css' '../dist' --parents --cwd=src && postcss dist/*.css \"dist/**/!(utils)/!(_mixins).css\" --replace",
+    "build": "run-s build:ts build:css copy:fonts build:api",
+    "build:css": "cpy '**/*.css' '../dist' --parents --cwd=src && postcss dist/*.css \"dist/**/!(utils)/.css\" --replace",
     "copy:fonts": "cpy 'fonts/*' '../dist' --parents --cwd=src",
-    "postbuild:css": "rimraf dist/**/_mixins.css",
     "build:ts": "tsc && tsc-alias",
+    "build:api": "typedoc && typedoc-json-parser --json dist/api-temp.json && ts-node ./generate-api-doc",
+    "postbuild:api": "rimraf dist/api-temp.json",
     "storybook": "storybook dev --quiet -p 6006",
     "watch:csstypes": "tcm -w -p '**/*.module.css' src",
     "build:csstypes": "tcm -p '**/*.module.css' src",
@@ -72,6 +73,8 @@
     "storybook-addon-themes": "6.1.0",
     "tsconfig": "*",
     "typed-css-modules": "0.7.2",
+    "typedoc": "0.25.1",
+    "typedoc-json-parser": "9.0.0",
     "typescript": "5.2.2"
   },
   "dependencies": {

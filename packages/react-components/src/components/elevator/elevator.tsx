@@ -15,12 +15,12 @@ export type ElevatorProps = {
   hover?: 0 | 1 | 2 | 3 | 4;
   /**
    * Set the direction of shadow casting
-   * @defaultValue 'bottom'
+   * @defaultValue "bottom"
   */
   direction?: 'top' | 'bottom' | 'left' | 'right';
   /**
    * Set the color of the shadow
-   * @defaultValue 'oklch(0% 0 0)'
+   * @defaultValue "oklch(0% 0 0)"
    */
   shadowColor?: string;
   /**

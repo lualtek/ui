@@ -10,7 +10,7 @@ import styles from './gradient-text.module.css';
 export type GradientTextProps = HTMLAttributes<HTMLSpanElement> & {
   /**
    * The gradient name to use from predefined gradients.
-   * @defaultValue 'rainbow'
+   * @defaultValue "rainbow"
    */
   gradient?: 'rainbow' | 'brand' | 'primary' | 'cyan' | 'dawn';
   /**

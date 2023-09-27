@@ -20,7 +20,7 @@ export type TitleProps = {
   /**
    * Set the text line-height of the title. This uses
    * the predefined tokens from the typography system.
-   * @defaultValue 'standard'
+   * @defaultValue "standard"
    */
   lineHeight?: 'none' | 'extra-small' | 'small' | 'standard' |'large';
   /**

@@ -42,7 +42,7 @@ declare module '@tanstack/table-core' {
   interface ColumnMeta<TData extends RowData, TValue> extends CustomColumnMeta {}
 }
 
-type CommonProps<T> = PropsWithClass<{
+export type TableProps<T> = PropsWithClass<{
   /**
    * Pass the data structure to the table. Each object key can be used as `accessor` for a column.
    */
@@ -130,14 +130,6 @@ type CommonProps<T> = PropsWithClass<{
    */
   itemsPerPage?: number;
   /**
-   * Get Table instance
-  */
-  getTableInstance?: (instance: TableType<T>) => void;
-}>
-
-type ConditionalProps<T> =
-| {
-  /**
    * Enable the global filter function
    */
   enableFilterControl: boolean;
@@ -154,27 +146,11 @@ type ConditionalProps<T> =
    * @defaultValue 230
    */
   filterDebounce?: number;
-} | {
   /**
-   * Enable the global filter function
-   */
-  enableFilterControl?: never;
-  /**
-   * Custom function used to filters table data.
-   */
-  filterFn?: never;
-  /**
-   * Set the label for the filter textfield control
-   */
-  filterControlLabel?: never;
-  /**
-   * Set debounce time for filter search
-   * @defaultValue 230
-   */
-  filterDebounce?: never;
-}
-
-export type TableProps<T> = CommonProps<T> & ConditionalProps<T>
+   * Get Table instance
+  */
+  getTableInstance?: (instance: TableType<T>) => void;
+}>
 
 export const Table = <T extends Record<string, unknown>>({
   data,
