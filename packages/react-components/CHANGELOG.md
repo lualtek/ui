@@ -1,5 +1,15 @@
 # @lualtek/react-components
 
+## 10.0.0-next.4
+
+### Minor Changes
+
+- b0c4e42: Add api doc json files for each component
+
+### Patch Changes
+
+- @lualtek/icons@10.0.0-next.4
+
 ## 10.0.0-next.3
 
 ### Minor Changes
