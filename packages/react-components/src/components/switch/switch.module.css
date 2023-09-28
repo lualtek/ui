@@ -2,9 +2,6 @@
 
 @layer components {
   .Switch {
-
-    @mixin vibrancy;
-
     appearance: none;
     display: inline-flex;
     margin: 0;
