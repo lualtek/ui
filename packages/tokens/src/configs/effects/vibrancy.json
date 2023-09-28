@@ -2,13 +2,13 @@
   "vibrancy": {
     "blur": {
       "soft": {
-        "value": 20,
+        "value": 10,
         "attributes": {
           "category": "size"
         }
       },
       "strong": {
-        "value": 32,
+        "value": 20,
         "attributes": {
           "category": "size"
         }

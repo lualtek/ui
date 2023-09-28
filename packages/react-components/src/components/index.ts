@@ -29,6 +29,7 @@ export * from './menu';
 export * from './modal';
 export * from './overlay';
 export * from './pagination';
+export * from './panel';
 export * from './popover';
 export * from './prose';
 export * from './select';

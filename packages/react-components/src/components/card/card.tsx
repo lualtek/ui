@@ -11,6 +11,9 @@ import { Polymorphic, Stack, StackProps } from '@/components';
 
 import styles from './card.module.css';
 
+/**
+ * @deprecated Use the `Panel`, `Stack` and `Elevator` components instead.
+ */
 export type CardProps = Pick<StackProps, 'wrap' | 'columnGap' | 'rowGap' | 'vAlign' | 'hAlign'> & {
   /**
    * Set the padding on each side of the card.
