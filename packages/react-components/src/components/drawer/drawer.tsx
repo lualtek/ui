@@ -12,6 +12,7 @@ import { useKeys } from 'rooks';
 import {
   Elevator,
   IconButton,
+  Panel,
   PropsClassChildren,
   Stack,
   Title,
@@ -134,39 +135,41 @@ export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(({
             data-drawer-side={side}
           >
             <Elevator resting={4} direction={side === 'left' ? 'right' : 'left'}>
-              <Stack
-                className={styles.Content}
-                style={dynamicStyle}
-                fill={false}
-                vAlign="start"
-                ref={forwardedRef}
-                {...otherProps}
-              >
-                {(showHeader && title) && (
-                  <Stack
-                    vAlign="center"
-                    hAlign="space-between"
-                    direction="row"
-                    className={styles.Header}
-                    columnGap={24}
-                  >
-                    <Title responsive={false} level="5" id={titleId} lineHeight="small">{title}</Title>
-                    {onClose && (
-                      <IconButton
-                        onClick={onClose}
-                        className={styles.CloseButton}
-                        icon="remove"
-                        kind="flat"
-                      />
-                    )}
-                  </Stack>
-                )}
-                <div className={styles.Scroller}>
-                  <AutoFocusInside>
-                    {children}
-                  </AutoFocusInside>
-                </div>
-              </Stack>
+              <Panel vibrancy="strong" vibrancyColor="soft" bordered borderSide={side === 'left' ? 'right' : 'left'}>
+                <Stack
+                  className={styles.Content}
+                  style={dynamicStyle}
+                  fill={false}
+                  vAlign="start"
+                  ref={forwardedRef}
+                  {...otherProps}
+                >
+                  {(showHeader && title) && (
+                    <Stack
+                      vAlign="center"
+                      hAlign="space-between"
+                      direction="row"
+                      className={styles.Header}
+                      columnGap={24}
+                    >
+                      <Title responsive={false} level="5" id={titleId} lineHeight="small">{title}</Title>
+                      {onClose && (
+                        <IconButton
+                          onClick={onClose}
+                          className={styles.CloseButton}
+                          icon="remove"
+                          kind="flat"
+                        />
+                      )}
+                    </Stack>
+                  )}
+                  <div className={styles.Scroller}>
+                    <AutoFocusInside>
+                      {children}
+                    </AutoFocusInside>
+                  </div>
+                </Stack>
+              </Panel>
             </Elevator>
           </m.div>
         </LazyMotion>

@@ -27,24 +27,10 @@
   }
 
   .Content {
-
-    @mixin vibrancy;
-
-    background-color: var(--vibrancy-background-soft);
     inline-size: 100vw;
     padding-bottom: env(safe-area-inset-bottom);
     max-inline-size: var(--max-w);
     height: 100dvh;
-    outline: 1px solid var(--global-outer-contrast-border);
-
-
-    .Container[data-drawer-side='right'] & {
-      border-left: 1px solid var(--global-inner-contrast-border);
-    }
-
-    .Container[data-drawer-side='left'] & {
-      border-right: 1px solid var(--global-inner-contrast-border);
-    }
   }
 
   .Scroller {
@@ -55,7 +41,6 @@
 
   .Header {
     max-height: token(--space-72);
-    border-bottom: 1px solid var(--vibrancy-background-mid);
     padding:
       calc(env(safe-area-inset-top) + token(--space-16))
       calc(env(safe-area-inset-right) + token(--space-16))

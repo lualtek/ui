@@ -58,6 +58,7 @@ export const Panel = forwardRef(({
       ref={forwardedRef}
       className={clsx(styles.Panel, className)}
       data-panel-vibrancy={vibrancy}
+      data-panel-bordered={bordered}
       data-panel-border-side={borderSide}
       data-panel-radius={radius}
       style={{ ...dynamicStyle, ...style }}
