@@ -27,6 +27,7 @@ const DEFAULT_PARAMS = {
     shadowColor: 'oklch(0% 0 0)',
   },
   vibrancy: {
+    blur: 'strong',
     saturation: 'standard',
   },
 };
@@ -46,7 +47,7 @@ export const useStyles = ({ elevation, vibrancy }: UseStylesParams = {}) => ({
     attributes: {
       'data-vibrancy': true,
       'data-vibrancy-color': vibrancy?.color,
-      'data-vibrancy-blur': vibrancy?.blur,
+      'data-vibrancy-blur': vibrancy?.blur ?? DEFAULT_PARAMS.vibrancy.blur,
       'data-vibrancy-saturation': vibrancy?.saturation ?? DEFAULT_PARAMS.vibrancy.saturation,
     },
   },
