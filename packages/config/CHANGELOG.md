@@ -1,5 +1,18 @@
 # @lualtek/config
 
+## 10.0.0-next.5
+
+### Patch Changes
+
+- Updated dependencies [cb9ffed]
+- Updated dependencies [cb9ffed]
+- Updated dependencies [cb9ffed]
+- Updated dependencies [cb9ffed]
+- Updated dependencies [cb9ffed]
+- Updated dependencies [cb9ffed]
+- Updated dependencies [cb9ffed]
+  - @lualtek/tokens@10.0.0-next.5
+
 ## 10.0.0-next.4
 
 ### Patch Changes
