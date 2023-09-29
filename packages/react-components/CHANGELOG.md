@@ -1,5 +1,23 @@
 # @lualtek/react-components
 
+## 10.0.0-next.5
+
+### Major Changes
+
+- cb9ffed: Remove CSS mixins (vibrancy) and add new useStyles hook to handle vibrancy and elevations
+
+### Minor Changes
+
+- cb9ffed: Update Modal and Drawer with Panel
+- cb9ffed: Add useStyles hook
+- cb9ffed: Add new Panel component and deprecate Card
+- cb9ffed: Add new useStyles hook to manage shared effects like vibrancy and elevation
+
+### Patch Changes
+
+- cb9ffed: Add doctype documentation
+  - @lualtek/icons@10.0.0-next.5
+
 ## 10.0.0-next.4
 
 ### Minor Changes
