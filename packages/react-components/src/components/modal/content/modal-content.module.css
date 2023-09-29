@@ -1,5 +1,4 @@
 @import '../../../core/utils/media.css';
-@import '../../../core/utils/vibrancy.css';
 
 @layer components {
   .Content {
