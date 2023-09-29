@@ -1,17 +1,22 @@
-
 /**
  * Hook parameters
  */
+export type VibrancyBlur = 'soft' | 'strong';
+export type VibrancyColor = 'background' | 'soft' | 'mid' | 'hard';
+export type VibrancySaturation = 'standard' | 'high';
+export type ElevationLevel = 0 | 1 | 2 | 3 | 4;
+export type ElevationDirection = 'right' | 'left' | 'top' | 'bottom';
+
 type UseStylesParams = {
   vibrancy?: {
-    blur?: 'soft' | 'strong';
-    color?: 'background' | 'soft' | 'mid' | 'hard';
-    saturation?: 'standard' | 'high';
+    blur?: VibrancyBlur;
+    color?: VibrancyColor;
+    saturation?: VibrancySaturation;
   };
   elevation?: {
-    resting?: 0 | 1 | 2 | 3 | 4;
-    onHover?: 0 | 1 | 2 | 3 | 4;
-    direction?: 'right' | 'left' | 'top' | 'bottom';
+    resting?: ElevationLevel;
+    onHover?: ElevationLevel;
+    direction?: ElevationDirection;
     shadowColor?: string;
   };
 }
@@ -22,7 +27,6 @@ const DEFAULT_PARAMS = {
     shadowColor: 'oklch(0% 0 0)',
   },
   vibrancy: {
-    blur: 'strong',
     saturation: 'standard',
   },
 };
@@ -40,8 +44,9 @@ export const useStyles = ({ elevation, vibrancy }: UseStylesParams = {}) => ({
   },
   vibrancy: {
     attributes: {
-      'data-vibrancy': vibrancy?.blur ?? DEFAULT_PARAMS.vibrancy.blur,
+      'data-vibrancy': true,
       'data-vibrancy-color': vibrancy?.color,
+      'data-vibrancy-blur': vibrancy?.blur,
       'data-vibrancy-saturation': vibrancy?.saturation ?? DEFAULT_PARAMS.vibrancy.saturation,
     },
   },
