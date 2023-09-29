@@ -15,11 +15,16 @@ import { ListItem, ListItemProps } from './list-item';
 
 export type ListProps = {
   /**
-   * Set the dimension of the items in the list. This affects also the marker size.
+   * Set the dimension of the items in the list.
+   * This affects also the marker size.
+   *
+   * @defaultValue "regular"
    */
   dimension?: 'small' | 'regular' | 'big';
   /**
    * Set to show or hide the marker indicator beside each item in the list.
+   *
+   * @defaultValue false
    */
   hideMarker?: boolean;
   /**

@@ -16,10 +16,14 @@ export type ModalProps = PropsClassChildren<{
    * This enable the modal to be closed by clicking on the overlay.
    * Even if this can be set to `false` we strongly recommend to leave
    * it to `true` as it ensures the accessibility of the modal.
+   *
+   * @defaultValue true
    */
   closeOnClickOutside?: boolean;
   /**
    * Enable or disable autofocus on the first focusable element inside the modal.
+   *
+   * @defaultValue true
    */
   autoFocus?: boolean;
 }>

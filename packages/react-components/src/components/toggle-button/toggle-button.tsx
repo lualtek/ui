@@ -25,6 +25,8 @@ export type ToggleButtonProps = Except<IconButtonProps, 'icon'> & {
   /**
    * Set the pressed state of the button. If `pressedIcon` is set,
    * the icon will be shown instead of the resting icon.
+   *
+   * @defaultValue false
    */
   pressed?: boolean;
 }

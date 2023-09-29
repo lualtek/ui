@@ -8,6 +8,9 @@ import { FCChildrenClass, Stack, Title } from '@/components';
 import styles from './table-header.module.css';
 
 export type TableHeaderProps = Except<HTMLAttributes<HTMLElement>, 'title'> & {
+  /**
+   * Set the title of the table.
+   */
   title?: ReactNode;
 }
 

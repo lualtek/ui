@@ -15,6 +15,8 @@ import styles from './select.module.css';
 export type SelectProps = SelectHTMLAttributes<HTMLSelectElement> & {
   /**
    * Change the default icon displayed on the side of the select.
+   *
+   * @defaultValue "increase"
    */
   icon?: IconProps['source'];
   /**
@@ -23,10 +25,14 @@ export type SelectProps = SelectHTMLAttributes<HTMLSelectElement> & {
   label: ReactNode;
   /**
    * Set how many options can be selected at once.
+   *
+   * @defaultValue "single"
    */
   kind?: 'single' | 'multiple';
   /**
    * Set disabled state. The select is not interactive and grayed out.
+   *
+   * @defaultValue false
    */
   disabled?: boolean;
   /**

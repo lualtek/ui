@@ -8,10 +8,30 @@ import { CustomColumnMeta } from '../types';
 import styles from './table-cell.module.css';
 
 type TableCellProps = CustomColumnMeta & {
+  /**
+   * Set the default sorting direction of the column.
+   *
+   * @defaultValue false
+  */
   sorting?: false | SortDirection;
+  /**
+   * Enable sorting change on the column.
+   */
   canSort?: boolean;
+  /**
+   * Add padding to the cell.
+   *
+   * @defaultValue true
+   */
   padding?: boolean;
+  /**
+   * Set the width of the cell.
+   */
   width?: string | number;
+  /**
+   * Callback function to be called when the cell is clicked.
+   * Used only when `canSort` is `true`.
+   */
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 

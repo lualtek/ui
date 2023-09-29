@@ -14,6 +14,8 @@ import styles from './switch.module.css';
 export type SwitchProps = SwitchPrimitive.SwitchProps & {
   /**
    * Set the size of the switch.
+   *
+   * @defaultValue "regular"
    */
   dimension?: 'small' | 'regular' | 'big';
   /**
@@ -22,6 +24,8 @@ export type SwitchProps = SwitchPrimitive.SwitchProps & {
   label?: ReactNode;
   /**
    * Set the position of the label relative to the switch.
+   *
+   * @defaultValue "end"
    */
   labelPosition?: 'start' | 'end';
 };

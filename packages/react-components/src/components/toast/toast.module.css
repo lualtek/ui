@@ -1,11 +1,5 @@
-@import '../../core/utils/vibrancy.css';
-
 @layer components {
   .InlineToast {
-
-    @mixin vibrancy;
-
-    background: var(--vibrancy-background-soft);
     border-radius: token(--radius-24);
     overflow: hidden;
     border: 1px solid var(--global-inner-contrast-border);

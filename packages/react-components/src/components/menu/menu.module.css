@@ -1,12 +1,6 @@
-@import '../../core/utils/vibrancy.css';
-
 @layer components {
   .Menu {
-
-    @mixin vibrancy;
-
     list-style-type: none;
-    background-color: var(--vibrancy-background);
     box-shadow: 0 0 0 1px var(--global-outer-contrast-border), inset 0 0 0 1px var(--global-inner-contrast-border);
     border-radius: token(--radius-24);
     overflow: hidden;

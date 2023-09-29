@@ -9,6 +9,7 @@ import {
 import {
   Button, Icon, IconProps, Stack, Text,
   Title,
+  useStyles,
 } from '@/components';
 import { FCChildren } from '@/components/types';
 
@@ -39,6 +40,8 @@ export type InlineToastProps = OutputHTMLAttributes<HTMLOutputElement> & {
    * Set the color and the sentiment of the toast.
    * This affects the the color of all the elements inside and should be defined
    * according to the message.
+   *
+   * @defaultValue "neutral"
    */
   kind?: 'info' | 'warning' | 'neutral' | 'positive' | 'danger';
   /**
@@ -48,6 +51,8 @@ export type InlineToastProps = OutputHTMLAttributes<HTMLOutputElement> & {
   dismissable?: boolean;
   /**
    * Set the label of the dismiss button.
+   *
+   * @defaultValue "Dismiss"
    */
   dismissLabel?: string;
   /**
@@ -87,6 +92,11 @@ export const InlineToast = forwardRef<HTMLOutputElement, InlineToastProps>(({
   isPrimitive,
   ...otherProps
 }, forwardedRef) => {
+  const { vibrancy } = useStyles({
+    vibrancy: {
+      color: 'soft',
+    },
+  });
   const ActionWrapper = useMemo(() => (isPrimitive ? ToastPrimitive.Close : PrimitiveNoopComponent), [isPrimitive]);
   return (
     <Stack
@@ -101,6 +111,7 @@ export const InlineToast = forwardRef<HTMLOutputElement, InlineToastProps>(({
       hAlign="start"
       direction="row"
       columnGap={16}
+      {...vibrancy.attributes}
       {...otherProps}
     >
       <Icon className={styles.Icon} source={icon ?? defaultIcons[kind]} dimension={24} />

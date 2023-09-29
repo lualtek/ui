@@ -25,7 +25,7 @@ import {
 import { useDebounce } from 'rooks';
 
 import {
-  PropsWithClass, ResponsiveProvider, Skeleton, Stack, Text,
+  PropsWithClass, ResponsiveProvider, Skeleton, Stack, Text, useStyles,
 } from '@/components';
 
 import styles from './table.module.css';
@@ -57,6 +57,8 @@ export type TableProps<T> = PropsWithClass<{
   stripes?: boolean;
   /**
    * Enable horizontal separators between the table rows
+   *
+   * @defaultValue true
    */
   separators?: boolean;
   /**
@@ -93,10 +95,14 @@ export type TableProps<T> = PropsWithClass<{
   /**
    * Hide the header which includes the title and controls.
    * This option is ignored and set to `true` if `selectableRows` is set to `true`.
+   *
+   * @defaultValue false
    */
   showHeader?: boolean;
   /**
  * Enable the dropdown to choose the visibility of the column
+ *
+ * @defaultValue false
  */
   enableToggleColumns?: boolean;
   /**
@@ -110,6 +116,8 @@ export type TableProps<T> = PropsWithClass<{
   selectableRows?: boolean;
   /**
    * Set the label for selected items in the table. Default to "Selected items"
+   *
+   * @defaultValue `selectedRows => `Selected items: ${selectedRows}`
    */
   renderSelectedLabel?: (count: number) => ReactNode;
   /**
@@ -127,6 +135,8 @@ export type TableProps<T> = PropsWithClass<{
   background?: string;
   /**
    * Set the initial page size picking a value from `pageClusters` array.
+   *
+   * @defaultValue 50
    */
   itemsPerPage?: number;
   /**
@@ -139,6 +149,8 @@ export type TableProps<T> = PropsWithClass<{
   filterFn: FilterFnOption<T>;
   /**
    * Set the label for the filter textfield control
+   *
+   * @defaultValue "Search across data"
    */
   filterControlLabel: string;
   /**
@@ -182,6 +194,11 @@ export const Table = <T extends Record<string, unknown>>({
   style,
   ...otherProps
 }: TableProps<T>) => {
+  const { vibrancy } = useStyles({
+    vibrancy: {
+      color: 'mid',
+    },
+  });
   const [columnVisibility, setColumnVisibility] = useState({});
   const [rowSelection, setRowSelection] = useState({});
   const [sorting, setSorting] = useState<SortingState>([]);
@@ -334,6 +351,7 @@ export const Table = <T extends Record<string, unknown>>({
                   },
                 }}
                 exit={{ y: '-16px', opacity: 0 }}
+                {...vibrancy.attributes}
               >
                 <Text as="span" size={14} weight="bold">
                   {renderSelectedLabel(selectedRowsCount)}

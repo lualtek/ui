@@ -6,13 +6,47 @@ import {
 import { PropsWithClass } from '@/components/types';
 
 export type TablePaginationProps = PropsWithClass & {
+  /**
+   * Set the options for the items per page select.
+   *
+   * @defaultValue `[5, 10, 20, 30, 50, 100]`
+   */
   clusters?: number[];
+  /**
+   * Set the number of items per page.
+   */
   itemsPerPage: number;
+  /**
+   * Set the total number of items.
+   */
   totalItems: number;
+  /**
+   * Set the current rendered page.
+   */
   currentPage: number;
+  /**
+   * Callback function to be called when the items per page select is changed.
+   * @param {number} pageSize - The number of items per page.
+   * @returns void
+   */
   onPageSizeChange?: (pageSize: number) => void;
+  /**
+   * Callback function to be called when the page is changed.
+   * @param {number} page
+   * @returns void
+   */
   onPageClick?: (page: number) => void;
+  /**
+   * Set the pagination to be controlled manually.
+   * This disable all the automations on the pagination and
+   * a manual pagination must be implemented.
+   */
   isManual?: boolean;
+  /**
+   * Set the label of the items per page select.
+   *
+   * @defaultValue `Items per page`
+   */
   clustersLabel?: string;
 }
 

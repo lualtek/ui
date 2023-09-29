@@ -20,25 +20,30 @@ export type StackProps = {
   columnGap?: TokensTypes['space'];
   /**
    * Display the element as inline-flex
+   * @defaultValue false
    */
   inline?: boolean;
   /**
    * Wrap children whene there is no space for them.
+   * @defaultValue false
    */
   wrap?: boolean;
   /**
    * Make the children grow to fill the available space instead
    * of being sized based on their content.
+   * @defaultValue true
    */
   fill?: boolean;
   /**
    * Place the content vertically centered instead of
    * growing to fill the available space.
+   * @defaultValue "initial"
    */
   vAlign?: string;
   /**
    * Place the content horizontally centered instead of
    * growing to fill the available space.
+   * @defaultValue "initial"
    */
   hAlign?: string;
   /**
@@ -52,6 +57,7 @@ export type StackProps = {
   /**
    * Renderes children as rows or columns. The value can be one of the flex directions.
    * More info: https://developer.mozilla.org/en-US/docs/Web/CSS/flex-direction
+   * @defaultValue 'column'
    */
   direction?: 'row' | 'column' | 'row-reverse' | 'column-reverse';
 }

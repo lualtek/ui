@@ -19,14 +19,17 @@ export type IconMeterProps = {
    * This data is used to calculate the number of filled icons
    * based on predefined thresholds of the fraction.
    *
-   * @example
-   * fraction < `0.25` = rounded to 0 (empty icon)
-   * fraction >= `0.75` = rounded to 1 (filled icon)
-   * fraction >= `0.25` and < 0.75 = rounded to 0.5 (half icon)
+   * @example `fraction < `0.25` = rounded to 0 (empty icon)`
+   * @example `fraction >= `0.75` = rounded to 1 (filled icon)`
+   * @example `fraction >= `0.25` and < 0.75 = rounded to 0.5 (half icon)`
+   *
+   * @defaultValue 0
    */
   value: number;
   /**
    * Set the number of icons to use as maximum.
+   *
+   * @defaultValue 5
    */
   iconCount?: number;
   /**
@@ -35,18 +38,26 @@ export type IconMeterProps = {
   label?: ReactNode;
   /**
    * Set the size of the icon meter.
+   *
+   * @defaultValue "regular"
    */
   dimension?: 'small' | 'regular' | 'big';
   /**
    * Hide the label beside the icons
+   *
+   * @defaultValue false
    */
   hideLabel?: boolean;
   /**
    * Set the icon to use as indicator
+   *
+   * @defaultValue "star"
    */
   icon?: IconProps['source'];
   /**
    * Set the color to use as accent
+   *
+   * @defaultValue "var(--highlight-green-foreground)"
    */
   iconColor?: string;
 }

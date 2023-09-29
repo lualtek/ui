@@ -17,6 +17,8 @@ export type PaginationProps = Except<ReactPaginateProps, 'pageCount'> & {
   itemsCount: number;
   /**
    * Set the number of items to display per page.
+   *
+   * @defaultValue 10
    */
   itemsPerPage?: number;
   /**
@@ -33,10 +35,14 @@ export type PaginationProps = Except<ReactPaginateProps, 'pageCount'> & {
   onPageClick?: (data: Record<string, number>) => void;
   /**
    * Set how many pages to show in the visible page range (between the "..." break)
+   *
+   * @defaultValue 3
    */
   pageRangeDisplayed?: ReactPaginateProps['pageRangeDisplayed'];
   /**
    * The number of visible pages to display on the sides.
+   *
+   * @defaultValue 1
    */
   marginPagesDisplayed?: ReactPaginateProps['marginPagesDisplayed'];
 }

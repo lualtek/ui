@@ -19,3 +19,9 @@ export type PropsClassChildren<P = Record<string, unknown>> = React.PropsWithChi
 export type Prettify<T> = {
   [K in keyof T]: T[K]
 } & Record<string, unknown>
+
+export type Themes = 'light' | 'dark' | 'auto'
+
+export type UIComponent<Props, Other = Record<string, unknown>> = {
+  'data-theme': Themes;
+} & Other & Props

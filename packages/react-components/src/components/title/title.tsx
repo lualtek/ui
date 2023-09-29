@@ -15,6 +15,8 @@ export type TitleProps = {
    * affects the visual appearance of the title and not the
    * semantic meaning of the title, which you can define
    * by using the `as` property.
+   *
+   * @defaultValue "1"
    */
   level?: '1' | '2' | '3' | '4' | '5' | '6' | 'display';
   /**
@@ -25,6 +27,8 @@ export type TitleProps = {
   lineHeight?: 'none' | 'extra-small' | 'small' | 'standard' |'large';
   /**
    * Set the text alignment of the title based on the text direction.
+   *
+   * @defaultValue "start"
    */
   align?: 'start' | 'center' | 'end';
   /**

@@ -23,6 +23,7 @@ export type AutocompleteProps = TextfieldProps & {
   /**
    * Set the maximum height of the options list after which
    * it will scroll.
+   * @defaultValue "200px"
    */
   maxHeight?: MenuProps['maxHeight'];
   /**

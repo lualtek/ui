@@ -26,18 +26,26 @@ export type LightboxProps = {
   selectedState: [number, React.Dispatch<SetStateAction<number>>];
   /**
    * Width of the zoomed image
+   *
+   * @defaultValue "50vw"
    */
   imageWidth?: string;
   /**
    *  Height of the zoomed image
+   *
+   * @defaultValue "80vh"
    */
   imageHeight?: string;
   /**
    * Width of the thumbnail element inside the navigation
+   *
+   * @defaultValue "50px"
    */
   thumbnailWidth?: string;
   /**
    * Height of the thumbnail element inside the navigation
+   *
+   * @defaultValue "50px"
    */
   thumbnailHeight?: string;
 }

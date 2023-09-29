@@ -21,10 +21,14 @@ export type LinearProgressProps = ProgressHTMLAttributes<HTMLProgressElement> & 
   /**
    * Set the max value of the progress bar. This determines the
    * computed percentage.
+   *
+   * @defaultValue 100
    */
   max?: number;
   /**
    * Set the dimension of the progress bar.
+   *
+   * @defaultValue "regular"
    */
   dimension?: 'regular' | 'big';
   /**

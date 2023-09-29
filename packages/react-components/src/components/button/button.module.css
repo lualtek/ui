@@ -1,5 +1,3 @@
-@import '../../core/utils/vibrancy.css';
-
 @layer components {
   .Button {
     --border-opacity: 40%;
@@ -62,8 +60,6 @@
       --border-color: var(--cta-default);
       --glow-color: color-mix(in oklab, var(--highlight-brand-foreground), transparent 70%);
       --shine-position: 65%;
-
-      @mixin vibrancy;
 
       transition: all token(--duration-200) ease-out;
       background: linear-gradient(to top, var(--background), var(--global-background));
@@ -136,9 +132,6 @@
     }
 
     &[data-button-kind='secondary'] {
-
-      @mixin vibrancy;
-
       --border-color: var(--dimmed-5);
       --background: transparent;
       --border-opacity: 40%;
@@ -194,9 +187,6 @@
 
 
       &:not([aria-disabled='true'], [aria-busy='true'], [data-button-sentiment]):is(:hover) {
-
-        @mixin vibrancy;
-
         background-color: var(--vibrancy-background-mid);
         color: var(--vibrancy-foreground);
       }
@@ -227,8 +217,6 @@
     &[aria-disabled='true'],
     &[aria-disabled='true']:is(:hover, :focus, :active) {
       --border-color: var(--global-disabled-foreground);
-
-      @mixin vibrancy;
 
       color: var(--global-disabled-foreground);
       background: var(--global-disabled-background);

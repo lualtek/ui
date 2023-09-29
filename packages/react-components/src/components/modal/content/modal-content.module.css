@@ -3,10 +3,6 @@
 
 @layer components {
   .Content {
-
-    @mixin vibrancy;
-
-    background-color: var(--vibrancy-background-soft);
     inline-size: 100vw;
     -webkit-overflow-scrolling: touch;
     max-block-size: 95vh;
@@ -15,8 +11,6 @@
     justify-self: center;
     align-self: end;
     padding-block-end: env(safe-area-inset-bottom);
-    border-top: 1px solid var(--global-inner-contrast-border);
-    outline: 1px solid var(--global-outer-contrast-border);
 
     @media (--from-small) {
       max-inline-size: 600px;
@@ -25,8 +19,6 @@
       border-radius: token(--radius-24);
       justify-self: center;
       align-self: center;
-      border: 1px solid var(--global-inner-contrast-border);
-      outline: 1px solid var(--global-outer-contrast-border);
     }
   }
 
@@ -44,7 +36,6 @@
     height: token(--space-56);
     overflow: hidden;
     border-radius: token(--radius-24) token(--radius-24) 0 0;
-    border-bottom: 1px solid var(--vibrancy-background-mid);
     background-color: var(--header-tint);
     position: relative;
     padding:

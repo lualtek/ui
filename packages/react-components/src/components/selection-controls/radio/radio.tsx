@@ -17,6 +17,8 @@ export type RadioProps = InputHTMLAttributes<HTMLInputElement> & {
   disabled?: boolean;
   /**
    * Set the size of the toggle.
+   *
+   * @defaultValue "regular"
    */
   dimension?: 'regular' | 'small';
   /**
@@ -30,6 +32,8 @@ export type RadioProps = InputHTMLAttributes<HTMLInputElement> & {
   label?: ReactNode;
   /**
    * Set the position of the label relative to the radio.
+   *
+   * @defaultValue "end"
    */
   labelPosition?: 'start' | 'end';
 }

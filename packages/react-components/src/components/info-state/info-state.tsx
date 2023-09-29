@@ -26,6 +26,8 @@ export type InfoStateProps = HTMLAttributes<HTMLDivElement> & {
   /**
    * Set the icon color. Please use the correct color based on the type of the message.
    * Eg. Don't use `green` for negative informations.
+   *
+   * @defaultValue "blue"
    */
   iconColor?: TokensTypes['colors'];
   /**
@@ -34,6 +36,8 @@ export type InfoStateProps = HTMLAttributes<HTMLDivElement> & {
   image?: string;
   /**
    * Set the direction of the content (column or row).
+   *
+   * @defaultValue "column"
    */
   direction?: StackProps['direction'];
   /**

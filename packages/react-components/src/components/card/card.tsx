@@ -7,13 +7,19 @@ import {
   CSSProperties, forwardRef, ReactNode, useMemo,
 } from 'react';
 
-import { Polymorphic, Stack, StackProps } from '@/components';
+import {
+  Polymorphic, Stack, StackProps, useStyles,
+} from '@/components';
 
 import styles from './card.module.css';
 
+/**
+ * @deprecated Use the `Panel`, `Stack` and `Elevator` components instead.
+ */
 export type CardProps = Pick<StackProps, 'wrap' | 'columnGap' | 'rowGap' | 'vAlign' | 'hAlign'> & {
   /**
    * Set the padding on each side of the card.
+   * @defaultValue 24
    */
   padding?: false | TokensTypes['space'];
   /**
@@ -30,6 +36,7 @@ export type CardProps = Pick<StackProps, 'wrap' | 'columnGap' | 'rowGap' | 'vAli
   bordered?: boolean;
   /**
    * Define the edge radius of the card.
+   * @defaultValue 16
    */
   radius?: false | TokensTypes['radius'];
   /**
@@ -38,10 +45,12 @@ export type CardProps = Pick<StackProps, 'wrap' | 'columnGap' | 'rowGap' | 'vAli
   dimmed?: 0 | 1 | 2;
   /**
    * Make the card vibrant. Add tranlucent background.
+   * @defaultValue false
    */
   vibrant?: boolean;
   /**
    * Change the background color of the card when it is hovered.
+   * @defaultValue false
    */
   highlightOnHover?: boolean;
 }
@@ -68,6 +77,8 @@ export const Card = forwardRef(({
   style,
   ...otherProps
 }, forwardedRef) => {
+  const { vibrancy } = useStyles();
+
   const dynamicStyle: CSSProperties = useMemo(() => ({
     '--padding': padding && tkns.space[padding],
     '--radius': radius && tkns.radius[radius],
@@ -82,6 +93,7 @@ export const Card = forwardRef(({
       data-card-bordered={bordered}
       data-card-vibrant={vibrant}
       data-card-highlight-hover={highlightOnHover}
+      {...vibrant ? vibrancy.attributes : undefined}
       {...otherProps}
     >
       <Stack

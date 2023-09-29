@@ -8,10 +8,14 @@ import { Elevator } from '@/components';
 export type PopoverContentProps = PopoverPrimitive.PopoverContentProps & {
   /**
    * Whether to show the arrow pointing to the anchor element.
+   *
+   * @defaultValue false
    */
   showArrow?: boolean;
   /**
    * The color of the arrow
+   *
+   * @defaultValue "var(--dimmed-2)"
    */
   arrowColor?: string;
   /**
@@ -20,10 +24,14 @@ export type PopoverContentProps = PopoverPrimitive.PopoverContentProps & {
   side?: PopoverPrimitive.PopoverContentProps['side'];
   /**
    * The offset from the anchor element.
+   *
+   * @defaultValue 4
    */
   offset?: TokensTypes['space'];
   /**
    * Whether to use a portal to render the popover.
+   *
+   * @defaultValue true
    */
   usePortal?: boolean;
 }

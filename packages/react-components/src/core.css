@@ -4,5 +4,5 @@
 @import './core/basic.css' layer(core);
 @import './core/elevations.css' layer(core);
 @import './core/typography.css' layer(core);
+@import './core/utils/vibrancy.css' layer(core);
 @import './core/utils/media.css';
-@import './core/utils/vibrancy.css';

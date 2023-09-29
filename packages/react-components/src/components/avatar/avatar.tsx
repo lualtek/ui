@@ -10,6 +10,7 @@ export type AvatarProps = ImgHTMLAttributes<HTMLImageElement> & {
   src?: string;
   /**
    * Define the size of the avatar
+   * @defaultValue "regular"
    */
   dimension?: 'small' | 'regular' | 'big';
 }

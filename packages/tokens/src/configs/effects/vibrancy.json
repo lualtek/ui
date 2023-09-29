@@ -1,0 +1,26 @@
+{
+  "vibrancy": {
+    "blur": {
+      "soft": {
+        "value": 10,
+        "attributes": {
+          "category": "size"
+        }
+      },
+      "strong": {
+        "value": 20,
+        "attributes": {
+          "category": "size"
+        }
+      }
+    },
+    "saturation": {
+      "standard": {
+        "value": 1
+      },
+      "high": {
+        "value": 1.2
+      }
+    }
+  }
+}

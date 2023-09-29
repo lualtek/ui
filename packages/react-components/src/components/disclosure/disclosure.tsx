@@ -20,6 +20,7 @@ import styles from './disclosure.module.css';
 export type DisclosureProps = DetailsHTMLAttributes<HTMLDetailsElement> & {
   /**
    * Set the initial state of the disclosure.
+   * @defaultValue false
    */
   open?: boolean;
   /**
@@ -31,6 +32,8 @@ export type DisclosureProps = DetailsHTMLAttributes<HTMLDetailsElement> & {
    * Remove or add a padding to align the content with the icon indicator.
    * This is useful when the content inside starts with text and you want to align it
    * summary to improve readability.
+   *
+   * @defaultValue true
    */
   padding?: boolean;
   /**
@@ -39,16 +42,22 @@ export type DisclosureProps = DetailsHTMLAttributes<HTMLDetailsElement> & {
   contentMaxHeight?: string;
   /**
    * Set the dimension of the summary toggle
+   *
+   * @defaultValue "regular"
    */
   dimension?: 'small' | 'regular' | 'big';
   /**
    * Set the position of the icon indicator. The content padding is automatically
    * applied based on the icon position.
+   *
+   * @defaultValue "start"
    */
   iconPosition?: 'start' | 'end';
   /**
    * Set or disable the interactivity of the summary toggle.
    * Eg. If `open` is set to `true` the content can't be toggled.
+   *
+   * @defaultValue true
    */
   expandable?: boolean;
 }

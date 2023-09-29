@@ -18,10 +18,12 @@ type ForwardedElementType<T extends boolean> = T extends true ? HTMLButtonElemen
 export type ChipProps = PropsClassChildren<{
   /**
    * Set the dimension of the component.
+   * @defaultValue "regular"
    */
   dimension?: 'small' | 'regular' | 'big';
   /**
    * Set a color from one of the provided values.
+   * @defaultValue "gray"
    */
   color?: TokensTypes['colors'];
   /**

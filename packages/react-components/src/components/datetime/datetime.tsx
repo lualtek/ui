@@ -11,12 +11,14 @@ export type DatetimeProps = TimeHTMLAttributes<HTMLTimeElement> & {
   date: string;
   /**
    * Set the locale to use to format the date.
+   * @defaultValue "en-US"
    */
   locale?: string | string[];
   /**
    * Customize the date format by passing options from Intl.DateTimeFormat
    *
-   * Read more: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat
+   * @see [DateTimeFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat)
+   * @defaultValue { year: 'numeric', month: 'long', day: 'numeric' }
    */
   options?: Intl.DateTimeFormatOptions;
 }

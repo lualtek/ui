@@ -22,6 +22,8 @@ export type CheckboxProps = InputHTMLAttributes<HTMLInputElement> & {
   indeterminate?: boolean;
   /**
    * Set the size of the toggle.
+   *
+   * @defaultValue "regular"
    */
   dimension?: 'regular' | 'small';
   /**
@@ -35,6 +37,8 @@ export type CheckboxProps = InputHTMLAttributes<HTMLInputElement> & {
   label?: ReactNode;
   /**
    * Set the position of the label relative to the checkbox.
+   *
+   * @defaultValue "end"
    */
   labelPosition?: 'start' | 'end';
 }
