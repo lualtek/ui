@@ -17,6 +17,8 @@ export type SliderProps = SliderPrimitive.SliderProps & {
   showValues?: boolean;
   /**
    * Show custom value label instead of raw value
+   *
+   * @defaultValue `val => val`
    */
   valueLabel?: (value: number) => string;
   /**
@@ -24,6 +26,7 @@ export type SliderProps = SliderPrimitive.SliderProps & {
    */
   label?: ReactNode;
 };
+
 export const Slider = forwardRef<
 ElementRef<typeof SliderPrimitive.Root>,
 SliderProps

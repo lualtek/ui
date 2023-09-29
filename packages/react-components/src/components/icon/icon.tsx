@@ -24,6 +24,8 @@ export type IconProps = SVGAttributes<SVGElement | SVGSVGElement> & {
   /**
    * Set the size of the icon. To improve readability at any size, the style of the icon
    * is automatically defined based on the dimension.
+   *
+   * @defaultValue 18
    */
   dimension?: TokensTypes['icon']['size'];
 }

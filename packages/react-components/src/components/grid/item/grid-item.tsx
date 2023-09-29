@@ -8,20 +8,22 @@ import styles from './grid-item.module.css';
 export type GridItemProps = LiHTMLAttributes<HTMLLIElement> & {
   /**
    * Make the item span the entire row.
+   *
+   * @defaultValue false
    */
   fullWidth?: boolean;
   /**
    * Set the explicit offsets (start/end) of the item across the grid columns.
    * This props refers to the CSS `grid-column` property.
    *
-   * Read more: https://developer.mozilla.org/en-US/docs/Web/CSS/grid-column
+   * @see [grid-column](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-column)
    */
   column?: string;
   /**
    * Set the explicit offsets (start/end) of the item across the grid rows.
    * This props refers to the CSS `grid-row` property.
    *
-   * Read more: https://developer.mozilla.org/en-US/docs/Web/CSS/grid-row
+   * @see [grid-row](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-row)
    */
   row?: string;
 }

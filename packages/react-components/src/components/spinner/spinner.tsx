@@ -5,6 +5,8 @@ import { forwardRef, SVGAttributes } from 'react';
 export type SpinnerProps = SVGAttributes<SVGElement> & {
   /**
    * Set the size of the spinner
+   *
+   * @defaultValue "big"
    */
   dimension?: 'small' | 'regular' | 'big';
   /**

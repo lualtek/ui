@@ -8,11 +8,15 @@ import { FCClass } from '@/components/types';
 export type LogoProps = SVGAttributes<SVGElement> & {
   /**
    * Set the fil color as string
+   *
+   * @defaultValue "var(--dimmed-8)"
    */
   fill?: string;
   /**
    * Define the element width.
    * If `height` is not defined the aspect-ratio is preserved.
+   *
+   * @defaultValue "100%"
    */
   width?: string;
   /**
@@ -22,6 +26,8 @@ export type LogoProps = SVGAttributes<SVGElement> & {
   height?: string;
   /**
    * Set the logo parts to display
+   *
+   * @defaultValue "full"
    */
   variant?: 'full' | 'mark' | 'wordmark';
   /**

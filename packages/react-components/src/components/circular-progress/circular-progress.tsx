@@ -17,10 +17,12 @@ export type CircularProgressProps = HTMLAttributes<HTMLDivElement> & {
   /**
    * Set the max value of the progress bar. This determines the
    * computed percentage.
+   * @defaultValue 100
    */
   max?: number;
   /**
    * Set the dimension of the progress bar.
+   * @defaultValue "regular"
    */
   dimension?: 'small' | 'regular' | 'big';
   /**
@@ -29,6 +31,7 @@ export type CircularProgressProps = HTMLAttributes<HTMLDivElement> & {
   showProgress?: boolean;
   /**
    * Show custom value label instead of raw value
+   * @defaultValue (value) => `${value}%`
    */
   progressLabel?: (value: number) => string;
   /**

@@ -40,15 +40,20 @@ export type GridProps = HTMLAttributes<HTMLUListElement> &{
    * This refers to the CSS function `repeat()`, which can use both `auto-fit`
    * and `auto-fill` parameters.
    *
-   * Read more: https://developer.mozilla.org/en-US/docs/Web/CSS/repeat
+   * @see [repeat](https://developer.mozilla.org/en-US/docs/Web/CSS/repeat)
+   * @defaultValue "fill"
    */
   filling?: 'fit' | 'fill' | false;
   /**
    * Set the minimum columns width
+   *
+   * @defaultValue "10rem"
    */
   colMinWidth?: string;
   /**
    * Set the minimum rows height
+   *
+   * @defaultValue "1fr"
    */
   rowMinHeight?: string;
   /**

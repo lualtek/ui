@@ -19,6 +19,8 @@ export type TextfieldProps = BaseFieldProps & InputHTMLAttributes<HTMLInputEleme
   icon?: IconProps['source'];
   /**
    * Set in which side of the field the icon should be displayed.
+   *
+   * @defaultValue 'end'
    */
   iconPosition?: 'start' | 'end';
   /**
@@ -31,7 +33,8 @@ export type TextfieldProps = BaseFieldProps & InputHTMLAttributes<HTMLInputEleme
    * Set the input type. The value can be anything that
    * is supported by the HTML input element.
    *
-   * Read more: https://developer.mozilla.org/en-US/docs/Learn/Forms/HTML5_input_types
+   * @see [input types](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#input_types)
+   * @defaultValue 'text'
    */
   type?: string;
   /**
@@ -42,6 +45,8 @@ export type TextfieldProps = BaseFieldProps & InputHTMLAttributes<HTMLInputEleme
   /**
    * Set the field into a disabled state. When disabled, the field value cannot be
    * edited, selected or copied, but it can still be focused and navigated by AT.
+   *
+   * @defaultValue false
    */
   disabled?: boolean;
   /**

@@ -39,16 +39,21 @@ export type TextProps = {
   /**
    * Set the text alignment of the text. This is a logical property
    * based on the direction of the text.
+   *
+   * @defaultValue "start"
    */
   align?: 'start' | 'center' | 'end';
   /**
    * Enable or disable the responsiveness of the text. If disabled,
    * the text will be always the same size across all breakpoints.
+   *
+   * @defaultValue true
    */
   responsive?: boolean;
   /**
    * Set the text line-height of the text. This uses
    * the predefined tokens from the typography system.
+   *
    * @defaultValue "standard"
    */
   lineHeight?: 'none' | 'extra-small' | 'small' | 'standard' |'large';

@@ -19,11 +19,15 @@ export type MenuItemProps = {
   icon?: IconProps['source'];
   /**
    * Set the position of the icon. Used only when icon is defined.
+   *
+   * @defaultValue "start"
    */
   iconPosition?: 'start' | 'end';
   /**
    * Set the size of the menu item.
    * Font size and icon style will be adjusted to match the size.
+   *
+   * @defaultValue "regular"
    */
   dimension?: 'small' | 'regular';
   /**
@@ -32,6 +36,8 @@ export type MenuItemProps = {
   onClick?: (event: React.MouseEvent<HTMLElement>, value: string | number) => void;
   /**
    * Set disabled state. The item is not interactive and grayed out.
+   *
+   * @defaultValue false
    */
   disabled?: boolean;
   /**
@@ -40,6 +46,7 @@ export type MenuItemProps = {
    * We suggest to not remove the padding if you have items with icons in the same menu to
    * keep a good readability.
    *
+   * @defaultValue true
    */
   padding?: boolean;
   /**

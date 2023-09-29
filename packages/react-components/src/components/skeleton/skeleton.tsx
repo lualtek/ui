@@ -14,6 +14,8 @@ export type SkeletonProps = {
   /**
    * Set the edge radius of each skeleton block.
    * This value must be one of the available `radius` tokens
+   *
+   * @defaultValue 4
    */
   radius?: TokensTypes['radius'];
   /**
@@ -22,6 +24,8 @@ export type SkeletonProps = {
   circle?: boolean;
   /**
    * Set how many skeleton blocks to display.
+   *
+   * @defaultValue 1
    */
   count?: number;
   /**
@@ -40,6 +44,8 @@ export type SkeletonProps = {
   inline?: boolean;
   /**
    * Enable the shim animation and the announcement of the loading state.
+   *
+   * @defaultValue true
    */
   enableAnimation?: boolean;
   /**

@@ -15,10 +15,12 @@ export type ButtonProps = {
   /**
    * Set the style of the button.
    * When disabled the style is overwritten.
+   * @defaultValue "primary"
    */
   kind?: 'primary' | 'secondary' | 'flat';
   /**
    * Set the size of the button.
+   * @defaultValue "regular"
    */
   dimension?: 'regular' | 'small' | 'big';
   /**
@@ -31,6 +33,7 @@ export type ButtonProps = {
   icon?: IconProps['source'];
   /**
    * Set the position of the icon. Used only when icon is defined.
+   * @defaultValue "start"
    */
   iconPosition?: 'start' | 'end';
   /**
@@ -44,6 +47,7 @@ export type ButtonProps = {
   /**
    * Pass the HTML attribute `type` to the button.
    * If not specified, the type is always 'button' when rendered as `<button>.
+   * @defaultValue "button"
    */
   type?: 'submit' | 'reset' | 'button';
   /**

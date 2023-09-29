@@ -17,6 +17,7 @@ export type SnaplistProps = {
   /**
    * The alignment of the snap element.
    * This define which side the snap element is anchored when srcolling.
+   * @defaultValue "center"
    */
   snapAlign?: 'start' | 'center' | 'end';
   /**

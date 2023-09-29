@@ -7,6 +7,11 @@ import {
 import { OverlayProps } from './overlay';
 
 type OverlayContextProps = Pick<OverlayProps, 'onClose'> & {
+  /**
+   * The id of the title element of the overlay. This value is automatically generated.
+   * @internal
+   * @defaultValue ""
+   */
   titleId?: string;
 }
 

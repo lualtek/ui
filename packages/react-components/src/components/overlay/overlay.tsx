@@ -27,12 +27,16 @@ export type OverlayProps = {
   /**
    * Set the css `z-index` of the overlay. This must be used only
    * if necessary.
+   *
+   * @defaultValue 4
    */
   index?: number;
   /**
    * Set the overlay style. This is used to obscure the content
    * behind the overlay if `obfuscate` is `true`. If set to `auto`, the overlay
    * color is determined by the global active theme (light or dark).
+   *
+   * @defaultValue "auto"
    */
   theme?: 'light' | 'dark' | 'auto';
   /**
@@ -41,6 +45,8 @@ export type OverlayProps = {
   onClose?: () => void;
   /**
    * Set the overlay to be obscuring the page content behind it.
+   *
+   * @defaultValue true
    */
   obfuscate?: boolean;
 }

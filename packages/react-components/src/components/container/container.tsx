@@ -8,10 +8,12 @@ import styles from './container.module.css';
 export type ContainerProps = {
   /**
    * Set the horizontal max-width of the container.
+   * @defaultValue "full"
    */
   dimension?: 'full' | 'small' | 'medium' | 'large' | 'extra-large';
   /**
    * Set or remove the container's predefined horizontal padding.
+   * @defaultValue true
    */
   padding?: boolean;
 }

@@ -17,7 +17,7 @@ export type BleedProps = HTMLAttributes<HTMLDivElement> &{
 
   /**
    * Make the content bleed to the edges of the viewport.
-   * @importatnt This will ignore the `amount` prop.
+   * @important This will ignore the `amount` prop.
    */
   full?: boolean;
 }

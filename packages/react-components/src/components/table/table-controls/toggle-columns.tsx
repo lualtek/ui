@@ -6,7 +6,15 @@ import {
 } from '@/components';
 
 type ToggleColumnsControlProps<T extends Record<string, unknown>> = {
+  /**
+   * The columns that can be toggled.
+   */
   columns: Array<Column<T>>;
+  /**
+   * Set the label of the action button.
+   *
+   * @defaultValue "Toggle columns"
+   */
   label?: string;
 }
 

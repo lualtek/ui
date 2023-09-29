@@ -21,6 +21,8 @@ export type ModalContentProps = HTMLAttributes<HTMLDivElement> & {
   /**
    * Set the theme of the content card. To ensure contrast with the default overlay color (dark),
    * this is set to `light` by default.
+   *
+   * @defaultValue "auto"
    */
   theme?: 'dark' | 'light' | 'auto';
   /**
@@ -30,6 +32,8 @@ export type ModalContentProps = HTMLAttributes<HTMLDivElement> & {
   /**
    * Enable or disable content scrolling. This is used when you want to create a scrollable element inside
    * and prevend double scrolling.
+   *
+   * @defaultValue true
    */
   scrollInside?: boolean;
 }

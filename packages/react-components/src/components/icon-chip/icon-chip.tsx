@@ -14,10 +14,14 @@ import styles from './icon-chip.module.css';
 export type IconChipProps = {
   /**
    * Set the dimension of the component.
+   *
+   * @defaultValue "regular"
    */
   dimension?: 'small' | 'regular' | 'big';
   /**
    * Set a color from one of the provided values.
+   *
+   * @defaultValue "gray"
    */
   color?: TokensTypes['colors'];
   /**

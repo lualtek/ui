@@ -17,6 +17,7 @@ import styles from './card.module.css';
 export type CardProps = Pick<StackProps, 'wrap' | 'columnGap' | 'rowGap' | 'vAlign' | 'hAlign'> & {
   /**
    * Set the padding on each side of the card.
+   * @defaultValue 24
    */
   padding?: false | TokensTypes['space'];
   /**
@@ -33,6 +34,7 @@ export type CardProps = Pick<StackProps, 'wrap' | 'columnGap' | 'rowGap' | 'vAli
   bordered?: boolean;
   /**
    * Define the edge radius of the card.
+   * @defaultValue 16
    */
   radius?: false | TokensTypes['radius'];
   /**
@@ -41,10 +43,12 @@ export type CardProps = Pick<StackProps, 'wrap' | 'columnGap' | 'rowGap' | 'vAli
   dimmed?: 0 | 1 | 2;
   /**
    * Make the card vibrant. Add tranlucent background.
+   * @defaultValue false
    */
   vibrant?: boolean;
   /**
    * Change the background color of the card when it is hovered.
+   * @defaultValue false
    */
   highlightOnHover?: boolean;
 }

@@ -12,6 +12,7 @@ import styles from './clamp-text.module.css';
 export type ClampTextProps = {
   /**
    * Define how many lines the text should be clamped to.
+   * @defaultValue 1
    */
   rows?: number;
   /**

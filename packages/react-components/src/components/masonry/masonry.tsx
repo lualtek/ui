@@ -34,15 +34,17 @@ export type MasonryProps = {
    * the specified breakpoint. When passing an object, you must specify the
    * default key, other breakpoints are optional.
    *
-   * @example
-   *{
-   *  default: 6,
-   *  extraLarge: 5,
-   *  large: 4,
-   *  medium: 3,
-   *  small: 2,
-   *  extraSmall: 1
-   *}
+   * @example ```js
+   * {
+   *    default: 6,
+   *    extraLarge: 5,
+   *    large: 4,
+   *    medium: 3,
+   *    small: 2,
+   *    extraSmall: 1
+   * }
+   * ```
+   * @defaultValue 3
    */
   columns?: number | Columns;
 }

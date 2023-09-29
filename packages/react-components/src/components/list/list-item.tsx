@@ -13,6 +13,8 @@ export type ListItemProps = PropsClassChildren<Pick<ListProps, 'dimension' | 'hi
   /**
    * Set the marker style. You can use any icon from the iconography as marker
    * by passing its name.
+   *
+   * @defaultValue "circle"
    */
   marker?: IconProps['source'];
   /**

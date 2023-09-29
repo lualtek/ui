@@ -15,7 +15,15 @@ import { Elevator } from '../elevator';
 import styles from './tooltip.module.css';
 
 export type TooltipProps = TooltipPrimitive.TooltipProps & TooltipPrimitive.TooltipContentProps & {
+  /**
+   * The trigger element that will show the tooltip when hovered or focused.
+   */
   trigger: ReactNode;
+  /**
+   * Where to place the tooltip relative to the trigger.
+   *
+   * @defaultValue "top"
+   */
   side?: TooltipPrimitive.TooltipContentProps['side'];
 }
 

@@ -27,6 +27,8 @@ export type TextareaProps = BaseFieldProps & TextareaHTMLAttributes<HTMLTextArea
   /**
    * Set the field into a disabled state. When disabled, the field value cannot be
    * edited, selected or copied, but it can still be focused and navigated by AT.
+   *
+   * @defaultValue false
    */
   disabled?: boolean;
   /**

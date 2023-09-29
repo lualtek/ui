@@ -39,6 +39,8 @@ export type InlineToastProps = OutputHTMLAttributes<HTMLOutputElement> & {
    * Set the color and the sentiment of the toast.
    * This affects the the color of all the elements inside and should be defined
    * according to the message.
+   *
+   * @defaultValue "neutral"
    */
   kind?: 'info' | 'warning' | 'neutral' | 'positive' | 'danger';
   /**
@@ -48,6 +50,8 @@ export type InlineToastProps = OutputHTMLAttributes<HTMLOutputElement> & {
   dismissable?: boolean;
   /**
    * Set the label of the dismiss button.
+   *
+   * @defaultValue "Dismiss"
    */
   dismissLabel?: string;
   /**
