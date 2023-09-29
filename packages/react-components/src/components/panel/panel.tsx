@@ -4,6 +4,9 @@ import tkns from '@lualtek/tokens/platforms/web/tokens.json';
 import clsx from 'clsx';
 import { CSSProperties, forwardRef, useMemo } from 'react';
 
+import {
+  useStyles, VibrancyBlur, VibrancyColor, VibrancySaturation,
+} from '@/components';
 import { Polymorphic } from '@/components/types';
 
 import styles from './panel.module.css';
@@ -12,11 +15,17 @@ export type PanelProps = {
   /**
    * Enable or disable the vibrant effect. Add translucent and blurred background.
    */
-  vibrancy?: 'soft' | 'strong';
+  vibrancy?: VibrancyBlur;
   /**
    * Change the background color of the card.
    */
-  vibrancyColor?: 'background' | 'soft' | 'mid' | 'hard';
+  vibrancyColor?: VibrancyColor;
+  /**
+   * Change the saturation of the elements behind the vibrancy effect.
+   *
+   * @defaultValue "standard"
+   */
+  vibrancySaturation?: VibrancySaturation;
   /**
    * Show a border around the panel.
    */
@@ -40,18 +49,24 @@ export const Panel = forwardRef(({
   style,
   vibrancy,
   vibrancyColor,
+  vibrancySaturation,
   bordered,
   borderSide = 'all',
   radius,
   as: Wrapper = 'div',
   ...otherProps
 }, forwardedRef) => {
-  const computedVibrancyBackground = vibrancyColor === 'background' ? 'var(--vibrancy-background)' : `var(--vibrancy-background-${vibrancyColor})`;
+  const { elevation, vibrancy: vib } = useStyles({
+    vibrancy: {
+      blur: vibrancy,
+      saturation: vibrancySaturation,
+      color: vibrancyColor,
+    },
+  });
 
   const dynamicStyle: CSSProperties = useMemo(() => ({
-    '--background': (vibrancyColor) && computedVibrancyBackground,
     '--radius': radius && tkns.radius[radius],
-  }), [vibrancyColor, radius, computedVibrancyBackground]);
+  }), [radius]);
 
   return (
     <Wrapper
@@ -60,8 +75,12 @@ export const Panel = forwardRef(({
       data-panel-vibrancy={vibrancy}
       data-panel-bordered={bordered}
       data-panel-border-side={borderSide}
-      data-panel-radius={radius}
-      style={{ ...dynamicStyle, ...style }}
+      data-panel-radius={Boolean(radius)}
+      style={{
+        ...elevation.style, ...dynamicStyle, ...style,
+      }}
+      {...vib.attributes}
+      {...elevation.attributes}
       {...otherProps}
     >
       <div className={styles.PanelContent}>

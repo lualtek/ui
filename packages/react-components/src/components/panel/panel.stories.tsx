@@ -13,6 +13,10 @@ const meta = {
       options: [undefined, 'soft', 'strong'],
       control: { type: 'radio' },
     },
+    vibrancySaturation: {
+      options: [undefined, 'standard', 'high'],
+      control: { type: 'radio' },
+    },
     vibrancyColor: {
       options: [undefined, 'background', 'soft', 'mid', 'hard'],
       control: { type: 'select' },
@@ -23,12 +27,9 @@ const meta = {
     },
   },
   render: args => (
-    <>
-      <img style={{ position: 'absolute', zIndex: -1 }} width="100%" src="https://images.unsplash.com/photo-1579332649290-10b7da0cd111?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=cover&w=1600&q=80" />
-      <Panel {...args}>
-        Ciao
-      </Panel>
-    </>
+    <Panel {...args}>
+      Ciao
+    </Panel>
   ),
 } satisfies Meta<typeof Panel>;
 
