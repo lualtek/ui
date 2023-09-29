@@ -16,10 +16,16 @@
     },
     "saturation": {
       "standard": {
-        "value": 100
+        "value": 100,
+        "attributes": {
+          "category": "size/percent"
+        }
       },
-      "hight": {
-        "value": 120
+      "high": {
+        "value": 120,
+        "attributes": {
+          "category": "size/percent"
+        }
       }
     }
   }

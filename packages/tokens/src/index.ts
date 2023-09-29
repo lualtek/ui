@@ -3,6 +3,7 @@ import StyleDictionary from 'style-dictionary';
 
 import CssBezier from './transformers/css-bezier';
 import OklchValues from './transformers/oklch-values';
+import SizePercentage from './transformers/percentage';
 import SizePxToRem from './transformers/px-rem';
 import SizePxToRootEm from './transformers/px-rootem';
 
@@ -16,6 +17,7 @@ const SDWithConfig = StyleDictionary.extend('src/tokens.config.js');
 // StyleDictionary.registerTransform(HexHslValues);
 SDWithConfig.registerTransform(OklchValues);
 SDWithConfig.registerTransform(SizePxToRem);
+SDWithConfig.registerTransform(SizePercentage);
 SDWithConfig.registerTransform(SizePxToRootEm);
 SDWithConfig.registerTransform(CssBezier);
 
@@ -33,6 +35,7 @@ SDWithConfig.registerTransformGroup({
     'size/px-rootem',
     'size/px-rem',
     'size/px',
+    'size/percent',
     'color/oklchvalues',
     'easing/cubic-bezier',
   ],
