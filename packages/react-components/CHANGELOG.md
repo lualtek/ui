@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 10.0.0-next.6
+
+### Patch Changes
+
+- 594394a: Fix modal-content import
+  - @lualtek/icons@10.0.0-next.6
+
 ## 10.0.0-next.5
 
 ### Major Changes
