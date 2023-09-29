@@ -6,7 +6,7 @@ import {
 } from 'react';
 import { RovingTabIndexProvider } from 'react-roving-tabindex';
 
-import { Polymorphic, Stack } from '@/components';
+import { Polymorphic, Stack, useStyles } from '@/components';
 
 import styles from './menu.module.css';
 import { MenuItem, MenuItemProps } from './menu-item/menu-item';
@@ -43,6 +43,11 @@ export const Menu = forwardRef<HTMLUListElement, MenuProps>(({
   style,
   ...otherProps
 }, forwardedRef) => {
+  const { vibrancy } = useStyles({
+    vibrancy: {
+      color: 'background',
+    },
+  });
   const dynamicStyle: CSSProperties = useMemo(() => (
     {
       '--max-height': maxHeight,
@@ -58,6 +63,7 @@ export const Menu = forwardRef<HTMLUListElement, MenuProps>(({
       data-menu-should-scroll={Boolean(maxHeight)}
       vPadding={8}
       role="menu"
+      {...vibrancy.attributes}
       {...otherProps}
     >
       <RovingTabIndexProvider options={{ direction: 'vertical', loopAround: true }}>

@@ -6,7 +6,9 @@ import {
   ElementRef, forwardRef, ReactNode, useCallback, useId, useState,
 } from 'react';
 
-import { Elevator, Stack, Text } from '@/components';
+import {
+  Elevator, Stack, Text, useStyles,
+} from '@/components';
 
 import styles from './slider.module.css';
 
@@ -42,6 +44,11 @@ SliderProps
   label,
   ...otherProps
 }, forwardedRef) => {
+  const { vibrancy } = useStyles({
+    vibrancy: {
+      color: 'mid',
+    },
+  });
   const val = value ?? defaultValue;
   const uid = useId();
   const [changedValue, setChangedValue] = useState<number[] | undefined>(val);
@@ -79,7 +86,7 @@ SliderProps
         onValueChange={handleChange}
         {...otherProps}
       >
-        <SliderPrimitive.Track className={styles.Track}>
+        <SliderPrimitive.Track className={styles.Track} {...vibrancy.attributes}>
           <SliderPrimitive.Range className={styles.ValueTrack} />
         </SliderPrimitive.Track>
 

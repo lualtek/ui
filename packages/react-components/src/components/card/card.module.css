@@ -1,5 +1,3 @@
-@import '../../core/utils/vibrancy.css';
-
 @layer components {
   .Card {
     background-color: var(--global-background);
@@ -49,9 +47,6 @@
     }
 
     &[data-card-vibrant='true'] {
-
-      @mixin vibrancy;
-
       background-color: var(--vibrancy-background);
 
       &[data-card-highlight-hover='true']:is(:hover, :focus-visible, :focus-within) {

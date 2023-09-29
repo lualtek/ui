@@ -25,7 +25,7 @@ import {
 import { useDebounce } from 'rooks';
 
 import {
-  PropsWithClass, ResponsiveProvider, Skeleton, Stack, Text,
+  PropsWithClass, ResponsiveProvider, Skeleton, Stack, Text, useStyles,
 } from '@/components';
 
 import styles from './table.module.css';
@@ -194,6 +194,11 @@ export const Table = <T extends Record<string, unknown>>({
   style,
   ...otherProps
 }: TableProps<T>) => {
+  const { vibrancy } = useStyles({
+    vibrancy: {
+      color: 'mid',
+    },
+  });
   const [columnVisibility, setColumnVisibility] = useState({});
   const [rowSelection, setRowSelection] = useState({});
   const [sorting, setSorting] = useState<SortingState>([]);
@@ -346,6 +351,7 @@ export const Table = <T extends Record<string, unknown>>({
                   },
                 }}
                 exit={{ y: '-16px', opacity: 0 }}
+                {...vibrancy.attributes}
               >
                 <Text as="span" size={14} weight="bold">
                   {renderSelectedLabel(selectedRowsCount)}

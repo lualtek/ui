@@ -9,6 +9,7 @@ import {
 import {
   Button, Icon, IconProps, Stack, Text,
   Title,
+  useStyles,
 } from '@/components';
 import { FCChildren } from '@/components/types';
 
@@ -91,6 +92,11 @@ export const InlineToast = forwardRef<HTMLOutputElement, InlineToastProps>(({
   isPrimitive,
   ...otherProps
 }, forwardedRef) => {
+  const { vibrancy } = useStyles({
+    vibrancy: {
+      color: 'soft',
+    },
+  });
   const ActionWrapper = useMemo(() => (isPrimitive ? ToastPrimitive.Close : PrimitiveNoopComponent), [isPrimitive]);
   return (
     <Stack
@@ -105,6 +111,7 @@ export const InlineToast = forwardRef<HTMLOutputElement, InlineToastProps>(({
       hAlign="start"
       direction="row"
       columnGap={16}
+      {...vibrancy.attributes}
       {...otherProps}
     >
       <Icon className={styles.Icon} source={icon ?? defaultIcons[kind]} dimension={24} />

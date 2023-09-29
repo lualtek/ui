@@ -1,3 +1,39 @@
-@define-mixin vibrancy $saturation: 100%, $blur: 20px {
-  backdrop-filter: saturate($saturation) blur($blur);
+[data-vibrancy='true'] {
+  --saturation: 100%;
+
+  backdrop-filter: blur(var(--blur)) saturate(var(--saturation));
+  background-color: var(--background);
+
+  &[data-vibrancy-blur='soft'] {
+    --blur: token(--vibrancy-blur-soft);
+  }
+
+  &[data-vibrancy-blur='strong'] {
+    --blur: token(--vibrancy-blur-strong);
+  }
+
+  &[data-vibrancy-saturation='standard'] {
+    --saturation: token(--vibrancy-saturation-standard);
+  }
+
+  &[data-vibrancy-saturation='high'] {
+    --saturation: token(--vibrancy-saturation-high);
+  }
+
+  &[data-vibrancy-color='background'] {
+    --background: var(--vibrancy-background);
+  }
+
+  &[data-vibrancy-color='soft'] {
+    --background: var(--vibrancy-background-soft);
+  }
+
+  &[data-vibrancy-color='mid'] {
+    --background: var(--vibrancy-background-mid);
+  }
+
+  &[data-vibrancy-color='hard'] {
+    --background: var(--vibrancy-background-hard);
+  }
 }
+

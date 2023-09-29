@@ -7,7 +7,9 @@ import {
   CSSProperties, forwardRef, ReactNode, useMemo,
 } from 'react';
 
-import { Polymorphic, Stack, StackProps } from '@/components';
+import {
+  Polymorphic, Stack, StackProps, useStyles,
+} from '@/components';
 
 import styles from './card.module.css';
 
@@ -75,6 +77,8 @@ export const Card = forwardRef(({
   style,
   ...otherProps
 }, forwardedRef) => {
+  const { vibrancy } = useStyles();
+
   const dynamicStyle: CSSProperties = useMemo(() => ({
     '--padding': padding && tkns.space[padding],
     '--radius': radius && tkns.radius[radius],
@@ -89,6 +93,7 @@ export const Card = forwardRef(({
       data-card-bordered={bordered}
       data-card-vibrant={vibrant}
       data-card-highlight-hover={highlightOnHover}
+      {...vibrant ? vibrancy.attributes : undefined}
       {...otherProps}
     >
       <Stack

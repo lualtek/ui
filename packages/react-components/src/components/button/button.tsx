@@ -6,7 +6,7 @@ import {
 } from 'react';
 
 import {
-  Icon, IconProps, Polymorphic, Spinner,
+  Icon, IconProps, Polymorphic, Spinner, useStyles,
 } from '@/components';
 
 import styles from './button.module.css';
@@ -91,6 +91,7 @@ export const Button = forwardRef(({
   sentiment,
   ...otherProps
 }, forwardedRef) => {
+  const { vibrancy } = useStyles();
   const handleClick = useCallback(
     (event: MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {
       if (!disabled && onClick) onClick(event);
@@ -122,6 +123,7 @@ export const Button = forwardRef(({
       aria-busy={busy}
       aria-live={busy ? 'polite' : undefined}
       onClick={handleClick}
+      {...(kind === 'primary' || kind === 'secondary') ? vibrancy.attributes : undefined}
       {...otherProps}
     >
       {withIcon}
