@@ -1,5 +1,16 @@
 # @lualtek/react-components
 
+## 10.0.0-next.7
+
+### Minor Changes
+
+- cd1525f: Add Panel where needed
+
+### Patch Changes
+
+- cd1525f: Add `useStyles` to `Elevator`
+  - @lualtek/icons@10.0.0-next.7
+
 ## 10.0.0-next.6
 
 ### Patch Changes
