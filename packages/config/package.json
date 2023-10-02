@@ -34,7 +34,6 @@
     "cssnano-preset-default": "6.0.1",
     "flat": "5.0.2",
     "postcss-import": "15.1.0",
-    "postcss-mixins": "9.0.4",
     "postcss-preset-env": "9.1.4",
     "postcss-replace": "2.0.1"
   },

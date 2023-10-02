@@ -7,7 +7,6 @@ export const postcssConfig = (tokens: Record<string, unknown>) => ({
       pattern: /token\(.*?--([^\s]+?)\)/gi,
       data: tokens,
     },
-    'postcss-mixins': {},
     'postcss-preset-env': {
       stage: 0,
     },
