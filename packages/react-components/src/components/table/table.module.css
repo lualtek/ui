@@ -59,7 +59,9 @@
     left: 0;
     right: 0;
     z-index: 4;
-    border-radius: token(--radius-16);
-    min-block-size: token(--space-56);
+
+    & > * {
+      min-block-size: token(--space-56);
+    }
   }
 }

@@ -10,10 +10,8 @@
     overflow-x: auto;
     scrollbar-width: none;
     padding: token(--space-4);
-    background: var(--vibrancy-background-soft);
     border-radius: token(--radius-16);
     margin: var(--tabs-list-gap) var(--tabs-list-gap) 0 var(--tabs-list-gap);
-    box-shadow: 0 0 0 1px var(--global-outer-contrast-border), inset 0 0 0 1px var(--global-inner-contrast-border);
 
     .Tabs[data-tabs-dimension='small'] & {
       border-radius: calc(token(--radius-8) + token(--radius-4));
@@ -86,7 +84,7 @@
     overflow: unset;
     z-index: 0;
     outline-offset: calc((var(--separator-size) * 2) * -1);
-
+    background: transparent;
 
     &.Trigger:not([aria-disabled='true']):is(:hover, :focus, :active) {
       background: none;

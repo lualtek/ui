@@ -1,9 +1,7 @@
 @layer components {
   .InlineToast {
-    border-radius: token(--radius-24);
     overflow: hidden;
-    border: 1px solid var(--global-inner-contrast-border);
-    outline: 1px solid var(--global-outer-contrast-border);
+    display: block;
 
     &[data-toast-kind='neutral'] {
       --toast-fg: var(--global-foreground);

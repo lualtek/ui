@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import {
-  Button, Card, IconButton,
+  Button, IconButton, Panel, Stack,
 } from '../..';
 import { Popover } from './popover';
 
@@ -12,13 +12,15 @@ const meta = {
     <Popover {...args}>
       <Popover.Trigger><Button>Click me</Button></Popover.Trigger>
       <Popover.Content>
-        <Card vibrant>
-          <Popover.Close>
-            <IconButton icon="remove" kind="secondary" dimension="small" />
-          </Popover.Close>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          Distinctio aliquam exercitationem ut? Molestias repellat facilis totam non.
-        </Card>
+        <Panel vibrant bordered radius={16}>
+          <Stack vPadding={24} hPadding={24}>
+            <Popover.Close>
+              <IconButton icon="remove" kind="secondary" dimension="small" />
+            </Popover.Close>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Distinctio aliquam exercitationem ut? Molestias repellat facilis totam non.
+          </Stack>
+        </Panel>
       </Popover.Content>
     </Popover>
   ),

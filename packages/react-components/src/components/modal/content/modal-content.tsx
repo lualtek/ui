@@ -61,7 +61,7 @@ export const ModalContent = forwardRef<HTMLDivElement, ModalContentProps>(({
     <Elevator resting={4} direction={matches.small ? 'bottom' : 'top'}>
       <Panel
         className={clsx(styles.Content, className)}
-        vibrancy="strong"
+        vibrant
         vibrancyColor="soft"
         bordered
         borderSide={matches.small ? 'all' : 'top'}

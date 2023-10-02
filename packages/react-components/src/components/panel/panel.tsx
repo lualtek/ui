@@ -14,8 +14,16 @@ import styles from './panel.module.css';
 export type PanelProps = {
   /**
    * Enable or disable the vibrant effect. Add translucent and blurred background.
+   *
+   * @defaultValue false
    */
-  vibrancy?: VibrancyBlur;
+  vibrant?: boolean;
+  /**
+   * Set the vibrancy level of the panel.
+   *
+   * @defayltValue "strong"
+   */
+  vibrancyLevel?: VibrancyBlur;
   /**
    * Change the background color of the card.
    */
@@ -47,7 +55,8 @@ export const Panel = forwardRef(({
   className,
   children,
   style,
-  vibrancy,
+  vibrant = false,
+  vibrancyLevel = 'strong',
   vibrancyColor,
   vibrancySaturation,
   bordered,
@@ -56,9 +65,9 @@ export const Panel = forwardRef(({
   as: Wrapper = 'div',
   ...otherProps
 }, forwardedRef) => {
-  const { elevation, vibrancy: vib } = useStyles({
+  const { vibrancy } = useStyles({
     vibrancy: {
-      blur: vibrancy,
+      blur: vibrancyLevel,
       saturation: vibrancySaturation,
       color: vibrancyColor,
     },
@@ -72,20 +81,14 @@ export const Panel = forwardRef(({
     <Wrapper
       ref={forwardedRef}
       className={clsx(styles.Panel, className)}
-      data-panel-vibrancy={vibrancy}
       data-panel-bordered={bordered}
       data-panel-border-side={borderSide}
       data-panel-radius={Boolean(radius)}
-      style={{
-        ...elevation.style, ...dynamicStyle, ...style,
-      }}
-      {...vib.attributes}
-      {...elevation.attributes}
+      style={{ ...dynamicStyle, ...style }}
+      {...vibrant && vibrancy.attributes}
       {...otherProps}
     >
-      <div className={styles.PanelContent}>
-        {children}
-      </div>
+      {children}
     </Wrapper>
   );
 }) as PolymorphicPanel;
