@@ -1,5 +1,15 @@
 # @lualtek/config
 
+## 10.0.0-next.7
+
+### Major Changes
+
+- cd1525f: Remove postcss-mixins plugin
+
+### Patch Changes
+
+- @lualtek/tokens@10.0.0-next.7
+
 ## 10.0.0-next.6
 
 ### Patch Changes
