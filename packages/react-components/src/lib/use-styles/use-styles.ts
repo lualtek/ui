@@ -6,6 +6,7 @@ export type VibrancyColor = 'background' | 'soft' | 'mid' | 'hard';
 export type VibrancySaturation = 'standard' | 'high';
 export type ElevationLevel = 0 | 1 | 2 | 3 | 4;
 export type ElevationDirection = 'right' | 'left' | 'top' | 'bottom';
+export type ElevationShadowColor = string;
 
 type UseStylesParams = {
   vibrancy?: {
@@ -17,7 +18,7 @@ type UseStylesParams = {
     resting?: ElevationLevel;
     onHover?: ElevationLevel;
     direction?: ElevationDirection;
-    shadowColor?: string;
+    shadowColor?: ElevationShadowColor;
   };
 }
 

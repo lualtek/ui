@@ -2,27 +2,30 @@ import {
   Children, cloneElement, CSSProperties, isValidElement, ReactElement,
 } from 'react';
 
-import { FCChildren } from '@/components/types';
+import {
+  ElevationDirection, ElevationLevel, ElevationShadowColor, useStyles,
+} from '@/components';
+import type { FCChildren } from '@/components/types';
 
 export type ElevatorProps = {
   /**
    * Set the elevation of the component when is resting.
   */
-  resting: 0 | 1 | 2 | 3 | 4;
+  resting: ElevationLevel;
   /**
    * Set the elevation of the component when is hovered.
    */
-  hover?: 0 | 1 | 2 | 3 | 4;
+  hover?: ElevationLevel;
   /**
    * Set the direction of shadow casting
    * @defaultValue "bottom"
   */
-  direction?: 'top' | 'bottom' | 'left' | 'right';
+  direction?: ElevationDirection;
   /**
    * Set the color of the shadow
    * @defaultValue "oklch(0% 0 0)"
    */
-  shadowColor?: string;
+  shadowColor?: ElevationShadowColor;
   /**
    * Add extra shadow to the component.
    * Whis shadow is added to the elevation shadow.
@@ -37,18 +40,26 @@ export const Elevator: FCChildren<ElevatorProps> = ({
   shadowColor = 'oklch(0% 0 0)',
   extraShadow,
   hover,
-}) => Children.map(children, child => isValidElement(child) && cloneElement(
-  child as ReactElement,
-  {
-    'data-elevation': resting,
-    'data-elevation-direction': direction,
-    'data-elevation-hover': hover,
-    style: {
-      ...child.props.style as CSSProperties,
-      '--shadow-color': shadowColor,
-      '--extra-shadow': extraShadow,
+}) => {
+  const { elevation } = useStyles({
+    elevation: {
+      resting,
+      onHover: hover,
+      direction,
+      shadowColor: shadowColor || undefined,
     },
-  },
-));
+  });
+  return Children.map(children, child => isValidElement(child) && cloneElement(
+    child as ReactElement,
+    {
+      ...elevation.attributes,
+      style: {
+        ...child.props.style as CSSProperties,
+        ...elevation.style,
+        '--extra-shadow': extraShadow,
+      },
+    },
+  ));
+};
 
 Elevator.displayName = 'Elevator';
