@@ -7,9 +7,10 @@ const meta = {
   component: Panel,
   args: {
     radius: 24,
+    bordered: false,
   },
   argTypes: {
-    vibrancy: {
+    vibrancyLevel: {
       options: [undefined, 'soft', 'strong'],
       control: { type: 'radio' },
     },
@@ -41,9 +42,21 @@ export const Default = {} satisfies Story;
 
 export const WithVibrancy = {
   args: {
-    vibrancy: 'soft',
+    vibrant: true,
     vibrancyColor: 'mid',
   },
+  render: args => (
+    <>
+      <img
+        width="100%"
+        style={{ position: 'absolute', zIndex: -1 }}
+        src="https://images.unsplash.com/photo-1579332649290-10b7da0cd111?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=cover&w=1600&q=80"
+      />
+      <Panel {...args}>
+        Ciao
+      </Panel>
+    </>
+  ),
 } satisfies Story;
 
 export const Bordered = {

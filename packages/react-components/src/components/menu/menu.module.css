@@ -1,8 +1,6 @@
 @layer components {
   .Menu {
     list-style-type: none;
-    box-shadow: 0 0 0 1px var(--global-outer-contrast-border), inset 0 0 0 1px var(--global-inner-contrast-border);
-    border-radius: token(--radius-24);
     overflow: hidden;
     position: relative;
 

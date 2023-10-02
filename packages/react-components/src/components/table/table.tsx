@@ -25,7 +25,8 @@ import {
 import { useDebounce } from 'rooks';
 
 import {
-  PropsWithClass, ResponsiveProvider, Skeleton, Stack, Text, useStyles,
+  Panel,
+  PropsWithClass, ResponsiveProvider, Skeleton, Stack, Text,
 } from '@/components';
 
 import styles from './table.module.css';
@@ -194,11 +195,6 @@ export const Table = <T extends Record<string, unknown>>({
   style,
   ...otherProps
 }: TableProps<T>) => {
-  const { vibrancy } = useStyles({
-    vibrancy: {
-      color: 'mid',
-    },
-  });
   const [columnVisibility, setColumnVisibility] = useState({});
   const [rowSelection, setRowSelection] = useState({});
   const [sorting, setSorting] = useState<SortingState>([]);
@@ -330,17 +326,15 @@ export const Table = <T extends Record<string, unknown>>({
         <AnimatePresence>
           <LazyMotion features={domMax}>
             {selectableRows && selectedRowsCount > 0 && (
-              <Stack
-                as={m.div}
+              <Panel
                 className={styles.Toast}
-                direction="row"
-                hAlign="space-between"
-                vAlign="center"
-                hPadding={16}
-                vPadding={8}
-                fill={false}
-                columnGap={16}
+                as={m.div}
+                radius={16}
+                vibrant
+                vibrancyColor="mid"
+                bordered
                 initial={{ y: '-16px', opacity: 0 }}
+                exit={{ y: '-16px', opacity: 0 }}
                 animate={{
                   y: 0,
                   opacity: 1,
@@ -350,14 +344,22 @@ export const Table = <T extends Record<string, unknown>>({
                     damping: 30,
                   },
                 }}
-                exit={{ y: '-16px', opacity: 0 }}
-                {...vibrancy.attributes}
               >
-                <Text as="span" size={14} weight="bold">
-                  {renderSelectedLabel(selectedRowsCount)}
-                </Text>
-                {renderSelectedActions?.(table.getSelectedRowModel().flatRows)}
-              </Stack>
+                <Stack
+                  direction="row"
+                  hAlign="space-between"
+                  vAlign="center"
+                  hPadding={16}
+                  vPadding={8}
+                  fill={false}
+                  columnGap={16}
+                >
+                  <Text as="span" size={14} weight="bold">
+                    {renderSelectedLabel(selectedRowsCount)}
+                  </Text>
+                  {renderSelectedActions?.(table.getSelectedRowModel().flatRows)}
+                </Stack>
+              </Panel>
             )}
 
             {/* HEADER */}

@@ -1,33 +1,35 @@
 @import '../../core/utils/media.css';
 
-.Stepper {
-  position: relative;
+@layer components {
+  .Stepper {
+    position: relative;
 
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: calc(token(--space-16) - token(--space-4));
-    bottom: 0;
-    width: 1px;
-    background: var(--dimmed-2);
-    z-index: -1;
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: calc(token(--space-16) - token(--space-4));
+      bottom: 0;
+      width: 1px;
+      background: var(--dimmed-2);
+      z-index: -1;
 
-    @media (--from-medium) {
-      left: 20px;
+      @media (--from-medium) {
+        left: 20px;
+      }
+    }
+
+    &:last-child::before {
+      mask-image: linear-gradient(to bottom, red 60%, transparent calc(100% - 20px));
+      background: linear-gradient(to bottom, var(--dimmed-2) 20px, var(--highlight-brand-foreground));
     }
   }
 
-  &:last-child::before {
-    mask-image: linear-gradient(to bottom, red 60%, transparent calc(100% - 20px));
-    background: linear-gradient(to bottom, var(--dimmed-2) 20px, var(--highlight-brand-foreground));
-  }
-}
+  .Content {
+    padding-bottom: token(--space-64);
 
-.Content {
-  padding-bottom: token(--space-64);
-
-  @media (--from-medium) {
-    padding-bottom: token(--space-80);
+    @media (--from-medium) {
+      padding-bottom: token(--space-80);
+    }
   }
 }

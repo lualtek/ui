@@ -7,9 +7,9 @@ import {
 } from 'react';
 
 import {
-  Button, Icon, IconProps, Stack, Text,
+  Button, Icon, IconProps, Panel,
+  Stack, Text,
   Title,
-  useStyles,
 } from '@/components';
 import { FCChildren } from '@/components/types';
 
@@ -92,65 +92,66 @@ export const InlineToast = forwardRef<HTMLOutputElement, InlineToastProps>(({
   isPrimitive,
   ...otherProps
 }, forwardedRef) => {
-  const { vibrancy } = useStyles({
-    vibrancy: {
-      color: 'soft',
-    },
-  });
   const ActionWrapper = useMemo(() => (isPrimitive ? ToastPrimitive.Close : PrimitiveNoopComponent), [isPrimitive]);
+
   return (
-    <Stack
-      ref={forwardedRef}
+    <Panel
       as="output"
+      ref={forwardedRef}
       className={clsx(styles.InlineToast, className)}
       data-toast-kind={kind}
-      hPadding={16}
-      vPadding={16}
+      vibrant
+      bordered
+      radius={24}
       role="status"
-      vAlign="start"
-      hAlign="start"
-      direction="row"
-      columnGap={16}
-      {...vibrancy.attributes}
       {...otherProps}
     >
-      <Icon className={styles.Icon} source={icon ?? defaultIcons[kind]} dimension={24} />
       <Stack
-        direction={singleLine ? 'row' : undefined}
-        columnGap={24}
-        rowGap={8}
-        hAlign={singleLine ? 'space-between' : 'start'}
-        fill={false}
+        hPadding={16}
+        vPadding={16}
+        vAlign="start"
+        hAlign="start"
+        direction="row"
+        columnGap={16}
       >
-        <Stack>
-          {title && (
-            <ToastPrimitive.Title asChild>
-              <Title level="6" className={styles.Title}>{title}</Title>
-            </ToastPrimitive.Title>
-          )}
-          <ToastPrimitive.Description asChild>
-            <Text size={16} as="div">{children}</Text>
-          </ToastPrimitive.Description>
-        </Stack>
-        {(actions ?? dismissable) && (
-          <Stack direction="row" columnGap={8} rowGap={8} fill={false} hAlign="start" wrap>
-            {actions}
-            {dismissable && (
-              <Stack inline direction="row" hAlign="start">
-                <ActionWrapper asChild>
-                  <Button
-                    onClick={onDismiss}
-                    dimension="small"
-                    kind="secondary"
-                  >
-                    {dismissLabel}
-                  </Button>
-                </ActionWrapper>
-              </Stack>
+        <Icon className={styles.Icon} source={icon ?? defaultIcons[kind]} dimension={24} />
+        <Stack
+          direction={singleLine ? 'row' : undefined}
+          columnGap={24}
+          rowGap={8}
+          hAlign={singleLine ? 'space-between' : 'start'}
+          fill={false}
+        >
+          <Stack>
+            {title && (
+              <ToastPrimitive.Title asChild>
+                <Title level="6" className={styles.Title}>{title}</Title>
+              </ToastPrimitive.Title>
             )}
+            <ToastPrimitive.Description asChild>
+              <Text size={16} as="div">{children}</Text>
+            </ToastPrimitive.Description>
           </Stack>
-        )}
+          {(actions ?? dismissable) && (
+            <Stack direction="row" columnGap={8} rowGap={8} fill={false} hAlign="start" wrap>
+              {actions}
+              {dismissable && (
+                <Stack inline direction="row" hAlign="start">
+                  <ActionWrapper asChild>
+                    <Button
+                      onClick={onDismiss}
+                      dimension="small"
+                      kind="secondary"
+                    >
+                      {dismissLabel}
+                    </Button>
+                  </ActionWrapper>
+                </Stack>
+              )}
+            </Stack>
+          )}
+        </Stack>
       </Stack>
-    </Stack>
+    </Panel>
   );
 });

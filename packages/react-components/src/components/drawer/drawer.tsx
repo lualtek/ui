@@ -148,7 +148,7 @@ export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(({
             data-drawer-side={side}
           >
             <Elevator resting={4} direction={side === 'left' ? 'right' : 'left'}>
-              <Panel vibrancy="strong" vibrancyColor="soft" bordered borderSide={side === 'left' ? 'right' : 'left'}>
+              <Panel vibrant vibrancyColor="soft" bordered borderSide={side === 'left' ? 'right' : 'left'}>
                 <Stack
                   className={styles.Content}
                   style={dynamicStyle}

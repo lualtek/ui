@@ -10,7 +10,7 @@ import {
 } from 'react';
 
 import {
-  Button, Stack,
+  Button, Panel, Stack,
 } from '@/components';
 
 import styles from './tabs.module.css';
@@ -68,40 +68,41 @@ export const Tabs: TabsComponent = ({
       {...otherProps}
     >
       <LazyMotion features={domMax} strict>
-        <Stack
-          as={TabsPrimitive.List}
-          direction="row"
-          fill={false}
-          hAlign="start"
-          className={styles.List}
-        >
-          {Children.map(children, child => isValidElement<TabPanelProps>(child) && (
-            <TabsPrimitive.Trigger
-              value={child.props.value}
-              disabled={child.props.disabled}
-              className={styles.Trigger}
-              asChild
-            >
-              <Button kind="flat" dimension={dimension} icon={child.props.icon}>
-                <Stack
-                  as="span"
-                  className={styles.Label}
-                  direction="row"
-                  vAlign="center"
-                  hAlign="center"
-                  columnGap={8}
-                  inline
-                >
-                  {child.props.label}
-                  {child.props.decorator}
-                </Stack>
-                {(child.props.value === activeItem) && (
-                  <m.span className={styles.Highlight} layoutId={`${uid}-tab-highlight-lazy`} />
-                )}
-              </Button>
-            </TabsPrimitive.Trigger>
-          ))}
-        </Stack>
+        <Panel bordered vibrant vibrancyColor="soft" className={styles.List}>
+          <Stack
+            as={TabsPrimitive.List}
+            direction="row"
+            fill={false}
+            hAlign="start"
+          >
+            {Children.map(children, child => isValidElement<TabPanelProps>(child) && (
+              <TabsPrimitive.Trigger
+                value={child.props.value}
+                disabled={child.props.disabled}
+                className={styles.Trigger}
+                asChild
+              >
+                <Button kind="flat" dimension={dimension} icon={child.props.icon}>
+                  <Stack
+                    as="span"
+                    className={styles.Label}
+                    direction="row"
+                    vAlign="center"
+                    hAlign="center"
+                    columnGap={8}
+                    inline
+                  >
+                    {child.props.label}
+                    {child.props.decorator}
+                  </Stack>
+                  {(child.props.value === activeItem) && (
+                    <m.span className={styles.Highlight} layoutId={`${uid}-tab-highlight-lazy`} />
+                  )}
+                </Button>
+              </TabsPrimitive.Trigger>
+            ))}
+          </Stack>
+        </Panel>
       </LazyMotion>
       {children}
     </TabsPrimitive.Root>

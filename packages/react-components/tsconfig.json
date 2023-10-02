@@ -10,7 +10,8 @@
     "baseUrl": ".",
     "paths": {
       "@/components": ["src"],
-      "@/components/types": ["src/types"]
+      "@/components/types": ["src/types"],
+      "@/components/lib": ["src/lib"]
     }
   },
   "include": ["src", "types"],

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Card } from '../..';
+import { Panel, Stack } from '../..';
 import { Elevator } from './elevator';
 
 const meta = {
@@ -8,9 +8,11 @@ const meta = {
   component: Elevator,
   render: args => (
     <Elevator {...args}>
-      <Card bordered>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maxime, unde.
-      </Card>
+      <Panel bordered radius={16} vibrant vibrancyColor="soft">
+        <Stack hPadding={16} vPadding={16}>
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maxime, unde.
+        </Stack>
+      </Panel>
     </Elevator>
   ),
   argTypes: {

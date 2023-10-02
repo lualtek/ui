@@ -6,7 +6,10 @@ import {
 } from 'react';
 import { RovingTabIndexProvider } from 'react-roving-tabindex';
 
-import { Polymorphic, Stack, useStyles } from '@/components';
+import {
+  Panel,
+  Polymorphic, Stack,
+} from '@/components';
 
 import styles from './menu.module.css';
 import { MenuItem, MenuItemProps } from './menu-item/menu-item';
@@ -43,11 +46,6 @@ export const Menu = forwardRef<HTMLUListElement, MenuProps>(({
   style,
   ...otherProps
 }, forwardedRef) => {
-  const { vibrancy } = useStyles({
-    vibrancy: {
-      color: 'background',
-    },
-  });
   const dynamicStyle: CSSProperties = useMemo(() => (
     {
       '--max-height': maxHeight,
@@ -55,21 +53,27 @@ export const Menu = forwardRef<HTMLUListElement, MenuProps>(({
   ), [maxHeight]);
 
   return (
-    <Stack
-      as="ul"
-      ref={forwardedRef}
-      className={clsx(styles.Menu, className)}
-      style={{ ...dynamicStyle, ...style }}
-      data-menu-should-scroll={Boolean(maxHeight)}
-      vPadding={8}
-      role="menu"
-      {...vibrancy.attributes}
-      {...otherProps}
+    <Panel
+      bordered
+      vibrant
+      vibrancyColor="background"
+      radius={24}
     >
-      <RovingTabIndexProvider options={{ direction: 'vertical', loopAround: true }}>
-        {children}
-      </RovingTabIndexProvider>
-    </Stack>
+      <Stack
+        as="ul"
+        ref={forwardedRef}
+        className={clsx(styles.Menu, className)}
+        style={{ ...dynamicStyle, ...style }}
+        data-menu-should-scroll={Boolean(maxHeight)}
+        vPadding={8}
+        role="menu"
+        {...otherProps}
+      >
+        <RovingTabIndexProvider options={{ direction: 'vertical', loopAround: true }}>
+          {children}
+        </RovingTabIndexProvider>
+      </Stack>
+    </Panel>
   );
 }) as MenuComponent;
 
