@@ -8,6 +8,8 @@ const meta = {
   args: {
     radius: 24,
     bordered: false,
+    hPadding: undefined,
+    vPadding: undefined,
   },
   argTypes: {
     vibrancyLevel: {

@@ -47,6 +47,14 @@ export type PanelProps = {
    * @defaultValue 'all'
    */
   borderSide?: 'all' | 'top' | 'right' | 'bottom' | 'left';
+  /**
+   * Set the horizontal padding (left/right)
+   */
+  hPadding?: TokensTypes['space'];
+  /**
+   * Set the vertical padding (top/bottom)
+   */
+  vPadding?: TokensTypes['space'];
 }
 
 type PolymorphicPanel = Polymorphic.ForwardRefComponent<'div', PanelProps>;
@@ -62,6 +70,8 @@ export const Panel = forwardRef(({
   bordered,
   borderSide = 'all',
   radius,
+  hPadding,
+  vPadding,
   as: Wrapper = 'div',
   ...otherProps
 }, forwardedRef) => {
@@ -75,7 +85,9 @@ export const Panel = forwardRef(({
 
   const dynamicStyle: CSSProperties = useMemo(() => ({
     '--radius': radius && tkns.radius[radius],
-  }), [radius]);
+    '--v-padding': vPadding ? tkns.space[vPadding] : 0,
+    '--h-padding': hPadding ? tkns.space[hPadding] : 0,
+  }), [hPadding, radius, vPadding]);
 
   return (
     <Wrapper

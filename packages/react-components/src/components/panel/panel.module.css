@@ -2,6 +2,7 @@
   .Panel {
     background: var(--background);
     position: relative;
+    padding: var(--v-padding, 0) var(--h-padding, 0);
 
     &[data-panel-radius='true'] {
       border-radius: var(--radius);
