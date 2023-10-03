@@ -1,5 +1,29 @@
 # @lualtek/tokens
 
+## 10.0.0
+
+### Major Changes
+
+- cb9ffed: Remove CSS mixins (vibrancy) and add new useStyles hook to handle vibrancy and elevations
+- 0783fc0: Rename `textAlign` prop to `align` for Title component
+- 0783fc0: Rename textAlign prop to align for Text component
+
+### Minor Changes
+
+- cb9ffed: Add new vibrancy related tokens
+- cb9ffed: Update Modal and Drawer with Panel
+- cb9ffed: Add useStyles hook
+- 0783fc0: Update fonts and Title component
+- 0783fc0: Add new AspectRatio component
+- 0783fc0: Add new full radius token
+- cb9ffed: Add new Panel component and deprecate Card
+- cb9ffed: Add new useStyles hook to manage shared effects like vibrancy and elevation
+
+### Patch Changes
+
+- 0783fc0: Fix titles letter spacing
+- cb9ffed: Add doctype documentation
+
 ## 10.0.0-next.7
 
 ## 10.0.0-next.6

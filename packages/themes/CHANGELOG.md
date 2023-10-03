@@ -1,5 +1,11 @@
 # @lualtek/themes
 
+## 10.0.0
+
+### Minor Changes
+
+- e7f085d: Update some contrast
+
 ## 10.0.0-next.7
 
 ## 10.0.0-next.6

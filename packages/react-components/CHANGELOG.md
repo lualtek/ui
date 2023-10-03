@@ -1,5 +1,51 @@
 # @lualtek/react-components
 
+## 10.0.0
+
+### Major Changes
+
+- cb9ffed: Remove CSS mixins (vibrancy) and add new useStyles hook to handle vibrancy and elevations
+- 0783fc0: Rename `textAlign` prop to `align` for Title component
+- 43dc2f5: Rename OverlayContainer into Overlay
+- 0783fc0: Rename textAlign prop to align for Text component
+- 43dc2f5: Rename Skeleton borderRadius prop to radius
+
+### Minor Changes
+
+- e7f085d: Add new Stepper component
+- 0763188: Add vPadding and hPadding to Panel
+- cd1525f: Add Panel where needed
+- e7f085d: Update some contrast
+- cb9ffed: Update Modal and Drawer with Panel
+- cb9ffed: Add useStyles hook
+- e7f085d: Add api-reference
+- 43dc2f5: Fix h2 title style
+- 43dc2f5: Update vibrancy mixin with `saturation` and `blur` parameters
+- 0783fc0: Update fonts and Title component
+- 43dc2f5: Add `ProgressLabel` prop to `CircularProgress`
+- 0783fc0: Add new AspectRatio component
+- 0783fc0: Add new full radius token
+- cb9ffed: Add new Panel component and deprecate Card
+- cb9ffed: Add new useStyles hook to manage shared effects like vibrancy and elevation
+- b0c4e42: Add api doc json files for each component
+
+### Patch Changes
+
+- 0783fc0: Fix titles letter spacing
+- 43dc2f5: Upadte title styles
+- 43dc2f5: Fix LinearProgress percentage wrap and update style
+- 594394a: Fix modal-content import
+- 7721e56: Fix vibrancy brightness and titles weight
+- cd1525f: Add `useStyles` to `Elevator`
+- cb9ffed: Add doctype documentation
+- Updated dependencies [0783fc0]
+- Updated dependencies [0783fc0]
+- Updated dependencies [0783fc0]
+- Updated dependencies [0783fc0]
+- Updated dependencies [0783fc0]
+- Updated dependencies [0783fc0]
+  - @lualtek/icons@10.0.0
+
 ## 10.0.0-next.7
 
 ### Minor Changes
