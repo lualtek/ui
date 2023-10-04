@@ -20,4 +20,8 @@
       --size: token(--space-48);
     }
   }
+
+  .Icon {
+    filter: drop-shadow(0 2px 2px color-mix(in oklab, black, transparent calc(70% - var(--shadow-opacity-factor))));
+  }
 }

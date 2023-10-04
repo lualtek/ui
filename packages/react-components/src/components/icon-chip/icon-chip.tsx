@@ -74,6 +74,7 @@ export const IconChip: FCClass<IconChipProps> = ({
     >
       <Icon
         source={icon}
+        className={styles.Icon}
         dimension={sizes[dimension].icon}
       />
     </Stack>
