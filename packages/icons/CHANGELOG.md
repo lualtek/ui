@@ -1,5 +1,11 @@
 # @lualtek/icons
 
+## 10.1.0
+
+### Minor Changes
+
+- 5f8fec0: Remove twitter icon and add x
+
 ## 10.0.0
 
 ### Major Changes

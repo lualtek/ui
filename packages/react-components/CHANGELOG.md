@@ -1,5 +1,17 @@
 # @lualtek/react-components
 
+## 10.1.0
+
+### Minor Changes
+
+- 7425a0f: Fix core css layering
+- 6556015: Add drop-shadow to icon chips icons
+
+### Patch Changes
+
+- Updated dependencies [5f8fec0]
+  - @lualtek/icons@10.1.0
+
 ## 10.0.0
 
 ### Major Changes
