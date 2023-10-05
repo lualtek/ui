@@ -4,7 +4,7 @@
 
 import { TokensTypes } from '@lualtek/tokens/platforms/web';
 import clsx from 'clsx';
-import { CSSProperties, forwardRef, useMemo } from 'react';
+import { forwardRef, useMemo } from 'react';
 
 import { Polymorphic } from '@/components';
 
@@ -79,7 +79,7 @@ export const Text = forwardRef(({
   style,
   ...otherProps
 }, forwardedRef) => {
-  const dynamicStyle: CSSProperties = useMemo(() => (
+  const dynamicStyle = useMemo(() => (
     {
       '--max-w': maxWidth,
       '--t-align': align,

@@ -2,7 +2,7 @@
 
 import { domAnimation, LazyMotion, m } from 'framer-motion';
 import {
-  CSSProperties, FC, SetStateAction, useCallback, useMemo,
+  FC, SetStateAction, useCallback, useMemo,
 } from 'react';
 import { FocusOn } from 'react-focus-on';
 import { useKeyBindings } from 'rooks';
@@ -97,7 +97,7 @@ export const Lightbox: FC<LightboxProps> = ({
     Escape: () => onClose?.(),
   });
 
-  const dynamicStyles: CSSProperties = useMemo(() => ({
+  const dynamicStyles = useMemo(() => ({
     '--max-h': imageHeight,
     '--max-w': imageWidth,
     '--thumb-h': thumbnailHeight,

@@ -3,7 +3,7 @@
 import { TokensTypes } from '@lualtek/tokens/platforms/web';
 import tkns from '@lualtek/tokens/platforms/web/tokens.json';
 import clsx from 'clsx';
-import { CSSProperties, forwardRef, useMemo } from 'react';
+import { forwardRef, useMemo } from 'react';
 
 import { Polymorphic } from '@/components';
 
@@ -89,7 +89,7 @@ export const Stack = forwardRef(({
     return prop;
   };
 
-  const dynamicStyle: CSSProperties = useMemo(() => (
+  const dynamicStyle = useMemo(() => (
     {
       '--r-gap': rowGap ? tkns.space[rowGap] : 0,
       '--c-gap': columnGap ? tkns.space[columnGap] : 0,

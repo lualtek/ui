@@ -2,7 +2,6 @@
 
 import clsx from 'clsx';
 import {
-  CSSProperties,
   forwardRef, ProgressHTMLAttributes,
   useCallback, useMemo,
 } from 'react';
@@ -53,7 +52,7 @@ export const LinearProgress = forwardRef<HTMLProgressElement, LinearProgressProp
 
   const clamp = useMemo(() => (num: number, min: number, max: number) => Math.min(Math.max(num, min), max), []);
 
-  const dynamicStyle: CSSProperties = useMemo(() => (
+  const dynamicStyle = useMemo(() => (
     {
       '--percentage-offset': `${getPercentage()}%`,
       '--percentage-translation': value !== 0 ? '-100%' : '-50%',

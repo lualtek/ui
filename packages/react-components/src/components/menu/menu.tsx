@@ -2,7 +2,7 @@
 
 import clsx from 'clsx';
 import {
-  CSSProperties, forwardRef, ForwardRefExoticComponent, HTMLAttributes, ReactNode, useMemo,
+  forwardRef, ForwardRefExoticComponent, HTMLAttributes, ReactNode, useMemo,
 } from 'react';
 import { RovingTabIndexProvider } from 'react-roving-tabindex';
 
@@ -46,7 +46,7 @@ export const Menu = forwardRef<HTMLUListElement, MenuProps>(({
   style,
   ...otherProps
 }, forwardedRef) => {
-  const dynamicStyle: CSSProperties = useMemo(() => (
+  const dynamicStyle = useMemo(() => (
     {
       '--max-height': maxHeight,
     }

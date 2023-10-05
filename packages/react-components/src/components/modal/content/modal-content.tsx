@@ -2,7 +2,7 @@
 
 import clsx from 'clsx';
 import {
-  CSSProperties, forwardRef, HTMLAttributes, ReactNode, useMemo,
+  forwardRef, HTMLAttributes, ReactNode, useMemo,
 } from 'react';
 import { AutoFocusInside } from 'react-focus-on';
 
@@ -51,7 +51,7 @@ export const ModalContent = forwardRef<HTMLDivElement, ModalContentProps>(({
   const { onClose, titleId } = useOverlayContext();
   const { matches } = useResponsiveContext();
 
-  const dynamicStyle: CSSProperties = useMemo(() => (
+  const dynamicStyle = useMemo(() => (
     {
       '--header-tint': headerTint,
     }

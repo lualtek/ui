@@ -4,7 +4,7 @@ import { TokensTypes } from '@lualtek/tokens/platforms/web';
 import tkns from '@lualtek/tokens/platforms/web/tokens.json';
 import clsx from 'clsx';
 import {
-  CSSProperties, forwardRef, ReactNode, useMemo,
+  forwardRef, ReactNode, useMemo,
 } from 'react';
 
 import {
@@ -79,7 +79,7 @@ export const Card = forwardRef(({
 }, forwardedRef) => {
   const { vibrancy } = useStyles();
 
-  const dynamicStyle: CSSProperties = useMemo(() => ({
+  const dynamicStyle = useMemo(() => ({
     '--padding': padding && tkns.space[padding],
     '--radius': radius && tkns.radius[radius],
   }), [padding, radius]);

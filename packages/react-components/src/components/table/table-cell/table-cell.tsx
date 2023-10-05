@@ -1,6 +1,6 @@
 import { SortDirection } from '@tanstack/react-table';
 import clsx from 'clsx';
-import { CSSProperties, forwardRef, useMemo } from 'react';
+import { forwardRef, useMemo } from 'react';
 
 import { Icon, Polymorphic } from '@/components';
 
@@ -57,7 +57,7 @@ export const TableCell = forwardRef(({
     return typeof width === 'string' ? width : `${width}px`;
   }, [width]);
 
-  const dynamicStyle: CSSProperties = useMemo(() => ({
+  const dynamicStyle = useMemo(() => ({
     '--width': computedWidth,
     '--text-align': align,
   }), [align, computedWidth]);

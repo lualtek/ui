@@ -4,7 +4,7 @@ import tkns from '@lualtek/tokens/platforms/web/tokens.json';
 import clsx from 'clsx';
 import { domMax, LazyMotion, m } from 'framer-motion';
 import {
-  CSSProperties, forwardRef, ReactNode, useMemo,
+  forwardRef, ReactNode, useMemo,
 } from 'react';
 import { AutoFocusInside, FocusOn } from 'react-focus-on';
 import { useKeys } from 'rooks';
@@ -97,7 +97,7 @@ export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(({
 
   useKeys(['esc'], () => (!isModal && onClose) && onClose());
 
-  const dynamicStyle: CSSProperties = useMemo(() => (
+  const dynamicStyle = useMemo(() => (
     {
       '--max-w': maxWidth,
     }

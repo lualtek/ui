@@ -2,7 +2,7 @@
 
 import clsx from 'clsx';
 import {
-  CSSProperties, forwardRef, useMemo,
+  forwardRef, useMemo,
 } from 'react';
 
 import { Polymorphic } from '@/components';
@@ -60,7 +60,7 @@ export const Title = forwardRef(({
   // @ts-expect-error: generated className is not pure in CSS
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const computedCSSClass = styles[computedLevel];
-  const dynamicStyle: CSSProperties = useMemo(() => (
+  const dynamicStyle = useMemo(() => (
     {
       '--max-w': maxWidth,
       '--t-align': align,

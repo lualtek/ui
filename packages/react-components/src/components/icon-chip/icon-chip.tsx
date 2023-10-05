@@ -2,7 +2,7 @@
 
 import { TokensTypes } from '@lualtek/tokens';
 import clsx from 'clsx';
-import { CSSProperties, useMemo } from 'react';
+import { useMemo } from 'react';
 
 import {
   Icon, IconProps, Stack,
@@ -54,7 +54,7 @@ export const IconChip: FCClass<IconChipProps> = ({
   icon,
   ...otherProps
 }) => {
-  const dynamicStyle: CSSProperties = useMemo(() => ({
+  const dynamicStyle = useMemo(() => ({
     '--background': `var(--highlight-${color}-background)`,
     '--foreground': `var(--highlight-${color}-foreground)`,
   }), [color]);

@@ -2,7 +2,7 @@
 
 import clsx from 'clsx';
 import {
-  CSSProperties, forwardRef, useMemo,
+  forwardRef, useMemo,
 } from 'react';
 
 import { Polymorphic } from '@/components';
@@ -32,7 +32,7 @@ export const ClampText = forwardRef(({
   inline,
   ...otherProps
 }, forwardedRef) => {
-  const dynamicStyle: CSSProperties = useMemo(() => ({
+  const dynamicStyle = useMemo(() => ({
     '--r': rows,
   }), [rows]);
 

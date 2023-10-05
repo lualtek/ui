@@ -2,7 +2,7 @@
 
 import clsx from 'clsx';
 import {
-  CSSProperties, forwardRef, HTMLAttributes, useMemo,
+  forwardRef, HTMLAttributes, useMemo,
 } from 'react';
 
 import styles from './gradient-text.module.css';
@@ -32,7 +32,7 @@ export const GradientText = forwardRef<HTMLSpanElement, GradientTextProps>(({
   style,
   ...otherProps
 }, forwardedRef) => {
-  const dynamicStyle: CSSProperties = useMemo(() => ({
+  const dynamicStyle = useMemo(() => ({
     '--gradient-color-start': colorStart,
     '--gradient-color-end': colorEnd,
   }), [colorStart, colorEnd]);

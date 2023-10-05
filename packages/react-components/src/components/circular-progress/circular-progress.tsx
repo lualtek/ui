@@ -2,7 +2,7 @@
 
 import clsx from 'clsx';
 import {
-  CSSProperties, forwardRef, HTMLAttributes, useCallback, useMemo,
+  forwardRef, HTMLAttributes, useCallback, useMemo,
 } from 'react';
 
 import styles from './circular-progress.module.css';
@@ -58,7 +58,7 @@ export const CircularProgress = forwardRef<HTMLDivElement, CircularProgressProps
 
   const clamp = useMemo(() => (num: number, min: number, max: number) => Math.min(Math.max(num, min), max), []);
 
-  const dynamicStyle: CSSProperties = useMemo(() => (
+  const dynamicStyle = useMemo(() => (
     {
       '--progress': `${getPercentage()}%`,
       '--rotation': `${getPercentage() / 100}turn`,

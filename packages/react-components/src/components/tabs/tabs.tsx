@@ -6,7 +6,7 @@ import * as TabsPrimitive from '@radix-ui/react-tabs';
 import clsx from 'clsx';
 import { domMax, LazyMotion, m } from 'framer-motion';
 import {
-  Children, CSSProperties, FC, isValidElement, useCallback, useId, useState,
+  Children, FC, isValidElement, useCallback, useId, useState,
 } from 'react';
 
 import {
@@ -54,7 +54,7 @@ export const Tabs: TabsComponent = ({
     [onValueChange],
   );
 
-  const dynamicStyle: CSSProperties = {
+  const dynamicStyle = {
     '--tabs-list-gap': listGap && tkns.space[listGap],
   };
 

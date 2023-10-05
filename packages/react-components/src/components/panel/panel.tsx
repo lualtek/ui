@@ -2,7 +2,7 @@
 import { TokensTypes } from '@lualtek/tokens/platforms/web';
 import tkns from '@lualtek/tokens/platforms/web/tokens.json';
 import clsx from 'clsx';
-import { CSSProperties, forwardRef, useMemo } from 'react';
+import { forwardRef, useMemo } from 'react';
 
 import {
   useStyles, VibrancyBlur, VibrancyColor, VibrancySaturation,
@@ -83,7 +83,7 @@ export const Panel = forwardRef(({
     },
   });
 
-  const dynamicStyle: CSSProperties = useMemo(() => ({
+  const dynamicStyle = useMemo(() => ({
     '--radius': radius && tkns.radius[radius],
     '--v-padding': vPadding ? tkns.space[vPadding] : 0,
     '--h-padding': hPadding ? tkns.space[hPadding] : 0,

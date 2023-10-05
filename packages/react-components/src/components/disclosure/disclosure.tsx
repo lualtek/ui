@@ -5,7 +5,6 @@ import {
   domMax, LazyMotion, m,
 } from 'framer-motion';
 import {
-  CSSProperties,
   DetailsHTMLAttributes,
   forwardRef,
   ReactNode, useCallback, useEffect, useId, useMemo, useRef, useState,
@@ -114,7 +113,7 @@ export const Disclosure = forwardRef<HTMLDetailsElement, DisclosureProps>(({
     [expandable, onToggle, open],
   );
 
-  const dynamicStyle: CSSProperties = useMemo(() => (
+  const dynamicStyle = useMemo(() => (
     {
       '--max-height': contentMaxHeight,
     }

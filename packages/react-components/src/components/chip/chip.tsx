@@ -3,7 +3,7 @@
 import type { TokensTypes } from '@lualtek/tokens/platforms/web';
 import clsx from 'clsx';
 import {
-  CSSProperties, forwardRef, Ref, useMemo,
+  forwardRef, Ref, useMemo,
 } from 'react';
 
 import {
@@ -83,7 +83,7 @@ export const Chip = forwardRef<ForwardedElementType<NonNullable<ChipProps['inter
     vAlign: 'center',
   }), [className, dimension]);
 
-  const dynamicStyle: CSSProperties = useMemo(() => ({
+  const dynamicStyle = useMemo(() => ({
     '--background': `var(--highlight-${color}-background)`,
     '--foreground': `var(--highlight-${color}-foreground)`,
   }), [color]);

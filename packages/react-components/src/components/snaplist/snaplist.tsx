@@ -4,7 +4,7 @@ import { TokensTypes } from '@lualtek/tokens';
 import tkns from '@lualtek/tokens/platforms/web/tokens.json';
 import clsx from 'clsx';
 import {
-  Children, CSSProperties, forwardRef, isValidElement, useMemo,
+  Children, forwardRef, isValidElement, useMemo,
 } from 'react';
 import { Except } from 'type-fest';
 
@@ -53,7 +53,7 @@ export const Snaplist = forwardRef(({
   style,
   ...otherProps
 }, forwardedRef) => {
-  const dynamicStyle: CSSProperties = useMemo(() => ({
+  const dynamicStyle = useMemo(() => ({
     '--snap-align': snapAlign,
     '--snap-type': snapType,
     '--scroll-padding': scrollPadding ? tkns.space[scrollPadding] : 0,

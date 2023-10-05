@@ -1,10 +1,10 @@
 export type PropsWithClass<P = Record<string, unknown>> = {
-  style?: Record<string, any>;
+  style?: React.CSSProperties;
   className?: string;
 } & P
 
 export type FCClass<T = Record<string, unknown>> = React.FC<{
-  style?: Record<string, any>;
+  style?: React.CSSProperties;
   className?: string;
 } & T>
 

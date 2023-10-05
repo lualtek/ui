@@ -3,7 +3,7 @@
 import { TokensTypes } from '@lualtek/tokens/platforms/web';
 import tkns from '@lualtek/tokens/platforms/web/tokens.json';
 import {
-  CSSProperties, Fragment, useCallback, useId,
+  Fragment, useCallback, useId,
 } from 'react';
 
 import { FCClass } from '@/components/types';
@@ -72,7 +72,7 @@ export const Skeleton: FCClass<SkeletonProps> = ({
   const computedHeight = typeof height === 'number' ? `${height}px` : height;
 
   const SkeletonItem = useCallback(() => {
-    const dynamicStyle: CSSProperties = {
+    const dynamicStyle = {
       '--radius': radius && tkns.radius[radius],
       '--width': width && computedWidth,
       '--height': height && computedHeight,

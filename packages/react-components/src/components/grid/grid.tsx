@@ -4,7 +4,7 @@ import { TokensTypes } from '@lualtek/tokens/platforms/web';
 import tkns from '@lualtek/tokens/platforms/web/tokens.json';
 import clsx from 'clsx';
 import {
-  CSSProperties, forwardRef, HTMLAttributes, ReactNode, useMemo,
+  forwardRef, HTMLAttributes, ReactNode, useMemo,
 } from 'react';
 
 import { FCForwardRef } from '@/components/types';
@@ -85,7 +85,7 @@ export const Grid = forwardRef<HTMLUListElement, GridProps>(({
   vPadding,
   ...otherProps
 }, forwardedRef) => {
-  const dynamicStyle: CSSProperties = useMemo(() => (
+  const dynamicStyle = useMemo(() => (
     {
       '--row-gap': rowGap ? tkns.space[rowGap] : 0,
       '--column-gap': columnGap ? tkns.space[columnGap] : 0,

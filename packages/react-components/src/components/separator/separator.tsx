@@ -4,7 +4,7 @@ import { TokensTypes } from '@lualtek/tokens';
 import tkns from '@lualtek/tokens/platforms/web/tokens.json';
 import clsx from 'clsx';
 import {
-  CSSProperties, forwardRef, HTMLAttributes, useMemo,
+  forwardRef, HTMLAttributes, useMemo,
 } from 'react';
 
 import styles from './separator.module.css';
@@ -39,7 +39,7 @@ export const Separator = forwardRef<HTMLHRElement, SeparatorProps>(({
   style,
   ...otherProps
 }, forwardedRef) => {
-  const dynamicStyle: CSSProperties = useMemo(() => (
+  const dynamicStyle = useMemo(() => (
     {
       '--v-padding': vPadding ? tkns.space[vPadding] : 0,
       '--h-padding': hPadding ? tkns.space[hPadding] : 0,

@@ -2,7 +2,7 @@
 
 import { TokensTypes } from '@lualtek/tokens';
 import clsx from 'clsx';
-import { CSSProperties, useMemo } from 'react';
+import { useMemo } from 'react';
 
 import { Stack, Text, TextProps } from '@/components';
 import { FCClass } from '@/components/types';
@@ -63,7 +63,7 @@ export const TextChip: FCClass<TextChipProps> = ({
   ...otherProps
 }) => {
   const isEmoji = useMemo(() => emojiRegex.test(text), [text]);
-  const dynamicStyle: CSSProperties = useMemo(() => ({
+  const dynamicStyle = useMemo(() => ({
     '--background': `var(--highlight-${color}-background)`,
     '--foreground': `var(--highlight-${color}-foreground)`,
   }), [color]);

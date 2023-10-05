@@ -4,7 +4,7 @@ import { TokensTypes } from '@lualtek/tokens';
 import tkns from '@lualtek/tokens/platforms/web/tokens.json';
 import clsx from 'clsx';
 import {
-  Children, cloneElement, CSSProperties,
+  Children, cloneElement,
   forwardRef, isValidElement, useMemo,
 } from 'react';
 
@@ -49,7 +49,7 @@ export const List = forwardRef(({
 }, forwardedRef) => {
   const isUnordered = useMemo(() => Wrapper === 'ul', [Wrapper]);
 
-  const dynamicStyle: CSSProperties = useMemo(() => (
+  const dynamicStyle = useMemo(() => (
     {
       '--gap': gap ? tkns.space[gap] : 0,
     }

@@ -3,7 +3,7 @@
 import { TokensTypes } from '@lualtek/tokens';
 import { domMax, LazyMotion, m } from 'framer-motion';
 import {
-  CSSProperties, forwardRef, HTMLAttributes, ReactNode, useMemo,
+  forwardRef, HTMLAttributes, ReactNode, useMemo,
 } from 'react';
 
 import {
@@ -61,7 +61,7 @@ export const InfoState = forwardRef<HTMLDivElement, InfoStateProps>(({
 }, forwardedRef) => {
   const isHorizontal = direction === 'row';
 
-  const dynamicStyle: CSSProperties = useMemo(() => ({
+  const dynamicStyle = useMemo(() => ({
     '--icon-color': `var(--highlight-${iconColor}-background)`,
   }), [iconColor]);
 

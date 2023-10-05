@@ -19,7 +19,6 @@ import {
   AnimatePresence, domMax, LazyMotion, m,
 } from 'framer-motion';
 import {
-  CSSProperties,
   ReactNode, useCallback, useEffect, useId, useMemo, useState,
 } from 'react';
 import { useDebounce } from 'rooks';
@@ -302,7 +301,7 @@ export const Table = <T extends Record<string, unknown>>({
   ) : null),
   [table]);
 
-  const dynamicStyle: CSSProperties = useMemo(() => ({
+  const dynamicStyle = useMemo(() => ({
     '--table-height': height,
     '--table-background': background,
   }), [height, background]);

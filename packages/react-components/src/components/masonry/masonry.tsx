@@ -65,7 +65,7 @@ export const Masonry: FCChildrenClass<MasonryProps> = ({
   style,
   ...otherProps
 }) => {
-  const dynamicStyle: CSSProperties = useMemo(() => (
+  const dynamicStyle = useMemo(() => (
     {
       '--gap': gap ? tkns.space[gap as keyof typeof tkns.space] : 0,
     }
