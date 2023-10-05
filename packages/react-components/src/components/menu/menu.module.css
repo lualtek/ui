@@ -3,6 +3,7 @@
     list-style-type: none;
     overflow: hidden;
     position: relative;
+    border-radius: inherit;
 
     &[data-menu-should-scroll='true'] {
       max-height: var(--max-height);
