@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 10.1.3
+
+### Patch Changes
+
+- 915d06f: Fix Menu radius and shadow
+  - @lualtek/icons@10.1.3
+
 ## 10.1.2
 
 ### Patch Changes
