@@ -55,6 +55,7 @@
     block-size: var(--field-height);
     font-weight: token(--font-weight-semi-bold);
     border-radius: var(--field-radius);
+    backdrop-filter: brightness(var(--vibrancy-brightness));
     border: 0;
     box-shadow: 0 0 0 1px var(--global-outer-contrast-border), inset 0 0 0 1px var(--inner-border-color);
     background:

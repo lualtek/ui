@@ -3,5 +3,10 @@
     "opacity-factor": {
       "value": "10%"
     }
+  },
+  "vibrancy": {
+    "brightness": {
+      "value": 0.85
+    }
   }
 }

@@ -51,7 +51,7 @@ export const Single = {
 
 export const Types = {
   render: args => (
-    <div style={{ padding: 32 }}>
+    <div style={{ padding: 32, background: 'var(--dimmed-2)' }}>
       <Stack rowGap={24}>
         <Textfield {...args} label="Filled" defaultValue="Sample value" />
         <Textfield {...args} label="Filled read only" defaultValue="Sample value" readOnly />
