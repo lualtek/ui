@@ -1,5 +1,11 @@
 # @lualtek/themes
 
+## 10.1.2
+
+### Patch Changes
+
+- ff8b70a: Fix shadows on light theme
+
 ## 10.1.1
 
 ### Patch Changes
