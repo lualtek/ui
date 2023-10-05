@@ -6,7 +6,7 @@
     --fs-max: token(--font-size-18);
 
     min-block-size: 0.01vh;
-    font-size: var(--fs-max);
+    font-size: inherit;
     max-inline-size: var(--max-w, initial);
     text-align: var(--t-align);
     word-break: break-word;
@@ -52,8 +52,13 @@
 
     /* Sizes */
 
+    &[data-text-size] {
+      font-size: var(--fs-max);
+    }
+
     &[data-text-size='12'] {
-      font-size: token(--font-size-12);
+      --fs-min: token(--font-size-12);
+      --fs-max: token(--font-size-12);
     }
 
     &[data-text-size='14'] {
@@ -130,7 +135,7 @@
     }
 
     /* Responsiveness */
-    &[data-text-responsive='true'] {
+    &[data-text-size][data-text-responsive='true'] {
       font-size: var(--fs-min);
 
       @media (--from-small) {

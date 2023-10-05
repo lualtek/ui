@@ -17,7 +17,7 @@ const meta = {
   },
   argTypes: {
     size: {
-      options: ['12', '14', '16', '18', '22', '24', '28', '32', '42', '56', '75', '100'],
+      options: [undefined, '12', '14', '16', '18', '22', '24', '28', '32', '42', '56', '75', '100'],
       control: { type: 'select' },
     },
     sentiment: {
@@ -50,4 +50,17 @@ export const Weight = {
   args: {
     weight: 'bold',
   },
+} satisfies Story;
+
+export const Nested = {
+  args: {
+    size: 22,
+  },
+  render: args => (
+    <Text {...args}>
+      Lorem, ipsum dolor sit
+      {' '}
+      <Text size={14}>amet consectetur adipisicing elit.</Text>
+    </Text>
+  ),
 } satisfies Story;

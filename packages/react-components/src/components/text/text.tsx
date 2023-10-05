@@ -14,8 +14,6 @@ export type TextProps = {
   /**
    * Set the dimension of the text from one of
    * the typography system values
-   *
-   * @defaultValue 18
    */
   size?: TokensTypes['font']['size'];
   /**
@@ -63,18 +61,18 @@ export type TextProps = {
   textColor?: string;
 }
 
-type PolymorphicText = Polymorphic.ForwardRefComponent<'p', TextProps>;
+type PolymorphicText = Polymorphic.ForwardRefComponent<'span', TextProps>;
 
 export const Text = forwardRef(({
   children,
   className,
-  size = 18,
+  size,
   sentiment,
   dimmed,
   weight,
   maxWidth,
   align = 'start',
-  as: Wrapper = 'p',
+  as: Wrapper = 'span',
   responsive = true,
   lineHeight = 'standard',
   textColor,
