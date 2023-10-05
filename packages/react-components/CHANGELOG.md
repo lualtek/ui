@@ -1,5 +1,15 @@
 # @lualtek/react-components
 
+## 10.1.1
+
+### Patch Changes
+
+- 4e3c7ff: Fix Text default size to inherit when nested
+- 93f7feb: Fix textfield and select background brightness
+- 041f9b9: Fix IconChip drop shadow
+- Updated dependencies [93f7feb]
+  - @lualtek/icons@10.1.1
+
 ## 10.1.0
 
 ### Minor Changes

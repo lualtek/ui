@@ -1,5 +1,11 @@
 # @lualtek/themes
 
+## 10.1.1
+
+### Patch Changes
+
+- 93f7feb: Fix textfield and select background brightness
+
 ## 10.1.0
 
 ## 10.0.0
