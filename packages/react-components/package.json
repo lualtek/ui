@@ -5,7 +5,8 @@
   "main": "dist/index.js",
   "exports": {
     ".": "./dist/index.js",
-    "./core.css": "./dist/core.css"
+    "./core.css": "./dist/core.css",
+    "./doc/*": "./dist/components/*/*.doc.json"
   },
   "files": [
     "dist"
