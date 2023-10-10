@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 10.1.4
+
+### Patch Changes
+
+- 094a3af: Export doc files from package
+  - @lualtek/icons@10.1.4
+
 ## 10.1.3
 
 ### Patch Changes
