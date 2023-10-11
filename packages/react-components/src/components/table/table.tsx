@@ -140,6 +140,13 @@ export type TableProps<T> = PropsWithClass<{
    */
   itemsPerPage?: number;
   /**
+   * Get Table instance
+  */
+  getTableInstance?: (instance: TableType<T>) => void;
+}>
+
+export type TableConditionalProps<T> = {
+  /**
    * Enable the global filter function
    */
   enableFilterControl: boolean;
@@ -158,11 +165,30 @@ export type TableProps<T> = PropsWithClass<{
    * @defaultValue 230
    */
   filterDebounce?: number;
+} | {
   /**
-   * Get Table instance
-  */
-  getTableInstance?: (instance: TableType<T>) => void;
-}>
+   * Enable the global filter function
+   */
+  enableFilterControl?: never;
+  /**
+   * Custom function used to filters table data.
+   */
+  filterFn?: never;
+  /**
+   * Set the label for the filter textfield control
+   */
+  filterControlLabel?: never;
+  /**
+   * Set debounce time for filter search
+   * @defaultValue 230
+   */
+  filterDebounce?: never;
+}
+
+/**
+ * {@link CommonProps}
+ */
+export type InternalTableProps<T> = TableProps<T> & TableConditionalProps<T>
 
 export const Table = <T extends Record<string, unknown>>({
   data,
@@ -193,7 +219,7 @@ export const Table = <T extends Record<string, unknown>>({
   getTableInstance,
   style,
   ...otherProps
-}: TableProps<T>) => {
+}: InternalTableProps<T>) => {
   const [columnVisibility, setColumnVisibility] = useState({});
   const [rowSelection, setRowSelection] = useState({});
   const [sorting, setSorting] = useState<SortingState>([]);
