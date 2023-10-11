@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 10.1.6
+
+### Patch Changes
+
+- 8016e08: Fix table types
+  - @lualtek/icons@10.1.6
+
 ## 10.1.5
 
 ### Patch Changes
