@@ -1,5 +1,13 @@
 # @lualtek/react-components
 
+## 10.1.5
+
+### Patch Changes
+
+- 06f5f1f: restore table 8.9.3
+- c7aeaf3: Update to latest table
+  - @lualtek/icons@10.1.5
+
 ## 10.1.4
 
 ### Patch Changes
