@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 10.1.7
+
+### Patch Changes
+
+- 86dde2a: Update components doc generation
+  - @lualtek/icons@10.1.7
+
 ## 10.1.6
 
 ### Patch Changes
