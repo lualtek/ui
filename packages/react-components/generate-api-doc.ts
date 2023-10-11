@@ -5,6 +5,31 @@ import * as path from 'path';
 const API_JSON_PATH = 'dist/api-temp.json';
 const OUTPUT_FOLDER = 'dist/components';
 
+type SinglePropType = {
+  name: string;
+  description?: string;
+  defaultValue?: string;
+  kind: string;
+  readOnly?: boolean;
+  optional?: boolean;
+  type: {
+    kind: string;
+    objectType: {
+      kind: string;
+      name: string;
+      packageName: string;
+    };
+    indexType: {
+      kind: string;
+      value: string;
+    };
+    types?: Array<{
+      kind: string;
+      value: string;
+    }>;
+  };
+}
+
 type TypeAlias = {
   name: string;
   source: {
@@ -12,16 +37,13 @@ type TypeAlias = {
     path: string;
   };
   type: {
-    properties?: Array<{
-      name: string;
-    }>;
+    properties?: SinglePropType[];
     types?: Array<{
-      properties: Array<{
-        name: string;
-      }>;
+      properties: SinglePropType[];
     }>;
   };
 }
+
 type InputJson = {
   typeAliases: TypeAlias[];
 };
@@ -44,14 +66,19 @@ async function mapToTypeAliases(): Promise<TypeAlias[]> {
     }
 
     // Qui si possono modificare cose
-    // return parsedData.typeAliases.map(alias => ({
-    //   name: alias.name,
-    //   source: alias.source,
-    //   properties:
-    //     alias.type.properties
-    //     ?? (alias.type.types?.find(type => type.properties)?.properties ?? []),
-    // }));
-    return parsedData.typeAliases.filter(alias => alias.name.endsWith('Props'));
+    return parsedData.typeAliases.filter(alias => alias.name.endsWith('Props')).map(alias => ({
+      name: alias.name,
+      source: alias.source,
+      type: alias.type,
+      properties:
+        alias.type.properties
+        ?? (
+          alias.type.types?.find(type => type.properties)?.properties
+          ?? []
+        ),
+    }));
+
+    // return parsedData.typeAliases.filter(alias => alias.name.endsWith('Props'));
   } catch (err) {
     console.error('Error reading or parsing api.json:', err);
     throw err;
