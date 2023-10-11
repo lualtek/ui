@@ -186,7 +186,7 @@ export type TableConditionalProps<T> = {
 }
 
 /**
- * {@link CommonProps}
+ * {@link TableProps}
  */
 export type InternalTableProps<T> = TableProps<T> & TableConditionalProps<T>
 
