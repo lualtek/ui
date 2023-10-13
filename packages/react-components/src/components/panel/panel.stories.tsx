@@ -67,3 +67,15 @@ export const Bordered = {
     borderSide: 'all',
   },
 } satisfies Story;
+
+export const Dimmed = {
+  args: {
+    backgroundColor: 2,
+  },
+} satisfies Story;
+
+export const CustomColor = {
+  args: {
+    backgroundColor: 'red',
+  },
+} satisfies Story;

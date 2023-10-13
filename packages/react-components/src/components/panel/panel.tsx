@@ -13,6 +13,11 @@ import styles from './panel.module.css';
 
 export type PanelProps = {
   /**
+   * Set the background color of the panel between dimmed colors or custom string.
+   * If `vibrant` is enabled, this will be ignored and vibrantColor will be used instead.
+   */
+  backgroundColor?: string | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
+  /**
    * Enable or disable the vibrant effect. Add translucent and blurred background.
    *
    * @defaultValue false
@@ -72,9 +77,12 @@ export const Panel = forwardRef(({
   radius,
   hPadding,
   vPadding,
+  backgroundColor,
   as: Wrapper = 'div',
   ...otherProps
 }, forwardedRef) => {
+  const computedBackground = typeof backgroundColor === 'number' ? `var(--dimmed-${backgroundColor})` : backgroundColor;
+
   const { vibrancy } = useStyles({
     vibrancy: {
       blur: vibrancyLevel,
@@ -87,7 +95,8 @@ export const Panel = forwardRef(({
     '--radius': radius && tkns.radius[radius],
     '--v-padding': vPadding ? tkns.space[vPadding] : 0,
     '--h-padding': hPadding ? tkns.space[hPadding] : 0,
-  }), [hPadding, radius, vPadding]);
+    '--background': vibrant ? undefined : computedBackground,
+  }), [radius, vPadding, hPadding, vibrant, computedBackground]);
 
   return (
     <Wrapper
