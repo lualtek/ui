@@ -1,5 +1,16 @@
 # @lualtek/react-components
 
+## 10.2.0
+
+### Minor Changes
+
+- 80ada90: Add new backgroundColor prop to Panel
+
+### Patch Changes
+
+- b8694dd: Fix background on flat buttons
+  - @lualtek/icons@10.2.0
+
 ## 10.1.7
 
 ### Patch Changes
