@@ -172,6 +172,7 @@
     &[data-button-kind='flat'] {
       color: var(--global-foreground);
       box-shadow: none;
+      background: transparent;
 
       &:not([aria-disabled='true'])[data-button-sentiment='positive'] {
         color: var(--highlight-green-foreground);
