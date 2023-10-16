@@ -103,8 +103,8 @@ export const Panel = forwardRef(({
     '--v-padding': vPadding ? tkns.space[vPadding] : 0,
     '--h-padding': hPadding ? tkns.space[hPadding] : 0,
     '--background': vibrant ? undefined : computedBackground,
-    '--background-hover': (vibrant || !backgroundColorHover) ? undefined : computedBackgroundHover,
-  }), [radius, vPadding, hPadding, vibrant, computedBackground, computedBackgroundHover, backgroundColorHover]);
+    '--background-hover': vibrant ? undefined : computedBackgroundHover,
+  }), [radius, vPadding, hPadding, vibrant, computedBackground, computedBackgroundHover]);
 
   return (
     <Wrapper
@@ -113,6 +113,7 @@ export const Panel = forwardRef(({
       data-panel-bordered={bordered}
       data-panel-border-side={borderSide}
       data-panel-radius={Boolean(radius)}
+      data-panel-hover={Boolean(backgroundColorHover)}
       style={{ ...dynamicStyle, ...style }}
       {...vibrant && vibrancy.attributes}
       {...otherProps}
