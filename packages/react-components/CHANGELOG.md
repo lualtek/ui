@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 10.3.2
+
+### Patch Changes
+
+- ac08145: Fix hoverable Panel
+  - @lualtek/icons@10.3.2
+
 ## 10.3.1
 
 ### Patch Changes
