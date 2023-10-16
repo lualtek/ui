@@ -33,7 +33,6 @@
       border-radius: inherit;
       position: absolute;
       inset: 0;
-      z-index: -1;
       pointer-events: none;
 
       .Panel[data-panel-border-side='all']& {
