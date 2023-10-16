@@ -1,5 +1,15 @@
 # @lualtek/react-components
 
+## 10.3.0
+
+### Minor Changes
+
+- b81f401: Add new `backgroundColorHover` prop to Panel
+
+### Patch Changes
+
+- @lualtek/icons@10.3.0
+
 ## 10.2.4
 
 ### Patch Changes
