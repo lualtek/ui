@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
+import { BlankButton } from '..';
 import { Panel } from './panel';
 
 const meta = {
@@ -78,4 +79,24 @@ export const CustomColor = {
   args: {
     backgroundColor: 'red',
   },
+} satisfies Story;
+
+export const WithHover = {
+  args: {
+    bordered: true,
+    backgroundColor: 2,
+    backgroundColorHover: 1,
+  },
+  render: () => (
+    <Panel
+      backgroundColor={2}
+      backgroundColorHover={3}
+      bordered
+      as={BlankButton}
+      vPadding={24}
+      hPadding={24}
+    >
+      Ciao
+    </Panel>
+  ),
 } satisfies Story;

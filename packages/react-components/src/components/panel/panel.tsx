@@ -18,6 +18,11 @@ export type PanelProps = {
    */
   backgroundColor?: string | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
   /**
+   * Set the background color of the panel between dimmed colors or custom string when hovered.
+   * If `vibrant` is enabled, this will be ignored and vibrantColor will be used instead.
+   */
+  backgroundColorHover?: string | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
+  /**
    * Enable or disable the vibrant effect. Add translucent and blurred background.
    *
    * @defaultValue false
@@ -78,10 +83,12 @@ export const Panel = forwardRef(({
   hPadding,
   vPadding,
   backgroundColor,
+  backgroundColorHover,
   as: Wrapper = 'div',
   ...otherProps
 }, forwardedRef) => {
   const computedBackground = typeof backgroundColor === 'number' ? `var(--dimmed-${backgroundColor})` : backgroundColor;
+  const computedBackgroundHover = typeof backgroundColorHover === 'number' ? `var(--dimmed-${backgroundColorHover})` : backgroundColorHover;
 
   const { vibrancy } = useStyles({
     vibrancy: {
@@ -96,7 +103,8 @@ export const Panel = forwardRef(({
     '--v-padding': vPadding ? tkns.space[vPadding] : 0,
     '--h-padding': hPadding ? tkns.space[hPadding] : 0,
     '--background': vibrant ? undefined : computedBackground,
-  }), [radius, vPadding, hPadding, vibrant, computedBackground]);
+    '--background-hover': vibrant ? undefined : computedBackgroundHover,
+  }), [radius, vPadding, hPadding, vibrant, computedBackground, computedBackgroundHover]);
 
   return (
     <Wrapper
