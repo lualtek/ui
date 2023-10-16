@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 10.2.4
+
+### Patch Changes
+
+- ce937fb: Fix panel pseudo element
+  - @lualtek/icons@10.2.4
+
 ## 10.2.3
 
 ### Patch Changes
