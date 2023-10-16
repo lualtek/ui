@@ -1,6 +1,5 @@
 @layer components {
   .Panel {
-    background: var(--background);
     position: relative;
     padding: var(--v-padding, 0) var(--h-padding, 0);
 
@@ -30,6 +29,7 @@
 
     &[data-panel-bordered='true']::before {
       content: '';
+      background: var(--background);
       border-radius: inherit;
       position: absolute;
       inset: 0;
