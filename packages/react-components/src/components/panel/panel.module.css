@@ -7,6 +7,10 @@
       border-radius: var(--radius);
     }
 
+    &[data-panel-bordered='false'] {
+      background: var(--background);
+    }
+
     &[data-panel-bordered='true'][data-panel-border-side='all'] {
       border: 1px solid var(--global-outer-contrast-border);
     }
