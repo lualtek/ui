@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 10.2.1
+
+### Patch Changes
+
+- 4ebe7a0: Fix panel background prop
+  - @lualtek/icons@10.2.1
+
 ## 10.2.0
 
 ### Minor Changes
