@@ -5,7 +5,7 @@
     padding: var(--v-padding, 0) var(--h-padding, 0);
 
     &:where(:hover, :focus-visible) {
-      background: var(--background-hover);
+      background: var(--background-hover, var(--background));
       cursor: pointer;
     }
 

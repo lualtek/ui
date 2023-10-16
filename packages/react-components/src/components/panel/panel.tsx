@@ -103,8 +103,8 @@ export const Panel = forwardRef(({
     '--v-padding': vPadding ? tkns.space[vPadding] : 0,
     '--h-padding': hPadding ? tkns.space[hPadding] : 0,
     '--background': vibrant ? undefined : computedBackground,
-    '--background-hover': vibrant ? undefined : computedBackgroundHover,
-  }), [radius, vPadding, hPadding, vibrant, computedBackground, computedBackgroundHover]);
+    '--background-hover': (vibrant || !backgroundColorHover) ? undefined : computedBackgroundHover,
+  }), [radius, vPadding, hPadding, vibrant, computedBackground, computedBackgroundHover, backgroundColorHover]);
 
   return (
     <Wrapper
