@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 10.2.2
+
+### Patch Changes
+
+- 23a432a: Fix panel background with borders
+  - @lualtek/icons@10.2.2
+
 ## 10.2.1
 
 ### Patch Changes
