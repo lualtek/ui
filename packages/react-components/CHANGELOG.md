@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 10.3.4
+
+### Patch Changes
+
+- ec96f52: Fix api docs
+  - @lualtek/icons@10.3.4
+
 ## 10.3.3
 
 ### Patch Changes
