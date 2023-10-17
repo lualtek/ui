@@ -41,7 +41,11 @@ type TypeAlias = {
     types?: Array<{
       properties: SinglePropType[];
     }>;
-    typeArguments?: [SinglePropType['type']['objectType'], SinglePropType['type']['types']];
+    typeArguments?: Array<{
+      [key: string]: unknown;
+      kind: string;
+      types?: SinglePropType['type']['types'];
+    }>;
   };
 }
 
@@ -61,23 +65,34 @@ async function mapToTypeAliases(): Promise<TypeAlias[]> {
   try {
     const jsonData = await readFile(API_JSON_PATH, 'utf8');
     const parsedData = JSON.parse(jsonData) as InputJson;
+    const filteredAliases = parsedData.typeAliases.filter(alias => alias.name.endsWith('Props'));
 
     if (!Array.isArray(parsedData.typeAliases)) {
       return [];
     }
 
     // Qui si possono modificare cose
-    return parsedData.typeAliases.filter(alias => alias.name.endsWith('Props')).map(alias => ({
-      name: alias.name,
-      source: alias.source,
-      type: alias.type,
-      properties:
+    return filteredAliases.map((alias) => {
+      // Get the whole type and props referenced by the component
+      const referencedProps = filteredAliases.filter(props => props.name === alias.type.typeArguments?.[0]?.name)?.[0];
+      // Extract the types from the typeArguments like Pick, Omit, etc.
+      const toFilterTypes = alias.type.typeArguments?.find(type => type.types)?.types!.map(type => type.value);
+      // Filter the properties of the referenced type by the types extracted above
+      const filteredProviders = referencedProps?.type.properties?.filter(prop => toFilterTypes?.includes(prop.name));
+
+      return {
+        name: alias.name,
+        source: alias.source,
+        type: alias.type,
+        properties:
         alias.type.properties
         ?? (
           alias.type.types?.find(type => type.properties)?.properties
+          ?? filteredProviders
           ?? []
         ),
-    }));
+      };
+    });
 
     // return parsedData.typeAliases.filter(alias => alias.name.endsWith('Props'));
   } catch (err) {
