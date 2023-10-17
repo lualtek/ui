@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 10.3.5
+
+### Patch Changes
+
+- b113593: Try to update doc
+  - @lualtek/icons@10.3.5
+
 ## 10.3.4
 
 ### Patch Changes
