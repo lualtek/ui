@@ -41,7 +41,6 @@ type TypeAlias = {
     types?: Array<{
       properties: SinglePropType[];
     }>;
-    typeArguments?: SinglePropType[];
   };
 }
 
@@ -75,7 +74,7 @@ async function mapToTypeAliases(): Promise<TypeAlias[]> {
         alias.type.properties
         ?? (
           alias.type.types?.find(type => type.properties)?.properties
-          ?? alias.type.typeArguments ?? []
+          ?? []
         ),
     }));
 
