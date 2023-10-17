@@ -41,6 +41,7 @@ type TypeAlias = {
     types?: Array<{
       properties: SinglePropType[];
     }>;
+    typeArguments?: [SinglePropType['type']['objectType'], SinglePropType['type']['types']];
   };
 }
 
