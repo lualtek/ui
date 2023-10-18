@@ -75,7 +75,7 @@
     "tsconfig": "*",
     "typed-css-modules": "0.7.2",
     "typedoc": "0.25.1",
-    "typedoc-json-parser": "9.0.0",
+    "typedoc-json-parser": "8.2.0",
     "typescript": "5.2.2"
   },
   "dependencies": {
