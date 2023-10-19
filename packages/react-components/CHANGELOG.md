@@ -1,5 +1,13 @@
 # @lualtek/react-components
 
+## 10.3.6
+
+### Patch Changes
+
+- 86a6e8f: Add 'use client' where missing
+- 93e9f32: Dix shadow in IconChip
+  - @lualtek/icons@10.3.6
+
 ## 10.3.5
 
 ### Patch Changes
