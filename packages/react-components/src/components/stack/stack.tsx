@@ -24,7 +24,7 @@ export type StackProps = {
    */
   inline?: boolean;
   /**
-   * Wrap children whene there is no space for them.
+   * Wrap children when there is no space for them.
    * @defaultValue false
    */
   wrap?: boolean;
@@ -55,7 +55,7 @@ export type StackProps = {
    */
   vPadding?: TokensTypes['space'];
   /**
-   * Renderes children as rows or columns. The value can be one of the flex directions.
+   * Renders children as rows or columns. The value can be one of the flex directions.
    * More info: https://developer.mozilla.org/en-US/docs/Web/CSS/flex-direction
    * @defaultValue 'column'
    */
