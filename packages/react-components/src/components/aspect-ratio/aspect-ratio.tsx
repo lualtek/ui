@@ -1,3 +1,5 @@
+'use client';
+
 import {
   Children, cloneElement, CSSProperties, isValidElement, ReactElement,
 } from 'react';

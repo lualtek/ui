@@ -9,7 +9,7 @@
     "import-notation": "string",
     "designtokens/check": [
       true,
-      "./packages/tokens/platforms/web/tokens.json"
+      "/Users/mattia/Workspaces/ui/packages/tokens/platforms/web/tokens.json"
     ],
     "function-no-unknown": [
       true,
