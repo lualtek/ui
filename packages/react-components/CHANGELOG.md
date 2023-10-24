@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 10.3.9
+
+### Patch Changes
+
+- ffa751c3: Revert last panel changes
+  - @lualtek/icons@10.3.9
+
 ## 10.3.8
 
 ### Patch Changes
