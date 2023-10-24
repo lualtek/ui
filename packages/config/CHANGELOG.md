@@ -1,5 +1,11 @@
 # @lualtek/config
 
+## 10.3.9
+
+### Patch Changes
+
+- @lualtek/tokens@10.3.9
+
 ## 10.3.8
 
 ### Patch Changes
