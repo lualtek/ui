@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 10.3.8
+
+### Patch Changes
+
+- c929cd1e: Fix panel highlight background prop
+  - @lualtek/icons@10.3.8
+
 ## 10.3.7
 
 ### Patch Changes
