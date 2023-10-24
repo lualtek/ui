@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
+import { BlankButton } from '..';
 import { Panel } from './panel';
 
 const meta = {
@@ -51,7 +52,6 @@ export const WithVibrancy = {
     <>
       <img
         width="100%"
-        alt=""
         style={{ position: 'absolute', zIndex: -1 }}
         src="https://images.unsplash.com/photo-1579332649290-10b7da0cd111?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=cover&w=1600&q=80"
       />
@@ -85,32 +85,14 @@ export const WithHover = {
   args: {
     bordered: true,
     backgroundColor: 2,
-    highlightOnHover: true,
+    backgroundColorHover: 1,
   },
-  render: args => (
+  render: () => (
     <Panel
-      {...args}
-      highlightOnHover
+      backgroundColor={2}
+      backgroundColorHover={3}
       bordered
-      vPadding={24}
-      hPadding={24}
-    >
-      Ciao
-    </Panel>
-  ),
-} satisfies Story;
-
-export const WithCustomHover = {
-  args: {
-    bordered: true,
-    backgroundColor: 'gray',
-    highlightOnHover: true,
-  },
-  render: args => (
-    <Panel
-      {...args}
-      highlightOnHover
-      bordered
+      as={BlankButton}
       vPadding={24}
       hPadding={24}
     >

@@ -19,10 +19,10 @@ export type PanelProps = {
    */
   backgroundColor?: string | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
   /**
-   * Highlight the panel on hover. Pass a custom color string to set a custom highlight color.
+   * Set the background color of the panel between dimmed colors or custom string when hovered.
    * If `vibrant` is enabled, this will be ignored and vibrantColor will be used instead.
    */
-  highlightOnHover?: boolean;
+  backgroundColorHover?: string | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
   /**
    * Enable or disable the vibrant effect. Add translucent and blurred background.
    *
@@ -84,11 +84,12 @@ export const Panel = forwardRef(({
   hPadding,
   vPadding,
   backgroundColor,
-  highlightOnHover,
+  backgroundColorHover,
   as: Wrapper = 'div',
   ...otherProps
 }, forwardedRef) => {
   const computedBackground = typeof backgroundColor === 'number' ? `var(--dimmed-${backgroundColor})` : backgroundColor;
+  const computedBackgroundHover = typeof backgroundColorHover === 'number' ? `var(--dimmed-${backgroundColorHover})` : backgroundColorHover;
 
   const { vibrancy } = useStyles({
     vibrancy: {
@@ -103,7 +104,8 @@ export const Panel = forwardRef(({
     '--v-padding': vPadding ? tkns.space[vPadding] : 0,
     '--h-padding': hPadding ? tkns.space[hPadding] : 0,
     '--background': vibrant ? undefined : computedBackground,
-  }), [radius, vPadding, hPadding, vibrant, computedBackground]);
+    '--background-hover': vibrant ? undefined : computedBackgroundHover,
+  }), [radius, vPadding, hPadding, vibrant, computedBackground, computedBackgroundHover]);
 
   return (
     <Wrapper
@@ -112,7 +114,7 @@ export const Panel = forwardRef(({
       data-panel-bordered={bordered}
       data-panel-border-side={borderSide}
       data-panel-radius={Boolean(radius)}
-      data-panel-hover={highlightOnHover && typeof highlightOnHover !== 'string'}
+      data-panel-hover={Boolean(backgroundColorHover)}
       style={{ ...dynamicStyle, ...style }}
       {...vibrant && vibrancy.attributes}
       {...otherProps}
