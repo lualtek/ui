@@ -28,7 +28,7 @@ export type InlineToastProps = OutputHTMLAttributes<HTMLOutputElement> & {
    */
   actions?: ReactNode;
   /**
-   * Set the icon to be displaye alongside the title.
+   * Set the icon to be display alongside the title.
    * This icon have to enforce the message in a not misleading way.
    */
   icon?: IconProps['source'];
@@ -38,7 +38,7 @@ export type InlineToastProps = OutputHTMLAttributes<HTMLOutputElement> & {
   title?: string;
   /**
    * Set the color and the sentiment of the toast.
-   * This affects the the color of all the elements inside and should be defined
+   * This affects the color of all the elements inside and should be defined
    * according to the message.
    *
    * @defaultValue "neutral"
@@ -101,6 +101,7 @@ export const InlineToast = forwardRef<HTMLOutputElement, InlineToastProps>(({
       className={clsx(styles.InlineToast, className)}
       data-toast-kind={kind}
       vibrant
+      vibrancyColor="soft"
       bordered
       radius={24}
       role="status"
