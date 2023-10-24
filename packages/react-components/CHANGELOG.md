@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 10.3.7
+
+### Patch Changes
+
+- 10696de: Fix inline toast defalt background
+  - @lualtek/icons@10.3.7
+
 ## 10.3.6
 
 ### Patch Changes
