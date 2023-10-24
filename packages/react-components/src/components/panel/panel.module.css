@@ -3,9 +3,10 @@
     background: var(--background);
     position: relative;
     padding: var(--v-padding, 0) var(--h-padding, 0);
+    transition: background-color 50ms linear;
 
     &[data-panel-hover='true']:where(:hover, :focus-visible) {
-      background: var(--background-hover, var(--background));
+      background: color-mix(in oklab, var(--background), white calc(35% - var(--shadow-opacity-factor) * 2.4));
       cursor: pointer;
     }
 
@@ -13,6 +14,9 @@
       border-radius: var(--radius);
     }
 
+    /**
+      * Bordered styles
+      */
     &[data-panel-bordered='true'][data-panel-border-side='all'] {
       border: 1px solid var(--global-outer-contrast-border);
     }
