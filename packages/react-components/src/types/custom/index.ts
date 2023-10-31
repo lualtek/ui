@@ -8,6 +8,16 @@ export type FCClass<T = Record<string, unknown>> = React.FC<{
   className?: string;
 } & T>
 
+export type Themes = 'light' | 'dark' | 'auto'
+
+export type UIComponent<Props, Other = Record<string, unknown>> = {
+  theme: Themes;
+} & Other & PropsWithClass<Props>
+
+export type UIComponentWithChildren<Props, Other = Record<string, unknown>> = {
+  theme: Themes;
+} & Other & React.PropsWithChildren<UIComponent<Props>>
+
 export type FCChildren<P = Record<string, unknown>> = React.FC<React.PropsWithChildren<P>>
 
 export type FCChildrenClass<P = Record<string, unknown>> = FCChildren<PropsWithClass<P>>
@@ -20,8 +30,3 @@ export type Prettify<T> = {
   [K in keyof T]: T[K]
 } & Record<string, unknown>
 
-export type Themes = 'light' | 'dark' | 'auto'
-
-export type UIComponent<Props, Other = Record<string, unknown>> = {
-  'data-theme': Themes;
-} & Other & Props
