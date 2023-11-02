@@ -15,7 +15,6 @@ import React, {
   useState,
 } from 'react';
 
-import { Container } from '@/components';
 import { PropsClassChildren } from '@/components/types';
 
 import styles from './marquee.module.css';
@@ -23,78 +22,76 @@ import styles from './marquee.module.css';
 export type MarqueeProps = PropsClassChildren<{
   /**
    * Whether to automatically fill blank space in the marquee with copies of the children or not
-   * @type {boolean}
-   * @defaultValue false
+   * @defaultValue true
    */
   autoFill?: boolean;
   /**
    * Whether to play or pause the marquee
-   * @type {boolean}
    * @defaultValue true
    */
   play?: boolean;
   /**
    * Whether to pause the marquee when hovered
-   * @type {boolean}
    * @defaultValue false
    */
   pauseOnHover?: boolean;
   /**
    * Whether to pause the marquee when clicked
-   * @type {boolean}
    * @defaultValue false
    */
   pauseOnClick?: boolean;
   /**
    * The direction the marquee is sliding
-   * @type {"left" | "right" | "up" | "down"}
    * @defaultValue "left"
    */
   direction?: 'left' | 'right' | 'up' | 'down';
   /**
    * Speed calculated as pixels/second
-   * @type {number}
    * @defaultValue 50
    */
   speed?: number;
   /**
    * Duration to delay the animation after render, in seconds
-   * @type {number}
    * @defaultValue 0
    */
   delay?: number;
   /**
    * The number of times the marquee should loop, 0 is equivalent to infinite
-   * @type {number}
    * @defaultValue 0
    */
   loop?: number;
+  /**
+   * Whether to fade out the edges of the marquee
+   * @defaultValue false
+   */
   fade?: boolean;
+  /**
+   * The size of the fade area
+   */
+  fadeSize?: string;
+  /**
+   * The gap between each child
+   */
   gap?: TokensTypes['space'];
   /**
    * A callback for when the marquee finishes scrolling and stops. Only calls if loop is non-zero.
-   * @type {() => void}
    */
   onFinish?: () => void;
   /**
    * A callback for when the marquee finishes a loop.
    * Does not call if maximum loops are reached (use onFinish instead).
-   * @type {() => void}
    */
   onCycleComplete?: () => void;
   /**
    * A callback function that is invoked once the marquee has finished mounting.
    * It can be utilized to recalculate the page size, if necessary.
-   * @type {() => void}
    */
   onMount?: () => void;
 }>;
 
 export const Marquee = forwardRef<HTMLDivElement, MarqueeProps>((
   {
-    style = {},
-    className = '',
-    autoFill = false,
+    autoFill = true,
     play = true,
     pauseOnHover = false,
     pauseOnClick = false,
@@ -103,15 +100,17 @@ export const Marquee = forwardRef<HTMLDivElement, MarqueeProps>((
     delay = 0,
     loop = 0,
     fade,
+    fadeSize = '88px',
     gap,
     onFinish,
     onCycleComplete,
-    onMount,
     children,
+    style,
+    className,
+    ...otherProps
   },
   forwardedRef,
 ) => {
-  // React Hooks
   const [containerWidth, setContainerWidth] = useState(0);
   const [marqueeWidth, setMarqueeWidth] = useState(0);
   const [multiplier, setMultiplier] = useState(1);
@@ -152,7 +151,7 @@ export const Marquee = forwardRef<HTMLDivElement, MarqueeProps>((
 
   // Calculate width and multiplier on mount and on window resize
   useEffect(() => {
-    if (!isMounted) return;
+    if (!isMounted) return () => undefined;
 
     calculateWidth();
     const resizeObserver = new ResizeObserver(() => calculateWidth());
@@ -161,7 +160,6 @@ export const Marquee = forwardRef<HTMLDivElement, MarqueeProps>((
       resizeObserver.observe(marqueeRef.current);
     }
 
-    // eslint-disable-next-line consistent-return
     return () => {
       if (!resizeObserver) return;
       resizeObserver.disconnect();
@@ -177,13 +175,6 @@ export const Marquee = forwardRef<HTMLDivElement, MarqueeProps>((
     setIsMounted(true);
   }, []);
 
-  // Runs the onMount callback, if it is a function, when Marquee is mounted.
-  useEffect(() => {
-    if (typeof onMount === 'function') {
-      onMount();
-    }
-  }, [onMount]);
-
   // Animation duration
   const duration = useMemo(() => {
     if (autoFill) {
@@ -195,11 +186,7 @@ export const Marquee = forwardRef<HTMLDivElement, MarqueeProps>((
       : marqueeWidth / speed;
   }, [autoFill, containerWidth, marqueeWidth, multiplier, speed]);
 
-  const dynamicStyle: CSSProperties = useMemo(() => ({
-    '--gap': gap ? tkns.space[gap] : 0,
-  }), [gap]);
-
-  const containerStyle: CSSProperties = useMemo(
+  const dynamicStyle: CSSProperties = useMemo(
     () => {
       const computedContainerDirection = () => {
         if (direction === 'up') return 'rotate(-90deg)';
@@ -208,17 +195,18 @@ export const Marquee = forwardRef<HTMLDivElement, MarqueeProps>((
       };
 
       return {
-        ...style,
-        '--pause-on-hover': !play || pauseOnHover ? 'paused' : 'running',
-        '--pause-on-click': !play || (pauseOnHover && !pauseOnClick) || pauseOnClick ? 'paused' : 'running',
+        '--pause-on-hover': (!play || pauseOnHover) ? 'paused' : 'running',
+        '--pause-on-click': (!play || (pauseOnHover && !pauseOnClick) || pauseOnClick) ? 'paused' : 'running',
         '--width': direction === 'up' || direction === 'down' ? '100vh' : '100%',
         '--transform': computedContainerDirection(),
+        '--gap': gap ? tkns.space[gap] : 0,
+        '--fade-size': fadeSize,
       };
     },
-    [style, play, pauseOnHover, pauseOnClick, direction],
+    [play, pauseOnHover, pauseOnClick, direction, gap, fadeSize],
   );
 
-  const marqueeStyle: CSSProperties = useMemo(
+  const sliderStyle: CSSProperties = useMemo(
     () => ({
       '--play': play ? 'running' : 'paused',
       '--direction': direction === 'left' ? 'normal' : 'reverse',
@@ -262,36 +250,31 @@ export const Marquee = forwardRef<HTMLDivElement, MarqueeProps>((
   );
 
   return !isMounted ? null : (
-    <Container
-      className={styles.Marquee}
-      data-carousel-fade={fade}
+    <div
+      ref={containerRef}
       style={{ ...dynamicStyle, style }}
-      padding={false}
+      className={clsx(styles.Marquee, className)}
+      data-carousel-fade={fade}
+      {...otherProps}
     >
       <div
-        ref={containerRef}
-        style={containerStyle}
-        className={clsx(styles.Container, className)}
+        className={styles.Slider}
+        style={sliderStyle}
+        onAnimationIteration={onCycleComplete}
+        onAnimationEnd={onFinish}
       >
-        <div
-          className={styles.Slider}
-          style={marqueeStyle}
-          onAnimationIteration={onCycleComplete}
-          onAnimationEnd={onFinish}
-        >
-          <div className={styles.ChildContainer} ref={marqueeRef}>
-            {Children.map(children, child => (
-              <div style={slideStyle} className={styles.Slide}>
-                {child}
-              </div>
-            ))}
-          </div>
-          {multiplyChildren(multiplier - 1)}
+        <div className={styles.ChildContainer} ref={marqueeRef}>
+          {Children.map(children, child => (
+            <div style={slideStyle} className={styles.Slide}>
+              {child}
+            </div>
+          ))}
         </div>
-        <div className={styles.Slider} style={marqueeStyle}>
-          {multiplyChildren(multiplier)}
-        </div>
+        {multiplyChildren(multiplier - 1)}
       </div>
-    </Container>
+      <div className={styles.Slider} style={sliderStyle}>
+        {multiplyChildren(multiplier)}
+      </div>
+    </div>
   );
 });

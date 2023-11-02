@@ -1,8 +1,4 @@
 .Marquee {
-  --fade-size: token(--space-88);
-}
-
-.Container {
   overflow-x: hidden;
   display: flex;
   flex-direction: row;
@@ -19,7 +15,7 @@
     animation-play-state: var(--pause-on-click);
   }
 
-  @nest .Marquee[data-carousel-fade='true'] & {
+  &[data-carousel-fade='true'] {
     mask-image:
       linear-gradient(
         to right,

@@ -10,8 +10,8 @@ const meta = {
   },
   render: args => (
     <Marquee {...args}>
-      <img width="600" height="400" src="https://images.unsplash.com/photo-1579332649290-10b7da0cd111?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=cover&w=1600&q=80" />
-      <img width="600" height="400" src="https://images.unsplash.com/photo-1579332649290-10b7da0cd111?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=cover&w=1600&q=80" />
+      <img width="600" height="400" src="https://picsum.photos/600/400" />
+      <img width="600" height="400" src="https://picsum.photos/seed/picsum/600/400" />
     </Marquee>
   ),
 } satisfies Meta<typeof Marquee>;
@@ -21,3 +21,8 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default = {} satisfies Story;
+export const WithFade = {
+  args: {
+    fade: true,
+  },
+} satisfies Story;
