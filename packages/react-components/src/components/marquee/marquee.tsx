@@ -188,7 +188,7 @@ export const Marquee = forwardRef<HTMLDivElement, MarqueeProps>((
 
   const dynamicStyle: CSSProperties = useMemo(
     () => {
-      const computedContainerDirection = () => {
+      const computedContainerTransform = () => {
         if (direction === 'up') return 'rotate(-90deg)';
         if (direction === 'down') return 'rotate(90deg)';
         return 'none';
@@ -198,7 +198,7 @@ export const Marquee = forwardRef<HTMLDivElement, MarqueeProps>((
         '--pause-on-hover': (!play || pauseOnHover) ? 'paused' : 'running',
         '--pause-on-click': (!play || (pauseOnHover && !pauseOnClick) || pauseOnClick) ? 'paused' : 'running',
         '--width': direction === 'up' || direction === 'down' ? '100vh' : '100%',
-        '--transform': computedContainerDirection(),
+        '--transform': computedContainerTransform(),
         '--gap': gap ? tkns.space[gap] : 0,
         '--fade-size': fadeSize,
       };
@@ -220,14 +220,14 @@ export const Marquee = forwardRef<HTMLDivElement, MarqueeProps>((
 
   const slideStyle = useMemo(
     () => {
-      const computedSlideDirection = () => {
+      const computedSlideTransform = () => {
         if (direction === 'up') return 'rotate(90deg)';
         if (direction === 'down') return 'rotate(-90deg)';
         return 'none';
       };
 
       return {
-        '--transform': computedSlideDirection(),
+        '--transform': computedSlideTransform(),
       };
     },
     [direction],
