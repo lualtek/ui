@@ -1,0 +1,28 @@
+import type { Meta, StoryObj } from '@storybook/react';
+
+import { Marquee } from './marquee';
+
+const meta = {
+  title: 'Widgets/Marquee',
+  component: Marquee,
+  args: {
+    gap: 8,
+  },
+  render: args => (
+    <Marquee {...args}>
+      <img width="600" height="400" src="https://picsum.photos/600/400" />
+      <img width="600" height="400" src="https://picsum.photos/seed/picsum/600/400" />
+    </Marquee>
+  ),
+} satisfies Meta<typeof Marquee>;
+
+export default meta;
+
+type Story = StoryObj<typeof meta>;
+
+export const Default = {} satisfies Story;
+export const WithFade = {
+  args: {
+    fade: true,
+  },
+} satisfies Story;

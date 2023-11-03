@@ -24,6 +24,7 @@ export * from './lightbox';
 export * from './linear-progress';
 export * from './list';
 export * from './logo';
+export * from './marquee';
 export * from './masonry';
 export * from './menu';
 export * from './modal';
