@@ -1,5 +1,15 @@
 # @lualtek/react-components
 
+## 10.4.0
+
+### Minor Changes
+
+- 6055e555: Add Marquee component
+
+### Patch Changes
+
+- @lualtek/icons@10.4.0
+
 ## 10.3.9
 
 ### Patch Changes
