@@ -6,7 +6,7 @@
     border: 0;
     padding: var(--padding);
     max-block-size: token(--space-24);
-    background-color: var(--vibrancy-background-mid);
+    background-color: var(--vibrancy-background-hard);
     backdrop-filter: brightness(1.35);
     box-shadow: 0 0 0 1px var(--global-outer-contrast-border), inset 0 0 0 1px var(--global-inner-contrast-border);
     color: var(--dimmed-6);
