@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { useState } from 'react';
 
-import { Stack } from '@/components';
+import { Stack, SwitchProps } from '@/components';
 
 import { Switch } from './switch';
 
@@ -46,8 +47,29 @@ export const WithDynamicLabel = {
   },
   render: args => (
     <Stack direction="row" columnGap={8}>
-      <Switch {...args} />
+      <Switch defaultChecked {...args} />
       <Switch label="Sample default label" />
     </Stack>
   ),
+} satisfies Story;
+
+const ControlledSwitch = ({ checked, ...args }: SwitchProps) => {
+  const [isChecked, setIsChecked] = useState(checked);
+
+  return (
+    <Switch
+      {...args}
+      checked={isChecked}
+      onCheckedChange={setIsChecked}
+    />
+  );
+};
+
+export const Controlled = {
+  args: {
+    label: 'Sample label',
+    checkedLabel: 'Checked label',
+    checked: true,
+  },
+  render: args => <ControlledSwitch {...args} />,
 } satisfies Story;

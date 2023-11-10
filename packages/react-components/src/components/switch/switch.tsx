@@ -7,15 +7,15 @@ import {
 } from 'framer-motion';
 import {
   ElementRef, forwardRef,
-  ReactNode,
-  useCallback, useId, useRef, useState,
+  ReactNode, useCallback,
+  useId, useRef, useState,
 } from 'react';
 
 import { Stack, Text, TextProps } from '@/components';
 
 import styles from './switch.module.css';
 
-export type SwitchProps = SwitchPrimitive.SwitchProps & {
+export type SwitchProps = Exclude<SwitchPrimitive.SwitchProps, 'asChild'> & {
   /**
    * Set the size of the switch.
    *
@@ -72,11 +72,12 @@ export const Switch = forwardRef<ElementRef<typeof SwitchPrimitive.Root>, Switch
   checkedLabel,
   checked,
   onCheckedChange,
+  defaultChecked,
   ...otherProps
 }, forwardedRef) => {
   const uid = useId();
   const labelRef = useRef<HTMLLabelElement>(null);
-  const [shouldSwitchlabel, setShouldSwitchLabel] = useState(checked);
+  const [shouldSwitchLabel, setShouldSwitchLabel] = useState(checked ?? defaultChecked);
 
   const handleCheckedChange = useCallback((checked: boolean) => {
     onCheckedChange?.(checked);
@@ -95,76 +96,78 @@ export const Switch = forwardRef<ElementRef<typeof SwitchPrimitive.Root>, Switch
         layout
         layoutRoot
       >
+        <SwitchPrimitive.Root
+          className={clsx(styles.Switch, className)}
+          data-switch-dimension={dimension}
+          ref={forwardedRef}
+          id={uid}
+          checked={checked}
+          onCheckedChange={handleCheckedChange}
+          defaultChecked={defaultChecked}
+          {...otherProps}
+        >
+          <SwitchPrimitive.Thumb asChild>
+            <m.span
+              className={styles.Thumb}
+              layout
+              transition={{
+                type: 'spring',
+                stiffness: 700,
+                damping: 30,
+              }}
+            />
+          </SwitchPrimitive.Thumb>
+        </SwitchPrimitive.Root>
         <AnimatePresence initial={false} mode="popLayout">
-
-          <SwitchPrimitive.Root
-            className={clsx(styles.Switch, className)}
-            data-switch-dimension={dimension}
-            ref={forwardedRef}
-            id={label ? uid : undefined}
-            checked={checked}
-            onCheckedChange={handleCheckedChange}
-            {...otherProps}
-          >
-            <SwitchPrimitive.Thumb asChild>
-              <m.span
-                className={styles.Thumb}
-                layout="position"
-                transition={{
-                  type: 'spring',
-                  stiffness: 700,
-                  damping: 30,
-                }}
-              />
-            </SwitchPrimitive.Thumb>
-          </SwitchPrimitive.Root>
-          <Text
-            as={m.label}
-            className={styles.Label}
-            lineHeight={properties[dimension].text.lh}
-            htmlFor={uid}
-            size={properties[dimension].text.size}
-            ref={labelRef}
-          >
-            {(label && !shouldSwitchlabel) && (
-              <m.span
-                key="label"
-                initial={{
-                  opacity: 0,
-                  x: -20,
-                }}
-                exit={{
-                  opacity: 0,
-                  x: -20,
-                }}
-                animate={{
-                  opacity: 1,
-                  x: 0,
-                }}
-              >
-                {label}
-              </m.span>
-            )}
-            {(checkedLabel && shouldSwitchlabel) && (
-              <m.span
-                key="label-checked"
-                exit={{
-                  opacity: 0,
-                  x: 20,
-                }}
-                initial={{
-                  opacity: 0,
-                  x: 20,
-                }}
-                animate={{
-                  opacity: 1,
-                  x: 0,
-                }}
-              >
-                {checkedLabel}
-              </m.span>
-            )}
-          </Text>
+          {(label ?? checkedLabel) && (
+            <Text
+              as="label"
+              className={styles.Label}
+              lineHeight={properties[dimension].text.lh}
+              htmlFor={uid}
+              size={properties[dimension].text.size}
+              ref={labelRef}
+            >
+              {(label && !shouldSwitchLabel) && (
+                <m.span
+                  key="label"
+                  initial={{
+                    opacity: 0,
+                    x: -20,
+                  }}
+                  exit={{
+                    opacity: 0,
+                    x: -20,
+                  }}
+                  animate={{
+                    opacity: 1,
+                    x: 0,
+                  }}
+                >
+                  {label}
+                </m.span>
+              )}
+              {(checkedLabel && shouldSwitchLabel) && (
+                <m.span
+                  key="label-checked"
+                  exit={{
+                    opacity: 0,
+                    x: 20,
+                  }}
+                  initial={{
+                    opacity: 0,
+                    x: 20,
+                  }}
+                  animate={{
+                    opacity: 1,
+                    x: 0,
+                  }}
+                >
+                  {checkedLabel}
+                </m.span>
+              )}
+            </Text>
+          )}
         </AnimatePresence>
       </Stack>
     </LazyMotion>
