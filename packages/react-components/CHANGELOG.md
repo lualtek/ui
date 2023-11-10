@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 10.5.1
+
+### Patch Changes
+
+- a2da7939: Fix Switch label
+  - @lualtek/icons@10.5.1
+
 ## 10.5.0
 
 ### Minor Changes
