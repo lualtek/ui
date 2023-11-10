@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
+import { Stack } from '@/components';
+
 import { Switch } from './switch';
 
 const meta = {
@@ -35,4 +37,17 @@ export const WithLabel = {
   args: {
     label: 'Sample label',
   },
+} satisfies Story;
+
+export const WithDynamicLabel = {
+  args: {
+    label: 'Sample default label',
+    checkedLabel: 'Checked label',
+  },
+  render: args => (
+    <Stack direction="row" columnGap={8}>
+      <Switch {...args} />
+      <Switch label="Sample default label" />
+    </Stack>
+  ),
 } satisfies Story;
