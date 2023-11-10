@@ -1,7 +1,7 @@
 declare const styles: {
-  readonly "TableCell": string;
-  readonly "HeadCellIcon": string;
   readonly "BlankButton": string;
+  readonly "HeadCellIcon": string;
+  readonly "TableCell": string;
 };
 export = styles;
 

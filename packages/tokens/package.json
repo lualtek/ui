@@ -27,11 +27,11 @@
   },
   "homepage": "https://github.com/lualtek/ui",
   "devDependencies": {
-    "@types/fs-extra": "11.0.2",
-    "@types/tinycolor2": "1.4.4",
+    "@types/fs-extra": "11.0.4",
+    "@types/tinycolor2": "1.4.6",
     "colorjs.io": "0.4.5",
     "fs-extra": "11.1.1",
-    "style-dictionary": "3.8.0",
+    "style-dictionary": "3.9.0",
     "tsconfig": "*"
   }
 }

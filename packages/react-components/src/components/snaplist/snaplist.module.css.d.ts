@@ -1,6 +1,6 @@
 declare const styles: {
-  readonly "Snaplist": string;
   readonly "Slide": string;
+  readonly "Snaplist": string;
 };
 export = styles;
 

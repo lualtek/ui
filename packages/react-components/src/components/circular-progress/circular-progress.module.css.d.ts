@@ -1,7 +1,7 @@
 declare const styles: {
   readonly "CircularProgress": string;
-  readonly "Start": string;
   readonly "End": string;
+  readonly "Start": string;
 };
 export = styles;
 

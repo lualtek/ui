@@ -1,64 +1,66 @@
-.Marquee {
-  overflow-x: hidden;
-  display: flex;
-  flex-direction: row;
-  position: relative;
-  width: var(--width);
-  transform: var(--transform);
-  gap: var(--gap);
+@layer components {
+  .Marquee {
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    width: var(--width);
+    transform: var(--transform);
+    gap: var(--gap);
 
-  &:hover div {
-    animation-play-state: var(--pause-on-hover);
-  }
+    &:hover div {
+      animation-play-state: var(--pause-on-hover);
+    }
 
-  &:active div {
-    animation-play-state: var(--pause-on-click);
-  }
+    &:active div {
+      animation-play-state: var(--pause-on-click);
+    }
 
-  &[data-carousel-fade='true'] {
-    mask-image:
-      linear-gradient(
+    &[data-carousel-fade='true'] {
+      mask-image:
+ linear-gradient(
         to right,
         transparent 0%,
         red var(--fade-size) calc(100% - var(--fade-size)),
         transparent 100%
       );
-  }
-}
-
-.Slider {
-  flex: 0 0 auto;
-  min-width: var(--min-width);
-  z-index: 1;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: var(--gap);
-  animation: scroll var(--duration) linear var(--delay) var(--iteration-count);
-  animation-play-state: var(--play);
-  animation-delay: var(--delay);
-  animation-direction: var(--direction);
-}
-
-.ChildContainer {
-  flex: 0 0 auto;
-  display: flex;
-  min-width: auto;
-  flex-direction: row;
-  align-items: center;
-  gap: var(--gap);
-}
-
-.Slide {
-  transform: var(--transform);
-}
-
-@keyframes scroll {
-  0% {
-    transform: translateX(0%);
+    }
   }
 
-  100% {
-    transform: translateX(-100%);
+  .Slider {
+    flex: 0 0 auto;
+    min-width: var(--min-width);
+    z-index: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--gap);
+    animation: scroll var(--duration) linear var(--delay) var(--iteration-count);
+    animation-play-state: var(--play);
+    animation-delay: var(--delay);
+    animation-direction: var(--direction);
+  }
+
+  .ChildContainer {
+    flex: 0 0 auto;
+    display: flex;
+    min-width: auto;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--gap);
+  }
+
+  .Slide {
+    transform: var(--transform);
+  }
+
+  @keyframes scroll {
+    0% {
+      transform: translateX(0%);
+    }
+
+    100% {
+      transform: translateX(-100%);
+    }
   }
 }

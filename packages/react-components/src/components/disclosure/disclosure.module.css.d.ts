@@ -1,8 +1,8 @@
 declare const styles: {
-  readonly "Disclosure": string;
-  readonly "Summary": string;
-  readonly "ExpandIcon": string;
   readonly "Content": string;
+  readonly "Disclosure": string;
+  readonly "ExpandIcon": string;
+  readonly "Summary": string;
 };
 export = styles;
 

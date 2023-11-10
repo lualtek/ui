@@ -1,6 +1,6 @@
 declare const styles: {
-  readonly "IconChip": string;
   readonly "Icon": string;
+  readonly "IconChip": string;
 };
 export = styles;
 

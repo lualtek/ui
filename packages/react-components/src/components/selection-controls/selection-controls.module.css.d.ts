@@ -1,6 +1,6 @@
 declare const styles: {
-  readonly "InputWrapper": string;
   readonly "CheckboxInput": string;
+  readonly "InputWrapper": string;
   readonly "RadioInput": string;
 };
 export = styles;

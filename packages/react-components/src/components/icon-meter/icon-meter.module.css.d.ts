@@ -1,7 +1,7 @@
 declare const styles: {
-  readonly "IconMeter": string;
   readonly "Gradient": string;
   readonly "Icon": string;
+  readonly "IconMeter": string;
 };
 export = styles;
 

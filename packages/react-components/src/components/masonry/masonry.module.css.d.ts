@@ -1,6 +1,6 @@
 declare const styles: {
-  readonly "Masonry": string;
   readonly "Column": string;
+  readonly "Masonry": string;
 };
 export = styles;
 

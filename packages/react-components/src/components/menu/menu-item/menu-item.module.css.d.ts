@@ -1,8 +1,8 @@
 declare const styles: {
-  readonly "MenuItem": string;
-  readonly "ItemContent": string;
   readonly "DecorationContent": string;
   readonly "Icon": string;
+  readonly "ItemContent": string;
+  readonly "MenuItem": string;
 };
 export = styles;
 

@@ -1,10 +1,10 @@
 declare const styles: {
-  readonly "Lightbox": string;
-  readonly "CloseButton": string;
-  readonly "ArrowRight": string;
   readonly "ArrowLeft": string;
-  readonly "Navigation": string;
+  readonly "ArrowRight": string;
+  readonly "CloseButton": string;
   readonly "Image": string;
+  readonly "Lightbox": string;
+  readonly "Navigation": string;
 };
 export = styles;
 

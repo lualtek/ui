@@ -1,10 +1,10 @@
 declare const styles: {
-  readonly "Drawer": string;
+  readonly "CloseButton": string;
   readonly "Container": string;
   readonly "Content": string;
-  readonly "Scroller": string;
+  readonly "Drawer": string;
   readonly "Header": string;
-  readonly "CloseButton": string;
+  readonly "Scroller": string;
 };
 export = styles;
 

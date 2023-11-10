@@ -1,7 +1,7 @@
 declare const styles: {
-  readonly "Textarea": string;
   readonly "FieldContainer": string;
   readonly "Label": string;
+  readonly "Textarea": string;
 };
 export = styles;
 
