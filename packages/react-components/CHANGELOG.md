@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 10.5.2
+
+### Patch Changes
+
+- 5fce8375: Fix Switch label switch
+  - @lualtek/icons@10.5.2
+
 ## 10.5.1
 
 ### Patch Changes
