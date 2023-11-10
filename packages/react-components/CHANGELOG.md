@@ -1,5 +1,16 @@
 # @lualtek/react-components
 
+## 10.5.0
+
+### Minor Changes
+
+- 97cd79cc: Add new checkedLabel to Switch to alternate labels between states
+
+### Patch Changes
+
+- 3f1748fe: Fix contrast for selection controls
+  - @lualtek/icons@10.5.0
+
 ## 10.4.0
 
 ### Minor Changes
