@@ -8,6 +8,7 @@ import {
 import {
   ElementRef, forwardRef,
   ReactNode, useCallback,
+  useEffect,
   useId, useRef, useState,
 } from 'react';
 
@@ -77,12 +78,17 @@ export const Switch = forwardRef<ElementRef<typeof SwitchPrimitive.Root>, Switch
 }, forwardedRef) => {
   const uid = useId();
   const labelRef = useRef<HTMLLabelElement>(null);
-  const [shouldSwitchLabel, setShouldSwitchLabel] = useState(checked ?? defaultChecked);
+  const [isChecked, setIsChecked] = useState(checked ?? defaultChecked);
+  const [shouldShowCheckedLabel, setShowCheckedLabel] = useState(Boolean(checkedLabel));
 
   const handleCheckedChange = useCallback((checked: boolean) => {
     onCheckedChange?.(checked);
-    if (checkedLabel) setShouldSwitchLabel(checked);
-  }, [onCheckedChange, checkedLabel]);
+    setIsChecked(checked);
+  }, [onCheckedChange]);
+
+  useEffect(() => {
+    setShowCheckedLabel(Boolean(checkedLabel));
+  }, [checkedLabel]);
 
   return (
     <LazyMotion features={domMax} strict>
@@ -101,7 +107,7 @@ export const Switch = forwardRef<ElementRef<typeof SwitchPrimitive.Root>, Switch
           data-switch-dimension={dimension}
           ref={forwardedRef}
           id={uid}
-          checked={checked}
+          checked={isChecked}
           onCheckedChange={handleCheckedChange}
           defaultChecked={defaultChecked}
           {...otherProps}
@@ -119,7 +125,7 @@ export const Switch = forwardRef<ElementRef<typeof SwitchPrimitive.Root>, Switch
           </SwitchPrimitive.Thumb>
         </SwitchPrimitive.Root>
         <AnimatePresence initial={false} mode="popLayout">
-          {(label ?? checkedLabel) && (
+          {label && (
             <Text
               as="label"
               className={styles.Label}
@@ -128,7 +134,7 @@ export const Switch = forwardRef<ElementRef<typeof SwitchPrimitive.Root>, Switch
               size={properties[dimension].text.size}
               ref={labelRef}
             >
-              {(label && !shouldSwitchLabel) && (
+              {(!shouldShowCheckedLabel || (shouldShowCheckedLabel && !isChecked)) && (
                 <m.span
                   key="label"
                   initial={{
@@ -147,7 +153,7 @@ export const Switch = forwardRef<ElementRef<typeof SwitchPrimitive.Root>, Switch
                   {label}
                 </m.span>
               )}
-              {(checkedLabel && shouldSwitchLabel) && (
+              {(shouldShowCheckedLabel && isChecked) && (
                 <m.span
                   key="label-checked"
                   exit={{

@@ -40,19 +40,6 @@ export const WithLabel = {
   },
 } satisfies Story;
 
-export const WithDynamicLabel = {
-  args: {
-    label: 'Sample default label',
-    checkedLabel: 'Checked label',
-  },
-  render: args => (
-    <Stack direction="row" columnGap={8}>
-      <Switch defaultChecked {...args} />
-      <Switch label="Sample default label" />
-    </Stack>
-  ),
-} satisfies Story;
-
 const ControlledSwitch = ({ checked, ...args }: SwitchProps) => {
   const [isChecked, setIsChecked] = useState(checked);
 
@@ -68,8 +55,22 @@ const ControlledSwitch = ({ checked, ...args }: SwitchProps) => {
 export const Controlled = {
   args: {
     label: 'Sample label',
-    checkedLabel: 'Checked label',
     checked: true,
   },
   render: args => <ControlledSwitch {...args} />,
 } satisfies Story;
+
+export const WithDynamicLabel = {
+  args: {
+    label: 'Sample default label',
+    checkedLabel: 'Checked label',
+    onCheckedChange: checked => console.log('checked:', checked),
+  },
+  render: args => (
+    <Stack direction="row" columnGap={8}>
+      <Switch defaultChecked {...args} />
+      <Switch label="Sample default label" />
+    </Stack>
+  ),
+} satisfies Story;
+
