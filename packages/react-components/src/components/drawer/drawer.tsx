@@ -4,24 +4,24 @@ import tkns from '@lualtek/tokens/platforms/web/tokens.json';
 import clsx from 'clsx';
 import { domMax, LazyMotion, m } from 'framer-motion';
 import {
-  forwardRef, ReactNode, useMemo,
+  forwardRef, ReactNode, useId,
+  useMemo,
 } from 'react';
 import { AutoFocusInside, FocusOn } from 'react-focus-on';
 import { useKeys } from 'rooks';
 
 import {
   Elevator,
-  IconButton,
+  IconButton, Overlay, OverlayProps,
   Panel,
   PropsClassChildren,
   Stack,
   Title,
-  useOverlayContext,
 } from '@/components';
 
 import styles from './drawer.module.css';
 
-export type DrawerProps = PropsClassChildren<{
+export type DrawerProps = PropsClassChildren<NonNullable<Pick<OverlayProps, 'onClose'>> & {
   /**
    * This enables the drawer to be closed by clicking on the overlay.
    * Even if this can be set to `false` we strongly recommend to leave
@@ -78,6 +78,10 @@ export type DrawerProps = PropsClassChildren<{
    * @defaultValue true
    */
   autoFocus?: boolean;
+  /**
+   * Set the visibility of the drawer.
+   */
+  isOpen?: boolean;
 }>
 
 export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(({
@@ -91,10 +95,11 @@ export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(({
   isModal = true,
   autoFocus = true,
   title,
+  onClose,
+  isOpen,
   ...otherProps
 }, forwardedRef) => {
-  const { titleId, onClose } = useOverlayContext();
-
+  const titleId = useId();
   useKeys(['esc'], () => (!isModal && onClose) && onClose());
 
   const dynamicStyle = useMemo(() => (
@@ -123,71 +128,75 @@ export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(({
   };
 
   return (
-    <div
-      role="dialog"
-      aria-modal={isModal}
-      data-theme={theme}
-      aria-labelledby={titleId}
-      className={clsx(styles.Drawer, className)}
-      ref={forwardedRef}
-      {...otherProps}
-    >
-      <FocusOn
-        enabled={isModal}
-        onClickOutside={closeOnClickOutside ? onClose : undefined}
-        onEscapeKey={onClose}
-        autoFocus={autoFocus}
-      >
-        <LazyMotion features={domMax}>
-          <m.div
-            variants={DrawerAnimation}
-            initial="hidden"
-            animate="visible"
-            exit="hidden"
-            className={styles.Container}
-            data-drawer-side={side}
+    <Overlay obfuscate={isModal} onClose={onClose}>
+      {isOpen && (
+        <div
+          role="dialog"
+          aria-modal={isModal}
+          data-theme={theme}
+          aria-labelledby={titleId}
+          className={clsx(styles.Drawer, className)}
+          ref={forwardedRef}
+          {...otherProps}
+        >
+          <FocusOn
+            enabled={isModal}
+            onClickOutside={closeOnClickOutside ? onClose : undefined}
+            onEscapeKey={onClose}
+            autoFocus={autoFocus}
           >
-            <Elevator resting={4} direction={side === 'left' ? 'right' : 'left'}>
-              <Panel vibrant vibrancyColor="soft" bordered borderSide={side === 'left' ? 'right' : 'left'}>
-                <Stack
-                  className={styles.Content}
-                  style={dynamicStyle}
-                  fill={false}
-                  vAlign="start"
-                  ref={forwardedRef}
-                  {...otherProps}
-                >
-                  {(showHeader && title) && (
+            <LazyMotion features={domMax}>
+              <m.div
+                variants={DrawerAnimation}
+                initial="hidden"
+                animate="visible"
+                exit="hidden"
+                className={styles.Container}
+                data-drawer-side={side}
+              >
+                <Elevator resting={4} direction={side === 'left' ? 'right' : 'left'}>
+                  <Panel vibrant vibrancyColor="soft" bordered borderSide={side === 'left' ? 'right' : 'left'}>
                     <Stack
-                      vAlign="center"
-                      hAlign="space-between"
-                      direction="row"
-                      className={styles.Header}
-                      columnGap={24}
+                      className={styles.Content}
+                      style={dynamicStyle}
+                      fill={false}
+                      vAlign="start"
+                      ref={forwardedRef}
+                      {...otherProps}
                     >
-                      <Title responsive={false} level="5" id={titleId} lineHeight="small">{title}</Title>
-                      {onClose && (
-                        <IconButton
-                          onClick={onClose}
-                          className={styles.CloseButton}
-                          icon="remove"
-                          kind="flat"
-                        />
+                      {(showHeader && title) && (
+                        <Stack
+                          vAlign="center"
+                          hAlign="space-between"
+                          direction="row"
+                          className={styles.Header}
+                          columnGap={24}
+                        >
+                          <Title responsive={false} level="5" id={titleId} lineHeight="small">{title}</Title>
+                          {onClose && (
+                            <IconButton
+                              onClick={onClose}
+                              className={styles.CloseButton}
+                              icon="remove"
+                              kind="flat"
+                            />
+                          )}
+                        </Stack>
                       )}
+                      <div className={styles.Scroller}>
+                        <AutoFocusInside>
+                          {children}
+                        </AutoFocusInside>
+                      </div>
                     </Stack>
-                  )}
-                  <div className={styles.Scroller}>
-                    <AutoFocusInside>
-                      {children}
-                    </AutoFocusInside>
-                  </div>
-                </Stack>
-              </Panel>
-            </Elevator>
-          </m.div>
-        </LazyMotion>
-      </FocusOn>
-    </div>
+                  </Panel>
+                </Elevator>
+              </m.div>
+            </LazyMotion>
+          </FocusOn>
+        </div>
+      )}
+    </Overlay>
   );
 });
 

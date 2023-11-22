@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 
 import {
-  Button, IconButton, Overlay, ResponsiveProvider,
+  Button, IconButton, ResponsiveProvider,
   Stack, Textfield,
   Title, useOverlayContext,
 } from '../..';
@@ -14,16 +14,16 @@ const ModalShell = ({ ...args }) => {
   return (
     <>
       <Button onClick={() => setIsVisible(true)}>Show Modal</Button>
-      <Overlay onClose={() => setIsVisible(false)}>
-        {isVisible && (
-          <Modal
-            key="dynamic-modal"
-            {...args}
-          >
-            {args.children}
-          </Modal>
-        )}
-      </Overlay>
+      <Modal
+        key="dynamic-modal"
+        isOpen={isVisible}
+        onClose={() => setIsVisible(false)}
+        {...args}
+      >
+        <Modal.Content title="Modal title">
+          {args.children}
+        </Modal.Content>
+      </Modal>
     </>
   );
 };
@@ -43,21 +43,19 @@ const meta = {
   ],
   render: args => (
     <ModalShell {...args}>
-      <Modal.Content title="Modal title">
-        <Stack hPadding={24} vPadding={24}>
-          <Textfield label="Test" />
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
-          distinctio qui quod ducimus libero magni earum perspiciatis.
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
-          distinctio qui quod ducimus libero magni earum perspiciatis.
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
-          distinctio qui quod ducimus libero magni earum perspiciatis.
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
-          distinctio qui quod ducimus libero magni earum perspiciatis.
-          <img width="100%" height="400" src="https://images.unsplash.com/photo-1579332649290-10b7da0cd111?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=cover&w=1600&q=80" />
-          <button type="button">click</button>
-        </Stack>
-      </Modal.Content>
+      <Stack hPadding={24} vPadding={24}>
+        <Textfield label="Test" />
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
+        distinctio qui quod ducimus libero magni earum perspiciatis.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
+        distinctio qui quod ducimus libero magni earum perspiciatis.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
+        distinctio qui quod ducimus libero magni earum perspiciatis.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
+        distinctio qui quod ducimus libero magni earum perspiciatis.
+        <img width="100%" height="400" src="https://images.unsplash.com/photo-1579332649290-10b7da0cd111?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=cover&w=1600&q=80" />
+        <button type="button">click</button>
+      </Stack>
     </ModalShell>
   ),
 } satisfies Meta<typeof Modal>;

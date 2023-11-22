@@ -17,7 +17,7 @@ export type OverlayProps = {
   /**
    * The children to render inside the overlay. This content
    * will be rendered in a React `portal`, which means that it will be
-   * rendered outside of the DOM hierarchy of the parent component.
+   * rendered outside the DOM hierarchy of the parent component.
    */
   children: ReactNode;
   /**
@@ -49,6 +49,11 @@ export type OverlayProps = {
    * @defaultValue true
    */
   obfuscate?: boolean;
+  /**
+   * Set the opacity of the backdrop.
+   * @defaultValue 0.7
+   */
+  backdropOpacity?: number;
 }
 
 export const Overlay: FCChildren<OverlayProps> = ({
@@ -57,6 +62,7 @@ export const Overlay: FCChildren<OverlayProps> = ({
   theme = 'auto',
   index = 4,
   obfuscate = true,
+  backdropOpacity = 0.7,
   onClose,
 }) => {
   const uid = useId();
@@ -100,7 +106,7 @@ export const Overlay: FCChildren<OverlayProps> = ({
                   className={styles.Backdrop}
                   data-overlay-color={theme}
                   initial={{ opacity: 0 }}
-                  animate={{ opacity: 0.7 }}
+                  animate={{ opacity: backdropOpacity }}
                   transition={{ duration: 0.2 }}
                   exit={{ opacity: 0 }}
                 />

@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 import {
   Autocomplete,
-  Button, Chip, Overlay, Stack,
+  Button, Chip, Stack,
 } from '../..';
 import { Drawer } from './drawer';
 
@@ -30,25 +30,21 @@ const DrawerShell = ({ ...args }) => {
     <>
       <Button onClick={() => setIsVisible(true)}>Show Drawer</Button>
       {/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
-      <Overlay obfuscate={args.isModal} onClose={() => setIsVisible(false)}>
-        {isVisible && (
-          <Drawer {...args}>
-            <Stack
-              vAlign="center"
-              vPadding={24}
-              hPadding={24}
-            >
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Doloribus et magnam distinctio qui quod ducimus libero magni earum perspiciatis.
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Doloribus et magnam distinctio qui quod ducimus libero magni earum perspiciatis.
-              <Autocomplete matchFieldWidth label="dio" options={options} align="center" />
-              <img width="100%" alt="" height="auto" src="https://images.unsplash.com/photo-1579332649290-10b7da0cd111?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=cover&w=1600&q=80" />
-              <Button onClick={() => setIsVisible(false)}>Close drawer</Button>
-            </Stack>
-          </Drawer>
-        )}
-      </Overlay>
+      <Drawer isOpen={isVisible} onClose={() => setIsVisible(false)} {...args}>
+        <Stack
+          vAlign="center"
+          vPadding={24}
+          hPadding={24}
+        >
+          Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          Doloribus et magnam distinctio qui quod ducimus libero magni earum perspiciatis.
+          Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          Doloribus et magnam distinctio qui quod ducimus libero magni earum perspiciatis.
+          <Autocomplete matchFieldWidth label="dio" options={options} align="center" />
+          <img width="100%" alt="" height="auto" src="https://images.unsplash.com/photo-1579332649290-10b7da0cd111?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=cover&w=1600&q=80" />
+          <Button onClick={() => setIsVisible(false)}>Close drawer</Button>
+        </Stack>
+      </Drawer>
     </>
   );
 };

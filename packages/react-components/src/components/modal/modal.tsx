@@ -3,17 +3,20 @@
 import tkns from '@lualtek/tokens/platforms/web/tokens.json';
 import clsx from 'clsx';
 import { domMax, LazyMotion, m } from 'framer-motion';
-import { forwardRef, useMemo } from 'react';
+import { forwardRef, useId, useMemo } from 'react';
 import { FocusOn } from 'react-focus-on';
 
-import { PropsClassChildren, useOverlayContext, useResponsiveContext } from '@/components';
+import {
+  Overlay,
+  OverlayProps, PropsClassChildren, useResponsiveContext,
+} from '@/components';
 
 import { ModalContent, ModalContentProps } from './content/modal-content';
 import styles from './modal.module.css';
 
-export type ModalProps = PropsClassChildren<{
+export type ModalProps = PropsClassChildren<NonNullable<Pick<OverlayProps, 'onClose'>> & {
   /**
-   * This enable the modal to be closed by clicking on the overlay.
+   * This enables the modal to be closed by clicking on the overlay.
    * Even if this can be set to `false` we strongly recommend to leave
    * it to `true` as it ensures the accessibility of the modal.
    *
@@ -26,6 +29,10 @@ export type ModalProps = PropsClassChildren<{
    * @defaultValue true
    */
   autoFocus?: boolean;
+  /**
+   * Set the visibility of the modal.
+   */
+  isOpen?: boolean;
 }>
 
 type ModalComponent = React.ForwardRefExoticComponent<ModalProps> & {
@@ -42,9 +49,11 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>(({
   className,
   closeOnClickOutside = true,
   autoFocus = true,
+  onClose,
+  isOpen,
   ...otherProps
 }, forwardedRef) => {
-  const { titleId, onClose } = useOverlayContext();
+  const titleId = useId();
   const { matches } = useResponsiveContext();
 
   const ModalAnimation = useMemo(() => ({
@@ -68,28 +77,33 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>(({
   }), [matches]);
 
   return (
-    <FocusOn
-      onClickOutside={closeOnClickOutside ? onClose : undefined}
-      onEscapeKey={onClose}
-      autoFocus={autoFocus}
-    >
-      <LazyMotion features={domMax}>
-        <m.div
-          variants={ModalAnimation}
-          initial="hidden"
-          animate="visible"
-          exit="hidden"
-          role="dialog"
-          aria-modal="true"
-          aria-labelledby={titleId}
-          className={clsx(styles.Modal, className)}
-          ref={forwardedRef}
-          {...otherProps}
+    <Overlay onClose={onClose}>
+      {isOpen
+      && (
+        <FocusOn
+          onClickOutside={closeOnClickOutside ? onClose : undefined}
+          onEscapeKey={onClose}
+          autoFocus={autoFocus}
         >
-          {children}
-        </m.div>
-      </LazyMotion>
-    </FocusOn>
+          <LazyMotion features={domMax}>
+            <m.div
+              variants={ModalAnimation}
+              initial="hidden"
+              animate="visible"
+              exit="hidden"
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby={titleId}
+              className={clsx(styles.Modal, className)}
+              ref={forwardedRef}
+              {...otherProps}
+            >
+              {children}
+            </m.div>
+          </LazyMotion>
+        </FocusOn>
+      )}
+    </Overlay>
   );
 }) as ModalComponent;
 
