@@ -23,7 +23,7 @@ import styles from './drawer.module.css';
 
 export type DrawerProps = PropsClassChildren<{
   /**
-   * This enable the drawer to be closed by clicking on the overlay.
+   * This enables the drawer to be closed by clicking on the overlay.
    * Even if this can be set to `false` we strongly recommend to leave
    * it to `true` as it ensures the accessibility of the drawer.
    *

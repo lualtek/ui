@@ -38,9 +38,9 @@
     "postcss-replace": "2.0.1"
   },
   "devDependencies": {
-    "@types/flat": "5.0.2",
+    "@types/flat": "5.0.5",
     "tsconfig": "*",
-    "typescript": "5.2.2"
+    "typescript": "5.3.2"
   },
   "types": "./dist/index.d.ts"
 }
