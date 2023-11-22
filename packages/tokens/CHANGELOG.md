@@ -1,5 +1,11 @@
 # @lualtek/tokens
 
+## 11.0.0-next.2
+
+### Minor Changes
+
+- 272100a0: Update textfields and add new 22 icon size
+
 ## 11.0.0-next.1
 
 ## 11.0.0-next.0
