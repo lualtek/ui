@@ -1,5 +1,15 @@
 # @lualtek/react-components
 
+## 11.0.0-next.1
+
+### Minor Changes
+
+- fd9e0f45: Drop support for :invalid selector in favor of :user-invalid
+
+### Patch Changes
+
+- @lualtek/icons@11.0.0-next.1
+
 ## 11.0.0-next.0
 
 ### Major Changes
