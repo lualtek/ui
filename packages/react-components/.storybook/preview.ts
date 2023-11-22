@@ -1,8 +1,8 @@
 import type { Preview } from '@storybook/react';
-import { themes, ensure} from '@storybook/theming';
+import { themes } from '@storybook/theming';
 import lualtekTheme from './lualtek-theme';
 
-import '@lualtek/themes/web';
+import '@lualtek/themes/web/default';
 import '../src/core.css';
 import './overrides.css';
 

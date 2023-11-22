@@ -13,18 +13,18 @@
     "platforms/"
   ],
   "exports": {
-    "./web": "./platforms/web/themes.css",
-    "./web/dark.css": "./platforms/web/dark.css",
-    "./web/light.css": "./platforms/web/light.css",
-    "./web/dark.json": "./platforms/web/dark.json",
-    "./web/light.json": "./platforms/web/light.json"
+    "./web/default": "./platforms/web/default/themes.css",
+    "./web/default/*.css": "./platforms/web/default/*.css",
+    "./web/default/*.json": "./platforms/web/default/*.json"
   },
   "scripts": {
     "prebuild": "rimraf platforms/",
-    "build": "run-s build:light build:dark build:combine",
+    "build": "run-s build:defaut:light build:defaut:dark build:monochrome:light build:monochrome:dark build:combine",
     "build:combine": "ts-node src/combine",
-    "build:light": "ts-node src/index --name light",
-    "build:dark": "ts-node src/index --name dark"
+    "build:defaut:light": "ts-node src/index --name default --variant light",
+    "build:defaut:dark": "ts-node src/index --name default --variant dark",
+    "build:monochrome:light": "ts-node src/index --name monochrome --variant light",
+    "build:monochrome:dark": "ts-node src/index --name monochrome --variant dark"
   },
   "repository": {
     "type": "git",

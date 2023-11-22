@@ -7,9 +7,9 @@ const formatTheme = (path: string) => {
   return theme.replace(':root {', '').replace('}', '');
 };
 
-const run = () => {
-  const lightTheme = formatTheme(path.join('platforms', 'web', 'light.css'));
-  const darkTheme = formatTheme(path.join('platforms', 'web', 'dark.css'));
+const run = (folder: string) => {
+  const lightTheme = formatTheme(path.join('platforms', 'web', folder, 'light.css'));
+  const darkTheme = formatTheme(path.join('platforms', 'web', folder, 'dark.css'));
 
   const template = `
   :root,
@@ -29,11 +29,14 @@ const run = () => {
   }
   `;
 
-  fs.writeFileSync(path.join('platforms', 'web', 'themes.css'), template);
+  fs.writeFileSync(path.join('platforms', 'web', folder, 'themes.css'), template);
 };
 
 try {
-  run();
+  const folders = fs.readdirSync(path.join('platforms', 'web')).filter(
+    file => fs.statSync(path.join('platforms', 'web', file)).isDirectory(),
+  );
+  folders.forEach(run);
   process.exit(0);
 } catch (error: unknown) {
   console.log('————————————————————————————————————————————————————————————————————————————————————— \n');

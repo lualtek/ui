@@ -11,23 +11,23 @@ const ColorTokens = require('@lualtek/tokens/platforms/raw/tokens.json');
 
 const { argv } = yargs(hideBin(process.argv));
 module.exports = {
-  source: [`./src/templates/${argv.name}/*.json`],
+  source: [`./src/themes/${argv.name}/${argv.variant}/*.json`],
   tokens: {
     ...ColorTokens,
   },
   platforms: {
     web: {
       basePxFontSize: 18,
-      buildPath: 'platforms/web/',
+      buildPath: `platforms/web/${argv.name}/`,
       transformGroup: 'custom-web',
       files: [
         {
           format: 'css/variables',
-          destination: `${argv.name}.css`,
+          destination: `${argv.variant}.css`,
         },
         {
           format: 'json/flat',
-          destination: `${argv.name}.json`,
+          destination: `${argv.variant}.json`,
         },
       ],
       options: {
