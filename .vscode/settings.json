@@ -25,9 +25,6 @@
     "source.fixAll.eslint": true,
     "source.fixAll.stylelint": true
   },
-  "files.associations": {
-    "*.css": "postcss"
-  },
   "[yaml]": {
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "esbenp.prettier-vscode"

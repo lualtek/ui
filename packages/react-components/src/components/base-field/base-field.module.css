@@ -51,7 +51,7 @@
       mask-image: var(--date-icon);
     }
 
-    /* @nest [data-textfield-has-icon='true'] &::-webkit-calendar-picker-indicator {
+    /* [data-textfield-has-icon='true'] &::-webkit-calendar-picker-indicator {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);

@@ -130,11 +130,12 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(({
         )}
 
         { icon && (!isPassword && isNotDate) && (
-          <Icon
-            className={styles.Icon}
-            source={icon}
-            dimension={18}
-          />
+          <Stack className={styles.Icon} hPadding={8} vPadding={8}>
+            <Icon
+              source={icon}
+              dimension={22}
+            />
+          </Stack>
         )}
 
         <Text

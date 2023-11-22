@@ -82,3 +82,12 @@ export const WithIcon = {
     icon: 'chat',
   },
 } satisfies Story;
+
+export const Invalid = {
+  args: {
+    label: 'Sample label',
+    iconPosition: 'start',
+    icon: 'chat',
+  },
+  render: args => <Textfield {...args} type="email" required label="Type email" defaultValue="" />,
+} satisfies Story;

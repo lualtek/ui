@@ -29,6 +29,10 @@
     text-overflow: ellipsis;
     overflow: hidden;
 
+    .InputField:where(:user-invalid, [data-basefield-invalid='true'], :out-of-range) ~ & {
+      color: var(--highlight-red-foreground);
+    }
+
     [data-textfield-has-icon='true'][data-textfield-icon-position='start'] & {
       left: calc(var(--field-padding) * var(--factor));
     }
@@ -36,10 +40,6 @@
     [data-textfield-has-icon='true'][data-textfield-icon-position='end'] & {
       left: var(--field-padding);
       right: calc(var(--field-padding) * var(--factor));
-    }
-
-    .Textfield[data-textfield-invalid='true'] & {
-      color: var(--highlight-red-foreground);
     }
   }
 
@@ -50,37 +50,36 @@
       token(--space-4)
       var(--field-padding);
 
-    [data-textfield-has-icon='true'][data-textfield-icon-position='end'] & {
-      padding-right: calc(var(--field-padding) * (var(--factor) * 0.95));
-      padding-left: var(--field-padding);
-    }
 
-    [data-textfield-has-icon='true'][data-textfield-icon-position='start'] & {
-      padding-right: var(--field-padding);
-      padding-left: calc(var(--field-padding) * (var(--factor) * 0.95));
-    }
+      [data-textfield-has-icon='true'][data-textfield-icon-position='end'] & {
+        padding-right: calc(var(--field-padding) * (var(--factor)));
+        padding-left: var(--field-padding);
+      }
+
+
+      [data-textfield-has-icon='true'][data-textfield-icon-position='start'] & {
+        padding-right: var(--field-padding);
+        padding-left: calc(var(--field-padding) * (var(--factor)));
+      }
   }
 
   .Icon {
-    border-radius: token(--radius-4);
     pointer-events: none;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
+    border-radius: 12px;
 
     [data-textfield-icon-position='start'] & {
       right: auto;
-      left: calc(var(--field-padding) + (var(--field-padding) / 4));
+      left: calc(var(--field-padding) / 1.5);
     }
 
     [data-textfield-icon-position='end'] & {
       left: auto;
-      right: calc(var(--field-padding) + (var(--field-padding) / 4));
+      right: calc(var(--field-padding) / 1.5);
     }
 
-    .Textfield[data-textfield-invalid='true'] & {
-      fill: var(--highlight-red-foreground);
-    }
   }
 }
 @layer overrides {

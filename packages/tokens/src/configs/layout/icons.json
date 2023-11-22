@@ -25,6 +25,12 @@
           "category": "size/rem"
         }
       },
+      "22": {
+        "value": 22,
+        "attributes": {
+          "category": "size/rem"
+        }
+      },
       "24": {
         "value": 24,
         "attributes": {
