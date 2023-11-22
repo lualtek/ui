@@ -1,5 +1,11 @@
 # @lualtek/themes
 
+## 11.0.0-next.3
+
+### Major Changes
+
+- 32103e15: Update themes structures and exports to allow more themes (light/dark pairs)
+
 ## 11.0.0-next.2
 
 ## 11.0.0-next.1
