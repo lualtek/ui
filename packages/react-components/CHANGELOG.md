@@ -1,5 +1,15 @@
 # @lualtek/react-components
 
+## 11.0.0-next.0
+
+### Major Changes
+
+- 8cd4093b: Add Overlay inside dialogs (modal, drawer, lightbox) to avoid repetition when used.
+
+### Patch Changes
+
+- @lualtek/icons@11.0.0-next.0
+
 ## 10.5.2
 
 ### Patch Changes
