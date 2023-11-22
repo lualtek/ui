@@ -1,5 +1,15 @@
 # @lualtek/react-components
 
+## 11.0.0-next.2
+
+### Minor Changes
+
+- 272100a0: Update textfields and add new 22 icon size
+
+### Patch Changes
+
+- @lualtek/icons@11.0.0-next.2
+
 ## 11.0.0-next.1
 
 ### Minor Changes
