@@ -9,5 +9,7 @@
     "@lualtek/tokens": "10.5.2",
     "tsconfig": "0.2.0"
   },
-  "changesets": []
+  "changesets": [
+    "tidy-lizards-love"
+  ]
 }
