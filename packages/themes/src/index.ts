@@ -55,7 +55,7 @@ const getConfig = (name: string, variant: string): CustomConfig => ({
 /**
  * Get all the folders inside the foldeer `themes` (eg, default, monochrome etc)
  */
-const themes = fs.readdirSync(path.join(__dirname, 'themes')).filter(
+const availableThemes = fs.readdirSync(path.join(__dirname, 'themes')).filter(
   file => fs.statSync(path.join(__dirname, 'themes', file)).isDirectory(),
 );
 
@@ -63,7 +63,7 @@ const themes = fs.readdirSync(path.join(__dirname, 'themes')).filter(
  * For each folder inside themes and for each variant (dark, light) just create
  * style dictionary configuration and run the build
  */
-for (const theme of themes) {
+for (const theme of availableThemes) {
   for (const themeVariant of THEME_VARIANTS) {
     const SDWithConfig = StyleDictionary.extend(getConfig(theme, themeVariant));
 

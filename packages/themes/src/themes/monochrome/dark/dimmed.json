@@ -2,54 +2,63 @@
   "dimmed": {
     "0": {
       "value": "{color.primary.90}",
+      "saturation": 0,
       "attributes": {
         "category": "color"
       }
     },
     "1": {
       "value": "{color.primary.80}",
+      "saturation": 0,
       "attributes": {
         "category": "color"
       }
     },
     "2": {
       "value": "{color.primary.70}",
+      "saturation": 0,
       "attributes": {
         "category": "color"
       }
     },
     "3": {
       "value": "{color.primary.60}",
+      "saturation": 0,
       "attributes": {
         "category": "color"
       }
     },
     "4": {
       "value": "{color.primary.50}",
+      "saturation": 0,
       "attributes": {
         "category": "color"
       }
     },
     "5": {
       "value": "{color.primary.40}",
+      "saturation": 0,
       "attributes": {
         "category": "color"
       }
     },
     "6": {
       "value": "{color.primary.30}",
+      "saturation": 0,
       "attributes": {
         "category": "color"
       }
     },
     "7": {
       "value": "{color.primary.20}",
+      "saturation": 0,
       "attributes": {
         "category": "color"
       }
     },
     "8": {
       "value": "{color.primary.0}",
+      "saturation": 0,
       "attributes": {
         "category": "color"
       }

@@ -2,12 +2,14 @@
   "global": {
     "foreground": {
       "value": "{color.primary.60}",
+      "saturation": 0,
       "attributes": {
         "category": "color"
       }
     },
     "background": {
       "value": "{color.support.white}",
+      "saturation": 0,
       "attributes": {
         "category": "color"
       }

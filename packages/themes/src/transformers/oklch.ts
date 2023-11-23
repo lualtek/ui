@@ -1,22 +1,28 @@
 import Color from 'colorjs.io';
 import * as StyleDictionary from 'style-dictionary';
 
+const colorValues = (color: Color, transparency: string) => {
+  const l = color.get('l').toFixed(2);
+  const c = color.get('c').toFixed(2);
+  const h = Number.isNaN(color.get('h')) ? 0 : color.get('h').toFixed(2);
+
+  return transparency ? `oklch(${l} ${c} ${h} / ${transparency})` : `oklch(${l} ${c} ${h}${color.alpha !== 1 ? ` / ${color.alpha}` : ''})`;
+};
+
 const OkLCH: StyleDictionary.Named<StyleDictionary.Transform> = {
   name: 'color/oklch',
   type: 'value',
   transitive: true,
-  matcher: token => token.attributes?.category === 'color',
+  matcher: token => token.attributes?.category === 'Color',
   transformer: (token) => {
     // This is used only if parsing original token values (hex colors)
     const color = new Color(token.value).to('oklch');
-    // const color = new Color(`oklch(${token.value})`).to('oklch');
-    const colorValues = `${(color.oklch[0] * 100).toFixed(2)}% ${color.oklch[1].toFixed(2)} ${Number.isNaN(color.oklch[2]) ? 0 : color.oklch[2].toFixed(1) || 0}`;
 
-    if (token.transparency) {
-      return `oklch(${colorValues} / ${token.transparency})`;
+    if (token.saturation >= 0) {
+      color.set('c', token.saturation);
     }
 
-    return `oklch(${colorValues}${color.alpha !== 1 ? ` / ${color.alpha}` : ''})`;
+    return colorValues(color, token.transparency);
   },
 };
 

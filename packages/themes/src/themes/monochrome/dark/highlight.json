@@ -8,12 +8,14 @@
     },
     "brand-foreground": {
       "value": "{color.brand.40}",
+      "saturation": 0,
       "attributes": {
         "category": "color"
       }
     },
     "gray-background": {
       "value": "{color.primary.80}",
+      "saturation": 0,
       "attributes": {
         "category": "color"
       }
