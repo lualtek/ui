@@ -13,7 +13,7 @@ const OkLCH: StyleDictionary.Named<StyleDictionary.Transform> = {
   name: 'color/oklch',
   type: 'value',
   transitive: true,
-  matcher: token => token.attributes?.category === 'Color',
+  matcher: token => token.attributes?.category === 'color',
   transformer: (token) => {
     // This is used only if parsing original token values (hex colors)
     const color = new Color(token.value).to('oklch');
