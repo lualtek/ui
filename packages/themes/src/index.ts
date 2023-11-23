@@ -1,5 +1,5 @@
 /* eslint-disable no-console, no-restricted-syntax */
-import CompiledColorTokens from '@lualtek/tokens/platforms/raw/tokens.json';
+import RawColorTokens from '@lualtek/tokens/platforms/raw/tokens.json';
 import fs from 'fs-extra';
 import path from 'path';
 import StyleDictionary from 'style-dictionary';
@@ -9,15 +9,24 @@ import OkLCH from './transformers/oklch';
 const THEME_VARIANTS = ['light', 'dark'] as const;
 
 /**
+ * This custom config extends the StyleDictionary.Config to change
+ * the `tokens` type sinec we use flat/json to inline the tokens
+ */
+interface CustomConfig extends StyleDictionary.Config {
+  tokens: any;
+}
+
+/**
  * Generate config for each theme folder
  * and each variant name (eg: monochrome/dark)
  * */
-const getConfig = (name: string, variant: string) => ({
+const getConfig = (name: string, variant: string): CustomConfig => ({
   source: [`./src/themes/${name}/${variant}/*.json`],
   tokens: {
-    ...CompiledColorTokens,
+    ...RawColorTokens,
   },
   platforms: {
+    // Build configuration for the web platform
     web: {
       basePxFontSize: 18,
       buildPath: `platforms/web/${name}/`,
@@ -36,7 +45,7 @@ const getConfig = (name: string, variant: string) => ({
         showFileHeader: true,
         fileHeader: (defaultMessage: string[]) => [
           ...defaultMessage,
-          '© Lualtek Srl. All rights reserved.',
+          '© Lualtek Srl. All rights reserved. Developed by Mattia Astorino.',
         ],
       },
     },
@@ -56,7 +65,6 @@ const themes = fs.readdirSync(path.join(__dirname, 'themes')).filter(
  */
 for (const theme of themes) {
   for (const themeVariant of THEME_VARIANTS) {
-    // @ts-expect-error extend wrong type of configuration collides with ours
     const SDWithConfig = StyleDictionary.extend(getConfig(theme, themeVariant));
 
     /**
@@ -67,7 +75,7 @@ for (const theme of themes) {
 
     /**
    * Add the custom transformers to a new transformGroup `custom-web`
-   * used inside tokens.config.json
+   * used inside getConfig
    */
     SDWithConfig.registerTransformGroup({
       name: 'custom-web',
