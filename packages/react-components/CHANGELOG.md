@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 11.0.0-next.4
+
+### Patch Changes
+
+- de6dbe9e: Update lightbox, drawer and modal props
+  - @lualtek/icons@11.0.0-next.4
+
 ## 11.0.0-next.3
 
 ### Patch Changes
