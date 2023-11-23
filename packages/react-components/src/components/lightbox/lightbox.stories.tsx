@@ -27,10 +27,10 @@ const Template = ({ selectedState, ...args }: LightboxProps) => {
         </BlankButton>
       ))}
       <Lightbox
+        {...args}
         selectedState={state}
         onClose={() => setIsOpen(false)}
         isOpen={isOpen}
-        {...args}
       />
     </>
   );

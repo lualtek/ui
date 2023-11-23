@@ -33,10 +33,10 @@ const run = (folder: string) => {
 };
 
 try {
-  const folders = fs.readdirSync(path.join('platforms', 'web')).filter(
+  const themes = fs.readdirSync(path.join('platforms', 'web')).filter(
     file => fs.statSync(path.join('platforms', 'web', file)).isDirectory(),
   );
-  folders.forEach(run);
+  themes.forEach(run);
   process.exit(0);
 } catch (error: unknown) {
   console.log('————————————————————————————————————————————————————————————————————————————————————— \n');

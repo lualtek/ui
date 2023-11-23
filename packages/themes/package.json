@@ -15,16 +15,16 @@
   "exports": {
     "./web/default": "./platforms/web/default/themes.css",
     "./web/default/*.css": "./platforms/web/default/*.css",
-    "./web/default/*.json": "./platforms/web/default/*.json"
+    "./web/default/*.json": "./platforms/web/default/*.json",
+    "./web/monochrome": "./platforms/web/monochrome/themes.css",
+    "./web/monochrome/*.css": "./platforms/web/monochrome/*.css",
+    "./web/monochrome/*.json": "./platforms/web/monochrome/*.json"
   },
   "scripts": {
     "prebuild": "rimraf platforms/",
-    "build": "run-s build:defaut:light build:defaut:dark build:monochrome:light build:monochrome:dark build:combine",
+    "build": "run-s build:themes build:combine",
     "build:combine": "ts-node src/combine",
-    "build:defaut:light": "ts-node src/index --name default --variant light",
-    "build:defaut:dark": "ts-node src/index --name default --variant dark",
-    "build:monochrome:light": "ts-node src/index --name monochrome --variant light",
-    "build:monochrome:dark": "ts-node src/index --name monochrome --variant dark"
+    "build:themes": "ts-node src/index"
   },
   "repository": {
     "type": "git",
