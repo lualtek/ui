@@ -21,7 +21,7 @@ import {
 
 import styles from './drawer.module.css';
 
-export type DrawerProps = PropsClassChildren<NonNullable<Pick<OverlayProps, 'onClose'>> & {
+export type DrawerProps = PropsClassChildren<{
   /**
    * This enables the drawer to be closed by clicking on the overlay.
    * Even if this can be set to `false` we strongly recommend to leave
@@ -82,6 +82,14 @@ export type DrawerProps = PropsClassChildren<NonNullable<Pick<OverlayProps, 'onC
    * Set the visibility of the drawer.
    */
   isOpen?: boolean;
+  /**
+   * Set the z-index of the drawer
+   */
+  index?: OverlayProps['index'];
+  /**
+   * Callback for closing the drawer
+   */
+  onClose: NonNullable<OverlayProps['onClose']>;
 }>
 
 export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(({
@@ -97,10 +105,11 @@ export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(({
   title,
   onClose,
   isOpen,
+  index,
   ...otherProps
 }, forwardedRef) => {
   const titleId = useId();
-  useKeys(['esc'], () => (!isModal && onClose) && onClose());
+  useKeys(['esc'], () => onClose());
 
   const dynamicStyle = useMemo(() => (
     {
@@ -128,7 +137,7 @@ export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(({
   };
 
   return (
-    <Overlay obfuscate={isModal} onClose={onClose}>
+    <Overlay obfuscate={isModal} onClose={onClose} index={index}>
       {isOpen && (
         <div
           role="dialog"

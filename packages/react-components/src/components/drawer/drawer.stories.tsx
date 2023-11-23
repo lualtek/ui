@@ -78,4 +78,5 @@ export const NonModal = {
     closeOnClickOutside: false,
     isModal: false,
   },
+  render: args => <DrawerShell {...args} />,
 } satisfies Story;

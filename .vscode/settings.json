@@ -5,7 +5,7 @@
   "javascript.validate.enable": false,
   "typescript.tsdk": "node_modules/typescript/lib",
   "cssvar.files": [
-    "./node_modules/@lualtek/themes/platforms/web/light.css"
+    "./node_modules/@lualtek/themes/platforms/web/default/light.css"
   ],
   // Do not ignore node_modules css files, which is ignored by default
   "cssvar.ignore": [],

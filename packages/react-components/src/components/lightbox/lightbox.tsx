@@ -14,7 +14,7 @@ import {
 import { BlankButton } from '../blank-button';
 import styles from './lightbox.module.css';
 
-export type LightboxProps = NonNullable<Pick<OverlayProps, 'onClose'>> & {
+export type LightboxProps = {
   /**
    * Array of objects containing the image url and optional title
    */
@@ -54,6 +54,14 @@ export type LightboxProps = NonNullable<Pick<OverlayProps, 'onClose'>> & {
    * Set the visibility of the lightbox
    */
   isOpen?: boolean;
+  /**
+   * Set the z-index of the lightbox
+   */
+  index?: OverlayProps['index'];
+  /**
+   * Callback for closing the lightbox
+   */
+  onClose: NonNullable<OverlayProps['onClose']>;
 }
 
 const navAnimation = {
@@ -80,6 +88,7 @@ export const Lightbox: FC<LightboxProps> = ({
   thumbnailWidth = '50px',
   onClose,
   isOpen,
+  index,
 }) => {
   // const { onClose } = useOverlayContext();
   const [activeIndex, setActiveIndex] = selectedState;
@@ -113,7 +122,7 @@ export const Lightbox: FC<LightboxProps> = ({
   }), [imageHeight, imageWidth, thumbnailHeight, thumbnailWidth]);
 
   return (
-    <Overlay onClose={onClose} backdropOpacity={0.9}>
+    <Overlay onClose={onClose} backdropOpacity={0.9} index={index}>
       {isOpen && (
         <FocusOn onEscapeKey={onClose}>
           <m.div className={styles.Lightbox} style={dynamicStyles}>

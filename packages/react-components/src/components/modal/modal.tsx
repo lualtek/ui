@@ -14,7 +14,7 @@ import {
 import { ModalContent, ModalContentProps } from './content/modal-content';
 import styles from './modal.module.css';
 
-export type ModalProps = PropsClassChildren<NonNullable<Pick<OverlayProps, 'onClose'>> & {
+export type ModalProps = PropsClassChildren<{
   /**
    * This enables the modal to be closed by clicking on the overlay.
    * Even if this can be set to `false` we strongly recommend to leave
@@ -33,6 +33,14 @@ export type ModalProps = PropsClassChildren<NonNullable<Pick<OverlayProps, 'onCl
    * Set the visibility of the modal.
    */
   isOpen?: boolean;
+  /**
+   * Set the z-index of the modal
+   */
+  index?: OverlayProps['index'];
+  /**
+   * Callback for closing the modal
+   */
+  onClose: NonNullable<OverlayProps['onClose']>;
 }>
 
 type ModalComponent = React.ForwardRefExoticComponent<ModalProps> & {
@@ -51,6 +59,7 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>(({
   autoFocus = true,
   onClose,
   isOpen,
+  index,
   ...otherProps
 }, forwardedRef) => {
   const titleId = useId();
@@ -77,7 +86,7 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>(({
   }), [matches]);
 
   return (
-    <Overlay onClose={onClose}>
+    <Overlay onClose={onClose} index={index}>
       {isOpen
       && (
         <FocusOn
