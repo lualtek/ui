@@ -55,6 +55,20 @@
           "category": "color"
         }
       }
+    },
+    "mono": {
+      "start": {
+        "value": "{color.gray.30}",
+        "attributes": {
+          "category": "color"
+        }
+      },
+      "end": {
+        "value": "{color.gray.70}",
+        "attributes": {
+          "category": "color"
+        }
+      }
     }
   }
 }
