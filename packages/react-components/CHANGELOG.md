@@ -1,5 +1,11 @@
 # @lualtek/react-components
 
+## 11.0.0-next.6
+
+### Patch Changes
+
+- @lualtek/icons@11.0.0-next.6
+
 ## 11.0.0-next.5
 
 ### Minor Changes
