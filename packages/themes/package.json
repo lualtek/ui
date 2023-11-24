@@ -13,12 +13,12 @@
     "platforms/"
   ],
   "exports": {
-    "./web/default": "./platforms/web/default/themes.css",
-    "./web/default/*.css": "./platforms/web/default/*.css",
-    "./web/default/*.json": "./platforms/web/default/*.json",
+    "./web": "./platforms/web/default/themes.css",
+    "./web/light.css": "./platforms/web/default/light.css",
+    "./web/dark.json": "./platforms/web/default/dark.json",
     "./web/pro": "./platforms/web/pro/themes.css",
-    "./web/pro/*.css": "./platforms/web/pro/*.css",
-    "./web/pro/*.json": "./platforms/web/pro/*.json"
+    "./web/pro/light.css": "./platforms/web/pro/light.css",
+    "./web/pro/dark.json": "./platforms/web/pro/dark.json"
   },
   "scripts": {
     "prebuild": "rimraf platforms/",
