@@ -13,13 +13,25 @@
       }
     },
     "gray-background": {
-      "value": "{color.primary.80}",
+      "value": "{color.gray.80}",
       "attributes": {
         "category": "color"
       }
     },
     "gray-foreground": {
-      "value": "{color.primary.40}",
+      "value": "{color.gray.40}",
+      "attributes": {
+        "category": "color"
+      }
+    },
+    "slate-background": {
+      "value": "{color.slate.80}",
+      "attributes": {
+        "category": "color"
+      }
+    },
+    "slate-foreground": {
+      "value": "{color.slate.40}",
       "attributes": {
         "category": "color"
       }

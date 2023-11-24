@@ -12,7 +12,10 @@ const meta = {
     },
     color: {
       options: [
-        'brand', 'gray', 'cyan', 'green', 'purple', 'yellow', 'red', 'blue', 'indigo', 'salmon', 'dipsy', 'magenta'],
+        'brand', 'gray', 'cyan', 'green',
+        'purple', 'yellow', 'red', 'blue', 'slate',
+        'indigo', 'salmon', 'dipsy', 'magenta',
+      ],
       control: { type: 'select' },
     },
   },

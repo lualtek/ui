@@ -16,9 +16,9 @@
     "./web/default": "./platforms/web/default/themes.css",
     "./web/default/*.css": "./platforms/web/default/*.css",
     "./web/default/*.json": "./platforms/web/default/*.json",
-    "./web/monochrome": "./platforms/web/monochrome/themes.css",
-    "./web/monochrome/*.css": "./platforms/web/monochrome/*.css",
-    "./web/monochrome/*.json": "./platforms/web/monochrome/*.json"
+    "./web/pro": "./platforms/web/pro/themes.css",
+    "./web/pro/*.css": "./platforms/web/pro/*.css",
+    "./web/pro/*.json": "./platforms/web/pro/*.json"
   },
   "scripts": {
     "prebuild": "rimraf platforms/",

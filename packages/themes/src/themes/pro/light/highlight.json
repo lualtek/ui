@@ -1,147 +1,157 @@
 {
   "highlight": {
     "brand-background": {
-      "value": "{color.brand.100}",
+      "value": "{color.brand.10}",
       "attributes": {
         "category": "color"
       }
     },
     "brand-foreground": {
-      "value": "{color.brand.40}",
-      "saturation": 0,
+      "value": "{color.brand.60}",
       "attributes": {
         "category": "color"
       }
     },
     "gray-background": {
-      "value": "{color.primary.80}",
-      "saturation": 0,
+      "value": "{color.gray.20}",
       "attributes": {
         "category": "color"
       }
     },
     "gray-foreground": {
-      "value": "{color.primary.40}",
+      "value": "{color.gray.60}",
+      "attributes": {
+        "category": "color"
+      }
+    },
+    "slate-background": {
+      "value": "{color.slate.20}",
+      "attributes": {
+        "category": "color"
+      }
+    },
+    "slate-foreground": {
+      "value": "{color.slate.60}",
       "attributes": {
         "category": "color"
       }
     },
     "yellow-background": {
-      "value": "{color.yellow.100}",
+      "value": "{color.yellow.10}",
       "attributes": {
         "category": "color"
       }
     },
     "yellow-foreground": {
-      "value": "{color.yellow.40}",
+      "value": "{color.yellow.70}",
       "attributes": {
         "category": "color"
       }
     },
     "green-background": {
-      "value": "{color.green.100}",
+      "value": "{color.green.10}",
       "attributes": {
         "category": "color"
       }
     },
     "green-foreground": {
-      "value": "{color.green.40}",
+      "value": "{color.green.70}",
       "attributes": {
         "category": "color"
       }
     },
     "blue-background": {
-      "value": "{color.blue.100}",
+      "value": "{color.blue.10}",
       "attributes": {
         "category": "color"
       }
     },
     "blue-foreground": {
-      "value": "{color.blue.40}",
+      "value": "{color.blue.60}",
       "attributes": {
         "category": "color"
       }
     },
     "red-background": {
-      "value": "{color.red.100}",
+      "value": "{color.red.10}",
       "attributes": {
         "category": "color"
       }
     },
     "red-foreground": {
-      "value": "{color.red.30}",
+      "value": "{color.red.50}",
       "attributes": {
         "category": "color"
       }
     },
     "cyan-background": {
-      "value": "{color.cyan.100}",
+      "value": "{color.cyan.10}",
       "attributes": {
         "category": "color"
       }
     },
     "cyan-foreground": {
-      "value": "{color.cyan.40}",
+      "value": "{color.cyan.60}",
       "attributes": {
         "category": "color"
       }
     },
     "purple-background": {
-      "value": "{color.purple.100}",
+      "value": "{color.purple.10}",
       "attributes": {
         "category": "color"
       }
     },
     "purple-foreground": {
-      "value": "{color.purple.40}",
+      "value": "{color.purple.60}",
       "attributes": {
         "category": "color"
       }
     },
     "indigo-background": {
-      "value": "{color.indigo.80}",
+      "value": "{color.indigo.5}",
       "attributes": {
         "category": "color"
       }
     },
     "indigo-foreground": {
-      "value": "{color.indigo.20}",
+      "value": "{color.indigo.50}",
       "attributes": {
         "category": "color"
       }
     },
     "dipsy-background": {
-      "value": "{color.dipsy.90}",
+      "value": "{color.dipsy.10}",
       "attributes": {
         "category": "color"
       }
     },
     "dipsy-foreground": {
-      "value": "{color.dipsy.40}",
+      "value": "{color.dipsy.70}",
       "attributes": {
         "category": "color"
       }
     },
     "salmon-background": {
-      "value": "{color.salmon.90}",
+      "value": "{color.salmon.5}",
       "attributes": {
         "category": "color"
       }
     },
     "salmon-foreground": {
-      "value": "{color.salmon.20}",
+      "value": "{color.salmon.60}",
       "attributes": {
         "category": "color"
       }
     },
     "magenta-background": {
-      "value": "{color.magenta.90}",
+      "value": "{color.magenta.5}",
       "attributes": {
         "category": "color"
       }
     },
     "magenta-foreground": {
-      "value": "{color.magenta.10}",
+      "value": "{color.magenta.60}",
       "attributes": {
         "category": "color"
       }

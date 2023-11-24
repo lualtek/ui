@@ -40,7 +40,7 @@
     position: relative;
 
     .Trigger[data-state='active'] & {
-      color: var(--cta-default);
+      color: var(--global-foreground);
     }
   }
 
@@ -85,6 +85,7 @@
     z-index: 0;
     outline-offset: calc((var(--separator-size) * 2) * -1);
     background: transparent;
+    color: var(--dimmed-5);
 
     &.Trigger:not([aria-disabled='true']):is(:hover, :focus, :active) {
       background: none;

@@ -1,34 +1,34 @@
 {
   "vibrancy": {
     "foreground": {
-      "value": "{color.primary.30}",
+      "value": "{color.gray.30}",
       "attributes": {
         "category": "color"
       }
     },
     "background": {
-      "value": "{color.primary.100}",
+      "value": "{color.support.black}",
       "transparency": "60%",
       "attributes": {
         "category": "color"
       }
     },
     "background-soft": {
-      "value": "{color.primary.90}",
+      "value": "{color.gray.90}",
       "transparency": "60%",
       "attributes": {
         "category": "color"
       }
     },
     "background-mid": {
-      "value": "{color.primary.80}",
+      "value": "{color.gray.80}",
       "transparency": "60%",
       "attributes": {
         "category": "color"
       }
     },
     "background-hard": {
-      "value": "{color.primary.70}",
+      "value": "{color.gray.70}",
       "transparency": "60%",
       "attributes": {
         "category": "color"

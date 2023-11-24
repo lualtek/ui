@@ -1,7 +1,7 @@
 {
   "vibrancy": {
     "foreground": {
-      "value": "{color.primary.100}",
+      "value": "{color.gray.100}",
       "attributes": {
         "category": "color"
       }
@@ -14,21 +14,21 @@
       }
     },
     "background-soft": {
-      "value": "{color.primary.0}",
+      "value": "{color.gray.0}",
       "transparency": "60%",
       "attributes": {
         "category": "color"
       }
     },
     "background-mid": {
-      "value": "{color.primary.10}",
+      "value": "{color.gray.10}",
       "transparency": "60%",
       "attributes": {
         "category": "color"
       }
     },
     "background-hard": {
-      "value": "{color.primary.30}",
+      "value": "{color.gray.30}",
       "transparency": "60%",
       "attributes": {
         "category": "color"

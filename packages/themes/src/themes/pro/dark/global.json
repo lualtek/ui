@@ -1,15 +1,13 @@
 {
   "global": {
     "foreground": {
-      "value": "{color.primary.30}",
-      "saturation": 0,
+      "value": "{color.gray.30}",
       "attributes": {
         "category": "color"
       }
     },
     "background": {
-      "value": "{color.primary.100}",
-      "saturation": 0,
+      "value": "{color.support.black}",
       "attributes": {
         "category": "color"
       }
@@ -27,14 +25,14 @@
       }
     },
     "disabled-foreground": {
-      "value": "{color.primary.5}",
+      "value": "{color.gray.5}",
       "transparency": "20%",
       "attributes": {
         "category": "color"
       }
     },
     "disabled-background": {
-      "value": "{color.primary.50}",
+      "value": "{color.gray.50}",
       "transparency": "15%",
       "attributes": {
         "category": "color"
