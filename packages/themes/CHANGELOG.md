@@ -1,5 +1,11 @@
 # @lualtek/themes
 
+## 11.0.0-next.6
+
+### Patch Changes
+
+- e49e7228: Update themes exports
+
 ## 11.0.0-next.5
 
 ### Minor Changes
