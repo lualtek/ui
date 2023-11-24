@@ -1,5 +1,15 @@
 # @lualtek/react-components
 
+## 11.0.0-next.5
+
+### Minor Changes
+
+- ad4e6636: Add new pro theme and new gray color. Old gray is now called slate
+
+### Patch Changes
+
+- @lualtek/icons@11.0.0-next.5
+
 ## 11.0.0-next.4
 
 ### Patch Changes
