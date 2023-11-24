@@ -1,5 +1,11 @@
 # @lualtek/tokens
 
+## 11.0.0-next.5
+
+### Minor Changes
+
+- ad4e6636: Add new pro theme and new gray color. Old gray is now called slate
+
 ## 11.0.0-next.4
 
 ## 11.0.0-next.3
