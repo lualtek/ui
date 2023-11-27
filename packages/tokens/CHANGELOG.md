@@ -1,5 +1,12 @@
 # @lualtek/tokens
 
+## 11.0.0
+
+### Minor Changes
+
+- 272100a0: Update textfields and add new 22 icon size
+- ad4e6636: Add new pro theme and new gray color. Old gray is now called slate
+
 ## 11.0.0-next.6
 
 ## 11.0.0-next.5

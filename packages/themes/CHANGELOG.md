@@ -1,5 +1,21 @@
 # @lualtek/themes
 
+## 11.0.0
+
+### Major Changes
+
+- 32103e15: Update themes structures and exports to allow more themes (light/dark pairs)
+
+### Minor Changes
+
+- 2456dd41: Add new gray start/end gradient stops
+- 065f082f: Add new gray color. Old gray is now called slate.
+- ad4e6636: Add new pro theme and new gray color. Old gray is now called slate
+
+### Patch Changes
+
+- e49e7228: Update themes exports
+
 ## 11.0.0-next.6
 
 ### Patch Changes
