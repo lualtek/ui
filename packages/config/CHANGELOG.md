@@ -1,5 +1,12 @@
 # @lualtek/config
 
+## 11.1.0
+
+### Patch Changes
+
+- Updated dependencies [2ecb4332]
+  - @lualtek/tokens@11.1.0
+
 ## 11.0.0
 
 ### Patch Changes
