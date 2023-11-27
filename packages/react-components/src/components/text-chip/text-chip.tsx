@@ -17,7 +17,7 @@ export type TextChipProps = {
   dimension?: 'small' | 'regular' | 'big';
   /**
    * Set a color from one of the provided values.
-   * @defaultValue "gray"
+   * @defaultValue "primary"
    */
   color?: TokensTypes['colors'];
   /**
@@ -58,7 +58,7 @@ export const TextChip: FCClass<TextChipProps> = ({
   style,
   className,
   dimension = 'regular',
-  color = 'gray',
+  color = 'primary',
   tinted = true,
   ...otherProps
 }) => {

@@ -10,7 +10,6 @@
 		"kamikillerto.vscode-colorize",
 		"lasalefamine.vscode-css-vars",
 		"editorconfig.editorconfig",
-    "esbenp.prettier-vscode",
-    "clinyong.vscode-css-modules"
+    "esbenp.prettier-vscode"
 	]
 }

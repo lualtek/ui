@@ -12,6 +12,18 @@
         "category": "color"
       }
     },
+    "primary-background": {
+      "value": "{color.primary.100}",
+      "attributes": {
+        "category": "color"
+      }
+    },
+    "primary-foreground": {
+      "value": "{color.primary.40}",
+      "attributes": {
+        "category": "color"
+      }
+    },
     "gray-background": {
       "value": "{color.gray.80}",
       "attributes": {

@@ -23,7 +23,7 @@ export type ChipProps = PropsClassChildren<{
   dimension?: 'small' | 'regular' | 'big';
   /**
    * Set a color from one of the provided values.
-   * @defaultValue "gray"
+   * @defaultValue "primary"
    */
   color?: TokensTypes['colors'];
   /**
@@ -66,7 +66,7 @@ export const Chip = forwardRef<ForwardedElementType<NonNullable<ChipProps['inter
   children,
   className,
   dimension = 'regular',
-  color = 'gray',
+  color = 'primary',
   icon,
   interactive,
   dismissable,

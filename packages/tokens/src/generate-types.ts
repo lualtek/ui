@@ -23,7 +23,7 @@ const reduceTokensJson = (tokens: Record<string, unknown>): string => Object.key
   return allKeysAsTypeUnion ? acc.concat(`${key}: ${allKeysAsTypeUnion.trimEnd()};\n `) : acc;
 }, '');
 
-const colorsToExclude = ['primary', 'support'];
+const colorsToExclude = ['support'];
 
 const run = () => {
   const tokens = require('../platforms/web/tokens.json') as Record<string, unknown>;

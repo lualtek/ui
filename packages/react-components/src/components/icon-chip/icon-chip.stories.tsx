@@ -14,7 +14,7 @@ const meta = {
       options: [
         'brand', 'gray', 'cyan', 'green',
         'purple', 'yellow', 'red', 'blue', 'slate',
-        'indigo', 'salmon', 'dipsy', 'magenta',
+        'indigo', 'salmon', 'dipsy', 'magenta', 'primary',
       ],
       control: { type: 'select' },
     },

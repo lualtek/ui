@@ -21,7 +21,7 @@ export type IconChipProps = {
   /**
    * Set a color from one of the provided values.
    *
-   * @defaultValue "gray"
+   * @defaultValue "primary"
    */
   color?: TokensTypes['colors'];
   /**
@@ -50,7 +50,7 @@ export const IconChip: FCClass<IconChipProps> = ({
   style,
   className,
   dimension = 'regular',
-  color = 'gray',
+  color = 'primary',
   icon,
   ...otherProps
 }) => {
