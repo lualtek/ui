@@ -1,5 +1,22 @@
 # @lualtek/react-components
 
+## 11.0.0
+
+### Major Changes
+
+- 8cd4093b: Add Overlay inside dialogs (modal, drawer, lightbox) to avoid repetition when used.
+
+### Minor Changes
+
+- fd9e0f45: Drop support for :invalid selector in favor of :user-invalid
+- 272100a0: Update textfields and add new 22 icon size
+- ad4e6636: Add new pro theme and new gray color. Old gray is now called slate
+
+### Patch Changes
+
+- de6dbe9e: Update lightbox, drawer and modal props
+  - @lualtek/icons@11.0.0
+
 ## 11.0.0-next.6
 
 ### Patch Changes
