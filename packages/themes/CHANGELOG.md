@@ -1,5 +1,11 @@
 # @lualtek/themes
 
+## 11.1.0
+
+### Minor Changes
+
+- 2ecb4332: Add new primary highlight theme key
+
 ## 11.0.0
 
 ### Major Changes

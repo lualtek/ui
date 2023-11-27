@@ -1,5 +1,15 @@
 # @lualtek/react-components
 
+## 11.1.0
+
+### Minor Changes
+
+- 2ecb4332: Add new primary highlight theme key
+
+### Patch Changes
+
+- @lualtek/icons@11.1.0
+
 ## 11.0.0
 
 ### Major Changes
