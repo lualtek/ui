@@ -8,7 +8,7 @@
     max-block-size: 95dvh;
     border-radius: token(--radius-24) token(--radius-24) 0 0;
     place-self: end center;
-    padding-block-end: min(calc(env(safe-area-inset-bottom) + token(--space-16)), env(safe-area-inset-bottom));
+    display: flex;
 
     @media (--from-small) {
       max-inline-size: 600px;
@@ -19,7 +19,10 @@
     }
 
     & > * {
-      max-height: inherit;
+      --safe-padding: calc(env(safe-area-inset-bottom) * 2);
+
+      flex-grow: 1;
+      padding-block-end: max(env(safe-area-inset-bottom), var(--padding));
     }
   }
 

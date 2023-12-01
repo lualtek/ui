@@ -33,7 +33,6 @@ const DrawerShell = ({ ...args }) => {
       <Drawer isOpen={isVisible} onClose={() => setIsVisible(false)} {...args}>
         <Stack
           vAlign="center"
-          vPadding={24}
           hPadding={24}
         >
           Lorem ipsum dolor sit amet consectetur adipisicing elit.
