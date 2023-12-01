@@ -43,7 +43,7 @@ const meta = {
   ],
   render: args => (
     <ModalShell {...args}>
-      <Stack hPadding={24} vPadding={24}>
+      <Stack hPadding={24}>
         <Textfield label="Test" />
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
         distinctio qui quod ducimus libero magni earum perspiciatis.
@@ -53,7 +53,38 @@ const meta = {
         distinctio qui quod ducimus libero magni earum perspiciatis.
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
         distinctio qui quod ducimus libero magni earum perspiciatis.
-        <img width="100%" height="400" src="https://images.unsplash.com/photo-1579332649290-10b7da0cd111?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=cover&w=1600&q=80" />
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
+        distinctio qui quod ducimus libero magni earum perspiciatis.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
+        distinctio qui quod ducimus libero magni earum perspiciatis.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
+        distinctio qui quod ducimus libero magni earum perspiciatis.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
+        distinctio qui quod ducimus libero magni earum perspiciatis.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
+        distinctio qui quod ducimus libero magni earum perspiciatis.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
+        distinctio qui quod ducimus libero magni earum perspiciatis.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
+        distinctio qui quod ducimus libero magni earum perspiciatis.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
+        distinctio qui quod ducimus libero magni earum perspiciatis.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
+        distinctio qui quod ducimus libero magni earum perspiciatis.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
+        distinctio qui quod ducimus libero magni earum perspiciatis.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
+        distinctio qui quod ducimus libero magni earum perspiciatis.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
+        distinctio qui quod ducimus libero magni earum perspiciatis.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
+        distinctio qui quod ducimus libero magni earum perspiciatis.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
+        distinctio qui quod ducimus libero magni earum perspiciatis.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
+        distinctio qui quod ducimus libero magni earum perspiciatis.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
+        distinctio qui quod ducimus libero magni earum perspiciatis.
         <button type="button">click</button>
       </Stack>
     </ModalShell>

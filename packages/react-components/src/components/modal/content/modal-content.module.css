@@ -7,17 +7,19 @@
     max-block-size: 95vh;
     max-block-size: 95dvh;
     border-radius: token(--radius-24) token(--radius-24) 0 0;
-    justify-self: center;
-    align-self: end;
-    padding-block-end: env(safe-area-inset-bottom);
+    place-self: end center;
+    padding-block-end: min(calc(env(safe-area-inset-bottom) + token(--space-16)), env(safe-area-inset-bottom));
 
     @media (--from-small) {
       max-inline-size: 600px;
       max-block-size: 80vh;
       max-block-size: 80dvh;
       border-radius: token(--radius-24);
-      justify-self: center;
-      align-self: center;
+      place-self: center center;
+    }
+
+    & > * {
+      max-height: inherit;
     }
   }
 
