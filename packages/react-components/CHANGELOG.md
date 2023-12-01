@@ -1,5 +1,13 @@
 # @lualtek/react-components
 
+## 11.1.1
+
+### Patch Changes
+
+- 9751e6da: Fix modal overflow
+- 9751e6da: Fix modal-content safe area bottom padding
+  - @lualtek/icons@11.1.1
+
 ## 11.1.0
 
 ### Minor Changes

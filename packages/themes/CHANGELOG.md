@@ -1,5 +1,7 @@
 # @lualtek/themes
 
+## 11.1.1
+
 ## 11.1.0
 
 ### Minor Changes
