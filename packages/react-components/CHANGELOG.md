@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 11.1.2
+
+### Patch Changes
+
+- a6b45a7e: Fix modal/drawer paddings
+  - @lualtek/icons@11.1.2
+
 ## 11.1.1
 
 ### Patch Changes
