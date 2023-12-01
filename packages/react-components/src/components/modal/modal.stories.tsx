@@ -43,7 +43,7 @@ const meta = {
   ],
   render: args => (
     <ModalShell {...args}>
-      <Stack hPadding={24}>
+      <Stack hPadding={24} vPadding={24}>
         <Textfield label="Test" />
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
         distinctio qui quod ducimus libero magni earum perspiciatis.

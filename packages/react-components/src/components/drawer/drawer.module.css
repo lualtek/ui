@@ -27,7 +27,7 @@
 
   .Content {
     inline-size: 100vw;
-    padding-bottom: env(safe-area-inset-bottom);
+    padding-block-end: min(calc(env(safe-area-inset-bottom) + token(--space-16)), env(safe-area-inset-bottom));
     max-inline-size: var(--max-w);
     height: 100dvh;
   }
