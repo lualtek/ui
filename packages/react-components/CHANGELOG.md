@@ -1,5 +1,13 @@
 # @lualtek/react-components
 
+## 11.1.3
+
+### Patch Changes
+
+- fc2a87bf: Safe areas
+- 9373beab: Add missing vibrancy colors to panel
+  - @lualtek/icons@11.1.3
+
 ## 11.1.2
 
 ### Patch Changes
