@@ -2,7 +2,7 @@
  * Hook parameters
  */
 export type VibrancyBlur = 'soft' | 'strong';
-export type VibrancyColor = 'background' | 'soft' | 'mid' | 'hard';
+export type VibrancyColor = 'background' | 'soft' | 'mid' | 'hard' | 'red' | 'yellow' | 'green' | 'brand';
 export type VibrancySaturation = 'standard' | 'high';
 export type ElevationLevel = 0 | 1 | 2 | 3 | 4;
 export type ElevationDirection = 'right' | 'left' | 'top' | 'bottom';

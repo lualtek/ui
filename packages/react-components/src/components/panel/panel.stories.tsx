@@ -22,7 +22,7 @@ const meta = {
       control: { type: 'radio' },
     },
     vibrancyColor: {
-      options: [undefined, 'background', 'soft', 'mid', 'hard'],
+      options: [undefined, 'background', 'soft', 'mid', 'hard', 'red', 'yellow', 'green', 'brand'],
       control: { type: 'select' },
     },
     borderSide: {

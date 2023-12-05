@@ -35,5 +35,21 @@
   &[data-vibrancy-color='hard'] {
     --background: var(--vibrancy-background-hard);
   }
+
+  &[data-vibrancy-color='red'] {
+    --background: var(--vibrancy-background-red);
+  }
+
+  &[data-vibrancy-color='green'] {
+    --background: var(--vibrancy-background-green);
+  }
+
+  &[data-vibrancy-color='yellow'] {
+    --background: var(--vibrancy-background-yellow);
+  }
+
+  &[data-vibrancy-color='brand'] {
+    --background: var(--vibrancy-background-brand);
+  }
 }
 
