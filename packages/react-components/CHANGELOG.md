@@ -1,5 +1,16 @@
 # @lualtek/react-components
 
+## 11.2.0
+
+### Minor Changes
+
+- d54c7f2e: Add safePadding prop to modal and drawer
+
+### Patch Changes
+
+- d6d016c6: Fix modal safe padding
+  - @lualtek/icons@11.2.0
+
 ## 11.1.3
 
 ### Patch Changes
