@@ -29,9 +29,12 @@
     --safe-padding: calc(env(safe-area-inset-bottom, 0) * 1.3);
 
     inline-size: 100vw;
-    padding-block-end: max(env(safe-area-inset-bottom), var(--safe-padding));
     max-inline-size: var(--max-w);
     height: 100dvh;
+
+    &[data-drawer-content-safe-padding='true'] {
+      padding-block-end: max(env(safe-area-inset-bottom), var(--safe-padding));
+    }
   }
 
   .Scroller {

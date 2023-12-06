@@ -69,6 +69,7 @@ const meta = {
     title: 'Drawer title',
     closeOnClickOutside: true,
     isModal: true,
+    safePadding: true,
   },
   argTypes: {
     side: {

@@ -36,6 +36,12 @@ export type ModalContentProps = HTMLAttributes<HTMLDivElement> & {
    * @defaultValue true
    */
   scrollInside?: boolean;
+  /**
+   * Enable or disable safe padding. Prevents content from being hidden behind the safe area.
+   *
+   * @defaultValue true
+   */
+  safePadding?: boolean;
 }
 
 export const ModalContent = forwardRef<HTMLDivElement, ModalContentProps>(({
@@ -45,6 +51,7 @@ export const ModalContent = forwardRef<HTMLDivElement, ModalContentProps>(({
   theme = 'auto',
   scrollInside = true,
   headerTint,
+  safePadding = true,
   style,
   ...otherProps
 }, forwardedRef) => {
@@ -69,6 +76,7 @@ export const ModalContent = forwardRef<HTMLDivElement, ModalContentProps>(({
         <Stack
           style={{ ...dynamicStyle, ...style }}
           className={styles.ContentLayout}
+          data-modal-content-safe-padding={safePadding}
           ref={forwardedRef}
           data-theme={theme}
           {...otherProps}

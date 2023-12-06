@@ -87,6 +87,12 @@ export type DrawerProps = PropsClassChildren<{
    */
   index?: OverlayProps['index'];
   /**
+   * Enable or disable safe padding. Prevents content from being hidden behind the safe area.
+   *
+   * @defaultValue true
+   */
+  safePadding?: boolean;
+  /**
    * Callback for closing the drawer
    */
   onClose: NonNullable<OverlayProps['onClose']>;
@@ -102,6 +108,7 @@ export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(({
   theme = 'auto',
   isModal = true,
   autoFocus = true,
+  safePadding = true,
   title,
   onClose,
   isOpen,
@@ -171,6 +178,7 @@ export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(({
                       fill={false}
                       vAlign="start"
                       ref={forwardedRef}
+                      data-drawer-content-safe-padding={safePadding}
                       {...otherProps}
                     >
                       {(showHeader && title) && (

@@ -23,7 +23,10 @@
     --safe-padding: calc(env(safe-area-inset-bottom, 0) * 1.3);
 
     flex-grow: 1;
-    padding-block-end: max(env(safe-area-inset-bottom), var(--safe-padding));
+
+    &[data-modal-content-safe-padding='true'] {
+      padding-block-end: max(env(safe-area-inset-bottom), var(--safe-padding));
+    }
   }
 
   .Scroller {
