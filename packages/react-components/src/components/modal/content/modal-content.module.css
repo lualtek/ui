@@ -17,13 +17,13 @@
       border-radius: token(--radius-24);
       place-self: center center;
     }
+  }
 
-    & > * {
-      --safe-padding: calc(env(safe-area-inset-bottom, 0) * 1.3);
+  .ContentLayout {
+    --safe-padding: calc(env(safe-area-inset-bottom, 0) * 1.3);
 
-      flex-grow: 1;
-      padding-block-end: max(env(safe-area-inset-bottom), var(--padding));
-    }
+    flex-grow: 1;
+    padding-block-end: max(env(safe-area-inset-bottom), var(--safe-padding));
   }
 
   .Scroller {

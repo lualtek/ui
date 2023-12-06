@@ -68,6 +68,7 @@ export const ModalContent = forwardRef<HTMLDivElement, ModalContentProps>(({
       >
         <Stack
           style={{ ...dynamicStyle, ...style }}
+          className={styles.ContentLayout}
           ref={forwardedRef}
           data-theme={theme}
           {...otherProps}
