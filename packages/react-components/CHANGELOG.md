@@ -1,5 +1,15 @@
 # @lualtek/react-components
 
+## 11.3.0
+
+### Minor Changes
+
+- 9ad09185: Add new double-check icon
+
+### Patch Changes
+
+- @lualtek/icons@11.3.0
+
 ## 11.2.0
 
 ### Minor Changes
