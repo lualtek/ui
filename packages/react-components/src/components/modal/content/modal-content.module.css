@@ -20,7 +20,7 @@
   }
 
   .ContentLayout {
-    --safe-padding: calc(env(safe-area-inset-bottom, 0) * 1.3);
+    --safe-padding: calc(env(safe-area-inset-bottom, 0) * 0.7);
 
     flex-grow: 1;
 
