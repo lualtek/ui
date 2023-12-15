@@ -1,0 +1,93 @@
+import type { Meta, StoryObj } from '@storybook/react';
+
+import { ScrollArea } from './scroll-area';
+
+const meta = {
+  title: 'Layouts/Scroll Area',
+  component: ScrollArea,
+  args: {
+    canScroll: true,
+  },
+  render: args => (
+    <ScrollArea {...args} style={{ maxHeight: 300, maxWidth: 400 }}>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit.Quos temporibus veniam, possimus, velit,
+      reprehenderit magnam ab totam eaque adipisci ratione praesentium explicabo voluptatum laborum eum
+      error animi porro voluptate natus!
+      Commodi eos molestias neque voluptates consectetur tempore adipisci nisi quod labore non.
+      Praesentium quaerat non officia id doloribus laborum, aperiam asperiores omnis earum sequi fugit
+      reiciendis enim quas molestias quae?
+      Minus voluptatum odit maxime voluptas ad expedita temporibus, at sed. Iusto, expedita rerum,
+      beatae ducimus ut amet ipsam ad quas, quisquam quo totam! Deserunt blanditiis doloremque
+      voluptatem nostrum minus ea!
+      Lorem ipsum dolor sit amet consectetur adipisicing elit.Quos temporibus veniam, possimus, velit,
+      reprehenderit magnam ab totam eaque adipisci ratione praesentium explicabo voluptatum laborum eum
+      error animi porro voluptate natus!
+      Commodi eos molestias neque voluptates consectetur tempore adipisci nisi quod labore non.
+      Praesentium quaerat non officia id doloribus laborum, aperiam asperiores omnis earum sequi fugit
+      reiciendis enim quas molestias quae?
+      Minus voluptatum odit maxime voluptas ad expedita temporibus, at sed. Iusto, expedita rerum,
+      beatae ducimus ut amet ipsam ad quas, quisquam quo totam! Deserunt blanditiis doloremque
+      voluptatem nostrum minus ea!
+      Lorem ipsum dolor sit amet consectetur adipisicing elit.Quos temporibus veniam, possimus, velit,
+      reprehenderit magnam ab totam eaque adipisci ratione praesentium explicabo voluptatum laborum eum
+      error animi porro voluptate natus!
+      Commodi eos molestias neque voluptates consectetur tempore adipisci nisi quod labore non.
+      Praesentium quaerat non officia id doloribus laborum, aperiam asperiores omnis earum sequi fugit
+      reiciendis enim quas molestias quae?
+      Minus voluptatum odit maxime voluptas ad expedita temporibus, at sed. Iusto, expedita rerum,
+      beatae ducimus ut amet ipsam ad quas, quisquam quo totam! Deserunt blanditiis doloremque
+      voluptatem nostrum minus ea!
+      Commodi eos molestias neque voluptates consectetur tempore adipisci nisi quod labore non.
+      Praesentium quaerat non officia id doloribus laborum, aperiam asperiores omnis earum sequi fugit
+      reiciendis enim quas molestias quae?
+      Minus voluptatum odit maxime voluptas ad expedita temporibus, at sed. Iusto, expedita rerum,
+      beatae ducimus ut amet ipsam ad quas, quisquam quo totam! Deserunt blanditiis doloremque
+      voluptatem nostrum minus ea!
+      Commodi eos molestias neque voluptates consectetur tempore adipisci nisi quod labore non.
+      Praesentium quaerat non officia id doloribus laborum, aperiam asperiores omnis earum sequi fugit
+      reiciendis enim quas molestias quae?
+      Minus voluptatum odit maxime voluptas ad expedita temporibus, at sed. Iusto, expedita rerum,
+      beatae ducimus ut amet ipsam ad quas, quisquam quo totam! Deserunt blanditiis doloremque
+      voluptatem nostrum minus ea!
+    </ScrollArea>
+  ),
+} satisfies Meta<typeof ScrollArea>;
+
+export default meta;
+
+type Story = StoryObj<typeof meta>;
+
+export const Default = {} satisfies Story;
+
+export const Custom = {
+  args: {
+    useSystemStyle: false,
+    alwaysShowScrollbars: false,
+  },
+} satisfies Story;
+
+export const WithCustomColors = {
+  args: {
+    useSystemStyle: false,
+    alwaysShowScrollbars: false,
+    thumbColor: 'red',
+    trackColor: 'var(--vibrancy-background-soft)',
+  },
+} satisfies Story;
+
+export const Squared = {
+  args: {
+    useSystemStyle: false,
+    alwaysShowScrollbars: false,
+    thumbColor: 'red',
+    rounded: false,
+  },
+} satisfies Story;
+
+export const FixedGutter = {
+  args: {
+    useSystemStyle: false,
+    alwaysShowScrollbars: false,
+    gutterBehavior: 'stable',
+  },
+} satisfies Story;

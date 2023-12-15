@@ -33,6 +33,7 @@ export * from './pagination';
 export * from './panel';
 export * from './popover';
 export * from './prose';
+export * from './scroll-area';
 export * from './select';
 export * from './selection-controls/checkbox';
 export * from './selection-controls/radio';
