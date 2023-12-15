@@ -1,7 +1,7 @@
 {
   "name": "@lualtek/config",
   "description": "Lualtek UI shared configurations",
-  "version": "11.4.1",
+  "version": "11.4.2",
   "author": "Lualtek",
   "main": "dist/index",
   "publishConfig": {
@@ -29,7 +29,7 @@
     "postcss": ">=8.x"
   },
   "dependencies": {
-    "@lualtek/tokens": "11.4.1",
+    "@lualtek/tokens": "11.4.2",
     "cssnano": "6.0.1",
     "cssnano-preset-default": "6.0.1",
     "flat": "5.0.2",

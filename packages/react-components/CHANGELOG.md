@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 11.4.2
+
+### Patch Changes
+
+- 73d7a49e: Fix on FF and Safari
+  - @lualtek/icons@11.4.2
+
 ## 11.4.1
 
 ### Patch Changes
