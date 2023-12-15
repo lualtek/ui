@@ -1,6 +1,6 @@
 @layer components {
 
-  @property --start {
+  @property --starting-angle {
     syntax: '<number>';
     inherits: true;
     initial-value: 0;
@@ -28,39 +28,14 @@
     z-index: 2;
   }
 
-  .Glow {
-    pointer-events: none;
-    position: absolute;
-    inset: 0;
-    filter: blur(calc(var(--blur) * 1px));
-  }
-
-  .Glow::after,
-  .Glow::before {
-    content: '';
-    background: var(--gradient);
-    background-attachment: fixed;
-    position: absolute;
-    inset: var(--glow-offset);
-    border: var(--glow-size) solid transparent;
-    border-radius: calc((var(--glow-offset) * -1) + var(--radius) + (var(--glow-size) / 2));
-    mask:
-      linear-gradient(transparent, transparent),
-      conic-gradient(from calc((var(--start) - (var(--spread) * 0.5)) * 1deg), black 0deg, white, transparent calc(var(--spread) * 1deg));
-    mask-composite: intersect;
-    mask-clip: padding-box, border-box;
-    opacity: var(--active-opacity);
-    transition: opacity 1s;
-  }
-
   .GlowContainer::before,
   .GlowContainer::after {
     content: '';
     position: absolute;
-    border-radius: calc((var(--glow-offset) * -1) + var(--radius));
+    border-radius: calc((var(--border-offset) * -1) + var(--radius));
     pointer-events: none;
     mask-composite: intersect;
-    inset: var(--glow-offset);
+    inset: var(--border-offset);
     opacity: var(--active-opacity);
     border: var(--border-width) solid transparent;
     background-attachment: fixed;
@@ -74,7 +49,7 @@
     mask:
       linear-gradient(transparent, transparent),
       conic-gradient(
-        from calc(((var(--start) + (var(--spread) * 0.25)) - (var(--spread) * 1.5)) * 1deg),
+        from calc(((var(--starting-angle) + (var(--spread) * 0.25)) - (var(--spread) * 1.5)) * 1deg),
         oklch(100% 0 0deg / 15%) 0deg,
         white,
         oklch(100% 0 0deg / 15%) calc(var(--spread) * 2.5deg)
@@ -88,8 +63,33 @@
     mask:
       linear-gradient(transparent, transparent),
       conic-gradient(
-        from calc(((var(--start) + (var(--spread) * 0.25)) - (var(--spread) * 0.5)) * 1deg), transparent 0deg, white, transparent calc(var(--spread) * 0.5deg));
+        from calc(((var(--starting-angle) + (var(--spread) * 0.25)) - (var(--spread) * 0.5)) * 1deg), transparent 0deg, white, transparent calc(var(--spread) * 0.5deg));
     filter: brightness(1.5);
     mask-clip: padding-box, border-box;
+  }
+
+  .Glow {
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    filter: blur(calc(var(--blur) * 1px));
+  }
+
+  .Glow::after,
+  .Glow::before {
+    content: '';
+    background: var(--gradient);
+    background-attachment: fixed;
+    position: absolute;
+    inset: var(--border-offset);
+    border: var(--glow-power) solid transparent;
+    border-radius: calc((var(--border-offset) * -1) + var(--radius) + (var(--glow-power) / 2));
+    mask:
+      linear-gradient(transparent, transparent),
+      conic-gradient(from calc((var(--starting-angle) - (var(--spread) * 0.5)) * 1deg), black 0deg, white, transparent calc(var(--spread) * 1deg));
+    mask-composite: intersect;
+    mask-clip: padding-box, border-box;
+    opacity: var(--active-opacity);
+    transition: opacity 1s;
   }
 }

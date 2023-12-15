@@ -12,14 +12,45 @@ import { FCChildrenClass } from '@/components/types';
 import styles from './glow-panel.module.css';
 
 export type GlowPanelProps = PanelProps & {
+  /**
+   * The distance from the edge of the card to start the glow effect
+   *
+   * @defaultValue 170
+   */
   proximity?: number;
+  /**
+   * The width of the highlighted area
+   *
+   * @defaultValue 80
+   */
   spread?: number;
-  blur?: number;
+  /**
+   * The starting opacity of the glow effect
+   */
   opacity?: number;
+  /**
+   * The width of the border
+   */
   borderWidth?: number;
+  /**
+   * The color of the border
+   *
+   * @defaultValue 'var(--vibrancy-background-hard)'
+   */
   borderColor?: string;
-  glowSize?: number;
-  glowOffset?: number;
+  /**
+   * The power of the glow effect. Set to 0 to disable.
+   *
+   * @defaultValue 10
+   */
+  glowPower?: number;
+  /**
+   * The offset of the border.
+   * Nevative values will put the border outside the panel
+   *
+   * defaultValue -5
+   */
+  borderOffset?: number;
 }
 
 export const GlowPanel: FCChildrenClass<GlowPanelProps> = ({
@@ -27,12 +58,11 @@ export const GlowPanel: FCChildrenClass<GlowPanelProps> = ({
   children,
   proximity = 170,
   spread = 80,
-  blur = 50,
   opacity = 0,
   borderWidth = 2,
   borderColor = 'var(--vibrancy-background-hard)',
-  glowSize = 10,
-  glowOffset = -5,
+  glowPower = 10,
+  borderOffset = -5,
   ...otherProps
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -79,23 +109,23 @@ export const GlowPanel: FCChildrenClass<GlowPanelProps> = ({
 
   const glowStyle = useMemo(() => ({
     '--active-opacity': activeOpacity,
-    '--start': startingAngle,
-    '--blur': blur,
+    '--starting-angle': startingAngle,
+    '--blur': 50,
     '--spread': spread,
-    '--glow-size': `${glowSize}px`,
-    '--glow-offset': `${glowOffset}px`,
+    '--glow-power': `${glowPower}px`,
+    '--border-offset': `${borderOffset}px`,
     '--border-width': `${borderWidth}px`,
     '--border-color': borderColor,
   }), [
-    activeOpacity, startingAngle, blur, spread,
-    glowSize, glowOffset, borderWidth,
+    activeOpacity, startingAngle, spread,
+    glowPower, borderOffset, borderWidth,
     borderColor,
   ]);
 
   return (
     <Panel {...otherProps}>
       <div ref={containerRef} className={styles.GlowContainer} style={glowStyle}>
-        <div className={styles.Glow} />
+        {glowPower > 0 && <div className={styles.Glow} />}
         {children}
       </div>
     </Panel>
