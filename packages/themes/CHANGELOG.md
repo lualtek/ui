@@ -1,5 +1,11 @@
 # @lualtek/themes
 
+## 11.4.0
+
+### Patch Changes
+
+- 5dab8950: Fix color scheme for native elements
+
 ## 11.4.0-next.0
 
 ### Patch Changes
