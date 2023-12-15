@@ -43,7 +43,15 @@ export type ScrollAreaProps = {
    * @defaultValue 'auto'
    */
   gutterBehavior?: 'auto' | 'stable' | 'stable both-edges';
+  /**
+   * The direction to fade out.
+   */
   fadeDirection?: 'vertical' | 'horizontal';
+  /**
+   * The size of the fade.
+   *
+   * @defaultValue 16
+   */
   fadeSize?: string | Exclude<TokensTypes['space'], string>;
 }
 
