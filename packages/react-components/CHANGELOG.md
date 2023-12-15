@@ -1,5 +1,15 @@
 # @lualtek/react-components
 
+## 11.4.0-next.0
+
+### Minor Changes
+
+- e6e72119: Add new ScrollArea component
+
+### Patch Changes
+
+- @lualtek/icons@11.4.0-next.0
+
 ## 11.3.0
 
 ### Minor Changes
