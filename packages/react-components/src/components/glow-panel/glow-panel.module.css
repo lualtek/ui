@@ -11,10 +11,10 @@
  conic-gradient(
   from 180deg at 50% 70%,
       oklch(98% 0 0deg / 100%) 0deg,
-      var(--highlight-yellow-foreground) 72deg,
-      var(--highlight-purple-foreground) 144deg,
-      var(--highlight-blue-foreground) 216deg,
-      var(--highlight-cyan-foreground) 288deg,
+      var(--highlight-cyan-foreground) 72deg,
+      var(--highlight-brand-foreground) 144deg,
+      var(--highlight-cyan-foreground) 216deg,
+      var(--highlight-purple-foreground) 288deg,
       oklch(98% 0 0deg / 100%) 1turn
     );
 

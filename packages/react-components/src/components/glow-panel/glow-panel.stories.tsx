@@ -48,11 +48,11 @@ const meta = {
     },
   },
   render: args => (
-    <Stack direction="row" fill={false} columnGap={32}>
-      <GlowPanel {...args} style={{ width: 400, height: 400 }} />
-      <GlowPanel {...args} style={{ width: 400, height: 400 }} />
-      <GlowPanel {...args} style={{ width: 400, height: 400 }} />
-      <GlowPanel {...args} style={{ width: 400, height: 400 }} />
+    <Stack direction="row" fill={false} columnGap={32} rowGap={32} wrap>
+      <GlowPanel {...args} style={{ width: 200, height: 200 }} />
+      <GlowPanel {...args} style={{ width: 200, height: 200 }} />
+      <GlowPanel {...args} style={{ width: 200, height: 200 }} />
+      <GlowPanel {...args} style={{ width: 200, height: 200 }} />
     </Stack>
   ),
 } satisfies Meta<typeof GlowPanel>;
