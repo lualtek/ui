@@ -1,5 +1,16 @@
 # @lualtek/react-components
 
+## 11.4.0
+
+### Minor Changes
+
+- e6e72119: Add new ScrollArea component
+- 100b3f96: Add new Glow Panel component
+
+### Patch Changes
+
+- @lualtek/icons@11.4.0
+
 ## 11.4.0-next.0
 
 ### Minor Changes
