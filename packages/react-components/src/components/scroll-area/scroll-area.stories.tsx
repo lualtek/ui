@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
+import { Stack } from '@/components';
+
 import { ScrollArea } from './scroll-area';
 
 const meta = {
@@ -97,4 +99,56 @@ export const FixedGutter = {
     hideScrollbars: false,
     gutterBehavior: 'stable',
   },
+} satisfies Story;
+
+export const WidthFade = {
+  args: {
+    fadeDirection: 'vertical',
+    fadeSize: 16,
+  },
+  render: args => (
+    <ScrollArea {...args} style={{ maxHeight: 300, maxWidth: 400 }}>
+      <Stack vPadding={8}>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit.Quos temporibus veniam, possimus, velit,
+        reprehenderit magnam ab totam eaque adipisci ratione praesentium explicabo voluptatum laborum eum
+        error animi porro voluptate natus!
+        Commodi eos molestias neque voluptates consectetur tempore adipisci nisi quod labore non.
+        Praesentium quaerat non officia id doloribus laborum, aperiam asperiores omnis earum sequi fugit
+        reiciendis enim quas molestias quae?
+        Minus voluptatum odit maxime voluptas ad expedita temporibus, at sed. Iusto, expedita rerum,
+        beatae ducimus ut amet ipsam ad quas, quisquam quo totam! Deserunt blanditiis doloremque
+        voluptatem nostrum minus ea!
+        Lorem ipsum dolor sit amet consectetur adipisicing elit.Quos temporibus veniam, possimus, velit,
+        reprehenderit magnam ab totam eaque adipisci ratione praesentium explicabo voluptatum laborum eum
+        error animi porro voluptate natus!
+        Commodi eos molestias neque voluptates consectetur tempore adipisci nisi quod labore non.
+        Praesentium quaerat non officia id doloribus laborum, aperiam asperiores omnis earum sequi fugit
+        reiciendis enim quas molestias quae?
+        Minus voluptatum odit maxime voluptas ad expedita temporibus, at sed. Iusto, expedita rerum,
+        beatae ducimus ut amet ipsam ad quas, quisquam quo totam! Deserunt blanditiis doloremque
+        voluptatem nostrum minus ea!
+        Lorem ipsum dolor sit amet consectetur adipisicing elit.Quos temporibus veniam, possimus, velit,
+        reprehenderit magnam ab totam eaque adipisci ratione praesentium explicabo voluptatum laborum eum
+        error animi porro voluptate natus!
+        Commodi eos molestias neque voluptates consectetur tempore adipisci nisi quod labore non.
+        Praesentium quaerat non officia id doloribus laborum, aperiam asperiores omnis earum sequi fugit
+        reiciendis enim quas molestias quae?
+        Minus voluptatum odit maxime voluptas ad expedita temporibus, at sed. Iusto, expedita rerum,
+        beatae ducimus ut amet ipsam ad quas, quisquam quo totam! Deserunt blanditiis doloremque
+        voluptatem nostrum minus ea!
+        Commodi eos molestias neque voluptates consectetur tempore adipisci nisi quod labore non.
+        Praesentium quaerat non officia id doloribus laborum, aperiam asperiores omnis earum sequi fugit
+        reiciendis enim quas molestias quae?
+        Minus voluptatum odit maxime voluptas ad expedita temporibus, at sed. Iusto, expedita rerum,
+        beatae ducimus ut amet ipsam ad quas, quisquam quo totam! Deserunt blanditiis doloremque
+        voluptatem nostrum minus ea!
+        Commodi eos molestias neque voluptates consectetur tempore adipisci nisi quod labore non.
+        Praesentium quaerat non officia id doloribus laborum, aperiam asperiores omnis earum sequi fugit
+        reiciendis enim quas molestias quae?
+        Minus voluptatum odit maxime voluptas ad expedita temporibus, at sed. Iusto, expedita rerum,
+        beatae ducimus ut amet ipsam ad quas, quisquam quo totam! Deserunt blanditiis doloremque
+        voluptatem nostrum minus ea!
+      </Stack>
+    </ScrollArea>
+  ),
 } satisfies Story;

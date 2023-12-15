@@ -7,6 +7,14 @@
     overflow: auto;
   }
 
+  &[data-scroll-fade-direction='vertical'] {
+    mask-image: linear-gradient(to bottom, transparent, black var(--fade-size), black calc(100% - var(--fade-size)), transparent);
+  }
+
+  &[data-scroll-fade-direction='horizontal'] {
+    mask-image: linear-gradient(to right, transparent, black var(--fade-size), black calc(100% - var(--fade-size)), transparent);
+  }
+
   &[data-scroll-use-system='false'] {
     scrollbar-color: var(--thumb-color, var(--vibrancy-background-hard)) var(--track-color, transparent);
 
@@ -29,7 +37,6 @@
       background: var(--thumb-color, var(--dimmed-4));
     }
   }
-
 
   &[data-scroll-visible='false'] {
     scrollbar-width: none;

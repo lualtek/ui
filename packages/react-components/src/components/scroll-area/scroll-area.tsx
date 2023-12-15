@@ -1,5 +1,7 @@
 'use client';
 
+import { TokensTypes } from '@lualtek/tokens/platforms/web';
+import tkns from '@lualtek/tokens/platforms/web/tokens.json';
 import clsx from 'clsx';
 import { forwardRef, useMemo } from 'react';
 
@@ -41,6 +43,8 @@ export type ScrollAreaProps = {
    * @defaultValue 'auto'
    */
   gutterBehavior?: 'auto' | 'stable' | 'stable both-edges';
+  fadeDirection?: 'vertical' | 'horizontal';
+  fadeSize?: string | Exclude<TokensTypes['space'], string>;
 }
 
 type PolymorphicScrollArea = Polymorphic.ForwardRefComponent<'div', ScrollAreaProps>;
@@ -55,16 +59,27 @@ export const ScrollArea = forwardRef(({
   useSystemStyle = true,
   hideScrollbars = false,
   gutterBehavior = 'auto',
+  fadeDirection,
+  fadeSize = 16,
   style,
   ...otherProps
 }, forwardedRef) => {
+  const computedFadeDirection = useMemo(() => {
+    if (fadeSize) {
+      return typeof fadeSize === 'string' ? fadeSize : tkns.space[fadeSize];
+    }
+
+    return '0';
+  }, [fadeSize]);
+
   const dynamicStyle = useMemo(() => (
     {
       '--thumb-color': thumbColor,
       '--track-color': trackColor,
       '--gutter-behaviour': gutterBehavior,
+      '--fade-size': computedFadeDirection,
     }
-  ), [thumbColor, trackColor, gutterBehavior]);
+  ), [thumbColor, trackColor, gutterBehavior, computedFadeDirection]);
 
   return (
     <Wrapper
@@ -73,6 +88,7 @@ export const ScrollArea = forwardRef(({
       data-scroll-area-scrolling={canScroll}
       data-scroll-visible={!hideScrollbars}
       data-scroll-use-system={useSystemStyle}
+      data-scroll-fade-direction={fadeDirection}
       style={{ ...dynamicStyle, ...style }}
       {...otherProps}
     >
