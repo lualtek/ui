@@ -14,17 +14,20 @@ const run = (folder: string) => {
   const template = `
   :root,
   [data-theme='light'] {
+    color-scheme: light;
     ${lightTheme}
   }
 
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme='light']) {
+      color-scheme: dark;
       ${darkTheme}
     }
   }
 
   [data-theme='dark'],
   :root[data-theme='dark'] {
+    color-scheme: dark;
     ${darkTheme}
   }
   `;
