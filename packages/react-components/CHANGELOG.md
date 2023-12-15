@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 11.4.3
+
+### Patch Changes
+
+- 6df500dc: Fix Glow size
+  - @lualtek/icons@11.4.3
+
 ## 11.4.2
 
 ### Patch Changes
