@@ -27,7 +27,7 @@ export type ScrollAreaProps = {
    *
    * @defaultValue false
    */
-  alwaysShowScrollbars?: boolean;
+  hideScrollbars?: boolean;
   /**
    * If true, the native scrollbar styles will be used.
    * This will override other props and fallback to system behaviour.
@@ -35,12 +35,6 @@ export type ScrollAreaProps = {
    * @defaultValue true
    */
   useSystemStyle?: boolean;
-  /**
-   * If true, the corners of the scrollbar thumb will be rounded.
-   *
-   * @defaultValue true
-   */
-  rounded?: boolean;
   /**
    * Prevent content jumping when scrollbars are shown/hidden.
    *
@@ -59,8 +53,7 @@ export const ScrollArea = forwardRef(({
   thumbColor,
   trackColor,
   useSystemStyle = true,
-  alwaysShowScrollbars = false,
-  rounded = true,
+  hideScrollbars = false,
   gutterBehavior = 'auto',
   style,
   ...otherProps
@@ -78,9 +71,8 @@ export const ScrollArea = forwardRef(({
       ref={forwardedRef}
       className={clsx(styles.ScrollArea, className)}
       data-scroll-area-scrolling={canScroll}
-      data-scroll-always-visible={alwaysShowScrollbars}
+      data-scroll-visible={!hideScrollbars}
       data-scroll-use-system={useSystemStyle}
-      data-scroll-rounded={rounded}
       style={{ ...dynamicStyle, ...style }}
       {...otherProps}
     >

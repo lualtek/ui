@@ -7,6 +7,14 @@ const meta = {
   component: ScrollArea,
   args: {
     canScroll: true,
+    gutterBehavior: 'auto',
+    hideScrollbars: false,
+  },
+  argTypes: {
+    gutterBehavior: {
+      options: ['auto', 'stable', 'stable both-edges'],
+      control: { type: 'inline-radio' },
+    },
   },
   render: args => (
     <ScrollArea {...args} style={{ maxHeight: 300, maxWidth: 400 }}>
@@ -62,32 +70,31 @@ export const Default = {} satisfies Story;
 export const Custom = {
   args: {
     useSystemStyle: false,
-    alwaysShowScrollbars: false,
+    hideScrollbars: false,
   },
 } satisfies Story;
 
 export const WithCustomColors = {
   args: {
     useSystemStyle: false,
-    alwaysShowScrollbars: false,
+    hideScrollbars: false,
     thumbColor: 'red',
-    trackColor: 'var(--vibrancy-background-soft)',
+    trackColor: 'var(--vibrancy-background-mid)',
   },
 } satisfies Story;
 
-export const Squared = {
+export const hideScrollbars = {
   args: {
     useSystemStyle: false,
-    alwaysShowScrollbars: false,
+    hideScrollbars: true,
     thumbColor: 'red',
-    rounded: false,
   },
 } satisfies Story;
 
 export const FixedGutter = {
   args: {
     useSystemStyle: false,
-    alwaysShowScrollbars: false,
+    hideScrollbars: false,
     gutterBehavior: 'stable',
   },
 } satisfies Story;

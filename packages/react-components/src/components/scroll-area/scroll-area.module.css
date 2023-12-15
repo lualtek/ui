@@ -1,46 +1,42 @@
 .ScrollArea {
   overflow: hidden;
   scrollbar-gutter: var(--gutter-behaviour);
-
-  &::-webkit-scrollbar-track {
-    background: var(--track-color, transparent);
-  }
-
-  &[data-scroll-rounded='true'] {
-    &::-webkit-scrollbar-thumb {
-      border-radius: 1e5px;
-    }
-  }
+  scrollbar-width: auto;
 
   &[data-scroll-area-scrolling='true'] {
     overflow: auto;
   }
 
   &[data-scroll-use-system='false'] {
+    scrollbar-color: var(--thumb-color, var(--vibrancy-background-hard)) var(--track-color, transparent);
+
     &::-webkit-scrollbar {
       width: token(--space-8);
       background: transparent;
     }
-  }
 
-  &[data-scroll-always-visible='true'] {
+    &::-webkit-scrollbar-track {
+      border-radius: 1e5px;
+      background:  var(--track-color, transparent);
+    }
+
     &::-webkit-scrollbar-thumb {
+      border-radius: 1e5px;
       background: var(--thumb-color, var(--vibrancy-background-hard));
     }
 
     &:hover::-webkit-scrollbar-thumb {
       background: var(--thumb-color, var(--dimmed-4));
     }
-
   }
 
-  &[data-scroll-always-visible='false'] {
-    &::-webkit-scrollbar-thumb {
-      background: transparent;
-    }
 
-    &:hover::-webkit-scrollbar-thumb {
-      background: var(--thumb-color, var(--dimmed-4));
+  &[data-scroll-visible='false'] {
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      width: 0;
+      background: transparent;
     }
   }
 }
