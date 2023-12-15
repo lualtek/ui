@@ -1,49 +1,51 @@
-.ScrollArea {
-  overflow: hidden;
-  scrollbar-gutter: var(--gutter-behaviour);
-  scrollbar-width: auto;
+@layer components {
+  .ScrollArea {
+    overflow: hidden;
+    scrollbar-gutter: var(--gutter-behaviour);
+    scrollbar-width: auto;
 
-  &[data-scroll-area-scrolling='true'] {
-    overflow: auto;
-  }
-
-  &[data-scroll-fade-direction='vertical'] {
-    mask-image: linear-gradient(to bottom, transparent, black var(--fade-size), black calc(100% - var(--fade-size)), transparent);
-  }
-
-  &[data-scroll-fade-direction='horizontal'] {
-    mask-image: linear-gradient(to right, transparent, black var(--fade-size), black calc(100% - var(--fade-size)), transparent);
-  }
-
-  &[data-scroll-use-system='false'] {
-    scrollbar-color: var(--thumb-color, var(--vibrancy-background-hard)) var(--track-color, transparent);
-
-    &::-webkit-scrollbar {
-      width: token(--space-8);
-      background: transparent;
+    &[data-scroll-area-scrolling='true'] {
+      overflow: auto;
     }
 
-    &::-webkit-scrollbar-track {
-      border-radius: 1e5px;
-      background:  var(--track-color, transparent);
+    &[data-scroll-fade-direction='vertical'] {
+      mask-image: linear-gradient(to bottom, transparent, black var(--fade-size), black calc(100% - var(--fade-size)), transparent);
     }
 
-    &::-webkit-scrollbar-thumb {
-      border-radius: 1e5px;
-      background: var(--thumb-color, var(--vibrancy-background-hard));
+    &[data-scroll-fade-direction='horizontal'] {
+      mask-image: linear-gradient(to right, transparent, black var(--fade-size), black calc(100% - var(--fade-size)), transparent);
     }
 
-    &:hover::-webkit-scrollbar-thumb {
-      background: var(--thumb-color, var(--dimmed-4));
+    &[data-scroll-use-system='false'] {
+      scrollbar-color: var(--thumb-color, var(--vibrancy-background-hard)) var(--track-color, transparent);
+
+      &::-webkit-scrollbar {
+        width: token(--space-8);
+        background: transparent;
+      }
+
+      &::-webkit-scrollbar-track {
+        border-radius: 1e5px;
+        background:  var(--track-color, transparent);
+      }
+
+      &::-webkit-scrollbar-thumb {
+        border-radius: 1e5px;
+        background: var(--thumb-color, var(--vibrancy-background-hard));
+      }
+
+      &:hover::-webkit-scrollbar-thumb {
+        background: var(--thumb-color, var(--dimmed-4));
+      }
     }
-  }
 
-  &[data-scroll-visible='false'] {
-    scrollbar-width: none;
+    &[data-scroll-visible='false'] {
+      scrollbar-width: none;
 
-    &::-webkit-scrollbar {
-      width: 0;
-      background: transparent;
+      &::-webkit-scrollbar {
+        width: 0;
+        background: transparent;
+      }
     }
   }
 }
