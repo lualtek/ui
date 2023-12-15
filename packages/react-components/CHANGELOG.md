@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 11.4.1
+
+### Patch Changes
+
+- 16d6e010: Update Glow component
+  - @lualtek/icons@11.4.1
+
 ## 11.4.0
 
 ### Minor Changes
