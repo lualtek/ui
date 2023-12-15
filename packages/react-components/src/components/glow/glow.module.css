@@ -32,17 +32,6 @@
   .Glow::after {
     content: '';
     position: absolute;
-
-    /* Remove negative sign by multiplying it with -1 */
-    border-radius: calc((var(--border-offset) * -1) + var(--radius));
-    pointer-events: none;
-    mask-composite: intersect;
-    inset: var(--border-offset);
-    opacity: var(--active-opacity);
-    border: var(--border-width) solid transparent;
-    background-attachment: fixed;
-    mask-clip: padding-box, border-box;
-    transition: opacity 1s;
     z-index: 1;
   }
 
@@ -58,6 +47,15 @@
         oklch(100% 0 0deg / 15%) calc(var(--spread) * 2.5deg)
       );
     mask-clip: padding-box, border-box;
+
+        /* Remove negative sign by multiplying it with -1 */
+    border-radius: calc((var(--border-offset) * -1) + var(--radius));
+    pointer-events: none;
+    mask-composite: intersect;
+    inset: var(--border-offset);
+    opacity: var(--active-opacity);
+    border: var(--border-width) solid transparent;
+    transition: opacity 1s;
   }
 
   .Glow::after {
@@ -69,6 +67,15 @@
         from calc(((var(--starting-angle) + (var(--spread) * 0.25)) - (var(--spread) * 0.5)) * 1deg), transparent 0deg, white, transparent calc(var(--spread) * 0.5deg));
     filter: brightness(1.5);
     mask-clip: padding-box, border-box;
+
+        /* Remove negative sign by multiplying it with -1 */
+    border-radius: calc((var(--border-offset) * -1) + var(--radius));
+    pointer-events: none;
+    mask-composite: intersect;
+    inset: var(--border-offset);
+    opacity: var(--active-opacity);
+    border: var(--border-width) solid transparent;
+    transition: opacity 1s;
   }
 
   .Light {
