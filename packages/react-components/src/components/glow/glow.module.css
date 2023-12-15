@@ -6,7 +6,7 @@
     initial-value: 0;
   }
 
-  .GlowContainer {
+  .Glow {
     --gradient:
  conic-gradient(
   from 180deg at 50% 70%,
@@ -20,18 +20,20 @@
 
     border-radius: var(--radius);
     position: relative;
-    width: 100%;
-    height: 100%;
+    display: inline-flex;
+    z-index: 0;
   }
 
-  .GlowContainer:is(:hover, :focus-visible) {
+  .Glow:is(:hover, :focus-visible) {
     z-index: 2;
   }
 
-  .GlowContainer::before,
-  .GlowContainer::after {
+  .Glow::before,
+  .Glow::after {
     content: '';
     position: absolute;
+
+    /* Remove negative sign by multiplying it with -1 */
     border-radius: calc((var(--border-offset) * -1) + var(--radius));
     pointer-events: none;
     mask-composite: intersect;
@@ -41,9 +43,10 @@
     background-attachment: fixed;
     mask-clip: padding-box, border-box;
     transition: opacity 1s;
+    z-index: 1;
   }
 
-  .GlowContainer::before {
+  .Glow::before {
     background: var(--border-color);
     background-attachment: fixed;
     mask:
@@ -57,7 +60,7 @@
     mask-clip: padding-box, border-box;
   }
 
-  .GlowContainer::after {
+  .Glow::after {
     background: var(--gradient);
     background-attachment: fixed;
     mask:
@@ -68,15 +71,15 @@
     mask-clip: padding-box, border-box;
   }
 
-  .Glow {
+  .Light {
     pointer-events: none;
     position: absolute;
     inset: 0;
     filter: blur(calc(var(--blur) * 1px));
   }
 
-  .Glow::after,
-  .Glow::before {
+  .Light::after,
+  .Light::before {
     content: '';
     background: var(--gradient);
     background-attachment: fixed;

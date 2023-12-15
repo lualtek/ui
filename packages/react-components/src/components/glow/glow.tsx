@@ -2,16 +2,17 @@
 
 'use client';
 
+import { TokensTypes } from '@lualtek/tokens';
+import tkns from '@lualtek/tokens/platforms/web/tokens.json';
 import {
   useCallback, useEffect, useMemo, useRef, useState,
 } from 'react';
 
-import { Panel, PanelProps } from '@/components';
 import { FCChildrenClass } from '@/components/types';
 
-import styles from './glow-panel.module.css';
+import styles from './glow.module.css';
 
-export type GlowPanelProps = PanelProps & {
+export type GlowProps = {
   /**
    * The distance from the edge of the card to start the glow effect
    *
@@ -39,21 +40,26 @@ export type GlowPanelProps = PanelProps & {
    */
   borderColor?: string;
   /**
-   * The power of the glow effect. Set to 0 to disable.
-   *
-   * @defaultValue 10
-   */
-  glowPower?: number;
-  /**
    * The offset of the border.
    * Nevative values will put the border outside the panel
    *
    * defaultValue -5
    */
   borderOffset?: number;
+  /**
+   * The power of the glow effect. Set to 0 to disable.
+   *
+   * @defaultValue 10
+   */
+  glowPower?: number;
+  /**
+   * The value of the radius of the inner element.
+   * This will be used to set the radius of the glow effect based on `borderOffset`.
+   */
+  innerRadius?: TokensTypes['radius'];
 }
 
-export const GlowPanel: FCChildrenClass<GlowPanelProps> = ({
+export const Glow: FCChildrenClass<GlowProps> = ({
   className,
   children,
   proximity = 170,
@@ -63,6 +69,8 @@ export const GlowPanel: FCChildrenClass<GlowPanelProps> = ({
   borderColor = 'var(--vibrancy-background-hard)',
   glowPower = 10,
   borderOffset = -5,
+  innerRadius,
+  style,
   ...otherProps
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -107,7 +115,7 @@ export const GlowPanel: FCChildrenClass<GlowPanelProps> = ({
     };
   }, [paint]);
 
-  const glowStyle = useMemo(() => ({
+  const dynamicStyle = useMemo(() => ({
     '--active-opacity': activeOpacity,
     '--starting-angle': startingAngle,
     '--blur': 50,
@@ -116,20 +124,19 @@ export const GlowPanel: FCChildrenClass<GlowPanelProps> = ({
     '--border-offset': `${borderOffset}px`,
     '--border-width': `${borderWidth}px`,
     '--border-color': borderColor,
+    '--radius': innerRadius && tkns.radius[innerRadius],
   }), [
     activeOpacity, startingAngle, spread,
     glowPower, borderOffset, borderWidth,
-    borderColor,
+    borderColor, innerRadius,
   ]);
 
   return (
-    <Panel {...otherProps}>
-      <div ref={containerRef} className={styles.GlowContainer} style={glowStyle}>
-        {glowPower > 0 && <div className={styles.Glow} />}
-        {children}
-      </div>
-    </Panel>
+    <div ref={containerRef} className={styles.Glow} style={{ ...dynamicStyle, ...style }} {...otherProps}>
+      {glowPower > 0 && <div className={styles.Light} />}
+      {children}
+    </div>
   );
 };
 
-GlowPanel.displayName = 'GlowPanel';
+Glow.displayName = 'Glow';
