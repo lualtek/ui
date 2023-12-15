@@ -9,5 +9,8 @@
     "@lualtek/tokens": "11.3.0",
     "tsconfig": "0.2.0"
   },
-  "changesets": []
+  "changesets": [
+    "itchy-houses-hug",
+    "polite-houses-speak"
+  ]
 }
