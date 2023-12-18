@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 11.4.4
+
+### Patch Changes
+
+- dbd827a5: Fix Glow size and add new `globalHighlight` prop
+  - @lualtek/icons@11.4.4
+
 ## 11.4.3
 
 ### Patch Changes
