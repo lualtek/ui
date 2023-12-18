@@ -57,6 +57,12 @@ export type GlowProps = {
    * This will be used to set the radius of the glow effect based on `borderOffset`.
    */
   innerRadius?: TokensTypes['radius'];
+  /**
+   * Whether the highlight should be global and shared across all cards
+   *
+   * @defaultValue true
+   */
+  globalHighlight?: boolean;
 }
 
 export const Glow: FCChildrenClass<GlowProps> = ({
@@ -70,6 +76,7 @@ export const Glow: FCChildrenClass<GlowProps> = ({
   glowPower = 10,
   borderOffset = -5,
   innerRadius,
+  globalHighlight = true,
   style,
   ...otherProps
 }) => {
@@ -132,7 +139,13 @@ export const Glow: FCChildrenClass<GlowProps> = ({
   ]);
 
   return (
-    <div ref={containerRef} className={styles.Glow} style={{ ...dynamicStyle, ...style }} {...otherProps}>
+    <div
+      ref={containerRef}
+      className={styles.Glow}
+      data-glow-global={globalHighlight}
+      style={{ ...dynamicStyle, ...style }}
+      {...otherProps}
+    >
       {glowPower > 0 && <div className={styles.Light} />}
       {children}
     </div>

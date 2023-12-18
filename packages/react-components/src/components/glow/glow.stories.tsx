@@ -16,6 +16,7 @@ const meta = {
     glowPower: 10,
     borderOffset: -5,
     innerRadius: 24,
+    globalHighlight: true,
   },
   argTypes: {
     spread: {

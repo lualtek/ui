@@ -10,12 +10,12 @@
     --gradient:
  conic-gradient(
   from 180deg at 50% 70%,
-      oklch(98% 0 0deg / 100%) 0deg,
-      var(--highlight-cyan-foreground) 72deg,
-      var(--highlight-brand-foreground) 144deg,
-      var(--highlight-cyan-foreground) 216deg,
-      var(--highlight-purple-foreground) 288deg,
-      oklch(98% 0 0deg / 100%) 1turn
+      oklch(98% 0 0deg / 100%),
+      var(--highlight-cyan-foreground),
+      var(--highlight-brand-foreground),
+      var(--highlight-cyan-foreground),
+      var(--highlight-purple-foreground),
+      oklch(98% 0 0deg / 100%)
     );
 
     border-radius: var(--radius);
@@ -38,7 +38,8 @@
 
   .Glow::before {
     background: var(--border-color);
-    background-attachment: fixed;
+
+    /* background-attachment: fixed; */
     mask:
       linear-gradient(transparent, transparent),
       conic-gradient(
@@ -61,7 +62,6 @@
 
   .Glow::after {
     background: var(--gradient);
-    background-attachment: fixed;
     mask:
       linear-gradient(transparent, transparent),
       conic-gradient(
@@ -77,6 +77,13 @@
     opacity: var(--active-opacity);
     border: var(--border-width) solid transparent;
     transition: opacity 1s;
+    background-size: calc(100% + var(--border-width) * 2) calc(100% + var(--border-width) * 2);
+    background-position: calc(var(--border-width) * -1) calc(var(--border-width) * -1);
+
+  }
+
+  .Glow[data-glow-global='true']::after {
+    background-attachment: fixed;
   }
 
   .Light {
@@ -90,7 +97,6 @@
   .Light::before {
     content: '';
     background: var(--gradient);
-    background-attachment: fixed;
     position: absolute;
     inset: var(--border-offset);
     border: var(--glow-power) solid transparent;
@@ -102,5 +108,9 @@
     mask-clip: padding-box, border-box;
     opacity: var(--active-opacity);
     transition: opacity 1s;
+
+    .Glow[data-glow-global='true'] & {
+      background-attachment: fixed;
+    }
   }
 }
