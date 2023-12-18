@@ -17,6 +17,7 @@ const meta = {
     borderOffset: -5,
     innerRadius: 24,
     globalHighlight: true,
+    raimbowColors: false,
   },
   argTypes: {
     spread: {

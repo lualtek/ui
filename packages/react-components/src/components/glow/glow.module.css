@@ -8,21 +8,37 @@
 
   .Glow {
     --gradient:
- conic-gradient(
-  from 180deg at 50% 70%,
-      oklch(98% 0 0deg / 100%),
-      var(--highlight-cyan-foreground),
-      var(--highlight-brand-foreground),
-      var(--highlight-cyan-foreground),
-      var(--highlight-purple-foreground),
-      oklch(98% 0 0deg / 100%)
-    );
+  conic-gradient(
+      from 180deg at 50% 70%,
+          oklch(token(--color-cyan-50)),
+          oklch(token(--color-brand-50)),
+          oklch(token(--color-green-50)),
+          oklch(token(--color-purple-50)),
+          oklch(token(--color-cyan-50))
+        );
 
     border-radius: var(--radius);
     position: relative;
     display: inline-flex;
     max-width: fit-content;
     z-index: 0;
+
+    &[data-glow-raimbow='true'] {
+      --gradient:
+      conic-gradient(
+           from 180deg at 50% 50%,
+           oklch(token(--color-cyan-50)),
+           oklch(token(--color-brand-50)),
+           oklch(token(--color-dipsy-50)),
+           oklch(token(--color-red-50)),
+           oklch(token(--color-indigo-50)),
+           oklch(token(--color-green-50)),
+           oklch(token(--color-yellow-50)),
+           oklch(token(--color-purple-50)),
+           oklch(token(--color-salmon-50)),
+           oklch(token(--color-cyan-50))
+         );
+    }
   }
 
   .Glow:is(:hover, :focus-visible) {
