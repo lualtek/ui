@@ -147,7 +147,7 @@ export const Glow: FCChildrenClass<GlowProps> = ({
     <div
       ref={containerRef}
       className={styles.Glow}
-      data-glow-global={globalHighlight}
+      data-glow-global={raimbowColors ? false : globalHighlight}
       data-glow-raimbow={raimbowColors}
       style={{ ...dynamicStyle, ...style }}
       {...otherProps}
