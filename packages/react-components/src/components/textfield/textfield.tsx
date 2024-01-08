@@ -2,7 +2,7 @@
 
 import clsx from 'clsx';
 import {
-  ChangeEvent, forwardRef, InputHTMLAttributes, Ref, useCallback, useId, useMemo, useState,
+  ChangeEvent, forwardRef, InputHTMLAttributes, useCallback, useId, useMemo, useState,
 } from 'react';
 
 import {
@@ -57,6 +57,18 @@ export type TextfieldProps = BaseFieldProps & InputHTMLAttributes<HTMLInputEleme
    * Make the textfield full width, filling the available space.
    */
   fullWidth?: boolean;
+  /**
+   * Show the action button on the right side of the input.
+   *
+   * @important This prop prevent icon to be placed on the right side.
+   */
+  showClearButton?: boolean;
+  /**
+   * Event handler for the clear button.
+   *
+   * @returns void
+   */
+  onClear?: () => void;
 }
 
 export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(({
@@ -73,6 +85,8 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(({
   style,
   onChange,
   fullWidth,
+  onClear,
+  showClearButton = false,
   ...otherProps
 }, forwardedRef) => {
   const [isPasswordVisible, setPasswordVisible] = useState<boolean>(false);
@@ -101,7 +115,7 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(({
       rowGap={4}
       className={clsx(styles.Textfield, className)}
       data-textfield-has-icon={isPassword || (Boolean(icon) && isNotDate)}
-      data-textfield-icon-position={iconPosition}
+      data-textfield-icon-position={showClearButton ? 'end' : iconPosition}
       data-textfield-invalid={invalid}
       data-textfield-fullwidth={fullWidth}
       aria-disabled={disabled}
@@ -114,27 +128,36 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(({
         <BaseField
           className={styles.InputField}
           id={fieldID}
-          ref={forwardedRef as Ref<HTMLInputElement>}
+          ref={forwardedRef}
           type={isPasswordVisible ? 'text' : type}
           {...commonProps}
           {...otherProps}
         />
-        {isPassword && (
+        {isPassword ? (
           <IconButton
-            className={styles.IconButton}
+            className={styles.ActionButton}
             onClick={handlePasswordVisibility}
             kind="flat"
             aria-label="Reveal password"
             icon={isPasswordVisible ? 'hide' : 'view'}
           />
+        ) : (
+          <>
+            {showClearButton && (
+              <IconButton
+                className={styles.ActionButton}
+                onClick={() => onClear?.()}
+                kind="flat"
+                aria-label="Clear field"
+                icon="c-remove"
+              />
+            )}
+          </>
         )}
 
-        { icon && (!isPassword && isNotDate) && (
+        { icon && (!isPassword && isNotDate && !showClearButton) && (
           <Stack className={styles.Icon} hPadding={8} vPadding={8}>
-            <Icon
-              source={icon}
-              dimension={22}
-            />
+            <Icon source={icon} dimension={22} />
           </Stack>
         )}
 

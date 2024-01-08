@@ -1,8 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { useState } from 'react';
 
 import { Stack } from '@/components';
 
-import { Textfield } from './textfield';
+import { Textfield, TextfieldProps } from './textfield';
 
 const meta = {
   title: 'Inputs/Textfield',
@@ -60,7 +61,7 @@ export const Types = {
         <Textfield {...args} type="email" required label="Type email" defaultValue="" />
         <Textfield {...args} type="password" label="Type password" defaultValue="912435jh345" />
         <Textfield {...args} type="number" label="Type number" defaultValue={100} />
-        <Textfield {...args} type="search" label="Type search" />
+        <Textfield {...args} type="search" showClearButton label="Type search" />
         <Textfield {...args} type="date" label="Type date" />
         <Textfield {...args} type="time" label="Type time" />
         <Textfield {...args} type="month" label="Type month" />
@@ -81,6 +82,23 @@ export const WithIcon = {
     iconPosition: 'start',
     icon: 'chat',
   },
+} satisfies Story;
+
+const SearchTemplate = ({ value, ...props }: TextfieldProps) => {
+  const [stateValue, setStateValue] = useState<TextfieldProps['value']>(value ?? '');
+
+  return (<Textfield {...props} onClear={() => setStateValue('')} value={stateValue} />);
+};
+
+export const WithActionButton = {
+  args: {
+    label: 'Search',
+    icon: 'chat',
+    showClearButton: true,
+    value: 'Sample value',
+    defaultValue: undefined,
+  },
+  render: args => <SearchTemplate {...args} />,
 } satisfies Story;
 
 export const Invalid = {
