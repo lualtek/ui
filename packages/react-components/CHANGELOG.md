@@ -1,5 +1,17 @@
 # @lualtek/react-components
 
+## 11.5.0
+
+### Minor Changes
+
+- 4bc04c0: Update deps
+- 3d2e803: Add new `showClearButton` and `onClear` props to Textfield
+
+### Patch Changes
+
+- 5f8a434: Disable global glow when raimbowColors is set
+  - @lualtek/icons@11.5.0
+
 ## 11.4.4
 
 ### Patch Changes
