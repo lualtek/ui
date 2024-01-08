@@ -1,4 +1,4 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 
 import {
   IconButton, Menu, Popover, Stack,
@@ -79,54 +79,56 @@ const columns = [
   }),
 ];
 
-const story: ComponentMeta<typeof Table> = {
+const story: Meta<TableProps<Person>> = {
   title: 'Layouts/Table',
   component: Table,
   args: {
     itemsPerPage: 50,
   },
+  render: args => <Table {...args} columns={columns} data={tableDataFixture} />,
 };
 
 export default story;
+type Story = StoryObj<typeof Table>;
 
-// @ts-expect-error Problem with generinc from the table
-const Template: ComponentStory<typeof Table> = (args: TableProps<Person>) => (
-  <Table {...args} columns={columns} data={tableDataFixture} />
-);
+export const Default: Story = {};
 
-export const Default = Template.bind({});
-
-export const WithPagination = Template.bind({});
-WithPagination.args = {
-  showPagination: true,
+export const WithPagination = {
+  args: {
+    showPagination: true,
+  },
 };
 
-export const WithToggleColumns = Template.bind({});
-WithToggleColumns.args = {
-  showHeader: true,
-  enableToggleColumns: true,
+export const WithToggleColumns: Story = {
+  args: {
+    showHeader: true,
+    enableToggleColumns: true,
+  },
 };
 
-export const WithFilter = Template.bind({});
-WithFilter.args = {
-  showHeader: true,
-  selectableRows: true,
-  enableFilterControl: true,
-  filterFn: (row, columnId, value) => String(row.getValue(columnId)).toLowerCase().includes(value.toLowerCase()),
+export const WithFilter: Story = {
+  args: {
+    showHeader: true,
+    selectableRows: true,
+    enableFilterControl: true,
+    filterFn: (row, columnId, value) => String(row.getValue(columnId)).toLowerCase().includes(value.toLowerCase()),
+  },
 };
 
-export const WithRowSelection = Template.bind({});
-WithRowSelection.args = {
-  enableToggleColumns: true,
-  selectableRows: true,
-  showPagination: true,
+export const WithRowSelection: Story = {
+  args: {
+    enableToggleColumns: true,
+    selectableRows: true,
+    showPagination: true,
+  },
 };
 
-export const Scrollable = Template.bind({});
-Scrollable.args = {
-  selectableRows: true,
-  showPagination: true,
-  title: 'Scrollable table',
-  background: 'var(--global-background)',
-  height: '400px',
+export const Scrollable: Story = {
+  args: {
+    selectableRows: true,
+    showPagination: true,
+    title: 'Scrollable table',
+    background: 'var(--global-background)',
+    height: '400px',
+  },
 };

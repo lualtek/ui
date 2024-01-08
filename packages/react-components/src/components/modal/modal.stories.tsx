@@ -28,7 +28,7 @@ const ModalShell = ({ ...args }) => {
   );
 };
 
-const meta = {
+const meta: Meta<typeof Modal> = {
   title: 'Dialogs/Modal',
   component: Modal,
   args: {
@@ -89,10 +89,9 @@ const meta = {
       </Stack>
     </ModalShell>
   ),
-} satisfies Meta<typeof Modal>;
+};
 
 export default meta;
-
 type Story = StoryObj<typeof meta>;
 
 export const Default = {} satisfies Story;

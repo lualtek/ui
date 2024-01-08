@@ -4,7 +4,7 @@ import { ResponsiveProvider } from '@/components';
 
 import { Stepper } from './stepper';
 
-const meta = {
+const meta: Meta<typeof Stepper> = {
   title: 'Navigation/Stepper',
   component: Stepper,
   args: {},
@@ -27,15 +27,14 @@ const meta = {
       ))}
     </>
   ),
-} satisfies Meta<typeof Stepper>;
+};
 
 export default meta;
+type Story = StoryObj<typeof Stepper>;
 
-type Story = StoryObj<typeof meta>;
-
-export const Default = {
+export const Default: Story = {
   args: {
     title: 'Sample title',
     step: 1,
   },
-} satisfies Story;
+};

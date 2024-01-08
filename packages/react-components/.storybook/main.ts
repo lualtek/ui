@@ -2,10 +2,11 @@ import type { StorybookConfig } from '@storybook/react-webpack5';
 import path from 'node:path'
 
 const config: StorybookConfig = {
-  stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
-  docs: {
-    autodocs: true,
+  framework: {
+    name: '@storybook/react-webpack5',
+    options: {},
   },
+  stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
   features: {
     storyStoreV7: true,
   },
@@ -16,6 +17,7 @@ const config: StorybookConfig = {
     {
       name: '@storybook/addon-essentials',
       options: {
+        docs: false,
         backgrounds: false,
       },
     }, {
@@ -34,7 +36,7 @@ const config: StorybookConfig = {
   typescript: {
     check: false,
     checkOptions: {},
-    reactDocgen: 'react-docgen-typescript',
+    reactDocgen: 'react-docgen',
     reactDocgenTypescriptOptions: {
       shouldExtractLiteralValuesFromEnum: true,
       propFilter: prop => (prop.parent ? !/node_modules/.test(prop.parent.fileName) : true),
@@ -46,11 +48,7 @@ const config: StorybookConfig = {
       return config;
     }
     return config;
-  },
-  framework: {
-    name: '@storybook/react-webpack5',
-    options: {},
-  },
+  }
 };
 
 export default config;
