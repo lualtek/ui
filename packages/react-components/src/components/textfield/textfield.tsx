@@ -60,7 +60,7 @@ export type TextfieldProps = BaseFieldProps & InputHTMLAttributes<HTMLInputEleme
   /**
    * Show the action button on the right side of the input.
    *
-   * @important This prop prevent icon to be placed on the right side.
+   * @important This prop prevent icon to be displayed.
    */
   showClearButton?: boolean;
   /**
