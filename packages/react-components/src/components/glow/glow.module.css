@@ -19,8 +19,6 @@
 
     border-radius: var(--radius);
     position: relative;
-    display: inline-flex;
-    max-width: fit-content;
     z-index: 0;
 
     &[data-glow-raimbow='true'] {
