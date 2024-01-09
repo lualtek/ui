@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 11.5.2
+
+### Patch Changes
+
+- c8f955e: Fix Glow sizing
+  - @lualtek/icons@11.5.2
+
 ## 11.5.1
 
 ### Patch Changes
