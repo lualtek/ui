@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 11.5.1
+
+### Patch Changes
+
+- 5a7eef6: Disable switch initial animation
+  - @lualtek/icons@11.5.1
+
 ## 11.5.0
 
 ### Minor Changes
