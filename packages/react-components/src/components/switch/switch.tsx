@@ -116,6 +116,7 @@ export const Switch = forwardRef<ElementRef<typeof SwitchPrimitive.Root>, Switch
             <m.span
               className={styles.Thumb}
               layout
+              initial={false}
               transition={{
                 type: 'spring',
                 stiffness: 700,
