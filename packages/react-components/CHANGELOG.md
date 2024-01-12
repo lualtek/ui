@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 11.5.3
+
+### Patch Changes
+
+- c5388b0: Fix textfield clear button appearance
+  - @lualtek/icons@11.5.3
+
 ## 11.5.2
 
 ### Patch Changes
