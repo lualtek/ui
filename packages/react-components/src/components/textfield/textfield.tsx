@@ -2,8 +2,9 @@
 
 import clsx from 'clsx';
 import {
-  ChangeEvent, forwardRef, InputHTMLAttributes, useCallback, useId, useMemo, useState,
+  ChangeEvent, forwardRef, InputHTMLAttributes, useCallback, useId, useMemo, useRef, useState,
 } from 'react';
+import { useMergeRefs } from 'rooks';
 
 import {
   Icon, IconButton, IconProps, Stack, Text,
@@ -77,7 +78,6 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(({
   disabled = false,
   icon,
   label,
-  readOnly,
   invalid,
   id,
   iconPosition = 'end',
@@ -86,14 +86,19 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(({
   onChange,
   fullWidth,
   onClear,
+  value,
+  defaultValue,
   showClearButton = false,
   ...otherProps
 }, forwardedRef) => {
   const [isPasswordVisible, setPasswordVisible] = useState<boolean>(false);
   const uid = useId();
   const isPassword = type === 'password';
+  const inputRef = useRef<HTMLInputElement>(null);
   const isNotDate = !['date', 'datetime-local'].includes(type);
   const fieldID = useMemo(() => id ?? `${uid}-field`, [id, uid]);
+  const refs = useMergeRefs(forwardedRef, inputRef);
+  const [isEmpty, setIsEmpty] = useState<boolean>(!(value ?? defaultValue));
 
   const handlePasswordVisibility = useCallback(
     () => {
@@ -102,12 +107,25 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(({
     [],
   );
 
-  const commonProps = {
-    readOnly,
-    invalid,
-    disabled,
-    onChange,
-  };
+  const handleChange = useCallback(
+    (event: ChangeEvent<HTMLInputElement>) => {
+      setIsEmpty(!event.currentTarget.value);
+      onChange?.(event);
+    },
+    [onChange],
+  );
+
+  const handleClear = useCallback(
+    () => {
+      if (inputRef.current) {
+        inputRef.current.value = '';
+        setIsEmpty(true);
+      }
+
+      onClear?.();
+    },
+    [onClear],
+  );
 
   return (
     <Stack
@@ -128,9 +146,13 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(({
         <BaseField
           className={styles.InputField}
           id={fieldID}
-          ref={forwardedRef}
+          ref={refs}
           type={isPasswordVisible ? 'text' : type}
-          {...commonProps}
+          defaultValue={defaultValue}
+          value={value}
+          onChange={handleChange}
+          invalid={invalid}
+          disabled={disabled}
           {...otherProps}
         />
         {isPassword ? (
@@ -143,10 +165,10 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(({
           />
         ) : (
           <>
-            {showClearButton && (
+            {showClearButton && !isEmpty && (
               <IconButton
                 className={styles.ActionButton}
-                onClick={() => onClear?.()}
+                onClick={handleClear}
                 kind="flat"
                 aria-label="Clear field"
                 icon="c-remove"

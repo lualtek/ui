@@ -87,7 +87,21 @@ export const WithIcon = {
 const SearchTemplate = ({ value, ...props }: TextfieldProps) => {
   const [stateValue, setStateValue] = useState<TextfieldProps['value']>(value ?? '');
 
-  return (<Textfield {...props} onClear={() => setStateValue('')} value={stateValue} />);
+  return (
+    <>
+      <Textfield
+        {...props}
+        onChange={({ currentTarget }) => setStateValue(currentTarget.value)}
+        onClear={() => setStateValue('')}
+        value={stateValue}
+      />
+      <Textfield
+        {...props}
+        onClear={() => setStateValue('')}
+        defaultValue="ciao"
+      />
+    </>
+  );
 };
 
 export const WithActionButton = {
