@@ -70,13 +70,20 @@ type Story = StoryObj<typeof meta>;
 
 export const Default = {} satisfies Story;
 
+export const CustomGlowColor = {
+  args: {
+    glowColor: 'var(--dimmed-3)',
+  },
+} satisfies Story;
+
 export const WithContent = {
   args: {
     innerRadius: undefined,
+    fitContent: true,
   },
   render: args => (
     <Glow {...args}>
-      <Panel bordered style={{ width: 400 }}>
+      <Panel bordered style={{ width: '50vw' }}>
         <ScrollArea fadeDirection="vertical" useSystemStyle={false} style={{ height: 400 }}>
           <Stack vPadding={32} hPadding={32}>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi ut,
@@ -125,6 +132,7 @@ export const WithContent = {
 export const CustomElement = {
   args: {
     innerRadius: undefined,
+    fitContent: true,
   },
   render: args => (
     <Glow {...args}>

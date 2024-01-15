@@ -4,9 +4,8 @@
     position: relative;
     padding: var(--v-padding, 0) var(--h-padding, 0);
 
-    &[data-panel-hover='true']:where(:hover, :focus-visible) {
+    &[data-panel-hover='true']:where(:hover, :focus-visible, :focus-within) {
       background: var(--background-hover, var(--background));
-      cursor: pointer;
     }
 
     &[data-panel-radius='true'] {

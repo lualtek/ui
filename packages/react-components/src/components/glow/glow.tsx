@@ -30,6 +30,12 @@ export type GlowProps = {
    */
   opacity?: number;
   /**
+   * Whether the glow should fit the content or expand
+   *
+   * @defaultValue false
+   */
+  fitContent?: boolean;
+  /**
    * The width of the border
    */
   borderWidth?: number;
@@ -46,6 +52,10 @@ export type GlowProps = {
    * defaultValue -5
    */
   borderOffset?: number;
+  /**
+   * The color of the glow effect
+   */
+  glowColor?: string;
   /**
    * The power of the glow effect. Set to 0 to disable.
    *
@@ -75,6 +85,7 @@ export const Glow: FCChildrenClass<GlowProps> = ({
   proximity = 170,
   spread = 80,
   opacity = 0,
+  fitContent = false,
   borderWidth = 2,
   borderColor = 'var(--vibrancy-background-hard)',
   glowPower = 10,
@@ -82,6 +93,7 @@ export const Glow: FCChildrenClass<GlowProps> = ({
   innerRadius,
   globalHighlight = true,
   rainbowColors = false,
+  glowColor,
   style,
   ...otherProps
 }) => {
@@ -132,6 +144,7 @@ export const Glow: FCChildrenClass<GlowProps> = ({
     '--starting-angle': startingAngle,
     '--blur': 50,
     '--spread': spread,
+    '--glow-color': glowColor,
     '--glow-power': `${glowPower}px`,
     '--border-offset': `${borderOffset}px`,
     '--border-width': `${borderWidth}px`,
@@ -140,7 +153,7 @@ export const Glow: FCChildrenClass<GlowProps> = ({
   }), [
     activeOpacity, startingAngle, spread,
     glowPower, borderOffset, borderWidth,
-    borderColor, innerRadius,
+    borderColor, innerRadius, glowColor,
   ]);
 
   return (
@@ -149,6 +162,7 @@ export const Glow: FCChildrenClass<GlowProps> = ({
       className={styles.Glow}
       data-glow-global={rainbowColors ? false : globalHighlight}
       data-glow-rainbow={rainbowColors}
+      data-glow-fit-content={fitContent}
       style={{ ...dynamicStyle, ...style }}
       {...otherProps}
     >

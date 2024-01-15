@@ -10,18 +10,23 @@
 
   .Glow {
     --gradient:
-  conic-gradient(
+ var(--glow-color, conic-gradient(
       from 180deg at 50% 70%,
           oklch(token(--color-cyan-50)),
           oklch(token(--color-brand-50)),
           oklch(token(--color-green-50)),
           oklch(token(--color-purple-50)),
           oklch(token(--color-cyan-50))
-        );
+        ));
 
     border-radius: var(--radius);
     position: relative;
     z-index: 0;
+
+
+    &[data-glow-fit-content='true'] {
+      max-width: fit-content;
+    }
 
     &[data-glow-rainbow='true'] {
       --gradient:
