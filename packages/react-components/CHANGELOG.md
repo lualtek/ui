@@ -1,5 +1,17 @@
 # @lualtek/react-components
 
+## 11.6.0
+
+### Minor Changes
+
+- 9026ad5: Add new 12 radius token and add glow to panel
+- e1c097c: Add glow to stepper
+
+### Patch Changes
+
+- 31fcc03: Fix glow and panel
+  - @lualtek/icons@11.6.0
+
 ## 11.5.4
 
 ### Patch Changes
