@@ -12,6 +12,8 @@ import { FCChildrenClass } from '@/components/types';
 
 import styles from './glow.module.css';
 
+type RadiusType = Exclude<TokensTypes['radius'], string> | 0
+
 export type GlowProps = {
   /**
    * The distance from the edge of the card to start the glow effect
@@ -66,7 +68,7 @@ export type GlowProps = {
    * The value of the radius of the inner element.
    * This will be used to set the radius of the glow effect based on `borderOffset`.
    */
-  innerRadius?: TokensTypes['radius'];
+  innerRadius?: TokensTypes['radius'] | [RadiusType?, RadiusType?, RadiusType?, RadiusType?];
   /**
    * Whether the highlight should be global and shared across all cards
    *
@@ -100,6 +102,18 @@ export const Glow: FCChildrenClass<GlowProps> = ({
   const containerRef = useRef<HTMLDivElement>(null);
   const [activeOpacity, setActiveOpacity] = useState(opacity);
   const [startingAngle, setStartingAngle] = useState('0');
+
+  const formatRadius = useMemo(() => {
+    if (!innerRadius) {
+      return undefined;
+    }
+
+    if (!Array.isArray(innerRadius)) {
+      return tkns.radius[innerRadius];
+    }
+
+    return innerRadius.map(r => (r !== 0 ? tkns.radius[r!] : 0)).join(' ');
+  }, [innerRadius]);
 
   const paint = useCallback(
     (event: PointerEvent) => {
@@ -149,11 +163,11 @@ export const Glow: FCChildrenClass<GlowProps> = ({
     '--border-offset': `${borderOffset}px`,
     '--border-width': `${borderWidth}px`,
     '--border-color': borderColor,
-    '--radius': innerRadius && tkns.radius[innerRadius],
+    '--radius': innerRadius && formatRadius,
   }), [
     activeOpacity, startingAngle, spread,
     glowPower, borderOffset, borderWidth,
-    borderColor, innerRadius, glowColor,
+    borderColor, innerRadius, glowColor, formatRadius,
   ]);
 
   return (

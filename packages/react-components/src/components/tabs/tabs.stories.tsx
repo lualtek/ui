@@ -9,6 +9,7 @@ const meta = {
   component: Tabs,
   args: {
     defaultValue: '1',
+    dimension: 'regular',
   },
   render: args => (
     <Tabs {...args}>

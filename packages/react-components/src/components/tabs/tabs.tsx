@@ -16,6 +16,8 @@ import {
 import styles from './tabs.module.css';
 import { TabPanel, TabPanelProps } from './tabs-panel';
 
+type RadiusType = Record<NonNullable<TabsProps['dimension']>, Exclude<TokensTypes['radius'], string>>
+
 export type TabsProps = TabsPrimitive.TabsProps & {
   /**
    * Add extra space around the tab list. This property can be used to
@@ -46,6 +48,12 @@ export const Tabs: TabsComponent = ({
   const [activeItem, setActiveItem] = useState<string>(defaultValue ?? '');
   const uid = useId();
 
+  const radius: RadiusType = {
+    small: 12,
+    regular: 16,
+    big: 24,
+  };
+
   const handleOnVlaueChange = useCallback(
     (value: string) => {
       onValueChange?.(value);
@@ -68,7 +76,16 @@ export const Tabs: TabsComponent = ({
       {...otherProps}
     >
       <LazyMotion features={domMax} strict>
-        <Panel bordered vibrant vibrancyColor="soft" className={styles.List}>
+        <Panel
+          bordered
+          glowSpread={10}
+          radius={radius[dimension]}
+          vPadding={4}
+          hPadding={4}
+          vibrant
+          vibrancyColor="soft"
+          className={styles.List}
+        >
           <Stack
             as={TabsPrimitive.List}
             direction="row"

@@ -9,17 +9,7 @@
     white-space: nowrap;
     overflow-x: auto;
     scrollbar-width: none;
-    padding: token(--space-4);
-    border-radius: token(--radius-16);
     margin: var(--tabs-list-gap) var(--tabs-list-gap) 0 var(--tabs-list-gap);
-
-    .Tabs[data-tabs-dimension='small'] & {
-      border-radius: calc(token(--radius-8) + token(--radius-4));
-    }
-
-    .Tabs[data-tabs-dimension='big'] & {
-      border-radius: token(--radius-24);
-    }
 
     &::-webkit-scrollbar {
       display: none;

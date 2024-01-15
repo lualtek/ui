@@ -6,7 +6,6 @@
     -webkit-overflow-scrolling: touch;
     max-block-size: 95vh;
     max-block-size: 95dvh;
-    border-radius: token(--radius-24) token(--radius-24) 0 0;
     place-self: end center;
     display: flex;
 
@@ -14,7 +13,6 @@
       max-inline-size: 600px;
       max-block-size: 80vh;
       max-block-size: 80dvh;
-      border-radius: token(--radius-24);
       place-self: center center;
     }
   }

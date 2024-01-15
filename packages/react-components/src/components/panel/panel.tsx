@@ -6,11 +6,16 @@ import clsx from 'clsx';
 import { forwardRef, useMemo } from 'react';
 
 import {
+  Glow,
+  GlowProps,
   useStyles, VibrancyBlur, VibrancyColor, VibrancySaturation,
 } from '@/components';
 import { Polymorphic } from '@/components/types';
 
+import { ConditionalWrapper } from '../conditional-wrapper';
 import styles from './panel.module.css';
+
+type RadiusType = Exclude<TokensTypes['radius'], string> | 0
 
 export type PanelProps = {
   /**
@@ -52,7 +57,7 @@ export type PanelProps = {
   /**
  * Define the edge radius of the card.
  */
-  radius?: TokensTypes['radius'];
+  radius?: TokensTypes['radius'] | [RadiusType?, RadiusType?, RadiusType?, RadiusType?];
   /**
    * Enable border on a specific side.
    * @defaultValue 'all'
@@ -66,6 +71,14 @@ export type PanelProps = {
    * Set the vertical padding (top/bottom)
    */
   vPadding?: TokensTypes['space'];
+  /**
+   * Disable the glow effect.
+   */
+  disableGlow?: boolean;
+  /**
+   * Set the spread of the glow effect.
+   */
+  glowSpread?: GlowProps['spread'];
 }
 
 type PolymorphicPanel = Polymorphic.ForwardRefComponent<'div', PanelProps>;
@@ -85,11 +98,24 @@ export const Panel = forwardRef(({
   vPadding,
   backgroundColor,
   backgroundColorHover,
+  disableGlow,
+  glowSpread,
   as: Wrapper = 'div',
   ...otherProps
 }, forwardedRef) => {
   const computedBackground = typeof backgroundColor === 'number' ? `var(--dimmed-${backgroundColor})` : backgroundColor;
   const computedBackgroundHover = typeof backgroundColorHover === 'number' ? `var(--dimmed-${backgroundColorHover})` : backgroundColorHover;
+  const formatRadius = useMemo(() => {
+    if (!radius) {
+      return undefined;
+    }
+
+    if (!Array.isArray(radius)) {
+      return tkns.radius[radius];
+    }
+
+    return radius.map(r => (r !== 0 ? tkns.radius[r!] : 0)).join(' ');
+  }, [radius]);
 
   const { vibrancy } = useStyles({
     vibrancy: {
@@ -100,27 +126,42 @@ export const Panel = forwardRef(({
   });
 
   const dynamicStyle = useMemo(() => ({
-    '--radius': radius && tkns.radius[radius],
+    '--radius': radius && formatRadius,
     '--v-padding': vPadding ? tkns.space[vPadding] : 0,
     '--h-padding': hPadding ? tkns.space[hPadding] : 0,
     '--background': vibrant ? undefined : computedBackground,
     '--background-hover': vibrant ? undefined : computedBackgroundHover,
-  }), [radius, vPadding, hPadding, vibrant, computedBackground, computedBackgroundHover]);
+  }), [radius, vPadding, hPadding, vibrant, computedBackground, computedBackgroundHover, formatRadius]);
 
   return (
-    <Wrapper
-      ref={forwardedRef}
-      className={clsx(styles.Panel, className)}
-      data-panel-bordered={bordered}
-      data-panel-border-side={borderSide}
-      data-panel-radius={Boolean(radius)}
-      data-panel-hover={Boolean(backgroundColorHover)}
-      style={{ ...dynamicStyle, ...style }}
-      {...vibrant && vibrancy.attributes}
-      {...otherProps}
+    <ConditionalWrapper
+      condition={!disableGlow}
+      wrapper={children => (
+        <Glow
+          innerRadius={radius}
+          glowColor="var(--dimmed-2)"
+          spread={glowSpread}
+          borderOffset={1}
+          borderWidth={1}
+        >
+          {children}
+        </Glow>
+      )}
     >
-      {children}
-    </Wrapper>
+      <Wrapper
+        ref={forwardedRef}
+        className={clsx(styles.Panel, className)}
+        data-panel-bordered={bordered}
+        data-panel-border-side={borderSide}
+        data-panel-radius={Boolean(radius)}
+        data-panel-hover={Boolean(backgroundColorHover)}
+        style={{ ...dynamicStyle, ...style }}
+        {...vibrant && vibrancy.attributes}
+        {...otherProps}
+      >
+        {children}
+      </Wrapper>
+    </ConditionalWrapper>
   );
 }) as PolymorphicPanel;
 
