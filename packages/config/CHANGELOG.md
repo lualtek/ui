@@ -1,5 +1,11 @@
 # @lualtek/config
 
+## 11.6.1
+
+### Patch Changes
+
+- @lualtek/tokens@11.6.1
+
 ## 11.6.0
 
 ### Patch Changes
