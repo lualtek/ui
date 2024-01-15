@@ -64,9 +64,9 @@ export type GlowProps = {
    */
   globalHighlight?: boolean;
   /**
-   * Whether the highlight should be raimbow colored
+   * Whether the highlight should be rainbow colored
    */
-  raimbowColors?: boolean;
+  rainbowColors?: boolean;
 }
 
 export const Glow: FCChildrenClass<GlowProps> = ({
@@ -81,7 +81,7 @@ export const Glow: FCChildrenClass<GlowProps> = ({
   borderOffset = -5,
   innerRadius,
   globalHighlight = true,
-  raimbowColors = false,
+  rainbowColors = false,
   style,
   ...otherProps
 }) => {
@@ -147,8 +147,8 @@ export const Glow: FCChildrenClass<GlowProps> = ({
     <div
       ref={containerRef}
       className={styles.Glow}
-      data-glow-global={raimbowColors ? false : globalHighlight}
-      data-glow-raimbow={raimbowColors}
+      data-glow-global={rainbowColors ? false : globalHighlight}
+      data-glow-rainbow={rainbowColors}
       style={{ ...dynamicStyle, ...style }}
       {...otherProps}
     >
