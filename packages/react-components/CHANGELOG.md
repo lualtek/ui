@@ -1,5 +1,13 @@
 # @lualtek/react-components
 
+## 11.5.4
+
+### Patch Changes
+
+- e29cb67: Disable Glow effect if cursor is not mouse
+- 624b0b6: Fix Glow typos
+  - @lualtek/icons@11.5.4
+
 ## 11.5.3
 
 ### Patch Changes
