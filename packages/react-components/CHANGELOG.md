@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 11.6.1
+
+### Patch Changes
+
+- f4fe123: Fix glow index
+  - @lualtek/icons@11.6.1
+
 ## 11.6.0
 
 ### Minor Changes
