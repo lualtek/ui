@@ -46,10 +46,6 @@
     }
   }
 
-  .Glow:is(:hover, :focus-visible) {
-    z-index: 2;
-  }
-
   .Glow::before,
   .Glow::after {
     content: '';
