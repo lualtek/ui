@@ -6,6 +6,7 @@ import {
 } from 'react';
 
 import {
+  Glow,
   Stack, StackProps, TextChip, Title, useResponsiveContext,
 } from '@/components';
 
@@ -43,11 +44,14 @@ export const Stepper = forwardRef<HTMLDivElement, StepperProps>(({
       direction="row"
       columnGap={matches.medium ? 24 : 16}
       className={clsx(styles.Stepper, className)}
+      fill={false}
+      vAlign="start"
       ref={forwardedRef}
       {...otherProps}
     >
-      <TextChip dimension={matches.medium ? 'regular' : 'small'} text={padStep} />
-
+      <Glow innerRadius={matches.medium ? 12 : 8} borderOffset={0} borderWidth={1} spread={200} fitContent>
+        <TextChip dimension={matches.medium ? 'regular' : 'small'} text={padStep} />
+      </Glow>
       <Stack
         vPadding={matches.medium ? 8 : 4}
         hAlign="start"

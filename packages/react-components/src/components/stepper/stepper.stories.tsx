@@ -7,7 +7,6 @@ import { Stepper } from './stepper';
 const meta: Meta<typeof Stepper> = {
   title: 'Navigation/Stepper',
   component: Stepper,
-  args: {},
   decorators: [
     Story => (
       <ResponsiveProvider>
