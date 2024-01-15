@@ -1,5 +1,11 @@
 # @lualtek/tokens
 
+## 11.6.0
+
+### Minor Changes
+
+- 9026ad5: Add new 12 radius token and add glow to panel
+
 ## 11.5.4
 
 ## 11.5.3
