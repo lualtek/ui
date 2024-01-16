@@ -1,5 +1,13 @@
 # @lualtek/react-components
 
+## 11.6.2
+
+### Patch Changes
+
+- 1b2b964: Disable glow on inline toast
+- 2f18900: Fix glow zindex
+  - @lualtek/icons@11.6.2
+
 ## 11.6.1
 
 ### Patch Changes
