@@ -141,6 +141,7 @@ export const Panel = forwardRef(({
           innerRadius={radius}
           glowColor="var(--dimmed-2)"
           spread={glowSpread}
+          glowPower={0}
           borderOffset={1}
           borderWidth={1}
         >
