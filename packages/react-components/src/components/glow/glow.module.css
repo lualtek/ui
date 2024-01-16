@@ -21,7 +21,6 @@
 
     border-radius: var(--radius);
     position: relative;
-    z-index: 0;
 
 
     &[data-glow-fit-content='true'] {
