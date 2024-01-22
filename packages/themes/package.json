@@ -1,7 +1,7 @@
 {
   "name": "@lualtek/themes",
   "description": "Lualtek design system themes",
-  "version": "11.6.2",
+  "version": "11.6.3",
   "author": "Lualtek",
   "main": "platforms/web/themes.css",
   "style": "platforms/web/themes.css",
@@ -36,7 +36,7 @@
     "url": "https://github.com/lualtek/ui/issues"
   },
   "devDependencies": {
-    "@lualtek/tokens": "11.6.2",
+    "@lualtek/tokens": "11.6.3",
     "colorjs.io": "0.4.5",
     "fs-extra": "11.2.0",
     "style-dictionary": "3.9.1",
