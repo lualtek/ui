@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 11.6.3
+
+### Patch Changes
+
+- 5e9838a: Fix modal content stick position on mobile
+  - @lualtek/icons@11.6.3
+
 ## 11.6.2
 
 ### Patch Changes
