@@ -11,7 +11,7 @@
     "build:nocache": "turbo run build --force",
     "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
-    "test": "echo \"Add some tests\"",
+    "chromatic": "turbo run test",
     "release": "changeset publish",
     "prepare": "husky install",
     "change": "changeset",

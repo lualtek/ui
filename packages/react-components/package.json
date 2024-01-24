@@ -29,7 +29,7 @@
     "watch:csstypes": "tcm -w -p '**/*.module.css' src",
     "build:csstypes": "tcm -p '**/*.module.css' src",
     "clean": "rimraf dist core core.css",
-    "chromatic": "chromatic --exit-zero-on-changes"
+    "test": "chromatic --exit-zero-on-changes"
   },
   "repository": {
     "type": "git",
