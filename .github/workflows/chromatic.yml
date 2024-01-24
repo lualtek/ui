@@ -2,13 +2,17 @@
 
 name: "Chromatic"
 
-on: push
+on:
+  push:
+    branches:
+      - main
+  pull_request:
 
 jobs:
   chromatic:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
@@ -21,3 +25,5 @@ jobs:
         with:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           skip: "@(release/**|dependabot/**)"
+          exitOnceUploaded: true
+          exitZeroOnChanges: true
