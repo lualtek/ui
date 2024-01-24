@@ -9,7 +9,6 @@
       "outputs": []
     },
     "storybook": {
-      "dependsOn": ["^build"],
       "outputs": []
     },
     "lint": {
