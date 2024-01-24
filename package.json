@@ -11,7 +11,7 @@
     "build:nocache": "turbo run build --force",
     "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
-    "chromatic": "turbo run test --scope='react-components'",
+    "chromatic": "turbo run test",
     "build-storybook": "npm run-script build-storybook --workspace=packages/react-components",
     "release": "changeset publish",
     "prepare": "husky install",
