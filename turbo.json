@@ -4,10 +4,6 @@
       "dependsOn": ["^build"],
       "outputs": ["dist/**"]
     },
-    "test": {
-      "dependsOn": ["^build"],
-      "outputs": []
-    },
     "build-storybook": {
       "dependsOn": ["^build"],
       "outputs": []
