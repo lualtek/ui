@@ -12,7 +12,7 @@
     "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
     "chromatic": "turbo run test",
-    "build-storybook": "turbo run build-storybook",
+    "build-storybook": "npm run build && npm run build-storybook --workspace=packages/react-components",
     "release": "changeset publish",
     "prepare": "husky install",
     "change": "changeset",
