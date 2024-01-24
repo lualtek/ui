@@ -28,3 +28,5 @@ jobs:
           exitOnceUploaded: true
           exitZeroOnChanges: true
           onlyChanged: true
+          autoAcceptChanges: "main"
+          storybookBaseDir: 'packages/react-components'
