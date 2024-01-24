@@ -12,6 +12,7 @@
     "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
     "chromatic": "turbo run test",
+    "build-storybook": "turbo run storybook",
     "release": "changeset publish",
     "prepare": "husky install",
     "change": "changeset",

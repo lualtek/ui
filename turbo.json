@@ -8,6 +8,10 @@
       "dependsOn": ["^build"],
       "outputs": []
     },
+    "storybook": {
+      "dependsOn": ["^build"],
+      "outputs": []
+    },
     "lint": {
       "outputs": []
     },
