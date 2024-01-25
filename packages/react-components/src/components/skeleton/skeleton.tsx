@@ -4,6 +4,7 @@ import { TokensTypes } from '@lualtek/tokens/platforms/web';
 import tkns from '@lualtek/tokens/platforms/web/tokens.json';
 import {
   Fragment, useCallback, useId,
+  useMemo,
 } from 'react';
 
 import { FCClass } from '@/components/types';
@@ -71,25 +72,23 @@ export const Skeleton: FCClass<SkeletonProps> = ({
   const computedWidth = typeof width === 'number' ? `${width}px` : width;
   const computedHeight = typeof height === 'number' ? `${height}px` : height;
 
-  const SkeletonItem = useCallback(() => {
-    const dynamicStyle = {
-      '--radius': radius && tkns.radius[radius],
-      '--width': width && computedWidth,
-      '--height': height && computedHeight,
-      '--gap': gap ? tkns.space[gap] : undefined,
-    };
+  const dynamicStyle = useMemo(() => ({
+    '--radius': radius && tkns.radius[radius],
+    '--width': width && computedWidth,
+    '--height': height && computedHeight,
+    '--gap': gap ? tkns.space[gap] : undefined,
+  }), [radius, width, computedWidth, height, computedHeight, gap]);
 
-    return (
-      <span
-        className={styles.SkeletonItem}
-        data-skeleton-circle={circle}
-        data-skeleton-animated={enableAnimation}
-        style={{ ...dynamicStyle, ...style }}
-      >
-        &zwnj;
-      </span>
-    );
-  }, [radius, width, computedWidth, height, computedHeight, gap, circle, enableAnimation, style]);
+  const SkeletonItem = useCallback(() => (
+    <span
+      className={styles.SkeletonItem}
+      data-skeleton-circle={circle}
+      data-skeleton-animated={enableAnimation}
+      style={{ ...dynamicStyle, ...style }}
+    >
+      &zwnj;
+    </span>
+  ), [circle, enableAnimation, dynamicStyle, style]);
 
   return (
     <span
