@@ -1,5 +1,15 @@
 # @lualtek/react-components
 
+## 11.7.0
+
+### Minor Changes
+
+- a6724f1: Add new Badge component
+
+### Patch Changes
+
+- @lualtek/icons@11.7.0
+
 ## 11.6.3
 
 ### Patch Changes
