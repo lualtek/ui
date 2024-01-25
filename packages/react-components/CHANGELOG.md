@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 11.8.1
+
+### Patch Changes
+
+- 9e5ce7b: Add ref to Badge component
+  - @lualtek/icons@11.8.1
+
 ## 11.8.0
 
 ### Minor Changes
