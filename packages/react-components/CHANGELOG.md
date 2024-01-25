@@ -1,5 +1,15 @@
 # @lualtek/react-components
 
+## 11.8.0
+
+### Minor Changes
+
+- bec84cb: Add new Badge component
+
+### Patch Changes
+
+- @lualtek/icons@11.8.0
+
 ## 11.7.0
 
 ### Minor Changes
