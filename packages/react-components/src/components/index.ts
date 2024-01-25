@@ -1,6 +1,7 @@
 export * from './aspect-ratio';
 export * from './autocomplete';
 export * from './avatar';
+export * from './badge';
 export * from './blank-button';
 export * from './bleed';
 export * from './button';

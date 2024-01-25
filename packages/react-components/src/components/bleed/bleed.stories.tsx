@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Container } from '..';
+import { Container } from '@/components';
+
 import { Bleed } from './bleed';
 
 const meta = {
