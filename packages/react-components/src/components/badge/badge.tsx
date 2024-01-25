@@ -3,19 +3,22 @@
 import { TokensTypes } from '@lualtek/tokens';
 import tkns from '@lualtek/tokens/platforms/web/tokens.json';
 import clsx from 'clsx';
-import { useMemo } from 'react';
-import { FCChildrenClass } from 'src/types/custom';
+import {
+  forwardRef, useMemo,
+} from 'react';
+
+import { PropsClassChildren } from '@/components';
 
 import styles from './badge.module.css';
 
-export type BadgeProps = {
+export type BadgeProps = PropsClassChildren<{
   gap?: number;
   badgeSize?: number;
   color?: TokensTypes['colors'];
   showBadge?: boolean;
-}
+}>
 
-export const Badge: FCChildrenClass<BadgeProps> = ({
+export const Badge = forwardRef<HTMLDivElement, BadgeProps>(({
   children,
   className,
   gap = 4,
@@ -24,7 +27,7 @@ export const Badge: FCChildrenClass<BadgeProps> = ({
   style,
   showBadge = false,
   ...otherProps
-}) => {
+}, forwardRef) => {
   const dynamicStyle = useMemo(() => ({
     '--badge-size': `${badgeSize}px`,
     '--gap': `${gap}px`,
@@ -33,6 +36,7 @@ export const Badge: FCChildrenClass<BadgeProps> = ({
 
   return (
     <div
+      ref={forwardRef}
       className={clsx(styles.Badge, className)}
       data-badge-show={showBadge}
       style={{ ...dynamicStyle, ...style }}
@@ -43,4 +47,4 @@ export const Badge: FCChildrenClass<BadgeProps> = ({
       </div>
     </div>
   );
-};
+});
