@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 11.8.2
+
+### Patch Changes
+
+- c1f9989: Fix textfield autofill style
+  - @lualtek/icons@11.8.2
+
 ## 11.8.1
 
 ### Patch Changes
