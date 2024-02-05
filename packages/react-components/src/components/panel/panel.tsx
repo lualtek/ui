@@ -140,12 +140,10 @@ export const Panel = forwardRef(({
         <Glow
           innerRadius={radius}
           glowColor="var(--dimmed-2)"
-          className={className}
           spread={glowSpread}
           glowPower={0}
           borderOffset={1}
           borderWidth={1}
-          style={style}
         >
           {children}
         </Glow>
@@ -153,12 +151,12 @@ export const Panel = forwardRef(({
     >
       <Wrapper
         ref={forwardedRef}
-        className={styles.Panel}
+        className={clsx(styles.Panel, className)}
         data-panel-bordered={bordered}
         data-panel-border-side={borderSide}
         data-panel-radius={Boolean(radius)}
         data-panel-hover={Boolean(backgroundColorHover)}
-        style={dynamicStyle}
+        style={{ ...dynamicStyle, ...style }}
         {...vibrant && vibrancy.attributes}
         {...otherProps}
       >

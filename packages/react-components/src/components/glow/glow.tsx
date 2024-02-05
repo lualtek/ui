@@ -4,7 +4,6 @@
 
 import { TokensTypes } from '@lualtek/tokens';
 import tkns from '@lualtek/tokens/platforms/web/tokens.json';
-import clsx from 'clsx';
 import {
   useCallback, useEffect, useMemo, useRef, useState,
 } from 'react';
@@ -174,7 +173,7 @@ export const Glow: FCChildrenClass<GlowProps> = ({
   return (
     <div
       ref={containerRef}
-      className={clsx(styles.Glow, className)}
+      className={styles.Glow}
       data-glow-global={rainbowColors ? false : globalHighlight}
       data-glow-rainbow={rainbowColors}
       data-glow-fit-content={fitContent}
