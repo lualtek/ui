@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 11.8.3
+
+### Patch Changes
+
+- e1bdc16: Fix panel classname and style
+  - @lualtek/icons@11.8.3
+
 ## 11.8.2
 
 ### Patch Changes
