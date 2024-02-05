@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 11.8.4
+
+### Patch Changes
+
+- 7ea45d8: Revert last changes
+  - @lualtek/icons@11.8.4
+
 ## 11.8.3
 
 ### Patch Changes
