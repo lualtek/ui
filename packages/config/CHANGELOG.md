@@ -1,5 +1,13 @@
 # @lualtek/config
 
+## 11.8.5
+
+### Patch Changes
+
+- 59e76f2: Update deps
+- Updated dependencies [59e76f2]
+  - @lualtek/tokens@11.8.5
+
 ## 11.8.4
 
 ### Patch Changes
