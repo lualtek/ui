@@ -39,7 +39,7 @@
     "@lualtek/tokens": "11.8.4",
     "colorjs.io": "0.4.5",
     "fs-extra": "11.2.0",
-    "style-dictionary": "3.9.1",
+    "style-dictionary": "3.9.2",
     "tsconfig": "*",
     "yargs": "17.7.2"
   }
