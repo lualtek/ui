@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 11.8.5
+
+### Patch Changes
+
+- 59e76f2: Update deps
+  - @lualtek/icons@11.8.5
+
 ## 11.8.4
 
 ### Patch Changes

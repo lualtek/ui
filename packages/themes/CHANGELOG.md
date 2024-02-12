@@ -1,5 +1,11 @@
 # @lualtek/themes
 
+## 11.8.5
+
+### Patch Changes
+
+- 59e76f2: Update deps
+
 ## 11.8.4
 
 ## 11.8.3
