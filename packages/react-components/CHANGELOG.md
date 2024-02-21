@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 11.8.6
+
+### Patch Changes
+
+- 94b967e: Fix Glow indexing
+  - @lualtek/icons@11.8.6
+
 ## 11.8.5
 
 ### Patch Changes

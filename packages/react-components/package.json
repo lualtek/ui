@@ -1,6 +1,6 @@
 {
   "name": "@lualtek/react-components",
-  "version": "11.8.5",
+  "version": "11.8.6",
   "types": "dist/index.d.ts",
   "main": "dist/index.js",
   "exports": {
@@ -55,7 +55,7 @@
     "@babel/preset-env": "7.23.9",
     "@babel/preset-react": "7.23.3",
     "@babel/preset-typescript": "7.23.3",
-    "@lualtek/config": "11.8.5",
+    "@lualtek/config": "11.8.6",
     "@storybook/addon-actions": "7.6.7",
     "@storybook/addon-essentials": "7.6.7",
     "@storybook/addon-links": "7.6.7",
@@ -81,7 +81,7 @@
     "typescript": "5.3.3"
   },
   "dependencies": {
-    "@lualtek/icons": "11.8.5",
+    "@lualtek/icons": "11.8.6",
     "@radix-ui/react-checkbox": "1.0.4",
     "@radix-ui/react-popover": "1.0.7",
     "@radix-ui/react-radio-group": "1.1.3",
