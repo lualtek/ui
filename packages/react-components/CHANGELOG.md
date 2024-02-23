@@ -1,5 +1,15 @@
 # @lualtek/react-components
 
+## 11.9.0
+
+### Minor Changes
+
+- feaa464: Expose glowColor and rainbowColors from Panel
+
+### Patch Changes
+
+- @lualtek/icons@11.9.0
+
 ## 11.8.6
 
 ### Patch Changes
