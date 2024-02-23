@@ -79,6 +79,14 @@ export type PanelProps = {
    * Set the spread of the glow effect.
    */
   glowSpread?: GlowProps['spread'];
+  /**
+   * Set the color of the glow effect.
+   */
+  glowColor?: GlowProps['glowColor'];
+  /**
+   * Set the rainbow colors of the glow effect.
+   */
+  rainbowColors?: GlowProps['rainbowColors'];
 }
 
 type PolymorphicPanel = Polymorphic.ForwardRefComponent<'div', PanelProps>;
@@ -100,6 +108,8 @@ export const Panel = forwardRef(({
   backgroundColorHover,
   disableGlow,
   glowSpread,
+  glowColor,
+  rainbowColors,
   as: Wrapper = 'div',
   ...otherProps
 }, forwardedRef) => {
@@ -139,11 +149,12 @@ export const Panel = forwardRef(({
       wrapper={children => (
         <Glow
           innerRadius={radius}
-          glowColor="var(--dimmed-2)"
+          glowColor={glowColor ?? 'var(--dimmed-2)'}
           spread={glowSpread}
           glowPower={0}
           borderOffset={1}
           borderWidth={1}
+          rainbowColors={rainbowColors}
         >
           {children}
         </Glow>
