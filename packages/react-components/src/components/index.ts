@@ -29,6 +29,7 @@ export * from './logo';
 export * from './marquee';
 export * from './masonry';
 export * from './menu';
+export * from './meter';
 export * from './modal';
 export * from './overlay';
 export * from './pagination';

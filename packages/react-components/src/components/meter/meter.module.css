@@ -1,0 +1,80 @@
+@layer components {
+  .Meter {
+    --meter-background-color: var(--dimmed-2);
+    --meter-strong-color: oklch(token(--color-green-50));
+    --meter-good-color: oklch(token(--color-dipsy-50));
+    --meter-weak-color: oklch(token(--color-red-60));
+    --dot-size: 6px;
+
+    position: relative;
+    border: 0;
+    background: var(--meter-background-color);
+    border-radius: 1e5px;
+    appearance: none;
+    mask-position: 0 50%;
+    mask-repeat: space no-repeat;
+    mask-image: radial-gradient( red 0, red var(--dot-size), transparent var(--dot-size));
+
+
+    &[data-meter-dimension='small'] {
+      --dot-size: 2px;
+
+      width: 53px;
+      height: token(--space-16);
+      mask-size: 8px 8px;
+    }
+
+    &[data-meter-dimension='regular'] {
+      --dot-size: 4px;
+
+      width: 105px;
+      height: token(--space-16);
+      mask-size: token(--space-16) token(--space-16);
+    }
+
+
+    &::-webkit-meter-inner-element {
+      display: block;
+    }
+
+    &::-webkit-meter-bar {
+      height: 1rem;
+      border: 0;
+      border-radius: 1e5px;
+      background: var(--meter-background-color);
+    }
+
+    &::-moz-meter-bar {
+      background: var(--meter-background-color);
+    }
+
+    &::-webkit-meter-optimum-value {
+      background: var(--meter-strong-color);
+      border-radius: inherit;
+    }
+
+    &:-moz-meter-optimum::-moz-meter-bar {
+      background: var(--meter-strong-color);
+      border-radius: inherit;
+    }
+
+    &::-webkit-meter-suboptimum-value {
+      background: var(--meter-good-color);
+      border-radius: inherit;
+    }
+
+    &:-moz-meter-sub-optimum::-moz-meter-bar {
+      background: var(--meter-good-color);
+      border-radius: inherit;
+    }
+
+    &::-webkit-meter-even-less-good-value {
+      background: var(--meter-weak-color);
+      border-radius: inherit;
+    }
+
+    &:-moz-meter-sub-sub-optimum::-moz-meter-bar {
+      background: var(--meter-weak-color);
+    }
+  }
+}

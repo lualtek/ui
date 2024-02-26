@@ -7,7 +7,7 @@ const meta = {
   component: IconMeter,
   args: {
     dimension: 'regular',
-    icon: 'star',
+    icon: 'circle',
     value: 3.5,
   },
   argTypes: {
