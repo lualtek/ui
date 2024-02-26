@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 11.9.1
+
+### Patch Changes
+
+- bd2f284: Fix table actions bar
+  - @lualtek/icons@11.9.1
+
 ## 11.9.0
 
 ### Minor Changes
