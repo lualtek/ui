@@ -18,7 +18,6 @@ const meta = {
         type: 'range', min: 0, max: 6, step: 0.1,
       },
     },
-    max: { control: 'number' },
     low: {
       control: {
         type: 'range', min: 0, max: 6,
