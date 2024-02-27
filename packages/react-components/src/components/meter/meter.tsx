@@ -2,6 +2,7 @@ import {
   ComponentPropsWithRef,
   forwardRef,
   ReactNode,
+  useId,
 } from 'react';
 import { Except } from 'type-fest';
 
@@ -40,29 +41,34 @@ export const Meter = forwardRef<HTMLMeterElement, MeterProps>(({
   showLabel = true,
   labelPosition = 'end',
   ...otherProps
-}, forwardedRef) => (
-  <Stack
-    inline
-    direction={labelPosition === 'end' ? 'row' : 'row-reverse'}
-    vAlign="center"
-    columnGap={4}
-    className={className}
-  >
-    <meter
-      data-meter-dimension={dimension}
-      min={0}
-      max={6}
-      ref={forwardedRef}
-      value={Math.floor(Number(value))}
-      className={styles.Meter}
-      {...otherProps}
-    />
-    {showLabel && (
-      <Text size={14} lineHeight="extra-small">
-        {label ?? Math.floor(Number(value))}
-      </Text>
-    )}
-  </Stack>
-));
+}, forwardedRef) => {
+  const uid = useId();
+
+  return (
+    <Stack
+      inline
+      direction={labelPosition === 'end' ? 'row' : 'row-reverse'}
+      vAlign="center"
+      columnGap={4}
+      className={className}
+    >
+      <meter
+        data-meter-dimension={dimension}
+        min={0}
+        max={6}
+        ref={forwardedRef}
+        value={Math.floor(Number(value))}
+        className={styles.Meter}
+        aria-labelledby={`${uid}-meter`}
+        {...otherProps}
+      />
+      {showLabel && (
+        <Text id={`${uid}-meter`} size={14} lineHeight="extra-small">
+          {label ?? Math.floor(Number(value))}
+        </Text>
+      )}
+    </Stack>
+  );
+});
 
 Meter.displayName = 'Meter';
