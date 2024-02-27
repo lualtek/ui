@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
+import { Icon } from '@/components';
+
 import { Meter } from './meter';
 
 const meta = {
@@ -43,4 +45,17 @@ type Story = StoryObj<typeof meta>;
 
 export const Default = {
   args: {},
+} satisfies Story;
+
+export const CustomLabel = {
+  args: {
+    label: 'Custom label',
+  },
+} satisfies Story;
+
+export const LabelIcon = {
+  args: {
+    labelPosition: 'start',
+    label: <Icon dimension="12" source="wifi" />,
+  },
 } satisfies Story;
