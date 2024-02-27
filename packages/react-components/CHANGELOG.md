@@ -1,5 +1,15 @@
 # @lualtek/react-components
 
+## 11.10.0
+
+### Minor Changes
+
+- 3a2cdfe: Add new Meter component
+
+### Patch Changes
+
+- @lualtek/icons@11.10.0
+
 ## 11.9.1
 
 ### Patch Changes
