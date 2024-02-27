@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 11.10.1
+
+### Patch Changes
+
+- 7878746: Add meter aria label
+  - @lualtek/icons@11.10.1
+
 ## 11.10.0
 
 ### Minor Changes
