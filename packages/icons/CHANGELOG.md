@@ -1,5 +1,11 @@
 # @lualtek/icons
 
+## 11.11.0
+
+### Minor Changes
+
+- 4884449: Add new archive-drawer icon
+
 ## 11.10.1
 
 ## 11.10.0
