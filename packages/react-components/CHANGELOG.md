@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 11.11.0
+
+### Patch Changes
+
+- Updated dependencies [4884449]
+  - @lualtek/icons@11.11.0
+
 ## 11.10.1
 
 ### Patch Changes
