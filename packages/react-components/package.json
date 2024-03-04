@@ -1,6 +1,6 @@
 {
   "name": "@lualtek/react-components",
-  "version": "11.11.0",
+  "version": "11.11.1",
   "types": "dist/index.d.ts",
   "main": "dist/index.js",
   "exports": {
