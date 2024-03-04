@@ -37,7 +37,7 @@ import { TablePagination, TablePaginationProps } from './table-pagination';
 import { TableRow } from './table-row';
 import { CustomColumnMeta } from './types';
 
-declare module '@tanstack/table-core' {
+declare module '@tanstack/react-table' {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/naming-convention
   interface ColumnMeta<TData extends RowData, TValue> extends CustomColumnMeta {}
 }

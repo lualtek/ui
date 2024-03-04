@@ -78,11 +78,11 @@ const ConditionalTabTemplate = () => {
   );
 };
 
-export const ConditionalTab = {
+export const ConditionalTab: Story = {
   render: args => <ConditionalTabTemplate {...args} />,
 } satisfies Story;
 
-export const DisabledTabs = {
+export const DisabledTabs: Story = {
   render: args => (
     <Tabs defaultValue="1" {...args}>
       <Tabs.Panel value="1" label="Tab 1">Panel 1</Tabs.Panel>
@@ -95,7 +95,7 @@ export const DisabledTabs = {
   ),
 } satisfies Story;
 
-export const WithIcons = {
+export const WithIcons: Story = {
   render: args => (
     <Tabs defaultValue="1" {...args}>
       <Tabs.Panel icon="star" value="1" label="Tab 1">Panel 1</Tabs.Panel>

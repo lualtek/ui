@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/lualtek/ui",
   "scripts": {
-    "build": "run-s clean build:ts",
+    "build": "pnpm run clean && pnpm run build:ts",
     "clean": "rimraf dist",
     "build:ts": "tsc"
   },
@@ -29,17 +29,17 @@
     "postcss": ">=8.x"
   },
   "dependencies": {
-    "@lualtek/tokens": "11.11.0",
-    "cssnano": "6.0.3",
-    "cssnano-preset-default": "6.0.3",
+    "@lualtek/tokens": "11.8.1",
+    "cssnano": "6.0.5",
+    "cssnano-preset-default": "6.0.5",
     "flat": "5.0.2",
-    "postcss-import": "16.0.0",
-    "postcss-preset-env": "9.3.0",
+    "postcss-import": "16.0.1",
+    "postcss-preset-env": "9.4.0",
     "postcss-replace": "2.0.1"
   },
   "devDependencies": {
     "@types/flat": "5.0.5",
-    "tsconfig": "*",
+    "tsconfig": "workspace:*",
     "typescript": "5.3.3"
   },
   "types": "./dist/index.d.ts"
