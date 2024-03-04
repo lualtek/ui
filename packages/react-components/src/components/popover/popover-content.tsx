@@ -1,4 +1,4 @@
-import { TokensTypes } from '@lualtek/tokens';
+import { TokensTypes } from '@lualtek/tokens/platforms/web';
 import * as PopoverPrimitive from '@radix-ui/react-popover';
 import { domAnimation, LazyMotion, m } from 'framer-motion';
 import { FC, useMemo } from 'react';

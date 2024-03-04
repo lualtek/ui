@@ -2,8 +2,12 @@
 /* eslint-disable global-require */
 
 // eslint-disable-next-line import/no-extraneous-dependencies
+import { createRequire } from 'node:module';
+import path from 'node:path';
+
 import fs from 'fs-extra';
-import path from 'path';
+
+const require = createRequire(import.meta.url);
 
 const deeperKeys = ['color', 'font', 'icon'];
 
@@ -32,7 +36,8 @@ const run = () => {
   colors: ${Object.keys(tokens.color as Record<string, unknown>).filter(i => !colorsToExclude.includes(i)).map(item => `'${item}'`).join('|')};
 };`;
 
-  fs.writeFileSync(path.join('platforms', 'web', 'index.ts'), types);
+  fs.writeFileSync(path.join('platforms', 'web', 'index.d.ts'), types);
+  fs.writeFileSync(path.join('platforms', 'web', 'index.js'), 'export default {}');
 };
 
 try {

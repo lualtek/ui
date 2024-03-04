@@ -3,12 +3,12 @@
   "description": "Lualtek design system themes",
   "version": "11.11.3",
   "author": "Lualtek",
-  "main": "platforms/web/themes.css",
   "style": "platforms/web/themes.css",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com",
     "access": "restricted"
   },
+  "type": "module",
   "files": [
     "platforms/"
   ],
@@ -23,8 +23,8 @@
   "scripts": {
     "prebuild": "rimraf platforms/",
     "build": "pnpm run build:themes && pnpm run build:combine",
-    "build:combine": "ts-node src/combine",
-    "build:themes": "ts-node src/index"
+    "build:combine": "ts-node src/combine.ts",
+    "build:themes": "ts-node src/index.ts"
   },
   "repository": {
     "type": "git",

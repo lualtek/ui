@@ -1,10 +1,21 @@
+/* eslint-disable import/extensions */
+/* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-console, no-restricted-syntax */
-import RawColorTokens from '@lualtek/tokens/platforms/raw/tokens.json';
-import fs from 'fs-extra';
-import path from 'path';
-import StyleDictionary from 'style-dictionary';
+import { createRequire } from 'node:module';
+import path from 'node:path';
 
-import OkLCH from './transformers/oklch';
+import fs from 'fs-extra';
+import StyleDictionary from 'style-dictionary';
+import { fileURLToPath } from 'url';
+
+import OkLCH from './transformers/oklch.ts';
+
+const require = createRequire(import.meta.url);
+// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+const RawColorTokens = require('@lualtek/tokens/platforms/raw/tokens.json');
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const THEME_VARIANTS = ['light', 'dark'] as const;
 
@@ -23,7 +34,7 @@ interface CustomConfig extends StyleDictionary.Config {
 const getConfig = (name: string, variant: string): CustomConfig => ({
   source: [`./src/themes/${name}/${variant}/*.json`],
   tokens: {
-    ...RawColorTokens,
+    ...RawColorTokens as Record<string, unknown>,
   },
   platforms: {
     // Build configuration for the web platform

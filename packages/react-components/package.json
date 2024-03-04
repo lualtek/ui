@@ -2,15 +2,15 @@
   "name": "@lualtek/react-components",
   "version": "11.11.3",
   "types": "dist/index.d.ts",
-  "main": "dist/index.js",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
   "exports": {
     ".": "./dist/index.js",
     "./core.css": "./dist/core.css",
     "./doc/*": "./dist/components/*/*.doc.json"
   },
-  "files": [
-    "dist"
-  ],
   "publishConfig": {
     "registry": "https://npm.pkg.github.com",
     "access": "restricted"
@@ -19,10 +19,10 @@
     "dev": "pnpm run --parallel storybook watch:csstypes",
     "prebuild": "pnpm run clean && pnpm run build:csstypes",
     "build": "pnpm run build:ts && pnpm run build:css && pnpm run copy:fonts && pnpm run build:api",
-    "build:css": "cpy '**/*.css' '../dist' --parents --cwd=src && postcss dist/*.css \"dist/**/!(utils)/.css\" --replace",
-    "copy:fonts": "cpy 'fonts/*' '../dist' --parents --cwd=src",
+    "build:css": "cd src && copyfiles \"**/*.css\" \"./../dist\" --verbose && cd .. && postcss dist/*.css \"dist/**/!(utils)/.css\" --replace",
+    "copy:fonts": "cd src && copyfiles \"./fonts/*\" \"./../dist\" --verbose && cd ..",
     "build:ts": "tsc -p tsconfig.prod.json && tsc-alias",
-    "build:api": "typedoc && typedoc-json-parser --json dist/api-temp.json && ts-node ./generate-api-doc",
+    "build:api": "typedoc && typedoc-json-parser --json dist/api-temp.json && ts-node ./generate-api-doc.ts",
     "postbuild:api": "rimraf dist/api-temp.json",
     "storybook": "storybook dev --quiet -p 6006",
     "build-storybook": "storybook build",
@@ -67,7 +67,7 @@
     "@storybook/react-webpack5": "7.6.17",
     "@storybook/theming": "7.6.17",
     "@types/node": "20.11.24",
-    "@types/react": "18.2.61",
+    "@types/react": "18.2.62",
     "@types/react-dom": "18.2.19",
     "babel-loader": "9.1.3",
     "chromatic": "11.0.0",

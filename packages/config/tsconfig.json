@@ -3,8 +3,6 @@
   "compilerOptions": {
     "baseUrl": ".",
     "outDir": "dist",
-    "target": "es5",
-    "module": "commonjs",
   },
   "include": ["src", "types"],
   "exclude": ["dist", "build", "node_modules"]
