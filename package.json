@@ -12,7 +12,7 @@
     "lint": "turbo run lint",
     "test": "echo \"Add some test\"",
     "release": "changeset publish",
-    "prepare": "husky install",
+    "prepare": "husky",
     "change": "changeset",
     "upgrade-interactive": "npx npm-upgrade-monorepo"
   },
