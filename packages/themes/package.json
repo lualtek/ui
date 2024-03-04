@@ -36,7 +36,7 @@
     "url": "https://github.com/lualtek/ui/issues"
   },
   "devDependencies": {
-    "@lualtek/tokens": "11.8.1",
+    "@lualtek/tokens": "workspace:*",
     "@types/fs-extra": "11.0.4",
     "@types/node": "20.11.24",
     "colorjs.io": "0.5.0",

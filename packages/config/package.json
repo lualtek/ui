@@ -29,7 +29,7 @@
     "postcss": ">=8.x"
   },
   "dependencies": {
-    "@lualtek/tokens": "11.8.1",
+    "@lualtek/tokens": "workspace:*",
     "cssnano": "6.0.5",
     "cssnano-preset-default": "6.0.5",
     "flat": "5.0.2",
