@@ -1,2 +1,2 @@
-pnpm dlx changeset version
+pnpm exec changeset version
 pnpm i --lockfile-only
