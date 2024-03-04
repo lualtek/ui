@@ -4,7 +4,7 @@ Lualtek UI things, managed by Turborepo
 
 ## What's inside?
 
-This turborepo uses [NPM](https://www.npmjs.com/) as a package manager. It includes the following packages/apps:
+This turborepo uses [pnpm](https://pnpm.io) as a package manager. It includes the following packages/apps:
 
 ### Apps and Packages
 
@@ -29,7 +29,7 @@ To build all apps and packages, run the following command:
 
 ```
 cd ui
-npm run build
+pnpm run build
 ```
 
 ### Develop
@@ -38,7 +38,7 @@ To develop all apps and packages, run the following command:
 
 ```
 cd ui
-npm run dev
+pnpm run dev
 ```
 
 ### Remote Caching

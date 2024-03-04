@@ -23,8 +23,8 @@
     }
   },
   "engines": {
-    "node": ">=16.x",
-    "npm": ">=8.x"
+    "node": ">=18.x",
+    "pnpm": ">=8.x"
   },
   "scripts": {
     "prebuild": "rimraf dist",

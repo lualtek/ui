@@ -1,2 +1,2 @@
-npx changeset version
-npm i --package-lock-only
+pnpm dlx changeset version
+pnpm i --lockfile-only
