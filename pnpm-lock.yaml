@@ -69,8 +69,8 @@ importers:
         specifier: 16.2.1
         version: 16.2.1(typescript@5.3.3)
       stylelint-config-equinusocio:
-        specifier: 1.11.0
-        version: 1.11.0(@stylistic/stylelint-plugin@2.1.0)(stylelint-config-standard@36.0.0)(stylelint-gamut@1.3.4)(stylelint@16.2.1)
+        specifier: 1.11.1
+        version: 1.11.1(@stylistic/stylelint-plugin@2.1.0)(stylelint-config-standard@36.0.0)(stylelint-gamut@1.3.4)(stylelint@16.2.1)
       stylelint-design-tokens-plugin:
         specifier: 0.0.14
         version: 0.0.14(stylelint@16.2.1)
@@ -13778,8 +13778,8 @@ packages:
       postcss-selector-parser: 6.0.15
     dev: false
 
-  /stylelint-config-equinusocio@1.11.0(@stylistic/stylelint-plugin@2.1.0)(stylelint-config-standard@36.0.0)(stylelint-gamut@1.3.4)(stylelint@16.2.1):
-    resolution: {integrity: sha512-OpWcckV071WtOk5dny6f+uyZxVZGx+tYAD6nEKEiaW0zSdKYGGoNf2pmbiJ7I/UrbNILyTT+OEn3YtRFObPhdg==}
+  /stylelint-config-equinusocio@1.11.1(@stylistic/stylelint-plugin@2.1.0)(stylelint-config-standard@36.0.0)(stylelint-gamut@1.3.4)(stylelint@16.2.1):
+    resolution: {integrity: sha512-WJh1wH29y/97wIWPe7zhR0We8018s5VVl18ZROm6KlyCsPrkFxtAUrm6aDcHjSc3NVBISH2ihb8bbWXDvf6SiQ==}
     peerDependencies:
       '@stylistic/stylelint-plugin': '>=2'
       stylelint: '>=16'
