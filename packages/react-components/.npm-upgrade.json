@@ -1,8 +1,0 @@
-{
-  "ignore": {
-    "typedoc-json-parser": {
-      "versions": ">=9",
-      "reason": "Type Module only"
-    }
-  }
-}
