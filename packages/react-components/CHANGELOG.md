@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 11.11.2
+
+### Patch Changes
+
+- d5e00bf: Fix ts build wrong folder structure
+  - @lualtek/icons@11.11.2
+
 ## 11.11.1
 
 ### Patch Changes
