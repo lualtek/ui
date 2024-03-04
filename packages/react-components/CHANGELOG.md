@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 11.11.3
+
+### Patch Changes
+
+- 5b3a696: Update latest deps (with stylelint16)
+  - @lualtek/icons@11.11.3
+
 ## 11.11.2
 
 ### Patch Changes
