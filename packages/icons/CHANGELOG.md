@@ -1,5 +1,11 @@
 # @lualtek/icons
 
+## 11.11.1
+
+### Patch Changes
+
+- 9e56c81: Switch from npm to pnpm and update minor deps
+
 ## 11.11.0
 
 ### Minor Changes

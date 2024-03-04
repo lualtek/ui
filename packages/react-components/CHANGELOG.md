@@ -1,5 +1,13 @@
 # @lualtek/react-components
 
+## 11.11.1
+
+### Patch Changes
+
+- 9e56c81: Switch from npm to pnpm and update minor deps
+- Updated dependencies [9e56c81]
+  - @lualtek/icons@11.11.1
+
 ## 11.11.0
 
 ### Patch Changes
