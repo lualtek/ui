@@ -14,6 +14,6 @@
       "@/components/lib": ["src/lib"]
     }
   },
-  "include": ["src", "types"],
+  "include": ["src", "types", "generate-api-doc.ts"],
   "exclude": ["dist", "build", "node_modules"]
 }

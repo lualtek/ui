@@ -22,7 +22,7 @@
   },
   "scripts": {
     "prebuild": "rimraf platforms/",
-    "build": "run-s build:themes build:combine",
+    "build": "pnpm run build:themes && pnpm run build:combine",
     "build:combine": "ts-node src/combine",
     "build:themes": "ts-node src/index"
   },
@@ -36,11 +36,13 @@
     "url": "https://github.com/lualtek/ui/issues"
   },
   "devDependencies": {
-    "@lualtek/tokens": "11.11.0",
-    "colorjs.io": "0.4.5",
+    "@lualtek/tokens": "workspace:*",
+    "@types/fs-extra": "11.0.4",
+    "@types/node": "20.11.24",
+    "colorjs.io": "0.5.0",
     "fs-extra": "11.2.0",
     "style-dictionary": "3.9.2",
-    "tsconfig": "*",
+    "tsconfig": "workspace:*",
     "yargs": "17.7.2"
   }
 }

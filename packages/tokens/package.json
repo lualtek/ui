@@ -12,7 +12,7 @@
   ],
   "scripts": {
     "prebuild": "rimraf platforms/",
-    "build": "run-s build:tokens build:types",
+    "build": "pnpm run build:tokens && pnpm run build:types",
     "build:tokens": "ts-node src/index",
     "build:types": "ts-node src/generate-types"
   },
@@ -29,9 +29,9 @@
   "devDependencies": {
     "@types/fs-extra": "11.0.4",
     "@types/tinycolor2": "1.4.6",
-    "colorjs.io": "0.4.5",
+    "colorjs.io": "0.5.0",
     "fs-extra": "11.2.0",
     "style-dictionary": "3.9.2",
-    "tsconfig": "*"
+    "tsconfig": "workspace:*"
   }
 }

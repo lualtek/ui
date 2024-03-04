@@ -1,6 +1,6 @@
 /* eslint-disable no-restricted-syntax */
 import { readFile, writeFile } from 'fs/promises';
-import * as path from 'path';
+import path from 'path';
 
 const API_JSON_PATH = 'dist/api-temp.json';
 const OUTPUT_FOLDER = 'dist/components';

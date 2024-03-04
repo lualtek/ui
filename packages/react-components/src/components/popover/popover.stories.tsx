@@ -5,7 +5,7 @@ import {
 } from '../..';
 import { Popover } from './popover';
 
-const meta = {
+const meta: Meta = {
   title: 'Dialogs/Popover',
   component: Popover,
   render: args => (
