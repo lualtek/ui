@@ -26,8 +26,8 @@
   "scripts": {
     "prebuild": "rimraf platforms/",
     "build": "pnpm run build:tokens && pnpm run build:types",
-    "build:tokens": "ts-node src/index.ts",
-    "build:types": "ts-node src/generate-types.ts"
+    "build:tokens": "node --loader ts-node/esm src/index.ts",
+    "build:types": "node --loader ts-node/esm src/generate-types.ts"
   },
   "repository": {
     "type": "git",

@@ -2,7 +2,7 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "display": "Default",
   "ts-node": {
-    "esm": true,
+    // "esm": true,
     "compilerOptions": {
       "module": "ESNext"
     }

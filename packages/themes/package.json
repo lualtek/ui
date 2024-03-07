@@ -23,8 +23,8 @@
   "scripts": {
     "prebuild": "rimraf platforms/",
     "build": "pnpm run build:themes && pnpm run build:combine",
-    "build:combine": "ts-node src/combine.ts",
-    "build:themes": "ts-node src/index.ts"
+    "build:combine": "node --loader ts-node/esm src/combine.ts",
+    "build:themes": "node --loader ts-node/esm src/index.ts"
   },
   "repository": {
     "type": "git",

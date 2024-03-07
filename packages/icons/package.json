@@ -34,7 +34,7 @@
     "prebuild": "rimraf dist",
     "build": "pnpm run build:optimize && pnpm run build:sprite && pnpm run build:clean",
     "build:optimize": "svgo ./svgs/**/* --config=svgo.config.cjs --quiet",
-    "build:sprite": "ts-node ./sprites.ts",
+    "build:sprite": "node --loader ts-node/esm ./sprites.ts",
     "build:clean": "rimraf dist/svgs"
   },
   "repository": {
