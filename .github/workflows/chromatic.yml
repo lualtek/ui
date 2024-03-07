@@ -9,6 +9,10 @@ on:
     paths:
       - "packages/react-components/**/*.{css,tsx}"
   pull_request:
+    types:
+      - opened
+    paths:
+      - "packages/react-components/**/*.{css,tsx}"
 
 # Cancel in-progress jobs or runs for the current workflow
 concurrency:
