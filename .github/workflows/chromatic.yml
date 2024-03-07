@@ -7,7 +7,7 @@ on:
     branches:
       - main
     paths:
-      - "packages/**"
+      - "packages/react-components/**/*.{css,tsx}"
   pull_request:
 
 # Cancel in-progress jobs or runs for the current workflow
