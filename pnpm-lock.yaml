@@ -117,9 +117,6 @@ importers:
       '@types/flat':
         specifier: 5.0.5
         version: 5.0.5
-      '@types/node':
-        specifier: 20.11.24
-        version: 20.11.24
       tsconfig:
         specifier: workspace:*
         version: link:../tsconfig
