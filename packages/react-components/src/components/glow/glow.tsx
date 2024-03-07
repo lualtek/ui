@@ -2,7 +2,7 @@
 
 'use client';
 
-import { TokensTypes } from '@lualtek/tokens';
+import { TokensTypes } from '@lualtek/tokens/platforms/web';
 import tkns from '@lualtek/tokens/platforms/web/tokens.json';
 import {
   useCallback, useEffect, useMemo, useRef, useState,

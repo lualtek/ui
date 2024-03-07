@@ -1,8 +1,0 @@
-{
-  "ignore": {
-    "flat": {
-      "versions": "6.x",
-      "reason": "ESM only"
-    }
-  }
-}

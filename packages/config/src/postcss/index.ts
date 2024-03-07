@@ -1,7 +1,7 @@
 import jsonTokens from '@lualtek/tokens/platforms/web/tokens.json';
 import { flatten } from 'flat';
 
-import { postcssConfig } from './config';
+import { postcssConfig } from './config.js';
 
 const flatTokens: Record<string, any> = flatten(jsonTokens, {
   delimiter: '-',

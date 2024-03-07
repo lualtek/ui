@@ -1,0 +1,13 @@
+{
+  "mode": "pre",
+  "tag": "next",
+  "initialVersions": {
+    "@lualtek/config": "11.11.3",
+    "@lualtek/icons": "11.11.3",
+    "@lualtek/react-components": "11.11.3",
+    "@lualtek/themes": "11.11.3",
+    "@lualtek/tokens": "11.11.3",
+    "tsconfig": "0.2.0"
+  },
+  "changesets": []
+}

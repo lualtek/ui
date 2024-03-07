@@ -1,6 +1,6 @@
 'use client';
 
-import { TokensTypes } from '@lualtek/tokens';
+import { TokensTypes } from '@lualtek/tokens/platforms/web';
 import clsx from 'clsx';
 import { useMemo } from 'react';
 

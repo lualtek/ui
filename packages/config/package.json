@@ -3,11 +3,11 @@
   "description": "Lualtek UI shared configurations",
   "version": "11.11.3",
   "author": "Lualtek",
-  "main": "dist/index",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com",
     "access": "restricted"
   },
+  "main": "dist/index",
   "files": [
     "dist"
   ],

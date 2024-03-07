@@ -3,17 +3,21 @@
   "description": "Lualtek's iconography",
   "version": "11.11.3",
   "author": "Lualtek",
-  "main": "dist/index",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com",
     "access": "restricted"
   },
+  "type": "module",
   "exports": {
+    ".": "./dist/index.js",
     "./sprite": "./dist/sprite.svg",
     "./structure": "./dist/structure.json"
   },
   "typesVersions": {
     "*": {
+      "*": [
+        "./dist/*"
+      ],
       "sprite": [
         "dist/sprite.d.ts"
       ],
@@ -29,8 +33,8 @@
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "pnpm run build:optimize && pnpm run build:sprite && pnpm run build:clean",
-    "build:optimize": "svgo ./svgs/**/* --config=svgo.config.js --quiet",
-    "build:sprite": "ts-node ./sprites",
+    "build:optimize": "svgo ./svgs/**/* --config=svgo.config.cjs --quiet",
+    "build:sprite": "node --loader ts-node/esm ./sprites.ts",
     "build:clean": "rimraf dist/svgs"
   },
   "repository": {

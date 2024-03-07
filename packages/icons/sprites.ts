@@ -51,7 +51,8 @@ declare module "@lualtek/icons/sprite" {
 }
 `);
   fs.writeFileSync(path.join('dist', 'structure.json'), JSON.stringify([...new Set(jsonStructure.iconNames)], null, 2));
-  fs.writeFileSync(path.join('dist', 'index.ts'), generateTypes(jsonStructure));
+  fs.writeFileSync(path.join('dist', 'index.d.ts'), generateTypes(jsonStructure));
+  fs.writeFileSync(path.join('dist', 'index.js'), 'export default {}');
   console.clear();
   spinner.success({ text: colors.green('Icons and types generated'), mark: colors.green('✔') });
 };

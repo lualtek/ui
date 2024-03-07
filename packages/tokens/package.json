@@ -2,10 +2,23 @@
   "name": "@lualtek/tokens",
   "version": "11.11.3",
   "description": "Design tokens from Lualtek design language",
-  "main": "platforms/web/index",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com",
     "access": "restricted"
+  },
+  "type": "module",
+  "exports": {
+    "./platforms/web": "./platforms/web/index.js",
+    "./platforms/web/tokens.json": "./platforms/web/tokens.json",
+    "./platforms/web/tokens.css": "./platforms/web/tokens.css",
+    "./platforms/raw/tokens.json": "./platforms/raw/tokens.json"
+  },
+  "typesVersions": {
+    "*": {
+      "platforms/*": [
+        "platforms/*"
+      ]
+    }
   },
   "files": [
     "platforms/"
@@ -13,8 +26,8 @@
   "scripts": {
     "prebuild": "rimraf platforms/",
     "build": "pnpm run build:tokens && pnpm run build:types",
-    "build:tokens": "ts-node src/index",
-    "build:types": "ts-node src/generate-types"
+    "build:tokens": "node --loader ts-node/esm src/index.ts",
+    "build:types": "node --loader ts-node/esm src/generate-types.ts"
   },
   "repository": {
     "type": "git",
