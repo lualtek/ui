@@ -1,5 +1,15 @@
 # @lualtek/icons
 
+## 11.12.0-next.0
+
+### Minor Changes
+
+- d331eb3: Move to esm
+
+### Patch Changes
+
+- d331eb3: Update ci
+
 ## 11.11.3
 
 ## 11.11.2
