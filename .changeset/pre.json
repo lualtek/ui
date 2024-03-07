@@ -9,5 +9,8 @@
     "@lualtek/tokens": "11.11.3",
     "tsconfig": "0.2.0"
   },
-  "changesets": []
+  "changesets": [
+    "moody-maps-protect",
+    "odd-parrots-speak"
+  ]
 }

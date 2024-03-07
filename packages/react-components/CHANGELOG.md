@@ -1,5 +1,18 @@
 # @lualtek/react-components
 
+## 11.12.0-next.0
+
+### Minor Changes
+
+- d331eb3: Move to esm
+
+### Patch Changes
+
+- d331eb3: Update ci
+- Updated dependencies [d331eb3]
+- Updated dependencies [d331eb3]
+  - @lualtek/icons@11.12.0-next.0
+
 ## 11.11.3
 
 ### Patch Changes
