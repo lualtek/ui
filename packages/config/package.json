@@ -7,15 +7,10 @@
     "registry": "https://npm.pkg.github.com",
     "access": "restricted"
   },
-  "type": "module",
+  "main": "dist/index",
   "files": [
     "dist"
   ],
-  "exports": {
-    ".": {
-      "import": "./dist/index.js"
-    }
-  },
   "repository": {
     "type": "git",
     "url": "ssh+https://github.com/lualtek/ui.git",
@@ -37,7 +32,7 @@
     "@lualtek/tokens": "workspace:*",
     "cssnano": "6.0.5",
     "cssnano-preset-default": "6.0.5",
-    "flat": "6.0.1",
+    "flat": "5.0.2",
     "postcss-import": "16.0.1",
     "postcss-preset-env": "9.4.0",
     "postcss-replace": "2.0.1"
