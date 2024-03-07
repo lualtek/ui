@@ -11,6 +11,8 @@ on:
   pull_request:
     types:
       - opened
+    branches:
+      - main
     paths:
       - "packages/react-components/**/*.{css,tsx}"
 
