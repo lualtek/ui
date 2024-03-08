@@ -2,7 +2,6 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "display": "Default",
   "ts-node": {
-    // "esm": true,
     "compilerOptions": {
       "module": "ESNext"
     }
@@ -28,6 +27,7 @@
     "skipLibCheck": true,
     "strictNullChecks": true,
     "strict": true,
+    "preserveConstEnums": true,
     "baseUrl": "../..",
     "paths": {
       "@/components": ["packages/react-components/src"],

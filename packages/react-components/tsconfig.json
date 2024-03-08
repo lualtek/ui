@@ -9,6 +9,6 @@
       "@/components/lib": ["src/lib"]
     }
   },
-  "include": ["src", "types", "generate-api-doc.ts"],
+  "include": ["src", "types", "generate-api-doc.ts", "rollup.config.js"],
   "exclude": ["dist", "build", "node_modules"]
 }
