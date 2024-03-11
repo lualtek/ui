@@ -6,13 +6,11 @@
   ],
   "type": "module",
   "types": "dist/index.d.ts",
-  "main": "dist/cjs/index.js",
-  "module": "dist/es/index.mjs",
+  "module": "dist/index.js",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "require": "./dist/cjs/index.js",
-      "import": "./dist/es/index.mjs"
+      "require": "./dist/index.js",
     },
     "./core.css": "./dist/core.css",
     "./doc/*": "./dist/components/*/*.doc.json",
