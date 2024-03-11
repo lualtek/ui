@@ -6,6 +6,10 @@
       "module": "ESNext"
     }
   },
+  "tsc-alias": {
+    "resolveFullPaths": true,
+    "verbose": false
+  },
   "compilerOptions": {
     "composite": false,
     "declaration": true,
@@ -32,7 +36,7 @@
     "paths": {
       "@/components": ["packages/react-components/src"],
       "@/components/types": ["packages/react-components/src/types"]
-    }
+    },
   },
   "exclude": ["node_modules"]
 }
