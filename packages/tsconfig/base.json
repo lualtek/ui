@@ -2,10 +2,13 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "display": "Default",
   "ts-node": {
-    // "esm": true,
     "compilerOptions": {
       "module": "ESNext"
     }
+  },
+  "tsc-alias": {
+    "resolveFullPaths": true,
+    "verbose": false
   },
   "compilerOptions": {
     "composite": false,
@@ -28,11 +31,12 @@
     "skipLibCheck": true,
     "strictNullChecks": true,
     "strict": true,
+    "preserveConstEnums": true,
     "baseUrl": "../..",
     "paths": {
       "@/components": ["packages/react-components/src"],
       "@/components/types": ["packages/react-components/src/types"]
-    }
+    },
   },
   "exclude": ["node_modules"]
 }

@@ -5,7 +5,6 @@
   "workspaces": [
     "packages/*"
   ],
-  "type": "module",
   "scripts": {
     "build": "turbo run build",
     "build:nocache": "turbo run build --force",
