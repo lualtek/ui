@@ -7,10 +7,12 @@
   "type": "module",
   "types": "dist/index.d.ts",
   "module": "dist/index.js",
+  "main": "dist/index.js",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.js"
+      "import": "./dist/index.js",
+      "require": "./dist/index.js"
     },
     "./core.css": "./dist/core.css",
     "./doc/*": "./dist/components/*/*.doc.json",
@@ -34,7 +36,8 @@
     "build-storybook": "storybook build",
     "watch:csstypes": "tcm -w -p '**/*.module.css' src",
     "build:csstypes": "tcm -p '**/*.module.css' src",
-    "clean": "rimraf dist core core.css"
+    "clean": "rimraf dist core core.css",
+    "prepack": "node --loader ts-node/esm ./prepack.ts"
   },
   "repository": {
     "type": "git",
