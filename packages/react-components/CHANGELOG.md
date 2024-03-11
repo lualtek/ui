@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 11.12.0-next.2
+
+### Patch Changes
+
+- d34a4fa: Fix export of components
+  - @lualtek/icons@11.12.0-next.2
+
 ## 11.12.0-next.1
 
 ### Patch Changes
