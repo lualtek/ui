@@ -10,7 +10,7 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "require": "./dist/index.js",
+      "require": "./dist/index.js"
     },
     "./core.css": "./dist/core.css",
     "./doc/*": "./dist/components/*/*.doc.json",
