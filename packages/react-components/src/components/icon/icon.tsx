@@ -1,7 +1,7 @@
 'use client';
 
 import { IconNames } from '@lualtek/icons';
-import sprite from '@lualtek/icons/sprite';
+import sprite from '@lualtek/icons/sprite' assert { type: 'svg' };
 import { TokensTypes } from '@lualtek/tokens/platforms/web';
 import clsx from 'clsx';
 import {
