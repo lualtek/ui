@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 11.12.0-next.3
+
+### Patch Changes
+
+- 1e5c45f: Adding prepack script to remove type module from package.json
+  - @lualtek/icons@11.12.0-next.3
+
 ## 11.12.0-next.2
 
 ### Patch Changes
