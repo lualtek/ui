@@ -1,5 +1,7 @@
 # @lualtek/themes
 
+## 11.12.0-next.2
+
 ## 11.12.0-next.1
 
 ## 11.12.0-next.0
