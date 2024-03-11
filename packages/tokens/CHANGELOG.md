@@ -1,5 +1,7 @@
 # @lualtek/tokens
 
+## 11.12.0-next.1
+
 ## 11.12.0-next.0
 
 ### Minor Changes

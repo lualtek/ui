@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 11.12.0-next.1
+
+### Patch Changes
+
+- 5c5e5a2: Using tsc-alias for esm import with extension
+  - @lualtek/icons@11.12.0-next.1
+
 ## 11.12.0-next.0
 
 ### Minor Changes
