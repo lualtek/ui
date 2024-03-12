@@ -1,5 +1,21 @@
 # @lualtek/react-components
 
+## 11.12.0
+
+### Minor Changes
+
+- d331eb3: Move to esm
+
+### Patch Changes
+
+- 1e5c45f: Adding prepack script to remove type module from package.json
+- 5c5e5a2: Using tsc-alias for esm import with extension
+- d331eb3: Update ci
+- d34a4fa: Fix export of components
+- Updated dependencies [d331eb3]
+- Updated dependencies [d331eb3]
+  - @lualtek/icons@11.12.0
+
 ## 11.12.0-next.3
 
 ### Patch Changes

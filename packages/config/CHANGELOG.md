@@ -1,5 +1,18 @@
 # @lualtek/config
 
+## 11.12.0
+
+### Minor Changes
+
+- d331eb3: Move to esm
+
+### Patch Changes
+
+- d331eb3: Update ci
+- Updated dependencies [d331eb3]
+- Updated dependencies [d331eb3]
+  - @lualtek/tokens@11.12.0
+
 ## 11.12.0-next.3
 
 ### Patch Changes
