@@ -1,5 +1,16 @@
 # tsconfig
 
+## 0.3.0
+
+### Minor Changes
+
+- d331eb3: Move to esm
+
+### Patch Changes
+
+- 5c5e5a2: Using tsc-alias for esm import with extension
+- d331eb3: Update ci
+
 ## 0.3.0-next.1
 
 ### Patch Changes
