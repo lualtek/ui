@@ -15,49 +15,49 @@
     },
     "background-soft": {
       "value": "{color.gray.90}",
-      "transparency": "60%",
+      "transparency": "30%",
       "attributes": {
         "category": "color"
       }
     },
     "background-mid": {
       "value": "{color.gray.80}",
-      "transparency": "60%",
+      "transparency": "30%",
       "attributes": {
         "category": "color"
       }
     },
     "background-hard": {
       "value": "{color.gray.70}",
-      "transparency": "60%",
+      "transparency": "30%",
       "attributes": {
         "category": "color"
       }
     },
     "background-red": {
       "value": "{color.red.50}",
-      "transparency": "20%",
+      "transparency": "15%",
       "attributes": {
         "category": "color"
       }
     },
     "background-green": {
       "value": "{color.green.40}",
-      "transparency": "20%",
+      "transparency": "15%",
       "attributes": {
         "category": "color"
       }
     },
     "background-yellow": {
       "value": "{color.yellow.50}",
-      "transparency": "20%",
+      "transparency": "15%",
       "attributes": {
         "category": "color"
       }
     },
     "background-brand": {
       "value": "{color.brand.60}",
-      "transparency": "20%",
+      "transparency": "15%",
       "attributes": {
         "category": "color"
       }

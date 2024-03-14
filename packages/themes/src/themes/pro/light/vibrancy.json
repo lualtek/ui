@@ -14,7 +14,7 @@
       }
     },
     "background-soft": {
-      "value": "{color.gray.0}",
+      "value": "{color.gray.5}",
       "transparency": "60%",
       "attributes": {
         "category": "color"
@@ -22,13 +22,13 @@
     },
     "background-mid": {
       "value": "{color.gray.10}",
-      "transparency": "60%",
+      "transparency": "70%",
       "attributes": {
         "category": "color"
       }
     },
     "background-hard": {
-      "value": "{color.gray.30}",
+      "value": "{color.gray.20}",
       "transparency": "60%",
       "attributes": {
         "category": "color"

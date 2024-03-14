@@ -79,13 +79,13 @@
       }
     },
     "blue-foreground": {
-      "value": "{color.blue.60}",
+      "value": "{color.blue.50}",
       "attributes": {
         "category": "color"
       }
     },
     "red-background": {
-      "value": "{color.red.10}",
+      "value": "{color.red.5}",
       "attributes": {
         "category": "color"
       }

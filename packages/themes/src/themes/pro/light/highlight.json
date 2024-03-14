@@ -1,7 +1,7 @@
 {
   "highlight": {
     "brand-background": {
-      "value": "{color.brand.10}",
+      "value": "{color.brand.5}",
       "attributes": {
         "category": "color"
       }
@@ -37,7 +37,7 @@
       }
     },
     "slate-background": {
-      "value": "{color.slate.20}",
+      "value": "{color.slate.10}",
       "attributes": {
         "category": "color"
       }
@@ -61,7 +61,7 @@
       }
     },
     "green-background": {
-      "value": "{color.green.10}",
+      "value": "{color.green.0}",
       "attributes": {
         "category": "color"
       }
@@ -73,19 +73,19 @@
       }
     },
     "blue-background": {
-      "value": "{color.blue.10}",
+      "value": "{color.blue.0}",
       "attributes": {
         "category": "color"
       }
     },
     "blue-foreground": {
-      "value": "{color.blue.60}",
+      "value": "{color.blue.50}",
       "attributes": {
         "category": "color"
       }
     },
     "red-background": {
-      "value": "{color.red.10}",
+      "value": "{color.red.0}",
       "attributes": {
         "category": "color"
       }
@@ -97,7 +97,7 @@
       }
     },
     "cyan-background": {
-      "value": "{color.cyan.10}",
+      "value": "{color.cyan.0}",
       "attributes": {
         "category": "color"
       }
@@ -109,7 +109,7 @@
       }
     },
     "purple-background": {
-      "value": "{color.purple.10}",
+      "value": "{color.purple.0}",
       "attributes": {
         "category": "color"
       }
@@ -121,7 +121,7 @@
       }
     },
     "indigo-background": {
-      "value": "{color.indigo.5}",
+      "value": "{color.indigo.0}",
       "attributes": {
         "category": "color"
       }
@@ -133,7 +133,7 @@
       }
     },
     "dipsy-background": {
-      "value": "{color.dipsy.10}",
+      "value": "{color.dipsy.5}",
       "attributes": {
         "category": "color"
       }
@@ -145,7 +145,7 @@
       }
     },
     "salmon-background": {
-      "value": "{color.salmon.5}",
+      "value": "{color.salmon.0}",
       "attributes": {
         "category": "color"
       }
