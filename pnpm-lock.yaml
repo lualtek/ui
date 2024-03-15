@@ -277,6 +277,9 @@ importers:
       postcss-cli:
         specifier: 11.0.0
         version: 11.0.0(postcss@8.4.35)
+      postcss-dark-theme-class:
+        specifier: 1.2.1
+        version: 1.2.1(postcss@8.4.35)
       react:
         specifier: 18.2.0
         version: 18.2.0
@@ -10193,6 +10196,15 @@ packages:
       postcss: 8.4.35
       postcss-selector-parser: 6.0.15
     dev: false
+
+  /postcss-dark-theme-class@1.2.1(postcss@8.4.35):
+    resolution: {integrity: sha512-EzQMGOcYnE0eMBjfgB+xnamlZ8O02Aiojyg/iv84cpRUdLKZW8ankZWxWUhhIid1OF7yl4G3BeYfE+7CGY2tdQ==}
+    engines: {node: '>=18.0'}
+    peerDependencies:
+      postcss: ^8.2.14
+    dependencies:
+      postcss: 8.4.35
+    dev: true
 
   /postcss-dir-pseudo-class@8.0.1(postcss@8.4.35):
     resolution: {integrity: sha512-uULohfWBBVoFiZXgsQA24JV6FdKIidQ+ZqxOouhWwdE+qJlALbkS5ScB43ZTjPK+xUZZhlaO/NjfCt5h4IKUfw==}

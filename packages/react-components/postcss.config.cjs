@@ -2,4 +2,9 @@
 
 const { postcss } = require('@lualtek/config');
 
-module.exports = postcss.getConfig();
+module.exports = {
+  plugins: {
+    ...postcss.getConfig().plugins,
+    'postcss-dark-theme-class': {},
+  },
+};

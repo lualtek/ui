@@ -1,34 +1,28 @@
-import type { Preview } from '@storybook/react';
+import { Preview } from "@storybook/react";
+import type { ReactRenderer } from "@storybook/react";
+import { withThemeByDataAttribute } from "@storybook/addon-themes";
 import { themes } from '@storybook/theming';
 import lualtekTheme from './lualtek-theme';
 
-import '@lualtek/themes/web';
+import '@lualtek/themes/web/pro';
 import '../src/core.css';
 import './overrides.css';
 
 const preview: Preview = {
+  decorators: [
+    withThemeByDataAttribute<ReactRenderer>({
+      themes: {
+        auto: "auto",
+        light: "light",
+        dark: "dark",
+      },
+      defaultTheme: "dark",
+    }),
+  ],
   parameters: {
+    backgrounds: { disable: true },
     docs: {
       theme: { ...themes.dark, ...lualtekTheme },
-    },
-    themes: {
-      default: 'dark',
-      list: [
-        { name: 'auto', color: 'linear-gradient(to bottom right, lightgray 50%, black 50.1%)' },
-        { name: 'light', color: 'lightgray' },
-        { name: 'dark', color: 'black' },
-      ],
-      onChange: (theme) => {
-        const iframe: any = document.querySelector('#storybook-preview-iframe');
-        if (iframe) {
-          if (theme) {
-            iframe.contentDocument.documentElement.dataset.theme = theme.name;
-          } else {
-            iframe.contentDocument.documentElement.dataset.theme = 'auto';
-          }
-        }
-      },
-      target: 'root',
     },
     controls: {
       matchers: {
