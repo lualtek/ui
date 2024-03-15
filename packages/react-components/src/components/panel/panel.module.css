@@ -13,23 +13,23 @@
     }
 
     &[data-panel-bordered='true'][data-panel-border-side='all'] {
-      border: 1px solid var(--global-outer-contrast-border);
+      border: 1px solid var(--global-inner-contrast-border);
     }
 
     &[data-panel-bordered='true'][data-panel-border-side='top'] {
-      border-block-start: 1px solid var(--global-outer-contrast-border);
+      border-block-start: 1px solid var(--global-inner-contrast-border);
     }
 
     &[data-panel-bordered='true'][data-panel-border-side='bottom'] {
-      border-block-end: 1px solid var(--global-outer-contrast-border);
+      border-block-end: 1px solid var(--global-inner-contrast-border);
     }
 
     &[data-panel-bordered='true'][data-panel-border-side='left'] {
-      border-inline-start: 1px solid var(--global-outer-contrast-border);
+      border-inline-start: 1px solid var(--global-inner-contrast-border);
     }
 
     &[data-panel-bordered='true'][data-panel-border-side='right'] {
-      border-inline-end: 1px solid var(--global-outer-contrast-border);
+      border-inline-end: 1px solid var(--global-inner-contrast-border);
     }
 
     &[data-panel-bordered='true']::before {

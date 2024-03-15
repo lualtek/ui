@@ -72,10 +72,10 @@
     mask-clip: padding-box, border-box;
 
         /* Remove negative sign by multiplying it with -1 */
-    border-radius: calc((var(--border-offset) * -1) + var(--radius));
+    border-radius: calc(var(--border-offset) + var(--radius));
     pointer-events: none;
     mask-composite: intersect;
-    inset: var(--border-offset);
+    inset: calc(var(--border-offset) * -1);
     opacity: var(--active-opacity);
     border: var(--border-width) solid transparent;
     transition: opacity 1s;
@@ -91,10 +91,10 @@
     mask-clip: padding-box, border-box;
 
         /* Remove negative sign by multiplying it with -1 */
-    border-radius: calc((var(--border-offset) * -1) + var(--radius));
+    border-radius: calc(var(--border-offset) + var(--radius));
     pointer-events: none;
     mask-composite: intersect;
-    inset: var(--border-offset);
+    inset:  calc(var(--border-offset) * -1);
     opacity: var(--active-opacity);
     border: var(--border-width) solid transparent;
     transition: opacity 1s;

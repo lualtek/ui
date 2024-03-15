@@ -14,7 +14,7 @@ const meta = {
     borderWidth: 2,
     borderColor: 'var(--vibrancy-background-hard)',
     glowPower: 10,
-    borderOffset: -5,
+    borderOffset: 5,
     innerRadius: 24,
     globalHighlight: true,
     rainbowColors: false,

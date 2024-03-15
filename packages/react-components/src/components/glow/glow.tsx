@@ -91,7 +91,7 @@ export const Glow: FCChildrenClass<GlowProps> = ({
   borderWidth = 2,
   borderColor = 'var(--vibrancy-background-hard)',
   glowPower = 10,
-  borderOffset = -5,
+  borderOffset = 5,
   innerRadius,
   globalHighlight = true,
   rainbowColors = false,
