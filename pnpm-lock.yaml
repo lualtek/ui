@@ -214,9 +214,6 @@ importers:
         specifier: 4.11.0
         version: 4.11.0
     devDependencies:
-      '@chromatic-com/storybook':
-        specifier: 1.2.20
-        version: 1.2.20(react@18.2.0)
       '@lualtek/config':
         specifier: workspace:*
         version: link:../config
@@ -1824,21 +1821,6 @@ packages:
       fs-extra: 7.0.1
       human-id: 1.0.2
       prettier: 2.8.8
-    dev: true
-
-  /@chromatic-com/storybook@1.2.20(react@18.2.0):
-    resolution: {integrity: sha512-y9vekEaJHqqhtvqDIvA6gaIFsLonGT40wZNXEiXJ6y7d0J3gV8a3YiiYryAI6qNKFDkBhkTkMrM7xkWP8pQrUA==}
-    engines: {node: '>=16.0.0', yarn: '>=1.22.18'}
-    dependencies:
-      chromatic: 11.0.0
-      filesize: 10.1.0
-      jsonfile: 6.1.0
-      react-confetti: 6.1.0(react@18.2.0)
-      strip-ansi: 7.1.0
-    transitivePeerDependencies:
-      - '@chromatic-com/cypress'
-      - '@chromatic-com/playwright'
-      - react
     dev: true
 
   /@colors/colors@1.5.0:
@@ -7698,11 +7680,6 @@ packages:
       minimatch: 5.1.6
     dev: true
 
-  /filesize@10.1.0:
-    resolution: {integrity: sha512-GTLKYyBSDz3nPhlLVPjPWZCnhkd9TrrRArNcy8Z+J2cqScB7h2McAzR6NBX6nYOoWafql0roY8hrocxnZBv9CQ==}
-    engines: {node: '>= 10.4.0'}
-    dev: true
-
   /fill-range@7.0.1:
     resolution: {integrity: sha512-qOo9F+dMUmC2Lcb4BbVvnKJxTPjCm+RRpe4gDuGrzkL7mEVl/djYSu2OdQ2Pa302N4oqkSg9ir6jaLWJ2USVpQ==}
     engines: {node: '>=8'}
@@ -11011,16 +10988,6 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     dev: true
 
-  /react-confetti@6.1.0(react@18.2.0):
-    resolution: {integrity: sha512-7Ypx4vz0+g8ECVxr88W9zhcQpbeujJAVqL14ZnXJ3I23mOI9/oBVTQ3dkJhUmB0D6XOtCZEM6N0Gm9PMngkORw==}
-    engines: {node: '>=10.18'}
-    peerDependencies:
-      react: ^16.3.0 || ^17.0.1 || ^18.0.0
-    dependencies:
-      react: 18.2.0
-      tween-functions: 1.2.0
-    dev: true
-
   /react-docgen-typescript@2.2.2(typescript@5.3.3):
     resolution: {integrity: sha512-tvg2ZtOpOi6QDwsb3GZhOjDkkX0h8Z2gipvTg6OVMUyoYoURhEiRNePT8NZItTVCDh39JJHnLdfCOkzoLbFnTg==}
     peerDependencies:
@@ -12544,10 +12511,6 @@ packages:
       turbo-linux-arm64: 1.12.5
       turbo-windows-64: 1.12.5
       turbo-windows-arm64: 1.12.5
-    dev: true
-
-  /tween-functions@1.2.0:
-    resolution: {integrity: sha512-PZBtLYcCLtEcjL14Fzb1gSxPBeL7nWvGhO5ZFPGqziCcr8uvHp0NDmdjBchp6KHL+tExcg0m3NISmKxhU394dA==}
     dev: true
 
   /type-check@0.4.0:
