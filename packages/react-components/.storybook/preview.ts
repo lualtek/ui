@@ -2,7 +2,7 @@ import type { Preview } from '@storybook/react';
 import { themes } from '@storybook/theming';
 import lualtekTheme from './lualtek-theme';
 
-import '@lualtek/themes/web';
+import '@lualtek/themes/web/pro';
 import '../src/core.css';
 import './overrides.css';
 
