@@ -92,6 +92,8 @@ export const Lightbox: FC<LightboxProps> = ({
 }) => {
   // const { onClose } = useOverlayContext();
   const [activeIndex, setActiveIndex] = selectedState;
+  const isFirst = useMemo(() => activeIndex === 0, [activeIndex]);
+  const isLast = useMemo(() => activeIndex === data.length - 1, [data, activeIndex]);
 
   const goTo = useCallback((direction: 'prev' | 'next') => {
     const fullLength = data.length - 1;
@@ -163,6 +165,7 @@ export const Lightbox: FC<LightboxProps> = ({
                 dimension="big"
                 kind="secondary"
                 aria-label="Next image"
+                disabled={isLast}
                 onClick={() => goTo('next')}
               />
               <IconButton
@@ -170,6 +173,7 @@ export const Lightbox: FC<LightboxProps> = ({
                 icon="ctrl-left"
                 dimension="big"
                 kind="secondary"
+                disabled={isFirst}
                 aria-label="Previous image"
                 onClick={() => goTo('prev')}
               />
