@@ -1,5 +1,7 @@
 # @lualtek/icons
 
+## 11.13.0
+
 ## 11.12.0
 
 ### Minor Changes

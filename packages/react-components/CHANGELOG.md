@@ -1,5 +1,16 @@
 # @lualtek/react-components
 
+## 11.13.0
+
+### Minor Changes
+
+- d9d44ad: Fix lightbox arrow button to be disabled if first or last image
+- 3e9f018: Tweak glow and panel
+
+### Patch Changes
+
+- @lualtek/icons@11.13.0
+
 ## 11.12.0
 
 ### Minor Changes

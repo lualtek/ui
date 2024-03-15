@@ -1,5 +1,11 @@
 # @lualtek/tokens
 
+## 11.13.0
+
+### Minor Changes
+
+- 01125dc: Tweak colors and improve pro themes
+
 ## 11.12.0
 
 ### Minor Changes
