@@ -2,13 +2,12 @@ import type { Preview } from '@storybook/react';
 import { themes } from '@storybook/theming';
 import lualtekTheme from './lualtek-theme';
 
-import '@lualtek/themes/web/pro';
+import '@lualtek/themes/web';
 import '../src/core.css';
 import './overrides.css';
 
 const preview: Preview = {
   parameters: {
-    actions: { argTypesRegex: '^on[A-Z].*' },
     docs: {
       theme: { ...themes.dark, ...lualtekTheme },
     },
@@ -30,8 +29,14 @@ const preview: Preview = {
         }
       },
       target: 'root',
-    }
-  }
+    },
+    controls: {
+      matchers: {
+        color: /(background|color)$/i,
+        date: /Date$/i,
+      },
+    },
+  },
 };
 
 export default preview;

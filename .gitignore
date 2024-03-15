@@ -37,3 +37,5 @@ yarn-error.log*
 .turbo
 
 packages/tokens/src/configs/**/*.js
+
+*storybook.log

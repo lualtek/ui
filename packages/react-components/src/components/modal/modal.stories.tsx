@@ -1,5 +1,5 @@
+import { useArgs } from '@storybook/preview-api';
 import type { Meta, StoryObj } from '@storybook/react';
-import { useState } from 'react';
 
 import {
   Button, IconButton, ResponsiveProvider,
@@ -8,31 +8,62 @@ import {
 } from '../..';
 import { Modal } from './modal';
 
-const ModalShell = ({ ...args }) => {
-  const [isVisible, setIsVisible] = useState(false);
-
-  return (
-    <>
-      <Button onClick={() => setIsVisible(true)}>Show Modal</Button>
-      <Modal
-        key="dynamic-modal"
-        isOpen={isVisible}
-        onClose={() => setIsVisible(false)}
-        {...args}
-      >
-        <Modal.Content title="Modal title">
-          {args.children}
-        </Modal.Content>
-      </Modal>
-    </>
-  );
-};
+const DefaultChildren = () => (
+  <Stack hPadding={24}>
+    <Textfield label="Test" />
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
+    distinctio qui quod ducimus libero magni earum perspiciatis.
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
+    distinctio qui quod ducimus libero magni earum perspiciatis.
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
+    distinctio qui quod ducimus libero magni earum perspiciatis.
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
+    distinctio qui quod ducimus libero magni earum perspiciatis.
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
+    distinctio qui quod ducimus libero magni earum perspiciatis.
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
+    distinctio qui quod ducimus libero magni earum perspiciatis.
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
+    distinctio qui quod ducimus libero magni earum perspiciatis.
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
+    distinctio qui quod ducimus libero magni earum perspiciatis.
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
+    distinctio qui quod ducimus libero magni earum perspiciatis.
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
+    distinctio qui quod ducimus libero magni earum perspiciatis.
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
+    distinctio qui quod ducimus libero magni earum perspiciatis.
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
+    distinctio qui quod ducimus libero magni earum perspiciatis.
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
+    distinctio qui quod ducimus libero magni earum perspiciatis.
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
+    distinctio qui quod ducimus libero magni earum perspiciatis.
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
+    distinctio qui quod ducimus libero magni earum perspiciatis.
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
+    distinctio qui quod ducimus libero magni earum perspiciatis.
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
+    distinctio qui quod ducimus libero magni earum perspiciatis.
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
+    distinctio qui quod ducimus libero magni earum perspiciatis.
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
+    distinctio qui quod ducimus libero magni earum perspiciatis.
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
+    distinctio qui quod ducimus libero magni earum perspiciatis.
+    <button type="button">click</button>
+  </Stack>
+);
 
 const meta: Meta<typeof Modal> = {
   title: 'Dialogs/Modal',
   component: Modal,
   args: {
     autoFocus: true,
+    children: <DefaultChildren />,
+    onClose: () => {
+      alert('Modal closed');
+    },
   },
   decorators: [
     Story => (
@@ -41,54 +72,26 @@ const meta: Meta<typeof Modal> = {
       </ResponsiveProvider>
     ),
   ],
-  render: args => (
-    <ModalShell {...args}>
-      <Stack hPadding={24}>
-        <Textfield label="Test" />
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
-        distinctio qui quod ducimus libero magni earum perspiciatis.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
-        distinctio qui quod ducimus libero magni earum perspiciatis.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
-        distinctio qui quod ducimus libero magni earum perspiciatis.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
-        distinctio qui quod ducimus libero magni earum perspiciatis.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
-        distinctio qui quod ducimus libero magni earum perspiciatis.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
-        distinctio qui quod ducimus libero magni earum perspiciatis.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
-        distinctio qui quod ducimus libero magni earum perspiciatis.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
-        distinctio qui quod ducimus libero magni earum perspiciatis.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
-        distinctio qui quod ducimus libero magni earum perspiciatis.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
-        distinctio qui quod ducimus libero magni earum perspiciatis.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
-        distinctio qui quod ducimus libero magni earum perspiciatis.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
-        distinctio qui quod ducimus libero magni earum perspiciatis.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
-        distinctio qui quod ducimus libero magni earum perspiciatis.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
-        distinctio qui quod ducimus libero magni earum perspiciatis.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
-        distinctio qui quod ducimus libero magni earum perspiciatis.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
-        distinctio qui quod ducimus libero magni earum perspiciatis.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
-        distinctio qui quod ducimus libero magni earum perspiciatis.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
-        distinctio qui quod ducimus libero magni earum perspiciatis.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
-        distinctio qui quod ducimus libero magni earum perspiciatis.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
-        distinctio qui quod ducimus libero magni earum perspiciatis.
-        <button type="button">click</button>
-      </Stack>
-    </ModalShell>
-  ),
+  render: function Render({ ...args }) {
+    const [{ isVisible }, setIsVisible] = useArgs<{ isVisible: boolean }>();
+    const handleClose = (visibility: boolean) => setIsVisible({ isVisible: visibility });
+
+    return (
+      <>
+        <Button onClick={() => handleClose(true)}>Show Modal</Button>
+        <Modal
+          {...args}
+          key="dynamic-modal"
+          isOpen={isVisible}
+          onClose={() => handleClose(false)}
+        >
+          <Modal.Content title="Modal title">
+            {args.children}
+          </Modal.Content>
+        </Modal>
+      </>
+    );
+  },
 };
 
 export default meta;
@@ -114,9 +117,7 @@ const CustomContentModal = () => {
 };
 
 export const CustomContent = {
-  render: args => (
-    <ModalShell {...args}>
-      <CustomContentModal />
-    </ModalShell>
-  ),
+  args: {
+    children: <CustomContentModal />,
+  },
 } satisfies Story;

@@ -1,54 +1,45 @@
-import type { StorybookConfig } from '@storybook/react-webpack5';
-import path from 'node:path'
+import type { StorybookConfig } from "@storybook/react-vite";
 
+import { resolve, join, dirname } from "node:path";
+
+/**
+ * This function is used to resolve the absolute path of a package.
+ * It is needed in projects that use Yarn PnP or are set up within a monorepo.
+ */
+function getAbsolutePath(value: string): any {
+  return dirname(require.resolve(join(value, "package.json")));
+}
 const config: StorybookConfig = {
+  stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
+  addons: [
+    getAbsolutePath("@storybook/addon-onboarding"),
+    getAbsolutePath("@storybook/addon-links"),
+    getAbsolutePath("@chromatic-com/storybook"),
+    getAbsolutePath("@storybook/addon-interactions"),
+    getAbsolutePath("@storybook/addon-themes"),
+    getAbsolutePath("@storybook/addon-essentials")
+  ],
   framework: {
-    name: '@storybook/react-webpack5',
+    name: getAbsolutePath("@storybook/react-vite"),
     options: {},
   },
-  stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
-  features: {
-    storyStoreV7: true,
+  docs: {
+    autodocs: "tag",
   },
-  addons: [
-    '@storybook/addon-actions',
-    '@storybook/addon-links',
-    'storybook-addon-themes',
-    {
-      name: '@storybook/addon-essentials',
-      options: {
-        docs: false,
-        backgrounds: false,
-      },
-    }, {
-      name: '@storybook/addon-styling',
-      options: {
-        cssModules: {
-          auto: true,
-          localIdentName: '[local]--[hash:base64:5]',
-        },
-        postCss: {
-          implementation: require('postcss'),
-        },
-      },
-    },
-  ],
   typescript: {
     check: false,
-    checkOptions: {},
     reactDocgen: 'react-docgen',
     reactDocgenTypescriptOptions: {
       shouldExtractLiteralValuesFromEnum: true,
       propFilter: prop => (prop.parent ? !/node_modules/.test(prop.parent.fileName) : true),
     },
   },
-  webpackFinal: async (config) => {
+  viteFinal: async (config) => {
     if (config && config.resolve && config.resolve.alias) {
-      config.resolve.alias['@/components'] = path.resolve(__dirname, '../src/');
+      config.resolve.alias['@/components'] = resolve(__dirname, '../src/');
       return config;
     }
     return config;
   }
 };
-
 export default config;

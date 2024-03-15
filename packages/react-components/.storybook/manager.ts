@@ -1,5 +1,5 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import { addons } from '@storybook/addons';
+import { addons } from '@storybook/manager-api';
 import { themes } from '@storybook/theming';
 
 import lualtekTheme from './lualtek-theme';
