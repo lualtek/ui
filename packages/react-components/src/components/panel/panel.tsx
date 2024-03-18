@@ -152,7 +152,7 @@ export const Panel = forwardRef(({
           glowColor={glowColor ?? 'var(--dimmed-2)'}
           spread={glowSpread}
           glowPower={0}
-          borderOffset={0}
+          borderOffset={1}
           borderWidth={1}
           rainbowColors={rainbowColors}
         >
