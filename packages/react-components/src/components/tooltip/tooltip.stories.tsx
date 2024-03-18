@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Text } from '../..';
+import { Icon, Stack, Text } from '../..';
 import { Tooltip, TooltipProvider } from './tooltip';
 
 const meta: Meta<typeof Tooltip> = {
@@ -8,7 +8,13 @@ const meta: Meta<typeof Tooltip> = {
   component: Tooltip,
   args: {
     side: 'bottom',
-    children: 'Tooltip',
+    children: (
+      <Text as="p" maxWidth="30ch">
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+        Impedit expedita, saepe numquam illo quas, Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+        Impedit expedita, saepe numquam illo quas, Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+      </Text>
+    ),
     trigger: <Text as="mark" sentiment="informative">HTML</Text>,
   },
   argTypes: {
@@ -17,32 +23,31 @@ const meta: Meta<typeof Tooltip> = {
       control: { type: 'radio' },
     },
   },
-  render: args => (
-    <Tooltip {...args}>
-      {args.children}
-    </Tooltip>
-  ),
   decorators: [
     Story => (
       <TooltipProvider>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit expedita,
-        saepe numquam illo quas, Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-        Impedit expedita, saepe numquam illo quas, Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-        Impedit expedita, saepe numquam illo quas, Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-        Impedit expedita, saepe numquam illo quas,Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-        Impedit expedita, saepe numquam illo quas,
-        {' '}
         <Story />
-        {' '}
-        eos dolorum modi earum quidem molestias recusandae, voluptas delectus aliquam nemo temporibus.
-        Quas perspiciatis sunt ut.
       </TooltipProvider>
     ),
   ],
+  render: args => (
+    <Stack hAlign="center" fill={false}>
+      <Tooltip {...args} />
+    </Stack>
+  ),
 } satisfies Meta<typeof Tooltip>;
 
 export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Default = {} satisfies Story;
+export const Default = {
+} satisfies Story;
+
+export const WithSVG = {
+  args: {
+    align: 'end',
+    alignOffset: -24,
+    trigger: <Icon source="c-warning" dimension={24} />,
+  },
+} satisfies Story;

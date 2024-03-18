@@ -6,7 +6,7 @@ import {
   domAnimation, LazyMotion, m,
 } from 'framer-motion';
 import {
-  Children, cloneElement, isValidElement, ReactNode, useEffect, useMemo, useRef, useState,
+  Children, cloneElement, isValidElement, ReactNode, useMemo, useRef,
 } from 'react';
 
 import { FCChildrenClass } from '@/components/types';
@@ -38,7 +38,6 @@ export const Tooltip: FCChildrenClass<TooltipProps> = ({
   delayDuration,
   ...otherProps
 }) => {
-  const [triggerCenter, setTriggerCenter] = useState<number>(0);
   const triggerRef = useRef<HTMLHtmlElement>();
 
   const computeOrigin = useMemo(() => {
@@ -68,14 +67,6 @@ export const Tooltip: FCChildrenClass<TooltipProps> = ({
       x: 0,
     },
   }), [computeOrigin]);
-
-  useEffect(() => {
-    if (triggerRef.current) setTriggerCenter(triggerRef.current.offsetWidth / 2);
-
-    return () => {
-      setTriggerCenter(0);
-    };
-  }, [triggerRef]);
 
   return (
     <TooltipPrimitive.Root
@@ -117,7 +108,7 @@ export const Tooltip: FCChildrenClass<TooltipProps> = ({
               }}
             >
               {children}
-              <TooltipPrimitive.Arrow offset={triggerCenter} fill="var(--global-foreground)" className={styles.Arrow} />
+              <TooltipPrimitive.Arrow fill="var(--global-foreground)" className={styles.Arrow} />
             </m.div>
           </TooltipPrimitive.Content>
         </Elevator>
