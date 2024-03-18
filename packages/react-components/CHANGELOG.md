@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 11.13.1
+
+### Patch Changes
+
+- a82393f: Fix tooltip arrow attributes
+  - @lualtek/icons@11.13.1
+
 ## 11.13.0
 
 ### Minor Changes
