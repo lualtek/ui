@@ -9,5 +9,7 @@
     "@lualtek/tokens": "11.13.1",
     "tsconfig": "0.3.0"
   },
-  "changesets": []
+  "changesets": [
+    "curvy-chairs-happen"
+  ]
 }

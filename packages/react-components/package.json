@@ -1,6 +1,6 @@
 {
   "name": "@lualtek/react-components",
-  "version": "11.13.1",
+  "version": "11.13.2-next.0",
   "files": [
     "dist"
   ],

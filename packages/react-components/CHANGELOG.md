@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 11.13.2-next.0
+
+### Patch Changes
+
+- 576219a: Restore glow offset old behaviour
+  - @lualtek/icons@11.13.2-next.0
+
 ## 11.13.1
 
 ### Patch Changes
