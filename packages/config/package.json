@@ -30,17 +30,17 @@
   },
   "dependencies": {
     "@lualtek/tokens": "workspace:*",
-    "cssnano": "6.0.5",
-    "cssnano-preset-default": "6.0.5",
+    "cssnano": "6.1.1",
+    "cssnano-preset-default": "6.1.1",
     "flat": "5.0.2",
-    "postcss-import": "16.0.1",
-    "postcss-preset-env": "9.4.0",
+    "postcss-import": "16.1.0",
+    "postcss-preset-env": "9.5.2",
     "postcss-replace": "2.0.1"
   },
   "devDependencies": {
     "@types/flat": "5.0.5",
     "tsconfig": "workspace:*",
-    "typescript": "5.3.3"
+    "typescript": "5.4.3"
   },
   "types": "./dist/index.d.ts"
 }
