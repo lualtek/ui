@@ -27,7 +27,7 @@ Exclude<TokensTypes['space'], string>
 const SkeletonSize: SkeletonSizeType = {
   small: 24,
   regular: 40,
-  big: 48,
+  big: 56,
 };
 
 export const Avatar = forwardRef<HTMLImageElement, AvatarProps>(({

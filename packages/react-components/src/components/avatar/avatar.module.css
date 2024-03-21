@@ -1,6 +1,6 @@
 @layer components {
   .Avatar {
-    --size: token(--space-16);
+    --size: token(--space-24);
 
     position: relative;
     inline-size: var(--size);
