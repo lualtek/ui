@@ -57,6 +57,6 @@ export const ExampleTwo = {
     exitScale: [0.5, 0.5],
     duration: 100,
     exitComponent: <Avatar dimension="big" src="https://mighty.tools/mockmind-api/content/human/72.jpg" />,
-    enterComponent: <Icon dimension={32} source="check-double">Button</Icon>,
+    enterComponent: <Icon dimension={32} source="check-double" />,
   },
 } satisfies Story;

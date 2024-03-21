@@ -24,26 +24,9 @@
       --progress-height: token(--space-8);
     }
 
-    &::-webkit-progress-bar {
-      background-color: transparent;
-    }
-
-    &::-webkit-progress-value {
-      background: var(--fill-color);
-      border-radius: token(--radius-full);
-      transition: width 200ms ease-out;
-    }
-
-    &::-moz-progress-bar {
-      background: var(--fill-color);
-    }
-
-    &:not([value])::-moz-progress-bar {
-      background: transparent;
-    }
-
     &:indeterminate {
       background-size: 200% 100%;
+      animation: progress-stripes 2s linear infinite;
       background-image:
         linear-gradient(
           to right,
@@ -56,8 +39,25 @@
           var(--fill-color) 84%,
           transparent 84%
         );
-      animation: progress-stripes 2s linear infinite;
     }
+  }
+
+  .Progress::-webkit-progress-bar {
+    background-color: transparent;
+  }
+
+  .Progress::-webkit-progress-value {
+    background: var(--fill-color);
+    border-radius: token(--radius-full);
+    transition: width 200ms ease-out;
+  }
+
+  .Progress::-moz-progress-bar {
+    background: var(--fill-color);
+  }
+
+  .Progress:not([value])::-moz-progress-bar {
+    background: transparent;
   }
 
   .Percentage {
