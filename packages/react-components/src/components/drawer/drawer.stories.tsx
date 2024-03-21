@@ -27,13 +27,12 @@ const meta = {
   title: 'Dialogs/Drawer',
   component: Drawer,
   render: function Render({ ...args }) {
-    const [{ isVisible }, updateArgs] = useArgs();
+    const [{ isVisible }, updateArgs] = useArgs<{ isVisible: boolean }>();
     const handleClose = () => updateArgs({ isVisible: false });
 
     return (
       <>
         <Button onClick={() => updateArgs({ isVisible: true })}>Show Drawer</Button>
-        {/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
         <Drawer {...args} onClose={handleClose} isOpen={isVisible}>
           <Stack
             vAlign="center"
