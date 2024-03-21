@@ -1,4 +1,5 @@
 import { TokensTypes } from '@lualtek/tokens/platforms/web';
+import tkns from '@lualtek/tokens/platforms/web/tokens.json';
 import clsx from 'clsx';
 import { forwardRef, ImgHTMLAttributes, useState } from 'react';
 
@@ -66,7 +67,13 @@ export const Avatar = forwardRef<HTMLImageElement, AvatarProps>(({
         </svg>
       )}
 
-      {src && isLoading && <Skeleton width={SkeletonSize[dimension]} height={SkeletonSize[dimension]} />}
+      {src && isLoading && (
+        <Skeleton
+          width={tkns.space[SkeletonSize[dimension]]}
+          height={tkns.space[SkeletonSize[dimension]]}
+          style={{ position: 'absolute', inset: 0 }}
+        />
+      )}
 
       {src && (
         <img
