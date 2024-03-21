@@ -1,0 +1,7 @@
+.Avatar {
+  --theme-small-size: token(--space-24);
+  --theme-regular-size: token(--space-40);
+  --theme-big-size: token(--space-48);
+  --theme-background: var(--highlight-brand-background);
+}
+

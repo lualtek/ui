@@ -1,26 +1,28 @@
+@import './avatar.theme.css' layer(components);
+
 @layer components {
   .Avatar {
-    --size: token(--space-24);
+    --size: var(--theme-small-size);
 
     position: relative;
     inline-size: var(--size);
     aspect-ratio: 1 / 1;
     border-radius: token(--radius-8);
     overflow: hidden;
-    background-color: var(--highlight-brand-background);
+    background-color: var(--theme-background);
     display: flex;
     align-items: flex-end;
     justify-content: center;
     user-select: none;
 
     &[data-avatar-dimension='regular'] {
-      --size: token(--space-40);
+      --size: var(--theme-regular-size);
 
       border-radius: token(--radius-16);
     }
 
     &[data-avatar-dimension='big'] {
-      --size: token(--space-48);
+      --size: var(--theme-big-size);
 
       border-radius: token(--radius-16);
     }
