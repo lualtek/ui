@@ -39,8 +39,9 @@ export const Avatar = forwardRef<HTMLImageElement, AvatarProps>(({
         fill="var(--highlight-brand-foreground)"
       />
       <path
-        // eslint-disable-next-line max-len
-        d="M8.4 9H3.6C1.612 9 0 10.575 0 12.531v5.126C1.814 18.517 3.85 19 6 19s4.186-.483 6-1.343v-5.126C12 10.581 10.394 9 8.4 9z"
+        d="M8.4 9H3.6C1.612 9 0 10.575 0
+        12.531v5.126C1.814 18.517 3.85 19 6
+        19s4.186-.483 6-1.343v-5.126C12 10.581 10.394 9 8.4 9z"
         fill="var(--highlight-brand-foreground)"
       />
     </svg>
@@ -48,6 +49,7 @@ export const Avatar = forwardRef<HTMLImageElement, AvatarProps>(({
     {src && (
       <img
         ref={forwardedRef}
+        draggable={false}
         alt=""
         src={src}
         {...otherProps}

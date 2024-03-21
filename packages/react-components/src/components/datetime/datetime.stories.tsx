@@ -26,3 +26,13 @@ export const Default = {
     },
   },
 } satisfies Story;
+
+export const CustomOptions = {
+  args: {
+    date: '2021-12-15T16:00:32.507981+00:00',
+    options: {
+      dateStyle: 'full',
+      timeStyle: 'short',
+    },
+  },
+} satisfies Story;

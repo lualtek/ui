@@ -11,6 +11,7 @@
     display: flex;
     align-items: flex-end;
     justify-content: center;
+    user-select: none;
 
     &[data-avatar-dimension='regular'] {
       --size: token(--space-40);
