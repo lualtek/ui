@@ -1,5 +1,19 @@
 # @lualtek/react-components
 
+## 11.14.0-next.0
+
+### Minor Changes
+
+- b194481: Init Interpolator component
+- 73b15d4: Add skeleton loading to avatar when loading image. Only if src is set.
+
+### Patch Changes
+
+- 1f15079: Add use client to interpolator
+- 807fa79: fix interpolator
+- 4bdc47b: Fix indeterminate progress
+  - @lualtek/icons@11.14.0-next.0
+
 ## 11.13.1
 
 ### Patch Changes
