@@ -1,4 +1,4 @@
-@layer components {
+@layer core {
   .BlankButton {
     appearance: none;
     border: 0;
