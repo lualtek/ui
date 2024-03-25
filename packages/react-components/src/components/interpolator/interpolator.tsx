@@ -12,7 +12,9 @@ export type InterpolatorProps = {
   enterComponent: ReactNode;
   interpolating: boolean;
   enterScale: [number, number];
+  enterRotation?: number;
   exitScale: [number, number];
+  exitRotation?: number;
   duration?: TokensTypes['duration'];
 }
 
@@ -23,6 +25,8 @@ export const Interpolator = forwardRef<HTMLDivElement, PropsWithClass<Interpolat
   enterComponent,
   interpolating = false,
   enterScale,
+  enterRotation = 0,
+  exitRotation = 0,
   exitScale,
   duration = 200,
   ...otherProps
@@ -33,6 +37,14 @@ export const Interpolator = forwardRef<HTMLDivElement, PropsWithClass<Interpolat
     '--duration': tkns.duration[duration],
   }), [enterScale, exitScale, duration]);
 
+  const enteringStyle = useMemo(() => ({
+    '--enter-rotation': `${enterRotation}deg`,
+  }), [enterRotation]);
+
+  const exitingStyle = useMemo(() => ({
+    '--exit-rotation': `${exitRotation}deg`,
+  }), [exitRotation]);
+
   return (
     <div
       className={clsx(styles.Interpolator, className)}
@@ -41,8 +53,8 @@ export const Interpolator = forwardRef<HTMLDivElement, PropsWithClass<Interpolat
       style={{ ...dynamicStyle, ...style }}
       {...otherProps}
     >
-      <div className={styles.Entering}>{enterComponent}</div>
-      <div className={styles.Exiting}>{exitComponent}</div>
+      <div className={styles.Entering} style={enteringStyle}>{enterComponent}</div>
+      <div className={styles.Exiting} style={exitingStyle}>{exitComponent}</div>
     </div>
   );
 });
