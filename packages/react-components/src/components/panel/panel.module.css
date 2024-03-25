@@ -13,23 +13,23 @@
     }
 
     &[data-panel-bordered='true'][data-panel-border-side='all'] {
-      border: 1px solid var(--global-inner-contrast-border);
+      border: 1px solid var(--global-outer-contrast-border);
     }
 
     &[data-panel-bordered='true'][data-panel-border-side='top'] {
-      border-block-start: 1px solid var(--global-inner-contrast-border);
+      border-block-start: 1px solid var(--global-outer-contrast-border);
     }
 
     &[data-panel-bordered='true'][data-panel-border-side='bottom'] {
-      border-block-end: 1px solid var(--global-inner-contrast-border);
+      border-block-end: 1px solid var(--global-outer-contrast-border);
     }
 
     &[data-panel-bordered='true'][data-panel-border-side='left'] {
-      border-inline-start: 1px solid var(--global-inner-contrast-border);
+      border-inline-start: 1px solid var(--global-outer-contrast-border);
     }
 
     &[data-panel-bordered='true'][data-panel-border-side='right'] {
-      border-inline-end: 1px solid var(--global-inner-contrast-border);
+      border-inline-end: 1px solid var(--global-outer-contrast-border);
     }
 
     &[data-panel-bordered='true']::before {
@@ -38,26 +38,27 @@
       position: absolute;
       inset: 0;
       pointer-events: none;
+    }
 
-      .Panel[data-panel-border-side='all']& {
-        box-shadow: inset 0 0 0 1px var(--global-inner-contrast-border);
-      }
 
-      .Panel[data-panel-border-side='top']& {
-        box-shadow: inset 0 1px 0 0 var(--global-inner-contrast-border);
-      }
+    &[data-panel-border-side='all']::before {
+      box-shadow: inset 0 0 0 1px var(--global-inner-contrast-border);
+    }
 
-      .Panel[data-panel-border-side='bottom']& {
-        box-shadow: inset 0 -1px 0 0 var(--global-inner-contrast-border);
-      }
+    &[data-panel-border-side='top']::before {
+      box-shadow: inset 0 1px 0 0 var(--global-inner-contrast-border);
+    }
 
-      .Panel[data-panel-border-side='left']& {
-        box-shadow: inset 1px 0 0 0 var(--global-inner-contrast-border);
-      }
+    &[data-panel-border-side='bottom']::before {
+      box-shadow: inset 0 -1px 0 0 var(--global-inner-contrast-border);
+    }
 
-      .Panel[data-panel-border-side='right']& {
-        box-shadow: inset -1px 0 0 0 var(--global-inner-contrast-border);
-      }
+    &[data-panel-border-side='left']::before {
+      box-shadow: inset 1px 0 0 0 var(--global-inner-contrast-border);
+    }
+
+    &[data-panel-border-side='right']::before {
+      box-shadow: inset -1px 0 0 0 var(--global-inner-contrast-border);
     }
   }
 }
