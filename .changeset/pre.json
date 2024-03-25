@@ -9,5 +9,9 @@
     "@lualtek/tokens": "11.13.1",
     "tsconfig": "0.3.0"
   },
-  "changesets": []
+  "changesets": [
+    "neat-pianos-brake",
+    "slimy-mugs-wink",
+    "tame-poems-cross"
+  ]
 }
