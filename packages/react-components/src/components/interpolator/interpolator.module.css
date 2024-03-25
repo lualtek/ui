@@ -1,0 +1,43 @@
+@layer components {
+  .Interpolator {
+    display: inline-grid;
+    place-content: center;
+    place-items: center;
+    position: relative;
+  }
+
+  .Interpolator > * {
+    position: relative;
+    grid-column: 1 / 1;
+    grid-row: 1 / 1;
+    transform-origin: center center;
+    display: inline-flex;
+  }
+
+  .Entering {
+    scale: var(--enter-scale);
+    rotate: var(--enter-rotation);
+    transition: all var(--duration) ease-out;
+    transition-delay: 50ms;
+    opacity: 0%;
+    pointer-events: none;
+  }
+
+  .Exiting {
+    transition: all var(--duration) ease-out;
+    z-index: 1;
+  }
+
+  .Interpolator[data-interpolating='true'] .Exiting {
+    scale: var(--exit-scale);
+    rotate: var(--exit-rotation);
+    opacity: 0%;
+  }
+
+  .Interpolator[data-interpolating='true'] .Entering {
+    scale: unset;
+    rotate: unset;
+    opacity: 100%;
+    pointer-events: auto;
+  }
+}

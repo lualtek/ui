@@ -20,9 +20,9 @@
     }
 
     &[data-avatar-dimension='big'] {
-      --size: token(--space-48);
+      --size: token(--space-56);
 
-      border-radius: token(--radius-16);
+      border-radius: token(--radius-24);
     }
 
     & img {
