@@ -1,5 +1,11 @@
 # @lualtek/config
 
+## 11.15.2
+
+### Patch Changes
+
+- @lualtek/tokens@11.15.2
+
 ## 11.15.1
 
 ### Patch Changes

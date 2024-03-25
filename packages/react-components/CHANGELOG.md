@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 11.15.2
+
+### Patch Changes
+
+- 33dc68b: stranger things
+  - @lualtek/icons@11.15.2
+
 ## 11.15.1
 
 ### Patch Changes
