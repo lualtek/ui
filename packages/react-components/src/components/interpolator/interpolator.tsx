@@ -1,3 +1,5 @@
+'use client';
+
 import { TokensTypes } from '@lualtek/tokens/platforms/web';
 import tkns from '@lualtek/tokens/platforms/web/tokens.json';
 import clsx from 'clsx';
@@ -11,9 +13,9 @@ export type InterpolatorProps = {
   exitComponent: ReactNode;
   enterComponent: ReactNode;
   interpolating: boolean;
-  enterScale: [number, number];
+  enterScale?: [number, number];
   enterRotation?: number;
-  exitScale: [number, number];
+  exitScale?: [number, number];
   exitRotation?: number;
   duration?: TokensTypes['duration'];
 }
@@ -24,10 +26,10 @@ export const Interpolator = forwardRef<HTMLDivElement, PropsWithClass<Interpolat
   exitComponent,
   enterComponent,
   interpolating = false,
-  enterScale,
+  enterScale = [0.5, 2.5],
   enterRotation = 0,
   exitRotation = 0,
-  exitScale,
+  exitScale = [3.5, 0.5],
   duration = 200,
   ...otherProps
 }, forwardedRef) => {
