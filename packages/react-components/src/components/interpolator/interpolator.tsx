@@ -35,15 +35,9 @@ export const Interpolator = forwardRef<HTMLDivElement, PropsWithClass<Interpolat
     '--enter-scale': `${enterScale[0]} ${enterScale[1]}`,
     '--exit-scale': `${exitScale[0]} ${exitScale[1]}`,
     '--duration': tkns.duration[duration],
-  }), [enterScale, exitScale, duration]);
-
-  const enteringStyle = useMemo(() => ({
     '--enter-rotation': `${enterRotation}deg`,
-  }), [enterRotation]);
-
-  const exitingStyle = useMemo(() => ({
     '--exit-rotation': `${exitRotation}deg`,
-  }), [exitRotation]);
+  }), [enterScale, exitScale, duration, enterRotation, exitRotation]);
 
   return (
     <div
@@ -53,8 +47,8 @@ export const Interpolator = forwardRef<HTMLDivElement, PropsWithClass<Interpolat
       style={{ ...dynamicStyle, ...style }}
       {...otherProps}
     >
-      <div className={styles.Entering} style={enteringStyle}>{enterComponent}</div>
-      <div className={styles.Exiting} style={exitingStyle}>{exitComponent}</div>
+      <div className={styles.Entering}>{enterComponent}</div>
+      <div className={styles.Exiting}>{exitComponent}</div>
     </div>
   );
 });
