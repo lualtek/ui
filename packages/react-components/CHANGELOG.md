@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 11.14.1
+
+### Patch Changes
+
+- 1333141: Add use client to interpolator
+  - @lualtek/icons@11.14.1
+
 ## 11.14.0
 
 ### Minor Changes
