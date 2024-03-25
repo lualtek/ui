@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 11.15.3
+
+### Patch Changes
+
+- 10771f5: Fix panel borders
+  - @lualtek/icons@11.15.3
+
 ## 11.15.2
 
 ### Patch Changes
