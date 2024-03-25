@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 11.15.1
+
+### Patch Changes
+
+- f08aeb6: Fix stack specificity (unknown reasons)
+  - @lualtek/icons@11.15.1
+
 ## 11.15.0
 
 ### Minor Changes
