@@ -1,5 +1,11 @@
 # @lualtek/tokens
 
+## 11.15.0
+
+### Minor Changes
+
+- 8d21031: Fix versioning
+
 ## 11.14.0
 
 ## 11.13.1

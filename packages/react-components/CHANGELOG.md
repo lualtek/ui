@@ -1,5 +1,16 @@
 # @lualtek/react-components
 
+## 11.15.0
+
+### Minor Changes
+
+- 8d21031: Fix versioning
+
+### Patch Changes
+
+- Updated dependencies [8d21031]
+  - @lualtek/icons@11.15.0
+
 ## 11.14.0
 
 ### Minor Changes
