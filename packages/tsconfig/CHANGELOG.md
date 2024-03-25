@@ -1,5 +1,11 @@
 # tsconfig
 
+## 0.4.0
+
+### Minor Changes
+
+- 8d21031: Fix versioning
+
 ## 0.3.0
 
 ### Minor Changes
