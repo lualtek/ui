@@ -1,4 +1,4 @@
-@layer components {
+@layer plain-components {
   .Stack {
     display: flex;
     grid-gap: var(--r-gap, 0) var(--c-gap, 0);
@@ -6,11 +6,11 @@
     align-items: var(--h-align);
     justify-content: var(--v-align);
 
-    &:where([data-stack-has-padding='true']) {
+    :where(&[data-stack-has-padding='true']) {
       padding: var(--v-padding, 0) var(--h-padding, 0);
     }
 
-    &:where([data-stack-fill='true']) > * {
+    :where(&[data-stack-fill='true'] > *)  {
       flex-grow: 1;
     }
 

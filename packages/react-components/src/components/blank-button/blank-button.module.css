@@ -1,4 +1,4 @@
-@layer core {
+@layer plain-components {
   .BlankButton {
     appearance: none;
     border: 0;
