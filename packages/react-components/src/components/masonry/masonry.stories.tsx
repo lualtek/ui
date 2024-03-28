@@ -92,7 +92,8 @@ export const Default = {} satisfies Story;
 export const WithBreakPoints = {
   args: {
     columns: {
-      default: 6,
+      default: 8,
+      wide: 6,
       extraLarge: 5,
       large: 4,
       medium: 3,

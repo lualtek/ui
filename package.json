@@ -45,7 +45,7 @@
     "stylelint-design-tokens-plugin": "0.0.14",
     "ts-node": "10.9.2",
     "tsc-alias": "1.8.8",
-    "turbo": "1.12.5",
+    "turbo": "1.13.0",
     "typescript": "5.4.3"
   },
   "engines": {

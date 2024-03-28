@@ -18,6 +18,7 @@ type Columns = {
   medium?: number;
   large?: number;
   extraLarge?: number;
+  wide?: number;
 }
 
 export type MasonryProps = {
@@ -37,7 +38,8 @@ export type MasonryProps = {
    * @example Different number of columns based on the breakpoint
    * ```js
    * {
-   *    default: 6,
+   *    default: 7,
+   *    wide: 6,
    *    extraLarge: 5,
    *    large: 4,
    *    medium: 3,
@@ -51,11 +53,12 @@ export type MasonryProps = {
 }
 
 const breakpoints: Record<string, number> = {
-  'extra-small': 480,
+  extraSmall: 480,
   small: 768,
   medium: 960,
   large: 1280,
-  'extra-large': 1600,
+  extraLarge: 1600,
+  wide: 2100,
 };
 
 export const Masonry: FCChildrenClass<MasonryProps> = ({

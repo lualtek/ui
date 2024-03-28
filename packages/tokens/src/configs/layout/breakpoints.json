@@ -69,6 +69,20 @@
           "category": "size"
         }
       }
+    },
+    "wide": {
+      "em": {
+        "value": 2100,
+        "attributes": {
+          "category": "media"
+        }
+      },
+      "px": {
+        "value": 2100,
+        "attributes": {
+          "category": "size"
+        }
+      }
     }
   }
 }
