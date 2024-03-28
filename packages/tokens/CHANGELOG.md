@@ -1,5 +1,11 @@
 # @lualtek/tokens
 
+## 11.16.0
+
+### Minor Changes
+
+- 2513120: Add new wide media query and update masonry
+
 ## 11.15.3
 
 ## 11.15.2

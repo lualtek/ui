@@ -1,5 +1,15 @@
 # @lualtek/react-components
 
+## 11.16.0
+
+### Minor Changes
+
+- 2513120: Add new wide media query and update masonry
+
+### Patch Changes
+
+- @lualtek/icons@11.16.0
+
 ## 11.15.3
 
 ### Patch Changes
