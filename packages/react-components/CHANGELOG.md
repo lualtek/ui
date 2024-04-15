@@ -1,5 +1,15 @@
 # @lualtek/react-components
 
+## 11.17.0
+
+### Minor Changes
+
+- 9ca08c3: Add usePortal to tooltip and export ConditionalWrapper
+
+### Patch Changes
+
+- @lualtek/icons@11.17.0
+
 ## 11.16.0
 
 ### Minor Changes
