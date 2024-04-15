@@ -51,3 +51,9 @@ export const WithSVG = {
     trigger: <Icon source="c-warning" dimension={24} />,
   },
 } satisfies Story;
+
+export const WithPortal = {
+  args: {
+    usePortal: true,
+  },
+} satisfies Story;

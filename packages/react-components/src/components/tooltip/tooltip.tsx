@@ -9,6 +9,7 @@ import {
   Children, cloneElement, isValidElement, ReactNode, useMemo, useRef,
 } from 'react';
 
+import { ConditionalWrapper } from '@/components';
 import { FCChildrenClass } from '@/components/types';
 
 import { Elevator } from '../elevator';
@@ -25,6 +26,10 @@ export type TooltipProps = TooltipPrimitive.TooltipProps & TooltipPrimitive.Tool
    * @defaultValue "top"
    */
   side?: TooltipPrimitive.TooltipContentProps['side'];
+  /**
+   * Use a portal to render the tooltip.
+   */
+  usePortal?: boolean;
 }
 
 export const Tooltip: FCChildrenClass<TooltipProps> = ({
@@ -36,6 +41,7 @@ export const Tooltip: FCChildrenClass<TooltipProps> = ({
   align = 'center',
   alignOffset,
   delayDuration,
+  usePortal = false,
   ...otherProps
 }) => {
   const triggerRef = useRef<HTMLHtmlElement>();
@@ -88,29 +94,34 @@ export const Tooltip: FCChildrenClass<TooltipProps> = ({
 
       <LazyMotion features={domAnimation}>
         <Elevator resting={3}>
-          <TooltipPrimitive.Content
-            asChild
-            side={side}
-            align={align}
-            sideOffset={sideOffset}
-            alignOffset={alignOffset}
-            className={clsx(styles.Tooltip, className)}
+          <ConditionalWrapper
+            condition={usePortal}
+            wrapper={children => <TooltipPrimitive.Content>{children}</TooltipPrimitive.Content>}
           >
-            <m.div
-              initial="hidden"
-              animate="visible"
-              exit="hidden"
-              variants={animation}
-              transition={{
-                type: 'spring',
-                stiffness: 700,
-                damping: 30,
-              }}
+            <TooltipPrimitive.Content
+              asChild
+              side={side}
+              align={align}
+              sideOffset={sideOffset}
+              alignOffset={alignOffset}
+              className={clsx(styles.Tooltip, className)}
             >
-              {children}
-              <TooltipPrimitive.Arrow fill="var(--global-foreground)" className={styles.Arrow} />
-            </m.div>
-          </TooltipPrimitive.Content>
+              <m.div
+                initial="hidden"
+                animate="visible"
+                exit="hidden"
+                variants={animation}
+                transition={{
+                  type: 'spring',
+                  stiffness: 700,
+                  damping: 30,
+                }}
+              >
+                {children}
+                <TooltipPrimitive.Arrow fill="var(--global-foreground)" className={styles.Arrow} />
+              </m.div>
+            </TooltipPrimitive.Content>
+          </ConditionalWrapper>
         </Elevator>
       </LazyMotion>
     </TooltipPrimitive.Root>

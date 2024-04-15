@@ -9,6 +9,7 @@ export * from './card';
 export * from './chip';
 export * from './circular-progress';
 export * from './clamp-text';
+export * from './conditional-wrapper';
 export * from './container';
 export * from './datetime';
 export * from './disclosure';
