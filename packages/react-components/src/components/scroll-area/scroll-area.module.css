@@ -3,6 +3,8 @@
     overflow: hidden;
     scrollbar-gutter: var(--gutter-behaviour);
     scrollbar-width: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: var(--overscroll-behavior);
 
     &[data-scroll-area-scrolling='true'] {
       overflow: auto;

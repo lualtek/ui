@@ -53,6 +53,12 @@ export type ScrollAreaProps = {
    * @defaultValue 16
    */
   fadeSize?: string | Exclude<TokensTypes['space'], string>;
+  /**
+   * The behavior of the overscroll effect.
+   *
+   * @defaultValue 'contain'
+   */
+  overscrollBehavior?: 'auto' | 'contain' | 'none';
 }
 
 type PolymorphicScrollArea = Polymorphic.ForwardRefComponent<'div', ScrollAreaProps>;
@@ -68,6 +74,7 @@ export const ScrollArea = forwardRef(({
   hideScrollbars = false,
   gutterBehavior = 'auto',
   fadeDirection,
+  overscrollBehavior = 'contain',
   fadeSize = 16,
   style,
   ...otherProps
@@ -86,8 +93,9 @@ export const ScrollArea = forwardRef(({
       '--track-color': trackColor,
       '--gutter-behaviour': gutterBehavior,
       '--fade-size': computedFadeDirection,
+      '--overscroll-behavior': overscrollBehavior,
     }
-  ), [thumbColor, trackColor, gutterBehavior, computedFadeDirection]);
+  ), [thumbColor, trackColor, gutterBehavior, overscrollBehavior, computedFadeDirection]);
 
   return (
     <Wrapper
