@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 11.18.1
+
+### Patch Changes
+
+- dbab75e: Disable glow on tab list
+  - @lualtek/icons@11.18.1
+
 ## 11.18.0
 
 ### Minor Changes
