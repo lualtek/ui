@@ -59,6 +59,10 @@ export type TextProps = {
    * Assign a custom color to the text when `dimmed` or `sentiment` are not set.
    */
   textColor?: string;
+  /**
+   * Set the white-space property of the text.
+   */
+  whiteSpace?: 'normal' | 'nowrap' | 'pre' | 'pre-line' | 'pre-wrap' | 'break-spaces';
 }
 
 type PolymorphicText = Polymorphic.ForwardRefComponent<'span', TextProps>;
@@ -76,6 +80,7 @@ export const Text = forwardRef(({
   responsive = true,
   lineHeight = 'standard',
   textColor,
+  whiteSpace = 'normal',
   style,
   ...otherProps
 }, forwardedRef) => {
@@ -84,8 +89,9 @@ export const Text = forwardRef(({
       '--max-w': maxWidth,
       '--t-align': align,
       '--text-color': textColor,
+      '--white-space': whiteSpace,
     }
-  ), [maxWidth, align, textColor]);
+  ), [maxWidth, align, textColor, whiteSpace]);
 
   return (
     <Wrapper

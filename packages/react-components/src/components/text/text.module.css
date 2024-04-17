@@ -11,6 +11,7 @@
     text-align: var(--t-align);
     word-break: break-word;
     color: var(--text-color);
+    white-space: var(--white-space, normal);
 
     /* Colors */
 

@@ -40,6 +40,10 @@ export type TitleProps = {
    * the text will be always the same size across all breakpoints.
    */
   responsive?: boolean;
+  /**
+   * Set the white-space property of the title.
+   */
+  whiteSpace?: 'normal' | 'nowrap' | 'pre' | 'pre-line' | 'pre-wrap' | 'break-spaces';
 }
 
 type PolymorphicTitle = Polymorphic.ForwardRefComponent<'span', TitleProps>;
@@ -51,6 +55,7 @@ export const Title = forwardRef(({
   lineHeight = 'standard',
   level = '1',
   align = 'start',
+  whiteSpace = 'normal',
   maxWidth,
   responsive = true,
   style,
@@ -64,8 +69,9 @@ export const Title = forwardRef(({
     {
       '--max-w': maxWidth,
       '--t-align': align,
+      '--white-space': whiteSpace,
     }
-  ), [maxWidth, align]);
+  ), [maxWidth, align, whiteSpace]);
 
   return (
     <Wrapper
