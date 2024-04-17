@@ -78,11 +78,11 @@ export const Tabs: TabsComponent = ({
       <LazyMotion features={domMax} strict>
         <Panel
           bordered
-          glowSpread={10}
           radius={radius[dimension]}
           vPadding={4}
           hPadding={4}
           vibrant
+          disableGlow
           vibrancyColor="soft"
           className={styles.List}
         >
