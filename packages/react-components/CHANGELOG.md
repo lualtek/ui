@@ -1,5 +1,16 @@
 # @lualtek/react-components
 
+## 11.18.0
+
+### Minor Changes
+
+- 20dbd20: Add whiteSpace to Text and Title
+
+### Patch Changes
+
+- 601c35a: add overscrollBehavior to scroll area
+  - @lualtek/icons@11.18.0
+
 ## 11.17.0
 
 ### Minor Changes
