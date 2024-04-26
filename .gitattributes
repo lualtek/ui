@@ -1,0 +1,6 @@
+*.tsx linguist-language=typescript
+*.css.d.ts linguist-generated=true
+*.svg linguist-generated=false
+*.html linguist-detectable=false
+*.js linguist-detectable=false
+*.yaml linguist-detectable=false
