@@ -14,6 +14,7 @@
     "release": "changeset publish",
     "prepare": "husky",
     "change": "changeset",
+    "change:enter-next": "./scripts/changeset-next-enter.sh && changeset pre enter next",
     "upgrade-interactive": "npx npm-upgrade-monorepo"
   },
   "lint-staged": {
