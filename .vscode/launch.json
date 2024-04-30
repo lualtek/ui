@@ -6,7 +6,7 @@
           "request": "launch",
           "runtimeArgs": [
               "run",
-              "dev"
+              "start"
           ],
           "runtimeExecutable": "pnpm",
           "skipFiles": [

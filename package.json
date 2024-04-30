@@ -8,8 +8,8 @@
   "scripts": {
     "build": "turbo run build",
     "build:nocache": "turbo run build --force",
-    "dev": "turbo run dev",
-    "storybook": "storybook dev -p 6006",
+    "start": "turbo run dev --parallel",
+    "dev": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "lint": "turbo run lint",
     "test": "echo \"Add some test\"",
