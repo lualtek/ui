@@ -73,6 +73,8 @@
   "dependencies": {
     "@lualtek/icons": "workspace:*",
     "@lualtek/react-components": "workspace:*",
+    "@lualtek/themes": "workspace:*",
+    "@lualtek/config": "workspace:*",
     "clsx": "2.1.0"
   }
 }
