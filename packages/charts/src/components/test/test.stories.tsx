@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Test } from './test';
 
 const meta = {
-  title: 'Linear/Test',
+  title: 'Charts/Linear',
   component: Test,
   args: {
 
