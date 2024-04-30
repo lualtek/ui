@@ -143,12 +143,18 @@ importers:
 
   packages/charts:
     dependencies:
+      '@lualtek/config':
+        specifier: workspace:*
+        version: link:../config
       '@lualtek/icons':
         specifier: workspace:*
         version: link:../icons
       '@lualtek/react-components':
         specifier: workspace:*
         version: link:../react-components
+      '@lualtek/themes':
+        specifier: workspace:*
+        version: link:../themes
       clsx:
         specifier: 2.1.0
         version: 2.1.0
@@ -156,12 +162,6 @@ importers:
         specifier: ^3.3.2
         version: 3.3.2(react@18.2.0)
     devDependencies:
-      '@lualtek/config':
-        specifier: workspace:*
-        version: link:../config
-      '@lualtek/themes':
-        specifier: workspace:*
-        version: link:../themes
       '@lualtek/tokens':
         specifier: workspace:*
         version: link:../tokens
