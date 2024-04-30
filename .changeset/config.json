@@ -7,13 +7,9 @@
     }
   ],
   "commit": false,
-  "fixed": [
-    [
-      "@lualtek/*"
-    ]
-  ],
+  "fixed": [["@lualtek/*"]],
   "access": "restricted",
-  "baseBranch": "next/feature/sc-974-replicate-recharts-linechart-into-new-chart",
+  "baseBranch": "next",
   "updateInternalDependencies": "patch",
   "ignore": []
 }
