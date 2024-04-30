@@ -10,13 +10,14 @@ function getAbsolutePath(value: string): any {
   return dirname(require.resolve(join(value, "package.json")));
 }
 const config: StorybookConfig = {
-  stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
+  stories: ['../packages/**/src/**/*.stories.@(js|jsx|ts|tsx)'],
   addons: [
     getAbsolutePath("@storybook/addon-onboarding"),
     getAbsolutePath("@storybook/addon-links"),
-    getAbsolutePath("@storybook/addon-interactions"),
     getAbsolutePath("@storybook/addon-essentials"),
-    getAbsolutePath("@storybook/addon-themes")
+    getAbsolutePath("@storybook/addon-interactions"),
+    getAbsolutePath("@storybook/addon-themes"),
+    "@chromatic-com/storybook"
   ],
   framework: {
     name: getAbsolutePath("@storybook/react-vite"),
@@ -27,7 +28,7 @@ const config: StorybookConfig = {
   },
   typescript: {
     check: false,
-    reactDocgen: 'react-docgen',
+    reactDocgen: "react-docgen-typescript",
     reactDocgenTypescriptOptions: {
       shouldExtractLiteralValuesFromEnum: true,
       propFilter: prop => (prop.parent ? !/node_modules/.test(prop.parent.fileName) : true),
@@ -35,7 +36,8 @@ const config: StorybookConfig = {
   },
   viteFinal: async (config) => {
     if (config && config.resolve && config.resolve.alias) {
-      config.resolve.alias['@/components'] = resolve(__dirname, '../src/');
+      config.resolve.alias['@/components'] = resolve(__dirname, '../packages/react-components/src');
+      config.resolve.alias['@/charts'] = resolve(__dirname, '../packages/charts/src');
       return config;
     }
     return config;

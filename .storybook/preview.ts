@@ -5,7 +5,7 @@ import { themes } from '@storybook/theming';
 import lualtekTheme from './lualtek-theme';
 
 import '@lualtek/themes/web';
-import '../src/core.css';
+import '../packages/react-components/src/core.css';
 import './overrides.css';
 
 const preview: Preview = {
