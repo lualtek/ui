@@ -75,8 +75,8 @@
     "@lualtek/icons": "workspace:*",
     "@lualtek/react-components": "workspace:*",
     "@lualtek/themes": "workspace:*",
+    "@react-spring/web": "9.7.3",
     "@visx/xychart": "3.10.2",
-    "clsx": "2.1.1",
-    "react-spring": "9.7.3"
+    "clsx": "2.1.1"
   }
 }
