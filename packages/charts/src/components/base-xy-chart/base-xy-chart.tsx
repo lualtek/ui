@@ -11,10 +11,10 @@ import { baseTheme } from '@/charts';
 
 import { Tooltip as CustomTooltip } from '../tooltip';
 
-export type BaseXYChartProps = {
+export type BaseXYChartProps<T> = {
   accessors: {
-    xAccessor: (d: any) => any;
-    yAccessor: (d: any) => any;
+    xAccessor: (d: T) => any;
+    yAccessor: (d: T) => any;
   };
   height?: number;
   theme?: Partial<XYChartTheme>;
@@ -24,7 +24,7 @@ export type BaseXYChartProps = {
   hideTicks?: boolean;
 };
 
-export const BaseXYChart: FCChildrenClass<BaseXYChartProps> = ({
+export const BaseXYChart: FCChildrenClass<BaseXYChartProps<Record<string, unknown>>> = ({
   className,
   children,
   theme,

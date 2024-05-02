@@ -2,9 +2,9 @@ import { FCChildrenClass } from '@lualtek/react-components';
 
 import { BaseXYChart, BaseXYChartProps } from '../base-xy-chart';
 
-export type LineChartProps = BaseXYChartProps
+export type LineChartProps<T> = BaseXYChartProps<T>
 
-export const LineChart: FCChildrenClass<LineChartProps> = ({
+export const LineChart: FCChildrenClass<LineChartProps<any>> = ({
   className,
   accessors,
   children,
