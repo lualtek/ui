@@ -9,24 +9,31 @@ import { AnimatedGridProps } from '@visx/xychart/lib/components/grid/AnimatedGri
 
 import { baseTheme } from '@/charts';
 
-export type XYChartProps = {
+import { Tooltip as CustomTooltip } from '../tooltip';
+
+export type BaseXYChartProps = {
+  accessors: {
+    xAccessor: (d: any) => any;
+    yAccessor: (d: any) => any;
+  };
   height?: number;
   theme?: Partial<XYChartTheme>;
   showGrid?: boolean;
-  density?: AnimatedGridProps['numTicks'];
+  ticks?: AnimatedGridProps['numTicks'];
   showBottomAxis?: boolean;
   hideTicks?: boolean;
 };
 
-export const BaseXYChart: FCChildrenClass<XYChartProps> = ({
+export const BaseXYChart: FCChildrenClass<BaseXYChartProps> = ({
   className,
   children,
   theme,
   height = 300,
   showGrid = true,
   showBottomAxis = true,
-  density = 8,
+  ticks = 8,
   hideTicks,
+  accessors,
   ...otherProps
 }) => (
   <XYChart
@@ -36,9 +43,10 @@ export const BaseXYChart: FCChildrenClass<XYChartProps> = ({
     theme={{ ...baseTheme, ...theme } as XYChartTheme}
     {...otherProps}
   >
-    {showBottomAxis && <Axis hideTicks={hideTicks} numTicks={density} orientation="bottom" tickLength={8} />}
+    {showBottomAxis && <Axis hideTicks={hideTicks} numTicks={ticks} orientation="bottom" tickLength={8} />}
     {showGrid && <Grid rows columns />}
     {children}
+    <CustomTooltip accessors={accessors} />
   </XYChart>
 );
 

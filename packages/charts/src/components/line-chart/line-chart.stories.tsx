@@ -35,7 +35,7 @@ const meta = {
     showGrid: true,
     showBottomAxis: true,
     hideTicks: false,
-    density: 5,
+    ticks: 5,
   },
   render: args => (
     <LineChart {...args}>
