@@ -1,9 +1,10 @@
 import { FCChildrenClass } from '@lualtek/react-components';
 import {
-  AnimatedGrid,
+  Grid,
   XYChart,
   XYChartTheme,
 } from '@visx/xychart';
+import { AnimatedGridProps } from '@visx/xychart/lib/components/grid/AnimatedGrid';
 
 import { baseTheme } from '@/charts';
 
@@ -11,6 +12,7 @@ export type XYChartProps = {
   height?: number;
   theme?: Partial<XYChartTheme>;
   showGrid?: boolean;
+  gridDensity?: AnimatedGridProps['numTicks'];
 };
 
 export const BaseXYChart: FCChildrenClass<XYChartProps> = ({
@@ -19,6 +21,7 @@ export const BaseXYChart: FCChildrenClass<XYChartProps> = ({
   theme,
   height = 300,
   showGrid = true,
+  gridDensity = 4,
   ...otherProps
 }) => (
   <XYChart
@@ -28,7 +31,7 @@ export const BaseXYChart: FCChildrenClass<XYChartProps> = ({
     theme={{ ...baseTheme, ...theme } as XYChartTheme}
     {...otherProps}
   >
-    {showGrid && <AnimatedGrid rows columns numTicks={4} />}
+    {showGrid && <Grid rows columns numTicks={gridDensity} />}
     {children}
   </XYChart>
 );
