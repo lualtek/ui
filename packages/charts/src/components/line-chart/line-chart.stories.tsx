@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import {
-  AnimatedAxis,
   AnimatedLineSeries,
+  Axis,
 } from '@/charts';
 
 import {
@@ -33,12 +33,13 @@ const meta = {
   args: {
     accessors,
     showGrid: true,
-    gridDensity: 5,
+    showBottomAxis: true,
+    hideTicks: false,
+    density: 5,
   },
   render: args => (
     <LineChart {...args}>
-      <AnimatedAxis animationTrajectory="min" orientation="left" />
-      <AnimatedAxis animationTrajectory="min" orientation="right" />
+      <Axis orientation="right" />
       <AnimatedLineSeries
         dataKey="data1"
         data={data1}

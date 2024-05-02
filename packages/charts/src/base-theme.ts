@@ -23,10 +23,11 @@ export const baseTheme = buildChartTheme({
   htmlLabel: {},
 
   // Grid
-  gridColor: 'var(--dimmed-4)',
+  gridColor: 'var(--dimmed-5)',
   gridColorDark: 'var(--dimmed-3)', // used for axis baseline if x/yxAxisLineStyles not set
   gridStyles: {
     strokeWidth: 0.2,
+    strokeDasharray: '4 4',
   },
   // Lines
   xAxisLineStyles: {},

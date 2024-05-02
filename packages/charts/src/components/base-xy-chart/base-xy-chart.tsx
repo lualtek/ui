@@ -1,5 +1,6 @@
 import { FCChildrenClass } from '@lualtek/react-components';
 import {
+  Axis,
   Grid,
   XYChart,
   XYChartTheme,
@@ -12,7 +13,9 @@ export type XYChartProps = {
   height?: number;
   theme?: Partial<XYChartTheme>;
   showGrid?: boolean;
-  gridDensity?: AnimatedGridProps['numTicks'];
+  density?: AnimatedGridProps['numTicks'];
+  showBottomAxis?: boolean;
+  hideTicks?: boolean;
 };
 
 export const BaseXYChart: FCChildrenClass<XYChartProps> = ({
@@ -21,7 +24,9 @@ export const BaseXYChart: FCChildrenClass<XYChartProps> = ({
   theme,
   height = 300,
   showGrid = true,
-  gridDensity = 4,
+  showBottomAxis = true,
+  density = 8,
+  hideTicks,
   ...otherProps
 }) => (
   <XYChart
@@ -31,7 +36,8 @@ export const BaseXYChart: FCChildrenClass<XYChartProps> = ({
     theme={{ ...baseTheme, ...theme } as XYChartTheme}
     {...otherProps}
   >
-    {showGrid && <Grid rows columns numTicks={gridDensity} />}
+    {showBottomAxis && <Axis hideTicks={hideTicks} numTicks={density} orientation="bottom" tickLength={8} />}
+    {showGrid && <Grid rows columns />}
     {children}
   </XYChart>
 );
