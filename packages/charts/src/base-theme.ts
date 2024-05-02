@@ -1,24 +1,36 @@
+import tkns from '@lualtek/tokens/platforms/web/tokens.json';
 import { buildChartTheme } from '@visx/xychart';
 
 export const baseTheme = buildChartTheme({
   backgroundColor: 'var(--vibrancy-background-hard)', // used by Tooltip, Annotation
-  colors: ['red', 'blue'], // categorical colors, mapped to series via `dataKey`s
+  colors: [
+    `oklch(${tkns.color.cyan[50]})`,
+    `oklch(${tkns.color.yellow[50]})`,
+    `oklch(${tkns.color.blue[50]})`,
+    `oklch(${tkns.color.dipsy[50]})`,
+    `oklch(${tkns.color.green[50]})`,
+    `oklch(${tkns.color.magenta[50]})`,
+    `oklch(${tkns.color.red[50]})`,
+    `oklch(${tkns.color.salmon[50]})`,
+  ],
   tickLength: 1,
-  gridColor: 'var(--dimmed-3)',
-  gridColorDark: 'var(--dimmed-4)', // used for axis baseline if x/yxAxisLineStyles not set
+  svgLabelSmall: {
+    fill: 'var(--dimmed-5)',
+  },
+  svgLabelBig: {
+    fill: 'var(--dimmed-5)',
+  },
+  htmlLabel: {},
+
+  // Grid
+  gridColor: 'var(--dimmed-4)',
+  gridColorDark: 'var(--dimmed-3)', // used for axis baseline if x/yxAxisLineStyles not set
+  gridStyles: {
+    strokeWidth: 0.2,
+  },
+  // Lines
+  xAxisLineStyles: {},
+  yAxisLineStyles: {},
+  xTickLineStyles: {},
+  yTickLineStyles: {},
 });
-
-// // labels
-// svgLabelBig?: SVGTextProps;
-// svgLabelSmall?: SVGTextProps;
-// htmlLabel?: HTMLTextStyles;
-
-// // lines
-// xAxisLineStyles?: LineStyles;
-// yAxisLineStyles?: LineStyles;
-// xTickLineStyles?: LineStyles;
-// yTickLineStyles?: LineStyles;
-
-// // grid
-
-// gridStyles?: CSSProperties;
