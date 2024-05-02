@@ -1,32 +1,28 @@
 import { FCChildrenClass } from '@lualtek/react-components';
 import {
   AnimatedAxis,
-  AnimatedGrid,
   Tooltip,
-  XYChart,
 } from '@visx/xychart';
 
-export type LinearChartProps = {
+import { BaseXYChart, XYChartProps } from '../base-xy-chart';
+
+export type LineChartProps = XYChartProps & {
   accessors: {
     xAccessor: (d: any) => any;
     yAccessor: (d: any) => any;
   };
 }
 
-export const LinearChart: FCChildrenClass<LinearChartProps> = ({
+export const LineChart: FCChildrenClass<LineChartProps> = ({
   className,
   children,
   accessors,
   ...otherProps
 }) => (
-  <XYChart
-    height={300}
-    xScale={{ type: 'point' }}
-    yScale={{ type: 'linear' }}
+  <BaseXYChart
     {...otherProps}
   >
     <AnimatedAxis orientation="bottom" />
-    <AnimatedGrid columns={false} numTicks={4} />
     {children}
     <Tooltip
       snapTooltipToDatumX
@@ -44,7 +40,7 @@ export const LinearChart: FCChildrenClass<LinearChartProps> = ({
         </div>
       )}
     />
-  </XYChart>
+  </BaseXYChart>
 );
 
-LinearChart.displayName = 'LinearChart';
+LineChart.displayName = 'LineChart';

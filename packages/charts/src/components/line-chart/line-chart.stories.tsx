@@ -3,7 +3,7 @@ import {
   AnimatedLineSeries,
 } from '@visx/xychart';
 
-import { LinearChart } from './test';
+import { LineChart } from './line-chart';
 
 type Data = { x: string; y: number };
 type Dataset = Data[];
@@ -27,27 +27,28 @@ const accessors = {
 
 const meta = {
   title: 'Charts/Linear',
-  component: LinearChart,
+  component: LineChart,
   args: {
     accessors,
+    showGrid: true,
   },
   render: args => (
-    <LinearChart {...args}>
+    <LineChart {...args}>
       <AnimatedLineSeries
         dataKey="data1"
         data={data1}
-        xAccessor={accessors.xAccessor}
-        yAccessor={accessors.yAccessor}
+        xAccessor={args.accessors.xAccessor}
+        yAccessor={args.accessors.yAccessor}
       />
       <AnimatedLineSeries
         dataKey="data2"
         data={data2}
-        xAccessor={accessors.xAccessor}
-        yAccessor={accessors.yAccessor}
+        xAccessor={args.accessors.xAccessor}
+        yAccessor={args.accessors.yAccessor}
       />
-    </LinearChart>
+    </LineChart>
   ),
-} satisfies Meta<typeof LinearChart>;
+} satisfies Meta<typeof LineChart>;
 
 export default meta;
 
