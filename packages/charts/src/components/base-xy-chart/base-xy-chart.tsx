@@ -17,7 +17,7 @@ export type BaseXYChartProps<T> = {
     yAccessor: (d: T) => any;
   };
   height?: number;
-  theme?: Partial<XYChartTheme>;
+  colors: XYChartTheme['colors'];
   showGrid?: boolean;
   ticks?: AnimatedGridProps['numTicks'];
   showBottomAxis?: boolean;
@@ -27,7 +27,7 @@ export type BaseXYChartProps<T> = {
 export const BaseXYChart: FCChildrenClass<BaseXYChartProps<Record<string, unknown>>> = ({
   className,
   children,
-  theme,
+  colors = [],
   height = 300,
   showGrid = true,
   showBottomAxis = true,
@@ -36,18 +36,26 @@ export const BaseXYChart: FCChildrenClass<BaseXYChartProps<Record<string, unknow
   accessors,
   ...otherProps
 }) => (
-  <XYChart
-    height={height}
-    xScale={{ type: 'point' }}
-    yScale={{ type: 'linear' }}
-    theme={{ ...baseTheme, ...theme } as XYChartTheme}
-    {...otherProps}
-  >
-    {showBottomAxis && <Axis hideTicks={hideTicks} numTicks={ticks} orientation="bottom" tickLength={8} />}
-    {showGrid && <Grid rows columns />}
-    {children}
-    <CustomTooltip accessors={accessors} />
-  </XYChart>
+  <div className={className}>
+    <XYChart
+      height={height}
+      xScale={{ type: 'point' }}
+      yScale={{ type: 'linear' }}
+      theme={{
+        ...baseTheme,
+        colors: [
+          ...colors,
+          //  Alessio: cose con baseTheme.colors
+        ],
+      } as XYChartTheme}
+      {...otherProps}
+    >
+      {showBottomAxis && <Axis hideTicks={hideTicks} numTicks={ticks} orientation="bottom" tickLength={8} />}
+      {showGrid && <Grid rows columns numTicks={ticks} />}
+      {children}
+      <CustomTooltip accessors={accessors} />
+    </XYChart>
+  </div>
 );
 
 BaseXYChart.displayName = 'XYChart';

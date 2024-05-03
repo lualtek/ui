@@ -1,6 +1,6 @@
 import {
   Elevator,
-  FCChildren, Panel, Stack, useStyles,
+  FCChildren, Panel, Stack, Text, useStyles,
 } from '@lualtek/react-components';
 import {
   Tooltip as VisxTooltip,
@@ -42,10 +42,7 @@ export const Tooltip: FCChildren<TooltipProps<any>> = ({
         <Elevator resting={2}>
           <Panel radius={8} vibrant bordered>
             <Stack vPadding={8} hPadding={8}>
-
-              <div style={{ color: colorScale?.(tooltipData.nearestDatum.key) }}>
-                {tooltipData.nearestDatum.key}
-              </div>
+              <Text textColor={colorScale?.(tooltipData.nearestDatum.key)}>{tooltipData.nearestDatum.key}</Text>
               {accessors.xAccessor(tooltipData.nearestDatum.datum)}
               {', '}
               {accessors.yAccessor(tooltipData.nearestDatum.datum)}

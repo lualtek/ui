@@ -10,7 +10,7 @@ export const LineChart: FCChildrenClass<LineChartProps<any>> = ({
   children,
   ...otherProps
 }) => (
-  <BaseXYChart accessors={accessors} {...otherProps}>
+  <BaseXYChart accessors={accessors} className={className} {...otherProps}>
     {children}
   </BaseXYChart>
 );
