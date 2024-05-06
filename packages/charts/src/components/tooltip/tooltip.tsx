@@ -1,22 +1,23 @@
 import {
   Elevator,
-  FCChildren, Panel, Stack, Text, useStyles,
+  FCChildren, Panel, Stack, useStyles,
 } from '@lualtek/react-components';
 import {
   Tooltip as VisxTooltip,
 } from '@visx/xychart';
+import { RenderTooltipParams } from '@visx/xychart/lib/components/Tooltip';
 import clsx from 'clsx';
 
-import { BaseXYChartProps } from '../base-xy-chart';
 import styles from './tooltip.module.css';
 
-export type TooltipProps<T> = {
-  accessors: BaseXYChartProps<T>['accessors'];
+export type TooltipProps = {
+  // eslint-disable-next-line @typescript-eslint/ban-types
+  renderTooltip: (props: RenderTooltipParams<object>) => React.ReactNode;
 }
 
-export const Tooltip: FCChildren<TooltipProps<any>> = ({
+export const Tooltip: FCChildren<TooltipProps> = ({
   children,
-  accessors,
+  renderTooltip,
   ...otherProps
 }) => {
   const { vibrancy } = useStyles({
@@ -38,14 +39,11 @@ export const Tooltip: FCChildren<TooltipProps<any>> = ({
         stroke: 'var(--global-background)',
         strokeWidth: 2,
       }}
-      renderTooltip={({ tooltipData, colorScale }) => tooltipData?.nearestDatum && (
+      renderTooltip={params => params.tooltipData?.nearestDatum && (
         <Elevator resting={2}>
           <Panel radius={8} vibrant bordered>
             <Stack vPadding={8} hPadding={8}>
-              <Text textColor={colorScale?.(tooltipData.nearestDatum.key)}>{tooltipData.nearestDatum.key}</Text>
-              {accessors.xAccessor(tooltipData.nearestDatum.datum)}
-              {', '}
-              {accessors.yAccessor(tooltipData.nearestDatum.datum)}
+              {renderTooltip(params)}
             </Stack>
           </Panel>
         </Elevator>

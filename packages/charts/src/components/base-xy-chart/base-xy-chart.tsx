@@ -11,11 +11,11 @@ import { baseTheme } from '@/charts';
 
 import { Tooltip as CustomTooltip } from '../tooltip';
 
-export type BaseXYChartProps<T> = {
-  accessors: {
-    xAccessor: (d: T) => any;
-    yAccessor: (d: T) => any;
-  };
+export type BaseXYChartProps = {
+  // accessors: {
+  //   xAccessor: (d: T) => any;
+  //   yAccessor: (d: T) => any;
+  // };
   height?: number;
   colors: XYChartTheme['colors'];
   showGrid?: boolean;
@@ -24,7 +24,7 @@ export type BaseXYChartProps<T> = {
   hideTicks?: boolean;
 };
 
-export const BaseXYChart: FCChildrenClass<BaseXYChartProps<Record<string, unknown>>> = ({
+export const BaseXYChart: FCChildrenClass<BaseXYChartProps> = ({
   className,
   children,
   colors = [],
@@ -33,7 +33,7 @@ export const BaseXYChart: FCChildrenClass<BaseXYChartProps<Record<string, unknow
   showBottomAxis = true,
   ticks = 8,
   hideTicks,
-  accessors,
+  // accessors,
   ...otherProps
 }) => (
   <div className={className}>
@@ -53,7 +53,7 @@ export const BaseXYChart: FCChildrenClass<BaseXYChartProps<Record<string, unknow
       {showBottomAxis && <Axis hideTicks={hideTicks} numTicks={ticks} orientation="bottom" tickLength={8} />}
       {showGrid && <Grid rows columns numTicks={ticks} />}
       {children}
-      <CustomTooltip accessors={accessors} />
+      <CustomTooltip renderTooltip={() => 'test'} />
     </XYChart>
   </div>
 );
