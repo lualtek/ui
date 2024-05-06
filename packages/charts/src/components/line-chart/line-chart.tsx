@@ -1,41 +1,41 @@
 import { FCChildrenClass } from '@lualtek/react-components';
-import { AnimatedLineSeries, Axis } from '@visx/xychart';
+import {
+  Line,
+  LineChart as ReLineChart,
+  YAxis,
+} from 'recharts';
+import { Except } from 'type-fest';
 
-import { BaseXYChart, BaseXYChartProps } from '../base-xy-chart';
+import { BaseChart, BaseChartProps } from '../base-chart';
 
-type LineChartDataType = {
-  [y: string]: number | string;
-  x: string;
-};
-
-type LineChartProps<T extends LineChartDataType> = BaseXYChartProps & {
+type LineChartProps<T extends Record<string, unknown>> = Except<BaseChartProps, 'renderChart' | 'children'> & {
   data: T[];
-  lines: Array<{
-    payloadKey: string;
-    payloadType: string;
-  }>;
 }
 
-export const LineChart: FCChildrenClass<LineChartProps<LineChartDataType>> = ({
+export const LineChart: FCChildrenClass<LineChartProps<Record<string, unknown>>> = ({
   className,
   data,
-  lines,
   children,
   ...otherProps
 }) => (
-  <BaseXYChart className={className} {...otherProps}>
-    <Axis orientation="left" />
-    {lines.map(({ payloadKey }) => (
-      <AnimatedLineSeries
-        key={payloadKey}
-        dataKey={payloadKey}
+  <BaseChart
+    {...otherProps}
+    renderChart={children => (
+      <ReLineChart
         data={data}
-        xAccessor={d => d.x}
-        yAccessor={d => d[payloadKey]}
-      />
-    ))}
-    {children}
-  </BaseXYChart>
+      >
+        {children}
+      </ReLineChart>
+    )}
+  >
+    <YAxis
+      dataKey="y"
+      orientation="right"
+      tick={{ fill: 'var(--dimmed-4)', fontSize: '0.8em' }}
+      tickLine={{ stroke: 'var(--dimmed-4)' }}
+    />
+    <Line type="monotone" dataKey="y" stroke="#82ca9d" />
+  </BaseChart>
 );
 
 LineChart.displayName = 'LineChart';
