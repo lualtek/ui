@@ -19,7 +19,7 @@ export type BaseChartProps = {
   showTooltip?: boolean;
   ticks?: YAxisProps['tickCount'];
   renderChart: (children: ReactNode) => ReactElement;
-  customTooltip?: (props: TooltipProps) => React.ReactNode;
+  customTooltip?: (props: TooltipProps) => JSX.Element;
   children: ReactElement | ReactElement[];
 };
 
@@ -28,7 +28,7 @@ export const BaseChart: FCChildrenClass<BaseChartProps> = ({
   children,
   showGrid = true,
   height = 300,
-  showBottomAxis = true,
+  showBottomAxis = false,
   showTooltip = true,
   dataKeyX = 'x',
   ticks = 8,

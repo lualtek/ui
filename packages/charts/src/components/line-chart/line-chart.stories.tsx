@@ -22,12 +22,11 @@ const meta = {
       dataKey: 'y',
       lineKeyId: 'y',
       orientation: 'left',
-      stroke: 'red',
       unit: '°C',
       name: 'Temperature',
     }],
     showGrid: true,
-    showBottomAxis: true,
+    showBottomAxis: false,
     ticks: 5,
   },
   render: args => (

@@ -14,7 +14,7 @@ export type LineChartLineBaseType<D> = {
   // Used on the map as linekey id, should be unique
   lineKeyId: string;
   orientation: 'left' | 'right';
-  stroke: string;
+  stroke?: string;
   unit: string;
   name: string;
 };
@@ -38,6 +38,7 @@ export function LineChart<D extends DataBaseType, L extends LineChartLineBaseTyp
       renderChart={children => (
         <ReLineChart
           data={data}
+          accessibilityLayer
         >
           {children}
         </ReLineChart>
@@ -69,7 +70,7 @@ export function LineChart<D extends DataBaseType, L extends LineChartLineBaseTyp
             dataKey={dataKey}
             yAxisId={orientation}
             type="monotone"
-            stroke={stroke ?? '#82ca9d'}
+            stroke={stroke}
             name={name}
             unit={unit}
           />
