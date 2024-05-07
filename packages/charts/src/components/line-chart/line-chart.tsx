@@ -24,12 +24,14 @@ export type LineChartProps<D extends DataBaseType, L extends LineChartLineBaseTy
 BaseChartProps, 'renderChart' | 'children'> & {
   data: D[];
   lines: L[];
+  showDots?: boolean;
 }
 
 export function LineChart<D extends DataBaseType, L extends LineChartLineBaseType<D>>({
   className,
   data,
   lines,
+  showDots = false,
   children,
   ...otherProps
 }: PropsClassChildren & LineChartProps<D, L>) {
@@ -74,6 +76,12 @@ export function LineChart<D extends DataBaseType, L extends LineChartLineBaseTyp
             stroke={stroke}
             name={name}
             unit={unit}
+            dot={showDots ? {
+              r: 3,
+              stroke,
+              fill: 'var(--global-background)',
+            } : false}
+            activeDot={{ stroke: 'var(--global-background)', strokeWidth: 4, r: 6 }}
           />
         ))}
       </>

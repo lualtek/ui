@@ -51,11 +51,10 @@ export const Tooltip: FCChildren<TooltipProps> = ({
               {entry.name}
               :
             </Text>
-            <Text size={14} textColor={entry.color}>
+            <Text size={14}>
               {entry.value}
             </Text>
           </Stack>
-
         ))}
       </Stack>
     </Panel>
