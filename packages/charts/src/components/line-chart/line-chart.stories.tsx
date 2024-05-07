@@ -31,3 +31,12 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default = {} satisfies Story;
+export const WithCustomTooltip = {
+  args: {
+    customTooltip: ({ label }) => (
+      <div style={{ color: 'red' }}>
+        {label}
+      </div>
+    ),
+  },
+} satisfies Story;

@@ -3,19 +3,23 @@ import { ReactElement, ReactNode } from 'react';
 import {
   CartesianGrid,
   Legend,
-  // Tooltip,
   ResponsiveContainer,
+  Tooltip as ReTooltip,
   XAxis,
   YAxisProps,
 } from 'recharts';
+
+import { Tooltip, TooltipProps } from '../tooltip';
 
 export type BaseChartProps = {
   dataKeyX?: string | ((data: any) => string | number);
   showGrid?: boolean;
   height?: number;
   showBottomAxis?: boolean;
+  showTooltip?: boolean;
   ticks?: YAxisProps['tickCount'];
   renderChart: (children: ReactNode) => ReactElement;
+  customTooltip?: (props: TooltipProps) => JSX.Element;
   children: ReactElement | ReactElement[];
 };
 
@@ -25,9 +29,11 @@ export const BaseChart: FCChildrenClass<BaseChartProps> = ({
   showGrid = true,
   height = 300,
   showBottomAxis = true,
+  showTooltip = true,
   dataKeyX = 'x',
   ticks = 8,
   renderChart,
+  customTooltip,
   ...otherProps
 }) => (
   <div className={className}>
@@ -44,6 +50,7 @@ export const BaseChart: FCChildrenClass<BaseChartProps> = ({
               stroke="color-mix(in oklch, var(--global-foreground), transparent 80%)"
             />
           )}
+          {showTooltip && <ReTooltip content={customTooltip ?? Tooltip} />}
           <XAxis
             dataKey={dataKeyX}
             tickCount={ticks}

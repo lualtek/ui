@@ -1,55 +1,43 @@
 import {
   Elevator,
-  FCChildren, Panel, Stack, useStyles,
+  FCChildren, Panel, Stack, Title,
 } from '@lualtek/react-components';
-import {
-  Tooltip as VisxTooltip,
-} from '@visx/xychart';
-import { RenderTooltipParams } from '@visx/xychart/lib/components/Tooltip';
-import clsx from 'clsx';
 
 import styles from './tooltip.module.css';
 
 export type TooltipProps = {
-  // eslint-disable-next-line @typescript-eslint/ban-types
-  renderTooltip: (props: RenderTooltipParams<object>) => React.ReactNode;
-}
+  active?: boolean;
+  label?: string;
+  payload?: any;
+};
 
 export const Tooltip: FCChildren<TooltipProps> = ({
   children,
-  renderTooltip,
+  active,
+  payload,
+  label,
   ...otherProps
-}) => {
-  const { vibrancy } = useStyles({
-    vibrancy: {
-      blur: 'soft',
-    },
-  });
-
-  return (
-    <VisxTooltip
+}) => (
+  <Elevator resting={3}>
+    <Panel
+      radius={8}
+      vibrant
+      disableGlow
+      vibrancyColor="soft"
+      bordered
+      className={styles.Tooltip}
       {...otherProps}
-      {...vibrancy.attributes}
-      snapTooltipToDatumX
-      snapTooltipToDatumY
-      showVerticalCrosshair
-      showSeriesGlyphs
-      className={clsx(styles.Tooltip)}
-      glyphStyle={{
-        stroke: 'var(--global-background)',
-        strokeWidth: 2,
-      }}
-      renderTooltip={params => params.tooltipData?.nearestDatum && (
-        <Elevator resting={2}>
-          <Panel radius={8} vibrant bordered>
-            <Stack vPadding={8} hPadding={8}>
-              {renderTooltip(params)}
-            </Stack>
-          </Panel>
-        </Elevator>
-      )}
-    />
-  );
-};
+    >
+      <Stack vPadding={8} hPadding={8}>
+        <Title level="6">{label}</Title>
+        {children && (
+          <Stack vPadding={16}>
+            {children}
+          </Stack>
+        )}
+      </Stack>
+    </Panel>
+  </Elevator>
+);
 
-Tooltip.displayName = 'Tooltip';
+Tooltip.displayName = 'ChartTooltip';
