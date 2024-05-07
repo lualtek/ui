@@ -40,6 +40,7 @@ export const BaseChart: FCChildrenClass<BaseChartProps> = ({
     <ResponsiveContainer
       width="100%"
       height={height}
+      debounce={0}
       {...otherProps}
     >
       {renderChart(
