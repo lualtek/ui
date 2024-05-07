@@ -1,6 +1,6 @@
 import {
   Elevator,
-  FCChildren, Panel, Stack, Title,
+  FCChildren, Panel, Stack, Text, Title,
 } from '@lualtek/react-components';
 
 import styles from './tooltip.module.css';
@@ -8,7 +8,7 @@ import styles from './tooltip.module.css';
 export type TooltipProps = {
   active?: boolean;
   label?: string;
-  payload?: any;
+  payload?: Array<Record<string, string>>;
 };
 
 export const Tooltip: FCChildren<TooltipProps> = ({
@@ -17,7 +17,7 @@ export const Tooltip: FCChildren<TooltipProps> = ({
   payload,
   label,
   ...otherProps
-}) => (
+}) => (active ? (
   <Elevator resting={3}>
     <Panel
       radius={8}
@@ -30,14 +30,27 @@ export const Tooltip: FCChildren<TooltipProps> = ({
     >
       <Stack vPadding={8} hPadding={8}>
         <Title level="6">{label}</Title>
-        {children && (
-          <Stack vPadding={16}>
-            {children}
+        {payload?.map(entry => (
+          <Stack
+            key={entry.name}
+            direction="row"
+            fill={false}
+            inline
+            columnGap={4}
+          >
+            <Text as="strong" size={14} textColor={entry.color}>
+              {entry.name}
+              :
+            </Text>
+            <Text size={14} textColor={entry.color}>
+              {entry.value}
+            </Text>
           </Stack>
-        )}
+
+        ))}
       </Stack>
     </Panel>
   </Elevator>
-);
+) : null);
 
 Tooltip.displayName = 'ChartTooltip';
