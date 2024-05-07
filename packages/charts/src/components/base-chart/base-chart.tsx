@@ -19,7 +19,7 @@ export type BaseChartProps = {
   showTooltip?: boolean;
   ticks?: YAxisProps['tickCount'];
   renderChart: (children: ReactNode) => ReactElement;
-  customTooltip?: (props: TooltipProps) => JSX.Element;
+  customTooltip?: (props: TooltipProps) => React.ReactNode;
   children: ReactElement | ReactElement[];
 };
 

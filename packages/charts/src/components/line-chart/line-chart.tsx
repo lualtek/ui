@@ -1,4 +1,4 @@
-import { FCChildrenClass } from '@lualtek/react-components';
+import { PropsClassChildren } from '@lualtek/react-components';
 import {
   Line,
   LineChart as ReLineChart,
@@ -8,34 +8,75 @@ import { Except } from 'type-fest';
 
 import { BaseChart, BaseChartProps } from '../base-chart';
 
-type LineChartProps<T extends Record<string, unknown>> = Except<BaseChartProps, 'renderChart' | 'children'> & {
-  data: T[];
+type DataBaseType = Record<string, string | number>;
+export type LineChartLineBaseType<D> = {
+  dataKey: string | ((data: D) => string | number);
+  // Used on the map as linekey id, should be unique
+  lineKeyId: string;
+  orientation: 'left' | 'right';
+  stroke: string;
+  unit: string;
+  name: string;
+};
+
+type LineChartProps<D extends DataBaseType, L extends LineChartLineBaseType<D>> = Except<
+BaseChartProps, 'renderChart' | 'children'> & {
+  data: D[];
+  lines: L[];
 }
 
-export const LineChart: FCChildrenClass<LineChartProps<Record<string, unknown>>> = ({
+export function LineChart<D extends DataBaseType, L extends LineChartLineBaseType<D>>({
   className,
   data,
+  lines,
   children,
   ...otherProps
-}) => (
-  <BaseChart
-    {...otherProps}
-    renderChart={children => (
-      <ReLineChart
-        data={data}
-      >
-        {children}
-      </ReLineChart>
-    )}
-  >
-    <YAxis
-      dataKey="y"
-      orientation="right"
-      tick={{ fill: 'var(--dimmed-4)', fontSize: '0.8em' }}
-      tickLine={{ stroke: 'var(--dimmed-4)' }}
-    />
-    <Line type="monotone" dataKey="y" stroke="#82ca9d" />
-  </BaseChart>
-);
+}: PropsClassChildren & LineChartProps<D, L>) {
+  return (
+    <BaseChart
+      {...otherProps}
+      renderChart={children => (
+        <ReLineChart
+          data={data}
+        >
+          {children}
+        </ReLineChart>
+      )}
+    >
+      <YAxis
+        yAxisId="right"
+        orientation="right"
+        tick={{ fill: 'var(--dimmed-4)', fontSize: '0.8em' }}
+        tickLine={{ stroke: 'var(--dimmed-4)' }}
+      />
+      <YAxis
+        yAxisId="left"
+        orientation="left"
+        tick={{ fill: 'var(--dimmed-4)', fontSize: '0.8em' }}
+        tickLine={{ stroke: 'var(--dimmed-4)' }}
+      />
+      <>
+        {lines.map(({
+          dataKey,
+          lineKeyId,
+          orientation,
+          stroke,
+          unit,
+          name,
+        }) => (
+          <Line
+            key={lineKeyId}
+            dataKey={dataKey}
+            yAxisId={orientation}
+            type="monotone"
+            stroke={stroke ?? '#82ca9d'}
+            name={name}
+            unit={unit}
+          />
+        ))}
+      </>
+    </BaseChart>
+  );
+}
 
 LineChart.displayName = 'LineChart';

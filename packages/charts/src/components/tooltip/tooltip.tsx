@@ -5,11 +5,20 @@ import {
 
 import styles from './tooltip.module.css';
 
+export type TooltipEntry = {
+  dataKey?: string | number;
+  name?: string;
+  value?: number;
+  unit?: React.ReactNode;
+  color?: string;
+  payload?: Record<string, number>;
+}
+
 export type TooltipProps = {
   active?: boolean;
   label?: string;
-  payload?: Array<Record<string, string>>;
-};
+  payload?: TooltipEntry[];
+}
 
 export const Tooltip: FCChildren<TooltipProps> = ({
   children,
