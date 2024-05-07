@@ -9,7 +9,8 @@ import { Except } from 'type-fest';
 import { BaseChart, BaseChartProps } from '../base-chart';
 
 type DataBaseType = Record<string, string | number>;
-export type LineChartLineBaseType<D> = {
+
+type LineChartLineBaseType<D> = {
   dataKey: string | ((data: D) => string | number);
   // Used on the map as linekey id, should be unique
   lineKeyId: string;
@@ -19,7 +20,7 @@ export type LineChartLineBaseType<D> = {
   name: string;
 };
 
-type LineChartProps<D extends DataBaseType, L extends LineChartLineBaseType<D>> = Except<
+export type LineChartProps<D extends DataBaseType, L extends LineChartLineBaseType<D>> = Except<
 BaseChartProps, 'renderChart' | 'children'> & {
   data: D[];
   lines: L[];
