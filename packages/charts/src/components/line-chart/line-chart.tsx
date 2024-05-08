@@ -52,12 +52,14 @@ export function LineChart<D extends DataBaseType, L extends LineChartLineBaseTyp
         orientation="right"
         tick={{ fill: 'var(--dimmed-4)', fontSize: '0.8em' }}
         tickLine={{ stroke: 'var(--dimmed-4)' }}
+        axisLine={{ stroke: 'var(--dimmed-4)' }}
       />
       <YAxis
         yAxisId="left"
         orientation="left"
         tick={{ fill: 'var(--dimmed-4)', fontSize: '0.8em' }}
         tickLine={{ stroke: 'var(--dimmed-4)' }}
+        axisLine={{ stroke: 'var(--dimmed-4)' }}
       />
       <>
         {lines.map(({
@@ -81,7 +83,9 @@ export function LineChart<D extends DataBaseType, L extends LineChartLineBaseTyp
               stroke,
               fill: 'var(--global-background)',
             } : false}
-            activeDot={{ stroke: 'var(--global-background)', strokeWidth: 4, r: 6 }}
+            activeDot={{
+              fill: 'var(--global-foreground)', stroke: 'var(--global-background)', strokeWidth: 4, r: 6,
+            }}
           />
         ))}
       </>

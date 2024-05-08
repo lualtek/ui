@@ -17,6 +17,7 @@ export type BaseChartProps = {
   height?: number;
   showBottomAxis?: boolean;
   showTooltip?: boolean;
+  showLegend?: boolean;
   ticks?: YAxisProps['tickCount'];
   renderChart: (children: ReactNode) => ReactElement;
   customTooltip?: (props: TooltipProps) => JSX.Element;
@@ -30,6 +31,7 @@ export const BaseChart: FCChildrenClass<BaseChartProps> = ({
   height = 300,
   showBottomAxis = false,
   showTooltip = true,
+  showLegend = false,
   dataKeyX = 'x',
   ticks = 8,
   renderChart,
@@ -51,7 +53,12 @@ export const BaseChart: FCChildrenClass<BaseChartProps> = ({
               stroke="color-mix(in oklch, var(--global-foreground), transparent 80%)"
             />
           )}
-          {showTooltip && <ReTooltip content={customTooltip ?? Tooltip} />}
+          {showTooltip && (
+            <ReTooltip
+              cursor={{ stroke: 'var(--dimmed-3)', strokeWidth: 2 }}
+              content={customTooltip ?? Tooltip}
+            />
+          )}
           <XAxis
             dataKey={dataKeyX}
             tickCount={ticks}
@@ -59,22 +66,25 @@ export const BaseChart: FCChildrenClass<BaseChartProps> = ({
             minTickGap={32}
             tick={{ fill: 'var(--dimmed-3)', fontSize: '0.8em' }}
             tickLine={{ stroke: 'var(--dimmed-3)' }}
+            axisLine={{ stroke: 'var(--dimmed-4)' }}
             tickSize={8}
             tickMargin={8}
           />
           {children}
-          <Legend
-            align="right"
-            iconType="plainline"
-            formatter={(value, entry) => {
-              const { color } = entry;
-              return (
-                <Stack inline fill={false} vPadding={8}>
-                  <Text as="span" size={14} style={{ color }}>{value}</Text>
-                </Stack>
-              );
-            }}
-          />
+          {showLegend && (
+            <Legend
+              align="right"
+              iconType="plainline"
+              formatter={(value, entry) => {
+                const { color } = entry;
+                return (
+                  <Stack inline fill={false} vPadding={8}>
+                    <Text as="span" size={14} style={{ color }}>{value}</Text>
+                  </Stack>
+                );
+              }}
+            />
+          )}
         </>,
       )}
     </ResponsiveContainer>

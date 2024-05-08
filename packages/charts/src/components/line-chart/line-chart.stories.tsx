@@ -518,6 +518,11 @@ const data1: { data: Data[]; lines: Array<LineChartLineBaseType<Data>> } = {
     name: 'Pressure',
   }],
 };
+export const WithLegend = {
+  args: {
+    showLegend: true,
+  },
+} satisfies Story;
 
 export const WithCustomDataset = {
   args: {
@@ -525,3 +530,4 @@ export const WithCustomDataset = {
     lines: data1.lines,
   },
 } satisfies Story;
+
