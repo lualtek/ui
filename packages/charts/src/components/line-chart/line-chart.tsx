@@ -74,6 +74,7 @@ export function LineChart<D extends DataBaseType, L extends LineType<D>>({
             key={lineKeyId}
             dataKey={dataKey}
             yAxisId={side}
+            connectNulls
             type="monotone"
             stroke={stroke}
             name={name}

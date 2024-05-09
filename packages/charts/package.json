@@ -55,10 +55,7 @@
     "react-dom": "^18.2"
   },
   "devDependencies": {
-    "@lualtek/config": "workspace:*",
-    "@lualtek/themes": "workspace:*",
-    "@lualtek/tokens": "workspace:*",
-    "@types/node": "20.12.7",
+    "@types/node": "20.12.11",
     "@types/react": "18.3.1",
     "@types/react-dom": "18.3.0",
     "react": "^18.3",
@@ -70,12 +67,9 @@
     "typescript": "5.4.5"
   },
   "dependencies": {
-    "@lualtek/config": "workspace:*",
-    "@lualtek/icons": "workspace:*",
     "@lualtek/react-components": "workspace:*",
-    "@lualtek/themes": "workspace:*",
     "clsx": "2.1.1",
-    "recharts": "2.12.6",
-    "type-fest": "4.18.0"
+    "recharts": "2.12.7",
+    "type-fest": "4.18.2"
   }
 }

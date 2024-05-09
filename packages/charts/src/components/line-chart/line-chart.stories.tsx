@@ -15,7 +15,7 @@ const data: Dataset = Array.from({ length: 26 }, (_, i) => ({
 }));
 
 const meta = {
-  title: 'Charts/Linear',
+  title: 'Data Viz/Linear',
   component: LineChart,
   args: {
     data,
@@ -30,6 +30,10 @@ const meta = {
     showDots: false,
     showBottomAxis: false,
     ticks: 5,
+  },
+  argTypes: {
+    data: { table: { disable: true } },
+    lines: { table: { disable: true } },
   },
   render: args => (
     <LineChart {...args} />
@@ -54,6 +58,12 @@ export const WithCustomTooltip = {
 export const WithLegend = {
   args: {
     showLegend: true,
+  },
+} satisfies Story;
+
+export const WidthXPadding = {
+  args: {
+    xPadding: 32,
   },
 } satisfies Story;
 

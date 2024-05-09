@@ -22,6 +22,7 @@ export type BaseChartProps = {
   renderChart: (children: ReactNode) => ReactElement;
   customTooltip?: (props: TooltipProps) => JSX.Element;
   children: ReactElement | ReactElement[];
+  xPadding?: number;
 };
 
 export const BaseChart: FCChildrenClass<BaseChartProps> = ({
@@ -33,6 +34,7 @@ export const BaseChart: FCChildrenClass<BaseChartProps> = ({
   showTooltip = true,
   showLegend = false,
   dataKeyX = 'x',
+  xPadding = 0,
   ticks = 8,
   renderChart,
   customTooltip,
@@ -65,6 +67,7 @@ export const BaseChart: FCChildrenClass<BaseChartProps> = ({
             hide={!showBottomAxis}
             minTickGap={32}
             tick={{ fill: 'var(--dimmed-3)', fontSize: '0.8em' }}
+            padding={{ left: xPadding, right: xPadding }}
             tickLine={{ stroke: 'var(--dimmed-3)' }}
             axisLine={{ stroke: 'var(--dimmed-4)' }}
             tickSize={8}
