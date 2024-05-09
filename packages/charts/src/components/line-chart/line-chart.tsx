@@ -10,6 +10,7 @@ import {
 import { Except } from 'type-fest';
 
 import { BaseChart, BaseChartProps } from '../base-chart';
+import { getChartDefaultColor } from '../base-chart/colors';
 
 type DataBaseType = Record<string, string | number>;
 
@@ -107,7 +108,7 @@ export function LineChart<D extends DataBaseType, L extends LineProps<D>>({
             stroke,
             unit,
             name,
-          }) => (
+          }, index) => (
             <Line
               key={lineKeyId}
               dataKey={dataKey}
@@ -115,7 +116,7 @@ export function LineChart<D extends DataBaseType, L extends LineProps<D>>({
               isAnimationActive={isAnimationActive}
               connectNulls
               type="monotone"
-              stroke={stroke}
+              stroke={stroke ?? getChartDefaultColor(index)}
               name={name}
               unit={unit}
               dot={showDots ? {
