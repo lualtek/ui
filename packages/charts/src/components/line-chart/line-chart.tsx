@@ -14,7 +14,7 @@ export type LineType<D> = {
   dataKey: string | ((data: D) => string | number);
   // Used on the map as linekey id, should be unique
   lineKeyId: string;
-  orientation: 'left' | 'right';
+  side: 'left' | 'right';
   stroke?: string;
   unit: string;
   name: string;
@@ -65,7 +65,7 @@ export function LineChart<D extends DataBaseType, L extends LineType<D>>({
         {lines.map(({
           dataKey,
           lineKeyId,
-          orientation,
+          side,
           stroke,
           unit,
           name,
@@ -73,7 +73,7 @@ export function LineChart<D extends DataBaseType, L extends LineType<D>>({
           <Line
             key={lineKeyId}
             dataKey={dataKey}
-            yAxisId={orientation}
+            yAxisId={side}
             type="monotone"
             stroke={stroke}
             name={name}

@@ -22,7 +22,7 @@ const meta = {
     lines: [{
       dataKey: 'y',
       lineKeyId: 'y',
-      orientation: 'left',
+      side: 'left',
       unit: '°C',
       name: 'Temperature',
     }],
