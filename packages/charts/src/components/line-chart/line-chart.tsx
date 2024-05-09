@@ -108,27 +108,31 @@ export function LineChart<D extends DataBaseType, L extends LineProps<D>>({
             stroke,
             unit,
             name,
-          }, index) => (
-            <Line
-              key={lineKeyId}
-              dataKey={dataKey}
-              yAxisId={side}
-              isAnimationActive={isAnimationActive}
-              connectNulls
-              type="monotone"
-              stroke={stroke ?? getChartDefaultColor(index)}
-              name={name}
-              unit={unit}
-              dot={showDots ? {
-                r: 3,
-                stroke,
-                fill: stroke,
-              } : false}
-              activeDot={{
-                fill: stroke, stroke: 'var(--global-background)', strokeWidth: 4, r: 6,
-              }}
-            />
-          ))}
+          }, index) => {
+            const computedStrokeColor = stroke ?? getChartDefaultColor(index);
+
+            return (
+              <Line
+                key={lineKeyId}
+                dataKey={dataKey}
+                yAxisId={side}
+                isAnimationActive={isAnimationActive}
+                connectNulls
+                type="monotone"
+                stroke={computedStrokeColor}
+                name={name}
+                unit={unit}
+                dot={showDots ? {
+                  r: 3,
+                  stroke: computedStrokeColor,
+                  fill: computedStrokeColor,
+                } : false}
+                activeDot={{
+                  fill: computedStrokeColor, stroke: 'var(--global-background)', strokeWidth: 4, r: 6,
+                }}
+              />
+            );
+          })}
         </>
       </BaseChart>
     </div>

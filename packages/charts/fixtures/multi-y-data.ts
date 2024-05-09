@@ -462,7 +462,7 @@ export default {
     dataKey: 'pressure',
     lineKeyId: 'pressure',
     side: 'right',
-    stroke: 'green',
+    // stroke: 'green',
     unit: 'mbar',
     name: 'Pressure',
   }],

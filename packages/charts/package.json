@@ -68,6 +68,7 @@
   },
   "dependencies": {
     "@lualtek/react-components": "workspace:*",
+    "@lualtek/tokens": "workspace:*",
     "clsx": "2.1.1",
     "recharts": "2.12.7",
     "type-fest": "4.18.2"

@@ -45,6 +45,15 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default = {} satisfies Story;
+
+export const CustomSize = {
+  args: {
+    width: 800,
+    height: 100,
+    showGrid: false,
+  },
+} satisfies Story;
+
 export const WithCustomTooltip = {
   args: {
     customTooltip: ({ label }) => (
