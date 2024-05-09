@@ -10,7 +10,7 @@ import { BaseChart, BaseChartProps } from '../base-chart';
 
 type DataBaseType = Record<string, string | number>;
 
-type LineChartLineBaseType<D> = {
+export type LineType<D> = {
   dataKey: string | ((data: D) => string | number);
   // Used on the map as linekey id, should be unique
   lineKeyId: string;
@@ -20,14 +20,14 @@ type LineChartLineBaseType<D> = {
   name: string;
 };
 
-export type LineChartProps<D extends DataBaseType, L extends LineChartLineBaseType<D>> = Except<
+export type LineChartProps<D extends DataBaseType, L extends LineType<D>> = Except<
 BaseChartProps, 'renderChart' | 'children'> & {
   data: D[];
   lines: L[];
   showDots?: boolean;
 }
 
-export function LineChart<D extends DataBaseType, L extends LineChartLineBaseType<D>>({
+export function LineChart<D extends DataBaseType, L extends LineType<D>>({
   className,
   data,
   lines,
@@ -51,15 +51,15 @@ export function LineChart<D extends DataBaseType, L extends LineChartLineBaseTyp
         yAxisId="right"
         orientation="right"
         tick={{ fill: 'var(--dimmed-4)', fontSize: '0.8em' }}
-        tickLine={{ stroke: 'var(--dimmed-4)' }}
-        axisLine={{ stroke: 'var(--dimmed-4)' }}
+        tickLine={{ stroke: 'var(--dimmed-2)' }}
+        axisLine={{ stroke: 'var(--dimmed-2)' }}
       />
       <YAxis
         yAxisId="left"
         orientation="left"
         tick={{ fill: 'var(--dimmed-4)', fontSize: '0.8em' }}
-        tickLine={{ stroke: 'var(--dimmed-4)' }}
-        axisLine={{ stroke: 'var(--dimmed-4)' }}
+        tickLine={{ stroke: 'var(--dimmed-2)' }}
+        axisLine={{ stroke: 'var(--dimmed-2)' }}
       />
       <>
         {lines.map(({
@@ -81,10 +81,10 @@ export function LineChart<D extends DataBaseType, L extends LineChartLineBaseTyp
             dot={showDots ? {
               r: 3,
               stroke,
-              fill: 'var(--global-background)',
+              fill: stroke,
             } : false}
             activeDot={{
-              fill: 'var(--global-foreground)', stroke: 'var(--global-background)', strokeWidth: 4, r: 6,
+              fill: stroke, stroke: 'var(--global-background)', strokeWidth: 4, r: 6,
             }}
           />
         ))}

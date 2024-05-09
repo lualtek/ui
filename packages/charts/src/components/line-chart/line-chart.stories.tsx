@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import {
   LineChart,
-  LineChartLineBaseType,
+  LineType,
 } from './line-chart';
 
 type Data = Record<string, number | string>;
@@ -26,6 +26,7 @@ const meta = {
       name: 'Temperature',
     }],
     showGrid: true,
+    showDots: false,
     showBottomAxis: false,
     ticks: 5,
   },
@@ -49,7 +50,7 @@ export const WithCustomTooltip = {
   },
 } satisfies Story;
 
-const data1: { data: Data[]; lines: Array<LineChartLineBaseType<Data>> } = {
+const data1: { data: Data[]; lines: Array<LineType<Data>> } = {
   data: [
     {
       batteryLevel: 100,
