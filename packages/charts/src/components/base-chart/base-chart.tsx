@@ -71,6 +71,7 @@ export const BaseChart: FCChildrenClass<BaseChartProps> = ({
             tickLine={{ stroke: 'var(--dimmed-3)' }}
             axisLine={{ stroke: 'var(--dimmed-4)' }}
             tickSize={8}
+            allowDataOverflow
             tickMargin={8}
           />
           {children}

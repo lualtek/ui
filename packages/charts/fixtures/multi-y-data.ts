@@ -445,7 +445,7 @@ export default {
   lines: [{
     dataKey: 'temperature',
     lineKeyId: 'temperature',
-    orientation: 'left',
+    side: 'left',
     stroke: 'red',
     unit: '°C',
     name: 'Temperature',
@@ -453,7 +453,7 @@ export default {
   {
     dataKey: 'humidity',
     lineKeyId: 'humidity',
-    orientation: 'left',
+    side: 'left',
     stroke: 'blue',
     unit: '%',
     name: 'Humidity',
@@ -461,7 +461,7 @@ export default {
   {
     dataKey: 'pressure',
     lineKeyId: 'pressure',
-    orientation: 'right',
+    side: 'right',
     stroke: 'green',
     unit: 'mbar',
     name: 'Pressure',

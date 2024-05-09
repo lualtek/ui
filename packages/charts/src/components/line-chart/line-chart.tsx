@@ -1,5 +1,8 @@
 import { PropsClassChildren } from '@lualtek/react-components';
 import {
+  useEffect, useRef, useState, useTransition,
+} from 'react';
+import {
   Line,
   LineChart as ReLineChart,
   YAxis,
@@ -35,62 +38,99 @@ export function LineChart<D extends DataBaseType, L extends LineType<D>>({
   children,
   ...otherProps
 }: PropsClassChildren & LineChartProps<D, L>) {
+  const chartRef = useRef<HTMLDivElement>(null);
+  const [isAnimationActive, setIsAnimationActive] = useState(true);
+  const [, startTransition] = useTransition();
+
+  useEffect(() => {
+    const currentChartRef = chartRef?.current;
+    let chartWidth: number;
+
+    if (currentChartRef) {
+      chartWidth = chartRef.current.clientWidth;
+    }
+
+    const resizeObserver = new ResizeObserver((entries) => {
+      entries.forEach((entry) => {
+        const cr: DOMRectReadOnly = entry.contentRect;
+        if (chartWidth !== cr.width) {
+          startTransition(() => {
+            setIsAnimationActive(false);
+          });
+        }
+      });
+    });
+
+    if (currentChartRef) {
+      resizeObserver.observe(currentChartRef);
+    }
+
+    return () => {
+      if (currentChartRef) {
+        resizeObserver.unobserve(currentChartRef);
+      }
+    };
+  }, []);
+
   return (
-    <BaseChart
-      {...otherProps}
-      renderChart={children => (
-        <ReLineChart
-          data={data}
-          accessibilityLayer
-        >
-          {children}
-        </ReLineChart>
-      )}
-    >
-      <YAxis
-        yAxisId="right"
-        orientation="right"
-        tick={{ fill: 'var(--dimmed-4)', fontSize: '0.8em' }}
-        tickLine={{ stroke: 'var(--dimmed-2)' }}
-        axisLine={{ stroke: 'var(--dimmed-2)' }}
-      />
-      <YAxis
-        yAxisId="left"
-        orientation="left"
-        tick={{ fill: 'var(--dimmed-4)', fontSize: '0.8em' }}
-        tickLine={{ stroke: 'var(--dimmed-2)' }}
-        axisLine={{ stroke: 'var(--dimmed-2)' }}
-      />
-      <>
-        {lines.map(({
-          dataKey,
-          lineKeyId,
-          side,
-          stroke,
-          unit,
-          name,
-        }) => (
-          <Line
-            key={lineKeyId}
-            dataKey={dataKey}
-            yAxisId={side}
-            connectNulls
-            type="monotone"
-            stroke={stroke}
-            name={name}
-            unit={unit}
-            dot={showDots ? {
-              r: 3,
-              stroke,
-              fill: stroke,
-            } : false}
-            activeDot={{
-              fill: stroke, stroke: 'var(--global-background)', strokeWidth: 4, r: 6,
-            }}
-          />
-        ))}
-      </>
-    </BaseChart>
+    <div ref={chartRef}>
+      <BaseChart
+        {...otherProps}
+        renderChart={children => (
+          <ReLineChart
+            data={data}
+            accessibilityLayer
+          >
+            {children}
+          </ReLineChart>
+        )}
+      >
+        <YAxis
+          yAxisId="right"
+          orientation="right"
+          tick={{ fill: 'var(--dimmed-4)', fontSize: '0.8em' }}
+          tickLine={{ stroke: 'var(--dimmed-2)' }}
+          axisLine={{ stroke: 'var(--dimmed-2)' }}
+        />
+        <YAxis
+          yAxisId="left"
+          orientation="left"
+          tick={{ fill: 'var(--dimmed-4)', fontSize: '0.8em' }}
+          tickLine={{ stroke: 'var(--dimmed-2)' }}
+          axisLine={{ stroke: 'var(--dimmed-2)' }}
+        />
+        <>
+          {lines.map(({
+            dataKey,
+            lineKeyId,
+            side,
+            stroke,
+            unit,
+            name,
+          }) => (
+            <Line
+              key={lineKeyId}
+              dataKey={dataKey}
+              yAxisId={side}
+              isAnimationActive={isAnimationActive}
+              connectNulls
+              type="monotone"
+              stroke={stroke}
+              name={name}
+              unit={unit}
+              dot={showDots ? {
+                r: 3,
+                stroke,
+                fill: stroke,
+              } : false}
+              activeDot={{
+                fill: stroke, stroke: 'var(--global-background)', strokeWidth: 4, r: 6,
+              }}
+            />
+          ))}
+        </>
+      </BaseChart>
+    </div>
   );
 }
 
