@@ -21,7 +21,7 @@ export type BaseChartProps = {
   ticks?: YAxisProps['tickCount'];
   renderChart: (children: ReactNode) => ReactElement;
   customTooltip?: (props: TooltipProps) => JSX.Element;
-  children: ReactElement | ReactElement[];
+  children: ReactNode;
   xPadding?: number;
 };
 

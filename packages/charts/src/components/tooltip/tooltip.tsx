@@ -23,7 +23,7 @@ export const Tooltip: FC<TooltipProps> = ({
   active,
   payload,
   label,
-}) => (active ? (
+}) => (
   <Elevator resting={3}>
     <Panel
       radius={8}
@@ -34,7 +34,7 @@ export const Tooltip: FC<TooltipProps> = ({
     >
       <Stack vPadding={8} hPadding={8} rowGap={8}>
         <Title level="6">{label}</Title>
-        {payload?.map(entry => (
+        {active && payload?.map(entry => (
           <Stack
             key={entry.name}
             direction="row"
@@ -54,6 +54,6 @@ export const Tooltip: FC<TooltipProps> = ({
       </Stack>
     </Panel>
   </Elevator>
-) : null);
+);
 
 Tooltip.displayName = 'ChartTooltip';

@@ -28,6 +28,7 @@ const meta = {
     }],
     showGrid: true,
     showDots: false,
+    showYAxis: true,
     showXAxis: false,
     ticks: 5,
   },
@@ -48,9 +49,11 @@ export const Default = {} satisfies Story;
 
 export const CustomSize = {
   args: {
-    width: 800,
+    width: 300,
     height: 100,
     showGrid: false,
+    showYAxis: false,
+    showTooltip: false,
   },
 } satisfies Story;
 
@@ -80,6 +83,7 @@ export const WithCustomDataset = {
   args: {
     data: MultiAxisData.data,
     lines: MultiAxisData.lines as Array<LineProps<Data>>,
+    isBiAxial: true,
   },
 } satisfies Story;
 

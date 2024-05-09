@@ -28,7 +28,9 @@ export type LineChartProps<D extends DataBaseType, L extends LineProps<D>> = Exc
 BaseChartProps, 'renderChart' | 'children'> & {
   data: D[];
   lines: L[];
+  isBiAxial?: boolean;
   showDots?: boolean;
+  showYAxis?: boolean;
 }
 
 export function LineChart<D extends DataBaseType, L extends LineProps<D>>({
@@ -36,6 +38,8 @@ export function LineChart<D extends DataBaseType, L extends LineProps<D>>({
   data,
   lines,
   showDots = false,
+  showYAxis = true,
+  isBiAxial,
   children,
   ...otherProps
 }: PropsClassChildren & LineChartProps<D, L>) {
@@ -86,20 +90,25 @@ export function LineChart<D extends DataBaseType, L extends LineProps<D>>({
           </ReLineChart>
         )}
       >
-        <YAxis
-          yAxisId="right"
-          orientation="right"
-          tick={{ fill: 'var(--dimmed-4)', fontSize: '0.8em' }}
-          tickLine={{ stroke: 'var(--dimmed-2)' }}
-          axisLine={{ stroke: 'var(--dimmed-2)' }}
-        />
-        <YAxis
-          yAxisId="left"
-          orientation="left"
-          tick={{ fill: 'var(--dimmed-4)', fontSize: '0.8em' }}
-          tickLine={{ stroke: 'var(--dimmed-2)' }}
-          axisLine={{ stroke: 'var(--dimmed-2)' }}
-        />
+        {showYAxis && isBiAxial && (
+          <YAxis
+            yAxisId="right"
+            orientation="right"
+            tick={{ fill: 'var(--dimmed-4)', fontSize: '0.8em' }}
+            tickLine={{ stroke: 'var(--dimmed-2)' }}
+            axisLine={{ stroke: 'var(--dimmed-2)' }}
+          />
+        )}
+
+        {showYAxis && (
+          <YAxis
+            yAxisId="left"
+            orientation="left"
+            tick={{ fill: 'var(--dimmed-4)', fontSize: '0.8em' }}
+            tickLine={{ stroke: 'var(--dimmed-2)' }}
+            axisLine={{ stroke: 'var(--dimmed-2)' }}
+          />
+        )}
         <>
           {lines.map(({
             dataKey,
