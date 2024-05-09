@@ -13,7 +13,7 @@ import { BaseChart, BaseChartProps } from '../base-chart';
 
 type DataBaseType = Record<string, string | number>;
 
-export type LineType<D> = {
+export type LineProps<D> = {
   dataKey: string | ((data: D) => string | number);
   // Used on the map as linekey id, should be unique
   lineKeyId: string;
@@ -23,14 +23,14 @@ export type LineType<D> = {
   name: string;
 };
 
-export type LineChartProps<D extends DataBaseType, L extends LineType<D>> = Except<
+export type LineChartProps<D extends DataBaseType, L extends LineProps<D>> = Except<
 BaseChartProps, 'renderChart' | 'children'> & {
   data: D[];
   lines: L[];
   showDots?: boolean;
 }
 
-export function LineChart<D extends DataBaseType, L extends LineType<D>>({
+export function LineChart<D extends DataBaseType, L extends LineProps<D>>({
   className,
   data,
   lines,

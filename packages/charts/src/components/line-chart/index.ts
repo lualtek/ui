@@ -1,2 +1,2 @@
-export type { LineChartProps, LineType } from './line-chart';
+export type { LineChartProps, LineProps } from './line-chart';
 export { LineChart } from './line-chart';
