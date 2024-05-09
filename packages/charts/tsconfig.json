@@ -4,7 +4,8 @@
     "outDir": "dist",
     "baseUrl": ".",
     "paths": {
-      "@/charts": ["src"]
+      "@/charts": ["src"],
+      "@/charts/fixtures": ["fixtures"]
     }
   },
   "include": ["src", "types", "generate-api-doc.ts"],
