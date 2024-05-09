@@ -9,12 +9,13 @@ import {
 } from 'recharts';
 import { Except } from 'type-fest';
 
+import { useChartAxis } from '@/charts/hooks/use-chart-axis';
+
 import { BaseChart, BaseChartProps } from '../base-chart';
+import { ChartDataBaseType } from '../base-chart/base-chart';
 import { getChartDefaultColor } from '../base-chart/colors';
 
-type DataBaseType = Record<string, string | number>;
-
-export type LineProps<D> = {
+export type LineChartLineProps<D> = {
   dataKey: string | ((data: D) => string | number);
   // Used on the map as linekey id, should be unique
   lineKeyId: string;
@@ -24,28 +25,36 @@ export type LineProps<D> = {
   name: string;
 };
 
-export type LineChartProps<D extends DataBaseType, L extends LineProps<D>> = Except<
+export type LineChartProps<D extends ChartDataBaseType, L extends LineChartLineProps<D>> = Except<
 BaseChartProps, 'renderChart' | 'children'> & {
   data: D[];
   lines: L[];
-  isBiAxial?: boolean;
   showDots?: boolean;
   showYAxis?: boolean;
 }
 
-export function LineChart<D extends DataBaseType, L extends LineProps<D>>({
+export function LineChart<D extends ChartDataBaseType, L extends LineChartLineProps<D>>({
   className,
   data,
   lines,
   showDots = false,
   showYAxis = true,
-  isBiAxial,
   children,
   ...otherProps
 }: PropsClassChildren & LineChartProps<D, L>) {
   const chartRef = useRef<HTMLDivElement>(null);
   const [isAnimationActive, setIsAnimationActive] = useState(true);
   const [, startTransition] = useTransition();
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+  const {
+    yAxisWidthBiaxial,
+    yAxisWidthNotBiaxial,
+    hasLeftY,
+    hasRightY,
+  } = useChartAxis({
+    data,
+    lines,
+  });
 
   useEffect(() => {
     const currentChartRef = chartRef?.current;
@@ -90,25 +99,30 @@ export function LineChart<D extends DataBaseType, L extends LineProps<D>>({
           </ReLineChart>
         )}
       >
-        {showYAxis && isBiAxial && (
+        {showYAxis && hasRightY && (
           <YAxis
             yAxisId="right"
             orientation="right"
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+            width={yAxisWidthBiaxial}
             tick={{ fill: 'var(--dimmed-4)', fontSize: '0.8em' }}
             tickLine={{ stroke: 'var(--dimmed-2)' }}
             axisLine={{ stroke: 'var(--dimmed-2)' }}
           />
         )}
 
-        {showYAxis && (
+        {showYAxis && hasLeftY && (
           <YAxis
             yAxisId="left"
             orientation="left"
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+            width={yAxisWidthNotBiaxial}
             tick={{ fill: 'var(--dimmed-4)', fontSize: '0.8em' }}
             tickLine={{ stroke: 'var(--dimmed-2)' }}
             axisLine={{ stroke: 'var(--dimmed-2)' }}
           />
         )}
+
         <>
           {lines.map(({
             dataKey,

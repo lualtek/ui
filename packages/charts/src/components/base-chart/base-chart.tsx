@@ -11,8 +11,10 @@ import {
 
 import { Tooltip, TooltipProps } from '../tooltip';
 
+export type ChartDataBaseType = Record<string, string | number>;
+
 export type BaseChartProps = {
-  dataKeyX?: string | ((data: any) => string | number);
+  dataKeyX?: string | ((data: ChartDataBaseType) => string | number);
   showGrid?: boolean;
   height?: number;
   showXAxis?: boolean;
