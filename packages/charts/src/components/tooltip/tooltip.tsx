@@ -1,9 +1,8 @@
 import {
   Elevator,
-  FCChildren, Panel, Stack, Text, Title,
+  Panel, Stack, Text, Title,
 } from '@lualtek/react-components';
-
-import styles from './tooltip.module.css';
+import { FC } from 'react';
 
 export type TooltipEntry = {
   dataKey?: string | number;
@@ -20,12 +19,10 @@ export type TooltipProps = {
   payload?: TooltipEntry[];
 }
 
-export const Tooltip: FCChildren<TooltipProps> = ({
-  children,
+export const Tooltip: FC<TooltipProps> = ({
   active,
   payload,
   label,
-  ...otherProps
 }) => (active ? (
   <Elevator resting={3}>
     <Panel
@@ -34,10 +31,8 @@ export const Tooltip: FCChildren<TooltipProps> = ({
       disableGlow
       vibrancyColor="soft"
       bordered
-      className={styles.Tooltip}
-      {...otherProps}
     >
-      <Stack vPadding={8} hPadding={8}>
+      <Stack vPadding={8} hPadding={8} rowGap={8}>
         <Title level="6">{label}</Title>
         {payload?.map(entry => (
           <Stack
@@ -47,11 +42,11 @@ export const Tooltip: FCChildren<TooltipProps> = ({
             inline
             columnGap={4}
           >
-            <Text as="strong" size={14} textColor={entry.color}>
+            <Text as="strong" lineHeight="extra-small" size={14} textColor={entry.color}>
               {entry.name}
               :
             </Text>
-            <Text size={14}>
+            <Text size={14} lineHeight="extra-small">
               {entry.value}
             </Text>
           </Stack>
