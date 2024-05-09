@@ -28,7 +28,7 @@ const meta = {
     }],
     showGrid: true,
     showDots: false,
-    showBottomAxis: false,
+    showXAxis: false,
     ticks: 5,
   },
   argTypes: {

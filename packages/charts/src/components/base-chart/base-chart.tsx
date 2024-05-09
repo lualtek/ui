@@ -15,7 +15,7 @@ export type BaseChartProps = {
   dataKeyX?: string | ((data: any) => string | number);
   showGrid?: boolean;
   height?: number;
-  showBottomAxis?: boolean;
+  showXAxis?: boolean;
   showTooltip?: boolean;
   showLegend?: boolean;
   ticks?: YAxisProps['tickCount'];
@@ -30,7 +30,7 @@ export const BaseChart: FCChildrenClass<BaseChartProps> = ({
   children,
   showGrid = true,
   height = 300,
-  showBottomAxis = false,
+  showXAxis = false,
   showTooltip = true,
   showLegend = false,
   dataKeyX = 'x',
@@ -64,7 +64,7 @@ export const BaseChart: FCChildrenClass<BaseChartProps> = ({
           <XAxis
             dataKey={dataKeyX}
             tickCount={ticks}
-            hide={!showBottomAxis}
+            hide={!showXAxis}
             minTickGap={32}
             tick={{ fill: 'var(--dimmed-3)', fontSize: '0.8em' }}
             padding={{ left: xPadding, right: xPadding }}
