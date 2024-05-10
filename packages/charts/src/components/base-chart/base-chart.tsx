@@ -14,15 +14,58 @@ import { Tooltip, TooltipProps } from '../tooltip';
 export type ChartDataBaseType = Record<string, string | number>;
 
 export type BaseChartProps = ResponsiveContainerProps & {
+  /**
+   * The data key to assign to the x-axis.
+   */
   dataKeyX?: string | ((data: ChartDataBaseType) => string | number);
+  /**
+   * Whether to show the grid.
+   *
+   * @defaultValue true
+   */
   showGrid?: boolean;
+  /**
+   * Whether to show the x-axis.
+   *
+   * @defaultValue false
+   */
   showXAxis?: boolean;
+  /**
+   * Whether to show the tooltip.
+   *
+   * @defaultValue true
+   */
   showTooltip?: boolean;
+  /**
+   * Whether to show the legend.
+   *
+   * @defaultValue false
+   */
   showLegend?: boolean;
+  /**
+   * Set the grid density (number of ticks).
+   * This is used only if the grid is rendered.
+   *
+   * @defaultValue 'mid'
+   */
   density?: 'low' | 'mid' | 'high';
-  renderChart: (children: ReactNode) => ReactElement;
+  /**
+   * Render a custom tooltip instead of the default one.
+   *
+   * @param props { active?: boolean; label?: string; payload?: TooltipEntry[]; }
+   * @returns JSX.Element
+   */
   customTooltip?: (props: TooltipProps) => JSX.Element;
+  /**
+   * The padding for the x-axis. Prevent lines from touching the edges.
+   */
   xPadding?: number;
+  /**
+   * @private Used by other charts to render the chart wrapper
+   * @param children ReactNode
+   * @returns ReactElement
+   */
+  renderChart: (children: ReactNode) => ReactElement;
 };
 
 export const DENSITIES: Record<NonNullable<BaseChartProps['density']>, number> = {

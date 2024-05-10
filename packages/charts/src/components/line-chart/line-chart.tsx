@@ -17,21 +17,59 @@ import { ChartDataBaseType } from '../base-chart/base-chart';
 import { getChartDefaultColor } from '../base-chart/colors';
 
 export type LineProps<D> = {
+  /**
+   * The data key to assign to the line.
+   */
   dataKey: string | ((data: D) => string | number);
-  // Used on the map as linekey id, should be unique
+  /**
+   * Used on the map as linekey id, should be unique
+   */
   lineKeyId: string;
+  /**
+   * The Y axis assigned to this line.
+   */
   side: 'left' | 'right';
+  /**
+   * The stroke color of the line.
+   */
   stroke?: string;
+  /**
+   * The type of the line.
+   *
+   * @defaultValue 'monotone'
+   */
   type?: ReLineProps['type'];
+  /**
+   * The unit assigned to the line value
+   */
   unit?: string;
+  /**
+   * A custom name/label for the value
+   */
   name?: string;
 };
 
 export type LineChartProps<D extends ChartDataBaseType, L extends LineProps<D>> = Except<
 BaseChartProps, 'renderChart' | 'children'> & {
+  /**
+   * The data to render.
+   */
   data: D[];
+  /**
+   * The chart lines/series to render.
+   */
   lines: L[];
+  /**
+   * Whether to show the dots on the lines.
+   *
+   * @defaultValue false
+   */
   showDots?: boolean;
+  /**
+   * Whether to show the Y axis.
+   *
+   * @defaultValue true
+   */
   showYAxis?: boolean;
 }
 
