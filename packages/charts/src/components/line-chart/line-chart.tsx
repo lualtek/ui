@@ -23,8 +23,8 @@ export type LineProps<D> = {
   side: 'left' | 'right';
   stroke?: string;
   type?: ReLineProps['type'];
-  unit: string;
-  name: string;
+  unit?: string;
+  name?: string;
 };
 
 export type LineChartProps<D extends ChartDataBaseType, L extends LineProps<D>> = Except<

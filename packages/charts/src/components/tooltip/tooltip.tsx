@@ -48,6 +48,8 @@ export const Tooltip: FC<TooltipProps> = ({
             </Text>
             <Text size={14} lineHeight="extra-small">
               {entry.value}
+              {' '}
+              {entry.unit}
             </Text>
           </Stack>
         ))}

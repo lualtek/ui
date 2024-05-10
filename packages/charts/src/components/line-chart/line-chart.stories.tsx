@@ -23,8 +23,6 @@ const meta = {
       dataKey: 'y',
       lineKeyId: 'y',
       side: 'left',
-      unit: '°C',
-      name: 'Temperature',
     }],
     showGrid: true,
     showDots: false,
