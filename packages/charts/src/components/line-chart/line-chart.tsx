@@ -91,63 +91,66 @@ export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
         </ReLineChart>
       )}
     >
-      {showYAxis && hasRightY && (
-        <YAxis
-          yAxisId="right"
-          orientation="right"
+      <>
+
+        {showYAxis && hasRightY && (
+          <YAxis
+            yAxisId="right"
+            orientation="right"
             // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-          width={yAxisWidthBiaxial}
-          tick={{ fill: 'var(--dimmed-4)', fontSize: '0.8em' }}
-          tickLine={{ stroke: 'var(--dimmed-2)' }}
-          axisLine={{ stroke: 'var(--dimmed-2)' }}
-        />
-      )}
-
-      {showYAxis && hasLeftY && (
-        <YAxis
-          yAxisId="left"
-          orientation="left"
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-          width={yAxisWidthNotBiaxial}
-          tick={{ fill: 'var(--dimmed-4)', fontSize: '0.8em' }}
-          tickLine={{ stroke: 'var(--dimmed-2)' }}
-          axisLine={{ stroke: 'var(--dimmed-2)' }}
-        />
-      )}
-
-      {lines.map(({
-        dataKey,
-        lineKeyId,
-        side,
-        stroke,
-        type,
-        unit,
-        name,
-      }, index) => {
-        const computedStrokeColor = stroke ?? getChartDefaultColor(index);
-
-        return (
-          <Line
-            key={lineKeyId}
-            dataKey={dataKey}
-            yAxisId={side}
-            isAnimationActive={isAnimationActive}
-            connectNulls
-            type={type ?? 'monotone'}
-            stroke={computedStrokeColor}
-            name={name}
-            unit={unit}
-            dot={showDots ? {
-              r: 3,
-              stroke: computedStrokeColor,
-              fill: computedStrokeColor,
-            } : false}
-            activeDot={{
-              fill: computedStrokeColor, stroke: 'var(--global-background)', strokeWidth: 4, r: 6,
-            }}
+            width={yAxisWidthBiaxial}
+            tick={{ fill: 'var(--dimmed-4)', fontSize: '0.8em' }}
+            tickLine={{ stroke: 'var(--dimmed-2)' }}
+            axisLine={{ stroke: 'var(--dimmed-2)' }}
           />
-        );
-      })}
+        )}
+
+        {showYAxis && hasLeftY && (
+          <YAxis
+            yAxisId="left"
+            orientation="left"
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+            width={yAxisWidthNotBiaxial}
+            tick={{ fill: 'var(--dimmed-4)', fontSize: '0.8em' }}
+            tickLine={{ stroke: 'var(--dimmed-2)' }}
+            axisLine={{ stroke: 'var(--dimmed-2)' }}
+          />
+        )}
+
+        {lines.map(({
+          dataKey,
+          lineKeyId,
+          side,
+          stroke,
+          type,
+          unit,
+          name,
+        }, index) => {
+          const computedStrokeColor = stroke ?? getChartDefaultColor(index);
+
+          return (
+            <Line
+              key={lineKeyId}
+              dataKey={dataKey}
+              yAxisId={side}
+              isAnimationActive={isAnimationActive}
+              connectNulls
+              type={type ?? 'monotone'}
+              stroke={computedStrokeColor}
+              name={name}
+              unit={unit}
+              dot={showDots ? {
+                r: 3,
+                stroke: computedStrokeColor,
+                fill: computedStrokeColor,
+              } : false}
+              activeDot={{
+                fill: computedStrokeColor, stroke: 'var(--global-background)', strokeWidth: 4, r: 6,
+              }}
+            />
+          );
+        })}
+      </>
     </BaseChart>
   );
 }

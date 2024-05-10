@@ -9,13 +9,12 @@ import {
   XAxis,
   YAxisProps,
 } from 'recharts';
-import { Except } from 'type-fest';
 
 import { Tooltip, TooltipProps } from '../tooltip';
 
 export type ChartDataBaseType = Record<string, string | number>;
 
-export type BaseChartProps = Except<ResponsiveContainerProps, 'children'> & {
+export type BaseChartProps = ResponsiveContainerProps & {
   dataKeyX?: string | ((data: ChartDataBaseType) => string | number);
   showGrid?: boolean;
   showXAxis?: boolean;
@@ -24,7 +23,6 @@ export type BaseChartProps = Except<ResponsiveContainerProps, 'children'> & {
   ticks?: YAxisProps['tickCount'];
   renderChart: (children: ReactNode) => ReactElement;
   customTooltip?: (props: TooltipProps) => JSX.Element;
-  children: ReactNode;
   xPadding?: number;
 };
 
