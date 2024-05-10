@@ -28,11 +28,17 @@ const meta = {
     showDots: false,
     showYAxis: true,
     showXAxis: false,
-    ticks: 5,
+    density: 'mid',
   },
   argTypes: {
     data: { table: { disable: true } },
     lines: { table: { disable: true } },
+    density: {
+      control: {
+        type: 'inline-radio',
+        options: ['low', 'mid', 'high'],
+      },
+    },
   },
   render: args => (
     <LineChart {...args} />

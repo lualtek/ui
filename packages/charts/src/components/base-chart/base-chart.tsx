@@ -7,7 +7,6 @@ import {
   ResponsiveContainerProps,
   Tooltip as ReTooltip,
   XAxis,
-  XAxisProps,
 } from 'recharts';
 
 import { Tooltip, TooltipProps } from '../tooltip';
@@ -20,10 +19,16 @@ export type BaseChartProps = ResponsiveContainerProps & {
   showXAxis?: boolean;
   showTooltip?: boolean;
   showLegend?: boolean;
-  ticks?: XAxisProps['tickCount'];
+  density?: 'low' | 'mid' | 'high';
   renderChart: (children: ReactNode) => ReactElement;
   customTooltip?: (props: TooltipProps) => JSX.Element;
   xPadding?: number;
+};
+
+export const DENSITIES: Record<NonNullable<BaseChartProps['density']>, number> = {
+  low: 3,
+  mid: 6,
+  high: 9,
 };
 
 export const BaseChart = forwardRef<HTMLDivElement, PropsClassChildren<BaseChartProps>>(({
@@ -36,7 +41,7 @@ export const BaseChart = forwardRef<HTMLDivElement, PropsClassChildren<BaseChart
   showLegend = false,
   dataKeyX = 'x',
   xPadding = 0,
-  ticks = 8,
+  density = 'mid',
   renderChart,
   customTooltip,
   ...otherProps
@@ -64,7 +69,7 @@ export const BaseChart = forwardRef<HTMLDivElement, PropsClassChildren<BaseChart
           )}
           <XAxis
             dataKey={dataKeyX}
-            tickCount={ticks}
+            tickCount={DENSITIES[density]}
             hide={!showXAxis}
             minTickGap={32}
             tick={{ fill: 'var(--dimmed-3)', fontSize: '0.8em' }}

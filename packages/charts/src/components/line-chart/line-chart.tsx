@@ -12,7 +12,7 @@ import { Except } from 'type-fest';
 
 import { useChartAxis } from '@/charts/hooks/use-chart-axis';
 
-import { BaseChart, BaseChartProps } from '../base-chart';
+import { BaseChart, BaseChartProps, DENSITIES } from '../base-chart';
 import { ChartDataBaseType } from '../base-chart/base-chart';
 import { getChartDefaultColor } from '../base-chart/colors';
 
@@ -41,7 +41,7 @@ export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
   lines,
   showDots = false,
   showYAxis = true,
-  ticks,
+  density = 'mid',
   children,
   ...otherProps
 }: PropsClassChildren & LineChartProps<D, L>) {
@@ -83,7 +83,7 @@ export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
       {...otherProps}
       ref={chartRef}
       onResize={handleResize}
-      ticks={ticks}
+      density={density}
       renderChart={children => (
         <ReLineChart
           data={data}
@@ -99,7 +99,7 @@ export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
           <YAxis
             yAxisId="right"
             orientation="right"
-            tickCount={ticks}
+            tickCount={DENSITIES[density]}
             // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
             width={yAxisWidthBiaxial}
             tick={{ fill: 'var(--dimmed-4)', fontSize: '0.8em' }}
@@ -112,7 +112,7 @@ export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
           <YAxis
             yAxisId="left"
             orientation="left"
-            tickCount={ticks}
+            tickCount={DENSITIES[density]}
             // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
             width={yAxisWidthNotBiaxial}
             tick={{ fill: 'var(--dimmed-4)', fontSize: '0.8em' }}
