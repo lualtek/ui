@@ -46,6 +46,7 @@ export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
 }: PropsClassChildren & LineChartProps<D, L>) {
   const chartRef = useRef<HTMLDivElement>(null);
   const [isAnimationActive, setIsAnimationActive] = useState(true);
+  const [currentChartWidth, setCurrentChartWidth] = useState<number>();
   const [, startTransition] = useTransition();
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const {
@@ -59,39 +60,28 @@ export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
   });
 
   useEffect(() => {
-    const currentChartRef = chartRef?.current;
-    let chartWidth: number;
-
-    if (currentChartRef) {
-      chartWidth = chartRef.current.clientWidth;
+    if (chartRef?.current && !currentChartWidth) {
+      setCurrentChartWidth(chartRef?.current.clientWidth);
     }
+  }, [currentChartWidth]);
 
-    const resizeObserver = new ResizeObserver((entries) => {
-      entries.forEach((entry) => {
-        const cr: DOMRectReadOnly = entry.contentRect;
-        if (chartWidth !== cr.width) {
-          startTransition(() => {
-            setIsAnimationActive(false);
-          });
-        }
-      });
-    });
-
-    if (currentChartRef) {
-      resizeObserver.observe(currentChartRef);
-    }
-
-    return () => {
-      if (currentChartRef) {
-        resizeObserver.unobserve(currentChartRef);
+  const handleResize = (w: number) => {
+    if (chartRef?.current) {
+      if (currentChartWidth !== w) {
+        startTransition(() => {
+          setIsAnimationActive(false);
+        });
       }
-    };
-  }, []);
+
+      setCurrentChartWidth(w);
+    }
+  };
 
   return (
     <BaseChart
       {...otherProps}
       ref={chartRef}
+      onResize={handleResize}
       renderChart={children => (
         <ReLineChart
           data={data}

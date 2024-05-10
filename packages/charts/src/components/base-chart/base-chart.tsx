@@ -9,12 +9,13 @@ import {
   XAxis,
   YAxisProps,
 } from 'recharts';
+import { Except } from 'type-fest';
 
 import { Tooltip, TooltipProps } from '../tooltip';
 
 export type ChartDataBaseType = Record<string, string | number>;
 
-export type BaseChartProps = ResponsiveContainerProps & {
+export type BaseChartProps = Except<ResponsiveContainerProps, 'children'> & {
   dataKeyX?: string | ((data: ChartDataBaseType) => string | number);
   showGrid?: boolean;
   showXAxis?: boolean;
