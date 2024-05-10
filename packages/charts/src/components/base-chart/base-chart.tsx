@@ -1,5 +1,5 @@
-import { FCChildrenClass, Stack, Text } from '@lualtek/react-components';
-import { ReactElement, ReactNode } from 'react';
+import { PropsClassChildren, Stack, Text } from '@lualtek/react-components';
+import { forwardRef, ReactElement, ReactNode } from 'react';
 import {
   CartesianGrid,
   Legend,
@@ -27,7 +27,7 @@ export type BaseChartProps = {
   xPadding?: number;
 };
 
-export const BaseChart: FCChildrenClass<BaseChartProps> = ({
+export const BaseChart = forwardRef<HTMLDivElement, PropsClassChildren<BaseChartProps>>(({
   className,
   children,
   showGrid = true,
@@ -41,8 +41,8 @@ export const BaseChart: FCChildrenClass<BaseChartProps> = ({
   renderChart,
   customTooltip,
   ...otherProps
-}) => (
-  <div className={className}>
+}, forwardedRef) => (
+  <div ref={forwardedRef} className={className}>
     <ResponsiveContainer
       width="100%"
       height={height}
@@ -95,6 +95,6 @@ export const BaseChart: FCChildrenClass<BaseChartProps> = ({
       )}
     </ResponsiveContainer>
   </div>
-);
+));
 
 BaseChart.displayName = 'XYChart';

@@ -87,78 +87,75 @@ export function LineChart<D extends ChartDataBaseType, L extends LineChartLinePr
   }, []);
 
   return (
-    <div ref={chartRef}>
-      <BaseChart
-        {...otherProps}
-        renderChart={children => (
-          <ReLineChart
-            data={data}
-            accessibilityLayer
-          >
-            {children}
-          </ReLineChart>
-        )}
-      >
-        {showYAxis && hasRightY && (
-          <YAxis
-            yAxisId="right"
-            orientation="right"
+    <BaseChart
+      {...otherProps}
+      ref={chartRef}
+      renderChart={children => (
+        <ReLineChart
+          data={data}
+          accessibilityLayer
+        >
+          {children}
+        </ReLineChart>
+      )}
+    >
+      {showYAxis && hasRightY && (
+        <YAxis
+          yAxisId="right"
+          orientation="right"
             // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-            width={yAxisWidthBiaxial}
-            tick={{ fill: 'var(--dimmed-4)', fontSize: '0.8em' }}
-            tickLine={{ stroke: 'var(--dimmed-2)' }}
-            axisLine={{ stroke: 'var(--dimmed-2)' }}
-          />
-        )}
+          width={yAxisWidthBiaxial}
+          tick={{ fill: 'var(--dimmed-4)', fontSize: '0.8em' }}
+          tickLine={{ stroke: 'var(--dimmed-2)' }}
+          axisLine={{ stroke: 'var(--dimmed-2)' }}
+        />
+      )}
 
-        {showYAxis && hasLeftY && (
-          <YAxis
-            yAxisId="left"
-            orientation="left"
+      {showYAxis && hasLeftY && (
+        <YAxis
+          yAxisId="left"
+          orientation="left"
             // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-            width={yAxisWidthNotBiaxial}
-            tick={{ fill: 'var(--dimmed-4)', fontSize: '0.8em' }}
-            tickLine={{ stroke: 'var(--dimmed-2)' }}
-            axisLine={{ stroke: 'var(--dimmed-2)' }}
+          width={yAxisWidthNotBiaxial}
+          tick={{ fill: 'var(--dimmed-4)', fontSize: '0.8em' }}
+          tickLine={{ stroke: 'var(--dimmed-2)' }}
+          axisLine={{ stroke: 'var(--dimmed-2)' }}
+        />
+      )}
+
+      {lines.map(({
+        dataKey,
+        lineKeyId,
+        side,
+        stroke,
+        unit,
+        name,
+      }, index) => {
+        const computedStrokeColor = stroke ?? getChartDefaultColor(index);
+
+        return (
+          <Line
+            key={lineKeyId}
+            dataKey={dataKey}
+            yAxisId={side}
+            isAnimationActive={isAnimationActive}
+            connectNulls
+            type="monotone"
+            stroke={computedStrokeColor}
+            name={name}
+            unit={unit}
+            dot={showDots ? {
+              r: 3,
+              stroke: computedStrokeColor,
+              fill: computedStrokeColor,
+            } : false}
+            activeDot={{
+              fill: computedStrokeColor, stroke: 'var(--global-background)', strokeWidth: 4, r: 6,
+            }}
           />
-        )}
-
-        <>
-          {lines.map(({
-            dataKey,
-            lineKeyId,
-            side,
-            stroke,
-            unit,
-            name,
-          }, index) => {
-            const computedStrokeColor = stroke ?? getChartDefaultColor(index);
-
-            return (
-              <Line
-                key={lineKeyId}
-                dataKey={dataKey}
-                yAxisId={side}
-                isAnimationActive={isAnimationActive}
-                connectNulls
-                type="monotone"
-                stroke={computedStrokeColor}
-                name={name}
-                unit={unit}
-                dot={showDots ? {
-                  r: 3,
-                  stroke: computedStrokeColor,
-                  fill: computedStrokeColor,
-                } : false}
-                activeDot={{
-                  fill: computedStrokeColor, stroke: 'var(--global-background)', strokeWidth: 4, r: 6,
-                }}
-              />
-            );
-          })}
-        </>
-      </BaseChart>
-    </div>
+        );
+      })}
+    </BaseChart>
   );
 }
 
