@@ -149,7 +149,10 @@ export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
                 fill: computedStrokeColor,
               } : false}
               activeDot={{
-                fill: computedStrokeColor, stroke: 'var(--global-background)', strokeWidth: 4, r: 6,
+                fill: showDots ? 'var(--global-foreground)' : computedStrokeColor,
+                stroke: 'var(--global-background)',
+                strokeWidth: 4,
+                r: 6,
               }}
             />
           );
