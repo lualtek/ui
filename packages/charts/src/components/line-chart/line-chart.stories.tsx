@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import MultiAxisData from '../../../fixtures/multi-y-data';
 import {
   LineChart,
-  LineChartLineProps,
+  LineProps,
 } from './line-chart';
 
 type Data = Record<string, number | string>;
@@ -82,7 +82,7 @@ export const WidthXPadding = {
 export const WithCustomDataset = {
   args: {
     data: MultiAxisData.data,
-    lines: MultiAxisData.lines as Array<LineChartLineProps<Data>>,
+    lines: MultiAxisData.lines as Array<LineProps<Data>>,
     isBiAxial: true,
   },
 } satisfies Story;

@@ -1,9 +1,9 @@
 import { useMemo } from 'react';
 import { ChartDataBaseType } from 'src/components/base-chart/base-chart';
-import { LineChartLineProps } from 'src/components/line-chart/line-chart';
+import { LineProps } from 'src/components/line-chart/line-chart';
 
 // NOTE: this is crazy - Find the longest y axis value by chars
-const getYValuesLength = <D extends ChartDataBaseType, L extends LineChartLineProps<D>>(
+const getYValuesLength = <D extends ChartDataBaseType, L extends LineProps<D>>(
   data: D[],
   notBiaxialLines: L[],
   biaxialLines: L[],
@@ -19,7 +19,7 @@ const getYValuesLength = <D extends ChartDataBaseType, L extends LineChartLinePr
     ];
   }, [0, 0]);
 
-export const useChartAxis = <D extends ChartDataBaseType, L extends LineChartLineProps<D>>({
+export const useChartAxis = <D extends ChartDataBaseType, L extends LineProps<D>>({
   data,
   lines,
 }: { data: D[]; lines: L[] }) => {

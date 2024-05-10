@@ -15,7 +15,7 @@ import { BaseChart, BaseChartProps } from '../base-chart';
 import { ChartDataBaseType } from '../base-chart/base-chart';
 import { getChartDefaultColor } from '../base-chart/colors';
 
-export type LineChartLineProps<D> = {
+export type LineProps<D> = {
   dataKey: string | ((data: D) => string | number);
   // Used on the map as linekey id, should be unique
   lineKeyId: string;
@@ -25,7 +25,7 @@ export type LineChartLineProps<D> = {
   name: string;
 };
 
-export type LineChartProps<D extends ChartDataBaseType, L extends LineChartLineProps<D>> = Except<
+export type LineChartProps<D extends ChartDataBaseType, L extends LineProps<D>> = Except<
 BaseChartProps, 'renderChart' | 'children'> & {
   data: D[];
   lines: L[];
@@ -33,7 +33,7 @@ BaseChartProps, 'renderChart' | 'children'> & {
   showYAxis?: boolean;
 }
 
-export function LineChart<D extends ChartDataBaseType, L extends LineChartLineProps<D>>({
+export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
   className,
   data,
   lines,
