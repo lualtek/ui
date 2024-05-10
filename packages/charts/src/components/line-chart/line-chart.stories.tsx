@@ -47,10 +47,19 @@ type Story = StoryObj<typeof meta>;
 
 export const Default = {} satisfies Story;
 
-export const CustomSize = {
+export const WithFixedSize = {
   args: {
     width: 300,
     height: 100,
+    showGrid: false,
+    showYAxis: false,
+    showTooltip: false,
+  },
+} satisfies Story;
+
+export const WithMinWidth = {
+  args: {
+    minWidth: 800,
     showGrid: false,
     showYAxis: false,
     showTooltip: false,

@@ -4,6 +4,7 @@ import {
   CartesianGrid,
   Legend,
   ResponsiveContainer,
+  ResponsiveContainerProps,
   Tooltip as ReTooltip,
   XAxis,
   YAxisProps,
@@ -13,10 +14,9 @@ import { Tooltip, TooltipProps } from '../tooltip';
 
 export type ChartDataBaseType = Record<string, string | number>;
 
-export type BaseChartProps = {
+export type BaseChartProps = ResponsiveContainerProps & {
   dataKeyX?: string | ((data: ChartDataBaseType) => string | number);
   showGrid?: boolean;
-  height?: number;
   showXAxis?: boolean;
   showTooltip?: boolean;
   showLegend?: boolean;
@@ -45,8 +45,8 @@ export const BaseChart = forwardRef<HTMLDivElement, PropsClassChildren<BaseChart
   <div ref={forwardedRef} className={className}>
     <ResponsiveContainer
       width="100%"
-      height={height}
       debounce={0}
+      height={height}
       {...otherProps}
     >
       {renderChart(
