@@ -7,7 +7,7 @@ import {
   ResponsiveContainerProps,
   Tooltip as ReTooltip,
   XAxis,
-  YAxisProps,
+  XAxisProps,
 } from 'recharts';
 
 import { Tooltip, TooltipProps } from '../tooltip';
@@ -20,7 +20,7 @@ export type BaseChartProps = ResponsiveContainerProps & {
   showXAxis?: boolean;
   showTooltip?: boolean;
   showLegend?: boolean;
-  ticks?: YAxisProps['tickCount'];
+  ticks?: XAxisProps['tickCount'];
   renderChart: (children: ReactNode) => ReactElement;
   customTooltip?: (props: TooltipProps) => JSX.Element;
   xPadding?: number;

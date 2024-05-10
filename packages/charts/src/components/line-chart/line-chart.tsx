@@ -41,6 +41,7 @@ export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
   lines,
   showDots = false,
   showYAxis = true,
+  ticks,
   children,
   ...otherProps
 }: PropsClassChildren & LineChartProps<D, L>) {
@@ -82,6 +83,7 @@ export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
       {...otherProps}
       ref={chartRef}
       onResize={handleResize}
+      ticks={ticks}
       renderChart={children => (
         <ReLineChart
           data={data}
@@ -97,6 +99,7 @@ export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
           <YAxis
             yAxisId="right"
             orientation="right"
+            tickCount={ticks}
             // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
             width={yAxisWidthBiaxial}
             tick={{ fill: 'var(--dimmed-4)', fontSize: '0.8em' }}
@@ -109,6 +112,7 @@ export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
           <YAxis
             yAxisId="left"
             orientation="left"
+            tickCount={ticks}
             // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
             width={yAxisWidthNotBiaxial}
             tick={{ fill: 'var(--dimmed-4)', fontSize: '0.8em' }}
