@@ -5,6 +5,7 @@ import {
 import {
   Line,
   LineChart as ReLineChart,
+  LineProps as ReLineProps,
   YAxis,
 } from 'recharts';
 import { Except } from 'type-fest';
@@ -21,6 +22,7 @@ export type LineProps<D> = {
   lineKeyId: string;
   side: 'left' | 'right';
   stroke?: string;
+  type?: ReLineProps['type'];
   unit: string;
   name: string;
 };
@@ -128,6 +130,7 @@ export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
         lineKeyId,
         side,
         stroke,
+        type,
         unit,
         name,
       }, index) => {
@@ -140,7 +143,7 @@ export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
             yAxisId={side}
             isAnimationActive={isAnimationActive}
             connectNulls
-            type="monotone"
+            type={type ?? 'monotone'}
             stroke={computedStrokeColor}
             name={name}
             unit={unit}

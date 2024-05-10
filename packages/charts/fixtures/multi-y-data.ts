@@ -453,6 +453,7 @@ export default {
   {
     dataKey: 'humidity',
     lineKeyId: 'humidity',
+    type: 'step',
     side: 'left',
     // stroke: 'blue',
     unit: '%',
