@@ -2,13 +2,13 @@ import {
   Elevator,
   Panel, Stack, Text, Title,
 } from '@lualtek/react-components';
-import { FC } from 'react';
+import { FC, ReactNode } from 'react';
 
 export type TooltipEntry = {
   dataKey?: string | number;
   name?: string;
   value?: number;
-  unit?: React.ReactNode;
+  unit?: ReactNode;
   color?: string;
   payload?: Record<string, number>;
 }
@@ -48,7 +48,6 @@ export const Tooltip: FC<TooltipProps> = ({
             </Text>
             <Text size={14} lineHeight="extra-small">
               {entry.value}
-              {' '}
               {entry.unit}
             </Text>
           </Stack>

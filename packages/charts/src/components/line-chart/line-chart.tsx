@@ -73,6 +73,9 @@ BaseChartProps, 'renderChart' | 'children'> & {
    * @defaultValue true
    */
   showYAxis?: boolean;
+  /**
+   * Render areas for the lines.
+   */
   showAreas?: boolean;
 }
 
