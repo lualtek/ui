@@ -3,6 +3,8 @@ import {
   useEffect, useRef, useState, useTransition,
 } from 'react';
 import {
+  Area,
+  AreaChart as ReAreaChart,
   Line,
   LineChart as ReLineChart,
   LineProps as ReLineProps,
@@ -71,6 +73,7 @@ BaseChartProps, 'renderChart' | 'children'> & {
    * @defaultValue true
    */
   showYAxis?: boolean;
+  showAreas?: boolean;
 }
 
 export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
@@ -80,6 +83,7 @@ export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
   showDots = false,
   showYAxis = true,
   density = 'mid',
+  showAreas = false,
   children,
   ...otherProps
 }: PropsClassChildren & LineChartProps<D, L>) {
@@ -122,17 +126,23 @@ export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
       ref={chartRef}
       onResize={handleResize}
       density={density}
-      renderChart={children => (
+      renderChart={children => (showAreas ? (
+        <ReAreaChart
+          data={data}
+          accessibilityLayer
+        >
+          {children}
+        </ReAreaChart>
+      ) : (
         <ReLineChart
           data={data}
           accessibilityLayer
         >
           {children}
         </ReLineChart>
-      )}
+      ))}
     >
       <>
-
         {showYAxis && hasRightY && (
           <YAxis
             yAxisId="right"
@@ -159,6 +169,20 @@ export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
           />
         )}
 
+        {showAreas && (
+          <defs>
+            {lines.map(({
+              lineKeyId,
+              stroke,
+            }, index) => (
+              <linearGradient id={lineKeyId} x1="0" y1="0" x2="0" y2="1">
+                <stop offset="5%" stopColor={stroke ?? getChartDefaultColor(index)} stopOpacity={0.4} />
+                <stop offset="95%" stopColor={stroke ?? getChartDefaultColor(index)} stopOpacity={0} />
+              </linearGradient>
+            ))}
+          </defs>
+        )}
+
         {lines.map(({
           dataKey,
           lineKeyId,
@@ -169,29 +193,39 @@ export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
           name,
         }, index) => {
           const computedStrokeColor = stroke ?? getChartDefaultColor(index);
+          const commonProps = {
+            dataKey,
+            yAxisId: side,
+            isAnimationActive,
+            connectNulls: true,
+            type: type ?? 'monotone',
+            stroke: computedStrokeColor,
+            name,
+            unit,
+            dot: showDots ? {
+              r: 3,
+              stroke: computedStrokeColor,
+              fill: computedStrokeColor,
+            } : false,
+            activeDot: {
+              fill: showDots ? 'var(--global-foreground)' : computedStrokeColor,
+              stroke: 'var(--global-background)',
+              strokeWidth: 4,
+              r: 6,
+            },
+          };
 
-          return (
-            <Line
+          return showAreas ? (
+            <Area
+              {...commonProps}
               key={lineKeyId}
-              dataKey={dataKey}
-              yAxisId={side}
-              isAnimationActive={isAnimationActive}
-              connectNulls
-              type={type ?? 'monotone'}
-              stroke={computedStrokeColor}
-              name={name}
-              unit={unit}
-              dot={showDots ? {
-                r: 3,
-                stroke: computedStrokeColor,
-                fill: computedStrokeColor,
-              } : false}
-              activeDot={{
-                fill: showDots ? 'var(--global-foreground)' : computedStrokeColor,
-                stroke: 'var(--global-background)',
-                strokeWidth: 4,
-                r: 6,
-              }}
+              fillOpacity={1}
+              fill={`url(#${lineKeyId})`}
+            />
+          ) : (
+            <Line
+              {...commonProps}
+              key={lineKeyId}
             />
           );
         })}

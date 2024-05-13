@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
+import SimpleData from '../../../fixtures/data';
 import MultiAxisData from '../../../fixtures/multi-y-data';
 import {
   LineChart,
@@ -7,12 +8,8 @@ import {
 } from './line-chart';
 
 type Data = Record<string, number | string>;
-type Dataset = Data[];
 
-const data: Dataset = Array.from({ length: 26 }, (_, i) => ({
-  x: `2020-01-${i + 1}`,
-  y: Math.random() * 100,
-}));
+const { data } = SimpleData;
 
 const meta = {
   title: 'Data Viz/Linear',
@@ -28,6 +25,7 @@ const meta = {
     showDots: false,
     showYAxis: true,
     showXAxis: false,
+    showAreas: false,
     density: 'mid',
   },
   argTypes: {
@@ -96,7 +94,12 @@ export const WithCustomDataset = {
   args: {
     data: MultiAxisData.data,
     lines: MultiAxisData.lines as Array<LineProps<Data>>,
-    isBiAxial: true,
+  },
+} satisfies Story;
+
+export const WithAreas = {
+  args: {
+    showAreas: true,
   },
 } satisfies Story;
 
