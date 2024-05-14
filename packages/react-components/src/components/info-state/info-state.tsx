@@ -25,6 +25,12 @@ export type InfoStateProps = HTMLAttributes<HTMLDivElement> & {
    */
   titleMaxWidth?: string;
   /**
+   * Set the maximum width of the text. This is used to wrap the text
+   *
+   * @defaultValue "60ch"
+   */
+  textMaxWidth?: string;
+  /**
    * The icon to display. This is used to enforce the message of the info state.
    * This is not displayed if `image` is set.
    */
@@ -59,6 +65,7 @@ export const InfoState = forwardRef<HTMLDivElement, InfoStateProps>(({
   children,
   title,
   titleMaxWidth = '20ch',
+  textMaxWidth = '60ch',
   icon,
   image,
   direction = 'column',
@@ -127,7 +134,7 @@ export const InfoState = forwardRef<HTMLDivElement, InfoStateProps>(({
           fill={false}
         >
           <Title maxWidth={titleMaxWidth} align={isHorizontal ? 'start' : 'center'} level="4">{title}</Title>
-          <Text as="div" maxWidth="60ch" dimmed={6} align={isHorizontal ? 'start' : 'center'}>{children}</Text>
+          <Text as="div" maxWidth={textMaxWidth} dimmed={6} align={isHorizontal ? 'start' : 'center'}>{children}</Text>
           {actions && (
             <Stack vPadding={16} inline direction="row" columnGap={16} rowGap={16} wrap>
               {actions}
