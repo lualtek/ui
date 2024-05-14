@@ -1,5 +1,16 @@
 # @lualtek/react-components
 
+## 11.19.0
+
+### Minor Changes
+
+- 22ee0fa: Add textMaxWidth to InfoState
+- 3fd855e: Add titleMaxWidth to InfoState
+
+### Patch Changes
+
+- @lualtek/icons@11.19.0
+
 ## 11.18.1
 
 ### Patch Changes
