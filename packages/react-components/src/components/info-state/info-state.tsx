@@ -19,6 +19,12 @@ export type InfoStateProps = HTMLAttributes<HTMLDivElement> & {
    */
   title: ReactNode;
   /**
+   * Set the maximum width of the title. This is used to wrap the title if it's too long
+   *
+   * @defaultValue "20ch"
+   */
+  titleMaxWidth?: string;
+  /**
    * The icon to display. This is used to enforce the message of the info state.
    * This is not displayed if `image` is set.
    */
@@ -52,6 +58,7 @@ export const InfoState = forwardRef<HTMLDivElement, InfoStateProps>(({
   style,
   children,
   title,
+  titleMaxWidth = '20ch',
   icon,
   image,
   direction = 'column',
@@ -119,7 +126,7 @@ export const InfoState = forwardRef<HTMLDivElement, InfoStateProps>(({
           vAlign="center"
           fill={false}
         >
-          <Title maxWidth="20ch" align={isHorizontal ? 'start' : 'center'} level="4">{title}</Title>
+          <Title maxWidth={titleMaxWidth} align={isHorizontal ? 'start' : 'center'} level="4">{title}</Title>
           <Text as="div" maxWidth="60ch" dimmed={6} align={isHorizontal ? 'start' : 'center'}>{children}</Text>
           {actions && (
             <Stack vPadding={16} inline direction="row" columnGap={16} rowGap={16} wrap>
