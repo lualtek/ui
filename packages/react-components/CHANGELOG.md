@@ -1,5 +1,16 @@
 # @lualtek/react-components
 
+## 12.0.0-next.0
+
+### Major Changes
+
+- 789d3ff: disable panel glow by default. disableGlow is true by default.
+
+### Patch Changes
+
+- Updated dependencies [789d3ff]
+  - @lualtek/icons@12.0.0-next.0
+
 ## 11.19.0
 
 ### Minor Changes
