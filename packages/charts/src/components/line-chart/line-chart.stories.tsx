@@ -12,11 +12,11 @@ type Data = Record<string, number | string>;
 const { data } = SimpleData;
 
 const meta = {
-  title: 'Data Viz/Linear',
+  title: 'Data Viz/Linear Chart',
   component: LineChart,
   args: {
     data,
-    lines: [{
+    series: [{
       dataKey: 'y',
       lineKeyId: 'y',
       side: 'left',
@@ -30,7 +30,7 @@ const meta = {
   },
   argTypes: {
     data: { table: { disable: true } },
-    lines: { table: { disable: true } },
+    series: { table: { disable: true } },
     density: {
       control: {
         type: 'inline-radio',
@@ -93,7 +93,7 @@ export const WidthXPadding = {
 export const WithCustomDataset = {
   args: {
     data: MultiAxisData.data,
-    lines: MultiAxisData.lines as Array<LineProps<Data>>,
+    series: MultiAxisData.series as Array<LineProps<Data>>,
   },
 } satisfies Story;
 

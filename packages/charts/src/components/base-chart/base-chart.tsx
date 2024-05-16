@@ -52,6 +52,7 @@ export type BaseChartProps = ResponsiveContainerProps & {
   /**
    * Render a custom tooltip instead of the default one.
    *
+   * @private Used by other charts to render the chart wrapper*
    * @param props { active?: boolean; label?: string; payload?: TooltipEntry[]; }
    * @returns JSX.Element
    */

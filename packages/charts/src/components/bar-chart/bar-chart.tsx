@@ -3,11 +3,8 @@ import {
   useEffect, useRef, useState, useTransition,
 } from 'react';
 import {
-  Area,
-  AreaChart as ReAreaChart,
-  Line,
-  LineChart as ReLineChart,
-  LineProps as ReLineProps,
+  Bar,
+  BarChart as ReBarChart,
   YAxis,
 } from 'recharts';
 import { Except } from 'type-fest';
@@ -18,7 +15,7 @@ import { BaseChart, BaseChartProps, DENSITIES } from '../base-chart';
 import { ChartDataBaseType } from '../base-chart/base-chart';
 import { getChartDefaultColor } from '../base-chart/colors';
 
-export type LineProps<D> = {
+export type BarProps<D> = {
   /**
    * The data key to assign to the line.
    */
@@ -36,12 +33,6 @@ export type LineProps<D> = {
    */
   stroke?: string;
   /**
-   * The type of the line.
-   *
-   * @defaultValue 'monotone'
-   */
-  type?: ReLineProps['type'];
-  /**
    * The unit assigned to the line value
    */
   unit?: string;
@@ -51,7 +42,7 @@ export type LineProps<D> = {
   name?: string;
 };
 
-export type LineChartProps<D extends ChartDataBaseType, L extends LineProps<D>> = Except<
+export type BarChartProps<D extends ChartDataBaseType, L extends BarProps<D>> = Except<
 BaseChartProps, 'renderChart' | 'children'> & {
   /**
    * The data to render.
@@ -62,34 +53,22 @@ BaseChartProps, 'renderChart' | 'children'> & {
    */
   series: L[];
   /**
-   * Whether to show the dots on the series.
-   *
-   * @defaultValue false
-   */
-  showDots?: boolean;
-  /**
    * Whether to show the Y axis.
    *
    * @defaultValue true
    */
   showYAxis?: boolean;
-  /**
-   * Render areas for the series.
-   */
-  showAreas?: boolean;
 }
 
-export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
+export function BarChart<D extends ChartDataBaseType, L extends BarProps<D>>({
   className,
   data,
   series,
-  showDots = false,
   showYAxis = true,
   density = 'mid',
-  showAreas = false,
   children,
   ...otherProps
-}: PropsClassChildren & LineChartProps<D, L>) {
+}: PropsClassChildren & BarChartProps<D, L>) {
   const chartRef = useRef<HTMLDivElement>(null);
   const [isAnimationActive, setIsAnimationActive] = useState(true);
   const [currentChartWidth, setCurrentChartWidth] = useState<number>();
@@ -129,21 +108,14 @@ export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
       ref={chartRef}
       onResize={handleResize}
       density={density}
-      renderChart={children => (showAreas ? (
-        <ReAreaChart
+      renderChart={children => (
+        <ReBarChart
           data={data}
           accessibilityLayer
         >
           {children}
-        </ReAreaChart>
-      ) : (
-        <ReLineChart
-          data={data}
-          accessibilityLayer
-        >
-          {children}
-        </ReLineChart>
-      ))}
+        </ReBarChart>
+      )}
     >
       <>
         {showYAxis && hasRightY && (
@@ -172,62 +144,24 @@ export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
           />
         )}
 
-        {showAreas && (
-          <defs>
-            {series.map(({
-              lineKeyId,
-              stroke,
-            }, index) => (
-              <linearGradient id={lineKeyId} x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor={stroke ?? getChartDefaultColor(index)} stopOpacity={0.4} />
-                <stop offset="95%" stopColor={stroke ?? getChartDefaultColor(index)} stopOpacity={0} />
-              </linearGradient>
-            ))}
-          </defs>
-        )}
-
         {series.map(({
           dataKey,
           lineKeyId,
           side,
           stroke,
-          type,
           unit,
           name,
         }, index) => {
           const computedStrokeColor = stroke ?? getChartDefaultColor(index);
-          const commonProps = {
-            dataKey,
-            yAxisId: side,
-            isAnimationActive,
-            connectNulls: true,
-            type: type ?? 'monotone',
-            stroke: computedStrokeColor,
-            name,
-            unit,
-            dot: showDots ? {
-              r: 3,
-              stroke: computedStrokeColor,
-              fill: computedStrokeColor,
-            } : false,
-            activeDot: {
-              fill: showDots ? 'var(--global-foreground)' : computedStrokeColor,
-              stroke: 'var(--global-background)',
-              strokeWidth: 4,
-              r: 6,
-            },
-          };
 
-          return showAreas ? (
-            <Area
-              {...commonProps}
-              key={lineKeyId}
-              fillOpacity={1}
-              fill={`url(#${lineKeyId})`}
-            />
-          ) : (
-            <Line
-              {...commonProps}
+          return (
+            <Bar
+              dataKey={dataKey}
+              yAxisId={side}
+              isAnimationActive={isAnimationActive}
+              fill={computedStrokeColor}
+              name={name}
+              unit={unit}
               key={lineKeyId}
             />
           );
@@ -237,4 +171,4 @@ export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
   );
 }
 
-LineChart.displayName = 'LineChart';
+BarChart.displayName = 'BarChart';
