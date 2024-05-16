@@ -7,7 +7,11 @@
     "@lualtek/icons": "11.18.1",
     "@lualtek/react-components": "11.18.1",
     "@lualtek/themes": "11.18.1",
-    "@lualtek/tokens": "11.18.1"
+    "@lualtek/tokens": "11.18.1",
+    "tsconfig": "0.0.1"
   },
-  "changesets": []
+  "changesets": [
+    "fluffy-items-fry",
+    "seven-ways-jump"
+  ]
 }
