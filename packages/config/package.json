@@ -30,11 +30,11 @@
   },
   "dependencies": {
     "@lualtek/tokens": "workspace:*",
-    "cssnano": "6.1.2",
-    "cssnano-preset-default": "6.1.2",
+    "cssnano": "7.0.1",
+    "cssnano-preset-default": "7.0.1",
     "flat": "5.0.2",
     "postcss-import": "16.1.0",
-    "postcss-preset-env": "9.5.5",
+    "postcss-preset-env": "9.5.13",
     "postcss-replace": "2.0.1"
   },
   "devDependencies": {
