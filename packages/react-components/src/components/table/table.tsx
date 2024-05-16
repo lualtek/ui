@@ -358,7 +358,6 @@ export const Table = <T extends Record<string, unknown>>({
                 vibrant
                 vibrancyColor="mid"
                 bordered
-                disableGlow
                 initial={{ y: '-16px', opacity: 0 }}
                 exit={{ y: '-16px', opacity: 0 }}
                 animate={{
