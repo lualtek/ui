@@ -1,15 +1,10 @@
 {
   "$schema": "https://unpkg.com/@changesets/config@2.0.0/schema.json",
-  "changelog": [
-    "@changesets/cli/changelog",
-    {
-      "repo": "lualtek/ui"
-    }
-  ],
+  "changelog": ["@changesets/cli/changelog", { "repo": "lualtek/ui" }],
   "commit": false,
   "fixed": [["@lualtek/*"]],
   "access": "restricted",
-  "baseBranch": "next",
+  "baseBranch": "main",
   "updateInternalDependencies": "patch",
   "ignore": []
 }

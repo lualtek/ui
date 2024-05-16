@@ -35,9 +35,8 @@
     "baseUrl": "../..",
     "paths": {
       "@/components": ["packages/react-components/src"],
-      "@/components/types": ["packages/react-components/src/types"],
-      "@/charts": ["packages/charts/src"]
-    }
+      "@/components/types": ["packages/react-components/src/types"]
+    },
   },
   "exclude": ["node_modules"]
 }

@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 
-export const postcssObjConfig = (tokens: Record<string, unknown>) => ({
+export const postcssConfig = (tokens: Record<string, unknown>) => ({
   plugins: {
     'postcss-import': {},
     'postcss-replace': {

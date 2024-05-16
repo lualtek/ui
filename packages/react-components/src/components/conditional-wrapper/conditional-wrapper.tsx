@@ -1,17 +1,8 @@
 import { FC, ReactNode } from 'react';
 
 export type ConditionalWrapperProps = {
-  /**
-   * The condition to determine whether to wrap the children.
-   */
   condition: boolean;
-  /**
-   * The wrapper function to wrap the children.
-   */
   wrapper: (children: ReactNode) => ReactNode;
-  /**
-   * The children to wrap.
-   */
   children: ReactNode;
 }
 

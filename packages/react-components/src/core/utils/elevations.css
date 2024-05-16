@@ -1,229 +1,226 @@
 /* stylelint-disable length-zero-no-unit */
+[data-elevation] {
+  --shadow-direction: 1;
+  --extra-shadow: 0 0 0 1px transparent;
 
-@layer utilities {
-  [data-elevation] {
+  transition: box-shadow token(--duration-100) token(--easing-standard);
+
+  &:where([data-elevation-direction='bottom'], [data-elevation-direction='right']) {
     --shadow-direction: 1;
-    --extra-shadow: 0 0 0 1px transparent;
-
-    transition: box-shadow token(--duration-100) token(--easing-standard);
-
-    &:where([data-elevation-direction='bottom'], [data-elevation-direction='right']) {
-      --shadow-direction: 1;
-    }
-
-    &:where([data-elevation-direction='top'], [data-elevation-direction='left']) {
-      --shadow-direction: -1;
-    }
   }
 
-  [data-elevation='0'],
-  [data-elevation-hover='0']:hover {
+  &:where([data-elevation-direction='top'], [data-elevation-direction='left']) {
+    --shadow-direction: -1;
+  }
+}
+
+[data-elevation='0'],
+[data-elevation-hover='0']:hover {
+  --y1: 0px;
+  --x1: 0px;
+
+  box-shadow:
+    calc(var(--x1) * var(--shadow-direction))
+    calc(var(--y1) * var(--shadow-direction))
+    0
+    color-mix(
+      in oklch,
+      var(--shadow-color),
+      transparent calc(96% - var(--shadow-opacity-factor))
+    ),
+    0 0 0 color-mix(
+      in oklch,
+      var(--shadow-color),
+      transparent calc(94% - var(--shadow-opacity-factor))
+    ),
+    0
+    0
+    0
+    color-mix(
+      in oklch,
+      var(--shadow-color),
+      transparent calc(96% - var(--shadow-opacity-factor))
+    ),
+    var(--extra-shadow);
+}
+
+[data-elevation='1'],
+[data-elevation-hover='1']:hover {
+
+  /* Default shadow offsets. */
+  --y1: 4px;
+  --x1: 0px;
+
+  box-shadow:
+    calc(var(--x1) * var(--shadow-direction))
+    calc(var(--y1) * var(--shadow-direction))
+    8px
+    color-mix(
+      in oklch,
+      var(--shadow-color),
+      transparent calc(96% - var(--shadow-opacity-factor))
+    ),
+    0 0 2px color-mix(
+      in oklch,
+      var(--shadow-color),
+      transparent calc(94% - var(--shadow-opacity-factor))
+    ),
+    0
+    0
+    1px
+    color-mix(
+      in oklch,
+      var(--shadow-color),
+      transparent calc(96% - var(--shadow-opacity-factor))
+    ),
+    var(--extra-shadow);
+
+  &:where([data-elevation-direction='left'], [data-elevation-direction='right']) {
     --y1: 0px;
-    --x1: 0px;
-
-    box-shadow:
-      calc(var(--x1) * var(--shadow-direction))
-      calc(var(--y1) * var(--shadow-direction))
-      0
-      color-mix(
-        in oklch,
-        var(--shadow-color),
-        transparent calc(96% - var(--shadow-opacity-factor))
-      ),
-      0 0 0 color-mix(
-        in oklch,
-        var(--shadow-color),
-        transparent calc(94% - var(--shadow-opacity-factor))
-      ),
-      0
-      0
-      0
-      color-mix(
-        in oklch,
-        var(--shadow-color),
-        transparent calc(96% - var(--shadow-opacity-factor))
-      ),
-      var(--extra-shadow);
+    --x1: 4px;
   }
+}
 
-  [data-elevation='1'],
-  [data-elevation-hover='1']:hover {
 
-    /* Default shadow offsets. */
-    --y1: 4px;
-    --x1: 0px;
+[data-elevation='2'],
+[data-elevation-hover='2']:hover {
 
-    box-shadow:
-      calc(var(--x1) * var(--shadow-direction))
-      calc(var(--y1) * var(--shadow-direction))
-      8px
+  /* Default shadow offsets. */
+  --y1: 10px;
+  --y2: 2px;
+  --x1: 0px;
+  --x2: 0px;
+
+  box-shadow:
+    calc(var(--x1) * var(--shadow-direction))
+    calc(var(--y1) * var(--shadow-direction))
+    20px
+    color-mix(
+      in oklch,
+      var(--shadow-color),
+      transparent calc(96% - var(--shadow-opacity-factor))
+    ),
+    calc(var(--x2) * var(--shadow-direction))
+    calc(var(--y2) * var(--shadow-direction))
+    6px
       color-mix(
-        in oklch,
-        var(--shadow-color),
-        transparent calc(96% - var(--shadow-opacity-factor))
-      ),
-      0 0 2px color-mix(
-        in oklch,
-        var(--shadow-color),
-        transparent calc(94% - var(--shadow-opacity-factor))
-      ),
-      0
-      0
-      1px
-      color-mix(
-        in oklch,
-        var(--shadow-color),
-        transparent calc(96% - var(--shadow-opacity-factor))
-      ),
-      var(--extra-shadow);
+      in oklch,
+      var(--shadow-color),
+      transparent calc(96% - var(--shadow-opacity-factor))
+    ),
+    0
+    0
+    1px color-mix(
+      in oklch,
+      var(--shadow-color),
+      transparent calc(96% - var(--shadow-opacity-factor))
+    ),
+    var(--extra-shadow);
 
-    &:where([data-elevation-direction='left'], [data-elevation-direction='right']) {
-      --y1: 0px;
-      --x1: 4px;
-    }
+  &:where([data-elevation-direction='left'], [data-elevation-direction='right']) {
+    --y1: 0px;
+    --y2: 0px;
+    --x1: 10px;
+    --x2: 2px;
   }
+}
 
+[data-elevation='3'],
+[data-elevation-hover='3']:hover {
 
-  [data-elevation='2'],
-  [data-elevation-hover='2']:hover {
+  /* Default shadow offsets. */
+  --y1: 16px;
+  --y2: 2px;
+  --x1: 0px;
+  --x2: 0px;
 
-    /* Default shadow offsets. */
-    --y1: 10px;
-    --y2: 2px;
-    --x1: 0px;
-    --x2: 0px;
+  box-shadow:
+    calc(var(--x1) * var(--shadow-direction))
+    calc(var(--y1) * var(--shadow-direction))
+    24px
+    color-mix(
+      in oklch,
+      var(--shadow-color),
+      transparent calc(94% + var(--shadow-opacity-factor))
+    ),
+    calc(var(--x2) * var(--shadow-direction))
+    calc(var(--y2) * var(--shadow-direction))
+    6px
+    color-mix(
+      in oklch,
+      var(--shadow-color),
+      transparent calc(96% - var(--shadow-opacity-factor))
+    ),
+    0
+    0
+    1px
+    color-mix(
+      in oklch,
+      var(--shadow-color),
+      transparent calc(96% - var(--shadow-opacity-factor))
+    ),
+    var(--extra-shadow);
 
-    box-shadow:
-      calc(var(--x1) * var(--shadow-direction))
-      calc(var(--y1) * var(--shadow-direction))
-      20px
-      color-mix(
-        in oklch,
-        var(--shadow-color),
-        transparent calc(96% - var(--shadow-opacity-factor))
-      ),
-      calc(var(--x2) * var(--shadow-direction))
-      calc(var(--y2) * var(--shadow-direction))
-      6px
-        color-mix(
-        in oklch,
-        var(--shadow-color),
-        transparent calc(96% - var(--shadow-opacity-factor))
-      ),
-      0
-      0
-      1px color-mix(
-        in oklch,
-        var(--shadow-color),
-        transparent calc(96% - var(--shadow-opacity-factor))
-      ),
-      var(--extra-shadow);
-
-    &:where([data-elevation-direction='left'], [data-elevation-direction='right']) {
-      --y1: 0px;
-      --y2: 0px;
-      --x1: 10px;
-      --x2: 2px;
-    }
+  &:where([data-elevation-direction='left'], [data-elevation-direction='right']) {
+    --y1: 0px;
+    --y2: 0px;
+    --x1: 16px;
+    --x2: 2px;
   }
+}
 
-  [data-elevation='3'],
-  [data-elevation-hover='3']:hover {
+[data-elevation='4'],
+[data-elevation-hover='4']:hover {
 
-    /* Default shadow offsets. */
-    --y1: 16px;
-    --y2: 2px;
-    --x1: 0px;
-    --x2: 0px;
+  /* Default shadow offsets. */
+  --y1: 24px;
+  --y2: 16px;
+  --y3: 4px;
+  --x1: 0px;
+  --x2: 0px;
+  --x3: 0px;
 
-    box-shadow:
-      calc(var(--x1) * var(--shadow-direction))
-      calc(var(--y1) * var(--shadow-direction))
-      24px
-      color-mix(
-        in oklch,
-        var(--shadow-color),
-        transparent calc(94% + var(--shadow-opacity-factor))
-      ),
-      calc(var(--x2) * var(--shadow-direction))
-      calc(var(--y2) * var(--shadow-direction))
-      6px
-      color-mix(
-        in oklch,
-        var(--shadow-color),
-        transparent calc(96% - var(--shadow-opacity-factor))
-      ),
-      0
-      0
-      1px
-      color-mix(
-        in oklch,
-        var(--shadow-color),
-        transparent calc(96% - var(--shadow-opacity-factor))
-      ),
-      var(--extra-shadow);
+  box-shadow:
+    calc(var(--x1) * var(--shadow-direction))
+    calc(var(--y1) * var(--shadow-direction))
+    32px
+    color-mix(
+      in oklch,
+      var(--shadow-color),
+      transparent calc(96% - var(--shadow-opacity-factor))
+    ),
+    calc(var(--x2) * var(--shadow-direction))
+    calc(var(--y2) * var(--shadow-direction))
+    24px
+    color-mix(
+      in oklch,
+      var(--shadow-color),
+      transparent calc(96% - var(--shadow-opacity-factor))
+    ),
+    calc(var(--x2) * var(--shadow-direction))
+    calc(var(--y3) * var(--shadow-direction))
+    8px
+    color-mix(
+      in oklch,
+      var(--shadow-color),
+      transparent calc(96% - var(--shadow-opacity-factor))
+    ),
+    0
+    0
+    1px
+    color-mix(
+      in oklch,
+      var(--shadow-color),
+      transparent calc(96% - var(--shadow-opacity-factor))
+    ),
+    var(--extra-shadow);
 
-    &:where([data-elevation-direction='left'], [data-elevation-direction='right']) {
-      --y1: 0px;
-      --y2: 0px;
-      --x1: 16px;
-      --x2: 2px;
-    }
-  }
-
-  [data-elevation='4'],
-  [data-elevation-hover='4']:hover {
-
-    /* Default shadow offsets. */
-    --y1: 24px;
-    --y2: 16px;
-    --y3: 4px;
-    --x1: 0px;
-    --x2: 0px;
-    --x3: 0px;
-
-    box-shadow:
-      calc(var(--x1) * var(--shadow-direction))
-      calc(var(--y1) * var(--shadow-direction))
-      32px
-      color-mix(
-        in oklch,
-        var(--shadow-color),
-        transparent calc(96% - var(--shadow-opacity-factor))
-      ),
-      calc(var(--x2) * var(--shadow-direction))
-      calc(var(--y2) * var(--shadow-direction))
-      24px
-      color-mix(
-        in oklch,
-        var(--shadow-color),
-        transparent calc(96% - var(--shadow-opacity-factor))
-      ),
-      calc(var(--x2) * var(--shadow-direction))
-      calc(var(--y3) * var(--shadow-direction))
-      8px
-      color-mix(
-        in oklch,
-        var(--shadow-color),
-        transparent calc(96% - var(--shadow-opacity-factor))
-      ),
-      0
-      0
-      1px
-      color-mix(
-        in oklch,
-        var(--shadow-color),
-        transparent calc(96% - var(--shadow-opacity-factor))
-      ),
-      var(--extra-shadow);
-
-    &:where([data-elevation-direction='left'], [data-elevation-direction='right']) {
-      --y1: 0px;
-      --y2: 0px;
-      --y3: 0px;
-      --x1: 24px;
-      --x2: 16px;
-      --x3: 4px;
-    }
+  &:where([data-elevation-direction='left'], [data-elevation-direction='right']) {
+    --y1: 0px;
+    --y2: 0px;
+    --y3: 0px;
+    --x1: 24px;
+    --x2: 16px;
+    --x3: 4px;
   }
 }

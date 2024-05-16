@@ -73,8 +73,6 @@ export type PanelProps = {
   vPadding?: TokensTypes['space'];
   /**
    * Disable the glow effect.
-   *
-   * @defaultValue true
    */
   disableGlow?: boolean;
   /**
@@ -108,7 +106,7 @@ export const Panel = forwardRef(({
   vPadding,
   backgroundColor,
   backgroundColorHover,
-  disableGlow = true,
+  disableGlow,
   glowSpread,
   glowColor,
   rainbowColors,
