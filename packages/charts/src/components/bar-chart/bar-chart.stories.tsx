@@ -31,7 +31,7 @@ const meta = {
     showYAxis: true,
     showXAxis: false,
     showAreas: false,
-    density: 'mid',
+    density: 'high',
   },
   argTypes: {
     data: { table: { disable: true } },
