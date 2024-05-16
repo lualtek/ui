@@ -1,5 +1,12 @@
 # @lualtek/config
 
+## 12.0.0-next.1
+
+### Patch Changes
+
+- 7f0d476: Rename disableGlow into showGlow
+  - @lualtek/tokens@12.0.0-next.1
+
 ## 12.0.0-next.0
 
 ### Major Changes

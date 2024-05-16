@@ -1,5 +1,14 @@
 # @lualtek/charts
 
+## 12.0.0-next.1
+
+### Patch Changes
+
+- 7f0d476: Rename disableGlow into showGlow
+- Updated dependencies [7f0d476]
+  - @lualtek/react-components@12.0.0-next.1
+  - @lualtek/tokens@12.0.0-next.1
+
 ## 12.0.0-next.0
 
 ### Major Changes

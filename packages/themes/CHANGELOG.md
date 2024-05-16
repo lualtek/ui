@@ -1,5 +1,11 @@
 # @lualtek/themes
 
+## 12.0.0-next.1
+
+### Patch Changes
+
+- 7f0d476: Rename disableGlow into showGlow
+
 ## 12.0.0-next.0
 
 ### Major Changes
