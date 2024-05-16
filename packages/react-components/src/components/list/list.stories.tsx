@@ -30,12 +30,12 @@ type Story = StoryObj<typeof meta>;
 export const Default = {} satisfies Story;
 export const CustomMarker = {
   args: {
-    marker: 'check',
+    marker: 'chat',
   },
 } satisfies Story;
 
 export const MarkerColor = {
   args: {
-    marker: 'check',
+    markerColor: 'green',
   },
 } satisfies Story;
