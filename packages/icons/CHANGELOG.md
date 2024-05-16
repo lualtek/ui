@@ -4,7 +4,7 @@
 
 ### Major Changes
 
-- 60e73a2: disable panel glow by default. disableGlow is true by default.
+- 60e73a2: disable panel glow by default. showGlow is true by default.
 
 ## 11.19.0
 

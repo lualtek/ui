@@ -74,9 +74,9 @@ export type PanelProps = {
   /**
    * Disable the glow effect.
    *
-   * @defaultValue true
+   * @defaultValue false
    */
-  disableGlow?: boolean;
+  showGlow?: boolean;
   /**
    * Set the spread of the glow effect.
    */
@@ -108,7 +108,7 @@ export const Panel = forwardRef(({
   vPadding,
   backgroundColor,
   backgroundColorHover,
-  disableGlow = true,
+  showGlow = false,
   glowSpread,
   glowColor,
   rainbowColors,
@@ -147,7 +147,7 @@ export const Panel = forwardRef(({
 
   return (
     <ConditionalWrapper
-      condition={!disableGlow}
+      condition={showGlow}
       wrapper={children => (
         <Glow
           innerRadius={radius}

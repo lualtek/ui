@@ -28,7 +28,7 @@ export const Tooltip: FC<TooltipProps> = ({
     <Panel
       radius={8}
       vibrant
-      disableGlow
+      showGlow
       vibrancyColor="soft"
       bordered
     >

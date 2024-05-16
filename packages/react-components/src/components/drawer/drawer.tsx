@@ -176,7 +176,7 @@ export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(({
                   <Panel
                     vibrant
                     vibrancyColor="soft"
-                    disableGlow={!matches.small}
+                    showGlow={!matches.small}
                     bordered
                     borderSide={side === 'left' ? 'right' : 'left'}
                   >

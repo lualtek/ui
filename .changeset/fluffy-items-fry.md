@@ -5,4 +5,4 @@
 "@lualtek/icons": major
 ---
 
-disable panel glow by default. disableGlow is true by default.
+disable panel glow by default. showGlow is true by default.

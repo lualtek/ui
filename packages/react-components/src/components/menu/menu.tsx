@@ -57,6 +57,7 @@ export const Menu = forwardRef<HTMLUListElement, MenuProps>(({
       bordered
       vibrant
       vibrancyColor="background"
+      showGlow
       radius={24}
     >
       <Stack
