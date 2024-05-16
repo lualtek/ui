@@ -82,7 +82,6 @@ export const Tabs: TabsComponent = ({
           vPadding={4}
           hPadding={4}
           vibrant
-          disableGlow
           vibrancyColor="soft"
           className={styles.List}
         >

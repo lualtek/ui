@@ -100,7 +100,6 @@ export const InlineToast = forwardRef<HTMLOutputElement, InlineToastProps>(({
       ref={forwardedRef}
       className={clsx(styles.InlineToast, className)}
       data-toast-kind={kind}
-      disableGlow
       vibrant
       vibrancyColor="soft"
       bordered

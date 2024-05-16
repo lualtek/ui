@@ -5,10 +5,7 @@
       "dependsOn": ["^build"],
       "outputs": ["dist/**"]
     },
-    "build-storybook": {
-      "dependsOn": ["^build"],
-      "outputs": []
-    },
+    "//#dev": {},
     "lint": {
       "outputs": []
     },

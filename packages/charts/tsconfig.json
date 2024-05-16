@@ -1,0 +1,12 @@
+{
+  "extends": "tsconfig/react-library.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "baseUrl": ".",
+    "paths": {
+      "@/charts/*": ["src/*"]
+    }
+  },
+  "include": ["src", "types", "generate-api-doc.ts"],
+  "exclude": ["dist", "build", "node_modules"]
+}

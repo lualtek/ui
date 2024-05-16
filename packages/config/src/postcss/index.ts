@@ -1,7 +1,7 @@
 import jsonTokens from '@lualtek/tokens/platforms/web/tokens.json';
 import { flatten } from 'flat';
 
-import { postcssConfig } from './config.js';
+import { postcssObjConfig } from './config-object.js';
 
 const flatTokens: Record<string, any> = flatten(jsonTokens, {
   delimiter: '-',
@@ -13,4 +13,4 @@ const prepareTokens = () => Object.keys(flatTokens).reduce<Record<string, string
   return acc;
 }, {});
 
-export const getConfig = () => postcssConfig(prepareTokens());
+export const getConfigObject = () => postcssObjConfig(prepareTokens());
