@@ -11,6 +11,7 @@
     "tsconfig": "0.0.1"
   },
   "changesets": [
+    "brown-teachers-sin",
     "fluffy-items-fry",
     "seven-ways-jump"
   ]
