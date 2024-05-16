@@ -1,55 +1,56 @@
-[data-vibrancy='true'] {
-  --saturation: 100%;
+@layer utilities {
+  [data-vibrancy='true'] {
+    --saturation: 100%;
 
-  backdrop-filter: blur(var(--blur)) saturate(var(--saturation));
-  background-color: var(--background);
+    backdrop-filter: blur(var(--blur)) saturate(var(--saturation));
+    background-color: var(--background);
 
-  &[data-vibrancy-blur='soft'] {
-    --blur: token(--vibrancy-blur-soft);
-  }
+    &[data-vibrancy-blur='soft'] {
+      --blur: token(--vibrancy-blur-soft);
+    }
 
-  &[data-vibrancy-blur='strong'] {
-    --blur: token(--vibrancy-blur-strong);
-  }
+    &[data-vibrancy-blur='strong'] {
+      --blur: token(--vibrancy-blur-strong);
+    }
 
-  &[data-vibrancy-saturation='standard'] {
-    --saturation: token(--vibrancy-saturation-standard);
-  }
+    &[data-vibrancy-saturation='standard'] {
+      --saturation: token(--vibrancy-saturation-standard);
+    }
 
-  &[data-vibrancy-saturation='high'] {
-    --saturation: token(--vibrancy-saturation-high);
-  }
+    &[data-vibrancy-saturation='high'] {
+      --saturation: token(--vibrancy-saturation-high);
+    }
 
-  &[data-vibrancy-color='background'] {
-    --background: var(--vibrancy-background);
-  }
+    &[data-vibrancy-color='background'] {
+      --background: var(--vibrancy-background);
+    }
 
-  &[data-vibrancy-color='soft'] {
-    --background: var(--vibrancy-background-soft);
-  }
+    &[data-vibrancy-color='soft'] {
+      --background: var(--vibrancy-background-soft);
+    }
 
-  &[data-vibrancy-color='mid'] {
-    --background: var(--vibrancy-background-mid);
-  }
+    &[data-vibrancy-color='mid'] {
+      --background: var(--vibrancy-background-mid);
+    }
 
-  &[data-vibrancy-color='hard'] {
-    --background: var(--vibrancy-background-hard);
-  }
+    &[data-vibrancy-color='hard'] {
+      --background: var(--vibrancy-background-hard);
+    }
 
-  &[data-vibrancy-color='red'] {
-    --background: var(--vibrancy-background-red);
-  }
+    &[data-vibrancy-color='red'] {
+      --background: var(--vibrancy-background-red);
+    }
 
-  &[data-vibrancy-color='green'] {
-    --background: var(--vibrancy-background-green);
-  }
+    &[data-vibrancy-color='green'] {
+      --background: var(--vibrancy-background-green);
+    }
 
-  &[data-vibrancy-color='yellow'] {
-    --background: var(--vibrancy-background-yellow);
-  }
+    &[data-vibrancy-color='yellow'] {
+      --background: var(--vibrancy-background-yellow);
+    }
 
-  &[data-vibrancy-color='brand'] {
-    --background: var(--vibrancy-background-brand);
+    &[data-vibrancy-color='brand'] {
+      --background: var(--vibrancy-background-brand);
+    }
   }
 }
-

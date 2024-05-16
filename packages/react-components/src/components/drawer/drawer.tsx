@@ -17,6 +17,7 @@ import {
   PropsClassChildren,
   Stack,
   Title,
+  useResponsiveContext,
 } from '@/components';
 
 import styles from './drawer.module.css';
@@ -116,6 +117,7 @@ export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(({
   ...otherProps
 }, forwardedRef) => {
   const titleId = useId();
+  const { matches } = useResponsiveContext();
   useKeys(['esc'], () => onClose());
 
   const dynamicStyle = useMemo(() => (
@@ -171,7 +173,13 @@ export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(({
                 data-drawer-side={side}
               >
                 <Elevator resting={4} direction={side === 'left' ? 'right' : 'left'}>
-                  <Panel vibrant vibrancyColor="soft" bordered borderSide={side === 'left' ? 'right' : 'left'}>
+                  <Panel
+                    vibrant
+                    vibrancyColor="soft"
+                    disableGlow={!matches.small}
+                    bordered
+                    borderSide={side === 'left' ? 'right' : 'left'}
+                  >
                     <Stack
                       className={styles.Content}
                       style={dynamicStyle}

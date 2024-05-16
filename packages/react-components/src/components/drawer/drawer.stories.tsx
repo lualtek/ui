@@ -3,7 +3,8 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import {
   Autocomplete,
-  Button, Chip, Stack,
+  Button, Chip, ResponsiveProvider,
+  Stack,
 } from '../..';
 import { Drawer } from './drawer';
 
@@ -23,9 +24,16 @@ const options = [
   },
 ];
 
-const meta = {
+const meta: Meta<typeof Drawer> = {
   title: 'Dialogs/Drawer',
   component: Drawer,
+  decorators: [
+    Story => (
+      <ResponsiveProvider>
+        <Story />
+      </ResponsiveProvider>
+    ),
+  ],
   render: function Render({ ...args }) {
     const [{ isVisible }, updateArgs] = useArgs<{ isVisible: boolean }>();
     const handleClose = () => updateArgs({ isVisible: false });

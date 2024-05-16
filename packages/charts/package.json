@@ -1,0 +1,76 @@
+{
+  "name": "@lualtek/charts",
+  "version": "0.0.1",
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "types": "dist/index.d.ts",
+  "module": "dist/index.js",
+  "main": "dist/index.js",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.js"
+    },
+    "./doc/*": "./dist/components/*/*.doc.json",
+    "./package.json": "./package.json"
+  },
+  "sideEffects": false,
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com",
+    "access": "restricted"
+  },
+  "scripts": {
+    "dev": "pnpm run --parallel watch:csstypes",
+    "prebuild": "pnpm run clean && pnpm run build:csstypes",
+    "build": "pnpm run build:ts && pnpm run build:css && pnpm run build:api",
+    "build:css": "cd src && copyfiles \"**/*.css\" \"./../dist\"",
+    "build:ts": "tsc -p tsconfig.prod.json && tsc-alias",
+    "build:api": "typedoc && typedoc-json-parser --json dist/api-temp.json && node --loader ts-node/esm ./generate-api-doc.ts",
+    "postbuild:api": "rimraf dist/api-temp.json",
+    "watch:csstypes": "tcm -w -p '**/*.module.css' src",
+    "build:csstypes": "tcm -p '**/*.module.css' src",
+    "clean": "rimraf dist",
+    "prepack": "node --loader ts-node/esm ./prepack.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh+https://github.com/lualtek/ui.git",
+    "directory": "packages/charts"
+  },
+  "bugs": {
+    "url": "https://github.com/lualtek/ui/issues"
+  },
+  "homepage": "https://github.com/lualtek/ui",
+  "browserslist": [
+    "last 2 Chrome versions",
+    "last 2 Firefox versions",
+    "last 2 Safari versions",
+    "last 2 Edge versions"
+  ],
+  "peerDependencies": {
+    "react": "^18.2",
+    "react-dom": "^18.2"
+  },
+  "devDependencies": {
+    "@types/node": "20.12.12",
+    "@types/react": "18.3.2",
+    "@types/react-dom": "18.3.0",
+    "react": "^18.3",
+    "react-dom": "^18.3",
+    "tsconfig": "workspace:*",
+    "typed-css-modules": "0.9.1",
+    "typedoc": "0.25.13",
+    "typedoc-json-parser": "10.0.0",
+    "typescript": "5.4.5"
+  },
+  "dependencies": {
+    "@lualtek/react-components": "workspace:*",
+    "@lualtek/tokens": "workspace:*",
+    "clsx": "2.1.1",
+    "recharts": "2.12.7",
+    "type-fest": "4.18.2"
+  }
+}
