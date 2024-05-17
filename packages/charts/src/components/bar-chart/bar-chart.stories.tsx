@@ -18,11 +18,11 @@ const meta = {
     data,
     series: [{
       dataKey: 'y',
-      lineKeyId: 'y',
+      serieKeyId: 'y',
       side: 'left',
     }, {
       dataKey: 'z',
-      lineKeyId: 'z',
+      serieKeyId: 'z',
       side: 'left',
     },
     ],
@@ -53,6 +53,29 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default = {} satisfies Story;
+
+export const CustomBarSize = {
+  args: {
+    barSize: 2,
+  },
+} satisfies Story;
+
+export const StackedBars = {
+  args: {
+    series: [{
+      dataKey: 'y',
+      serieKeyId: 'y',
+      stackId: 'stack',
+      side: 'left',
+    },
+    {
+      dataKey: 'z',
+      serieKeyId: 'z',
+      stackId: 'stack',
+      side: 'left',
+    }],
+  },
+} satisfies Story;
 
 export const WithCustomDataset = {
   args: {

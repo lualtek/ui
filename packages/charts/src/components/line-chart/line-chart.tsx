@@ -26,7 +26,7 @@ export type LineProps<D> = {
   /**
    * Used on the map as linekey id, should be unique
    */
-  lineKeyId: string;
+  serieKeyId: string;
   /**
    * The Y axis assigned to this line.
    */
@@ -34,7 +34,7 @@ export type LineProps<D> = {
   /**
    * The stroke color of the line.
    */
-  stroke?: string;
+  color?: string;
   /**
    * The type of the line.
    *
@@ -175,12 +175,12 @@ export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
         {showAreas && (
           <defs>
             {series.map(({
-              lineKeyId,
-              stroke,
+              serieKeyId,
+              color,
             }, index) => (
-              <linearGradient id={lineKeyId} x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor={stroke ?? getChartDefaultColor(index)} stopOpacity={0.4} />
-                <stop offset="95%" stopColor={stroke ?? getChartDefaultColor(index)} stopOpacity={0} />
+              <linearGradient id={serieKeyId} x1="0" y1="0" x2="0" y2="1">
+                <stop offset="5%" stopColor={color ?? getChartDefaultColor(index)} stopOpacity={0.4} />
+                <stop offset="95%" stopColor={color ?? getChartDefaultColor(index)} stopOpacity={0} />
               </linearGradient>
             ))}
           </defs>
@@ -188,14 +188,14 @@ export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
 
         {series.map(({
           dataKey,
-          lineKeyId,
+          serieKeyId,
           side,
-          stroke,
+          color,
           type,
           unit,
           name,
         }, index) => {
-          const computedStrokeColor = stroke ?? getChartDefaultColor(index);
+          const computedStrokeColor = color ?? getChartDefaultColor(index);
           const commonProps = {
             dataKey,
             yAxisId: side,
@@ -221,14 +221,14 @@ export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
           return showAreas ? (
             <Area
               {...commonProps}
-              key={lineKeyId}
+              key={serieKeyId}
               fillOpacity={1}
-              fill={`url(#${lineKeyId})`}
+              fill={`url(#${serieKeyId})`}
             />
           ) : (
             <Line
               {...commonProps}
-              key={lineKeyId}
+              key={serieKeyId}
             />
           );
         })}

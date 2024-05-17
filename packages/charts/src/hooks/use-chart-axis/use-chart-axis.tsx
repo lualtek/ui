@@ -8,8 +8,8 @@ const getYValuesLength = <D extends ChartDataBaseType, L extends LineProps<D>>(
   notBiaxialLines: L[],
   biaxialLines: L[],
 ) => data.reduce((acc, item) => {
-    const valuesLinesNotBiaxial = notBiaxialLines.map(line => Number(item[line.lineKeyId]));
-    const valuesLinesBiaxial = biaxialLines.map(line => Number(item[line.lineKeyId]));
+    const valuesLinesNotBiaxial = notBiaxialLines.map(serie => Number(item[serie.serieKeyId]));
+    const valuesLinesBiaxial = biaxialLines.map(serie => Number(item[serie.serieKeyId]));
 
     const valuesNotBiaxial = Math.floor(Math.max(...valuesLinesNotBiaxial));
     const valuesBiaxial = Math.floor(Math.max(...valuesLinesBiaxial));
@@ -24,8 +24,8 @@ export const useChartAxis = <D extends ChartDataBaseType, L extends LineProps<D>
   series,
 }: { data: D[]; series: L[] }) => {
   const [notBiaxialLines, biaxialLines] = useMemo(() => series.reduce<[L[], L[]]>(
-    (acc, line) => {
-      acc[line.side === 'right' ? 1 : 0].push(line);
+    (acc, serie) => {
+      acc[serie.side === 'right' ? 1 : 0].push(serie);
       return acc;
     }, [[], []],
   ), [series]);

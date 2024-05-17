@@ -18,7 +18,7 @@ const meta = {
     data,
     series: [{
       dataKey: 'y',
-      lineKeyId: 'y',
+      serieKeyId: 'y',
       side: 'left',
     }],
     showGrid: true,

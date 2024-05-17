@@ -206,7 +206,7 @@ export default {
   ],
   series: [{
     dataKey: 'temperature',
-    lineKeyId: 'temperature',
+    serieKeyId: 'temperature',
     side: 'left',
     // stroke: 'red',
     unit: '°C',
@@ -214,7 +214,7 @@ export default {
   },
   {
     dataKey: 'humidity',
-    lineKeyId: 'humidity',
+    serieKeyId: 'humidity',
     type: 'step',
     side: 'left',
     // stroke: 'blue',
@@ -223,7 +223,7 @@ export default {
   },
   {
     dataKey: 'pressure',
-    lineKeyId: 'pressure',
+    serieKeyId: 'pressure',
     side: 'right',
     // stroke: 'green',
     unit: 'mbar',

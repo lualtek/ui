@@ -21,17 +21,19 @@ export type BarProps<D> = {
    */
   dataKey: string | ((data: D) => string | number);
   /**
-   * Used on the map as linekey id, should be unique
+   * Used on the map as bar id, if multiple bars use the same id they will be stacked
    */
-  lineKeyId: string;
+  serieKeyId: string;
+
+  stackId?: string;
   /**
    * The Y axis assigned to this line.
    */
   side: 'left' | 'right';
   /**
-   * The stroke color of the line.
+   * The color color of the line.
    */
-  stroke?: string;
+  color?: string;
   /**
    * The unit assigned to the line value
    */
@@ -58,6 +60,16 @@ BaseChartProps, 'renderChart' | 'children'> & {
    * @defaultValue true
    */
   showYAxis?: boolean;
+  /**
+   * The gap between bar groups
+   *
+   * @defaultValue '20%'
+   */
+  barCategoryGap?: string | number;
+  /**
+   * Set the size of the bars
+   */
+  barSize?: number | string;
 }
 
 export function BarChart<D extends ChartDataBaseType, L extends BarProps<D>>({
@@ -66,6 +78,8 @@ export function BarChart<D extends ChartDataBaseType, L extends BarProps<D>>({
   series,
   showYAxis = true,
   density = 'mid',
+  barCategoryGap = '20%',
+  barSize,
   children,
   ...otherProps
 }: PropsClassChildren & BarChartProps<D, L>) {
@@ -108,10 +122,13 @@ export function BarChart<D extends ChartDataBaseType, L extends BarProps<D>>({
       ref={chartRef}
       onResize={handleResize}
       density={density}
+      cursorStyle={{ strokeWidth: 0 }}
       renderChart={children => (
         <ReBarChart
           data={data}
           accessibilityLayer
+          barCategoryGap={barCategoryGap}
+          barSize={barSize}
         >
           {children}
         </ReBarChart>
@@ -146,23 +163,25 @@ export function BarChart<D extends ChartDataBaseType, L extends BarProps<D>>({
 
         {series.map(({
           dataKey,
-          lineKeyId,
+          serieKeyId,
+          stackId,
           side,
-          stroke,
+          color,
           unit,
           name,
         }, index) => {
-          const computedStrokeColor = stroke ?? getChartDefaultColor(index);
+          const computedStrokeColor = color ?? getChartDefaultColor(index);
 
           return (
             <Bar
               dataKey={dataKey}
-              yAxisId={side}
+              stackId={stackId}
               isAnimationActive={isAnimationActive}
               fill={computedStrokeColor}
+              yAxisId={side}
               name={name}
               unit={unit}
-              key={lineKeyId}
+              key={serieKeyId}
             />
           );
         })}
