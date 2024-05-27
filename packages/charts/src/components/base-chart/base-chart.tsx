@@ -1,5 +1,7 @@
 import { PropsClassChildren, Stack, Text } from '@lualtek/react-components';
-import { forwardRef, ReactElement, ReactNode } from 'react';
+import {
+  forwardRef, ReactElement, ReactNode, useMemo,
+} from 'react';
 import {
   CartesianGrid,
   Legend,
@@ -50,8 +52,13 @@ export type BaseChartProps = ResponsiveContainerProps & {
    */
   density?: 'low' | 'mid' | 'high';
   /**
+   * The cursor style for the tooltip.
+   */
+  cursorStyle?: Record<string, string | number> | false;
+  /**
    * Render a custom tooltip instead of the default one.
    *
+   * @private Used by other charts to render the chart wrapper*
    * @param props { active?: boolean; label?: string; payload?: TooltipEntry[]; }
    * @returns JSX.Element
    */
@@ -87,61 +94,71 @@ export const BaseChart = forwardRef<HTMLDivElement, PropsClassChildren<BaseChart
   density = 'mid',
   renderChart,
   customTooltip,
+  cursorStyle,
   ...otherProps
-}, forwardedRef) => (
-  <div ref={forwardedRef} className={className}>
-    <ResponsiveContainer
-      width="100%"
-      debounce={0}
-      height={height}
-      {...otherProps}
-    >
-      {renderChart(
-        <>
-          {showGrid && (
-            <CartesianGrid
-              strokeDasharray="4 4"
-              stroke="color-mix(in oklch, var(--global-foreground), transparent 80%)"
+}, forwardedRef) => {
+  const cursor = useMemo(() => ({
+    stroke: 'var(--dimmed-3)',
+    strokeWidth: 2,
+    fill: 'var(--dimmed-2)',
+    ...cursorStyle,
+  }), [cursorStyle]);
+
+  return (
+    <div ref={forwardedRef} className={className}>
+      <ResponsiveContainer
+        width="100%"
+        debounce={0}
+        height={height}
+        {...otherProps}
+      >
+        {renderChart(
+          <>
+            {showGrid && (
+              <CartesianGrid
+                strokeDasharray="4 4"
+                stroke="color-mix(in oklch, var(--global-foreground), transparent 80%)"
+              />
+            )}
+            {showTooltip && (
+              <ReTooltip
+                cursor={cursor}
+                content={customTooltip ?? Tooltip}
+              />
+            )}
+            <XAxis
+              dataKey={dataKeyX}
+              tickCount={DENSITIES[density]}
+              hide={!showXAxis}
+              minTickGap={32}
+              tick={{ fill: 'var(--dimmed-3)', fontSize: '0.8em' }}
+              padding={{ left: xPadding, right: xPadding }}
+              tickLine={{ stroke: 'var(--dimmed-3)' }}
+              axisLine={{ stroke: 'var(--dimmed-4)' }}
+              tickSize={8}
+              allowDataOverflow
+              tickMargin={8}
             />
-          )}
-          {showTooltip && (
-            <ReTooltip
-              cursor={{ stroke: 'var(--dimmed-3)', strokeWidth: 2 }}
-              content={customTooltip ?? Tooltip}
-            />
-          )}
-          <XAxis
-            dataKey={dataKeyX}
-            tickCount={DENSITIES[density]}
-            hide={!showXAxis}
-            minTickGap={32}
-            tick={{ fill: 'var(--dimmed-3)', fontSize: '0.8em' }}
-            padding={{ left: xPadding, right: xPadding }}
-            tickLine={{ stroke: 'var(--dimmed-3)' }}
-            axisLine={{ stroke: 'var(--dimmed-4)' }}
-            tickSize={8}
-            allowDataOverflow
-            tickMargin={8}
-          />
-          {children}
-          {showLegend && (
-            <Legend
-              align="right"
-              iconType="plainline"
-              formatter={(value, entry) => {
-                const { color } = entry;
-                return (
-                  <Stack inline fill={false} vPadding={8}>
-                    <Text as="span" size={14} style={{ color }}>{value}</Text>
-                  </Stack>
-                );
-              }}
-            />
-          )}
-        </>,
-      )}
-    </ResponsiveContainer>
-  </div>
-));
+            {children}
+            {showLegend && (
+              <Legend
+                align="right"
+                iconType="plainline"
+                formatter={(value, entry) => {
+                  const { color } = entry;
+                  return (
+                    <Stack inline fill={false} vPadding={8}>
+                      <Text as="span" size={14} style={{ color }}>{value}</Text>
+                    </Stack>
+                  );
+                }}
+              />
+            )}
+          </>,
+        )}
+      </ResponsiveContainer>
+    </div>
+  );
+});
 
 BaseChart.displayName = 'XYChart';

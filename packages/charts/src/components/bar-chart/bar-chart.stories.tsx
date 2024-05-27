@@ -3,30 +3,35 @@ import type { Meta, StoryObj } from '@storybook/react';
 import SimpleData from '../../../fixtures/data';
 import MultiAxisData from '../../../fixtures/multi-y-data';
 import {
-  LineChart,
-  LineProps,
-} from './line-chart';
+  BarChart,
+  BarProps,
+} from './bar-chart';
 
 type Data = Record<string, number | string>;
 
 const { data } = SimpleData;
 
 const meta = {
-  title: 'Data Viz/Linear Chart',
-  component: LineChart,
+  title: 'Data Viz/Bar Chart',
+  component: BarChart,
   args: {
     data,
     series: [{
       dataKey: 'y',
       serieKeyId: 'y',
       side: 'left',
-    }],
+    }, {
+      dataKey: 'z',
+      serieKeyId: 'z',
+      side: 'left',
+    },
+    ],
     showGrid: true,
     showDots: false,
     showYAxis: true,
     showXAxis: false,
     showAreas: false,
-    density: 'mid',
+    density: 'high',
   },
   argTypes: {
     data: { table: { disable: true } },
@@ -39,9 +44,9 @@ const meta = {
     },
   },
   render: args => (
-    <LineChart {...args} />
+    <BarChart {...args} />
   ),
-} satisfies Meta<typeof LineChart>;
+} satisfies Meta<typeof BarChart>;
 
 export default meta;
 
@@ -49,57 +54,32 @@ type Story = StoryObj<typeof meta>;
 
 export const Default = {} satisfies Story;
 
-export const WithFixedSize = {
+export const CustomBarSize = {
   args: {
-    width: 300,
-    height: 100,
-    showGrid: false,
-    showYAxis: false,
-    showTooltip: false,
+    barSize: 2,
   },
 } satisfies Story;
 
-export const WithMinWidth = {
+export const StackedBars = {
   args: {
-    minWidth: 800,
-    showGrid: false,
-    showYAxis: false,
-    showTooltip: false,
-  },
-} satisfies Story;
-
-export const WithCustomTooltip = {
-  args: {
-    customTooltip: ({ label }) => (
-      <div style={{ color: 'red' }}>
-        {label}
-      </div>
-    ),
-  },
-} satisfies Story;
-
-export const WithLegend = {
-  args: {
-    showLegend: true,
-  },
-} satisfies Story;
-
-export const WidthXPadding = {
-  args: {
-    xPadding: 32,
+    series: [{
+      dataKey: 'y',
+      serieKeyId: 'y',
+      stackId: 'stack',
+      side: 'left',
+    },
+    {
+      dataKey: 'z',
+      serieKeyId: 'z',
+      stackId: 'stack',
+      side: 'left',
+    }],
   },
 } satisfies Story;
 
 export const WithCustomDataset = {
   args: {
     data: MultiAxisData.data,
-    series: MultiAxisData.series as Array<LineProps<Data>>,
+    series: MultiAxisData.series as Array<BarProps<Data>>,
   },
 } satisfies Story;
-
-export const WithAreas = {
-  args: {
-    showAreas: true,
-  },
-} satisfies Story;
-

@@ -8,8 +8,8 @@ const getYValuesLength = <D extends ChartDataBaseType, L extends LineProps<D>>(
   notBiaxialLines: L[],
   biaxialLines: L[],
 ) => data.reduce((acc, item) => {
-    const valuesLinesNotBiaxial = notBiaxialLines.map(line => Number(item[line.lineKeyId]));
-    const valuesLinesBiaxial = biaxialLines.map(line => Number(item[line.lineKeyId]));
+    const valuesLinesNotBiaxial = notBiaxialLines.map(serie => Number(item[serie.serieKeyId]));
+    const valuesLinesBiaxial = biaxialLines.map(serie => Number(item[serie.serieKeyId]));
 
     const valuesNotBiaxial = Math.floor(Math.max(...valuesLinesNotBiaxial));
     const valuesBiaxial = Math.floor(Math.max(...valuesLinesBiaxial));
@@ -21,14 +21,14 @@ const getYValuesLength = <D extends ChartDataBaseType, L extends LineProps<D>>(
 
 export const useChartAxis = <D extends ChartDataBaseType, L extends LineProps<D>>({
   data,
-  lines,
-}: { data: D[]; lines: L[] }) => {
-  const [notBiaxialLines, biaxialLines] = useMemo(() => lines.reduce<[L[], L[]]>(
-    (acc, line) => {
-      acc[line.side === 'right' ? 1 : 0].push(line);
+  series,
+}: { data: D[]; series: L[] }) => {
+  const [notBiaxialLines, biaxialLines] = useMemo(() => series.reduce<[L[], L[]]>(
+    (acc, serie) => {
+      acc[serie.side === 'right' ? 1 : 0].push(serie);
       return acc;
     }, [[], []],
-  ), [lines]);
+  ), [series]);
 
   const [yAxisWidthNotBiaxial, yAxisWidthBiaxial] = useMemo(() => {
     if (data.length === 0) {
@@ -43,8 +43,8 @@ export const useChartAxis = <D extends ChartDataBaseType, L extends LineProps<D>
     ];
   }, [data, notBiaxialLines, biaxialLines]);
 
-  const hasLeftY = lines.some(({ side }) => side === 'left');
-  const hasRightY = lines.some(({ side }) => side === 'right');
+  const hasLeftY = series.some(({ side }) => side === 'left');
+  const hasRightY = series.some(({ side }) => side === 'right');
 
   return {
     yAxisWidthNotBiaxial,
