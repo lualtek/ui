@@ -24,7 +24,9 @@ export type BarProps<D> = {
    * Used on the map as bar id, if multiple bars use the same id they will be stacked
    */
   serieKeyId: string;
-
+  /**
+   * The stack id to assign to the bar to stack it with other bars.
+   */
   stackId?: string;
   /**
    * The Y axis assigned to this line.
