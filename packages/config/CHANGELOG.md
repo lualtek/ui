@@ -1,5 +1,16 @@
 # @lualtek/config
 
+## 12.0.0-next.3
+
+### Minor Changes
+
+- 39daa92: Add new grain and organic icons
+
+### Patch Changes
+
+- Updated dependencies [39daa92]
+  - @lualtek/tokens@12.0.0-next.3
+
 ## 12.0.0-next.2
 
 ### Minor Changes
