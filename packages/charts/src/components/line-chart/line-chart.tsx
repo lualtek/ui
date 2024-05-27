@@ -178,7 +178,7 @@ export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
               serieKeyId,
               color,
             }, index) => (
-              <linearGradient id={serieKeyId} x1="0" y1="0" x2="0" y2="1">
+              <linearGradient key={serieKeyId} id={serieKeyId} x1="0" y1="0" x2="0" y2="1">
                 <stop offset="5%" stopColor={color ?? getChartDefaultColor(index)} stopOpacity={0.4} />
                 <stop offset="95%" stopColor={color ?? getChartDefaultColor(index)} stopOpacity={0} />
               </linearGradient>
