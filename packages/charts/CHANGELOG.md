@@ -1,5 +1,13 @@
 # @lualtek/charts
 
+## 12.0.0-next.4
+
+### Patch Changes
+
+- c691069: Add missing key
+  - @lualtek/react-components@12.0.0-next.4
+  - @lualtek/tokens@12.0.0-next.4
+
 ## 12.0.0-next.3
 
 ### Minor Changes
