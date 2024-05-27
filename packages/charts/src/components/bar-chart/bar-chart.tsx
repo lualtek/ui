@@ -46,16 +46,16 @@ export type BarProps<D> = {
   name?: string;
 };
 
-export type BarChartProps<D extends ChartDataBaseType, L extends BarProps<D>> = Except<
+export type BarChartProps<Data extends ChartDataBaseType, Bar extends BarProps<D>> = Except<
 BaseChartProps, 'renderChart' | 'children'> & {
   /**
    * The data to render.
    */
-  data: D[];
+  data: Data[];
   /**
    * The chart series/series to render.
    */
-  series: L[];
+  series: Bar[];
   /**
    * Whether to show the Y axis.
    *
@@ -74,7 +74,7 @@ BaseChartProps, 'renderChart' | 'children'> & {
   barSize?: number | string;
 }
 
-export function BarChart<D extends ChartDataBaseType, L extends BarProps<D>>({
+export function BarChart<Data extends ChartDataBaseType, Bar extends BarProps<D>>({
   className,
   data,
   series,
@@ -84,7 +84,7 @@ export function BarChart<D extends ChartDataBaseType, L extends BarProps<D>>({
   barSize,
   children,
   ...otherProps
-}: PropsClassChildren & BarChartProps<D, L>) {
+}: PropsClassChildren & BarChartProps<Data, Bar>) {
   const chartRef = useRef<HTMLDivElement>(null);
   const [isAnimationActive, setIsAnimationActive] = useState(true);
   const [currentChartWidth, setCurrentChartWidth] = useState<number>();

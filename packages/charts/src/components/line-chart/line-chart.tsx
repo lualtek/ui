@@ -18,11 +18,11 @@ import { BaseChart, BaseChartProps, DENSITIES } from '../base-chart';
 import { ChartDataBaseType } from '../base-chart/base-chart';
 import { getChartDefaultColor } from '../base-chart/colors';
 
-export type LineProps<D> = {
+export type LineProps<Data> = {
   /**
    * The data key to assign to the line.
    */
-  dataKey: string | ((data: D) => string | number);
+  dataKey: string | ((data: Data) => string | number);
   /**
    * Used on the map as linekey id, should be unique
    */
@@ -51,16 +51,16 @@ export type LineProps<D> = {
   name?: string;
 };
 
-export type LineChartProps<D extends ChartDataBaseType, L extends LineProps<D>> = Except<
+export type LineChartProps<Data extends ChartDataBaseType, Line extends LineProps<Data>> = Except<
 BaseChartProps, 'renderChart' | 'children'> & {
   /**
    * The data to render.
    */
-  data: D[];
+  data: Data[];
   /**
    * The chart series/series to render.
    */
-  series: L[];
+  series: Line[];
   /**
    * Whether to show the dots on the series.
    *
@@ -79,7 +79,7 @@ BaseChartProps, 'renderChart' | 'children'> & {
   showAreas?: boolean;
 }
 
-export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
+export function LineChart<Data extends ChartDataBaseType, Line extends LineProps<Data>>({
   className,
   data,
   series,
@@ -89,7 +89,7 @@ export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
   showAreas = false,
   children,
   ...otherProps
-}: PropsClassChildren & LineChartProps<D, L>) {
+}: PropsClassChildren & LineChartProps<Data, Line>) {
   const chartRef = useRef<HTMLDivElement>(null);
   const [isAnimationActive, setIsAnimationActive] = useState(true);
   const [currentChartWidth, setCurrentChartWidth] = useState<number>();
