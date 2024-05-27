@@ -5,6 +5,7 @@ import {
 import {
   CartesianGrid,
   Legend,
+  LegendProps,
   ResponsiveContainer,
   ResponsiveContainerProps,
   Tooltip as ReTooltip,
@@ -44,6 +45,12 @@ export type BaseChartProps = ResponsiveContainerProps & {
    * @defaultValue false
    */
   showLegend?: boolean;
+  /**
+   * Set the position of the legend.
+   *
+   * @defaultValue 'right'
+   */
+  legendAlign?: LegendProps['align'];
   /**
    * Set the grid density (number of ticks).
    * This is used only if the grid is rendered.
@@ -89,6 +96,7 @@ export const BaseChart = forwardRef<HTMLDivElement, PropsClassChildren<BaseChart
   showXAxis = false,
   showTooltip = true,
   showLegend = false,
+  legendAlign = 'right',
   dataKeyX = 'x',
   xPadding = 0,
   density = 'mid',
@@ -142,8 +150,9 @@ export const BaseChart = forwardRef<HTMLDivElement, PropsClassChildren<BaseChart
             {children}
             {showLegend && (
               <Legend
-                align="right"
-                iconType="plainline"
+                align={legendAlign}
+                iconType="circle"
+                iconSize={8}
                 formatter={(value, entry) => {
                   const { color } = entry;
                   return (

@@ -32,6 +32,7 @@ const meta = {
     showXAxis: false,
     showAreas: false,
     density: 'high',
+    barCategoryGap: '20%',
   },
   argTypes: {
     data: { table: { disable: true } },
