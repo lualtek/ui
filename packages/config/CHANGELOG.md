@@ -1,5 +1,15 @@
 # @lualtek/config
 
+## 12.0.0-next.2
+
+### Minor Changes
+
+- e9db5a5: Add Barchart
+
+### Patch Changes
+
+- @lualtek/tokens@12.0.0-next.2
+
 ## 12.0.0-next.1
 
 ### Patch Changes
