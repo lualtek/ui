@@ -1,5 +1,17 @@
 # @lualtek/charts
 
+## 12.0.0-next.2
+
+### Minor Changes
+
+- e9db5a5: Add Barchart
+
+### Patch Changes
+
+- Updated dependencies [e9db5a5]
+  - @lualtek/react-components@12.0.0-next.2
+  - @lualtek/tokens@12.0.0-next.2
+
 ## 12.0.0-next.1
 
 ### Patch Changes
