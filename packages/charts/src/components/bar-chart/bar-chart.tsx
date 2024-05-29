@@ -84,6 +84,8 @@ export function BarChart<D extends ChartDataBaseType, B extends BarProps<D>>({
   barSize,
   yDomainLeft,
   yDomainRight,
+  yTypeLeft,
+  yTypeRight,
   children,
   ...otherProps
 }: PropsClassChildren & BarChartProps<D, B>) {
@@ -144,6 +146,7 @@ export function BarChart<D extends ChartDataBaseType, B extends BarProps<D>>({
             yAxisId="right"
             orientation="right"
             domain={yDomainRight}
+            type={yTypeRight}
             tickCount={DENSITIES[density]}
             // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
             width={yAxisWidthBiaxial}
@@ -158,6 +161,7 @@ export function BarChart<D extends ChartDataBaseType, B extends BarProps<D>>({
             yAxisId="left"
             orientation="left"
             domain={yDomainLeft}
+            type={yTypeLeft}
             tickCount={DENSITIES[density]}
             // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
             width={yAxisWidthNotBiaxial}

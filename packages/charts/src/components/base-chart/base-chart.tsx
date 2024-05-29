@@ -82,6 +82,14 @@ export type BaseChartProps = ResponsiveContainerProps & {
    */
   yDomainRight?: YAxisProps['domain'];
   /**
+   * Set the domain for the left Y axis.
+   */
+  yTypeLeft?: YAxisProps['type'];
+  /**
+   * Set the domain for the right Y axis.
+   */
+  yTypeRight?: YAxisProps['type'];
+  /**
    * Render a custom tooltip instead of the default one.
    *
    * @private Used by other charts to render the chart wrapper*

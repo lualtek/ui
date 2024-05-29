@@ -89,6 +89,8 @@ export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
   showAreas = false,
   yDomainLeft,
   yDomainRight,
+  yTypeLeft,
+  yTypeRight,
   children,
   ...otherProps
 }: PropsClassChildren & LineChartProps<D, L>) {
@@ -153,6 +155,7 @@ export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
             yAxisId="right"
             orientation="right"
             domain={yDomainRight}
+            type={yTypeRight}
             tickCount={DENSITIES[density]}
             // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
             width={yAxisWidthBiaxial}
@@ -167,6 +170,7 @@ export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
             yAxisId="left"
             orientation="left"
             domain={yDomainLeft}
+            type={yTypeLeft}
             tickCount={DENSITIES[density]}
             // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
             width={yAxisWidthNotBiaxial}
