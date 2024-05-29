@@ -1,5 +1,17 @@
 # @lualtek/charts
 
+## 12.0.0-next.5
+
+### Minor Changes
+
+- 7f68eb1: Add xDomain, yDomainLeft and yDomainRight to charts
+- f2f4e1f: Add yTypeLeft and yTypeRight
+
+### Patch Changes
+
+- @lualtek/react-components@12.0.0-next.5
+- @lualtek/tokens@12.0.0-next.5
+
 ## 12.0.0-next.4
 
 ### Patch Changes

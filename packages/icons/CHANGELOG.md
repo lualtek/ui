@@ -1,5 +1,7 @@
 # @lualtek/icons
 
+## 12.0.0-next.5
+
 ## 12.0.0-next.4
 
 ## 12.0.0-next.3
