@@ -46,16 +46,16 @@ export type BarProps<D> = {
   name?: string;
 };
 
-export type BarChartProps<Data extends ChartDataBaseType, Bar extends BarProps<D>> = Except<
+export type BarChartProps<D extends ChartDataBaseType, B extends BarProps<D>> = Except<
 BaseChartProps, 'renderChart' | 'children'> & {
   /**
    * The data to render.
    */
-  data: Data[];
+  data: D[];
   /**
    * The chart series/series to render.
    */
-  series: Bar[];
+  series: B[];
   /**
    * Whether to show the Y axis.
    *
@@ -74,7 +74,7 @@ BaseChartProps, 'renderChart' | 'children'> & {
   barSize?: number | string;
 }
 
-export function BarChart<Data extends ChartDataBaseType, Bar extends BarProps<D>>({
+export function BarChart<D extends ChartDataBaseType, B extends BarProps<D>>({
   className,
   data,
   series,
@@ -82,9 +82,11 @@ export function BarChart<Data extends ChartDataBaseType, Bar extends BarProps<D>
   density = 'mid',
   barCategoryGap = '20%',
   barSize,
+  yDomainLeft,
+  yDomainRight,
   children,
   ...otherProps
-}: PropsClassChildren & BarChartProps<Data, Bar>) {
+}: PropsClassChildren & BarChartProps<D, B>) {
   const chartRef = useRef<HTMLDivElement>(null);
   const [isAnimationActive, setIsAnimationActive] = useState(true);
   const [currentChartWidth, setCurrentChartWidth] = useState<number>();
@@ -141,6 +143,7 @@ export function BarChart<Data extends ChartDataBaseType, Bar extends BarProps<D>
           <YAxis
             yAxisId="right"
             orientation="right"
+            domain={yDomainRight}
             tickCount={DENSITIES[density]}
             // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
             width={yAxisWidthBiaxial}
@@ -154,6 +157,7 @@ export function BarChart<Data extends ChartDataBaseType, Bar extends BarProps<D>
           <YAxis
             yAxisId="left"
             orientation="left"
+            domain={yDomainLeft}
             tickCount={DENSITIES[density]}
             // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
             width={yAxisWidthNotBiaxial}

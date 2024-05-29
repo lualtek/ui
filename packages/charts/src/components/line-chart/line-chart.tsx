@@ -18,11 +18,11 @@ import { BaseChart, BaseChartProps, DENSITIES } from '../base-chart';
 import { ChartDataBaseType } from '../base-chart/base-chart';
 import { getChartDefaultColor } from '../base-chart/colors';
 
-export type LineProps<Data> = {
+export type LineProps<D> = {
   /**
    * The data key to assign to the line.
    */
-  dataKey: string | ((data: Data) => string | number);
+  dataKey: string | ((data: D) => string | number);
   /**
    * Used on the map as linekey id, should be unique
    */
@@ -51,16 +51,16 @@ export type LineProps<Data> = {
   name?: string;
 };
 
-export type LineChartProps<Data extends ChartDataBaseType, Line extends LineProps<Data>> = Except<
+export type LineChartProps<D extends ChartDataBaseType, L extends LineProps<D>> = Except<
 BaseChartProps, 'renderChart' | 'children'> & {
   /**
    * The data to render.
    */
-  data: Data[];
+  data: D[];
   /**
    * The chart series/series to render.
    */
-  series: Line[];
+  series: L[];
   /**
    * Whether to show the dots on the series.
    *
@@ -79,7 +79,7 @@ BaseChartProps, 'renderChart' | 'children'> & {
   showAreas?: boolean;
 }
 
-export function LineChart<Data extends ChartDataBaseType, Line extends LineProps<Data>>({
+export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
   className,
   data,
   series,
@@ -87,9 +87,11 @@ export function LineChart<Data extends ChartDataBaseType, Line extends LineProps
   showYAxis = true,
   density = 'mid',
   showAreas = false,
+  yDomainLeft,
+  yDomainRight,
   children,
   ...otherProps
-}: PropsClassChildren & LineChartProps<Data, Line>) {
+}: PropsClassChildren & LineChartProps<D, L>) {
   const chartRef = useRef<HTMLDivElement>(null);
   const [isAnimationActive, setIsAnimationActive] = useState(true);
   const [currentChartWidth, setCurrentChartWidth] = useState<number>();
@@ -150,6 +152,7 @@ export function LineChart<Data extends ChartDataBaseType, Line extends LineProps
           <YAxis
             yAxisId="right"
             orientation="right"
+            domain={yDomainRight}
             tickCount={DENSITIES[density]}
             // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
             width={yAxisWidthBiaxial}
@@ -163,6 +166,7 @@ export function LineChart<Data extends ChartDataBaseType, Line extends LineProps
           <YAxis
             yAxisId="left"
             orientation="left"
+            domain={yDomainLeft}
             tickCount={DENSITIES[density]}
             // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
             width={yAxisWidthNotBiaxial}

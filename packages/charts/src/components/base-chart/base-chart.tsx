@@ -10,6 +10,8 @@ import {
   ResponsiveContainerProps,
   Tooltip as ReTooltip,
   XAxis,
+  XAxisProps,
+  YAxisProps,
 } from 'recharts';
 
 import { Tooltip, TooltipProps } from '../tooltip';
@@ -63,6 +65,23 @@ export type BaseChartProps = ResponsiveContainerProps & {
    */
   cursorStyle?: Record<string, string | number> | false;
   /**
+   * The padding for the x-axis. Prevent lines from touching the edges.
+   */
+  xPadding?: number;
+  /**
+   * Set the domain for the X axis.
+   * @url https://recharts.org/en-US/api/XAxis#domain
+   */
+  xDomain?: XAxisProps['domain'];
+  /**
+   * Set the domain for the left Y axis.
+   */
+  yDomainLeft?: YAxisProps['domain'];
+  /**
+   * Set the domain for the right Y axis.
+   */
+  yDomainRight?: YAxisProps['domain'];
+  /**
    * Render a custom tooltip instead of the default one.
    *
    * @private Used by other charts to render the chart wrapper*
@@ -70,10 +89,6 @@ export type BaseChartProps = ResponsiveContainerProps & {
    * @returns JSX.Element
    */
   customTooltip?: (props: TooltipProps) => JSX.Element;
-  /**
-   * The padding for the x-axis. Prevent lines from touching the edges.
-   */
-  xPadding?: number;
   /**
    * @private Used by other charts to render the chart wrapper
    * @param children ReactNode
@@ -99,6 +114,7 @@ export const BaseChart = forwardRef<HTMLDivElement, PropsClassChildren<BaseChart
   legendAlign = 'right',
   dataKeyX = 'x',
   xPadding = 0,
+  xDomain,
   density = 'mid',
   renderChart,
   customTooltip,
@@ -146,6 +162,7 @@ export const BaseChart = forwardRef<HTMLDivElement, PropsClassChildren<BaseChart
               tickSize={8}
               allowDataOverflow
               tickMargin={8}
+              domain={xDomain}
             />
             {children}
             {showLegend && (
