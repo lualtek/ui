@@ -1,5 +1,16 @@
 # @lualtek/charts
 
+## 12.0.0-next.6
+
+### Minor Changes
+
+- ef881bc: Add allowYDecimals to LineChart and BarChart
+
+### Patch Changes
+
+- @lualtek/react-components@12.0.0-next.6
+- @lualtek/tokens@12.0.0-next.6
+
 ## 12.0.0-next.5
 
 ### Minor Changes
