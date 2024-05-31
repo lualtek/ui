@@ -6,6 +6,7 @@ import {
   Bar,
   BarChart as ReBarChart,
   YAxis,
+  YAxisProps,
 } from 'recharts';
 import { Except } from 'type-fest';
 
@@ -63,6 +64,12 @@ BaseChartProps, 'renderChart' | 'children'> & {
    */
   showYAxis?: boolean;
   /**
+   * Allow decimals on the Y axis.
+   *
+   * @defaultValue false
+   */
+  allowYDecimals?: YAxisProps['allowDecimals'];
+  /**
    * The gap between bar groups
    *
    * @defaultValue '20%'
@@ -86,6 +93,7 @@ export function BarChart<D extends ChartDataBaseType, B extends BarProps<D>>({
   yDomainRight,
   yTypeLeft,
   yTypeRight,
+  allowYDecimals = false,
   children,
   ...otherProps
 }: PropsClassChildren & BarChartProps<D, B>) {
@@ -153,6 +161,7 @@ export function BarChart<D extends ChartDataBaseType, B extends BarProps<D>>({
             tick={{ fill: 'var(--dimmed-4)', fontSize: '0.8em' }}
             tickLine={{ stroke: 'var(--dimmed-2)' }}
             axisLine={{ stroke: 'var(--dimmed-2)' }}
+            allowDecimals={allowYDecimals}
           />
         )}
 
@@ -168,6 +177,7 @@ export function BarChart<D extends ChartDataBaseType, B extends BarProps<D>>({
             tick={{ fill: 'var(--dimmed-4)', fontSize: '0.8em' }}
             tickLine={{ stroke: 'var(--dimmed-2)' }}
             axisLine={{ stroke: 'var(--dimmed-2)' }}
+            allowDecimals={allowYDecimals}
           />
         )}
 

@@ -9,6 +9,7 @@ import {
   LineChart as ReLineChart,
   LineProps as ReLineProps,
   YAxis,
+  YAxisProps,
 } from 'recharts';
 import { Except } from 'type-fest';
 
@@ -74,6 +75,12 @@ BaseChartProps, 'renderChart' | 'children'> & {
    */
   showYAxis?: boolean;
   /**
+   * Allow decimals on the Y axis.
+   *
+   * @defaultValue false
+   */
+  allowYDecimals?: YAxisProps['allowDecimals'];
+  /**
    * Render areas for the series.
    */
   showAreas?: boolean;
@@ -91,6 +98,7 @@ export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
   yDomainRight,
   yTypeLeft,
   yTypeRight,
+  allowYDecimals = false,
   children,
   ...otherProps
 }: PropsClassChildren & LineChartProps<D, L>) {
@@ -162,6 +170,7 @@ export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
             tick={{ fill: 'var(--dimmed-4)', fontSize: '0.8em' }}
             tickLine={{ stroke: 'var(--dimmed-2)' }}
             axisLine={{ stroke: 'var(--dimmed-2)' }}
+            allowDecimals={allowYDecimals}
           />
         )}
 
@@ -177,6 +186,7 @@ export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
             tick={{ fill: 'var(--dimmed-4)', fontSize: '0.8em' }}
             tickLine={{ stroke: 'var(--dimmed-2)' }}
             axisLine={{ stroke: 'var(--dimmed-2)' }}
+            allowDecimals={allowYDecimals}
           />
         )}
 
