@@ -1,5 +1,13 @@
 # @lualtek/charts
 
+## 12.0.0-next.8
+
+### Patch Changes
+
+- 01afa6a: Fix type on series
+  - @lualtek/react-components@12.0.0-next.8
+  - @lualtek/tokens@12.0.0-next.8
+
 ## 12.0.0-next.7
 
 ### Minor Changes
