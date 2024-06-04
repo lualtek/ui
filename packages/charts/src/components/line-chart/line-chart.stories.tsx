@@ -90,6 +90,12 @@ export const WidthXPadding = {
   },
 } satisfies Story;
 
+export const withNoAnimation = {
+  args: {
+    disableAnimation: true,
+  },
+} satisfies Story;
+
 export const WithCustomDataset = {
   args: {
     data: MultiAxisData.data,

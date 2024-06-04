@@ -99,11 +99,12 @@ export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
   yTypeLeft,
   yTypeRight,
   allowYDecimals = false,
+  disableAnimation = false,
   children,
   ...otherProps
 }: PropsClassChildren & LineChartProps<D, L>) {
   const chartRef = useRef<HTMLDivElement>(null);
-  const [isAnimationActive, setIsAnimationActive] = useState(true);
+  const [isAnimationActive, setIsAnimationActive] = useState(!disableAnimation);
   const [currentChartWidth, setCurrentChartWidth] = useState<number>();
   const [, startTransition] = useTransition();
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment

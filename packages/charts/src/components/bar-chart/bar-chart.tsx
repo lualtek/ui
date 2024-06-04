@@ -94,11 +94,12 @@ export function BarChart<D extends ChartDataBaseType, B extends BarProps<D>>({
   yTypeLeft,
   yTypeRight,
   allowYDecimals = false,
+  disableAnimation = false,
   children,
   ...otherProps
 }: PropsClassChildren & BarChartProps<D, B>) {
   const chartRef = useRef<HTMLDivElement>(null);
-  const [isAnimationActive, setIsAnimationActive] = useState(true);
+  const [isAnimationActive, setIsAnimationActive] = useState(disableAnimation);
   const [currentChartWidth, setCurrentChartWidth] = useState<number>();
   const [, startTransition] = useTransition();
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment

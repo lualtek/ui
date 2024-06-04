@@ -16,13 +16,13 @@ import {
 
 import { Tooltip, TooltipProps } from '../tooltip';
 
-export type ChartDataBaseType = Record<string, string | number>;
+export type Data = Record<string, string | number | null>;
 
 export type BaseChartProps = ResponsiveContainerProps & {
   /**
    * The data key to assign to the x-axis.
    */
-  dataKeyX?: string | ((data: ChartDataBaseType) => string | number);
+  dataKeyX?: string | ((data: Data) => string | number);
   /**
    * Whether to show the grid.
    *
@@ -89,6 +89,12 @@ export type BaseChartProps = ResponsiveContainerProps & {
    * Set the domain for the right Y axis.
    */
   yTypeRight?: YAxisProps['type'];
+  /**
+   * Disable the animation for the chart.
+   *
+   * @defaultValue false
+   */
+  disableAnimation?: boolean;
   /**
    * Render a custom tooltip instead of the default one.
    *
