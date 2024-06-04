@@ -16,13 +16,13 @@ import {
 
 import { Tooltip, TooltipProps } from '../tooltip';
 
-export type Data = Record<string, string | number | null>;
+export type ChartDataBaseType = Record<string, string | number>;
 
 export type BaseChartProps = ResponsiveContainerProps & {
   /**
    * The data key to assign to the x-axis.
    */
-  dataKeyX?: string | ((data: Data) => string | number);
+  dataKeyX?: string | ((data: ChartDataBaseType) => string | number);
   /**
    * Whether to show the grid.
    *
