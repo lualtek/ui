@@ -16,7 +16,7 @@ import {
 
 import { Tooltip, TooltipProps } from '../tooltip';
 
-export type ChartDataBaseType = Record<string, string | number>;
+export type ChartDataBaseType = Record<string, string | number | null>;
 
 export type BaseChartProps = ResponsiveContainerProps & {
   /**

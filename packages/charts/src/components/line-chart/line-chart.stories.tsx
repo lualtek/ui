@@ -7,7 +7,7 @@ import {
   LineProps,
 } from './line-chart';
 
-type Data = Record<string, number | string>;
+type Data = Record<string, number | string | null>;
 
 const { data } = SimpleData;
 
