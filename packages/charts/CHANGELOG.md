@@ -1,5 +1,16 @@
 # @lualtek/charts
 
+## 12.0.0-next.7
+
+### Minor Changes
+
+- 33322e7: Add new disableAnimation prop to charts
+
+### Patch Changes
+
+- @lualtek/react-components@12.0.0-next.7
+- @lualtek/tokens@12.0.0-next.7
+
 ## 12.0.0-next.6
 
 ### Minor Changes
