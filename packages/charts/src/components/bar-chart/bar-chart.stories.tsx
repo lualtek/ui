@@ -7,7 +7,7 @@ import {
   BarProps,
 } from './bar-chart';
 
-type Data = Record<string, number | string>;
+type Data = Record<string, number | string | null>;
 
 const { data } = SimpleData;
 
