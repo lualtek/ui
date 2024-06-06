@@ -1,5 +1,15 @@
 # @lualtek/charts
 
+## 12.0.1
+
+### Patch Changes
+
+- fa46b6f: Fake change
+- f3ebd9c: Move allowYDecimals to base-chart
+- Updated dependencies [fa46b6f]
+  - @lualtek/react-components@12.0.1
+  - @lualtek/tokens@12.0.1
+
 ## 12.0.0
 
 ### Major Changes

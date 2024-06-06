@@ -1,5 +1,13 @@
 # @lualtek/react-components
 
+## 12.0.1
+
+### Patch Changes
+
+- fa46b6f: Fake change
+- Updated dependencies [fa46b6f]
+  - @lualtek/icons@12.0.1
+
 ## 12.0.0
 
 ### Major Changes

@@ -1,5 +1,11 @@
 # @lualtek/themes
 
+## 12.0.1
+
+### Patch Changes
+
+- fa46b6f: Fake change
+
 ## 12.0.0
 
 ### Major Changes
