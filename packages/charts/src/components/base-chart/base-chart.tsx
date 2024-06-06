@@ -90,6 +90,12 @@ export type BaseChartProps = ResponsiveContainerProps & {
    */
   yTypeRight?: YAxisProps['type'];
   /**
+   * Allow decimals on the Y axis.
+   *
+   * @defaultValue false
+   */
+  allowYDecimals?: YAxisProps['allowDecimals'];
+  /**
    * Disable the animation for the chart.
    *
    * @defaultValue false

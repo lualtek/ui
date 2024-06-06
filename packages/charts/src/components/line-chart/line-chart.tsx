@@ -9,7 +9,6 @@ import {
   LineChart as ReLineChart,
   LineProps as ReLineProps,
   YAxis,
-  YAxisProps,
 } from 'recharts';
 import { Except } from 'type-fest';
 
@@ -74,12 +73,6 @@ BaseChartProps, 'renderChart' | 'children'> & {
    * @defaultValue true
    */
   showYAxis?: boolean;
-  /**
-   * Allow decimals on the Y axis.
-   *
-   * @defaultValue false
-   */
-  allowYDecimals?: YAxisProps['allowDecimals'];
   /**
    * Render areas for the series.
    */
