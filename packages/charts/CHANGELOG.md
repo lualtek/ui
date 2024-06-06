@@ -1,5 +1,32 @@
 # @lualtek/charts
 
+## 12.0.0
+
+### Major Changes
+
+- 83053a4: Release charts package
+
+### Minor Changes
+
+- 83053a4: Add xDomain, yDomainLeft and yDomainRight to charts
+- 83053a4: Add allowYDecimals to LineChart and BarChart
+- 83053a4: Add Barchart
+- 83053a4: Add new disableAnimation prop to charts
+- 83053a4: Add yTypeLeft and yTypeRight
+- 83053a4: Add new grain and organic icons
+
+### Patch Changes
+
+- 83053a4: Rename disableGlow into showGlow
+- 83053a4: Add missing key
+- 83053a4: Fix type on series
+- Updated dependencies [83053a4]
+- Updated dependencies [83053a4]
+- Updated dependencies [83053a4]
+- Updated dependencies [83053a4]
+  - @lualtek/react-components@12.0.0
+  - @lualtek/tokens@12.0.0
+
 ## 12.0.0-next.8
 
 ### Patch Changes
