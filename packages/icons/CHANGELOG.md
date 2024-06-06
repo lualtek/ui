@@ -1,5 +1,11 @@
 # @lualtek/icons
 
+## 12.0.2
+
+### Patch Changes
+
+- 27691e8: Altro fake change
+
 ## 12.0.1
 
 ### Patch Changes

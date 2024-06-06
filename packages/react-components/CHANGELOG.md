@@ -1,5 +1,13 @@
 # @lualtek/react-components
 
+## 12.0.2
+
+### Patch Changes
+
+- 27691e8: Altro fake change
+- Updated dependencies [27691e8]
+  - @lualtek/icons@12.0.2
+
 ## 12.0.1
 
 ### Patch Changes
