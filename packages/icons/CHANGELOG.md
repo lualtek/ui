@@ -1,5 +1,7 @@
 # @lualtek/icons
 
+## 12.0.1
+
 ## 12.0.0
 
 ### Major Changes
