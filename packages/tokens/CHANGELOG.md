@@ -1,5 +1,11 @@
 # @lualtek/tokens
 
+## 12.0.0
+
+### Minor Changes
+
+- 83053a4: Add new grain and organic icons
+
 ## 12.0.0-next.8
 
 ## 12.0.0-next.7

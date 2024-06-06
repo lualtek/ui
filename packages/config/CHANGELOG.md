@@ -1,5 +1,22 @@
 # @lualtek/config
 
+## 12.0.0
+
+### Major Changes
+
+- 83053a4: disable panel glow by default. showGlow is true by default.
+
+### Minor Changes
+
+- 83053a4: Add Barchart
+- 83053a4: Add new grain and organic icons
+
+### Patch Changes
+
+- 83053a4: Rename disableGlow into showGlow
+- Updated dependencies [83053a4]
+  - @lualtek/tokens@12.0.0
+
 ## 12.0.0-next.8
 
 ### Patch Changes
