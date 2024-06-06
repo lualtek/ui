@@ -2,12 +2,13 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import SimpleData from '../../../fixtures/data';
 import MultiAxisData from '../../../fixtures/multi-y-data';
+import { ChartDataBaseType } from '../base-chart/base-chart';
 import {
   LineChart,
   LineProps,
 } from './line-chart';
 
-type Data = Record<string, number | string | null>;
+type Data = ChartDataBaseType;
 
 const { data } = SimpleData;
 
