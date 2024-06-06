@@ -71,7 +71,7 @@ export const ModalContent = forwardRef<HTMLDivElement, ModalContentProps>(({
         vibrant
         vibrancyColor="soft"
         bordered
-        disableGlow={!matches.small}
+        showGlow={!matches.small}
         radius={matches.small ? 24 : [24, 24, 0, 0]}
         borderSide={matches.small ? 'all' : 'top'}
       >

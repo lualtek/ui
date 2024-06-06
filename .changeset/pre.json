@@ -1,0 +1,26 @@
+{
+  "mode": "pre",
+  "tag": "next",
+  "initialVersions": {
+    "@lualtek/charts": "0.0.1",
+    "@lualtek/config": "11.18.1",
+    "@lualtek/icons": "11.18.1",
+    "@lualtek/react-components": "11.18.1",
+    "@lualtek/themes": "11.18.1",
+    "@lualtek/tokens": "11.18.1",
+    "tsconfig": "0.0.1"
+  },
+  "changesets": [
+    "afraid-starfishes-wink",
+    "brown-teachers-sin",
+    "eleven-trees-happen",
+    "fast-pandas-joke",
+    "fluffy-items-fry",
+    "rich-goats-battle",
+    "seven-ways-jump",
+    "three-chefs-dance",
+    "twenty-dolphins-retire",
+    "warm-zoos-tie",
+    "witty-cheetahs-protect"
+  ]
+}

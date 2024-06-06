@@ -1,5 +1,75 @@
 # @lualtek/react-components
 
+## 12.0.0-next.8
+
+### Patch Changes
+
+- @lualtek/icons@12.0.0-next.8
+
+## 12.0.0-next.7
+
+### Patch Changes
+
+- @lualtek/icons@12.0.0-next.7
+
+## 12.0.0-next.6
+
+### Patch Changes
+
+- @lualtek/icons@12.0.0-next.6
+
+## 12.0.0-next.5
+
+### Patch Changes
+
+- @lualtek/icons@12.0.0-next.5
+
+## 12.0.0-next.4
+
+### Patch Changes
+
+- @lualtek/icons@12.0.0-next.4
+
+## 12.0.0-next.3
+
+### Minor Changes
+
+- 39daa92: Add new grain and organic icons
+
+### Patch Changes
+
+- Updated dependencies [39daa92]
+  - @lualtek/icons@12.0.0-next.3
+
+## 12.0.0-next.2
+
+### Minor Changes
+
+- e9db5a5: Add Barchart
+
+### Patch Changes
+
+- @lualtek/icons@12.0.0-next.2
+
+## 12.0.0-next.1
+
+### Patch Changes
+
+- 7f0d476: Rename disableGlow into showGlow
+- Updated dependencies [7f0d476]
+  - @lualtek/icons@12.0.0-next.1
+
+## 12.0.0-next.0
+
+### Major Changes
+
+- 60e73a2: disable panel glow by default. showGlow is true by default.
+
+### Patch Changes
+
+- Updated dependencies [60e73a2]
+  - @lualtek/icons@12.0.0-next.0
+
 ## 11.19.0
 
 ### Minor Changes
