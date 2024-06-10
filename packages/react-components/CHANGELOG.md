@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 12.0.3
+
+### Patch Changes
+
+- f4a60a5: Restore glow effect to modal and drawer
+  - @lualtek/icons@12.0.3
+
 ## 12.0.2
 
 ### Patch Changes
