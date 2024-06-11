@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import SimpleData from '../../../fixtures/data';
 import MultiAxisData from '../../../fixtures/multi-y-data';
+import { ReferenceArea, ReferenceLine } from '../base-chart';
 import { ChartDataBaseType } from '../base-chart/base-chart';
 import {
   LineChart,
@@ -107,6 +108,76 @@ export const WithCustomDataset = {
 export const WithAreas = {
   args: {
     showAreas: true,
+  },
+} satisfies Story;
+
+export const WithReferenceLines = {
+  args: {
+    referenceComponent: [
+      <ReferenceLine yAxisId="left" color="red" key="line1" y={40} />,
+      <ReferenceLine yAxisId="left" key="line2" y={80} dashed />,
+    ],
+  },
+} satisfies Story;
+
+export const WithReferenceAreas = {
+  args: {
+    referenceComponent: [
+      <ReferenceArea yAxisId="left" key="area1" y1={0} y2={40} label="low" />,
+      <ReferenceArea yAxisId="left" color="cyan" key="area2" y1={40} y2={70} label="medium" />,
+    ],
+  },
+} satisfies Story;
+
+export const WithReferenceAreasAndLines = {
+  args: {
+    referenceComponent: [
+      <ReferenceLine
+        yAxisId="left"
+        key="line1"
+        y={40}
+        dashed
+        color="var(--highlight-green-foreground)"
+      />,
+      <ReferenceLine
+        yAxisId="left"
+        key="line2"
+        y={70}
+        dashed
+        color="var(--highlight-yellow-foreground)"
+      />,
+      <ReferenceLine
+        yAxisId="left"
+        key="line2"
+        y={100}
+        dashed
+        color="var(--highlight-red-foreground)"
+      />,
+      <ReferenceArea
+        yAxisId="left"
+        color="var(--highlight-green-background)"
+        key="area1"
+        y1={0}
+        y2={40}
+        label="low"
+      />,
+      <ReferenceArea
+        yAxisId="left"
+        color="var(--highlight-yellow-background)"
+        key="area2"
+        y1={40}
+        y2={70}
+        label="medium"
+      />,
+      <ReferenceArea
+        yAxisId="left"
+        color="var(--highlight-red-background)"
+        key="area2"
+        y1={70}
+        y2={100}
+        label="medium"
+      />,
+    ],
   },
 } satisfies Story;
 

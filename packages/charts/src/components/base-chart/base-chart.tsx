@@ -102,6 +102,11 @@ export type BaseChartProps = ResponsiveContainerProps & {
    */
   disableAnimation?: boolean;
   /**
+   * Reference elements to render on the chart.
+   * This props accepts ReferenceLine, ReferenceArea, ReferenceDot.
+   */
+  referenceComponent?: ReactNode;
+  /**
    * Render a custom tooltip instead of the default one.
    *
    * @private Used by other charts to render the chart wrapper*
@@ -138,6 +143,7 @@ export const BaseChart = forwardRef<HTMLDivElement, PropsClassChildren<BaseChart
   density = 'mid',
   renderChart,
   customTooltip,
+  referenceComponent,
   cursorStyle,
   ...otherProps
 }, forwardedRef) => {
@@ -184,7 +190,10 @@ export const BaseChart = forwardRef<HTMLDivElement, PropsClassChildren<BaseChart
               tickMargin={8}
               domain={xDomain}
             />
+            {referenceComponent}
+
             {children}
+
             {showLegend && (
               <Legend
                 align={legendAlign}

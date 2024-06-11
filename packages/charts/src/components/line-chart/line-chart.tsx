@@ -1,4 +1,4 @@
-import { PropsClassChildren } from '@lualtek/react-components';
+import { PropsWithClass } from '@lualtek/react-components';
 import {
   useEffect, useRef, useState, useTransition,
 } from 'react';
@@ -93,9 +93,8 @@ export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
   yTypeRight,
   allowYDecimals = false,
   disableAnimation = false,
-  children,
   ...otherProps
-}: PropsClassChildren & LineChartProps<D, L>) {
+}: PropsWithClass<LineChartProps<D, L>>) {
   const chartRef = useRef<HTMLDivElement>(null);
   const [isAnimationActive, setIsAnimationActive] = useState(!disableAnimation);
   const [currentChartWidth, setCurrentChartWidth] = useState<number>();
