@@ -1,5 +1,11 @@
 # @lualtek/tokens
 
+## 12.1.0
+
+### Patch Changes
+
+- 3f13dfb: Update blue-90 and blue-100 color tokens
+
 ## 12.0.3
 
 ## 12.0.2
