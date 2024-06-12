@@ -1,5 +1,13 @@
 # @lualtek/charts
 
+## 12.1.1
+
+### Patch Changes
+
+- 9d90ed6: Add missing export for ReferenceArea and ReferenceLine components
+  - @lualtek/react-components@12.1.1
+  - @lualtek/tokens@12.1.1
+
 ## 12.1.0
 
 ### Minor Changes
