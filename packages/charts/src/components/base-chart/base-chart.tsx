@@ -114,6 +114,12 @@ export type BaseChartProps = ResponsiveContainerProps & {
    */
   customTooltip?: (props: TooltipProps) => JSX.Element;
   /**
+   * custom function to format the tooltip label/title
+   * @param value TooltipEntry
+   * @returns string
+   */
+  formatTooltipLabel?: TooltipProps['formatLabel'];
+  /**
    * custom function to format the payload labels
    * @param value TooltipEntry
    * @returns string
@@ -160,6 +166,7 @@ export const BaseChart = forwardRef<HTMLDivElement, PropsClassChildren<BaseChart
   density = 'mid',
   renderChart,
   customTooltip,
+  formatTooltipLabel,
   formatTooltipName,
   formatTooltipValue,
   tooltipDecorator,
@@ -195,6 +202,7 @@ export const BaseChart = forwardRef<HTMLDivElement, PropsClassChildren<BaseChart
                 cursor={cursor}
                 content={customTooltip ?? (
                   <Tooltip
+                    formatLabel={formatTooltipLabel}
                     formatName={formatTooltipName}
                     formatValue={formatTooltipValue}
                     tooltipDecorator={tooltipDecorator}
