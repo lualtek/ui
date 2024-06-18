@@ -211,3 +211,8 @@ export const WithReferenceAreasAndLines = {
   },
 } satisfies Story;
 
+export const WithCustomYDomain = {
+  args: {
+    yDomainLeft: [0, 1000],
+  },
+} satisfies Story;

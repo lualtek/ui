@@ -103,6 +103,8 @@ export function BarChart<D extends ChartDataBaseType, B extends BarProps<D>>({
   } = useChartAxis({
     data,
     series,
+    yDomainLeft,
+    yDomainRight,
   });
 
   useEffect(() => {
