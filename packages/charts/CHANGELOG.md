@@ -1,5 +1,13 @@
 # @lualtek/charts
 
+## 12.3.5
+
+### Patch Changes
+
+- 6501d40: Fix check on ydomain for y labels
+  - @lualtek/react-components@12.3.5
+  - @lualtek/tokens@12.3.5
+
 ## 12.3.4
 
 ### Patch Changes
