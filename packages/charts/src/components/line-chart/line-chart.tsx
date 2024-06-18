@@ -108,6 +108,8 @@ export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
   } = useChartAxis({
     data,
     series,
+    yDomainLeft,
+    yDomainRight,
   });
 
   useEffect(() => {
