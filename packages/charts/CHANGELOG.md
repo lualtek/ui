@@ -1,5 +1,13 @@
 # @lualtek/charts
 
+## 12.3.1
+
+### Patch Changes
+
+- 5d699fa: Add `tooltipColors` to charts
+  - @lualtek/react-components@12.3.1
+  - @lualtek/tokens@12.3.1
+
 ## 12.3.0
 
 ### Minor Changes
