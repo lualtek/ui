@@ -82,6 +82,7 @@ export const Tooltip: FC<TooltipProps> = ({
           <Fragment key={entry.name}>
             <Stack
               direction="row"
+              vAlign="center"
               fill={false}
               inline
               columnGap={4}
