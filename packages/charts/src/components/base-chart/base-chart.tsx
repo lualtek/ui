@@ -107,6 +107,10 @@ export type BaseChartProps = ResponsiveContainerProps & {
    */
   referenceComponent?: ReactNode;
   /**
+   * Enable or disable the usage of payload colors inside tooltip data.
+   */
+  tooltipColors?: TooltipProps['tooltipColors'];
+  /**
    * Render a custom tooltip instead of the default one.
    *
    * @param props { active?: boolean; label?: string; payload?: TooltipEntry[]; }
@@ -164,7 +168,7 @@ export const BaseChart = forwardRef<HTMLDivElement, PropsClassChildren<BaseChart
   xPadding = 0,
   xDomain,
   density = 'mid',
-  renderChart,
+  tooltipColors,
   customTooltip,
   formatTooltipLabel,
   formatTooltipName,
@@ -172,6 +176,7 @@ export const BaseChart = forwardRef<HTMLDivElement, PropsClassChildren<BaseChart
   tooltipDecorator,
   referenceComponent,
   cursorStyle,
+  renderChart,
   ...otherProps
 }, forwardedRef) => {
   const cursor = useMemo(() => ({
@@ -206,6 +211,7 @@ export const BaseChart = forwardRef<HTMLDivElement, PropsClassChildren<BaseChart
                     formatName={formatTooltipName}
                     formatValue={formatTooltipValue}
                     tooltipDecorator={tooltipDecorator}
+                    tooltipColors={tooltipColors}
                   />
                 )}
               />

@@ -27,6 +27,10 @@ export type TooltipProps = {
    */
   payload?: TooltipEntry[];
   /**
+   * Whether to show the payload colors inside tooltip.
+   */
+  tooltipColors?: boolean;
+  /**
    * custom function to format the tooltip label
    * @param value TooltipEntry
    * @returns string
@@ -59,6 +63,7 @@ export const Tooltip: FC<TooltipProps> = ({
   formatName,
   formatValue,
   tooltipDecorator,
+  tooltipColors = true,
   label,
 }) => (
   <Elevator resting={3}>
@@ -80,7 +85,7 @@ export const Tooltip: FC<TooltipProps> = ({
               inline
               columnGap={4}
             >
-              <Text as="strong" lineHeight="extra-small" size={14} textColor={entry.color}>
+              <Text as="strong" lineHeight="extra-small" size={14} textColor={tooltipColors ? entry.color : undefined}>
                 {entry.name && formatName ? formatName(entry) : entry.name}
                 :
               </Text>

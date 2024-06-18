@@ -116,6 +116,15 @@ export const WithFormattedTooltip = {
 
 } satisfies Story;
 
+export const WithoutTooltipColors = {
+  args: {
+    data: MultiAxisData.data,
+    series: MultiAxisData.series as Array<LineProps<Data>>,
+    tooltipColors: false,
+  },
+
+} satisfies Story;
+
 export const WithTooltipDecorator = {
   args: {
     data: MultiAxisData.data,
