@@ -27,6 +27,12 @@ export type TooltipProps = {
    */
   payload?: TooltipEntry[];
   /**
+   * custom function to format the tooltip label
+   * @param value TooltipEntry
+   * @returns string
+   */
+  formatLabel?: (label: string) => string;
+  /**
    * custom function to format the payload labels
    * @param value TooltipEntry
    * @returns string
@@ -49,6 +55,7 @@ export type TooltipProps = {
 export const Tooltip: FC<TooltipProps> = ({
   active,
   payload,
+  formatLabel,
   formatName,
   formatValue,
   tooltipDecorator,
@@ -63,7 +70,7 @@ export const Tooltip: FC<TooltipProps> = ({
       bordered
     >
       <Stack vPadding={8} hPadding={8} rowGap={8} fill={false} hAlign="start">
-        {label && <Title level="6">{label}</Title>}
+        {label && <Title level="6">{label && formatLabel ? formatLabel(label) : label}</Title>}
         {active && payload?.map(entry => (
           <>
             <Stack
