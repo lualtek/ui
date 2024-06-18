@@ -1,5 +1,13 @@
 # @lualtek/charts
 
+## 12.3.3
+
+### Patch Changes
+
+- de83d3c: Fix tooltip key
+  - @lualtek/react-components@12.3.3
+  - @lualtek/tokens@12.3.3
+
 ## 12.3.2
 
 ### Patch Changes
