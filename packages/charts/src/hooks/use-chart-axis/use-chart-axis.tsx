@@ -3,11 +3,12 @@ import { AxisDomain } from 'recharts/types/util/types';
 import { ChartDataBaseType } from 'src/components/base-chart/base-chart';
 import { LineProps } from 'src/components/line-chart/line-chart';
 
-const parseMaxValueDomain = (yDomain?: AxisDomain) => (
-  yDomain && typeof yDomain !== 'function' && yDomain?.[1] && !Number.isNaN(yDomain[1])
+const parseMaxValueDomain = (yDomain?: AxisDomain) => {
+  const result = yDomain && typeof yDomain !== 'function' && yDomain?.[1] && typeof yDomain[1] === 'number'
     ? yDomain[1]
-    : 0
-);
+    : 0;
+  return result;
+};
 
 // NOTE: this is crazy - Find the longest y axis value by chars
 const getYValuesLength = <D extends ChartDataBaseType, L extends LineProps<D>>({
