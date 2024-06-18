@@ -28,6 +28,8 @@ export type TooltipProps = {
   payload?: TooltipEntry[];
   /**
    * Whether to show the payload colors inside tooltip.
+   *
+   * @defaultValue true
    */
   tooltipColors?: boolean;
   /**
