@@ -1,3 +1,4 @@
+import { Chip } from '@lualtek/react-components';
 import type { Meta, StoryObj } from '@storybook/react';
 
 import SimpleData from '../../../fixtures/data';
@@ -102,6 +103,26 @@ export const WithCustomDataset = {
   args: {
     data: MultiAxisData.data,
     series: MultiAxisData.series as Array<LineProps<Data>>,
+  },
+} satisfies Story;
+
+export const WithFormattedTooltip = {
+  args: {
+    data: MultiAxisData.data,
+    series: MultiAxisData.series as Array<LineProps<Data>>,
+    formatTooltipName: ({ name }) => `Formatted ${name}`,
+    formatTooltipValue: ({ value }) => `${value}.00`,
+  },
+
+} satisfies Story;
+
+export const WithTooltipDecorator = {
+  args: {
+    data: MultiAxisData.data,
+    series: MultiAxisData.series as Array<LineProps<Data>>,
+    tooltipDecorator: entry => (
+      <Chip>{Number(entry.value).toFixed(0)}</Chip>
+    ),
   },
 } satisfies Story;
 

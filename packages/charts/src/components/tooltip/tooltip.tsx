@@ -14,14 +14,44 @@ export type TooltipEntry = {
 }
 
 export type TooltipProps = {
+  /**
+   * Whether the tooltip is active.
+   */
   active?: boolean;
+  /**
+   * The label of the tooltip for the X-axis.
+   */
   label?: string;
+  /**
+   * The payload of the tooltip.
+   */
   payload?: TooltipEntry[];
+  /**
+   * custom function to format the payload labels
+   * @param value TooltipEntry
+   * @returns string
+   */
+  formatName?: (entry: TooltipEntry) => string;
+  /**
+   * custom function to format the payload values
+   * @param entry TooltipEntry
+   * @returns React.ReactNode
+   */
+  formatValue?: (entry: TooltipEntry) => React.ReactNode;
+  /**
+   * custom function to format the payload values
+   * @param entry TooltipEntry
+   * @returns React.ReactNode
+   */
+  tooltipDecorator?: (entry: TooltipEntry) => React.ReactNode;
 }
 
 export const Tooltip: FC<TooltipProps> = ({
   active,
   payload,
+  formatName,
+  formatValue,
+  tooltipDecorator,
   label,
 }) => (
   <Elevator resting={3}>
@@ -32,25 +62,28 @@ export const Tooltip: FC<TooltipProps> = ({
       vibrancyColor="soft"
       bordered
     >
-      <Stack vPadding={8} hPadding={8} rowGap={8}>
-        <Title level="6">{label}</Title>
+      <Stack vPadding={8} hPadding={8} rowGap={8} fill={false} hAlign="start">
+        {label && <Title level="6">{label}</Title>}
         {active && payload?.map(entry => (
-          <Stack
-            key={entry.name}
-            direction="row"
-            fill={false}
-            inline
-            columnGap={4}
-          >
-            <Text as="strong" lineHeight="extra-small" size={14} textColor={entry.color}>
-              {entry.name}
-              :
-            </Text>
-            <Text size={14} lineHeight="extra-small">
-              {entry.value}
-              {entry.unit}
-            </Text>
-          </Stack>
+          <>
+            <Stack
+              key={entry.name}
+              direction="row"
+              fill={false}
+              inline
+              columnGap={4}
+            >
+              <Text as="strong" lineHeight="extra-small" size={14} textColor={entry.color}>
+                {entry.name && formatName ? formatName(entry) : entry.name}
+                :
+              </Text>
+              <Text size={14} lineHeight="extra-small">
+                {entry.value && formatValue ? formatValue(entry) : entry.value}
+                {entry.unit}
+              </Text>
+            </Stack>
+            {tooltipDecorator?.(entry)}
+          </>
         ))}
       </Stack>
     </Panel>

@@ -109,11 +109,28 @@ export type BaseChartProps = ResponsiveContainerProps & {
   /**
    * Render a custom tooltip instead of the default one.
    *
-   * @private Used by other charts to render the chart wrapper*
    * @param props { active?: boolean; label?: string; payload?: TooltipEntry[]; }
    * @returns JSX.Element
    */
   customTooltip?: (props: TooltipProps) => JSX.Element;
+  /**
+   * custom function to format the payload labels
+   * @param value TooltipEntry
+   * @returns string
+   */
+  formatTooltipName?: TooltipProps['formatName'];
+  /**
+   * custom function to format the payload values
+   * @param entry TooltipEntry
+   * @returns React.ReactNode
+   */
+  formatTooltipValue?: TooltipProps['formatValue'];
+  /**
+   * custom function to format the payload values
+   * @param entry TooltipEntry
+   * @returns React.ReactNode
+   */
+  tooltipDecorator?: TooltipProps['tooltipDecorator'];
   /**
    * @private Used by other charts to render the chart wrapper
    * @param children ReactNode
@@ -143,6 +160,9 @@ export const BaseChart = forwardRef<HTMLDivElement, PropsClassChildren<BaseChart
   density = 'mid',
   renderChart,
   customTooltip,
+  formatTooltipName,
+  formatTooltipValue,
+  tooltipDecorator,
   referenceComponent,
   cursorStyle,
   ...otherProps
@@ -173,7 +193,13 @@ export const BaseChart = forwardRef<HTMLDivElement, PropsClassChildren<BaseChart
             {showTooltip && (
               <ReTooltip
                 cursor={cursor}
-                content={customTooltip ?? Tooltip}
+                content={customTooltip ?? (
+                  <Tooltip
+                    formatName={formatTooltipName}
+                    formatValue={formatTooltipValue}
+                    tooltipDecorator={tooltipDecorator}
+                  />
+                )}
               />
             )}
             <XAxis
