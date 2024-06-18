@@ -1,5 +1,16 @@
 # @lualtek/charts
 
+## 12.2.0
+
+### Minor Changes
+
+- 6e2e400: Add `formatTooltipName`, `formatTooltipValue` and `tooltipDecorator` props to base-chart
+
+### Patch Changes
+
+- @lualtek/react-components@12.2.0
+- @lualtek/tokens@12.2.0
+
 ## 12.1.1
 
 ### Patch Changes
