@@ -1,5 +1,13 @@
 # @lualtek/charts
 
+## 12.3.2
+
+### Patch Changes
+
+- febc3c3: Test dynamic y width
+  - @lualtek/react-components@12.3.2
+  - @lualtek/tokens@12.3.2
+
 ## 12.3.1
 
 ### Patch Changes
