@@ -1,5 +1,13 @@
 # @lualtek/charts
 
+## 12.3.4
+
+### Patch Changes
+
+- 58ddcee: Added check for Y axes labels also for custom yDomain
+  - @lualtek/react-components@12.3.4
+  - @lualtek/tokens@12.3.4
+
 ## 12.3.3
 
 ### Patch Changes
