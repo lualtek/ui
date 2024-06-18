@@ -101,8 +101,8 @@ export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
   const [, startTransition] = useTransition();
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const {
-    // yAxisWidthBiaxial,
-    // yAxisWidthNotBiaxial,
+    yAxisWidthBiaxial,
+    yAxisWidthNotBiaxial,
     hasLeftY,
     hasRightY,
   } = useChartAxis({
@@ -159,7 +159,7 @@ export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
             type={yTypeRight}
             tickCount={DENSITIES[density]}
             // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-            // width={yAxisWidthBiaxial}
+            width={yAxisWidthBiaxial}
             tick={{ fill: 'var(--dimmed-4)', fontSize: '0.8em' }}
             tickLine={{ stroke: 'var(--dimmed-2)' }}
             axisLine={{ stroke: 'var(--dimmed-2)' }}
@@ -175,7 +175,7 @@ export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
             type={yTypeLeft}
             tickCount={DENSITIES[density]}
             // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-            // width={yAxisWidthNotBiaxial}
+            width={yAxisWidthNotBiaxial}
             tick={{ fill: 'var(--dimmed-4)', fontSize: '0.8em' }}
             tickLine={{ stroke: 'var(--dimmed-2)' }}
             axisLine={{ stroke: 'var(--dimmed-2)' }}

@@ -2,7 +2,7 @@ import {
   Elevator,
   Panel, Stack, Text, Title,
 } from '@lualtek/react-components';
-import { FC, ReactNode } from 'react';
+import { FC, Fragment, ReactNode } from 'react';
 
 export type TooltipEntry = {
   dataKey?: string | number;
@@ -79,9 +79,8 @@ export const Tooltip: FC<TooltipProps> = ({
       <Stack vPadding={8} hPadding={8} rowGap={8} fill={false} hAlign="start">
         {label && <Title level="6">{label && formatLabel ? formatLabel(label) : label}</Title>}
         {active && payload?.map(entry => (
-          <>
+          <Fragment key={entry.name}>
             <Stack
-              key={entry.name}
               direction="row"
               fill={false}
               inline
@@ -97,7 +96,7 @@ export const Tooltip: FC<TooltipProps> = ({
               </Text>
             </Stack>
             {tooltipDecorator?.(entry)}
-          </>
+          </Fragment>
         ))}
       </Stack>
     </Panel>
