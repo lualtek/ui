@@ -1,5 +1,16 @@
 # @lualtek/charts
 
+## 12.3.0
+
+### Minor Changes
+
+- ef6ade0: Add `formatLabel` prop
+
+### Patch Changes
+
+- @lualtek/react-components@12.3.0
+- @lualtek/tokens@12.3.0
+
 ## 12.2.0
 
 ### Minor Changes
