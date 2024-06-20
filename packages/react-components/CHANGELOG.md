@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 12.3.6
+
+### Patch Changes
+
+- cab0e74: Fix tooltip portal wrapper
+  - @lualtek/icons@12.3.6
+
 ## 12.3.5
 
 ### Patch Changes
