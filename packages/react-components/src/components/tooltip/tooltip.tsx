@@ -96,7 +96,7 @@ export const Tooltip: FCChildrenClass<TooltipProps> = ({
         <Elevator resting={3}>
           <ConditionalWrapper
             condition={usePortal}
-            wrapper={children => <TooltipPrimitive.Content>{children}</TooltipPrimitive.Content>}
+            wrapper={children => <TooltipPrimitive.Portal>{children}</TooltipPrimitive.Portal>}
           >
             <TooltipPrimitive.Content
               asChild
