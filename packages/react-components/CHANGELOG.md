@@ -1,5 +1,15 @@
 # @lualtek/react-components
 
+## 12.4.0
+
+### Minor Changes
+
+- c17024d: Add new titleSize prop to InfoState
+
+### Patch Changes
+
+- @lualtek/icons@12.4.0
+
 ## 12.3.6
 
 ### Patch Changes
