@@ -65,3 +65,13 @@ export const WithActions = {
     ],
   },
 } satisfies Story;
+
+export const WithTitleLevel = {
+  args: {
+    titleSize: '5',
+    actions: [
+      <Button key="primary">Primary</Button>,
+      <Button kind="flat" key="secondary">Secondary</Button>,
+    ],
+  },
+} satisfies Story;

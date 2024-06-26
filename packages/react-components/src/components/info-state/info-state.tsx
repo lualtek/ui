@@ -8,6 +8,7 @@ import {
 
 import {
   IconChip, IconChipProps, Stack, StackProps, Text, Title,
+  TitleProps,
 } from '@/components';
 
 import styles from './info-state.module.css';
@@ -57,6 +58,12 @@ export type InfoStateProps = HTMLAttributes<HTMLDivElement> & {
    * as many elements as you want, we suggest to add no more than two actions.
    */
   actions?: ReactNode;
+  /**
+   * Set the title level. This is used to set the title size.
+   *
+   * @defaultValue '4'
+   */
+  titleSize?: TitleProps['level'];
 }
 
 export const InfoState = forwardRef<HTMLDivElement, InfoStateProps>(({
@@ -71,6 +78,7 @@ export const InfoState = forwardRef<HTMLDivElement, InfoStateProps>(({
   direction = 'column',
   iconColor = 'blue',
   actions,
+  titleSize = '4',
   ...otherProps
 }, forwardedRef) => {
   const isHorizontal = direction === 'row';
@@ -133,7 +141,7 @@ export const InfoState = forwardRef<HTMLDivElement, InfoStateProps>(({
           vAlign="center"
           fill={false}
         >
-          <Title maxWidth={titleMaxWidth} align={isHorizontal ? 'start' : 'center'} level="4">{title}</Title>
+          <Title maxWidth={titleMaxWidth} align={isHorizontal ? 'start' : 'center'} level={titleSize}>{title}</Title>
           <Text as="div" maxWidth={textMaxWidth} dimmed={6} align={isHorizontal ? 'start' : 'center'}>{children}</Text>
           {actions && (
             <Stack vPadding={16} inline direction="row" columnGap={16} rowGap={16} wrap>
