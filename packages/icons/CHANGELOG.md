@@ -1,5 +1,11 @@
 # @lualtek/icons
 
+## 12.5.0
+
+### Minor Changes
+
+- 917c093: Add new zone icon
+
 ## 12.4.0
 
 ## 12.3.6

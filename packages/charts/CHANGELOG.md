@@ -1,5 +1,13 @@
 # @lualtek/charts
 
+## 12.5.0
+
+### Patch Changes
+
+- Updated dependencies [1249f3d]
+  - @lualtek/react-components@12.5.0
+  - @lualtek/tokens@12.5.0
+
 ## 12.4.0
 
 ### Patch Changes
