@@ -3,7 +3,7 @@
 import * as SliderPrimitive from '@radix-ui/react-slider';
 import clsx from 'clsx';
 import {
-  ElementRef, forwardRef, ReactNode, useCallback, useId, useState,
+  ElementRef, forwardRef, ReactNode, useCallback, useEffect, useId, useMemo, useState,
 } from 'react';
 
 import {
@@ -49,7 +49,7 @@ SliderProps
       color: 'mid',
     },
   });
-  const val = value ?? defaultValue;
+  const val = useMemo(() => value ?? defaultValue, [value, defaultValue]);
   const uid = useId();
   const [changedValue, setChangedValue] = useState<number[] | undefined>(val);
 
@@ -60,6 +60,10 @@ SliderProps
     },
     [onValueChange],
   );
+
+  useEffect(() => {
+    setChangedValue(val);
+  }, [val]);
 
   return (
     <Stack rowGap={16} inline className={clsx(styles.Slider, className)}>
@@ -81,7 +85,7 @@ SliderProps
         minStepsBetweenThumbs={1}
         ref={forwardedRef}
         defaultValue={defaultValue}
-        value={value}
+        value={changedValue}
         max={max}
         onValueChange={handleChange}
         {...otherProps}
@@ -95,6 +99,7 @@ SliderProps
             <SliderPrimitive.Thumb
               className={styles.Thumb}
               data-slider-value-label={valueLabel?.(changedValue?.[index] ?? 0)}
+
             />
           </Elevator>
         ))}

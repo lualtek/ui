@@ -1,6 +1,7 @@
+import { useMemo, useState } from '@storybook/preview-api';
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Slider } from './slider';
+import { Slider, SliderProps } from './slider';
 
 const meta = {
   title: 'Inputs/Slider',
@@ -29,6 +30,52 @@ const meta = {
 
 export default meta;
 
+const DynamicTemplate = (args: SliderProps) => {
+  const [sabbia, setSabbia] = useState(40); // Initial value for sabbia
+  const [argilla, setArgilla] = useState(60); // Initial value for argilla
+
+  // Calculate limo using useMemo
+  const limo = useMemo(() => Math.max(0, 100 - sabbia - argilla), [sabbia, argilla]);
+
+  const handleSabbiaChange = (values: number[]) => {
+    const value = values[0];
+    const adjustedArgilla = argilla > (100 - value) ? (100 - value) : argilla;
+    setSabbia(value);
+    setArgilla(adjustedArgilla);
+  };
+
+  const handleArgillaChange = (values: number[]) => {
+    const value = values[0];
+    const adjustedSabbia = sabbia > (100 - value) ? (100 - value) : sabbia;
+    setArgilla(value);
+    setSabbia(adjustedSabbia);
+  };
+
+  return (
+    <div>
+      <Slider
+        label="Sabbia"
+        value={[sabbia]}
+        defaultValue={[sabbia]}
+        onValueCommit={handleSabbiaChange}
+        {...args}
+      />
+      <Slider
+        label="Argilla"
+        value={[argilla]}
+        onValueCommit={handleArgillaChange}
+        {...args}
+      />
+      <Slider
+        label="Limo"
+        value={[limo]}
+        disabled
+        {...args}
+      />
+    </div>
+  );
+};
+
 type Story = StoryObj<typeof meta>;
 
 export const Default = {} satisfies Story;
@@ -51,4 +98,12 @@ export const ValueLabel = {
     max: 10000,
     valueLabel: val => (val ? `${new Intl.NumberFormat('en-GB').format(val)}K` : ''),
   },
+} satisfies Story;
+
+export const Dynamic = {
+  args: {
+    min: 0,
+    max: 100,
+  },
+  render: args => <DynamicTemplate {...args} />,
 } satisfies Story;
