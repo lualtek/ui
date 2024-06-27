@@ -1,5 +1,13 @@
 # @lualtek/react-components
 
+## 12.5.0
+
+### Patch Changes
+
+- 1249f3d: Fix Slider for controlled situation
+- Updated dependencies [917c093]
+  - @lualtek/icons@12.5.0
+
 ## 12.4.0
 
 ### Minor Changes
