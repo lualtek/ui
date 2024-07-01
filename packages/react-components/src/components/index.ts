@@ -15,6 +15,7 @@ export * from './datetime';
 export * from './disclosure';
 export * from './drawer';
 export * from './elevator';
+export * from './emoji-picker';
 export * from './glow';
 export * from './gradient-text';
 export * from './grid';

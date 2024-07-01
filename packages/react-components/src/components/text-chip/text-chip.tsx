@@ -4,7 +4,11 @@ import { TokensTypes } from '@lualtek/tokens/platforms/web';
 import clsx from 'clsx';
 import { useMemo } from 'react';
 
-import { Stack, Text, TextProps } from '@/components';
+import {
+  BlankButton,
+  ConditionalWrapper, Elevator, EmojiPicker, EmojiPickerProps, Panel, Popover,
+  Stack, Text, TextProps,
+} from '@/components';
 import { FCClass } from '@/components/types';
 
 import styles from './text-chip.module.css';
@@ -29,6 +33,33 @@ export type TextChipProps = {
    * @defaultValue true
    */
   tinted?: boolean;
+  /**
+   * Show the emoji picker when the component is clicked.
+   *
+   * @defaultValue false
+   */
+  showEmojiPicker?: boolean;
+  /**
+   * Callback when an emoji is clicked.
+   *
+   * @returns ```ts
+   * {
+        activeSkinTone: SkinTones;
+        unified: string;
+        unifiedWithoutSkinTone: string;
+        emoji: string;
+        names: string[];
+        imageUrl: string;
+        getImageUrl: (emojiStyle?: EmojiStyle) => string;
+        isCustom: boolean;
+      }
+   * ```
+   */
+  onEmojiClick?: EmojiPickerProps['onEmojiClick'];
+  /**
+   * Callback when a color name is clicked.
+   */
+  onColorClick?: EmojiPickerProps['onColorClick'];
 }
 
 type Sizes = Record<string, {
@@ -60,6 +91,9 @@ export const TextChip: FCClass<TextChipProps> = ({
   dimension = 'regular',
   color = 'primary',
   tinted = true,
+  showEmojiPicker = false,
+  onEmojiClick,
+  onColorClick,
   ...otherProps
 }) => {
   const isEmoji = useMemo(() => emojiRegex.test(text), [text]);
@@ -69,29 +103,57 @@ export const TextChip: FCClass<TextChipProps> = ({
   }), [color]);
 
   return (
-    <Stack
-      as="span"
-      direction="row"
-      inline
-      fill={false}
-      data-text-chip-dimension={dimension}
-      data-text-chip-tinted={tinted}
-      className={clsx(styles.TextChip, className)}
-      vAlign="center"
-      hAlign="center"
-      style={{ ...dynamicStyle, ...style }}
-      {...otherProps}
+    <ConditionalWrapper
+      condition={(showEmojiPicker && onEmojiClick) as boolean}
+      wrapper={children => (
+        <Popover>
+          <Popover.Trigger>
+            <BlankButton>{children}</BlankButton>
+          </Popover.Trigger>
+          <Popover.Content side="right" offset={16} align="start">
+            <Elevator resting={4}>
+              <Panel
+                bordered
+                radius={16}
+                vibrant
+                vibrancyColor="background"
+              >
+                <EmojiPicker
+                  onEmojiClick={onEmojiClick}
+                  onColorClick={onColorClick}
+                  skinTonesDisabled
+                />
+              </Panel>
+            </Elevator>
+          </Popover.Content>
+        </Popover>
+      )}
     >
-      <Text
-        className={styles.TextWrapper}
-        align="center"
-        size={isEmoji ? sizes[dimension].emoji : sizes[dimension].text}
-        weight="bold"
+      <Stack
         as="span"
+        direction="row"
+        inline
+        fill={false}
+        data-text-chip-dimension={dimension}
+        data-text-chip-tinted={tinted}
+        className={clsx(styles.TextChip, className)}
+        vAlign="center"
+        hAlign="center"
+        style={{ ...dynamicStyle, ...style }}
+        {...otherProps}
       >
-        {isEmoji ? text : text.slice(0, 2)}
-      </Text>
-    </Stack>
+        <Text
+          className={styles.TextWrapper}
+          align="center"
+          size={isEmoji ? sizes[dimension].emoji : sizes[dimension].text}
+          weight="bold"
+          as="span"
+        >
+          {isEmoji ? text : text.slice(0, 2)}
+        </Text>
+      </Stack>
+
+    </ConditionalWrapper>
   );
 };
 
