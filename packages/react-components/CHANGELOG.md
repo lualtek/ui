@@ -1,5 +1,15 @@
 # @lualtek/react-components
 
+## 12.6.0
+
+### Minor Changes
+
+- 374fbb7: Update text chip with emoji picker and add emoji-picker component
+
+### Patch Changes
+
+- @lualtek/icons@12.6.0
+
 ## 12.5.0
 
 ### Patch Changes
