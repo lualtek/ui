@@ -2,6 +2,7 @@
 
 import { TokensTypes } from '@lualtek/tokens/platforms/web';
 import clsx from 'clsx';
+import { Emoji, EmojiClickData } from 'emoji-picker-react';
 import { useMemo } from 'react';
 
 import {
@@ -27,7 +28,7 @@ export type TextChipProps = {
   /**
    * Set the text content. Max 2 characters or 1 emoji.
    */
-  text: string;
+  text?: string;
   /**
    * Match the emoji color with the chip color.
    * @defaultValue true
@@ -39,6 +40,14 @@ export type TextChipProps = {
    * @defaultValue false
    */
   showEmojiPicker?: boolean;
+  /**
+   * Set the width of the emoji picker.
+   */
+  pickerWidth?: EmojiPickerProps['width'];
+  /**
+   * The unified emoji code to display.
+   */
+  emoji?: EmojiClickData['unified'];
   /**
    * Callback when an emoji is clicked.
    *
@@ -63,22 +72,22 @@ export type TextChipProps = {
 }
 
 type Sizes = Record<string, {
-  text: TextProps['size'];
-  emoji: TextProps['size'];
+  text: Exclude<NonNullable<TextProps['size']>, string>;
+  emoji: Exclude<NonNullable<TextProps['size']>, string>;
 }>
 
 const sizes: Sizes = {
   small: {
     text: 12,
-    emoji: 14,
+    emoji: 18,
   },
   regular: {
     text: 16,
-    emoji: 22,
+    emoji: 24,
   },
   big: {
     text: 18,
-    emoji: 28,
+    emoji: 32,
   },
 };
 
@@ -94,9 +103,11 @@ export const TextChip: FCClass<TextChipProps> = ({
   showEmojiPicker = false,
   onEmojiClick,
   onColorClick,
+  pickerWidth,
+  emoji,
   ...otherProps
 }) => {
-  const isEmoji = useMemo(() => emojiRegex.test(text), [text]);
+  const isEmoji = useMemo(() => text && emojiRegex.test(text), [text]);
   const dynamicStyle = useMemo(() => ({
     '--background': `var(--highlight-${color}-background)`,
     '--foreground': `var(--highlight-${color}-foreground)`,
@@ -122,6 +133,7 @@ export const TextChip: FCClass<TextChipProps> = ({
                   onEmojiClick={onEmojiClick}
                   onColorClick={onColorClick}
                   skinTonesDisabled
+                  width={pickerWidth}
                 />
               </Panel>
             </Elevator>
@@ -145,11 +157,12 @@ export const TextChip: FCClass<TextChipProps> = ({
         <Text
           className={styles.TextWrapper}
           align="center"
-          size={isEmoji ? sizes[dimension].emoji : sizes[dimension].text}
+          size={isEmoji ? sizes[dimension]?.emoji : sizes[dimension]?.text}
           weight="bold"
           as="span"
         >
-          {isEmoji ? text : text.slice(0, 2)}
+          {(text && !emoji) && text.slice(0, dimension === 'small' ? 1 : 2)}
+          {(emoji) && <Emoji unified={emoji} size={sizes[dimension]?.emoji / 1.2} /> }
         </Text>
       </Stack>
 

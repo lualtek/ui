@@ -50,6 +50,7 @@ export const EmojiPicker: FC<EmojiPickerProps> = ({
       skinTonePickerLocation={SkinTonePickerLocation.PREVIEW}
       className={styles.Picker}
       emojiStyle={EmojiStyle.NATIVE}
+      emojiVersion="15.0"
     />
   </Stack>
 );
