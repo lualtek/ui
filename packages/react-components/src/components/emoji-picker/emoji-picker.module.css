@@ -1,17 +1,17 @@
-@layer components {
-  .Picker.Picker {
-    --epr-bg-color: transparent;
-    --epr-category-label-bg-color: color-mix(in oklch, var(--global-background), transparent 5%);
-    --epr-picker-border-color: transparent;
-    --epr-text-color: var(--global-foreground);
-    --epr-hover-bg-color: var(--dimmed-2);
-    --epr-emoji-hover-color: var(--dimmed-2);
-    --epr-focus-bg-color: var(--dimmed-2);
-    --epr-search-input-bg-color: var(--vibrancy-background-mid);
-    --epr-search-input-bg-color-active: var(--vibrancy-background-mid);
-    --epr-search-border-color: var(--dimmed-2);
-  }
+.Picker.Picker {
+  --epr-bg-color: transparent;
+  --epr-category-label-bg-color: color-mix(in oklch, var(--global-background), transparent 5%);
+  --epr-picker-border-color: transparent;
+  --epr-text-color: var(--global-foreground);
+  --epr-hover-bg-color: var(--dimmed-2);
+  --epr-emoji-hover-color: var(--dimmed-2);
+  --epr-focus-bg-color: var(--dimmed-2);
+  --epr-search-input-bg-color: var(--vibrancy-background-mid);
+  --epr-search-input-bg-color-active: var(--vibrancy-background-mid);
+  --epr-search-border-color: var(--dimmed-2);
+}
 
+@layer components {
   .ColorSwatch {
     border-radius: 1e5px;
     background: var(--swatch-background);
