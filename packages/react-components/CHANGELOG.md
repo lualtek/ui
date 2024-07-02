@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 12.6.1
+
+### Patch Changes
+
+- 9e363b1: Try to fix shitty next css layers
+  - @lualtek/icons@12.6.1
+
 ## 12.6.0
 
 ### Minor Changes
