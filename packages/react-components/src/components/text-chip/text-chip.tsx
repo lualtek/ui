@@ -2,11 +2,10 @@
 
 import { TokensTypes } from '@lualtek/tokens/platforms/web';
 import clsx from 'clsx';
-import { Emoji } from 'emoji-picker-react';
+import { Emoji, EmojiClickData } from 'emoji-picker-react';
 import { useMemo } from 'react';
 
 import {
-  EmojiPickerProps,
   Stack, Text, TextProps,
 } from '@/components';
 import { FCClass } from '@/components/types';
@@ -36,7 +35,7 @@ export type TextChipProps = {
   /**
    * The emoji unified code to display.
    */
-  emoji?: EmojiPickerProps['emoji'];
+  emoji?: EmojiClickData['unified'];
 }
 
 type Sizes = Record<string, {

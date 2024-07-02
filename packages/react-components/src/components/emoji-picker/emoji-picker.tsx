@@ -1,61 +1,70 @@
 'use client';
 
 import { TokensTypes } from '@lualtek/tokens/platforms/web';
-import { EmojiClickData, PickerProps } from 'emoji-picker-react';
+import tkns from '@lualtek/tokens/platforms/web/tokens.json';
+import ReactEmojiPicker, {
+  EmojiStyle,
+  PickerProps, SkinTonePickerLocation, Theme,
+} from 'emoji-picker-react';
 import { FC } from 'react';
 
 import {
-  ResponsiveProvider,
-  TextChipProps,
+  BlankButton,
+  Grid,
+  Separator,
+  Stack,
 } from '@/components';
 
-import { Picker } from './picker';
+import styles from './emoji-picker.module.css';
 
 export type EmojiPickerProps = PickerProps & {
-  /**
-   * The unified emoji code to display.
-   */
-  emoji: EmojiClickData['unified'];
-  /**
-   * Use the `TextChip` component to render the emoji.
-   *
-   * @defaultValue false
-   */
-  useChip?: boolean;
-  /**
-   * The color of the chip. Used only when `useChip` is `true`.
-   */
-  chipColor?: TextChipProps['color'];
   /**
    * Callback when a color name is clicked.
    */
   onColorClick?: (color: TokensTypes['colors']) => void;
-  /**
-   * The dimension of the emoji and text chip.
-   */
-  dimension?: TextChipProps['dimension'];
 };
+
+const highlightColorToExclude = ['support'];
+
+const highlightKeys = Object.keys(
+  tkns.color as Record<TokensTypes['colors'], unknown>,
+).filter(i => !highlightColorToExclude.includes(i)).map(item => item);
 
 export const EmojiPicker: FC<EmojiPickerProps> = ({
   className,
   theme,
   onColorClick,
-  emoji,
-  chipColor,
-  useChip = false,
-  dimension = 'regular',
   ...otherProps
 }) => (
-  <ResponsiveProvider>
-    <Picker
-      emoji={emoji}
-      dimension={dimension}
-      useChip={useChip}
-      chipColor={chipColor}
-      onColorClick={onColorClick}
+  <Stack>
+    {onColorClick && (
+      <>
+        <Grid colMinWidth="24px" rowGap={8} columnGap={8} hPadding={16} vPadding={16}>
+          {highlightKeys.map(color => (
+            <Grid.Item key={color}>
+              <BlankButton
+                className={styles.ColorSwatch}
+                onClick={() => onColorClick?.(color as TokensTypes['colors'])}
+                style={{ '--swatch-background': `var(--highlight-${color}-background)` }}
+              />
+            </Grid.Item>
+          ))}
+        </Grid>
+        <Separator />
+      </>
+    )}
+    <ReactEmojiPicker
+      width="100%"
       {...otherProps}
+      lazyLoadEmojis
+      theme={theme ?? Theme.AUTO}
+      skinTonePickerLocation={SkinTonePickerLocation.PREVIEW}
+      className={styles.Picker}
+      emojiStyle={EmojiStyle.NATIVE}
+      emojiVersion="15.0"
+      autoFocusSearch={false}
     />
-  </ResponsiveProvider>
+  </Stack>
 );
 
 EmojiPicker.displayName = 'EmojiPicker';
