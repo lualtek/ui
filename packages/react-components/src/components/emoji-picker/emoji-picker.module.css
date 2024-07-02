@@ -1,6 +1,6 @@
 .Picker.Picker {
   --epr-bg-color: transparent;
-  --epr-category-label-bg-color: color-mix(in oklch, var(--global-background), transparent 5%);
+  --epr-category-label-bg-color: oklch(from var(--background) l c h / calc(alpha * 1.6));
   --epr-picker-border-color: transparent;
   --epr-text-color: var(--global-foreground);
   --epr-hover-bg-color: var(--dimmed-2);
@@ -12,7 +12,7 @@
 }
 
 @layer components {
-  .ColorSwatch {
+  .ColorSwatch.ColorSwatch {
     border-radius: 1e5px;
     background: var(--swatch-background);
     border: 1px solid var(--global-inner-contrast-border);
