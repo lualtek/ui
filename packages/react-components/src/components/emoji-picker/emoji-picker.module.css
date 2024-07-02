@@ -1,4 +1,4 @@
-.Picker.Picker {
+.Picker {
   --epr-bg-color: transparent;
   --epr-category-label-bg-color: var(--vibrancy-background);
   --epr-picker-border-color: transparent;
@@ -11,8 +11,8 @@
   --epr-search-border-color: var(--dimmed-2);
 }
 
-@layer components {
-  .ColorSwatch.ColorSwatch {
+@layer overrides {
+  .ColorSwatch {
     border-radius: 1e5px;
     background: var(--swatch-background);
     border: 1px solid var(--global-inner-contrast-border);
