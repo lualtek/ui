@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 12.6.2
+
+### Patch Changes
+
+- 52e17da: Update moji picker and restore old text-chip
+  - @lualtek/icons@12.6.2
+
 ## 12.6.1
 
 ### Patch Changes
