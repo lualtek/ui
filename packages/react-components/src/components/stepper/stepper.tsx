@@ -61,7 +61,6 @@ export const Stepper = forwardRef<HTMLDivElement, StepperProps>(({
       </Glow>
       <Stack
         vPadding={matches.medium ? 8 : 4}
-        hAlign="start"
         fill={fillContent}
         rowGap={contentGap}
         className={styles.Content}
