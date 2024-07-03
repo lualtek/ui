@@ -1,5 +1,13 @@
 # @lualtek/charts
 
+## 12.6.3
+
+### Patch Changes
+
+- Updated dependencies [ecefc2d]
+  - @lualtek/react-components@12.6.3
+  - @lualtek/tokens@12.6.3
+
 ## 12.6.2
 
 ### Patch Changes
