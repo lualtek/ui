@@ -5,6 +5,7 @@ import {
   forwardRef, HTMLAttributes, ReactNode, useMemo,
 } from 'react';
 import { AutoFocusInside } from 'react-focus-on';
+import { Except } from 'type-fest';
 
 import {
   Elevator, IconButton, Panel, Stack, Title, useOverlayContext, useResponsiveContext,
@@ -12,7 +13,7 @@ import {
 
 import styles from './modal-content.module.css';
 
-export type ModalContentProps = HTMLAttributes<HTMLDivElement> & {
+export type ModalContentProps = Except<HTMLAttributes<HTMLDivElement>, 'title'> & {
   /**
    * Set the accessible title of the modal. This is used by screen readers to
    * announce the title of the modal when opened.

@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import {
   Button, IconButton, ResponsiveProvider,
-  Stack, Textfield,
+  Stack, TextChip, Textfield,
   Title, useOverlayContext,
 } from '../..';
 import { Modal } from './modal';
@@ -119,5 +119,29 @@ const CustomContentModal = () => {
 export const CustomContent = {
   args: {
     children: <CustomContentModal />,
+  },
+} satisfies Story;
+
+export const WithTitleComponent = {
+  args: {},
+  render: function Render({ ...args }) {
+    const [{ isVisible }, setIsVisible] = useArgs<{ isVisible: boolean }>();
+    const handleClose = (visibility: boolean) => setIsVisible({ isVisible: visibility });
+
+    return (
+      <>
+        <Button onClick={() => handleClose(true)}>Show Modal</Button>
+        <Modal
+          {...args}
+          key="dynamic-modal"
+          isOpen={isVisible}
+          onClose={() => handleClose(false)}
+        >
+          <Modal.Content title={<TextChip text="MA" />}>
+            {args.children}
+          </Modal.Content>
+        </Modal>
+      </>
+    );
   },
 } satisfies Story;
