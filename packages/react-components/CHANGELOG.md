@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 12.6.5
+
+### Patch Changes
+
+- 3278c85: Fix modal content title type
+  - @lualtek/icons@12.6.5
+
 ## 12.6.4
 
 ### Patch Changes
