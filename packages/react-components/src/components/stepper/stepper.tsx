@@ -26,6 +26,12 @@ export type StepperProps = ComponentPropsWithoutRef<'div'> & {
    * @defaultValue 16
    */
   contentGap?: StackProps['rowGap'];
+  /**
+   * Fill the content to the available space.
+   *
+   * @defaultValue false
+   */
+  fillContent?: boolean;
 }
 
 export const Stepper = forwardRef<HTMLDivElement, StepperProps>(({
@@ -34,6 +40,7 @@ export const Stepper = forwardRef<HTMLDivElement, StepperProps>(({
   title,
   step,
   contentGap = 16,
+  fillContent = false,
   ...otherProps
 }, forwardedRef) => {
   const padStep = useMemo(() => String(step).padStart(2, '0'), [step]);
@@ -55,7 +62,7 @@ export const Stepper = forwardRef<HTMLDivElement, StepperProps>(({
       <Stack
         vPadding={matches.medium ? 8 : 4}
         hAlign="start"
-        fill={false}
+        fill={fillContent}
         rowGap={contentGap}
         className={styles.Content}
       >
