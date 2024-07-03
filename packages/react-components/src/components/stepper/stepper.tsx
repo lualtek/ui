@@ -32,6 +32,10 @@ export type StepperProps = ComponentPropsWithoutRef<'div'> & {
    * @defaultValue false
    */
   fillContent?: boolean;
+  /**
+   * Fill the width of the stepper.
+   */
+  fullWidth?: boolean;
 }
 
 export const Stepper = forwardRef<HTMLDivElement, StepperProps>(({
@@ -41,6 +45,7 @@ export const Stepper = forwardRef<HTMLDivElement, StepperProps>(({
   step,
   contentGap = 16,
   fillContent = false,
+  fullWidth = false,
   ...otherProps
 }, forwardedRef) => {
   const padStep = useMemo(() => String(step).padStart(2, '0'), [step]);
@@ -51,7 +56,7 @@ export const Stepper = forwardRef<HTMLDivElement, StepperProps>(({
       direction="row"
       columnGap={matches.medium ? 24 : 16}
       className={clsx(styles.Stepper, className)}
-      fill={false}
+      fill={fullWidth}
       vAlign="start"
       ref={forwardedRef}
       {...otherProps}
