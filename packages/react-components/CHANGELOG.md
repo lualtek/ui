@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 12.7.2
+
+### Patch Changes
+
+- de3617b: add fullWidth to steper
+  - @lualtek/icons@12.7.2
+
 ## 12.7.1
 
 ### Patch Changes
