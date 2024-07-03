@@ -1,4 +1,4 @@
-.Picker {
+.Picker.Picker {
   --epr-bg-color: transparent;
   --epr-category-label-bg-color: var(--vibrancy-background);
   --epr-picker-border-color: transparent;
