@@ -1,5 +1,15 @@
 # @lualtek/react-components
 
+## 12.7.0
+
+### Minor Changes
+
+- 227e249: Add new fillContent to Stepper
+
+### Patch Changes
+
+- @lualtek/icons@12.7.0
+
 ## 12.6.5
 
 ### Patch Changes
