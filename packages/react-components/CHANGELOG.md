@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 12.7.1
+
+### Patch Changes
+
+- b0cb949: Fix stepper content align
+  - @lualtek/icons@12.7.1
+
 ## 12.7.0
 
 ### Minor Changes
