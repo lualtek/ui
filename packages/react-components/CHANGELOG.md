@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 12.6.3
+
+### Patch Changes
+
+- ecefc2d: Add missing EmojiClickData type
+  - @lualtek/icons@12.6.3
+
 ## 12.6.2
 
 ### Patch Changes
