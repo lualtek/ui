@@ -66,11 +66,11 @@ SliderProps
   }, [val]);
 
   return (
-    <Stack rowGap={16} inline className={clsx(styles.Slider, className)}>
+    <Stack rowGap={4} inline className={clsx(styles.Slider, className)}>
       {label && (
         <Text
           as="span"
-          lineHeight="none"
+          lineHeight="extra-small"
           dimmed={5}
           size={14}
         >
