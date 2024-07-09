@@ -1,5 +1,16 @@
 # @lualtek/react-components
 
+## 13.0.0
+
+### Major Changes
+
+- f8e8a86: Remove deprecated `invalid` propr from textfield
+
+### Patch Changes
+
+- 237c884: Update stepper ui
+  - @lualtek/icons@13.0.0
+
 ## 12.7.3
 
 ### Patch Changes
