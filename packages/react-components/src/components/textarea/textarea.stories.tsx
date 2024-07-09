@@ -41,3 +41,10 @@ export const Textarea = {
     rows: 10,
   },
 } satisfies Story;
+
+export const Invalid = {
+  args: {
+    rows: 10,
+    required: true,
+  },
+} satisfies Story;

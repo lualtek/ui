@@ -18,6 +18,27 @@
     z-index: 0;
   }
 
+
+  .InputField {
+    padding:
+      calc(token(--space-24) - token(--space-4))
+      var(--field-padding)
+      token(--space-4)
+      var(--field-padding);
+
+
+      .Textfield[data-textfield-has-icon='true'][data-textfield-icon-position='end'] & {
+        padding-right: calc(var(--field-padding) * (var(--factor)));
+        padding-left: var(--field-padding);
+      }
+
+
+      .Textfield[data-textfield-has-icon='true'][data-textfield-icon-position='start'] & {
+        padding-right: var(--field-padding);
+        padding-left: calc(var(--field-padding) * (var(--factor)));
+      }
+  }
+
   .Label {
     position: absolute;
     pointer-events: none;
@@ -29,38 +50,19 @@
     text-overflow: ellipsis;
     overflow: hidden;
 
-    .InputField:where(:user-invalid, [data-basefield-invalid='true'], :out-of-range) ~ & {
+    /* stylelint-disable-next-line no-descending-specificity */
+    .InputField:where(:user-invalid, :out-of-range) ~ & {
       color: var(--highlight-red-foreground);
     }
 
-    [data-textfield-has-icon='true'][data-textfield-icon-position='start'] & {
+    .Textfield[data-textfield-has-icon='true'][data-textfield-icon-position='start'] & {
       left: calc(var(--field-padding) * var(--factor));
     }
 
-    [data-textfield-has-icon='true'][data-textfield-icon-position='end'] & {
+    .Textfield[data-textfield-has-icon='true'][data-textfield-icon-position='end'] & {
       left: var(--field-padding);
       right: calc(var(--field-padding) * var(--factor));
     }
-  }
-
-  .InputField {
-    padding:
-      calc(token(--space-24) - token(--space-4))
-      var(--field-padding)
-      token(--space-4)
-      var(--field-padding);
-
-
-      [data-textfield-has-icon='true'][data-textfield-icon-position='end'] & {
-        padding-right: calc(var(--field-padding) * (var(--factor)));
-        padding-left: var(--field-padding);
-      }
-
-
-      [data-textfield-has-icon='true'][data-textfield-icon-position='start'] & {
-        padding-right: var(--field-padding);
-        padding-left: calc(var(--field-padding) * (var(--factor)));
-      }
   }
 
   .Icon {
@@ -70,12 +72,14 @@
     transform: translateY(-50%);
     border-radius: 12px;
 
-    [data-textfield-icon-position='start'] & {
+    /* stylelint-disable-next-line no-descending-specificity */
+    .Textfield[data-textfield-icon-position='start'] & {
       right: auto;
       left: calc(var(--field-padding) / 1.5);
     }
 
-    [data-textfield-icon-position='end'] & {
+    /* stylelint-disable-next-line no-descending-specificity */
+    .Textfield[data-textfield-icon-position='end'] & {
       left: auto;
       right: calc(var(--field-padding) / 1.5);
     }

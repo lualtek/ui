@@ -47,7 +47,6 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(({
   disabled = false,
   label,
   readOnly,
-  invalid,
   id,
   style,
   onChange,
@@ -62,7 +61,6 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(({
       as="fieldset"
       rowGap={4}
       className={clsx(styles.Textarea, className)}
-      data-textfield-invalid={invalid}
       data-textfield-fullwidth={fullWidth}
       aria-disabled={disabled}
       hAlign="stretch"
@@ -76,9 +74,9 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(({
           as="textarea"
           id={fieldID}
           readOnly={readOnly}
-          invalid={invalid}
           disabled={disabled}
           onChange={onChange}
+          className={styles.Field}
           {...otherProps}
         />
 

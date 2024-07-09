@@ -99,8 +99,8 @@
       }
     }
 
-    &:is(:user-invalid, [data-basefield-invalid='true'], :out-of-range),
-    &:is(:user-invalid, [data-basefield-invalid='true'], :out-of-range):focus-visible {
+    &:is(:user-invalid, :out-of-range),
+    &:is(:user-invalid, :out-of-range):focus-visible {
       --inner-border-color: var(--highlight-red-foreground);
 
       background-color: var(--vibrancy-background-red);

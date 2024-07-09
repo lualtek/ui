@@ -78,7 +78,6 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(({
   disabled = false,
   icon,
   label,
-  invalid,
   id,
   iconPosition = 'end',
   type = 'text',
@@ -134,7 +133,6 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(({
       className={clsx(styles.Textfield, className)}
       data-textfield-has-icon={isPassword || (Boolean(icon) && isNotDate)}
       data-textfield-icon-position={showClearButton ? 'end' : iconPosition}
-      data-textfield-invalid={invalid}
       data-textfield-fullwidth={fullWidth}
       aria-disabled={disabled}
       hAlign="stretch"
@@ -151,7 +149,6 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(({
           defaultValue={defaultValue}
           value={value}
           onChange={handleChange}
-          invalid={invalid}
           disabled={disabled}
           {...otherProps}
         />
