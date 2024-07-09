@@ -25,7 +25,6 @@ const meta = {
   component: Autocomplete,
   args: {
     label: 'Autocomplete',
-    invalid: false,
     icon: 'zoom',
     options,
     matchFieldWidth: false,

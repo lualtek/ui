@@ -24,10 +24,6 @@ const meta = {
       options: [true, false],
       control: { type: 'inline-radio' },
     },
-    invalid: {
-      options: [true, false],
-      control: { type: 'inline-radio' },
-    },
   },
   render: args => <Area {...args} placeholder="Placeholder" />,
 } satisfies Meta<typeof Area>;
