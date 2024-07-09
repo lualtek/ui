@@ -51,7 +51,7 @@
     overflow: hidden;
 
     /* stylelint-disable-next-line no-descending-specificity */
-    .InputField:where(:user-invalid, :out-of-range) ~ & {
+    .InputField:where(:user-invalid, :invalid, :out-of-range) ~ & {
       color: var(--highlight-red-foreground);
     }
 
