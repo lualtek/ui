@@ -65,11 +65,12 @@
     "stylelint-design-tokens-plugin": "0.0.14",
     "ts-node": "10.9.2",
     "tsc-alias": "1.8.10",
-    "turbo": "1.13.3",
+    "turbo": "2.0.6",
     "typescript": "5.4.5"
   },
   "engines": {
     "pnpm": ">=8.0.0",
     "node": ">=18.0.0"
-  }
+  },
+  "packageManager": "pnpm@8.15.5"
 }
