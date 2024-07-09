@@ -42,5 +42,12 @@ export const Invalid = {
   args: {
     rows: 10,
     required: true,
+    onInvalid: ({ currentTarget }) => currentTarget.setCustomValidity('Cicciabaluba'),
   },
+  render: args => (
+    <form>
+      <Area {...args} placeholder="Placeholder" />
+      <button type="submit">Submit</button>
+    </form>
+  ),
 } satisfies Story;
