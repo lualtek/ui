@@ -26,7 +26,10 @@ export const BaseField = forwardRef(({
   <Wrapper
     ref={forwardedRef}
     data-basefield-invalid={invalid}
+    aria-invalid={invalid}
     className={clsx(styles.BaseField, className)}
+    // Prevent the default popup message of the browser when the field is invalid.
+    onInvalid={e => e.preventDefault()}
     {...otherProps}
   />
 )) as PolymorphicBaseField;

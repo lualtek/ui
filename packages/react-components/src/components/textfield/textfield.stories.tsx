@@ -121,5 +121,15 @@ export const Invalid = {
     iconPosition: 'start',
     icon: 'chat',
   },
+  render: args => <Textfield {...args} type="email" label="Type email" defaultValue="" />,
+} satisfies Story;
+
+export const forcedInvalid = {
+  args: {
+    label: 'Sample label',
+    iconPosition: 'start',
+    icon: 'chat',
+    invalid: true,
+  },
   render: args => <Textfield {...args} type="email" required label="Type email" defaultValue="" />,
 } satisfies Story;
