@@ -6,7 +6,7 @@ import { Polymorphic } from '@/components';
 import styles from './base-field.module.css';
 
 /**
- * @internal
+ * Force the invalid state of the field.
  */
 export type BaseFieldProps = {
   invalid?: boolean;
