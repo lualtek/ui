@@ -99,14 +99,6 @@
       }
     }
 
-    &:is(:user-invalid, [data-basefield-invalid='true'], :out-of-range),
-    &:is(:user-invalid, [data-basefield-invalid='true'], :out-of-range):focus-visible {
-      --inner-border-color: var(--highlight-red-foreground);
-
-      background-color: var(--vibrancy-background-red);
-      outline-color: var(--highlight-red-foreground);
-    }
-
 
     &[type='number'] {
       appearance: textfield;
@@ -125,6 +117,14 @@
     &[type='search']::-webkit-search-decoration {
       appearance: none;
     }
+  }
+
+  .BaseField:is(:user-invalid, [data-basefield-invalid='true'], :out-of-range),
+  .BaseField:is(:user-invalid, [data-basefield-invalid='true'], :out-of-range):focus-visible {
+    --inner-border-color: var(--highlight-red-foreground);
+
+    background-color: var(--vibrancy-background-red);
+    outline-color: var(--highlight-red-foreground);
   }
 
 
