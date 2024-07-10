@@ -1,4 +1,3 @@
-@layer components {
   .Table {
     position: relative;
     width: 100%;
@@ -64,4 +63,3 @@
       min-block-size: token(--space-56);
     }
   }
-}

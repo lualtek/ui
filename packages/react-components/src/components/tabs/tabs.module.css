@@ -1,4 +1,3 @@
-@layer components {
   .Tabs {
     max-width: 100%;
   }
@@ -68,8 +67,7 @@
       opacity: 100%;
     }
   }
-}
-@layer overrides {
+
   .Trigger {
     overflow: unset;
     z-index: 0;
@@ -89,4 +87,3 @@
       backdrop-filter: none;
     }
   }
-}

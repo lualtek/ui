@@ -1,4 +1,3 @@
-@layer components {
   .LinearProgress {
     position: relative;
   }
@@ -84,4 +83,3 @@
       background-position: left -102% top 0%;
     }
   }
-}

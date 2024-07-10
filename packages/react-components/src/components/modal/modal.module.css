@@ -1,6 +1,5 @@
 @import '../../core/utils/media.css';
 
-@layer components {
   .Modal {
     position: absolute;
     display: grid;
@@ -19,4 +18,3 @@
       pointer-events: auto;
     }
   }
-}

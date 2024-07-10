@@ -1,4 +1,3 @@
-@layer components {
   .Select {
     --field-height: token(--space-40);
     --field-padding: token(--space-16);
@@ -145,4 +144,3 @@
     transform: translateY(-50%);
     right: calc(var(--field-padding) - calc(var(--field-padding) / 3));
   }
-}

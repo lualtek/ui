@@ -1,4 +1,3 @@
-@layer components {
   .Switch {
     appearance: none;
     display: inline-flex;
@@ -66,4 +65,3 @@
   .Label {
     user-select: none;
   }
-}

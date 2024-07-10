@@ -1,4 +1,3 @@
-@layer components {
   .Meter {
     --meter-background-color: var(--dimmed-2);
     --meter-strong-color: oklch(token(--color-green-50));
@@ -78,4 +77,3 @@
       border-radius: inherit;
     }
   }
-}

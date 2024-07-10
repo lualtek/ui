@@ -1,10 +1,8 @@
-@layer components {
   .ToggleButton {
     transition: box-shadow token(--duration-100) token(--easing-entrance);
     line-height: 0;
   }
-}
-@layer overrides {
+
   .ToggleButton[aria-pressed='true'] {
     box-shadow:
       inset
@@ -61,4 +59,3 @@
   .ToggleButton[data-button-dimension='big'] {
     --border-width: 2px;
   }
-}

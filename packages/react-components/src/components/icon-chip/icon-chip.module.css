@@ -1,4 +1,3 @@
-@layer components {
   .IconChip {
     border-radius: calc(token(--radius-8) + token(--radius-4));
     block-size: var(--size, token(--space-40));
@@ -24,4 +23,3 @@
   .IconChip:not([data-icon-chip-dimension='small']) .Icon {
     filter: drop-shadow(0 3px 2px color-mix(in oklab, black, transparent calc(75% - var(--shadow-opacity-factor))));
   }
-}

@@ -1,4 +1,3 @@
-@layer components {
   .Panel {
     background: var(--background);
     position: relative;
@@ -61,4 +60,3 @@
       box-shadow: inset -1px 0 0 0 var(--global-inner-contrast-border);
     }
   }
-}

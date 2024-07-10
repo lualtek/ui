@@ -1,4 +1,3 @@
-@layer components {
   .Textarea {
     --factor: 3.5;
     --field-padding: token(--space-16);
@@ -30,4 +29,3 @@
       color: var(--highlight-red-foreground);
     }
   }
-}

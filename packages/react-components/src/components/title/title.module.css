@@ -1,6 +1,5 @@
 @import '../../core/utils/media.css';
 
-@layer components {
   .Title {
     word-break: break-word;
     white-space: var(--white-space, normal);
@@ -113,4 +112,3 @@
       }
     }
   }
-}

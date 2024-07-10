@@ -1,4 +1,3 @@
-@layer components {
   .ScrollArea {
     overflow: hidden;
     scrollbar-gutter: var(--gutter-behaviour);
@@ -50,4 +49,3 @@
       }
     }
   }
-}

@@ -1,6 +1,5 @@
 @import '../../../core/utils/media.css';
 
-@layer components {
   .Content {
     inline-size: 100vw;
     -webkit-overflow-scrolling: touch;
@@ -55,4 +54,3 @@
     top: token(--space-8);
     right: token(--space-8);
   }
-}

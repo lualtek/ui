@@ -1,6 +1,5 @@
 @import '../../core/utils/media.css';
 
-@layer components {
   .Drawer {
     display: contents;
   }
@@ -51,9 +50,7 @@
       calc(env(safe-area-inset-bottom) + token(--space-16))
       calc(env(safe-area-inset-left) + token(--space-24));
   }
-}
-@layer overrides {
+
   .CloseButton {
     flex-grow: 0;
   }
-}

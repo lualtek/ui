@@ -1,4 +1,3 @@
-@layer components {
   .Separator {
     border: 0;
     margin: var(--v-padding, 0) var(--h-padding);
@@ -15,4 +14,3 @@
       border-bottom: 0;
     }
   }
-}

@@ -1,4 +1,3 @@
-@layer components {
   .IconMeter {
     --icon-dimmed-color: var(--dimmed-3);
     --icon-size: token(--icon-size-16);
@@ -28,4 +27,3 @@
     inline-size: var(--icon-size);
     block-size: var(--icon-size);
   }
-}

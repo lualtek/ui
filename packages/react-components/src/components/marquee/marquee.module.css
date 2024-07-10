@@ -1,4 +1,3 @@
-@layer components {
   .Marquee {
     overflow-x: hidden;
     display: flex;
@@ -63,4 +62,3 @@
       transform: translateX(-100%);
     }
   }
-}

@@ -1,4 +1,3 @@
-@layer components {
   .CircularProgress {
     --hue: 220;
     --track-size: 4px;
@@ -101,4 +100,3 @@
       height: var(--thumb-size);
     }
   }
-}

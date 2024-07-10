@@ -1,6 +1,5 @@
 @import '../../core/utils/media.css';
 
-@layer components {
   .Stepper {
     position: relative;
 
@@ -33,4 +32,3 @@
       padding-bottom: token(--space-80);
     }
   }
-}

@@ -1,4 +1,3 @@
-@layer plain-components {
   .BlankButton {
     appearance: none;
     border: 0;
@@ -11,4 +10,3 @@
     padding: 0;
     margin: 0;
   }
-}

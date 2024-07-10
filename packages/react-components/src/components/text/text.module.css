@@ -1,6 +1,5 @@
 @import '../../core/utils/media.css';
 
-@layer components {
   .Text {
     --fs-min: token(--font-size-16);
     --fs-max: token(--font-size-18);
@@ -166,4 +165,3 @@
       line-height: token(--font-lh-large);
     }
   }
-}

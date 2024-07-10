@@ -1,4 +1,3 @@
-@layer components {
   .TextChip {
     border-radius: calc(token(--radius-8) + token(--radius-4));
     block-size: var(--size, token(--space-40));
@@ -23,14 +22,9 @@
 
   .TextWrapper {
     user-select: none;
+    line-height: 0;
 
     .TextChip[data-text-chip-tinted='true'] & {
       mix-blend-mode: luminosity;
     }
   }
-}
-@layer overrides {
-  .TextWrapper {
-    line-height: 0;
-  }
-}

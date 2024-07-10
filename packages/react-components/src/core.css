@@ -1,4 +1,4 @@
-@layer core, utilities, plain-components, components, overrides, themes;
+@layer core, utilities, themes;
 
 @import './core/fonts.css';
 @import './core/basic.css';

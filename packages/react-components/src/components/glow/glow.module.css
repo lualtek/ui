@@ -1,6 +1,5 @@
 @import '../../core/utils/media.css';
 
-@layer components {
 
   @property --starting-angle {
     syntax: '<number>';
@@ -138,4 +137,3 @@
       background-attachment: fixed;
     }
   }
-}

@@ -1,4 +1,3 @@
-@layer components {
   .IconButton {
     padding: 0;
 
@@ -20,4 +19,3 @@
       padding: 0;
     }
   }
-}

@@ -1,6 +1,5 @@
 /* stylelint-disable property-no-vendor-prefix */
 
-@layer components {
   .GradientText {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -36,4 +35,3 @@
       background-image: linear-gradient(92deg, var(--gradient-dawn-start) 0%, var(--gradient-dawn-end) 104.37%);
     }
   }
-}

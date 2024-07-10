@@ -1,6 +1,5 @@
 @import '../../core/utils/media.css';
 
-@layer components {
   .Container {
     padding:
       0
@@ -58,4 +57,3 @@
       padding: 0;
     }
   }
-}
