@@ -27,6 +27,10 @@ const meta = {
       options: [true, false],
       control: { type: 'inline-radio' },
     },
+    invalid: {
+      options: [true, false],
+      control: { type: 'inline-radio' },
+    },
     iconPosition: {
       options: ['start', 'end'],
       control: { type: 'inline-radio' },
