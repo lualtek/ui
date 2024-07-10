@@ -18,25 +18,23 @@
     z-index: 0;
   }
 
+  .Icon {
+    pointer-events: none;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 12px;
 
-  .InputField {
-    padding:
-      calc(token(--space-24) - token(--space-4))
-      var(--field-padding)
-      token(--space-4)
-      var(--field-padding);
+    [data-textfield-icon-position='start'] & {
+      right: auto;
+      left: calc(var(--field-padding) / 1.5);
+    }
 
+    [data-textfield-icon-position='end'] & {
+      left: auto;
+      right: calc(var(--field-padding) / 1.5);
+    }
 
-      .Textfield[data-textfield-has-icon='true'][data-textfield-icon-position='end'] & {
-        padding-right: calc(var(--field-padding) * (var(--factor)));
-        padding-left: var(--field-padding);
-      }
-
-
-      .Textfield[data-textfield-has-icon='true'][data-textfield-icon-position='start'] & {
-        padding-right: var(--field-padding);
-        padding-left: calc(var(--field-padding) * (var(--factor)));
-      }
   }
 
   .Label {
@@ -50,41 +48,40 @@
     text-overflow: ellipsis;
     overflow: hidden;
 
-    /* stylelint-disable-next-line no-descending-specificity */
-    .InputField:where(:user-invalid, :invalid, :out-of-range) ~ & {
+    .InputField:where(:user-invalid, [data-basefield-invalid='true'], :out-of-range) ~ & {
       color: var(--highlight-red-foreground);
     }
 
-    .Textfield[data-textfield-has-icon='true'][data-textfield-icon-position='start'] & {
+    [data-textfield-has-icon='true'][data-textfield-icon-position='start'] & {
       left: calc(var(--field-padding) * var(--factor));
     }
 
-    .Textfield[data-textfield-has-icon='true'][data-textfield-icon-position='end'] & {
+    [data-textfield-has-icon='true'][data-textfield-icon-position='end'] & {
       left: var(--field-padding);
       right: calc(var(--field-padding) * var(--factor));
     }
   }
 
-  .Icon {
-    pointer-events: none;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    border-radius: 12px;
+  .InputField {
+    padding:
+      calc(token(--space-24) - token(--space-4))
+      var(--field-padding)
+      token(--space-4)
+      var(--field-padding);
 
-    /* stylelint-disable-next-line no-descending-specificity */
-    .Textfield[data-textfield-icon-position='start'] & {
-      right: auto;
-      left: calc(var(--field-padding) / 1.5);
-    }
 
-    /* stylelint-disable-next-line no-descending-specificity */
-    .Textfield[data-textfield-icon-position='end'] & {
-      left: auto;
-      right: calc(var(--field-padding) / 1.5);
-    }
+      [data-textfield-has-icon='true'][data-textfield-icon-position='end'] & {
+        padding-right: calc(var(--field-padding) * (var(--factor)));
+        padding-left: var(--field-padding);
+      }
 
+
+      [data-textfield-has-icon='true'][data-textfield-icon-position='start'] & {
+        padding-right: var(--field-padding);
+        padding-left: calc(var(--field-padding) * (var(--factor)));
+      }
   }
+
 }
 @layer overrides {
   .ActionButton {
