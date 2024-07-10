@@ -1,5 +1,15 @@
 # @lualtek/react-components
 
+## 13.1.0
+
+### Minor Changes
+
+- 8fad243: Add custom valid prop to textfield
+
+### Patch Changes
+
+- @lualtek/icons@13.1.0
+
 ## 13.0.1
 
 ### Patch Changes
