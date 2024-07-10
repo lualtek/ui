@@ -1,5 +1,16 @@
 # @lualtek/react-components
 
+## 13.2.0-next.0
+
+### Minor Changes
+
+- a5f2a99: remove css layers to fix next compatibility
+
+### Patch Changes
+
+- 2f9360e: Update textfield
+  - @lualtek/icons@13.2.0-next.0
+
 ## 13.1.0
 
 ### Minor Changes
