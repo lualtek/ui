@@ -1,5 +1,18 @@
 # @lualtek/react-components
 
+## 13.2.0
+
+### Minor Changes
+
+- 5d57b26: Update textfield, textarea and select with invalid state (native and controlled)
+
+### Patch Changes
+
+- c019e41: Update deps
+- 788f8a0: disable textarea native invalid message hint
+- Updated dependencies [c019e41]
+  - @lualtek/icons@13.2.0
+
 ## 13.2.0-next.1
 
 ### Patch Changes

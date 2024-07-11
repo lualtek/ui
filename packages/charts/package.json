@@ -1,6 +1,6 @@
 {
   "name": "@lualtek/charts",
-  "version": "13.2.0-next.1",
+  "version": "13.2.0",
   "files": [
     "dist"
   ],

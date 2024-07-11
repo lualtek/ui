@@ -1,5 +1,11 @@
 # @lualtek/themes
 
+## 13.2.0
+
+### Patch Changes
+
+- c019e41: Update deps
+
 ## 13.2.0-next.1
 
 ### Patch Changes
