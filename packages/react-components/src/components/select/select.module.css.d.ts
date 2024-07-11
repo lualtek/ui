@@ -1,7 +1,8 @@
 declare const styles: {
-  readonly "Field": string;
   readonly "FieldContainer": string;
+  readonly "Hint": string;
   readonly "Icon": string;
+  readonly "InputField": string;
   readonly "Label": string;
   readonly "Select": string;
 };

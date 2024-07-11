@@ -2,7 +2,8 @@
 
 import clsx from 'clsx';
 import {
-  ChangeEvent, forwardRef, TextareaHTMLAttributes, useId, useMemo,
+  ChangeEvent, forwardRef, ReactNode, TextareaHTMLAttributes, useCallback, useId, useMemo,
+  useState,
 } from 'react';
 
 import {
@@ -32,13 +33,20 @@ export type TextareaProps = BaseFieldProps & TextareaHTMLAttributes<HTMLTextArea
    */
   disabled?: boolean;
   /**
-   * The callback function that is called when the textarea value changes.
-   */
-  onChange?: (event: ChangeEvent<HTMLTextAreaElement>) => void;
-  /**
    * Make the textfield full width, filling the available space.
-   */
+  */
   fullWidth?: boolean;
+  /**
+ * Set the hint message to show when the field is invalid.
+ *
+ * @defaultValue 'Invalid input'
+ * @important This prop is not visible when the field is not invalid, is disabled, or readnly
+ */
+  hint?: ReactNode;
+  /**
+  * The callback function that is called when the textarea value changes.
+  */
+  onChange?: (event: ChangeEvent<HTMLTextAreaElement>) => void;
 }
 
 export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(({
@@ -51,11 +59,23 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(({
   id,
   style,
   onChange,
+  onInput,
   fullWidth,
+  hint = 'Invalid input',
   ...otherProps
 }, forwardedRef) => {
   const uid = useId();
   const fieldID = useMemo(() => id ?? `${uid}-textarea`, [id, uid]);
+  const [isUserInvalid, setIsUserInvalid] = useState<boolean>(invalid ?? false);
+
+  const handleInvalid = useCallback(
+    (event: ChangeEvent<HTMLTextAreaElement>) => {
+      event.preventDefault();
+      onInput?.(event);
+      setIsUserInvalid(!event.currentTarget.validity.valid);
+    },
+    [onInput],
+  );
 
   return (
     <Stack
@@ -73,12 +93,15 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(({
       <div className={styles.FieldContainer}>
         <BaseField
           ref={forwardedRef}
+          className={styles.InputField}
           as="textarea"
           id={fieldID}
           readOnly={readOnly}
           invalid={invalid}
           disabled={disabled}
           onChange={onChange}
+          // Prevent the default popup message of the browser when the field is invalid.
+          onInput={handleInvalid}
           {...otherProps}
         />
 
@@ -86,6 +109,14 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(({
           <ClampText rows={1}>{label}</ClampText>
         </Text>
       </div>
+      {(invalid ?? isUserInvalid) && (
+        <Stack
+          className={styles.Hint}
+          hPadding={16}
+        >
+          <Text as="div" size={14} weight="bold" textColor="var(--invalid-foreground)">{hint}</Text>
+        </Stack>
+      )}
     </Stack>
   );
 });

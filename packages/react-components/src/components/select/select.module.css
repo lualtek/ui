@@ -5,13 +5,21 @@
     --font-size: token(--font-size-16);
     --field-radius: token(--radius-16);
     --factor: 2.5;
+    --invalid-foreground: var(--highlight-yellow-foreground);
+    --invalid-background: var(--vibrancy-background-yellow);
 
+    border-radius: token(--radius-16);
     appearance: none;
     position: relative;
     padding: 0;
 
     &[data-select-is-full-width='true'] {
       inline-size: 100%;
+    }
+
+    &:has(.InputField:user-invalid),
+    &[data-select-invalid='true'] {
+      background: var(--invalid-background);
     }
   }
 
@@ -38,7 +46,7 @@
     }
   }
 
-  .Field {
+  .InputField {
     --inner-border-color: var(--global-inner-contrast-border);
 
     margin: 0;
@@ -144,5 +152,15 @@
     top: 50%;
     transform: translateY(-50%);
     right: calc(var(--field-padding) - calc(var(--field-padding) / 3));
+  }
+
+  .Hint {
+    display: none;
+
+    /* Black magic */
+    .Select[data-textfield-invalid='true'] &,
+    .Select:has(.InputField:user-invalid) & {
+      display: flex;
+    }
   }
 }

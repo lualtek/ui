@@ -2,7 +2,8 @@
 
 import clsx from 'clsx';
 import {
-  ChangeEvent, forwardRef, ReactNode, SelectHTMLAttributes, useId,
+  ChangeEvent, forwardRef, ReactNode, SelectHTMLAttributes, useCallback, useId,
+  useState,
 } from 'react';
 
 import {
@@ -44,6 +45,14 @@ export type SelectProps = SelectHTMLAttributes<HTMLSelectElement> & {
    * @defaultValue false
    */
   fullWidth?: boolean;
+  /**
+   * Set the select to an invalid state. This will show a hint message.
+   */
+  invalid?: boolean;
+  /**
+   * Set the hint message to show when the field is invalid.
+   */
+  hint?: ReactNode;
 }
 
 export const Select = forwardRef<HTMLSelectElement, SelectProps>(({
@@ -55,9 +64,20 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(({
   kind = 'single',
   onChange,
   fullWidth = false,
+  invalid,
+  hint = 'Invalid input',
   ...otherProps
 }, forwardedRef) => {
   const uid = useId();
+  const [isUserInvalid, setIsUserInvalid] = useState<boolean>(invalid ?? false);
+
+  const handleInvalid = useCallback(
+    (event: ChangeEvent<HTMLSelectElement>) => {
+      event.preventDefault();
+      setIsUserInvalid(!event.currentTarget.validity.valid);
+    },
+    [],
+  );
 
   return (
     <Stack
@@ -65,6 +85,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(({
       rowGap={4}
       className={clsx(styles.Select, className)}
       data-select-is-multiple={kind === 'multiple'}
+      data-select-invalid={invalid}
       data-select-has-label={Boolean(label)}
       data-select-is-full-width={fullWidth}
       aria-disabled={disabled}
@@ -75,11 +96,12 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(({
       <div className={styles.FieldContainer}>
         <select
           disabled={disabled}
-          className={styles.Field}
+          className={styles.InputField}
           id={`${uid}-select`}
           multiple={kind === 'multiple'}
           onChange={onChange}
           ref={forwardedRef}
+          onInvalid={handleInvalid}
           {...otherProps}
         >
           {children}
@@ -105,6 +127,14 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(({
           {label}
         </Text>
       </div>
+      {(invalid ?? isUserInvalid) && (
+        <Stack
+          className={styles.Hint}
+          hPadding={16}
+        >
+          <Text as="div" size={14} weight="bold" textColor="var(--invalid-foreground)">{hint}</Text>
+        </Stack>
+      )}
     </Stack>
   );
 });

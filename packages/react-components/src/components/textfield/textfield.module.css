@@ -3,13 +3,21 @@
     --factor: 3.5;
     --field-padding: token(--space-16);
     --font-size: token(--font-size-16);
+    --invalid-foreground: var(--highlight-yellow-foreground);
+    --invalid-background: var(--vibrancy-background-yellow);
 
+    border-radius: token(--radius-16);
     appearance: none;
     position: relative;
     padding: 0;
 
     &[data-textfield-fullwidth='true'] {
       inline-size: 100%;
+    }
+
+    &:has(.InputField:user-invalid),
+    &[data-textfield-invalid='true'] {
+      background: var(--invalid-background);
     }
   }
 
@@ -48,10 +56,6 @@
     text-overflow: ellipsis;
     overflow: hidden;
 
-    .InputField:where(:user-invalid, [data-basefield-invalid='true'], :out-of-range) ~ & {
-      color: var(--highlight-red-foreground);
-    }
-
     [data-textfield-has-icon='true'][data-textfield-icon-position='start'] & {
       left: calc(var(--field-padding) * var(--factor));
     }
@@ -63,6 +67,7 @@
   }
 
   .InputField {
+    display: block;
     padding:
       calc(token(--space-24) - token(--space-4))
       var(--field-padding)
@@ -82,6 +87,15 @@
       }
   }
 
+  .Hint {
+    display: none;
+
+    /* Black magic */
+    .Textfield[data-textfield-invalid='true'] &,
+    .Textfield:has(.InputField:user-invalid) & {
+      display: flex;
+    }
+  }
 }
 @layer overrides {
   .ActionButton {

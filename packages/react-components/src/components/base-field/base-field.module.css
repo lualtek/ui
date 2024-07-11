@@ -121,10 +121,9 @@
 
   .BaseField:is(:user-invalid, [data-basefield-invalid='true'], :out-of-range),
   .BaseField:is(:user-invalid, [data-basefield-invalid='true'], :out-of-range):focus-visible {
-    --inner-border-color: var(--highlight-red-foreground);
+    --inner-border-color: var(--invalid-forground, var(--highlight-yellow-foreground));
 
-    background-color: var(--vibrancy-background-red);
-    outline-color: var(--highlight-red-foreground);
+    outline-color: var(--invalid-forground, var(--highlight-yellow-foreground));
   }
 
 

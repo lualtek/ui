@@ -1,9 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 
-import { Stack } from '@/components';
+import { Button, Stack } from '@/components';
 
 import { Textfield, TextfieldProps } from './textfield';
+
+// eslint-disable-next-line no-useless-escape
+const pattern = /^[a-zA-Z0-9À-ÖØ-öø-ÿ\s\-_.\(\)<>"&\/+^$*!?@#%~\|:;]*$/;
 
 const meta = {
   title: 'Inputs/Textfield',
@@ -121,7 +124,20 @@ export const Invalid = {
     iconPosition: 'start',
     icon: 'chat',
   },
-  render: args => <Textfield {...args} type="email" label="Type email" defaultValue="" />,
+  render: args => (
+    <Stack as="form" rowGap={16}>
+      <Textfield {...args} type="email" label="Type email" required defaultValue="" />
+      <Textfield
+        {...args}
+        type="text"
+        pattern={new RegExp(pattern).toString().slice(1, -1)}
+        label="Type text with pattern"
+        defaultValue=""
+        required
+      />
+      <Button type="submit">Submit</Button>
+    </Stack>
+  ),
 } satisfies Story;
 
 export const forcedInvalid = {

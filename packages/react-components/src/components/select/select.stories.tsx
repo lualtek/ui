@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
+import { Button, Stack } from '@/components';
+
 import { Select } from './select';
 
 const meta = {
@@ -46,6 +48,30 @@ export const Single = {
     disabled: false,
     kind: 'single',
     label: 'Label',
+  },
+} satisfies Story;
+
+export const Required = {
+  args: {
+    disabled: false,
+    kind: 'single',
+    label: 'Label',
+    required: true,
+  },
+  render: args => (
+    <Stack as="form">
+      <Select {...args} />
+      <Button type="submit">Submit</Button>
+    </Stack>
+  ),
+} satisfies Story;
+
+export const ForcedInvalid = {
+  args: {
+    disabled: false,
+    kind: 'single',
+    label: 'Label',
+    invalid: true,
   },
 } satisfies Story;
 

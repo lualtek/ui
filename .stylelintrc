@@ -3,6 +3,7 @@
   "extends": ["stylelint-config-equinusocio"],
   "rules": {
     "import-notation": "string",
+    "no-descending-specificity": null,
     "designtokens/check": [true, "./packages/tokens/platforms/web/tokens.json"],
     "function-no-unknown": [
       true,

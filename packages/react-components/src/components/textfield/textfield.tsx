@@ -2,7 +2,7 @@
 
 import clsx from 'clsx';
 import {
-  ChangeEvent, forwardRef, InputHTMLAttributes, useCallback, useId, useMemo, useRef, useState,
+  ChangeEvent, forwardRef, InputHTMLAttributes, ReactNode, useCallback, useId, useMemo, useRef, useState,
 } from 'react';
 import { useMergeRefs } from 'rooks';
 
@@ -65,6 +65,13 @@ export type TextfieldProps = BaseFieldProps & InputHTMLAttributes<HTMLInputEleme
    */
   showClearButton?: boolean;
   /**
+   * Set the hint message to show when the field is invalid.
+   *
+   * @defaultValue 'Invalid input'
+   * @important This prop is not visible when the field is not invalid, is disabled, or readnly
+   */
+  hint?: ReactNode;
+  /**
    * Event handler for the clear button.
    *
    * @returns void
@@ -88,10 +95,13 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(({
   onClear,
   value,
   defaultValue,
+  onInput,
   showClearButton = false,
+  hint = 'Invalid input',
   ...otherProps
 }, forwardedRef) => {
-  const [isPasswordVisible, setPasswordVisible] = useState<boolean>(false);
+  const [isPasswordVisible, setPasswordVisible] = useState<boolean>(invalid ?? false);
+  const [isUserInvalid, setIsUserInvalid] = useState<boolean>(false);
   const uid = useId();
   const isPassword = type === 'password';
   const inputRef = useRef<HTMLInputElement>(null);
@@ -127,6 +137,15 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(({
     [onClear],
   );
 
+  const handleInvalid = useCallback(
+    (event: ChangeEvent<HTMLInputElement>) => {
+      event.preventDefault();
+      onInput?.(event);
+      setIsUserInvalid(!event.currentTarget.validity.valid);
+    },
+    [onInput],
+  );
+
   return (
     <Stack
       as="fieldset"
@@ -153,6 +172,9 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(({
           onChange={handleChange}
           invalid={invalid}
           disabled={disabled}
+          // Prevent the default popup message of the browser when the field is invalid.
+          onInvalid={handleInvalid}
+          onInput={handleInvalid}
           {...otherProps}
         />
         {isPassword ? (
@@ -163,18 +185,14 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(({
             aria-label="Reveal password"
             icon={isPasswordVisible ? 'hide' : 'view'}
           />
-        ) : (
-          <>
-            {showClearButton && !isEmpty && (
-              <IconButton
-                className={styles.ActionButton}
-                onClick={handleClear}
-                kind="flat"
-                aria-label="Clear field"
-                icon="c-remove"
-              />
-            )}
-          </>
+        ) : showClearButton && !isEmpty && (
+          <IconButton
+            className={styles.ActionButton}
+            onClick={handleClear}
+            kind="flat"
+            aria-label="Clear field"
+            icon="c-remove"
+          />
         )}
 
         { icon && (!isPassword && isNotDate && !showClearButton) && (
@@ -194,6 +212,14 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(({
           {label}
         </Text>
       </div>
+      {(invalid ?? isUserInvalid) && (
+        <Stack
+          className={styles.Hint}
+          hPadding={16}
+        >
+          <Text as="div" size={14} weight="bold" textColor="var(--invalid-foreground)">{hint}</Text>
+        </Stack>
+      )}
     </Stack>
   );
 });
