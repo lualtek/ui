@@ -102,6 +102,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(({
           onChange={onChange}
           // Prevent the default popup message of the browser when the field is invalid.
           onInput={handleInvalid}
+          onInvalid={handleInvalid}
           {...otherProps}
         />
 
