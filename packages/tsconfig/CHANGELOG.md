@@ -1,5 +1,11 @@
 # tsconfig
 
+## 0.0.2-next.0
+
+### Patch Changes
+
+- c019e41: Update deps
+
 ## 0.4.0
 
 ### Minor Changes

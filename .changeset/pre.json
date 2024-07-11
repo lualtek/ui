@@ -11,6 +11,7 @@
     "tsconfig": "0.0.1"
   },
   "changesets": [
-    "afraid-cheetahs-wink"
+    "afraid-cheetahs-wink",
+    "curvy-dragons-smell"
   ]
 }

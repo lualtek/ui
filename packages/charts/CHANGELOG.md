@@ -1,5 +1,14 @@
 # @lualtek/charts
 
+## 13.2.0-next.1
+
+### Patch Changes
+
+- c019e41: Update deps
+- Updated dependencies [c019e41]
+  - @lualtek/react-components@13.2.0-next.1
+  - @lualtek/tokens@13.2.0-next.1
+
 ## 13.2.0-next.0
 
 ### Patch Changes
