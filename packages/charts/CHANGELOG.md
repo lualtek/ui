@@ -1,5 +1,13 @@
 # @lualtek/charts
 
+## 13.3.1
+
+### Patch Changes
+
+- Updated dependencies [4416850]
+  - @lualtek/react-components@13.3.1
+  - @lualtek/tokens@13.3.1
+
 ## 13.3.0
 
 ### Patch Changes
