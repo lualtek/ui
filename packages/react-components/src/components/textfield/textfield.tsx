@@ -2,7 +2,7 @@
 
 import clsx from 'clsx';
 import {
-  ChangeEvent, forwardRef, InputHTMLAttributes, ReactNode, useCallback, useId, useMemo, useRef, useState,
+  ChangeEvent, forwardRef, InputHTMLAttributes, ReactNode, useCallback, useEffect, useId, useMemo, useRef, useState,
 } from 'react';
 import { useMergeRefs } from 'rooks';
 
@@ -137,6 +137,14 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(({
     [onClear],
   );
 
+  useEffect(() => {
+    const input = inputRef.current;
+    input?.setCustomValidity(invalid === true ? 'Invalid input' : '');
+    setIsUserInvalid(invalid ?? false);
+    console.log(input?.validity.valid);
+  },
+  [invalid]);
+
   const handleInvalid = useCallback(
     (event: ChangeEvent<HTMLInputElement>) => {
       event.preventDefault();
@@ -153,7 +161,6 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(({
       className={clsx(styles.Textfield, className)}
       data-textfield-has-icon={isPassword || (Boolean(icon) && isNotDate)}
       data-textfield-icon-position={showClearButton ? 'end' : iconPosition}
-      data-textfield-invalid={invalid}
       data-textfield-fullwidth={fullWidth}
       aria-disabled={disabled}
       hAlign="stretch"
@@ -212,7 +219,7 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(({
           {label}
         </Text>
       </div>
-      {(invalid ?? isUserInvalid) && (
+      {(isUserInvalid) && (
         <Stack
           className={styles.Hint}
           hPadding={16}

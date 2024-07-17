@@ -15,8 +15,7 @@
       inline-size: 100%;
     }
 
-    &:has(.InputField:user-invalid),
-    &[data-textfield-invalid='true'] {
+    &:has(.InputField:user-invalid) {
       background: var(--invalid-background);
     }
   }
@@ -91,7 +90,6 @@
     display: none;
 
     /* Black magic */
-    .Textfield[data-textfield-invalid='true'] &,
     .Textfield:has(.InputField:user-invalid) & {
       display: flex;
     }

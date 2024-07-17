@@ -25,7 +25,6 @@ export const BaseField = forwardRef(({
 }, forwardedRef) => (
   <Wrapper
     ref={forwardedRef}
-    data-basefield-invalid={invalid}
     aria-invalid={invalid}
     className={clsx(styles.BaseField, className)}
     {...otherProps}

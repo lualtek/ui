@@ -133,7 +133,6 @@ export const Invalid = {
         pattern={new RegExp(pattern).toString().slice(1, -1)}
         label="Type text with pattern"
         defaultValue=""
-        required
       />
       <Button type="submit">Submit</Button>
     </Stack>
