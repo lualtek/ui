@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 13.3.1
+
+### Patch Changes
+
+- 4416850: Fix textfield validity override
+  - @lualtek/icons@13.3.1
+
 ## 13.3.0
 
 ### Minor Changes
