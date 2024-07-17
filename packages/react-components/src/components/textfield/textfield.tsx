@@ -101,7 +101,7 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(({
   ...otherProps
 }, forwardedRef) => {
   const [isPasswordVisible, setPasswordVisible] = useState<boolean>(invalid ?? false);
-  const [isUserInvalid, setIsUserInvalid] = useState<boolean>(false);
+  const [isUserInvalid, setIsUserInvalid] = useState<boolean>(invalid ?? false);
   const uid = useId();
   const isPassword = type === 'password';
   const inputRef = useRef<HTMLInputElement>(null);

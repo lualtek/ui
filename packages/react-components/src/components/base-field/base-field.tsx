@@ -5,10 +5,10 @@ import { Polymorphic } from '@/components';
 
 import styles from './base-field.module.css';
 
-/**
- * Force the invalid state of the field.
- */
 export type BaseFieldProps = {
+  /**
+   * Force the invalid state of the field.
+   */
   invalid?: boolean;
 }
 

@@ -1,4 +1,9 @@
 @layer components {
+  .SelectionControl {
+    --invalid-foreground: var(--highlight-yellow-foreground);
+    --invalid-background: var(--vibrancy-background-yellow);
+  }
+
   .InputWrapper {
     line-height: 0;
   }
@@ -68,8 +73,24 @@
       block-size: 2px;
       transform: translate(-50%, -50%);
     }
+
+    &:user-invalid,
+    .InputWrapper[data-selection-control-invalid='true'] & {
+      box-shadow: 0 0 0 2px var(--invalid-foreground);
+    }
+
+
+  .Hint {
+    display: none;
+
+    /* Black magic */
+    .InputWrapper[data-selection-control-invalid='true'] &,
+    .InputWrapper:has(.CheckboxInput:user-invalid) & {
+      display: flex;
+    }
   }
 }
+
 @layer overrides {
   .RadioInput {
 
@@ -86,4 +107,5 @@
       background-color: currentcolor;
     }
   }
+}
 }

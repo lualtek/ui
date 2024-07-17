@@ -64,3 +64,17 @@ export const WithCustomLabel = {
     label: <Chip color="green">Rich label</Chip>,
   },
 } satisfies Story;
+
+export const Required = {
+  args: {
+    required: true,
+    label: 'Required',
+  },
+} satisfies Story;
+
+export const ForcedInvalid = {
+  args: {
+    invalid: true,
+    label: 'Required',
+  },
+} satisfies Story;
