@@ -80,17 +80,17 @@
     }
 
 
-  .Hint {
-    display: none;
+    .Hint {
+      display: none;
 
-    /* Black magic */
-    .InputWrapper[data-selection-control-invalid='true'] &,
-    .InputWrapper:has(.CheckboxInput:user-invalid) & {
-      display: flex;
+      /* Black magic */
+      .InputWrapper[data-selection-control-invalid='true'] &,
+      .InputWrapper:has(.CheckboxInput:user-invalid) & {
+        display: flex;
+      }
     }
   }
 }
-
 @layer overrides {
   .RadioInput {
 
@@ -107,5 +107,4 @@
       background-color: currentcolor;
     }
   }
-}
 }
