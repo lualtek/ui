@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 13.3.2
+
+### Patch Changes
+
+- a2d9ced: Fix radio visual appearance
+  - @lualtek/icons@13.3.2
+
 ## 13.3.1
 
 ### Patch Changes
