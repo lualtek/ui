@@ -2,4 +2,4 @@
 "@lualtek/react-components": patch
 ---
 
-Fix radio appearance
+Fix radio visual appearance
