@@ -4,7 +4,7 @@ import { TokensTypes } from '@lualtek/tokens/platforms/web';
 import tkns from '@lualtek/tokens/platforms/web/tokens.json';
 import clsx from 'clsx';
 import {
-  Children, forwardRef, isValidElement, useMemo,
+  Children, forwardRef, Fragment, isValidElement, useMemo,
 } from 'react';
 import { Except } from 'type-fest';
 
@@ -70,7 +70,24 @@ export const Snaplist = forwardRef(({
       style={{ ...dynamicStyle, ...style }}
       {...otherProps}
     >
-      {Children.map(children, child => isValidElement(child) && <SnaplistItem>{child}</SnaplistItem>)}
+      {Children.toArray(children).map((child) => {
+        if (isValidElement(child)) {
+          if (child.type === Fragment) {
+            return Children.map(
+              child.props.children,
+              (fragmentChild: React.ReactNode) => isValidElement(fragmentChild) && (
+                <SnaplistItem>
+                  {fragmentChild}
+                </SnaplistItem>
+              ),
+            ) as JSX.Element[];
+          }
+
+          return <SnaplistItem>{child}</SnaplistItem>;
+        }
+
+        return null;
+      })}
     </Stack>
   );
 }) as PolymorphicSnaplist;

@@ -44,3 +44,21 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default = {} satisfies Story;
+export const WithFragments = {
+  render: args => (
+    <Snaplist {...args}>
+      <>
+        <div style={{ minWidth: '30vw', ...style }}>Aaskdjfhasdf </div>
+        <div style={style}>Bsdfasdfa sdfsdfg</div>
+        <div style={style}>Caasdfgasfg</div>
+      </>
+      <div style={style}>afgafgafgag afga dfgadfgD</div>
+      <div style={style}>Ea gfgasdf gafgafgadfg</div>
+      <div style={style}>F afgafgafg</div>
+      <div style={style}>a gfafgafgafg afga fdgasdfg afga sG</div>
+      <div style={style}>gf H</div>
+      <div style={style}>ga fgagI</div>
+      <div style={style}>Ja fgagafgafg</div>
+    </Snaplist>
+  ),
+} satisfies Story;

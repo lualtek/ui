@@ -2,8 +2,7 @@
 @layer components {
   .Snaplist {
     -webkit-overflow-scrolling: touch;
-    overflow-x: auto;
-    overflow-y: hidden;
+    overflow: auto hidden;
     scroll-snap-type: x var(--snap-type);
     scroll-padding: var(--scroll-padding);
     overscroll-behavior-x: contain;
