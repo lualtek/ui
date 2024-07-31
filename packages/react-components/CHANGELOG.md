@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 13.3.5
+
+### Patch Changes
+
+- 26ca63c: Fix basefield failing CSS
+  - @lualtek/icons@13.3.5
+
 ## 13.3.4
 
 ### Patch Changes
