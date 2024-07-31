@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 13.3.4
+
+### Patch Changes
+
+- d51e514: Add support for fragments as Snaplist child
+  - @lualtek/icons@13.3.4
+
 ## 13.3.3
 
 ### Patch Changes
