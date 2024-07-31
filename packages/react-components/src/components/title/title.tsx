@@ -5,11 +5,11 @@ import {
   forwardRef, useMemo,
 } from 'react';
 
-import { Polymorphic } from '@/components';
+import { Polymorphic, PropsClassChildren } from '@/components';
 
 import styles from './title.module.css';
 
-export type TitleProps = {
+export type TitleProps = PropsClassChildren<{
   /**
    * Set the level of the title. This property only
    * affects the visual appearance of the title and not the
@@ -44,7 +44,7 @@ export type TitleProps = {
    * Set the white-space property of the title.
    */
   whiteSpace?: 'normal' | 'nowrap' | 'pre' | 'pre-line' | 'pre-wrap' | 'break-spaces';
-}
+}>
 
 type PolymorphicTitle = Polymorphic.ForwardRefComponent<'span', TitleProps>;
 

@@ -1,12 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { ResponsiveProvider } from '@/components';
+import { Chip, ResponsiveProvider } from '@/components';
 
 import { Stepper } from './stepper';
 
 const meta: Meta<typeof Stepper> = {
   title: 'Navigation/Stepper',
   component: Stepper,
+  args: {
+    title: 'Sample title',
+  },
   decorators: [
     Story => (
       <ResponsiveProvider>
@@ -17,7 +20,7 @@ const meta: Meta<typeof Stepper> = {
   render: ({ title, step, ...otherArgs }) => (
     <>
       {Array.from(Array(4).keys()).map((n, i) => (
-        <Stepper title={`${title} #${i}`} step={i + 1} {...otherArgs}>
+        <Stepper title={title} step={i + 1} {...otherArgs}>
           Step
           {' '}
           {step}
@@ -34,6 +37,13 @@ type Story = StoryObj<typeof Stepper>;
 export const Default: Story = {
   args: {
     title: 'Sample title',
+    step: 1,
+  },
+};
+
+export const WithCustomTitle: Story = {
+  args: {
+    title: <Chip>Custom title</Chip>,
     step: 1,
   },
 };

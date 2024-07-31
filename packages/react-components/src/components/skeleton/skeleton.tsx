@@ -69,8 +69,8 @@ export const Skeleton: FCClass<SkeletonProps> = ({
   ...otherProps
 }) => {
   const uid = useId();
-  const computedWidth = typeof width === 'number' ? `${width}px` : width;
-  const computedHeight = typeof height === 'number' ? `${height}px` : height;
+  const computedWidth = useMemo(() => (typeof width === 'number' ? `${width}px` : width), [width]);
+  const computedHeight = useMemo(() => (typeof height === 'number' ? `${height}px` : height), [height]);
 
   const dynamicStyle = useMemo(() => ({
     '--radius': radius && tkns.radius[radius],
@@ -105,7 +105,8 @@ export const Skeleton: FCClass<SkeletonProps> = ({
               <SkeletonItem />
               <br />
             </Fragment>
-          )))}
+          )
+        ))}
     </span>
   );
 };

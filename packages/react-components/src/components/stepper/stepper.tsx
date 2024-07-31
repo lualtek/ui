@@ -2,21 +2,22 @@
 
 import clsx from 'clsx';
 import {
-  ComponentPropsWithoutRef, forwardRef, ReactNode, useMemo,
+  ComponentPropsWithoutRef, forwardRef, useMemo,
 } from 'react';
+import { Except } from 'type-fest';
 
 import {
   Glow,
-  Stack, StackProps, TextChip, Title, useResponsiveContext,
+  Stack, StackProps, TextChip, Title, TitleProps, useResponsiveContext,
 } from '@/components';
 
 import styles from './stepper.module.css';
 
-export type StepperProps = ComponentPropsWithoutRef<'div'> & {
+export type StepperProps = Except<ComponentPropsWithoutRef<'div'>, 'title'> & {
   /**
    * The title of the step.
    */
-  title: ReactNode;
+  title: TitleProps['children'];
   /**
    * The step number.
    */
