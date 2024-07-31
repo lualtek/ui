@@ -73,12 +73,10 @@
       token(--space-4)
       var(--field-padding);
 
-
       [data-textfield-has-icon='true'][data-textfield-icon-position='end'] & {
         padding-right: calc(var(--field-padding) * (var(--factor)));
         padding-left: var(--field-padding);
       }
-
 
       [data-textfield-has-icon='true'][data-textfield-icon-position='start'] & {
         padding-right: var(--field-padding);

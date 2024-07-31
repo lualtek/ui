@@ -79,6 +79,15 @@ export const Types = {
   },
 } satisfies Story;
 
+export const Disabled = {
+  args: {
+    label: 'Sample label',
+    disabled: true,
+    defaultValue: 100,
+    type: 'number',
+  },
+} satisfies Story;
+
 export const WithIcon = {
   args: {
     label: 'Sample label',
