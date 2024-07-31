@@ -1,5 +1,13 @@
 # @lualtek/react-components
 
+## 13.3.3
+
+### Patch Changes
+
+- 9924fda: Remove logs and fix disabled slider style
+- ac9334d: Update stepper title and Title component
+  - @lualtek/icons@13.3.3
+
 ## 13.3.2
 
 ### Patch Changes
