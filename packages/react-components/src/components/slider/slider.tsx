@@ -99,7 +99,6 @@ SliderProps
             <SliderPrimitive.Thumb
               className={styles.Thumb}
               data-slider-value-label={valueLabel?.(changedValue?.[index] ?? 0)}
-
             />
           </Elevator>
         ))}

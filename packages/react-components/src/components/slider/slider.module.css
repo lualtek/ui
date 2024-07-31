@@ -87,6 +87,10 @@
       width: 100%;
     }
 
+    .Input[data-disabled]:has(span > &) & {
+      backdrop-filter: blur(token(--vibrancy-blur-strong));
+    }
+
     .Input[data-slider-show-values='true'] &::after {
       content: attr(data-slider-value-label);
       position: absolute;

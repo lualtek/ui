@@ -141,7 +141,6 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(({
     const input = inputRef.current;
     input?.setCustomValidity(invalid === true ? 'Invalid input' : '');
     setIsUserInvalid(invalid ?? false);
-    console.log(input?.validity.valid);
   },
   [invalid]);
 
