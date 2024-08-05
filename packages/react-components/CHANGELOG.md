@@ -1,5 +1,15 @@
 # @lualtek/react-components
 
+## 13.4.0
+
+### Minor Changes
+
+- cb90112: add defaultColumnVisibility to table to set initial columns visibility
+
+### Patch Changes
+
+- @lualtek/icons@13.4.0
+
 ## 13.3.7
 
 ### Patch Changes
