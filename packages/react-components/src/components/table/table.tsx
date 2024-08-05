@@ -107,6 +107,13 @@ export type TableProps<T> = PropsWithClass<{
  */
   enableToggleColumns?: boolean;
   /**
+   * Set the initial visibility of the columns. This object should have the column id as key and a boolean as value.
+   * If a column is not present in the object, it will be visible by default.
+   *
+   * @defaultValue `{}`
+   */
+  defaultColumnVisibility?: Record<string, boolean>;
+  /**
    * Set the label for the toggle columns control
    */
   toggleColumnsLabel?: string;
@@ -218,10 +225,11 @@ export const Table = <T extends Record<string, unknown>>({
   filterDebounce = 230,
   itemsPerPage = 50,
   getTableInstance,
+  defaultColumnVisibility = {},
   style,
   ...otherProps
 }: InternalTableProps<T>) => {
-  const [columnVisibility, setColumnVisibility] = useState({});
+  const [columnVisibility, setColumnVisibility] = useState(defaultColumnVisibility);
   const [rowSelection, setRowSelection] = useState({});
   const [sorting, setSorting] = useState<SortingState>([]);
   const [globalFilter, setGlobalFilter] = useState('');

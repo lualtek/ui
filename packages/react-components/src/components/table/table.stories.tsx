@@ -119,6 +119,16 @@ export const WithRowSelection: Story = {
   },
 };
 
+export const WithDefaultColumnVisibility: Story = {
+  args: {
+    enableToggleColumns: true,
+    showHeader: true,
+    defaultColumnVisibility: {
+      status: false,
+    },
+  },
+};
+
 export const Scrollable: Story = {
   args: {
     selectableRows: true,
