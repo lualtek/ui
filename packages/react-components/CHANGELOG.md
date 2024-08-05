@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 13.3.6
+
+### Patch Changes
+
+- 23dd28b: Update table style
+  - @lualtek/icons@13.3.6
+
 ## 13.3.5
 
 ### Patch Changes
