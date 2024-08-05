@@ -27,7 +27,11 @@ type TableCellProps = CustomColumnMeta & {
   /**
    * Set the width of the cell.
    */
-  width?: string | number;
+  width?: number;
+  /**
+   * Set the min width of the cell.
+   */
+  minWidth?: number;
   /**
    * Callback function to be called when the cell is clicked.
    * Used only when `canSort` is `true`.
@@ -46,19 +50,15 @@ export const TableCell = forwardRef(({
   as: Wrapper = 'td',
   padding = true,
   width,
+  minWidth,
   onClick,
   ...otherProps
 }, forwardedRef) => {
-  const computedWidth = useMemo(() => {
-    if (!width) return undefined;
-
-    return typeof width === 'string' ? width : `${width}px`;
-  }, [width]);
-
   const dynamicStyle = useMemo(() => ({
-    '--width': computedWidth,
+    '--width': width ? `${width}px` : undefined,
+    '--min-width': minWidth ? `${minWidth}px` : undefined,
     '--text-align': align,
-  }), [align, computedWidth]);
+  }), [align, width, minWidth]);
 
   return (
     <Wrapper

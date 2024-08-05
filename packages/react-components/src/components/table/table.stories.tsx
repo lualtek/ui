@@ -72,6 +72,8 @@ const story: Meta<TableProps<Person>> = {
         header: () => 'First Name',
         cell: info => info.getValue(),
         footer: info => info.column.id,
+        size: 400,
+        minSize: 300,
       }),
       columnHelper.accessor('status', {
         header: 'Status',

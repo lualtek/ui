@@ -273,6 +273,11 @@ export const Table = <T extends Record<string, unknown>>({
       rowSelection,
       globalFilter,
     },
+    defaultColumn: {
+      size: undefined,
+      minSize: undefined,
+      maxSize: undefined,
+    },
     onSortingChange: setSorting,
     onGlobalFilterChange: setGlobalFilter,
     globalFilterFn: filterFn ?? 'auto',
@@ -294,6 +299,7 @@ export const Table = <T extends Record<string, unknown>>({
           collapsed={cell.column.columnDef.meta?.collapsed}
           align={cell.column.columnDef.meta?.align}
           width={cell.column.columnDef.size}
+          minWidth={cell.column.columnDef.minSize}
         >
           {flexRender(cell.column.columnDef.cell, cell.getContext())}
         </TableCell>

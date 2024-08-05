@@ -6,7 +6,8 @@
 
     position: relative;
     margin: 0;
-    max-width: var(--width);
+    min-width: var(--min-width);
+    width: var(--width);
     font-variant-numeric: tabular-nums;
     line-height: token(--font-lh-small);
     text-align: start;
