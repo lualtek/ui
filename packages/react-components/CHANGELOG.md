@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 13.3.7
+
+### Patch Changes
+
+- 330a423: prevent wrap for table head cells
+  - @lualtek/icons@13.3.7
+
 ## 13.3.6
 
 ### Patch Changes
