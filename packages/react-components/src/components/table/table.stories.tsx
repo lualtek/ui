@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { useMemo } from 'react';
 
 import {
-  IconButton, Menu, Popover, Stack,
+  IconButton, Menu, Popover, ResponsiveProvider, Stack,
 } from '../..';
 import { createColumnHelper, Table, TableProps } from '.';
 import { tableDataFixture } from './__fixture__/table-data';
@@ -24,6 +24,13 @@ const story: Meta<TableProps<Person>> = {
   args: {
     itemsPerPage: 50,
   },
+  decorators: [
+    Story => (
+      <ResponsiveProvider>
+        <Story />
+      </ResponsiveProvider>
+    ),
+  ],
   render: function Render({ ...args }) {
     const columns = useMemo(() => [
       columnHelper.accessor('actions', {
@@ -64,22 +71,6 @@ const story: Meta<TableProps<Person>> = {
       columnHelper.accessor('firstName', {
         header: () => 'First Name',
         cell: info => info.getValue(),
-        footer: info => info.column.id,
-      }),
-      columnHelper.accessor(row => row.lastName, {
-        id: 'lastName',
-        header: () => 'Last name',
-        cell: info => info.renderValue(),
-        footer: info => info.column.id,
-      }),
-      columnHelper.accessor('age', {
-        header: () => 'Age',
-        cell: info => info.renderValue(),
-        footer: info => info.column.id,
-      }),
-      columnHelper.accessor('balance', {
-        header: () => 'Balance',
-        cell: info => <code>{info.renderValue()}</code>,
         footer: info => info.column.id,
       }),
       columnHelper.accessor('status', {

@@ -25,7 +25,7 @@ import { useDebounce } from 'rooks';
 
 import {
   Panel,
-  PropsWithClass, ResponsiveProvider, Skeleton, Stack, Text,
+  PropsWithClass, Skeleton, Stack, Text,
 } from '@/components';
 
 import styles from './table.module.css';
@@ -344,126 +344,124 @@ export const Table = <T extends Record<string, unknown>>({
   }, [table, getTableInstance]);
 
   return (
-    <ResponsiveProvider>
-      <div
-        className={clsx(styles.Table, className)}
-        style={{ ...dynamicStyle, ...style }}
-      >
-        <AnimatePresence>
-          <LazyMotion features={domMax}>
-            {selectableRows && selectedRowsCount > 0 && (
-              <Panel
-                className={styles.Toast}
-                as={m.div}
-                radius={16}
-                vibrant
-                vibrancyColor="mid"
-                bordered
-                initial={{ y: '-16px', opacity: 0 }}
-                exit={{ y: '-16px', opacity: 0 }}
-                animate={{
-                  y: 0,
-                  opacity: 1,
-                  transition: {
-                    type: 'spring',
-                    stiffness: 700,
-                    damping: 30,
-                  },
-                }}
-              >
-                <Stack
-                  direction="row"
-                  hAlign="space-between"
-                  vAlign="center"
-                  hPadding={16}
-                  vPadding={8}
-                  fill={false}
-                  columnGap={16}
-                >
-                  <Text as="span" size={14} weight="bold">
-                    {renderSelectedLabel(selectedRowsCount)}
-                  </Text>
-                  {renderSelectedActions?.(table.getSelectedRowModel().flatRows)}
-                </Stack>
-              </Panel>
-            )}
-
-            {/* HEADER */}
-            {(showHeader || selectableRows) && (
-              <m.div
-                animate={{
-                  y: selectedRowsCount > 0 ? 20 : 0,
-                  opacity: selectedRowsCount > 0 ? 0 : 1,
-                  transition: {
-                    type: 'spring',
-                    stiffness: 700,
-                    damping: 30,
-                  },
-                }}
-              >
-                <TableHeader title={title} id={`${uid}-table-title`}>
-                  {(enableFilterControl) ? (
-                    <FilterControl
-                      label={filterControlLabel}
-                      onChange={event => setDebouncedGlobalFilter(event.target.value)}
-                    />
-                  ) : null}
-
-                  {actions}
-
-                  {(enableToggleColumns && data.length)
-                    ? (
-                      <ToggleColumnsControl
-                        columns={table.getAllLeafColumns()}
-                        label={toggleColumnsLabel}
-                      />
-                    )
-                    : null}
-                </TableHeader>
-              </m.div>
-            )}
-          </LazyMotion>
-        </AnimatePresence>
-
-        {/* TABLE */}
-        {table.getIsSomeColumnsVisible() && (
-          <div className={styles.TableWrapper} data-table-scrolling={Boolean(height)}>
-            <table
-              className={styles.TableElement}
-              data-table-stripes={stripes}
-              data-table-separators={separators}
-              aria-labelledby={`${uid}-table-title`}
-              {...otherProps}
+    <div
+      className={clsx(styles.Table, className)}
+      style={{ ...dynamicStyle, ...style }}
+    >
+      <AnimatePresence>
+        <LazyMotion features={domMax}>
+          {selectableRows && selectedRowsCount > 0 && (
+            <Panel
+              className={styles.Toast}
+              as={m.div}
+              radius={16}
+              vibrant
+              vibrancyColor="mid"
+              bordered
+              initial={{ y: '-16px', opacity: 0 }}
+              exit={{ y: '-16px', opacity: 0 }}
+              animate={{
+                y: 0,
+                opacity: 1,
+                transition: {
+                  type: 'spring',
+                  stiffness: 700,
+                  damping: 30,
+                },
+              }}
             >
-              {renderThead(table.getRowModel().rows.length)}
-              <tbody role="rowgroup">
-                {loading
-                  ? (
-                    <TableRow>
-                      <TableCell colSpan={100}>
-                        <Skeleton gap={16} height={24} count={10} />
-                      </TableCell>
-                    </TableRow>
-                  ) : renderRows(table.getRowModel().rows)}
-              </tbody>
-            </table>
-          </div>
-        )}
+              <Stack
+                direction="row"
+                hAlign="space-between"
+                vAlign="center"
+                hPadding={16}
+                vPadding={8}
+                fill={false}
+                columnGap={16}
+              >
+                <Text as="span" size={14} weight="bold">
+                  {renderSelectedLabel(selectedRowsCount)}
+                </Text>
+                {renderSelectedActions?.(table.getSelectedRowModel().flatRows)}
+              </Stack>
+            </Panel>
+          )}
 
-        {/* PAGINATION */}
-        {(showPagination && table.getIsSomeColumnsVisible() && table.getRowModel().rows.length > 0) && (
-          <TablePagination
-            clusters={pageClusters}
-            itemsPerPage={table.getState().pagination.pageSize}
-            totalItems={data.length}
-            currentPage={table.getState().pagination.pageIndex}
-            clustersLabel={clustersLabel}
-            onPageSizeChange={pageSize => table.setPageSize(pageSize)}
-            onPageClick={selected => table.setPageIndex(selected)}
-          />
-        )}
-      </div>
-    </ResponsiveProvider>
+          {/* HEADER */}
+          {(showHeader || selectableRows) && (
+            <m.div
+              animate={{
+                y: selectedRowsCount > 0 ? 20 : 0,
+                opacity: selectedRowsCount > 0 ? 0 : 1,
+                transition: {
+                  type: 'spring',
+                  stiffness: 700,
+                  damping: 30,
+                },
+              }}
+            >
+              <TableHeader title={title} id={`${uid}-table-title`}>
+                {(enableFilterControl) ? (
+                  <FilterControl
+                    label={filterControlLabel}
+                    onChange={event => setDebouncedGlobalFilter(event.target.value)}
+                  />
+                ) : null}
+
+                {actions}
+
+                {(enableToggleColumns && data.length)
+                  ? (
+                    <ToggleColumnsControl
+                      columns={table.getAllLeafColumns()}
+                      label={toggleColumnsLabel}
+                    />
+                  )
+                  : null}
+              </TableHeader>
+            </m.div>
+          )}
+        </LazyMotion>
+      </AnimatePresence>
+
+      {/* TABLE */}
+      {table.getIsSomeColumnsVisible() && (
+        <div className={styles.TableWrapper} data-table-scrolling={Boolean(height)}>
+          <table
+            className={styles.TableElement}
+            data-table-stripes={stripes}
+            data-table-separators={separators}
+            aria-labelledby={`${uid}-table-title`}
+            {...otherProps}
+          >
+            {renderThead(table.getRowModel().rows.length)}
+            <tbody role="rowgroup">
+              {loading
+                ? (
+                  <TableRow>
+                    <TableCell colSpan={100}>
+                      <Skeleton gap={16} height={24} count={10} />
+                    </TableCell>
+                  </TableRow>
+                ) : renderRows(table.getRowModel().rows)}
+            </tbody>
+          </table>
+        </div>
+      )}
+
+      {/* PAGINATION */}
+      {(showPagination && table.getIsSomeColumnsVisible() && table.getRowModel().rows.length > 0) && (
+        <TablePagination
+          clusters={pageClusters}
+          itemsPerPage={table.getState().pagination.pageSize}
+          totalItems={data.length}
+          currentPage={table.getState().pagination.pageIndex}
+          clustersLabel={clustersLabel}
+          onPageSizeChange={pageSize => table.setPageSize(pageSize)}
+          onPageClick={selected => table.setPageIndex(selected)}
+        />
+      )}
+    </div>
   );
 };
 
