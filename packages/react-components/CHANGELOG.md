@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 13.4.1
+
+### Patch Changes
+
+- b6706bc: Update table cell sizing props
+  - @lualtek/icons@13.4.1
+
 ## 13.4.0
 
 ### Minor Changes
