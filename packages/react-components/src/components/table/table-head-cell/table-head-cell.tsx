@@ -2,12 +2,12 @@ import { SortDirection } from '@tanstack/react-table';
 import clsx from 'clsx';
 import { forwardRef, useMemo } from 'react';
 
-import { Polymorphic } from '@/components';
+import { BlankButton, Icon, Polymorphic } from '@/components';
 
 import { CustomColumnMeta } from '../types';
-import styles from './table-cell.module.css';
+import styles from './table-head-cell.module.css';
 
-type TableCellProps = CustomColumnMeta & {
+type TableHeadcellProps = CustomColumnMeta & {
   /**
    * Set the default sorting direction of the column.
    *
@@ -35,14 +35,16 @@ type TableCellProps = CustomColumnMeta & {
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-type PolymorphicCell = Polymorphic.ForwardRefComponent<'td', TableCellProps>;
+type PolymorphicCell = Polymorphic.ForwardRefComponent<'td', TableHeadcellProps>;
 
-export const TableCell = forwardRef(({
+export const TableHeadCell = forwardRef(({
   children,
   className,
   collapsed,
   align = 'start',
   style,
+  sorting = false,
+  canSort,
   as: Wrapper = 'td',
   padding = true,
   width,
@@ -60,10 +62,24 @@ export const TableCell = forwardRef(({
     '--text-align': align,
   }), [align, computedWidth]);
 
+  const content = useMemo(() => (
+    <>
+      {children}
+      {Boolean(sorting) && (
+        <Icon
+          dimension={12}
+          className={styles.Icon}
+          fill="var(--highlight-red-foreground)"
+          source={sorting === 'desc' ? 'bars-sort-down' : 'bars-sort-up'}
+        />
+      )}
+    </>
+  ), [children, sorting]);
+
   return (
     <Wrapper
       ref={forwardedRef}
-      className={clsx(styles.TableCell, className)}
+      className={clsx(styles.TableHeadcell, className)}
       data-table-cell-collapsed={collapsed}
       data-table-cell-padding={padding}
       data-table-cell-fixed={Boolean(width)}
@@ -74,7 +90,15 @@ export const TableCell = forwardRef(({
       }}
       {...otherProps}
     >
-      {children}
+      {canSort ? (
+        <BlankButton
+          className={styles.BlankButton}
+          type="button"
+          onClick={onClick}
+        >
+          {content}
+        </BlankButton>
+      ) : content}
     </Wrapper>
   );
 }) as PolymorphicCell;

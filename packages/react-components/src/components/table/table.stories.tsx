@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { useMemo } from 'react';
 
 import {
   IconButton, Menu, Popover, Stack,
@@ -17,75 +18,79 @@ type Person = {
 
 const columnHelper = createColumnHelper<Person>();
 
-const columns = [
-  columnHelper.accessor('actions', {
-    header: ' ',
-    enableSorting: false,
-    enableHiding: false,
-    meta: {
-      collapsed: true,
-    },
-    cell: () => (
-      <Stack direction="row" columnGap={8} fill={false}>
-        <IconButton icon="settings-gear" kind="secondary" />
-        <Popover>
-          <Popover.Trigger><IconButton icon="dot-menu" kind="secondary" /></Popover.Trigger>
-          <Popover.Content side="bottom" align="start" offset={4}>
-            <Popover.Close>
-              <Menu>
-                <Menu.Item
-                  value="watching"
-                  autoFocus
-                  icon="alarm-disabled"
-                >
-                  Watch
-                </Menu.Item>
-                <Menu.Item
-                  value="status"
-                >
-                  Enable
-                </Menu.Item>
-              </Menu>
-            </Popover.Close>
-          </Popover.Content>
-        </Popover>
-      </Stack>
-    ),
-  }),
-  columnHelper.accessor('firstName', {
-    header: () => 'First Name',
-    cell: info => info.getValue(),
-    footer: info => info.column.id,
-  }),
-  columnHelper.accessor(row => row.lastName, {
-    id: 'lastName',
-    header: () => 'Last name',
-    cell: info => info.renderValue(),
-    footer: info => info.column.id,
-  }),
-  columnHelper.accessor('age', {
-    header: () => 'Age',
-    cell: info => info.renderValue(),
-    footer: info => info.column.id,
-  }),
-  columnHelper.accessor('balance', {
-    header: () => 'Balance',
-    cell: info => <code>{info.renderValue()}</code>,
-    footer: info => info.column.id,
-  }),
-  columnHelper.accessor('status', {
-    header: 'Status',
-    footer: info => info.column.id,
-  }),
-];
-
 const story: Meta<TableProps<Person>> = {
   title: 'Layouts/Table',
   component: Table,
   args: {
     itemsPerPage: 50,
   },
-  render: args => <Table {...args} columns={columns} data={tableDataFixture} />,
+  render: function Render({ ...args }) {
+    const columns = useMemo(() => [
+      columnHelper.accessor('actions', {
+        header: ' ',
+        enableSorting: false,
+        enableHiding: false,
+        meta: {
+          collapsed: true,
+        },
+        cell: () => (
+          <Stack direction="row" columnGap={8} fill={false}>
+            <IconButton icon="settings-gear" kind="secondary" />
+            <Popover>
+              <Popover.Trigger><IconButton icon="dot-menu" kind="secondary" /></Popover.Trigger>
+              <Popover.Content side="bottom" align="start" offset={4}>
+                <Popover.Close>
+                  <Menu>
+                    <Menu.Item
+                      value="watching"
+                      autoFocus
+                      icon="alarm-disabled"
+                    >
+                      Watch
+                    </Menu.Item>
+                    <Menu.Item
+                      value="status"
+                      icon="on"
+                    >
+                      Enable
+                    </Menu.Item>
+                  </Menu>
+                </Popover.Close>
+              </Popover.Content>
+            </Popover>
+          </Stack>
+        ),
+      }),
+      columnHelper.accessor('firstName', {
+        header: () => 'First Name',
+        cell: info => info.getValue(),
+        footer: info => info.column.id,
+      }),
+      columnHelper.accessor(row => row.lastName, {
+        id: 'lastName',
+        header: () => 'Last name',
+        cell: info => info.renderValue(),
+        footer: info => info.column.id,
+      }),
+      columnHelper.accessor('age', {
+        header: () => 'Age',
+        cell: info => info.renderValue(),
+        footer: info => info.column.id,
+      }),
+      columnHelper.accessor('balance', {
+        header: () => 'Balance',
+        cell: info => <code>{info.renderValue()}</code>,
+        footer: info => info.column.id,
+      }),
+      columnHelper.accessor('status', {
+        header: 'Status',
+        footer: info => info.column.id,
+        enableSorting: false,
+      }),
+    ], []);
+
+    return (<Table {...args} columns={columns} data={tableDataFixture} />);
+  },
 };
 
 export default story;

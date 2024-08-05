@@ -48,13 +48,6 @@
         transition: right, bottom, opacity, 0.3s ease-out;
       }
 
-      &[aria-current='page']::before {
-        right: 15%;
-        width: 40%;
-        box-shadow: 0 0 20px 5px var(--glow-color);
-        top: 0;
-      }
-
       &[aria-current='page']::after {
         width: 60%;
         right: 20%;

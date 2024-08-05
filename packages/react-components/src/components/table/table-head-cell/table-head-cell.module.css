@@ -1,7 +1,7 @@
 @import '../../../core/utils/media.css';
 
 @layer components {
-  .TableCell {
+  .TableHeadcell {
     --indent-guide-width: 24px;
 
     position: relative;
@@ -12,6 +12,8 @@
     text-align: start;
     padding: 0;
     word-wrap: break-word;
+    color: var(--global-foreground);
+    font-weight: token(--font-weight-bold);
 
     &:not(:only-child) {
       text-align: var(--text-align, start);
@@ -34,21 +36,15 @@
     }
   }
 
-  .HeadCellIcon {
+  .Icon {
     margin-inline-start: token(--space-8);
   }
 
   .BlankButton {
-    appearance: none;
-    border: 0;
-    background: none;
-    font: unset;
-    cursor: pointer;
-    color: inherit;
-    text-align: inherit;
-    padding: 0;
-    margin: 0;
-    width: 100%;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: var(--text-align, start);
+    font-weight: token(--font-weight-bold);
   }
 }
 @layer overrides {

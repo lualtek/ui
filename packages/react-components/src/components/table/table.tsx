@@ -32,6 +32,7 @@ import styles from './table.module.css';
 import { TableCell } from './table-cell';
 import { TableCheckbox } from './table-checkbox';
 import { FilterControl, ToggleColumnsControl } from './table-controls';
+import { TableHeadCell } from './table-head-cell';
 import { TableHeader, TableHeaderProps } from './table-header';
 import { TablePagination, TablePaginationProps } from './table-pagination';
 import { TableRow } from './table-row';
@@ -305,7 +306,7 @@ export const Table = <T extends Record<string, unknown>>({
       {table.getHeaderGroups().map(headerGroup => (
         <TableRow key={headerGroup.id}>
           {headerGroup.headers.map(header => (
-            <TableCell
+            <TableHeadCell
               key={header.id}
               as="th"
               width={header.column.columnDef.size}
@@ -319,7 +320,7 @@ export const Table = <T extends Record<string, unknown>>({
                 header.column.columnDef.header,
                 header.getContext(),
               )}
-            </TableCell>
+            </TableHeadCell>
           ))}
         </TableRow>
       ))}
