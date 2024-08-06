@@ -2,10 +2,11 @@
 
 import { TokensTypes } from '@lualtek/tokens/platforms/web';
 import clsx from 'clsx';
-import { Emoji, EmojiClickData } from 'emoji-picker-react';
+import { EmojiClickData } from 'emoji-picker-react';
 import { useMemo } from 'react';
 
 import {
+  Emoji,
   Stack, Text, TextProps,
 } from '@/components';
 import { FCClass } from '@/components/types';
@@ -40,20 +41,24 @@ export type TextChipProps = {
 
 type Sizes = Record<string, {
   text: Exclude<NonNullable<TextProps['size']>, string>;
-  emoji: Exclude<NonNullable<TextProps['size']>, string>;
+  emojiText: Exclude<NonNullable<TextProps['size']>, string>;
+  emoji: Exclude<NonNullable<TokensTypes['icon']['size']>, string>;
 }>
 
 const sizes: Sizes = {
   small: {
     text: 12,
-    emoji: 18,
+    emojiText: 18,
+    emoji: 12,
   },
   regular: {
     text: 16,
+    emojiText: 24,
     emoji: 24,
   },
   big: {
     text: 18,
+    emojiText: 32,
     emoji: 32,
   },
 };
@@ -93,12 +98,17 @@ export const TextChip: FCClass<TextChipProps> = ({
       <Text
         className={styles.TextWrapper}
         align="center"
-        size={isEmoji ? sizes[dimension]?.emoji : sizes[dimension]?.text}
+        size={isEmoji ? sizes[dimension]?.emojiText : sizes[dimension]?.text}
         weight="bold"
         as="span"
       >
         {(text && !emoji) && text.slice(0, 2)}
-        {(emoji) && <Emoji unified={emoji} size={sizes[dimension]?.emoji / 1.2} /> }
+        {(emoji) && (
+          <Emoji
+            unified={emoji}
+            size={sizes[dimension]?.emoji}
+          />
+        ) }
       </Text>
     </Stack>
   );
