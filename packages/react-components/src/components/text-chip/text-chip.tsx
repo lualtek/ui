@@ -49,17 +49,17 @@ const sizes: Sizes = {
   small: {
     text: 12,
     emojiText: 18,
-    emoji: 12,
+    emoji: 16,
   },
   regular: {
     text: 16,
     emojiText: 24,
-    emoji: 24,
+    emoji: 32,
   },
   big: {
     text: 18,
     emojiText: 32,
-    emoji: 32,
+    emoji: 40,
   },
 };
 
