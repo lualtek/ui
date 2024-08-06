@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 13.4.4
+
+### Patch Changes
+
+- 2c3a8c0: Fix emoji picker style
+  - @lualtek/icons@13.4.4
+
 ## 13.4.3
 
 ### Patch Changes
