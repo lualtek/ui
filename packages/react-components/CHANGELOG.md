@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 13.4.3
+
+### Patch Changes
+
+- 7b28d05: Add export of Emoji component from emoji picker
+  - @lualtek/icons@13.4.3
+
 ## 13.4.2
 
 ### Patch Changes
