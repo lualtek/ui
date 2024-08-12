@@ -77,6 +77,10 @@ BaseChartProps, 'renderChart' | 'children'> & {
    * Render areas for the series.
    */
   showAreas?: boolean;
+  /**
+   * ID for sync multiple charts
+   */
+  syncId?: string;
 }
 
 export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
@@ -93,6 +97,7 @@ export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
   yTypeRight,
   allowYDecimals = false,
   disableAnimation = false,
+  syncId,
   ...otherProps
 }: PropsWithClass<LineChartProps<D, L>>) {
   const chartRef = useRef<HTMLDivElement>(null);
@@ -140,6 +145,7 @@ export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
         <ReAreaChart
           data={data}
           accessibilityLayer
+          syncId={syncId}
         >
           {children}
         </ReAreaChart>
@@ -147,6 +153,7 @@ export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
         <ReLineChart
           data={data}
           accessibilityLayer
+          syncId={syncId}
         >
           {children}
         </ReLineChart>
