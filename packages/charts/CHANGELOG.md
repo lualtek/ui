@@ -1,5 +1,14 @@
 # @lualtek/charts
 
+## 13.4.6
+
+### Patch Changes
+
+- e40cd7c: Move syncId to base chart and add it to bar and line charts
+- 166ce16: Added syncId prop to LineChart
+  - @lualtek/react-components@13.4.6
+  - @lualtek/tokens@13.4.6
+
 ## 13.4.5
 
 ### Patch Changes
