@@ -88,6 +88,7 @@ export function BarChart<D extends ChartDataBaseType, B extends BarProps<D>>({
   yTypeRight,
   allowYDecimals = false,
   disableAnimation = false,
+  syncId,
   ...otherProps
 }: PropsWithClass<BarChartProps<D, B>>) {
   const chartRef = useRef<HTMLDivElement>(null);
@@ -138,6 +139,7 @@ export function BarChart<D extends ChartDataBaseType, B extends BarProps<D>>({
           accessibilityLayer
           barCategoryGap={barCategoryGap}
           barSize={barSize}
+          syncId={syncId}
         >
           {children}
         </ReBarChart>

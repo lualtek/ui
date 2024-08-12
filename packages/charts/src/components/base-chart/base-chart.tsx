@@ -111,6 +111,10 @@ export type BaseChartProps = ResponsiveContainerProps & {
    */
   tooltipColors?: TooltipProps['tooltipColors'];
   /**
+   * ID for sync multiple charts
+   */
+  syncId?: string | number;
+  /**
    * Render a custom tooltip instead of the default one.
    *
    * @param props { active?: boolean; label?: string; payload?: TooltipEntry[]; }

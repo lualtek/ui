@@ -77,10 +77,6 @@ BaseChartProps, 'renderChart' | 'children'> & {
    * Render areas for the series.
    */
   showAreas?: boolean;
-  /**
-   * ID for sync multiple charts
-   */
-  syncId?: string;
 }
 
 export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
