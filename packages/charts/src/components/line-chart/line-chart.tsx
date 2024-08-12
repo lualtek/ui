@@ -93,6 +93,7 @@ export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
   yTypeRight,
   allowYDecimals = false,
   disableAnimation = false,
+  focusable = false,
   syncId,
   ...otherProps
 }: PropsWithClass<LineChartProps<D, L>>) {
@@ -140,7 +141,7 @@ export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
       renderChart={children => (showAreas ? (
         <ReAreaChart
           data={data}
-          accessibilityLayer
+          accessibilityLayer={focusable}
           syncId={syncId}
         >
           {children}
@@ -148,7 +149,7 @@ export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
       ) : (
         <ReLineChart
           data={data}
-          accessibilityLayer
+          accessibilityLayer={focusable}
           syncId={syncId}
         >
           {children}

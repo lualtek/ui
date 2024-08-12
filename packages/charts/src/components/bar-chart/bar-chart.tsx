@@ -88,6 +88,7 @@ export function BarChart<D extends ChartDataBaseType, B extends BarProps<D>>({
   yTypeRight,
   allowYDecimals = false,
   disableAnimation = false,
+  focusable = false,
   syncId,
   ...otherProps
 }: PropsWithClass<BarChartProps<D, B>>) {
@@ -136,7 +137,7 @@ export function BarChart<D extends ChartDataBaseType, B extends BarProps<D>>({
       renderChart={children => (
         <ReBarChart
           data={data}
-          accessibilityLayer
+          accessibilityLayer={focusable}
           barCategoryGap={barCategoryGap}
           barSize={barSize}
           syncId={syncId}

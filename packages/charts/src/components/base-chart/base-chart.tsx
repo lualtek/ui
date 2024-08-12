@@ -111,6 +111,12 @@ export type BaseChartProps = ResponsiveContainerProps & {
    */
   tooltipColors?: TooltipProps['tooltipColors'];
   /**
+   * Enable or disable the accessibility layer on the chart.
+   *
+   * @defaultValue false
+   */
+  focusable?: boolean;
+  /**
    * ID for sync multiple charts
    */
   syncId?: string | number;
