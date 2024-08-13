@@ -1,5 +1,17 @@
 # @lualtek/charts
 
+## 13.5.0
+
+### Minor Changes
+
+- 396cc94: Add xType prop to charts
+
+### Patch Changes
+
+- 5903827: Disable accessibility layer by default and add focusable props to base chart
+  - @lualtek/react-components@13.5.0
+  - @lualtek/tokens@13.5.0
+
 ## 13.4.6
 
 ### Patch Changes
