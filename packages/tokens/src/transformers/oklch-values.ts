@@ -1,11 +1,11 @@
 import Color from 'colorjs.io';
-import * as StyleDictionary from 'style-dictionary';
+import type { Transform } from 'style-dictionary/types';
 
-const okLCHValues: StyleDictionary.Named<StyleDictionary.Transform> = {
+const okLCHValues: Transform = {
   name: 'color/oklchvalues',
   type: 'value',
-  matcher: prop => prop.attributes?.category === 'color',
-  transformer: (token) => {
+  filter: prop => prop.attributes?.category === 'color',
+  transform: (token) => {
     const color = new Color(token.value).to('oklch');
     const colorValues = `${(color.oklch[0] * 100).toFixed(2)}% ${color.oklch[1].toFixed(2)} ${Number.isNaN(color.oklch[2]) ? 0 : color.oklch[2].toFixed(1) || 0}`;
 

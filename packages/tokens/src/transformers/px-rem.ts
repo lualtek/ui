@@ -1,11 +1,11 @@
-import * as StyleDictionary from 'style-dictionary';
+import type { Transform } from 'style-dictionary/types';
 
-const pxToRem: StyleDictionary.Named<StyleDictionary.Transform> = {
+const pxToRem: Transform = {
   name: 'size/px-rem',
   type: 'value',
-  matcher: prop => prop.attributes?.category === 'size/rem',
-  transformer: (token, options) => {
-    const baseRootSize = options?.basePxFontSize ?? 16;
+  filter: prop => prop.attributes?.category === 'size/rem',
+  transform: (token, options) => {
+    const baseRootSize = options?.basePxFontSize as number ?? 16;
     return `${(token.value / baseRootSize).toFixed(2)}rem`;
   },
 };

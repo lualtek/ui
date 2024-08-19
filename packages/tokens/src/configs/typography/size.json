@@ -4,73 +4,73 @@
       "100": {
         "value": 100,
         "attributes": {
-          "category": "size/rem"
+          "category": "dimension"
         }
       },
       "75": {
         "value": 75,
         "attributes": {
-          "category": "size/rem"
+          "category": "dimension"
         }
       },
       "56": {
         "value": 56,
         "attributes": {
-          "category": "size/rem"
+          "category": "dimension"
         }
       },
       "42": {
         "value": 42,
         "attributes": {
-          "category": "size/rem"
+          "category": "dimension"
         }
       },
       "32": {
         "value": 32,
         "attributes": {
-          "category": "size/rem"
+          "category": "dimension"
         }
       },
       "28": {
         "value": 28,
         "attributes": {
-          "category": "size/rem"
+          "category": "dimension"
         }
       },
       "24": {
         "value": 24,
         "attributes": {
-          "category": "size/rem"
+          "category": "dimension"
         }
       },
       "22": {
         "value": 22,
         "attributes": {
-          "category": "size/rem"
+          "category": "dimension"
         }
       },
       "18": {
         "value": 18,
         "attributes": {
-          "category": "size/rem"
+          "category": "dimension"
         }
       },
       "16": {
         "value": 16,
         "attributes": {
-          "category": "size/rem"
+          "category": "dimension"
         }
       },
       "14": {
         "value": 14,
         "attributes": {
-          "category": "size/rem"
+          "category": "dimension"
         }
       },
       "12": {
         "value": 12,
         "attributes": {
-          "category": "size/rem"
+          "category": "dimension"
         }
       }
     }

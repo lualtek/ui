@@ -1,10 +1,10 @@
-import * as StyleDictionary from 'style-dictionary';
+import type { Transform } from 'style-dictionary/types';
 
-const cubicBezier: StyleDictionary.Named<StyleDictionary.Transform> = {
+const cubicBezier: Transform = {
   name: 'easing/cubic-bezier',
   type: 'value',
-  matcher: prop => prop.attributes?.category === 'easing',
-  transformer: token => `cubic-bezier(${token.value.join(', ')})`,
+  filter: prop => prop.attributes?.category === 'easing',
+  transform: token => `cubic-bezier(${token.value.join(', ')})`,
 };
 
 export default cubicBezier;

@@ -1,10 +1,10 @@
-import * as StyleDictionary from 'style-dictionary';
+import type { Transform } from 'style-dictionary/types';
 
-const pxRootEm: StyleDictionary.Named<StyleDictionary.Transform> = {
+const pxRootEm: Transform = {
   name: 'size/px-rootem',
   type: 'value',
-  matcher: prop => prop.attributes?.category === 'media',
-  transformer: token => `${(token.value / 16).toFixed(0)}em`,
+  filter: prop => prop.attributes?.category === 'media',
+  transform: token => `${(token.value / 16).toFixed(0)}em`,
 };
 
 export default pxRootEm;
