@@ -1,6 +1,7 @@
 /* eslint-disable import/extensions */
 /* eslint-disable no-console */
 import StyleDictionary from 'style-dictionary';
+import type { Config } from 'style-dictionary/types';
 
 import CssBezier from './transformers/css-bezier.ts';
 import OklchValues from './transformers/oklch-values.ts';
@@ -8,7 +9,7 @@ import SizePercentage from './transformers/percentage.ts';
 import SizePxToRem from './transformers/px-rem.ts';
 import SizePxToRootEm from './transformers/px-rootem.ts';
 
-const config = {
+const config: Config = {
   source: ['src/configs/**/*.json'],
   platforms: {
     web: {
@@ -55,7 +56,7 @@ const config = {
 };
 
 // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-const SDWithConfig = StyleDictionary.extend(config);
+const SDWithConfig = new StyleDictionary(config);
 
 /**
  * Register custom transformers to process token values for
@@ -72,18 +73,19 @@ SDWithConfig.registerTransform(CssBezier);
  * Add the custom transformers to a new transformGroup `custom-web`
  * used inside tokens.config.json
  */
-SDWithConfig.registerTransformGroup({
+await SDWithConfig.registerTransformGroup({
   name: 'custom-web',
   transforms: [
     'attribute/cti',
-    'name/cti/kebab',
+    'name/kebab',
     'time/seconds',
-    'content/icon',
+    'html/icon',
     'size/px-rootem',
-    'size/px-rem',
+    'size/pxToRem',
     'size/px',
     'size/percent',
     'color/oklchvalues',
+    // 'cubicBezier/css-',
     'easing/cubic-bezier',
   ],
 });
@@ -92,4 +94,5 @@ SDWithConfig.registerTransformGroup({
  * Manually run StyleDictionary for all the configured platforms
  */
 console.clear();
-SDWithConfig.buildAllPlatforms();
+await SDWithConfig.hasInitialized;
+await SDWithConfig.buildAllPlatforms();

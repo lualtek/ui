@@ -72,7 +72,7 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>(({
       y: 0,
       transition: {
         ease: cssEasingToArray(tkns.easing.entrance),
-        duration: parseFloat(tkns.duration[300].replace('s', '')),
+        duration: tkns.duration[300],
       },
     },
     hidden: {

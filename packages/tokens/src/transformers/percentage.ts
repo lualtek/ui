@@ -1,10 +1,10 @@
-import * as StyleDictionary from 'style-dictionary';
+import type { Transform } from 'style-dictionary/types';
 
-const percentage: StyleDictionary.Named<StyleDictionary.Transform> = {
+const percentage: Transform = {
   name: 'size/percent',
   type: 'value',
-  matcher: prop => prop.attributes?.category === 'size/percent',
-  transformer: token => `${token.value}%`,
+  filter: prop => prop.attributes?.category === 'size/percent',
+  transform: token => `${token.value}%`,
 };
 
 export default percentage;
