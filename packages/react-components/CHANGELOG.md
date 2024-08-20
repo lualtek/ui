@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 13.5.1
+
+### Patch Changes
+
+- cc5a5b1: Fix adding keys to SnapList map
+  - @lualtek/icons@13.5.1
+
 ## 13.5.0
 
 ### Patch Changes
