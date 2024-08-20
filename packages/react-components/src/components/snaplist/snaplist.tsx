@@ -76,14 +76,14 @@ export const Snaplist = forwardRef(({
             return Children.map(
               child.props.children,
               (fragmentChild: React.ReactNode) => isValidElement(fragmentChild) && (
-                <SnaplistItem>
+                <SnaplistItem key={fragmentChild.key}>
                   {fragmentChild}
                 </SnaplistItem>
               ),
             ) as JSX.Element[];
           }
 
-          return <SnaplistItem>{child}</SnaplistItem>;
+          return <SnaplistItem key={child.key}>{child}</SnaplistItem>;
         }
 
         return null;
