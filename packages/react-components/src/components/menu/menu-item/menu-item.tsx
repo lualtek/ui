@@ -58,7 +58,7 @@ export type MenuItemProps = {
    * Add an element to decorate the menu item. This is useful for adding extra elements
    * and information to the menu item.
    *
-   * @note Don't use interactive elements (link, buttons, etc...) as decoration
+   * Don't use interactive elements (link, buttons, etc...) as decoration
    * if `Menu.Item` is rendered as ´<button>´ (default).
    */
   decoration?: ReactNode;

@@ -40,7 +40,7 @@ export type ChipProps = PropsClassChildren<{
   onDismissClick?: () => void;
   /**
    * Show an icon before the chip content.
-   * @important The icon is not rendered if `dismissable` is `true`
+   * The icon is not rendered if `dismissable` is `true`
    */
   icon?: IconProps['source'];
 }>
