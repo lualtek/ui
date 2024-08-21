@@ -28,7 +28,7 @@ export type DrawerProps = PropsClassChildren<{
    * Even if this can be set to `false` we strongly recommend to leave
    * it to `true` as it ensures the accessibility of the drawer.
    *
-   * @important This property is considered only when `isModal` is `true`.
+   * This property is considered only when `isModal` is `true`.
    * @defaultValue true
    */
   closeOnClickOutside?: boolean;

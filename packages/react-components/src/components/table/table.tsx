@@ -82,7 +82,7 @@ export type TableProps<T> = PropsWithClass<{
   pageClusters?: TablePaginationProps['clusters'];
   /**
    * Set the label for the clusters select.
-   * @note Use this propertu to translate the label of the select used to change visible items per page.
+   * Use this propertu to translate the label of the select used to change visible items per page.
    */
   clustersLabel?: string;
   /**
