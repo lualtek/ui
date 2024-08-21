@@ -3,7 +3,6 @@
 import StyleDictionary from 'style-dictionary';
 import type { Config } from 'style-dictionary/types';
 
-import CssBezier from './transformers/css-bezier.ts';
 import OklchValues from './transformers/oklch-values.ts';
 import SizePercentage from './transformers/percentage.ts';
 import SizePxToRem from './transformers/px-rem.ts';
@@ -67,7 +66,6 @@ SDWithConfig.registerTransform(OklchValues);
 SDWithConfig.registerTransform(SizePxToRem);
 SDWithConfig.registerTransform(SizePercentage);
 SDWithConfig.registerTransform(SizePxToRootEm);
-SDWithConfig.registerTransform(CssBezier);
 
 /**
  * Add the custom transformers to a new transformGroup `custom-web`
@@ -85,8 +83,7 @@ await SDWithConfig.registerTransformGroup({
     'size/px',
     'size/percent',
     'color/oklchvalues',
-    // 'cubicBezier/css-',
-    'easing/cubic-bezier',
+    'cubicBezier/css',
   ],
 });
 
