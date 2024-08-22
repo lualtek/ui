@@ -1,5 +1,5 @@
 import Color from 'colorjs.io';
-import * as StyleDictionary from 'style-dictionary';
+import type { Transform } from 'style-dictionary/types';
 
 const colorValues = (color: Color, transparency: string) => {
   const l = color.get('l').toFixed(2);
@@ -9,12 +9,12 @@ const colorValues = (color: Color, transparency: string) => {
   return transparency ? `oklch(${l} ${c} ${h} / ${transparency})` : `oklch(${l} ${c} ${h}${color.alpha !== 1 ? ` / ${color.alpha}` : ''})`;
 };
 
-const OkLCH: StyleDictionary.Named<StyleDictionary.Transform> = {
+const OkLCH: Transform = {
   name: 'color/oklch',
   type: 'value',
   transitive: true,
-  matcher: token => token.attributes?.category === 'color',
-  transformer: (token) => {
+  filter: token => token.attributes?.category === 'color',
+  transform: (token) => {
     // This is used only if parsing original token values (hex colors)
     const color = new Color(token.value).to('oklch');
 
