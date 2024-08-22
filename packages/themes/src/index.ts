@@ -70,6 +70,7 @@ const availableThemes = fs.readdirSync(path.join(__dirname, 'themes')).filter(
  */
 for (const theme of availableThemes) {
   for (const themeVariant of THEME_VARIANTS) {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     const SDWithConfig = new StyleDictionary(
       getConfig(theme, themeVariant),
     );
