@@ -1,6 +1,6 @@
 {
   "radius": {
-    "$type": "size/rem",
+    "$type": "dimension-px-to-rem",
     "4": {
       "$value": 4
     },
