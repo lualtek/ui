@@ -4,7 +4,6 @@ import StyleDictionary from 'style-dictionary';
 import type { Config } from 'style-dictionary/types';
 
 import OklchValues from './transformers/oklch-values.ts';
-import SizePercentage from './transformers/percentage.ts';
 import SizePxToRem from './transformers/px-rem.ts';
 import SizePxToRootEm from './transformers/px-rootem.ts';
 
@@ -64,7 +63,6 @@ const SDWithConfig = new StyleDictionary(config);
 // StyleDictionary.registerTransform(HexHslValues);
 SDWithConfig.registerTransform(OklchValues);
 SDWithConfig.registerTransform(SizePxToRem);
-SDWithConfig.registerTransform(SizePercentage);
 SDWithConfig.registerTransform(SizePxToRootEm);
 
 /**
@@ -78,10 +76,11 @@ await SDWithConfig.registerTransformGroup({
     'name/kebab',
     'time/seconds',
     'html/icon',
+    // Custom transformer
     'size/px-rootem',
+    // Custom transformer
     'size/px-rem',
     'size/px',
-    'size/percent',
     'color/oklchvalues',
     'cubicBezier/css',
   ],
