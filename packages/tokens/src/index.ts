@@ -3,7 +3,7 @@
 import StyleDictionary from 'style-dictionary';
 import type { Config } from 'style-dictionary/types';
 
-import OklchValues from './transformers/oklch-values.ts';
+import HexToOkLch from './transformers/hex-oklch.ts';
 import SizePxToRem from './transformers/px-rem.ts';
 import SizePxToRootEm from './transformers/px-rootem.ts';
 
@@ -60,10 +60,9 @@ const SDWithConfig = new StyleDictionary(config);
  * Register custom transformers to process token values for
  * the web platform
  */
-// StyleDictionary.registerTransform(HexHslValues);
-SDWithConfig.registerTransform(OklchValues);
 SDWithConfig.registerTransform(SizePxToRem);
 SDWithConfig.registerTransform(SizePxToRootEm);
+SDWithConfig.registerTransform(HexToOkLch);
 
 /**
  * Add the custom transformers to a new transformGroup `custom-web`
@@ -81,7 +80,7 @@ await SDWithConfig.registerTransformGroup({
     // Custom transformer
     'size/px-rem',
     'size/px',
-    'color/oklchvalues',
+    'color/hex-to-oklch',
     'cubicBezier/css',
   ],
 });
