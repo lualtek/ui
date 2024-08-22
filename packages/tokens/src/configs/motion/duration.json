@@ -1,34 +1,20 @@
 {
   "duration": {
+    "$type": "time",
     "100": {
-      "value": 100,
-      "attributes": {
-        "category": "time"
-      }
+      "$value": 100
     },
     "200": {
-      "value": 200,
-      "attributes": {
-        "category": "time"
-      }
+      "$value": 200
     },
     "250": {
-      "value": 250,
-      "attributes": {
-        "category": "time"
-      }
+      "$value": 250
     },
     "300": {
-      "value": 300,
-      "attributes": {
-        "category": "time"
-      }
+      "$value": 300
     },
     "500": {
-      "value": 500,
-      "attributes": {
-        "category": "time"
-      }
+      "$value": 500
     }
   }
 }

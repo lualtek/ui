@@ -1,65 +1,36 @@
 {
   "icon": {
     "size": {
+      "$type": "size/rem",
       "12": {
-        "value": 12,
-        "attributes": {
-          "category": "size/rem"
-        }
+        "$value": 12
       },
       "14": {
-        "value": 14,
-        "attributes": {
-          "category": "size/rem"
-        }
+        "$value": 14
       },
       "16": {
-        "value": 16,
-        "attributes": {
-          "category": "size/rem"
-        }
+        "$value": 16
       },
       "18": {
-        "value": 18,
-        "attributes": {
-          "category": "size/rem"
-        }
+        "$value": 18
       },
       "22": {
-        "value": 22,
-        "attributes": {
-          "category": "size/rem"
-        }
+        "$value": 22
       },
       "24": {
-        "value": 24,
-        "attributes": {
-          "category": "size/rem"
-        }
+        "$value": 24
       },
       "32": {
-        "value": 32,
-        "attributes": {
-          "category": "size/rem"
-        }
+        "$value": 32
       },
       "40": {
-        "value": 40,
-        "attributes": {
-          "category": "size/rem"
-        }
+        "$value": 40
       },
       "48": {
-        "value": 48,
-        "attributes": {
-          "category": "size/rem"
-        }
+        "$value": 48
       },
       "56": {
-        "value": 56,
-        "attributes": {
-          "category": "size/rem"
-        }
+        "$value": 56
       }
     }
   }

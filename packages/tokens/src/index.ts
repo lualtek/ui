@@ -79,7 +79,7 @@ await SDWithConfig.registerTransformGroup({
     'time/seconds',
     'html/icon',
     'size/px-rootem',
-    'size/pxToRem',
+    'size/px-rem',
     'size/px',
     'size/percent',
     'color/oklchvalues',

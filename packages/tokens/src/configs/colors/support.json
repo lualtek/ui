@@ -1,17 +1,12 @@
 {
   "color": {
     "support": {
+      "$type": "color",
       "black": {
-        "value": "#000000",
-        "attributes": {
-          "category": "color"
-        }
+        "$value": "#000000"
       },
       "white": {
-        "value": "#ffffff",
-        "attributes": {
-          "category": "color"
-        }
+        "$value": "#ffffff"
       }
     }
   }

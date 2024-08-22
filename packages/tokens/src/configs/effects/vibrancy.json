@@ -1,25 +1,20 @@
 {
   "vibrancy": {
     "blur": {
+      "$type": "dimension",
       "soft": {
-        "value": 10,
-        "attributes": {
-          "category": "size"
-        }
+        "$value": 10
       },
       "strong": {
-        "value": 20,
-        "attributes": {
-          "category": "size"
-        }
+        "$value": 20
       }
     },
     "saturation": {
       "standard": {
-        "value": 1
+        "$value": 1
       },
       "high": {
-        "value": 1.2
+        "$value": 1.2
       }
     }
   }
