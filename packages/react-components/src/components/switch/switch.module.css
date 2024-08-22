@@ -18,7 +18,7 @@
 
     &:is([data-state='checked']) {
       background: var(--cta-dark);
-      color: oklch(token(--color-support-white));
+      color: token(--color-support-white);
       justify-content: flex-end;
     }
 
