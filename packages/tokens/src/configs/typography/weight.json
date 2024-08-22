@@ -1,6 +1,7 @@
 {
   "font": {
     "weight": {
+      "$type": "font-weight",
       "bold": {
         "$value": 800
       },
