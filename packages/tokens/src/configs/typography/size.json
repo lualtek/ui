@@ -1,77 +1,42 @@
 {
   "font": {
     "size": {
+      "$type": "size/rem",
       "100": {
-        "value": 100,
-        "attributes": {
-          "category": "dimension"
-        }
+        "$value": 100
       },
       "75": {
-        "value": 75,
-        "attributes": {
-          "category": "dimension"
-        }
+        "$value": 75
       },
       "56": {
-        "value": 56,
-        "attributes": {
-          "category": "dimension"
-        }
+        "$value": 56
       },
       "42": {
-        "value": 42,
-        "attributes": {
-          "category": "dimension"
-        }
+        "$value": 42
       },
       "32": {
-        "value": 32,
-        "attributes": {
-          "category": "dimension"
-        }
+        "$value": 32
       },
       "28": {
-        "value": 28,
-        "attributes": {
-          "category": "dimension"
-        }
+        "$value": 28
       },
       "24": {
-        "value": 24,
-        "attributes": {
-          "category": "dimension"
-        }
+        "$value": 24
       },
       "22": {
-        "value": 22,
-        "attributes": {
-          "category": "dimension"
-        }
+        "$value": 22
       },
       "18": {
-        "value": 18,
-        "attributes": {
-          "category": "dimension"
-        }
+        "$value": 18
       },
       "16": {
-        "value": 16,
-        "attributes": {
-          "category": "dimension"
-        }
+        "$value": 16
       },
       "14": {
-        "value": 14,
-        "attributes": {
-          "category": "dimension"
-        }
+        "$value": 14
       },
       "12": {
-        "value": 12,
-        "attributes": {
-          "category": "dimension"
-        }
+        "$value": 12
       }
     }
   }

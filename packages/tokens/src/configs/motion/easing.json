@@ -1,16 +1,14 @@
 {
   "easing": {
+    "$type": "cubicBezier",
     "standard": {
-      "value": [0.3, 0.07, 0.34, 1],
-      "type": "cubicBezier"
+      "$value": [0.3, 0.07, 0.34, 1]
     },
     "entrance": {
-      "value": [0, 0, 0.34, 1],
-      "type": "cubicBezier"
+      "$value": [0, 0, 0.34, 1]
     },
     "exit": {
-      "value": [0.3, 0.07, 1, 1],
-      "type": "cubicBezier"
+      "$value": [0.3, 0.07, 1, 1]
     }
   }
 }

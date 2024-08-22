@@ -2,16 +2,16 @@
   "font": {
     "weight": {
       "bold": {
-        "value": 800
+        "$value": 800
       },
       "semi-bold": {
-        "value": 600
+        "$value": 600
       },
       "regular": {
-        "value": 400
+        "$value": 400
       },
       "light": {
-        "value": 200
+        "$value": 200
       }
     }
   }

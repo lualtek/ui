@@ -2,86 +2,62 @@
   "breakpoint": {
     "extra-small": {
       "em": {
-        "value": 480,
-        "attributes": {
-          "category": "media"
-        }
+        "$type": "mediaquery",
+        "$value": 480
       },
       "px": {
-        "value": 480,
-        "attributes": {
-          "category": "size"
-        }
+        "$value": 480,
+        "$type": "dimension"
       }
     },
     "small": {
       "em": {
-        "value": 768,
-        "attributes": {
-          "category": "media"
-        }
+        "$type": "mediaquery",
+        "$value": 768
       },
       "px": {
-        "value": 768,
-        "attributes": {
-          "category": "size"
-        }
+        "$value": 768,
+        "$type": "dimension"
       }
     },
     "medium": {
       "em": {
-        "value": 960,
-        "attributes": {
-          "category": "media"
-        }
+        "$type": "mediaquery",
+        "$value": 960
       },
       "px": {
-        "value": 960,
-        "attributes": {
-          "category": "size"
-        }
+        "$value": 960,
+        "$type": "dimension"
       }
     },
     "large": {
       "em": {
-        "value": 1280,
-        "attributes": {
-          "category": "media"
-        }
+        "$type": "mediaquery",
+        "$value": 1280
       },
       "px": {
-        "value": 1280,
-        "attributes": {
-          "category": "size"
-        }
+        "$value": 1280,
+        "$type": "dimension"
       }
     },
     "extra-large": {
       "em": {
-        "value": 1600,
-        "attributes": {
-          "category": "media"
-        }
+        "$type": "mediaquery",
+        "$value": 1600
       },
       "px": {
-        "value": 1600,
-        "attributes": {
-          "category": "size"
-        }
+        "$value": 1600,
+        "$type": "dimension"
       }
     },
     "wide": {
       "em": {
-        "value": 2100,
-        "attributes": {
-          "category": "media"
-        }
+        "$type": "mediaquery",
+        "$value": 2100
       },
       "px": {
-        "value": 2100,
-        "attributes": {
-          "category": "size"
-        }
+        "$value": 2100,
+        "$type": "dimension"
       }
     }
   }
