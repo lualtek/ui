@@ -88,9 +88,9 @@ for (const theme of availableThemes) {
       name: 'custom-web',
       transforms: [
         'attribute/cti',
-        'name/cti/kebab',
+        'name/kebab',
         'time/seconds',
-        'content/icon',
+        'html/icon',
         'size/rem',
         'color/oklch',
       ],
