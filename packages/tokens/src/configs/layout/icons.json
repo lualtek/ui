@@ -1,7 +1,7 @@
 {
   "icon": {
     "size": {
-      "$type": "size/rem",
+      "$type": "dimension-px-to-rem",
       "12": {
         "$value": 12
       },

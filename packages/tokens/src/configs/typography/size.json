@@ -1,7 +1,7 @@
 {
   "font": {
     "size": {
-      "$type": "size/rem",
+      "$type": "dimension-px-to-rem",
       "100": {
         "$value": 100
       },

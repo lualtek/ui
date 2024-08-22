@@ -1,6 +1,6 @@
 {
   "container": {
-    "$type": "size/rem",
+    "$type": "dimension-px-to-rem",
     "extra-large": {
       "$value": 1800
     },
