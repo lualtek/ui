@@ -1,6 +1,7 @@
 {
   "font": {
     "lh": {
+      "$type": "line-height",
       "extra-small": {
         "$value": 1
       },
