@@ -6,6 +6,7 @@ import path from 'node:path';
 
 import fs from 'fs-extra';
 import StyleDictionary from 'style-dictionary';
+import type { Config, DesignTokens } from 'style-dictionary/types';
 import { fileURLToPath } from 'url';
 
 import OkLCH from './transformers/oklch.ts';
@@ -17,24 +18,17 @@ const RawColorTokens = require('@lualtek/tokens/platforms/raw/tokens.json');
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+type ThemeVariants = typeof THEME_VARIANTS[number];
 const THEME_VARIANTS = ['light', 'dark'] as const;
-
-/**
- * This custom config extends the StyleDictionary.Config to change
- * the `tokens` type sinec we use flat/json to inline the tokens
- */
-interface CustomConfig extends StyleDictionary.Config {
-  tokens: any;
-}
 
 /**
  * Generate config for each theme folder
  * and each variant name (eg: monochrome/dark)
  * */
-const getConfig = (name: string, variant: string): CustomConfig => ({
+const getConfig = (name: string, variant: ThemeVariants): Config => ({
   source: [`./src/themes/${name}/${variant}/*.json`],
   tokens: {
-    ...RawColorTokens as Record<string, unknown>,
+    ...RawColorTokens as DesignTokens,
   },
   platforms: {
     // Build configuration for the web platform
@@ -76,7 +70,9 @@ const availableThemes = fs.readdirSync(path.join(__dirname, 'themes')).filter(
  */
 for (const theme of availableThemes) {
   for (const themeVariant of THEME_VARIANTS) {
-    const SDWithConfig = StyleDictionary.extend(getConfig(theme, themeVariant));
+    const SDWithConfig = new StyleDictionary(
+      getConfig(theme, themeVariant),
+    );
 
     /**
    * Register custom transformers to process token values for
@@ -104,7 +100,7 @@ for (const theme of availableThemes) {
    * Manually run StyleDictionary for all the configured platforms
    */
     console.clear();
-    SDWithConfig.buildAllPlatforms();
+    await SDWithConfig.hasInitialized;
+    await SDWithConfig.buildAllPlatforms();
   }
 }
-
