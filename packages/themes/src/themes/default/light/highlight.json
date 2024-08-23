@@ -2,171 +2,115 @@
   "highlight": {
     "brand-background": {
       "value": "{color.brand.10}",
-      "attributes": {
-        "category": "color"
-      }
+      "$type": "color"
     },
     "brand-foreground": {
       "value": "{color.brand.60}",
-      "attributes": {
-        "category": "color"
-      }
+      "$type": "color"
     },
     "primary-background": {
       "value": "{color.primary.10}",
-      "attributes": {
-        "category": "color"
-      }
+      "$type": "color"
     },
     "primary-foreground": {
       "value": "{color.primary.60}",
-      "attributes": {
-        "category": "color"
-      }
+      "$type": "color"
     },
     "gray-background": {
       "value": "{color.gray.20}",
-      "attributes": {
-        "category": "color"
-      }
+      "$type": "color"
     },
     "gray-foreground": {
       "value": "{color.gray.60}",
-      "attributes": {
-        "category": "color"
-      }
+      "$type": "color"
     },
     "slate-background": {
       "value": "{color.slate.20}",
-      "attributes": {
-        "category": "color"
-      }
+      "$type": "color"
     },
     "slate-foreground": {
       "value": "{color.slate.60}",
-      "attributes": {
-        "category": "color"
-      }
+      "$type": "color"
     },
     "yellow-background": {
       "value": "{color.yellow.10}",
-      "attributes": {
-        "category": "color"
-      }
+      "$type": "color"
     },
     "yellow-foreground": {
       "value": "{color.yellow.70}",
-      "attributes": {
-        "category": "color"
-      }
+      "$type": "color"
     },
     "green-background": {
       "value": "{color.green.10}",
-      "attributes": {
-        "category": "color"
-      }
+      "$type": "color"
     },
     "green-foreground": {
       "value": "{color.green.70}",
-      "attributes": {
-        "category": "color"
-      }
+      "$type": "color"
     },
     "blue-background": {
       "value": "{color.blue.10}",
-      "attributes": {
-        "category": "color"
-      }
+      "$type": "color"
     },
     "blue-foreground": {
       "value": "{color.blue.50}",
-      "attributes": {
-        "category": "color"
-      }
+      "$type": "color"
     },
     "red-background": {
       "value": "{color.red.5}",
-      "attributes": {
-        "category": "color"
-      }
+      "$type": "color"
     },
     "red-foreground": {
       "value": "{color.red.50}",
-      "attributes": {
-        "category": "color"
-      }
+      "$type": "color"
     },
     "cyan-background": {
       "value": "{color.cyan.10}",
-      "attributes": {
-        "category": "color"
-      }
+      "$type": "color"
     },
     "cyan-foreground": {
       "value": "{color.cyan.60}",
-      "attributes": {
-        "category": "color"
-      }
+      "$type": "color"
     },
     "purple-background": {
       "value": "{color.purple.10}",
-      "attributes": {
-        "category": "color"
-      }
+      "$type": "color"
     },
     "purple-foreground": {
       "value": "{color.purple.60}",
-      "attributes": {
-        "category": "color"
-      }
+      "$type": "color"
     },
     "indigo-background": {
       "value": "{color.indigo.5}",
-      "attributes": {
-        "category": "color"
-      }
+      "$type": "color"
     },
     "indigo-foreground": {
       "value": "{color.indigo.50}",
-      "attributes": {
-        "category": "color"
-      }
+      "$type": "color"
     },
     "dipsy-background": {
       "value": "{color.dipsy.10}",
-      "attributes": {
-        "category": "color"
-      }
+      "$type": "color"
     },
     "dipsy-foreground": {
       "value": "{color.dipsy.70}",
-      "attributes": {
-        "category": "color"
-      }
+      "$type": "color"
     },
     "salmon-background": {
       "value": "{color.salmon.5}",
-      "attributes": {
-        "category": "color"
-      }
+      "$type": "color"
     },
     "salmon-foreground": {
       "value": "{color.salmon.60}",
-      "attributes": {
-        "category": "color"
-      }
+      "$type": "color"
     },
     "magenta-background": {
       "value": "{color.magenta.5}",
-      "attributes": {
-        "category": "color"
-      }
+      "$type": "color"
     },
     "magenta-foreground": {
       "value": "{color.magenta.60}",
-      "attributes": {
-        "category": "color"
-      }
+      "$type": "color"
     }
   }
 }
