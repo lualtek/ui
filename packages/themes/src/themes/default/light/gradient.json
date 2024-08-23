@@ -3,71 +3,51 @@
     "brand": {
       "start": {
         "value": "{color.brand.60}",
-        "attributes": {
-          "category": "color"
-        }
+        "$type": "color"
       },
       "end": {
         "value": "{color.brand.70}",
-        "attributes": {
-          "category": "color"
-        }
+        "$type": "color"
       }
     },
     "primary": {
       "start": {
         "value": "{color.primary.80}",
-        "attributes": {
-          "category": "color"
-        }
+        "$type": "color"
       },
       "end": {
         "value": "{color.primary.90}",
-        "attributes": {
-          "category": "color"
-        }
+        "$type": "color"
       }
     },
     "cyan": {
       "start": {
         "value": "{color.cyan.30}",
-        "attributes": {
-          "category": "color"
-        }
+        "$type": "color"
       },
       "end": {
         "value": "{color.cyan.60}",
-        "attributes": {
-          "category": "color"
-        }
+        "$type": "color"
       }
     },
     "dawn": {
       "start": {
         "value": "{color.cyan.50}",
-        "attributes": {
-          "category": "color"
-        }
+        "$type": "color"
       },
       "end": {
         "value": "{color.purple.40}",
-        "attributes": {
-          "category": "color"
-        }
+        "$type": "color"
       }
     },
     "mono": {
       "start": {
         "value": "{color.gray.60}",
-        "attributes": {
-          "category": "color"
-        }
+        "$type": "color"
       },
       "end": {
         "value": "{color.gray.90}",
-        "attributes": {
-          "category": "color"
-        }
+        "$type": "color"
       }
     }
   }

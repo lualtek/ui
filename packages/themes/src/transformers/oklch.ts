@@ -13,7 +13,7 @@ const OkLCH: Transform = {
   name: 'color/oklch',
   type: 'value',
   transitive: true,
-  filter: token => token.attributes?.category === 'color',
+  filter: token => token.$type === 'color',
   transform: (token) => {
     // This is used only if parsing original token values (hex colors)
     const color = new Color(token.value).to('oklch');

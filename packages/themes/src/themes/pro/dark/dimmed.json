@@ -2,57 +2,39 @@
   "dimmed": {
     "0": {
       "value": "{color.gray.100}",
-      "attributes": {
-        "category": "color"
-      }
+      "$type": "color"
     },
     "1": {
       "value": "{color.gray.90}",
-      "attributes": {
-        "category": "color"
-      }
+      "$type": "color"
     },
     "2": {
       "value": "{color.gray.80}",
-      "attributes": {
-        "category": "color"
-      }
+      "$type": "color"
     },
     "3": {
       "value": "{color.gray.70}",
-      "attributes": {
-        "category": "color"
-      }
+      "$type": "color"
     },
     "4": {
       "value": "{color.gray.60}",
-      "attributes": {
-        "category": "color"
-      }
+      "$type": "color"
     },
     "5": {
       "value": "{color.gray.50}",
-      "attributes": {
-        "category": "color"
-      }
+      "$type": "color"
     },
     "6": {
       "value": "{color.gray.40}",
-      "attributes": {
-        "category": "color"
-      }
+      "$type": "color"
     },
     "7": {
       "value": "{color.gray.30}",
-      "attributes": {
-        "category": "color"
-      }
+      "$type": "color"
     },
     "8": {
       "value": "{color.gray.20}",
-      "attributes": {
-        "category": "color"
-      }
+      "$type": "color"
     }
   }
 }

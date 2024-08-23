@@ -1,19 +1,14 @@
 /* eslint-disable import/extensions */
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-console, no-restricted-syntax */
-import { createRequire } from 'node:module';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 import fs from 'fs-extra';
 import StyleDictionary from 'style-dictionary';
-import type { Config, DesignTokens } from 'style-dictionary/types';
-import { fileURLToPath } from 'url';
+import type { Config } from 'style-dictionary/types';
 
 import OkLCH from './transformers/oklch.ts';
-
-const require = createRequire(import.meta.url);
-// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-const RawColorTokens = require('@lualtek/tokens/platforms/raw/tokens.json');
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -23,13 +18,14 @@ const THEME_VARIANTS = ['light', 'dark'] as const;
 
 /**
  * Generate config for each theme folder
- * and each variant name (eg: monochrome/dark)
+ * and each variant name (eg: light/dark)
  * */
 const getConfig = (name: string, variant: ThemeVariants): Config => ({
   source: [`./src/themes/${name}/${variant}/*.json`],
-  tokens: {
-    ...RawColorTokens as DesignTokens,
-  },
+  include: [
+    // Inject raw tokens to be used in the transformation/references
+    '../tokens/platforms/raw/tokens.json',
+  ],
   platforms: {
     // Build configuration for the web platform
     web: {
@@ -58,7 +54,7 @@ const getConfig = (name: string, variant: ThemeVariants): Config => ({
 });
 
 /**
- * Get all the folders inside the foldeer `themes` (eg, default, monochrome etc)
+ * Get all the folders inside the foldeer `themes` (eg, default, pro etc)
  */
 const availableThemes = fs.readdirSync(path.join(__dirname, 'themes')).filter(
   file => fs.statSync(path.join(__dirname, 'themes', file)).isDirectory(),
@@ -71,9 +67,7 @@ const availableThemes = fs.readdirSync(path.join(__dirname, 'themes')).filter(
 for (const theme of availableThemes) {
   for (const themeVariant of THEME_VARIANTS) {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-    const SDWithConfig = new StyleDictionary(
-      getConfig(theme, themeVariant),
-    );
+    const SDWithConfig = new StyleDictionary(getConfig(theme, themeVariant));
 
     /**
    * Register custom transformers to process token values for

@@ -2,65 +2,47 @@
   "vibrancy": {
     "foreground": {
       "value": "{color.gray.100}",
-      "attributes": {
-        "category": "color"
-      }
+      "$type": "color"
     },
     "background": {
       "value": "{color.support.white}",
       "transparency": "30%",
-      "attributes": {
-        "category": "color"
-      }
+      "$type": "color"
     },
     "background-soft": {
       "value": "{color.gray.5}",
       "transparency": "60%",
-      "attributes": {
-        "category": "color"
-      }
+      "$type": "color"
     },
     "background-mid": {
       "value": "{color.gray.10}",
       "transparency": "70%",
-      "attributes": {
-        "category": "color"
-      }
+      "$type": "color"
     },
     "background-hard": {
       "value": "{color.gray.20}",
       "transparency": "60%",
-      "attributes": {
-        "category": "color"
-      }
+      "$type": "color"
     },
     "background-red": {
       "value": "{color.red.50}",
       "transparency": "10%",
-      "attributes": {
-        "category": "color"
-      }
+      "$type": "color"
     },
     "background-green": {
       "value": "{color.green.40}",
       "transparency": "10%",
-      "attributes": {
-        "category": "color"
-      }
+      "$type": "color"
     },
     "background-yellow": {
       "value": "{color.yellow.50}",
       "transparency": "10%",
-      "attributes": {
-        "category": "color"
-      }
+      "$type": "color"
     },
     "background-brand": {
       "value": "{color.brand.60}",
       "transparency": "10%",
-      "attributes": {
-        "category": "color"
-      }
+      "$type": "color"
     }
   }
 }
