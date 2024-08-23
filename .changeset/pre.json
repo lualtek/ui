@@ -10,5 +10,8 @@
     "@lualtek/tokens": "13.5.0",
     "tsconfig": "0.0.2"
   },
-  "changesets": []
+  "changesets": [
+    "itchy-carpets-rhyme",
+    "ninety-poets-watch"
+  ]
 }
