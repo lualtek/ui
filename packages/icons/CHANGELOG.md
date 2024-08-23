@@ -1,5 +1,11 @@
 # @lualtek/icons
 
+## 14.0.0-next.0
+
+### Major Changes
+
+- d79dc24: Add oklch color notation to color tokens
+
 ## 13.6.2
 
 ## 13.6.1
