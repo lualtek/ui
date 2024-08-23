@@ -1,5 +1,16 @@
 # @lualtek/config
 
+## 14.0.0-next.0
+
+### Major Changes
+
+- d79dc24: Add oklch color notation to color tokens
+
+### Patch Changes
+
+- Updated dependencies [d79dc24]
+  - @lualtek/tokens@14.0.0-next.0
+
 ## 13.5.1
 
 ### Patch Changes
