@@ -139,7 +139,7 @@ export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(({
       transition: {
         type: 'spring',
         bounce: 0,
-        duration: tkns.duration[500],
+        duration: parseFloat(tkns.duration[500].replace('s', '')),
       },
     },
     hidden: {
@@ -147,7 +147,7 @@ export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(({
       transition: {
         type: 'spring',
         bounce: 0,
-        duration: tkns.duration[500],
+        duration: parseFloat(tkns.duration[500].replace('s', '')),
       },
     },
   };
