@@ -1,12 +1,12 @@
 import Color from 'colorjs.io';
 import type { Transform } from 'style-dictionary/types';
 
-const colorValues = (color: Color, transparency: string) => {
+const colorValues = (color: Color) => {
   const l = color.get('l').toFixed(2);
   const c = color.get('c').toFixed(2);
   const h = Number.isNaN(color.get('h')) ? 0 : color.get('h').toFixed(2);
 
-  return transparency ? `oklch(${l} ${c} ${h} / ${transparency})` : `oklch(${l} ${c} ${h}${color.alpha !== 1 ? ` / ${color.alpha}` : ''})`;
+  return `oklch(${l} ${c} ${h})`;
 };
 
 const OkLCH: Transform = {
@@ -22,7 +22,7 @@ const OkLCH: Transform = {
       color.set('c', token.saturation);
     }
 
-    return colorValues(color, token.transparency);
+    return token.transparency ? `oklch(from ${color.toString()} l c h / ${token.transparency})` : colorValues(color);
   },
 };
 
