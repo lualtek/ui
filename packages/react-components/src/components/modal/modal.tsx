@@ -10,6 +10,7 @@ import {
   Overlay,
   OverlayProps, PropsClassChildren, useResponsiveContext,
 } from '@/components';
+import { cssEasingToArray } from '@/components/utils';
 
 import { ModalContent, ModalContentProps } from './content/modal-content';
 import styles from './modal.module.css';
@@ -47,11 +48,6 @@ type ModalComponent = React.ForwardRefExoticComponent<ModalProps> & {
   Content: React.ForwardRefExoticComponent<ModalContentProps>;
 }
 
-const cssEasingToArray = (cssEasing: string) => {
-  const [x1, y1, x2, y2] = cssEasing.replace(/[^0-9.,]+/g, '').split(',').map(i => parseFloat(i));
-  return [x1, y1, x2, y2];
-};
-
 export const Modal = forwardRef<HTMLDivElement, ModalProps>(({
   children,
   className,
@@ -71,8 +67,8 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>(({
       opacity: 1,
       y: 0,
       transition: {
-        ease: cssEasingToArray(tkns.easing.entrance),
-        duration: parseFloat(tkns.duration[300].replace('s', '')),
+        ease: cssEasingToArray(tkns.easing.entrance) as number[],
+        duration: parseFloat((matches.small ? tkns.duration[100] : tkns.duration[300]).replace('s', '')),
       },
     },
     hidden: {
@@ -80,7 +76,8 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>(({
       opacity: matches.small ? 0 : 1,
       y: matches.small ? 0 : '100%',
       transition: {
-        ease: cssEasingToArray(tkns.easing.exit),
+        ease: cssEasingToArray(tkns.easing.exit) as number[],
+        duration: parseFloat(tkns.duration[100].replace('s', '')),
       },
     },
   }), [matches]);
