@@ -98,6 +98,22 @@
     composes: CheckboxInput;
     border-radius: 100%;
 
+    &:checked,
+    &:indeterminate {
+      background: var(--cta-dark);
+      box-shadow: 0 0 0 1px var(--global-outer-contrast-border);
+
+      &::after {
+        display: block;
+      }
+    }
+
+    &:indeterminate::after {
+      border-left: 0;
+      block-size: 2px;
+      transform: translate(-50%, -50%);
+    }
+
     &::after {
       border: 0;
       border-radius: 100%;

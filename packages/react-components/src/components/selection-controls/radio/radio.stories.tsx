@@ -25,6 +25,16 @@ type Story = StoryObj<typeof meta>;
 
 export const Default = {} satisfies Story;
 
+export const Indeterminate = {
+  render: args => (
+    <fieldset>
+      <Radio {...args} value="1" name="story" />
+      <Radio {...args} value="2" name="story" />
+      <Radio {...args} value="3" name="story" />
+    </fieldset>
+  ),
+} satisfies Story;
+
 export const DisabledChecked = {
   args: {
     disabled: true,
