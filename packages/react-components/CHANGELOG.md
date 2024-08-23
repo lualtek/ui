@@ -1,5 +1,14 @@
 # @lualtek/react-components
 
+## 14.0.0-next.1
+
+### Patch Changes
+
+- dc9eab7: Test drawer fix
+- dc9eab7: Fix panel border style
+- 8e794f9: Fix modal
+  - @lualtek/icons@14.0.0-next.1
+
 ## 14.0.0-next.0
 
 ### Major Changes
