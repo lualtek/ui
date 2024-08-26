@@ -1,5 +1,15 @@
 # @lualtek/react-components
 
+## 13.6.0
+
+### Minor Changes
+
+- e42f2c8: Add new snapItemWidth prop to Snaplist
+
+### Patch Changes
+
+- @lualtek/icons@13.6.0
+
 ## 13.5.1
 
 ### Patch Changes
