@@ -27,6 +27,6 @@
 
   .Slide {
     scroll-snap-align: var(--snap-align);
-    min-width: max-content;
+    min-width: var(--snap-item-width, max-content);
   }
 }

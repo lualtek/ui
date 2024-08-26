@@ -34,6 +34,12 @@ export type SnaplistProps = {
    * The distance between the snap element and the scroller edges..
    */
   scrollPadding?: TokensTypes['space'];
+  /**
+   * Seth the size (max-width) of the snap element.
+   *
+   * @defaultValue "max-content"
+   */
+  snapItemWidth?: string;
 }
 
 type PolymorphicSnaplist = Polymorphic.ForwardRefComponent<
@@ -50,6 +56,7 @@ export const Snaplist = forwardRef(({
   snapAlign = 'center',
   snapType = 'mandatory',
   scrollPadding,
+  snapItemWidth,
   style,
   ...otherProps
 }, forwardedRef) => {
@@ -57,8 +64,9 @@ export const Snaplist = forwardRef(({
     '--snap-align': snapAlign,
     '--snap-type': snapType,
     '--scroll-padding': scrollPadding ? tkns.space[scrollPadding] : 0,
+    '--snap-item-width': snapItemWidth,
     '--bleed': bleed ? tkns.space[bleed] : 0,
-  }), [bleed, snapAlign, snapType, scrollPadding]);
+  }), [bleed, snapAlign, snapType, scrollPadding, snapItemWidth]);
 
   return (
     <Stack

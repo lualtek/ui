@@ -13,10 +13,10 @@ export const SnaplistItem: FCChildren<SnaplistItemProps> = ({
   children,
   ...otherProps
 }) => {
-  const [myRef, isInView] = useInViewRef(() => null, { threshold: 0.5 });
+  const [snapItemRef, isInView] = useInViewRef(() => null, { threshold: 0.5 });
 
   return (
-    <div ref={myRef} className={styles.Slide} {...otherProps}>
+    <div ref={snapItemRef} className={styles.Slide} {...otherProps}>
       {Children.map(
         children,
         child => isValidElement(child) && cloneElement(child as ReactElement, { 'data-snaplist-active': isInView }),
