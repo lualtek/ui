@@ -1,5 +1,13 @@
 # @lualtek/charts
 
+## 13.6.1
+
+### Patch Changes
+
+- ff66342: Fix entry value on chart tooltip wrong check on 0
+  - @lualtek/react-components@13.6.1
+  - @lualtek/tokens@13.6.1
+
 ## 13.6.0
 
 ### Patch Changes
