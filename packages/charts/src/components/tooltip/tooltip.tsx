@@ -3,6 +3,7 @@ import {
   Panel, Stack, Text, Title,
 } from '@lualtek/react-components';
 import { FC, Fragment, ReactNode } from 'react';
+import { SetRequired } from 'type-fest';
 
 export type TooltipEntry = {
   dataKey?: string | number;
@@ -43,13 +44,13 @@ export type TooltipProps = {
    * @param value TooltipEntry
    * @returns string
    */
-  formatName?: (entry: TooltipEntry) => string;
+  formatName?: (entry: SetRequired<TooltipEntry, 'name'>) => string;
   /**
    * custom function to format the payload values
    * @param entry TooltipEntry
    * @returns React.ReactNode
    */
-  formatValue?: (entry: TooltipEntry) => React.ReactNode;
+  formatValue?: (entry: SetRequired<TooltipEntry, 'value'>) => React.ReactNode;
   /**
    * custom function to format the payload values
    * @param entry TooltipEntry
@@ -88,12 +89,16 @@ export const Tooltip: FC<TooltipProps> = ({
               columnGap={4}
             >
               <Text as="strong" lineHeight="extra-small" size={14} textColor={tooltipColors ? entry.color : undefined}>
-                {entry.name && formatName ? formatName(entry) : entry.name}
+                {entry.name && formatName
+                  ? formatName(entry as SetRequired<TooltipEntry, 'name'>)
+                  : entry.name}
                 :
               </Text>
               <Text size={14} lineHeight="extra-small">
                 {/** It can be zero! */}
-                {(entry.value !== null && entry.value !== undefined) && formatValue ? formatValue(entry) : entry.value}
+                {(entry.value !== null && entry.value !== undefined) && formatValue
+                  ? formatValue(entry as SetRequired<TooltipEntry, 'value'>)
+                  : entry.value}
                 {entry.unit}
               </Text>
             </Stack>
