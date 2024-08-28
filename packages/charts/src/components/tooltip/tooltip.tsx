@@ -92,7 +92,8 @@ export const Tooltip: FC<TooltipProps> = ({
                 :
               </Text>
               <Text size={14} lineHeight="extra-small">
-                {entry.value && formatValue ? formatValue(entry) : entry.value}
+                {/** It can be zero! */}
+                {(entry.value !== null && entry.value !== undefined) && formatValue ? formatValue(entry) : entry.value}
                 {entry.unit}
               </Text>
             </Stack>
