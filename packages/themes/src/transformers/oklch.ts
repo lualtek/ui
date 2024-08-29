@@ -7,7 +7,10 @@ const OkLCH: Transform = {
   transitive: true,
   filter: token => token.$type === 'color',
   transform: (token) => {
-    // This is used only if parsing original token values (hex colors)
+    if (!token.value && !token.$value) {
+      throw new Error(`Color token "${token.name}" has an empty value.`);
+    }
+
     const color = new Color(token.value).to('oklch');
     const normalizedColor = color.toString().replace('none', '0');
 

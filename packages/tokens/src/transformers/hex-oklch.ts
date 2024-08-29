@@ -6,6 +6,10 @@ const okLCHValues: Transform = {
   type: 'value',
   filter: token => token.$type === 'color',
   transform: (token) => {
+    if (!token.value && !token.$value) {
+      throw new Error(`Color token "${token.name}" has an empty value.`);
+    }
+
     const color = new Color(token.$value).to('oklch');
     return color.toString().replace('none', '0');
   },
