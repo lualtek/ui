@@ -71,27 +71,6 @@ SDWithConfig.registerTransform(SizePxToRootEm);
 SDWithConfig.registerTransform(HexToOkLch);
 
 /**
- * Add the custom transformers to a new transformGroup `custom-web`
- * used inside tokens.config.json
- */
-// await SDWithConfig.registerTransformGroup({
-//   name: 'custom-web',
-//   transforms: [
-//     'attribute/cti',
-//     'name/kebab',
-//     'time/seconds',
-//     'html/icon',
-//     'size/pxToRem',
-//     'size/px',
-//     'cubicBezier/css',
-//     // Custom transform
-//     'size/px-rootem',
-//     // Custom transform
-//     'color/hex-to-oklch',
-//   ],
-// });
-
-/**
  * Manually run StyleDictionary for all the configured platforms
  */
 console.clear();
