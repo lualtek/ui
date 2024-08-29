@@ -31,7 +31,10 @@ const getConfig = (name: string, variant: ThemeVariants): Config => ({
     web: {
       basePxFontSize: 18,
       buildPath: `platforms/web/${name}/`,
-      transformGroup: 'custom-web',
+      transformGroup: 'css',
+      transforms: [
+        'color/oklch',
+      ],
       files: [
         {
           format: 'css/variables',
@@ -74,22 +77,6 @@ for (const theme of availableThemes) {
    * the web platform
    */
     SDWithConfig.registerTransform(OkLCH);
-
-    /**
-   * Add the custom transformers to a new transformGroup `custom-web`
-   * used inside getConfig
-   */
-    SDWithConfig.registerTransformGroup({
-      name: 'custom-web',
-      transforms: [
-        'attribute/cti',
-        'name/kebab',
-        'time/seconds',
-        'html/icon',
-        'size/rem',
-        'color/oklch',
-      ],
-    });
 
     /**
    * Manually run StyleDictionary for all the configured platforms

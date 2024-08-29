@@ -41,7 +41,6 @@ const config: Config = {
     raw: {
       basePxFontSize: 18,
       buildPath: 'platforms/raw/',
-      transformGroup: '',
       files: [
         {
           format: 'json/nested',
