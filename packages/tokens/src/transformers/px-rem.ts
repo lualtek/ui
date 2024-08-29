@@ -1,13 +1,13 @@
-import type { Transform } from 'style-dictionary/types';
+import StyleDictionary from 'style-dictionary';
+import type { ValueTransform } from 'style-dictionary/types';
 
-const pxToRem: Transform = {
-  name: 'size/px-rem',
-  type: 'value',
+// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+const pxToRemBuiltin = StyleDictionary.hooks.transforms['size/pxToRem'];
+
+const pxToRem: ValueTransform = {
+  ...pxToRemBuiltin as ValueTransform,
   filter: prop => prop.$type === 'dimension-px-to-rem',
-  transform: (token, options) => {
-    const baseRootSize = options?.basePxFontSize as number ?? 16;
-    return `${(token.$value / baseRootSize).toFixed(2)}rem`;
-  },
+  name: 'size/pxToRem',
 };
 
 export default pxToRem;

@@ -75,15 +75,13 @@ await SDWithConfig.registerTransformGroup({
     'name/kebab',
     'time/seconds',
     'html/icon',
+    'size/pxToRem',
+    'size/px',
+    'cubicBezier/css',
     // Custom transform
     'size/px-rootem',
     // Custom transform
-    'size/px-rem',
-    'size/px',
-    // Custom transform
     'color/hex-to-oklch',
-    // Custom transform
-    'cubicBezier/css',
   ],
 });
 
