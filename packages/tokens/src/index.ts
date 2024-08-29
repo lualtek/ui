@@ -13,7 +13,13 @@ const config: Config = {
     web: {
       basePxFontSize: 18,
       buildPath: 'platforms/web/',
-      transformGroup: 'custom-web',
+      transformGroup: 'css',
+      transforms: [
+        'size/pxToRem',
+        'size/px',
+        'size/px-rootem',
+        'color/hex-to-oklch',
+      ],
       files: [
         {
           format: 'css/variables',
@@ -68,22 +74,22 @@ SDWithConfig.registerTransform(HexToOkLch);
  * Add the custom transformers to a new transformGroup `custom-web`
  * used inside tokens.config.json
  */
-await SDWithConfig.registerTransformGroup({
-  name: 'custom-web',
-  transforms: [
-    'attribute/cti',
-    'name/kebab',
-    'time/seconds',
-    'html/icon',
-    'size/pxToRem',
-    'size/px',
-    'cubicBezier/css',
-    // Custom transform
-    'size/px-rootem',
-    // Custom transform
-    'color/hex-to-oklch',
-  ],
-});
+// await SDWithConfig.registerTransformGroup({
+//   name: 'custom-web',
+//   transforms: [
+//     'attribute/cti',
+//     'name/kebab',
+//     'time/seconds',
+//     'html/icon',
+//     'size/pxToRem',
+//     'size/px',
+//     'cubicBezier/css',
+//     // Custom transform
+//     'size/px-rootem',
+//     // Custom transform
+//     'color/hex-to-oklch',
+//   ],
+// });
 
 /**
  * Manually run StyleDictionary for all the configured platforms

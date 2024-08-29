@@ -7,7 +7,7 @@ const okLCHValues: Transform = {
   filter: token => token.$type === 'color',
   transform: (token) => {
     const color = new Color(token.$value).to('oklch');
-    return color.toString();
+    return color.toString().replace('none', '0');
   },
 };
 
