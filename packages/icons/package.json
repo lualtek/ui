@@ -48,7 +48,7 @@
   "homepage": "https://github.com/lualtek/ui#readme",
   "devDependencies": {
     "@types/fs-extra": "11.0.4",
-    "@types/node": "20.14.10",
+    "@types/node": "22.5.1",
     "directory-tree": "3.5.2",
     "fs-extra": "11.2.0",
     "nanospinner": "1.1.0",
