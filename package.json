@@ -5,7 +5,7 @@
   "workspaces": [
     "packages/*"
   ],
-  "packageManager": "pnpm@9.15.5",
+  "packageManager": "pnpm@9.9.0",
   "scripts": {
     "build": "turbo run build",
     "build:nocache": "turbo run build --force",
