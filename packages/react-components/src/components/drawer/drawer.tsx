@@ -97,6 +97,12 @@ export type DrawerProps = PropsClassChildren<{
    * Callback for closing the drawer
    */
   onClose: NonNullable<OverlayProps['onClose']>;
+
+  /**
+   * Ref to the drawer content
+   *
+   */
+  scrollerRef?: React.RefObject<HTMLDivElement>;
 }>
 
 export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(({
@@ -114,6 +120,7 @@ export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(({
   onClose,
   isOpen,
   index,
+  scrollerRef,
   ...otherProps
 }, forwardedRef) => {
   const titleId = useId();
@@ -208,7 +215,7 @@ export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(({
                           )}
                         </Stack>
                       )}
-                      <div className={styles.Scroller}>
+                      <div className={styles.Scroller} ref={scrollerRef}>
                         <AutoFocusInside>
                           {children}
                         </AutoFocusInside>
