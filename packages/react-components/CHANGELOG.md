@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 13.6.2
+
+### Patch Changes
+
+- 616947c: Added ref scroller to Drawer
+  - @lualtek/icons@13.6.2
+
 ## 13.6.1
 
 ### Patch Changes
