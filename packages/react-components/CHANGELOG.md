@@ -1,5 +1,26 @@
 # @lualtek/react-components
 
+## 14.0.0
+
+### Major Changes
+
+- 0e96e1a: Remove deprecated Card component
+- 196051c: Add oklch color notation to color tokens
+
+### Minor Changes
+
+- a7b51b0: Add children to Skeleton for dynamic content loading
+- 52ac63a: Add indeterminate state to radio control
+
+### Patch Changes
+
+- ab50f93: Test drawer fix
+- ab50f93: Fix panel border style
+- 222eb2d: Fix switch thumb animation
+- 4afc656: Fix modal
+- Updated dependencies [196051c]
+  - @lualtek/icons@14.0.0
+
 ## 14.0.0-next.2
 
 ### Minor Changes

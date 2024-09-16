@@ -1,5 +1,11 @@
 # @lualtek/tokens
 
+## 14.0.0
+
+### Major Changes
+
+- 196051c: Add oklch color notation to color tokens
+
 ## 14.0.0-next.2
 
 ## 14.0.0-next.1
