@@ -1,5 +1,24 @@
 # @lualtek/charts
 
+## 14.0.0
+
+### Major Changes
+
+- 196051c: Add oklch color notation to color tokens
+
+### Patch Changes
+
+- Updated dependencies [a7b51b0]
+- Updated dependencies [0e96e1a]
+- Updated dependencies [52ac63a]
+- Updated dependencies [196051c]
+- Updated dependencies [ab50f93]
+- Updated dependencies [ab50f93]
+- Updated dependencies [222eb2d]
+- Updated dependencies [4afc656]
+  - @lualtek/react-components@14.0.0
+  - @lualtek/tokens@14.0.0
+
 ## 14.0.0-next.2
 
 ### Patch Changes

@@ -1,5 +1,16 @@
 # @lualtek/config
 
+## 14.0.0
+
+### Major Changes
+
+- 196051c: Add oklch color notation to color tokens
+
+### Patch Changes
+
+- Updated dependencies [196051c]
+  - @lualtek/tokens@14.0.0
+
 ## 14.0.0-next.2
 
 ### Patch Changes
