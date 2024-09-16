@@ -1,58 +1,32 @@
 {
   "radius": {
+    "$type": "dimension-px-to-rem",
     "4": {
-      "value": 4,
-      "attributes": {
-        "category": "size/rem"
-      }
+      "$value": 4
     },
     "8": {
-      "value": 8,
-      "attributes": {
-        "category": "size/rem"
-      }
+      "$value": 8
     },
     "12": {
-      "value": 12,
-      "attributes": {
-        "category": "size/rem"
-      }
+      "$value": 12
     },
     "16": {
-      "value": 16,
-      "attributes": {
-        "category": "size/rem"
-      }
+      "$value": 16
     },
     "24": {
-      "value": 24,
-      "attributes": {
-        "category": "size/rem"
-      }
+      "$value": 24
     },
     "32": {
-      "value": 32,
-      "attributes": {
-        "category": "size/rem"
-      }
+      "$value": 32
     },
     "40": {
-      "value": 40,
-      "attributes": {
-        "category": "size/rem"
-      }
+      "$value": 40
     },
     "48": {
-      "value": 48,
-      "attributes": {
-        "category": "size/rem"
-      }
+      "$value": 48
     },
     "full": {
-      "value": 10000,
-      "attributes": {
-        "category": "size/rem"
-      }
+      "$value": 10000
     }
   }
 }

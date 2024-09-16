@@ -76,6 +76,12 @@ export const CustomGlowColor = {
   },
 } satisfies Story;
 
+export const RainbowGlow = {
+  args: {
+    rainbowColors: true,
+  },
+} satisfies Story;
+
 export const WithContent = {
   args: {
     innerRadius: undefined,

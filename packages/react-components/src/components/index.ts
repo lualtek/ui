@@ -5,7 +5,6 @@ export * from './badge';
 export * from './blank-button';
 export * from './bleed';
 export * from './button';
-export * from './card';
 export * from './chip';
 export * from './circular-progress';
 export * from './clamp-text';

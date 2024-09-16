@@ -6,6 +6,7 @@
     "paths": {
       "@/components": ["src"],
       "@/components/types": ["src/types"],
+      "@/components/utils": ["src/utils"],
       "@/components/lib": ["src/lib"]
     }
   },

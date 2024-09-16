@@ -31,7 +31,7 @@ export const Badge = forwardRef<HTMLDivElement, BadgeProps>(({
   const dynamicStyle = useMemo(() => ({
     '--badge-size': `${badgeSize}px`,
     '--gap': `${gap}px`,
-    '--badge-color': `oklch(${tkns.color[color]['50']})`,
+    '--badge-color': tkns.color[color]['50'],
   }), [badgeSize, gap, color]);
 
   return (

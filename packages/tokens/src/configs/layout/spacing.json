@@ -1,166 +1,86 @@
 {
   "space": {
+    "$type": "dimension-px-to-rem",
     "2": {
-      "value": 2,
-      "attributes": {
-        "category": "size/rem"
-      }
+      "$value": 2
     },
     "4": {
-      "value": 4,
-      "attributes": {
-        "category": "size/rem"
-      }
+      "$value": 4
     },
     "8": {
-      "value": 8,
-      "attributes": {
-        "category": "size/rem"
-      }
+      "$value": 8
     },
     "16": {
-      "value": 16,
-      "attributes": {
-        "category": "size/rem"
-      }
+      "$value": 16
     },
     "24": {
-      "value": 24,
-      "attributes": {
-        "category": "size/rem"
-      }
+      "$value": 24
     },
     "32": {
-      "value": 32,
-      "attributes": {
-        "category": "size/rem"
-      }
+      "$value": 32
     },
     "40": {
-      "value": 40,
-      "attributes": {
-        "category": "size/rem"
-      }
+      "$value": 40
     },
     "48": {
-      "value": 48,
-      "attributes": {
-        "category": "size/rem"
-      }
+      "$value": 48
     },
     "56": {
-      "value": 56,
-      "attributes": {
-        "category": "size/rem"
-      }
+      "$value": 56
     },
     "64": {
-      "value": 64,
-      "attributes": {
-        "category": "size/rem"
-      }
+      "$value": 64
     },
     "72": {
-      "value": 72,
-      "attributes": {
-        "category": "size/rem"
-      }
+      "$value": 72
     },
     "80": {
-      "value": 80,
-      "attributes": {
-        "category": "size/rem"
-      }
+      "$value": 80
     },
     "88": {
-      "value": 88,
-      "attributes": {
-        "category": "size/rem"
-      }
+      "$value": 88
     },
     "96": {
-      "value": 96,
-      "attributes": {
-        "category": "size/rem"
-      }
+      "$value": 96
     },
     "104": {
-      "value": 104,
-      "attributes": {
-        "category": "size/rem"
-      }
+      "$value": 104
     },
     "112": {
-      "value": 112,
-      "attributes": {
-        "category": "size/rem"
-      }
+      "$value": 112
     },
     "120": {
-      "value": 120,
-      "attributes": {
-        "category": "size/rem"
-      }
+      "$value": 120
     },
     "128": {
-      "value": 128,
-      "attributes": {
-        "category": "size/rem"
-      }
+      "$value": 128
     },
     "136": {
-      "value": 136,
-      "attributes": {
-        "category": "size/rem"
-      }
+      "$value": 136
     },
     "144": {
-      "value": 144,
-      "attributes": {
-        "category": "size/rem"
-      }
+      "$value": 144
     },
     "152": {
-      "value": 152,
-      "attributes": {
-        "category": "size/rem"
-      }
+      "$value": 152
     },
     "160": {
-      "value": 160,
-      "attributes": {
-        "category": "size/rem"
-      }
+      "$value": 160
     },
     "168": {
-      "value": 168,
-      "attributes": {
-        "category": "size/rem"
-      }
+      "$value": 168
     },
     "176": {
-      "value": 176,
-      "attributes": {
-        "category": "size/rem"
-      }
+      "$value": 176
     },
     "184": {
-      "value": 184,
-      "attributes": {
-        "category": "size/rem"
-      }
+      "$value": 184
     },
     "192": {
-      "value": 192,
-      "attributes": {
-        "category": "size/rem"
-      }
+      "$value": 192
     },
     "200": {
-      "value": 200,
-      "attributes": {
-        "category": "size/rem"
-      }
+      "$value": 200
     }
   }
 }

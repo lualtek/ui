@@ -2,21 +2,15 @@
   "cta": {
     "default": {
       "value": "{color.brand.60}",
-      "attributes": {
-        "category": "color"
-      }
+      "$type": "color"
     },
     "dark": {
       "value": "{color.brand.70}",
-      "attributes": {
-        "category": "color"
-      }
+      "$type": "color"
     },
     "foreground": {
       "value": "{color.support.white}",
-      "attributes": {
-        "category": "color"
-      }
+      "$type": "color"
     }
   }
 }

@@ -2,55 +2,39 @@
   "global": {
     "foreground": {
       "value": "{color.gray.30}",
-      "attributes": {
-        "category": "color"
-      }
+      "$type": "color"
     },
     "background": {
       "value": "{color.support.black}",
-      "attributes": {
-        "category": "color"
-      }
+      "$type": "color"
     },
     "interactive-text": {
       "value": "{color.brand.40}",
-      "attributes": {
-        "category": "color"
-      }
+      "$type": "color"
     },
     "interactive-text-hover": {
       "value": "{color.brand.60}",
-      "attributes": {
-        "category": "color"
-      }
+      "$type": "color"
     },
     "disabled-foreground": {
       "value": "{color.gray.5}",
       "transparency": "20%",
-      "attributes": {
-        "category": "color"
-      }
+      "$type": "color"
     },
     "disabled-background": {
       "value": "{color.gray.50}",
       "transparency": "15%",
-      "attributes": {
-        "category": "color"
-      }
+      "$type": "color"
     },
     "inner-contrast-border": {
       "value": "{color.support.white}",
       "transparency": "8%",
-      "attributes": {
-        "category": "color"
-      }
+      "$type": "color"
     },
     "outer-contrast-border": {
       "value": "{color.support.black}",
       "transparency": "40%",
-      "attributes": {
-        "category": "color"
-      }
+      "$type": "color"
     }
   }
 }

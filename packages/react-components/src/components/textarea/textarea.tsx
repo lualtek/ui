@@ -40,7 +40,7 @@ export type TextareaProps = BaseFieldProps & TextareaHTMLAttributes<HTMLTextArea
  * Set the hint message to show when the field is invalid.
  *
  * @defaultValue 'Invalid input'
- * @important This prop is not visible when the field is not invalid, is disabled, or readnly
+ * This prop is not visible when the field is not invalid, is disabled, or readnly
  */
   hint?: ReactNode;
   /**

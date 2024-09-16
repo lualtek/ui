@@ -1,7 +1,7 @@
 {
   "name": "@lualtek/themes",
   "description": "Lualtek design system themes",
-  "version": "13.6.2",
+  "version": "14.0.0-next.2",
   "author": "Lualtek",
   "style": "platforms/web/themes.css",
   "publishConfig": {
@@ -38,10 +38,10 @@
   "devDependencies": {
     "@lualtek/tokens": "workspace:*",
     "@types/fs-extra": "11.0.4",
-    "@types/node": "20.14.10",
+    "@types/node": "22.5.1",
     "colorjs.io": "0.5.2",
     "fs-extra": "11.2.0",
-    "style-dictionary": "3.9.2",
+    "style-dictionary": "4.1.0",
     "tsconfig": "workspace:*",
     "yargs": "17.7.2"
   }

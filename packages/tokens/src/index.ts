@@ -1,20 +1,25 @@
 /* eslint-disable import/extensions */
 /* eslint-disable no-console */
 import StyleDictionary from 'style-dictionary';
+import type { Config } from 'style-dictionary/types';
 
-import CssBezier from './transformers/css-bezier.ts';
-import OklchValues from './transformers/oklch-values.ts';
-import SizePercentage from './transformers/percentage.ts';
+import HexToOkLch from './transformers/hex-oklch.ts';
 import SizePxToRem from './transformers/px-rem.ts';
 import SizePxToRootEm from './transformers/px-rootem.ts';
 
-const config = {
+const config: Config = {
   source: ['src/configs/**/*.json'],
   platforms: {
     web: {
       basePxFontSize: 18,
       buildPath: 'platforms/web/',
-      transformGroup: 'custom-web',
+      transformGroup: 'css',
+      transforms: [
+        'size/pxToRem',
+        'size/px',
+        'size/px-rootem',
+        'color/hex-to-oklch',
+      ],
       files: [
         {
           format: 'css/variables',
@@ -36,7 +41,6 @@ const config = {
     raw: {
       basePxFontSize: 18,
       buildPath: 'platforms/raw/',
-      transformGroup: '',
       files: [
         {
           format: 'json/nested',
@@ -55,41 +59,19 @@ const config = {
 };
 
 // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-const SDWithConfig = StyleDictionary.extend(config);
+const SDWithConfig = new StyleDictionary(config);
 
 /**
  * Register custom transformers to process token values for
  * the web platform
  */
-// StyleDictionary.registerTransform(HexHslValues);
-SDWithConfig.registerTransform(OklchValues);
 SDWithConfig.registerTransform(SizePxToRem);
-SDWithConfig.registerTransform(SizePercentage);
 SDWithConfig.registerTransform(SizePxToRootEm);
-SDWithConfig.registerTransform(CssBezier);
-
-/**
- * Add the custom transformers to a new transformGroup `custom-web`
- * used inside tokens.config.json
- */
-SDWithConfig.registerTransformGroup({
-  name: 'custom-web',
-  transforms: [
-    'attribute/cti',
-    'name/cti/kebab',
-    'time/seconds',
-    'content/icon',
-    'size/px-rootem',
-    'size/px-rem',
-    'size/px',
-    'size/percent',
-    'color/oklchvalues',
-    'easing/cubic-bezier',
-  ],
-});
+SDWithConfig.registerTransform(HexToOkLch);
 
 /**
  * Manually run StyleDictionary for all the configured platforms
  */
 console.clear();
-SDWithConfig.buildAllPlatforms();
+await SDWithConfig.hasInitialized;
+await SDWithConfig.buildAllPlatforms();

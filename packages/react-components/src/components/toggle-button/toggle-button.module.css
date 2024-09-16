@@ -17,7 +17,7 @@
   }
 
   .ToggleButton[data-button-kind='primary'] {
-    --border-color: oklch(token(--color-brand-60) / 60%);
+    --border-color: oklch(from token(--color-brand-60) l c h / 60%);
 
     &[aria-pressed='true'] {
       color: var(--global-foreground);

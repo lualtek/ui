@@ -1,7 +1,7 @@
 {
   "name": "@lualtek/icons",
   "description": "Lualtek's iconography",
-  "version": "13.6.2",
+  "version": "14.0.0-next.2",
   "author": "Lualtek",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com",
@@ -48,8 +48,8 @@
   "homepage": "https://github.com/lualtek/ui#readme",
   "devDependencies": {
     "@types/fs-extra": "11.0.4",
-    "@types/node": "20.14.10",
-    "directory-tree": "3.5.1",
+    "@types/node": "22.5.1",
+    "directory-tree": "3.5.2",
     "fs-extra": "11.2.0",
     "nanospinner": "1.1.0",
     "picocolors": "1.0.1",

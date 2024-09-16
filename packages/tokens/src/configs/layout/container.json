@@ -1,28 +1,17 @@
 {
   "container": {
+    "$type": "dimension-px-to-rem",
     "extra-large": {
-      "value": 1800,
-      "attributes": {
-        "category": "size/rem"
-      }
+      "$value": 1800
     },
     "large": {
-      "value": 1440,
-      "attributes": {
-        "category": "size/rem"
-      }
+      "$value": 1440
     },
     "medium": {
-      "value": 1000,
-      "attributes": {
-        "category": "size/rem"
-      }
+      "$value": 1000
     },
     "small": {
-      "value": 640,
-      "attributes": {
-        "category": "size/rem"
-      }
+      "$value": 640
     }
   }
 }

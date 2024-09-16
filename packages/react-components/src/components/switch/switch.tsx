@@ -120,7 +120,7 @@ export const Switch = forwardRef<ElementRef<typeof SwitchPrimitive.Root>, Switch
               transition={{
                 type: 'spring',
                 stiffness: 700,
-                damping: 30,
+                damping: 50,
               }}
             />
           </SwitchPrimitive.Thumb>

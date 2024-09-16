@@ -1,14 +1,15 @@
 {
   "font": {
     "family": {
+      "$type": "font-family",
       "heading": {
-        "value": "\"Adobe Text Pro\", system-ui, sans-serif"
+        "$value": "\"Adobe Text Pro\", system-ui, sans-serif"
       },
       "body": {
-        "value": "\"Nunito Sans\", system-ui, sans-serif"
+        "$value": "\"Nunito Sans\", system-ui, sans-serif"
       },
       "mono": {
-        "value": "monospace"
+        "$value": "monospace"
       }
     }
   }

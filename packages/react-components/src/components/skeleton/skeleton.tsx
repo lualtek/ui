@@ -7,7 +7,7 @@ import {
   useMemo,
 } from 'react';
 
-import { FCClass } from '@/components/types';
+import { FCChildrenClass } from '@/components/types';
 
 import styles from './skeleton.module.css';
 
@@ -21,10 +21,12 @@ export type SkeletonProps = {
   radius?: TokensTypes['radius'];
   /**
    * Set the block to be a circle, ignoring the `radius` property.
+   * If children are provided, this value is ignored.
    */
   circle?: boolean;
   /**
    * Set how many skeleton blocks to display.
+   * If children are provided, this value is ignored.
    *
    * @defaultValue 1
    */
@@ -35,12 +37,13 @@ export type SkeletonProps = {
   width?: string | number;
   /**
    * Set the height of each skeleton block.
+   * If children are provided, this value is ignored.
    */
   height?: string | number;
   /**
    * Renders every block on their own line or in a single line.
-   *
    * Note: By default, if a width is not specified, every items will fill the available space
+   * If children are provided, this value is ignored.
    */
   inline?: boolean;
   /**
@@ -51,12 +54,18 @@ export type SkeletonProps = {
   enableAnimation?: boolean;
   /**
    * Set the gap between stacked skeleton items.
+   * If children are provided, this value is ignored.
    */
   gap?: TokensTypes['space'];
+  /**
+   * Enable or disable the loading state.
+   */
+  loading?: boolean;
 }
 
-export const Skeleton: FCClass<SkeletonProps> = ({
+export const Skeleton: FCChildrenClass<SkeletonProps> = ({
   className,
+  children,
   radius = 4,
   style,
   width,
@@ -66,6 +75,7 @@ export const Skeleton: FCClass<SkeletonProps> = ({
   enableAnimation = true,
   inline,
   circle,
+  loading,
   ...otherProps
 }) => {
   const uid = useId();
@@ -97,8 +107,8 @@ export const Skeleton: FCClass<SkeletonProps> = ({
       aria-busy={enableAnimation}
       {...otherProps}
     >
-      {
-        Array.from(Array(count).keys()).map(n => (inline
+      {!children
+        ? Array.from(Array(count).keys()).map(n => (inline
           ? <SkeletonItem key={`${uid}-${n}`} />
           : (
             <Fragment key={`${uid}-${n}`}>
@@ -106,7 +116,28 @@ export const Skeleton: FCClass<SkeletonProps> = ({
               <br />
             </Fragment>
           )
-        ))}
+        ))
+        /**
+         * If children are provided we hide them and show the skeleton instead
+         * while the loading state is active
+         */
+        : (
+          <>
+            {loading ? (
+              <div
+                className={styles.SkeletonItem}
+                data-skeleton-circle={circle}
+                data-skeleton-animated={enableAnimation}
+                data-skeleton-children={Boolean(children)}
+                data-skeleton-inline={inline}
+                style={{ ...dynamicStyle, ...style }}
+              >
+                {children}
+              </div>
+            ) : children}
+          </>
+        )
+      }
     </span>
   );
 };

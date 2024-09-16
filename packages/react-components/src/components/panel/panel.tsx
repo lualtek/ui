@@ -37,7 +37,7 @@ export type PanelProps = {
   /**
    * Set the vibrancy level of the panel.
    *
-   * @defayltValue "strong"
+   * @defaultValue "strong"
    */
   vibrancyLevel?: VibrancyBlur;
   /**

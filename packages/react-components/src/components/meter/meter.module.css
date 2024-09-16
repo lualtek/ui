@@ -1,9 +1,9 @@
 @layer components {
   .Meter {
     --meter-background-color: var(--dimmed-2);
-    --meter-strong-color: oklch(token(--color-green-50));
-    --meter-good-color: oklch(token(--color-dipsy-50));
-    --meter-weak-color: oklch(token(--color-red-60));
+    --meter-strong-color: token(--color-green-50);
+    --meter-good-color: token(--color-dipsy-50);
+    --meter-weak-color: token(--color-red-60);
     --dot-size: 6px;
 
     position: relative;

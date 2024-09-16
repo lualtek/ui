@@ -1,77 +1,42 @@
 {
   "color": {
     "salmon": {
+      "$type": "color",
       "0": {
-        "value": "#FCF4F1",
-        "attributes": {
-          "category": "color"
-        }
+        "$value": "#FCF4F1"
       },
       "5": {
-        "value": "#FAE7E1",
-        "attributes": {
-          "category": "color"
-        }
+        "$value": "#FAE7E1"
       },
       "10": {
-        "value": "#F6D9D0",
-        "attributes": {
-          "category": "color"
-        }
+        "$value": "#F6D9D0"
       },
       "20": {
-        "value": "#F1C5B6",
-        "attributes": {
-          "category": "color"
-        }
+        "$value": "#F1C5B6"
       },
       "30": {
-        "value": "#ECA993",
-        "attributes": {
-          "category": "color"
-        }
+        "$value": "#ECA993"
       },
       "40": {
-        "value": "#E48467",
-        "attributes": {
-          "category": "color"
-        }
+        "$value": "#E48467"
       },
       "50": {
-        "value": "#D25E3B",
-        "attributes": {
-          "category": "color"
-        }
+        "$value": "#D25E3B"
       },
       "60": {
-        "value": "#BE4C27",
-        "attributes": {
-          "category": "color"
-        }
+        "$value": "#BE4C27"
       },
       "70": {
-        "value": "#A03D1C",
-        "attributes": {
-          "category": "color"
-        }
+        "$value": "#A03D1C"
       },
       "80": {
-        "value": "#7D2E16",
-        "attributes": {
-          "category": "color"
-        }
+        "$value": "#7D2E16"
       },
       "90": {
-        "value": "#632512",
-        "attributes": {
-          "category": "color"
-        }
+        "$value": "#632512"
       },
       "100": {
-        "value": "#4A1B0D",
-        "attributes": {
-          "category": "color"
-        }
+        "$value": "#4A1B0D"
       }
     }
   }

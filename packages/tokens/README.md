@@ -29,7 +29,9 @@ If you want to import and use tokens inside your javascript-based project, you c
 ```jsx
 import tkns from "@lualtek/tokens/platforms/web/tokens.json";
 
-<div style={{ color: `oklch(${tkns.color.blue["50"]} / 10%)` }} />;
+<div style={{ color: tkns.color.blue["50"] }} />;
+// To add trasparency
+<div style={{ color: `oklch(from ${tkns.color.blue["50"]} l c h / 10%)` }} />;
 ```
 
 #### Typescript
@@ -54,7 +56,7 @@ Inside css files the tokens are available as custom env variables (`token(--[TOK
 
 div {
   /* Colors are defined as HSL-4 but without the oklch() notation */
-  color: oklch(token(--color-gray-80) / 50%);
+  color: oklch(from token(--color-gray-80) l c h / 50%);
 }
 ```
 
