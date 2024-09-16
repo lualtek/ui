@@ -1,5 +1,17 @@
 # @lualtek/react-components
 
+## 14.0.0-next.2
+
+### Minor Changes
+
+- a7b51b0: Add children to Skeleton for dynamic content loading
+- 52ac63a: Add indeterminate state to radio control
+
+### Patch Changes
+
+- 222eb2d: Fix switch thumb animation
+  - @lualtek/icons@14.0.0-next.2
+
 ## 14.0.0-next.1
 
 ### Patch Changes

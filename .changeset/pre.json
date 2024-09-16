@@ -11,10 +11,13 @@
     "tsconfig": "0.0.2"
   },
   "changesets": [
+    "big-doors-think",
     "itchy-carpets-rhyme",
+    "neat-houses-sleep",
     "ninety-poets-watch",
     "purple-apes-double",
     "serious-beds-provide",
+    "stale-countries-fly",
     "thin-carpets-wait"
   ]
 }
