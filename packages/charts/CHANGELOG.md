@@ -1,5 +1,15 @@
 # @lualtek/charts
 
+## 14.0.1
+
+### Patch Changes
+
+- dd1da7b: Fix showYAxis in charts
+- d7147ff: Fix disclosure size
+- Updated dependencies [d7147ff]
+  - @lualtek/react-components@14.0.1
+  - @lualtek/tokens@14.0.1
+
 ## 14.0.0
 
 ### Major Changes
