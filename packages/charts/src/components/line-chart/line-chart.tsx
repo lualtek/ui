@@ -107,6 +107,7 @@ export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
     yAxisWidthNotBiaxial,
     hasLeftY,
     hasRightY,
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-call
   } = useChartAxis({
     data,
     series,
