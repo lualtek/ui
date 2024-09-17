@@ -157,13 +157,14 @@ export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
       ))}
     >
       <>
-        {showYAxis && hasRightY && (
+        {hasRightY && (
           <YAxis
             yAxisId="right"
             orientation="right"
             domain={yDomainRight}
             type={yTypeRight}
             tickCount={DENSITIES[density]}
+            hide={!showYAxis}
             // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
             width={yAxisWidthBiaxial}
             tick={{ fill: 'var(--dimmed-4)', fontSize: '0.8em' }}
@@ -173,13 +174,14 @@ export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
           />
         )}
 
-        {showYAxis && hasLeftY && (
+        {hasLeftY && (
           <YAxis
             yAxisId="left"
             orientation="left"
             domain={yDomainLeft}
             type={yTypeLeft}
             tickCount={DENSITIES[density]}
+            hide={!showYAxis}
             // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
             width={yAxisWidthNotBiaxial}
             tick={{ fill: 'var(--dimmed-4)', fontSize: '0.8em' }}
