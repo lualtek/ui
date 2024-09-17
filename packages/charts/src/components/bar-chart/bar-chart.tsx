@@ -147,12 +147,13 @@ export function BarChart<D extends ChartDataBaseType, B extends BarProps<D>>({
       )}
     >
       <>
-        {showYAxis && hasRightY && (
+        {hasRightY && (
           <YAxis
             yAxisId="right"
             orientation="right"
             domain={yDomainRight}
             type={yTypeRight}
+            hide={!showYAxis}
             tickCount={DENSITIES[density]}
             // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
             width={yAxisWidthBiaxial}
@@ -163,12 +164,13 @@ export function BarChart<D extends ChartDataBaseType, B extends BarProps<D>>({
           />
         )}
 
-        {showYAxis && hasLeftY && (
+        {hasLeftY && (
           <YAxis
             yAxisId="left"
             orientation="left"
             domain={yDomainLeft}
             type={yTypeLeft}
+            hide={!showYAxis}
             tickCount={DENSITIES[density]}
             // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
             width={yAxisWidthNotBiaxial}

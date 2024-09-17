@@ -30,9 +30,9 @@ const meta = {
     showXAxis: false,
     showAreas: false,
     density: 'mid',
-    xType: 'category',
-    yTypeLeft: 'category',
-    yTypeRight: 'category',
+    xType: undefined,
+    yTypeLeft: undefined,
+    yTypeRight: undefined,
   },
   argTypes: {
     data: { table: { disable: true } },

@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
+import { Stack } from '@/components';
+
 import { Disclosure } from './disclosure';
 
 const meta = {
@@ -55,5 +57,23 @@ export const Nested = {
         sint adipisci at asperiores quia ex voluptatum veniam! Quos rerum natus eos excepturi atque!
       </Disclosure>
     </Disclosure>
+  ),
+} satisfies Story;
+
+export const StackNested = {
+  render: args => (
+    <Stack fill={false} hAlign="start">
+      <Disclosure {...args}>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        Doloribus corporis nobis ipsum natus laudantium dolorem sapiente,
+        sint adipisci at asperiores quia ex voluptatum veniam! Quos rerum natus eos excepturi atque!
+
+        <Disclosure summary="Nested">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          Doloribus corporis nobis ipsum natus laudantium dolorem sapiente,
+          sint adipisci at asperiores quia ex voluptatum veniam! Quos rerum natus eos excepturi atque!
+        </Disclosure>
+      </Disclosure>
+    </Stack>
   ),
 } satisfies Story;

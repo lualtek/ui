@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 14.0.1
+
+### Patch Changes
+
+- d7147ff: Fix disclosure size
+  - @lualtek/icons@14.0.1
+
 ## 14.0.0
 
 ### Major Changes
