@@ -8,6 +8,7 @@
     display: block;
     position: relative;
     transform: translateZ(0);
+    width: 100%;
     z-index: 0;
 
     & * {
