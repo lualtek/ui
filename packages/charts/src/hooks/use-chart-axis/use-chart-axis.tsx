@@ -3,6 +3,20 @@ import { AxisDomain } from 'recharts/types/util/types';
 import { ChartDataBaseType } from 'src/components/base-chart/base-chart';
 import { LineProps } from 'src/components/line-chart/line-chart';
 
+type UseChartAxisReturnType = {
+  yAxisWidthNotBiaxial: number;
+  yAxisWidthBiaxial: number;
+  hasLeftY: boolean;
+  hasRightY: boolean;
+};
+
+type UseChartAxisProps<D extends ChartDataBaseType, L extends LineProps<D>> = {
+  data: D[];
+  series: L[];
+  yDomainLeft?: AxisDomain;
+  yDomainRight?: AxisDomain;
+};
+
 const parseMaxValueDomain = (yDomain?: AxisDomain) => {
   const result = yDomain && typeof yDomain !== 'function' && yDomain?.[1] && typeof yDomain[1] === 'number'
     ? yDomain[1]
@@ -49,7 +63,7 @@ export const useChartAxis = <D extends ChartDataBaseType, L extends LineProps<D>
   series,
   yDomainLeft,
   yDomainRight,
-}: { data: D[]; series: L[]; yDomainLeft?: AxisDomain; yDomainRight?: AxisDomain }) => {
+}: UseChartAxisProps<D, L>): UseChartAxisReturnType => {
   const [notBiaxialLines, biaxialLines] = useMemo(() => series.reduce<[L[], L[]]>(
     (acc, serie) => {
       acc[serie.side === 'right' ? 1 : 0].push(serie);
