@@ -1,5 +1,15 @@
 # @lualtek/react-components
 
+## 14.0.2
+
+### Patch Changes
+
+- 65954c2: Fix autocomplete menu size
+- 3c16014: Add textarea min block size
+- e42aada: Update dependencies
+- Updated dependencies [e42aada]
+  - @lualtek/icons@14.0.2
+
 ## 14.0.1
 
 ### Patch Changes
