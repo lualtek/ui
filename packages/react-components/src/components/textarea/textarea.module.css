@@ -45,3 +45,8 @@
     }
   }
 }
+@layer overrides {
+  .InputField {
+    min-block-size: token(--space-48);
+  }
+}
