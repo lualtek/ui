@@ -23,8 +23,8 @@
   "scripts": {
     "prebuild": "rimraf platforms/",
     "build": "pnpm run build:themes && pnpm run build:combine",
-    "build:combine": "node --loader ts-node/esm src/combine.ts",
-    "build:themes": "node --loader ts-node/esm src/index.ts"
+    "build:combine": "tsx src/combine.ts",
+    "build:themes": "tsx src/index.ts"
   },
   "repository": {
     "type": "git",
@@ -38,10 +38,10 @@
   "devDependencies": {
     "@lualtek/tokens": "workspace:*",
     "@types/fs-extra": "11.0.4",
-    "@types/node": "22.5.1",
+    "@types/node": "22.7.5",
     "colorjs.io": "0.5.2",
     "fs-extra": "11.2.0",
-    "style-dictionary": "4.1.0",
+    "style-dictionary": "4.1.3",
     "tsconfig": "workspace:*",
     "yargs": "17.7.2"
   }

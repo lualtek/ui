@@ -15,9 +15,12 @@ export const ReferenceLine: FC<ReferenceLineProps> = ({
   className,
   dashed = false,
   color = 'var(--dimmed-4)',
+  ref,
   ...otherProps
 }) => (
   <RechartReferenceLine
+    // @ts-expect-error this is somehow broken on th type of ref
+    ref={ref}
     {...otherProps}
     stroke={color}
     strokeDasharray={dashed ? '4 4' : 'none'}

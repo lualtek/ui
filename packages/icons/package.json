@@ -34,7 +34,7 @@
     "prebuild": "rimraf dist",
     "build": "pnpm run build:optimize && pnpm run build:sprite && pnpm run build:clean",
     "build:optimize": "svgo ./svgs/**/* --config=svgo.config.cjs --quiet",
-    "build:sprite": "node --loader ts-node/esm ./sprites.ts",
+    "build:sprite": "tsx ./sprites.ts",
     "build:clean": "rimraf dist/svgs"
   },
   "repository": {
@@ -48,11 +48,11 @@
   "homepage": "https://github.com/lualtek/ui#readme",
   "devDependencies": {
     "@types/fs-extra": "11.0.4",
-    "@types/node": "22.5.1",
+    "@types/node": "22.7.5",
     "directory-tree": "3.5.2",
     "fs-extra": "11.2.0",
     "nanospinner": "1.1.0",
-    "picocolors": "1.0.1",
+    "picocolors": "1.1.0",
     "svgo": "3.3.2",
     "svgstore": "3.0.1",
     "tsconfig": "workspace:*"

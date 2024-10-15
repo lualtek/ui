@@ -1,0 +1,8 @@
+{
+  "ignore": {
+    "flat": {
+      "versions": "6.0.1",
+      "reason": "It is broken "
+    }
+  }
+}

@@ -1,11 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
   "display": "Default",
-  "ts-node": {
-    "compilerOptions": {
-      "module": "ESNext"
-    }
-  },
   "tsc-alias": {
     "resolveFullPaths": true,
     "verbose": false
