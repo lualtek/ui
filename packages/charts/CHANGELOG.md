@@ -1,5 +1,16 @@
 # @lualtek/charts
 
+## 14.0.2
+
+### Patch Changes
+
+- e42aada: Update dependencies
+- Updated dependencies [65954c2]
+- Updated dependencies [3c16014]
+- Updated dependencies [e42aada]
+  - @lualtek/react-components@14.0.2
+  - @lualtek/tokens@14.0.2
+
 ## 14.0.1
 
 ### Patch Changes

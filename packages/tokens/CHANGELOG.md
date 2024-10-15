@@ -1,5 +1,11 @@
 # @lualtek/tokens
 
+## 14.0.2
+
+### Patch Changes
+
+- e42aada: Update dependencies
+
 ## 14.0.1
 
 ## 14.0.0
