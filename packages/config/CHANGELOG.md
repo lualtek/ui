@@ -1,5 +1,14 @@
 # @lualtek/config
 
+## 14.0.2
+
+### Patch Changes
+
+- e42aada: Update dependencies
+- 30cbbc3: Update postcss-preset-env to v10
+- Updated dependencies [e42aada]
+  - @lualtek/tokens@14.0.2
+
 ## 14.0.1
 
 ### Patch Changes

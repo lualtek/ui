@@ -8,9 +8,10 @@
     overflow: auto;
     -webkit-overflow-scrolling: touch;
     overscroll-behavior: contain;
+    min-inline-size: var(--radix-popover-trigger-width);
 
     &[data-autocomplete-match-width='true'] {
-      width: var(--radix-popover-trigger-width);
+      inline-size: var(--radix-popover-trigger-width);
     }
   }
 }
