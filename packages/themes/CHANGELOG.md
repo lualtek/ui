@@ -1,5 +1,11 @@
 # @lualtek/themes
 
+## 14.0.3
+
+### Patch Changes
+
+- 4d4aa1f: Added optional data for LineChart series
+
 ## 14.0.2
 
 ### Patch Changes

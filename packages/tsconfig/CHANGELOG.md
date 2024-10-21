@@ -1,5 +1,11 @@
 # tsconfig
 
+## 0.0.4
+
+### Patch Changes
+
+- 4d4aa1f: Added optional data for LineChart series
+
 ## 0.0.3
 
 ### Patch Changes
