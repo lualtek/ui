@@ -49,6 +49,10 @@ export type LineProps<D> = {
    * A custom name/label for the value
    */
   name?: string;
+  /**
+   * The (optional) data to render when MultiSeries https://recharts.org/en-US/examples/LineChartHasMultiSeries
+   */
+  data?: D[];
 };
 
 export type LineChartProps<D extends ChartDataBaseType, L extends LineProps<D>> = Except<
@@ -214,6 +218,7 @@ export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
           type,
           unit,
           name,
+          data: serieData,
         }, index) => {
           const computedStrokeColor = color ?? getChartDefaultColor(index);
           const commonProps = {
@@ -236,6 +241,7 @@ export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
               strokeWidth: 4,
               r: 6,
             },
+            data: serieData,
           };
 
           return showAreas ? (
