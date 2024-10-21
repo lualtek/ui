@@ -50,7 +50,11 @@ export type LineProps<D> = {
    */
   name?: string;
   /**
-   * The (optional) data to render when MultiSeries https://recharts.org/en-US/examples/LineChartHasMultiSeries
+   * The (optional) data to render when MultiSeries.
+   * This prop is not documented in the Recharts API, and it appears
+   * only in the examples. It may breaks, so use it with caution.
+   *
+   * @example https://recharts.org/en-US/examples/LineChartHasMultiSeries
    */
   data?: D[];
 };
