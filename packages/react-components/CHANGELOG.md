@@ -1,5 +1,15 @@
 # @lualtek/react-components
 
+## 14.1.0
+
+### Minor Changes
+
+- 1c3e2e5: Add xFormatter to base chart
+
+### Patch Changes
+
+- @lualtek/icons@14.1.0
+
 ## 14.0.3
 
 ### Patch Changes
