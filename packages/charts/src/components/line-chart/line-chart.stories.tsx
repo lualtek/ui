@@ -219,3 +219,9 @@ export const WithCustomYDomain = {
     yDomainLeft: [0, 1000],
   },
 } satisfies Story;
+
+export const WithFormattedXLabels = {
+  args: {
+    xFormatter: value => `${value} Formatted`,
+  },
+} satisfies Story;

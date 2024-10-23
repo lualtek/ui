@@ -74,6 +74,14 @@ export type BaseChartProps = ResponsiveContainerProps & {
    */
   xDomain?: XAxisProps['domain'];
   /**
+   * Set the label formatter for the X axis
+   */
+  xFormatter?: XAxisProps['tickFormatter'];
+  /**
+   * Set the domain for the X axis.
+   */
+  xType?: XAxisProps['type'];
+  /**
    * Set the domain for the left Y axis.
    */
   yDomainLeft?: YAxisProps['domain'];
@@ -81,10 +89,6 @@ export type BaseChartProps = ResponsiveContainerProps & {
    * Set the domain for the right Y axis.
    */
   yDomainRight?: YAxisProps['domain'];
-  /**
-   * Set the domain for the X axis.
-   */
-  xType?: XAxisProps['type'];
   /**
    * Set the domain for the left Y axis.
    */
@@ -181,6 +185,7 @@ export const BaseChart = forwardRef<HTMLDivElement, PropsClassChildren<BaseChart
   xType,
   dataKeyX = 'x',
   xPadding = 0,
+  xFormatter,
   xDomain,
   density = 'mid',
   tooltipColors,
@@ -238,6 +243,7 @@ export const BaseChart = forwardRef<HTMLDivElement, PropsClassChildren<BaseChart
               type={xType}
               minTickGap={32}
               tick={{ fill: 'var(--dimmed-3)', fontSize: '0.8em' }}
+              tickFormatter={xFormatter}
               padding={{ left: xPadding, right: xPadding }}
               tickLine={{ stroke: 'var(--dimmed-3)' }}
               axisLine={{ stroke: 'var(--dimmed-4)' }}
