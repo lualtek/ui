@@ -55,14 +55,14 @@
     "react-dom": "^18.2"
   },
   "devDependencies": {
-    "@types/node": "22.7.5",
-    "@types/react": "18.3.11",
+    "@types/node": "22.7.9",
+    "@types/react": "18.3.12",
     "@types/react-dom": "18.3.1",
     "react": "^18.3",
     "react-dom": "^18.3",
     "tsconfig": "workspace:*",
     "typed-css-modules": "0.9.1",
-    "typedoc": "0.26.9",
+    "typedoc": "0.26.10",
     "typedoc-json-parser": "10.1.6",
     "typescript": "5.6.3"
   },
