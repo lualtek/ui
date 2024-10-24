@@ -1,5 +1,15 @@
 # @lualtek/react-components
 
+## 14.2.0
+
+### Minor Changes
+
+- 1f0daff: Add new dotsSize prop to line charts
+
+### Patch Changes
+
+- @lualtek/icons@14.2.0
+
 ## 14.1.0
 
 ### Minor Changes
