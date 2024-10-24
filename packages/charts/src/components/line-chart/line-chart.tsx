@@ -76,6 +76,10 @@ BaseChartProps, 'renderChart' | 'children'> & {
    */
   showDots?: boolean;
   /**
+   * Set the radius of the dots.
+   */
+  dotsSize?: number;
+  /**
    * Whether to show the Y axis.
    *
    * @defaultValue true
@@ -102,6 +106,7 @@ export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
   allowYDecimals = false,
   disableAnimation = false,
   focusable = false,
+  dotsSize = 3,
   syncId,
   ...otherProps
 }: PropsWithClass<LineChartProps<D, L>>) {
@@ -235,7 +240,7 @@ export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
             name,
             unit,
             dot: showDots ? {
-              r: 3,
+              r: dotsSize,
               stroke: computedStrokeColor,
               fill: computedStrokeColor,
             } : false,
