@@ -102,6 +102,7 @@ export function BarChart<D extends ChartDataBaseType, B extends BarProps<D>>({
     yAxisWidthNotBiaxial,
     hasLeftY,
     hasRightY,
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-call
   } = useChartAxis({
     data,
     series,
@@ -182,26 +183,18 @@ export function BarChart<D extends ChartDataBaseType, B extends BarProps<D>>({
         )}
 
         {series.map(({
-          dataKey,
-          serieKeyId,
-          stackId,
           side,
           color,
-          unit,
-          name,
+          ...barProps
         }, index) => {
           const computedStrokeColor = color ?? getChartDefaultColor(index);
 
           return (
             <Bar
-              dataKey={dataKey}
-              stackId={stackId}
+              {...barProps}
               isAnimationActive={isAnimationActive}
               fill={computedStrokeColor}
               yAxisId={side}
-              name={name}
-              unit={unit}
-              key={serieKeyId}
             />
           );
         })}

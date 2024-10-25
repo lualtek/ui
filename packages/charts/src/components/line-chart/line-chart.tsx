@@ -10,6 +10,7 @@ import {
   LineProps as ReLineProps,
   YAxis,
 } from 'recharts';
+import { DataKey } from 'recharts/types/util/types';
 import { Except } from 'type-fest';
 
 import { useChartAxis } from '@/charts/hooks/use-chart-axis';
@@ -22,7 +23,7 @@ export type LineProps<D> = {
   /**
    * The data key to assign to the line.
    */
-  dataKey: string | ((data: D) => string | number);
+  dataKey: DataKey<D>;
   /**
    * Used on the map as linekey id, should be unique
    */
@@ -48,7 +49,7 @@ export type LineProps<D> = {
   /**
    * A custom name/label for the value
    */
-  name?: string;
+  name?: ReLineProps['name'];
   /**
    * The (optional) data to render when MultiSeries.
    * This prop is not documented in the Recharts API, and it appears
@@ -220,25 +221,20 @@ export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
         )}
 
         {series.map(({
-          dataKey,
           serieKeyId,
           side,
           color,
           type,
-          unit,
-          name,
           data: serieData,
+          ...otherSerieProps
         }, index) => {
           const computedStrokeColor = color ?? getChartDefaultColor(index);
           const commonProps = {
-            dataKey,
             yAxisId: side,
             isAnimationActive,
-            connectNulls: true,
             type: type ?? 'monotone',
             stroke: computedStrokeColor,
-            name,
-            unit,
+            data: serieData,
             dot: showDots ? {
               r: dotsSize,
               stroke: computedStrokeColor,
@@ -250,11 +246,11 @@ export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
               strokeWidth: 4,
               r: 6,
             },
-            data: serieData,
           };
 
           return showAreas ? (
             <Area
+              {...otherSerieProps}
               {...commonProps}
               key={serieKeyId}
               fillOpacity={1}
@@ -262,6 +258,7 @@ export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
             />
           ) : (
             <Line
+              {...otherSerieProps}
               {...commonProps}
               key={serieKeyId}
             />
