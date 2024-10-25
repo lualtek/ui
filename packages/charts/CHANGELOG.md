@@ -1,5 +1,16 @@
 # @lualtek/charts
 
+## 14.3.0
+
+### Minor Changes
+
+- 2394554: Add spread props to bar and lines in bar and line charts
+
+### Patch Changes
+
+- @lualtek/react-components@14.3.0
+- @lualtek/tokens@14.3.0
+
 ## 14.2.0
 
 ### Patch Changes
