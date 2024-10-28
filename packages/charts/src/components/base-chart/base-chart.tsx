@@ -82,6 +82,11 @@ export type BaseChartProps = ResponsiveContainerProps & {
    */
   xType?: XAxisProps['type'];
   /**
+   * Allow the axis has duplicated categorys or not when the type of axis is "category".
+   * @url https://recharts.org/en-US/api/XAxis#allowDuplicatedCategory
+   */
+  xAllowDuplicatedCategory?: XAxisProps['allowDuplicatedCategory'];
+  /**
    * Set the domain for the left Y axis.
    */
   yDomainLeft?: YAxisProps['domain'];
@@ -187,6 +192,7 @@ export const BaseChart = forwardRef<HTMLDivElement, PropsClassChildren<BaseChart
   xPadding = 0,
   xFormatter,
   xDomain,
+  xAllowDuplicatedCategory,
   density = 'mid',
   tooltipColors,
   customTooltip,
@@ -251,6 +257,7 @@ export const BaseChart = forwardRef<HTMLDivElement, PropsClassChildren<BaseChart
               allowDataOverflow
               tickMargin={8}
               domain={xDomain}
+              allowDuplicatedCategory={xAllowDuplicatedCategory}
             />
             {referenceComponent}
 
