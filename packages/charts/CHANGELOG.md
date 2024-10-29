@@ -1,5 +1,13 @@
 # @lualtek/charts
 
+## 14.3.1
+
+### Patch Changes
+
+- a55bb40: Added support for multi line chart
+  - @lualtek/react-components@14.3.1
+  - @lualtek/tokens@14.3.1
+
 ## 14.3.0
 
 ### Minor Changes
