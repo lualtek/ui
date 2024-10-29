@@ -65,7 +65,7 @@ BaseChartProps, 'renderChart' | 'children'> & {
   /**
    * The data to render.
    */
-  data: D[];
+  data?: D[];
   /**
    * The chart series/series to render.
    */
@@ -123,7 +123,7 @@ export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
     hasRightY,
   // eslint-disable-next-line @typescript-eslint/no-unsafe-call
   } = useChartAxis({
-    data,
+    data: data ?? series.flatMap(serie => serie.data ?? []),
     series,
     yDomainLeft,
     yDomainRight,

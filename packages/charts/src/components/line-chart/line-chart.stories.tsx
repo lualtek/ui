@@ -2,6 +2,7 @@ import { Chip } from '@lualtek/react-components';
 import type { Meta, StoryObj } from '@storybook/react';
 
 import SimpleData from '../../../fixtures/data';
+import { MultiDataSeries } from '../../../fixtures/multi-data-axes';
 import MultiAxisData from '../../../fixtures/multi-y-data';
 import { ReferenceArea, ReferenceLine } from '../base-chart';
 import { ChartDataBaseType } from '../base-chart/base-chart';
@@ -223,5 +224,16 @@ export const WithCustomYDomain = {
 export const WithFormattedXLabels = {
   args: {
     xFormatter: value => `${value} Formatted`,
+  },
+} satisfies Story;
+
+export const WithMultiDataAxes = {
+  args: {
+    data: undefined,
+    series: MultiDataSeries,
+    dataKeyX: 'category',
+    xType: 'category',
+    xAllowDuplicatedCategory: false,
+    yDomainLeft: [0, 1],
   },
 } satisfies Story;
