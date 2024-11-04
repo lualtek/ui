@@ -1,5 +1,12 @@
 # @lualtek/config
 
+## 14.3.2
+
+### Patch Changes
+
+- 36d9dc0: Update deps
+  - @lualtek/tokens@14.3.2
+
 ## 14.3.1
 
 ### Patch Changes

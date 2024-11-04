@@ -1,5 +1,11 @@
 # @lualtek/icons
 
+## 14.3.2
+
+### Patch Changes
+
+- 36d9dc0: Update deps
+
 ## 14.3.1
 
 ## 14.3.0
