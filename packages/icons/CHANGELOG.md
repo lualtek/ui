@@ -1,5 +1,7 @@
 # @lualtek/icons
 
+## 14.3.3
+
 ## 14.3.2
 
 ### Patch Changes

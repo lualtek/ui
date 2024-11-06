@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 14.3.3
+
+### Patch Changes
+
+- 1fe4e71: make hint textfield prop optional
+  - @lualtek/icons@14.3.3
+
 ## 14.3.2
 
 ### Patch Changes
