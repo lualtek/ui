@@ -396,8 +396,8 @@ importers:
         specifier: 11.2.0
         version: 11.2.0
       style-dictionary:
-        specifier: 4.2.0
-        version: 4.2.0(prettier@2.8.8)
+        specifier: 4.1.4
+        version: 4.1.4
       tsconfig:
         specifier: workspace:*
         version: link:../tsconfig
@@ -420,8 +420,8 @@ importers:
         specifier: 11.2.0
         version: 11.2.0
       style-dictionary:
-        specifier: 4.2.0
-        version: 4.2.0(prettier@2.8.8)
+        specifier: 4.1.4
+        version: 4.1.4
       tsconfig:
         specifier: workspace:*
         version: link:../tsconfig
@@ -5463,12 +5463,10 @@ packages:
     resolution: {integrity: sha512-6fPc+R4ihwqP6N/aIv2f1gMH8lOVtWQHoqC4yK6oSDVVocumAsfCqjkXnqiYMhmMwS/mEHLp7Vehlt3ql6lEig==}
     engines: {node: '>=8'}
 
-  style-dictionary@4.2.0:
-    resolution: {integrity: sha512-bjynavc9g80Zl9GpR3cw+ibqtbMbak9YXpuZteTsRTzoacUTjh7GLu1nlT1ukf264Nw5Vhu/ICQpY5xxOquvtA==}
+  style-dictionary@4.1.4:
+    resolution: {integrity: sha512-JCfF5/my6yTBp8qtcxdEY1JwR3JDq9fyosoJ+mpl/jMVZ0zVNsseIDJA/xMmm0P3GwuryHkwJwBMkm99HlXhfQ==}
     engines: {node: '>=18.0.0'}
     hasBin: true
-    peerDependencies:
-      prettier: 3.x
 
   style-search@0.1.0:
     resolution: {integrity: sha512-Dj1Okke1C3uKKwQcetra4jSuk0DqbzbYtXipzFlFMZtowbF1x7BKJwB9AayVMyFARvU8EDrZdcax4At/452cAg==}
@@ -11514,7 +11512,7 @@ snapshots:
 
   strip-json-comments@3.1.1: {}
 
-  style-dictionary@4.2.0(prettier@2.8.8):
+  style-dictionary@4.1.4:
     dependencies:
       '@bundled-es-modules/deepmerge': 4.3.1
       '@bundled-es-modules/glob': 10.4.2
@@ -11527,7 +11525,6 @@ snapshots:
       json5: 2.2.3
       patch-package: 8.0.0
       path-unified: 0.1.0
-      prettier: 2.8.8
       tinycolor2: 1.6.0
 
   style-search@0.1.0: {}
