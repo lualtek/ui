@@ -2,7 +2,7 @@
 
 import tkns from '@lualtek/tokens/platforms/web/tokens.json';
 import clsx from 'clsx';
-import { domMax, LazyMotion, m } from 'framer-motion';
+import { domMax, LazyMotion, m } from 'motion/react';
 import { forwardRef, useId, useMemo } from 'react';
 import { FocusOn } from 'react-focus-on';
 
@@ -10,7 +10,6 @@ import {
   Overlay,
   OverlayProps, PropsClassChildren, useResponsiveContext,
 } from '@/components';
-import { cssEasingToArray } from '@/components/utils';
 
 import { ModalContent, ModalContentProps } from './content/modal-content';
 import styles from './modal.module.css';
@@ -67,7 +66,7 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>(({
       opacity: 1,
       y: 0,
       transition: {
-        ease: cssEasingToArray(tkns.easing.entrance) as number[],
+        easing: tkns.easing.entrance,
         duration: parseFloat((matches.small ? tkns.duration[100] : tkns.duration[300]).replace('s', '')),
       },
     },
@@ -76,7 +75,7 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>(({
       opacity: matches.small ? 0 : 1,
       y: matches.small ? 0 : '100%',
       transition: {
-        ease: cssEasingToArray(tkns.easing.exit) as number[],
+        easing: tkns.easing.exit,
         duration: parseFloat(tkns.duration[100].replace('s', '')),
       },
     },

@@ -1,4 +1,4 @@
-/* eslint-disable import/no-extraneous-dependencies */
+
 import { create } from '@storybook/theming';
 
 export default create({

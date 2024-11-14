@@ -3,7 +3,7 @@
 import clsx from 'clsx';
 import {
   domMax, LazyMotion, m,
-} from 'framer-motion';
+} from 'motion/react';
 import {
   DetailsHTMLAttributes,
   forwardRef,
@@ -107,7 +107,7 @@ export const Disclosure = forwardRef<HTMLDetailsElement, DisclosureProps>(({
 
   const handleOpen = useCallback(
     () => () => {
-      if (ref.current && expandable) setIsOpen(open || ref.current.open);
+      if (ref.current && expandable) setIsOpen(open ?? ref.current.open);
       if (expandable && open === undefined) onToggle?.(open || ref.current.open);
     },
     [expandable, onToggle, open],

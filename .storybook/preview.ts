@@ -1,22 +1,23 @@
-import { Preview } from "@storybook/react";
-import type { ReactRenderer } from "@storybook/react";
-import { withThemeByDataAttribute } from "@storybook/addon-themes";
-import { themes } from '@storybook/theming';
-import lualtekTheme from './lualtek-theme';
-
 import '@lualtek/themes/web';
 import '../packages/react-components/src/core.css';
 import './overrides.css';
+
+import { withThemeByDataAttribute } from '@storybook/addon-themes';
+import type { ReactRenderer } from '@storybook/react';
+import { Preview } from '@storybook/react';
+import { themes } from '@storybook/theming';
+
+import lualtekTheme from './lualtek-theme';
 
 const preview: Preview = {
   decorators: [
     withThemeByDataAttribute<ReactRenderer>({
       themes: {
-        auto: "auto",
-        light: "light",
-        dark: "dark",
+        auto: 'auto',
+        light: 'light',
+        dark: 'dark',
       },
-      defaultTheme: "dark",
+      defaultTheme: 'dark',
     }),
   ],
   parameters: {

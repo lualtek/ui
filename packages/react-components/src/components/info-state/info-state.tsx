@@ -1,7 +1,7 @@
 'use client';
 
 import { TokensTypes } from '@lualtek/tokens/platforms/web';
-import { domMax, LazyMotion, m } from 'framer-motion';
+import { domMax, LazyMotion, m } from 'motion/react';
 import {
   forwardRef, HTMLAttributes, ReactNode, useMemo,
 } from 'react';

@@ -2,7 +2,7 @@
 
 import tkns from '@lualtek/tokens/platforms/web/tokens.json';
 import clsx from 'clsx';
-import { domMax, LazyMotion, m } from 'framer-motion';
+import { domMax, LazyMotion, m } from 'motion/react';
 import {
   forwardRef, ReactNode, useId,
   useMemo,

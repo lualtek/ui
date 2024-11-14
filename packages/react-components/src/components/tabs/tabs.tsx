@@ -4,7 +4,7 @@ import { TokensTypes } from '@lualtek/tokens/platforms/web';
 import tkns from '@lualtek/tokens/platforms/web/tokens.json';
 import * as TabsPrimitive from '@radix-ui/react-tabs';
 import clsx from 'clsx';
-import { domMax, LazyMotion, m } from 'framer-motion';
+import { domMax, LazyMotion, m } from 'motion/react';
 import {
   Children, FC, isValidElement, useCallback, useId, useState,
 } from 'react';

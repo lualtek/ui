@@ -2,7 +2,7 @@
 
 import {
   AnimatePresence, domMax, LazyMotion, m,
-} from 'framer-motion';
+} from 'motion/react';
 import {
   ReactNode, useEffect, useId, useMemo,
 } from 'react';
