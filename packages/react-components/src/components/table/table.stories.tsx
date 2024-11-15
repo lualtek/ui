@@ -22,7 +22,7 @@ const story: Meta<TableProps<Person>> = {
   title: 'Layouts/Table',
   component: Table,
   args: {
-    itemsPerPage: 50,
+    itemsPerPage: 10,
   },
   decorators: [
     Story => (
@@ -109,7 +109,9 @@ export const WithFilter: Story = {
     showHeader: true,
     selectableRows: true,
     enableFilterControl: true,
-    filterFn: (row, columnId, value) => String(row.getValue(columnId)).toLowerCase().includes(value.toLowerCase()),
+    filterFn: (row, columnId, value: string) => String(
+      row.getValue(columnId),
+    ).toLowerCase().includes(value.toLowerCase()),
   },
 };
 
