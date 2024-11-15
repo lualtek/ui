@@ -1,5 +1,16 @@
 # @lualtek/react-components
 
+## 14.4.0
+
+### Minor Changes
+
+- 5612bd4: Update deps
+
+### Patch Changes
+
+- Updated dependencies [5612bd4]
+  - @lualtek/icons@14.4.0
+
 ## 14.3.3
 
 ### Patch Changes
