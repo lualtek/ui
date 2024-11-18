@@ -10,5 +10,10 @@
     "@lualtek/tokens": "14.3.3",
     "tsconfig": "0.0.4"
   },
-  "changesets": []
+  "changesets": [
+    "mean-feet-shake",
+    "neat-peas-trade",
+    "rare-bulldogs-rush",
+    "short-cougars-remember"
+  ]
 }
