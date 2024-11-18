@@ -1,0 +1,18 @@
+{
+  "shadow": {
+    "opacity-factor": {
+      "value": {
+        "light": "0%",
+        "dark": "10%"
+      }
+    }
+  },
+  "vibrancy": {
+    "brightness": {
+      "value": {
+        "light": 1.35,
+        "dark": 0.85
+      }
+    }
+  }
+}

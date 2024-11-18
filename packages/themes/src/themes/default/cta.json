@@ -1,0 +1,25 @@
+{
+  "cta": {
+    "default": {
+      "$type": "color",
+      "value": {
+        "light": "{color.brand.40}",
+        "dark": "{color.brand.60}"
+      }
+    },
+    "dark": {
+      "$type": "color",
+      "value": {
+        "light": "{color.brand.70}",
+        "dark": "{color.brand.50}"
+      }
+    },
+    "foreground": {
+      "$type": "color",
+      "value": {
+        "light": "{color.support.white}",
+        "dark": "{color.support.white}"
+      }
+    }
+  }
+}

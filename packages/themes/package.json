@@ -13,16 +13,14 @@
     "platforms/"
   ],
   "exports": {
-    "./web": "./platforms/web/default/themes.css",
-    "./web/*.css": "./platforms/web/default/*.css",
-    "./web/*.json": "./platforms/web/default/*.json",
-    "./web/pro": "./platforms/web/pro/themes.css",
-    "./web/pro/*.css": "./platforms/web/pro/*.css",
-    "./web/pro/*.json": "./platforms/web/pro/*.json"
+    "./web": "./platforms/web/default.css",
+    "./web/pro": "./platforms/web/pro.css",
+    "./web/*.css": "./platforms/web/*.css",
+    "./web/*.json": "./platforms/web/*.json"
   },
   "scripts": {
     "prebuild": "rimraf platforms/",
-    "build": "pnpm run build:themes && pnpm run build:combine",
+    "build": "pnpm run build:themes",
     "build:combine": "tsx src/combine.ts",
     "build:themes": "tsx src/index.ts"
   },
