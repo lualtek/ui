@@ -1,5 +1,11 @@
 # @lualtek/themes
 
+## 14.4.0
+
+### Minor Changes
+
+- 5612bd4: Update deps
+
 ## 14.3.3
 
 ## 14.3.2
