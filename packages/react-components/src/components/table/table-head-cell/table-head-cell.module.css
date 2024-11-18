@@ -40,6 +40,8 @@
     margin-inline-start: token(--space-8);
   }
 
+}
+@layer overrides {
   .BlankButton {
     align-items: center;
     justify-content: flex-start;
@@ -47,8 +49,7 @@
     font-weight: token(--font-weight-bold);
     white-space: nowrap;
   }
-}
-@layer overrides {
+
   .TableCell *[data-button-kind] {
     backdrop-filter: none;
   }

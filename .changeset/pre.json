@@ -1,0 +1,19 @@
+{
+  "mode": "pre",
+  "tag": "next",
+  "initialVersions": {
+    "@lualtek/charts": "14.3.3",
+    "@lualtek/config": "14.3.3",
+    "@lualtek/icons": "14.3.3",
+    "@lualtek/react-components": "14.3.3",
+    "@lualtek/themes": "14.3.3",
+    "@lualtek/tokens": "14.3.3",
+    "tsconfig": "0.0.4"
+  },
+  "changesets": [
+    "mean-feet-shake",
+    "neat-peas-trade",
+    "rare-bulldogs-rush",
+    "short-cougars-remember"
+  ]
+}

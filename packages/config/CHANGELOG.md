@@ -1,5 +1,17 @@
 # @lualtek/config
 
+## 15.0.0-next.0
+
+### Minor Changes
+
+- 5612bd4: Update deps
+
+### Patch Changes
+
+- f9de811: Update deps
+- Updated dependencies [5612bd4]
+  - @lualtek/tokens@15.0.0-next.0
+
 ## 14.3.3
 
 ### Patch Changes
