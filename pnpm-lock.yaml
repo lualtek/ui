@@ -123,11 +123,8 @@ importers:
         specifier: 6.0.1
         version: 6.0.1
       storybook:
-        specifier: 8.4.3
-        version: 8.4.3(prettier@2.8.8)
-      storybook-addon-tag-badges:
-        specifier: 1.2.0
-        version: 1.2.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@8.4.3(prettier@2.8.8))
+        specifier: 8.4.4
+        version: 8.4.4(prettier@2.8.8)
       stylelint:
         specifier: 16.10.0
         version: 16.10.0(typescript@5.6.3)
@@ -5350,14 +5347,8 @@ packages:
   sprintf-js@1.0.3:
     resolution: {integrity: sha512-D9cPgkvLlV3t3IzL0D0YLvGA9Ahk4PcvVwUbN0dSGr1aP0Nrt4AEnTUbuGvquEC0mA64Gqt1fzirlRs5ibXx8g==}
 
-  storybook-addon-tag-badges@1.2.0:
-    resolution: {integrity: sha512-qkpmkeY0pSBphOBUppCwpJ8+5X3IPVRlHzLaBABSOiy3jpgpt+PDaxu1kEg8qaCixBE0pDHY5wKSO6sw/RdN4w==}
-    engines: {node: '>=20'}
-    peerDependencies:
-      storybook: ^8.4.2
-
-  storybook@8.4.3:
-    resolution: {integrity: sha512-n+6ME+APinsx0zjNTmx3SntJ4iCgoTK7TsxUC8+op/rUAA8hNbD+/NT7Qx/F5peHNchVeVFGtebPDAHU9g1M/Q==}
+  storybook@8.4.4:
+    resolution: {integrity: sha512-xBOq3q/MuUUg3zM0imMMaK5ziKq3TO388jsnaiemJ4Uf0ZGwcHjM8HDBCDt0s5/CfsOQ49zo1ouZ3aNlu0qsUg==}
     hasBin: true
     peerDependencies:
       prettier: ^2 || ^3
@@ -11353,15 +11344,7 @@ snapshots:
 
   sprintf-js@1.0.3: {}
 
-  storybook-addon-tag-badges@1.2.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@8.4.3(prettier@2.8.8)):
-    dependencies:
-      '@storybook/icons': 1.2.12(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      storybook: 8.4.3(prettier@2.8.8)
-    transitivePeerDependencies:
-      - react
-      - react-dom
-
-  storybook@8.4.3(prettier@2.8.8):
+  storybook@8.4.4(prettier@2.8.8):
     dependencies:
       '@storybook/core': 8.4.3(prettier@2.8.8)
     optionalDependencies:
