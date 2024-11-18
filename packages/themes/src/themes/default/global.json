@@ -4,7 +4,7 @@
       "$type": "color",
       "value": {
         "light": "{color.primary.60}",
-        "dark": "{color.primary.60}"
+        "dark": "{color.primary.30}"
       }
     },
     "background": {
