@@ -4,6 +4,7 @@
   [data-elevation] {
     --shadow-direction: 1;
     --extra-shadow: 0 0 0 1px transparent;
+    --shadow-color: oklch(0% 0 0deg);
 
     transition: box-shadow token(--duration-100) token(--easing-standard);
 
@@ -131,31 +132,33 @@
   [data-elevation-hover='3']:hover {
 
     /* Default shadow offsets. */
-    --y1: 16px;
-    --y2: 2px;
+    --y1: 24px;
+    --y2: 8px;
+    --y3: 4px;
     --x1: 0px;
     --x2: 0px;
+    --x3: 0px;
 
     box-shadow:
       calc(var(--x1) * var(--shadow-direction))
       calc(var(--y1) * var(--shadow-direction))
-      24px
-      color-mix(
-        in oklch,
-        var(--shadow-color),
-        transparent calc(94% + var(--shadow-opacity-factor))
-      ),
-      calc(var(--x2) * var(--shadow-direction))
-      calc(var(--y2) * var(--shadow-direction))
-      6px
+      32px
       color-mix(
         in oklch,
         var(--shadow-color),
         transparent calc(96% - var(--shadow-opacity-factor))
       ),
-      0
-      0
-      1px
+      calc(var(--x2) * var(--shadow-direction))
+      calc(var(--y2) * var(--shadow-direction))
+      24px
+      color-mix(
+        in oklch,
+        var(--shadow-color),
+        transparent calc(96% - var(--shadow-opacity-factor))
+      ),
+      calc(var(--x2) * var(--shadow-direction))
+      calc(var(--y3) * var(--shadow-direction))
+      8px
       color-mix(
         in oklch,
         var(--shadow-color),
@@ -166,8 +169,10 @@
     &:where([data-elevation-direction='left'], [data-elevation-direction='right']) {
       --y1: 0px;
       --y2: 0px;
-      --x1: 16px;
-      --x2: 2px;
+      --y3: 0px;
+      --x1: 24px;
+      --x2: 16px;
+      --x3: 4px;
     }
   }
 
