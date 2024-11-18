@@ -21,7 +21,6 @@
   "scripts": {
     "prebuild": "rimraf platforms/",
     "build": "pnpm run build:themes",
-    "build:combine": "tsx src/combine.ts",
     "build:themes": "tsx src/index.ts"
   },
   "repository": {
