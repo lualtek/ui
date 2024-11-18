@@ -1,7 +1,7 @@
 'use client';
 
 import clsx from 'clsx';
-import { domAnimation, LazyMotion, m } from 'framer-motion';
+import { domAnimation, LazyMotion, m } from 'motion/react';
 import {
   ChangeEvent, forwardRef, InputHTMLAttributes, ReactNode, useId,
 } from 'react';

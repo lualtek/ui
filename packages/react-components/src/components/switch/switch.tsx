@@ -4,7 +4,7 @@ import * as SwitchPrimitive from '@radix-ui/react-switch';
 import clsx from 'clsx';
 import {
   AnimatePresence, domMax, LazyMotion, m,
-} from 'framer-motion';
+} from 'motion/react';
 import {
   ElementRef, forwardRef,
   ReactNode, useCallback,

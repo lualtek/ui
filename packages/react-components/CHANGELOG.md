@@ -1,5 +1,60 @@
 # @lualtek/react-components
 
+## 14.3.3
+
+### Patch Changes
+
+- 1fe4e71: make hint textfield prop optional
+  - @lualtek/icons@14.3.3
+
+## 14.3.2
+
+### Patch Changes
+
+- 36d9dc0: Update deps
+- Updated dependencies [36d9dc0]
+  - @lualtek/icons@14.3.2
+
+## 14.3.1
+
+### Patch Changes
+
+- @lualtek/icons@14.3.1
+
+## 14.3.0
+
+### Patch Changes
+
+- @lualtek/icons@14.3.0
+
+## 14.2.0
+
+### Minor Changes
+
+- 1f0daff: Add new dotsSize prop to line charts
+
+### Patch Changes
+
+- @lualtek/icons@14.2.0
+
+## 14.1.0
+
+### Minor Changes
+
+- 1c3e2e5: Add xFormatter to base chart
+
+### Patch Changes
+
+- @lualtek/icons@14.1.0
+
+## 14.0.3
+
+### Patch Changes
+
+- 4d4aa1f: Added optional data for LineChart series
+- Updated dependencies [4d4aa1f]
+  - @lualtek/icons@14.0.3
+
 ## 14.0.2
 
 ### Patch Changes

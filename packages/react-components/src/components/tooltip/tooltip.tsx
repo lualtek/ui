@@ -4,7 +4,7 @@ import * as TooltipPrimitive from '@radix-ui/react-tooltip';
 import clsx from 'clsx';
 import {
   domAnimation, LazyMotion, m,
-} from 'framer-motion';
+} from 'motion/react';
 import {
   Children, cloneElement, isValidElement, ReactNode, useMemo, useRef,
 } from 'react';

@@ -78,17 +78,6 @@
     .InputWrapper[data-selection-control-invalid='true'] & {
       box-shadow: 0 0 0 2px var(--invalid-foreground);
     }
-
-
-    .Hint {
-      display: none;
-
-      /* Black magic */
-      .InputWrapper[data-selection-control-invalid='true'] &,
-      .InputWrapper:has(.CheckboxInput:user-invalid) & {
-        display: flex;
-      }
-    }
   }
 }
 @layer overrides {

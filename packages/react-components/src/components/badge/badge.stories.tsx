@@ -10,6 +10,7 @@ const meta = {
   args: {
     showBadge: true,
   },
+  tags: ['code-only'],
   render: args => (
     <Badge {...args}>
       <IconButton
@@ -25,4 +26,6 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Default = {} satisfies Story;
+export const Default = {
+  tags: ['code-only'],
+} satisfies Story;

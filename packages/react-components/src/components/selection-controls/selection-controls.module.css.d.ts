@@ -1,6 +1,5 @@
 declare const styles: {
   readonly "CheckboxInput": string;
-  readonly "Hint": string;
   readonly "InputWrapper": string;
   readonly "RadioInput": string;
   readonly "SelectionControl": string;

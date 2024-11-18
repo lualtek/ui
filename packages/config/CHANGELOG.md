@@ -1,5 +1,50 @@
 # @lualtek/config
 
+## 14.3.3
+
+### Patch Changes
+
+- @lualtek/tokens@14.3.3
+
+## 14.3.2
+
+### Patch Changes
+
+- 36d9dc0: Update deps
+  - @lualtek/tokens@14.3.2
+
+## 14.3.1
+
+### Patch Changes
+
+- @lualtek/tokens@14.3.1
+
+## 14.3.0
+
+### Patch Changes
+
+- @lualtek/tokens@14.3.0
+
+## 14.2.0
+
+### Patch Changes
+
+- @lualtek/tokens@14.2.0
+
+## 14.1.0
+
+### Patch Changes
+
+- @lualtek/tokens@14.1.0
+
+## 14.0.3
+
+### Patch Changes
+
+- 4d4aa1f: Added optional data for LineChart series
+- Updated dependencies [4d4aa1f]
+  - @lualtek/tokens@14.0.3
+
 ## 14.0.2
 
 ### Patch Changes

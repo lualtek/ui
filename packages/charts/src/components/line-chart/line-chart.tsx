@@ -10,6 +10,7 @@ import {
   LineProps as ReLineProps,
   YAxis,
 } from 'recharts';
+import { DataKey } from 'recharts/types/util/types';
 import { Except } from 'type-fest';
 
 import { useChartAxis } from '@/charts/hooks/use-chart-axis';
@@ -22,7 +23,7 @@ export type LineProps<D> = {
   /**
    * The data key to assign to the line.
    */
-  dataKey: string | ((data: D) => string | number);
+  dataKey: DataKey<D>;
   /**
    * Used on the map as linekey id, should be unique
    */
@@ -48,7 +49,15 @@ export type LineProps<D> = {
   /**
    * A custom name/label for the value
    */
-  name?: string;
+  name?: ReLineProps['name'];
+  /**
+   * The (optional) data to render when MultiSeries.
+   * This prop is not documented in the Recharts API, and it appears
+   * only in the examples. It may breaks, so use it with caution.
+   *
+   * @example https://recharts.org/en-US/examples/LineChartHasMultiSeries
+   */
+  data?: D[];
 };
 
 export type LineChartProps<D extends ChartDataBaseType, L extends LineProps<D>> = Except<
@@ -56,7 +65,7 @@ BaseChartProps, 'renderChart' | 'children'> & {
   /**
    * The data to render.
    */
-  data: D[];
+  data?: D[];
   /**
    * The chart series/series to render.
    */
@@ -67,6 +76,10 @@ BaseChartProps, 'renderChart' | 'children'> & {
    * @defaultValue false
    */
   showDots?: boolean;
+  /**
+   * Set the radius of the dots.
+   */
+  dotsSize?: number;
   /**
    * Whether to show the Y axis.
    *
@@ -94,6 +107,7 @@ export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
   allowYDecimals = false,
   disableAnimation = false,
   focusable = false,
+  dotsSize = 3,
   syncId,
   ...otherProps
 }: PropsWithClass<LineChartProps<D, L>>) {
@@ -109,7 +123,7 @@ export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
     hasRightY,
   // eslint-disable-next-line @typescript-eslint/no-unsafe-call
   } = useChartAxis({
-    data,
+    data: data ?? series.flatMap(serie => serie.data ?? []),
     series,
     yDomainLeft,
     yDomainRight,
@@ -207,26 +221,22 @@ export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
         )}
 
         {series.map(({
-          dataKey,
           serieKeyId,
           side,
           color,
           type,
-          unit,
-          name,
+          data: serieData,
+          ...otherSerieProps
         }, index) => {
           const computedStrokeColor = color ?? getChartDefaultColor(index);
           const commonProps = {
-            dataKey,
             yAxisId: side,
             isAnimationActive,
-            connectNulls: true,
             type: type ?? 'monotone',
             stroke: computedStrokeColor,
-            name,
-            unit,
+            data: serieData,
             dot: showDots ? {
-              r: 3,
+              r: dotsSize,
               stroke: computedStrokeColor,
               fill: computedStrokeColor,
             } : false,
@@ -240,6 +250,7 @@ export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
 
           return showAreas ? (
             <Area
+              {...otherSerieProps}
               {...commonProps}
               key={serieKeyId}
               fillOpacity={1}
@@ -247,6 +258,7 @@ export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
             />
           ) : (
             <Line
+              {...otherSerieProps}
               {...commonProps}
               key={serieKeyId}
             />

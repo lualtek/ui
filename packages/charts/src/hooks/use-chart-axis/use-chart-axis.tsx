@@ -11,7 +11,7 @@ type UseChartAxisReturnType = {
 };
 
 type UseChartAxisProps<D extends ChartDataBaseType, L extends LineProps<D>> = {
-  data: D[];
+  data?: D[];
   series: L[];
   yDomainLeft?: AxisDomain;
   yDomainRight?: AxisDomain;
@@ -64,7 +64,7 @@ export const useChartAxis = <D extends ChartDataBaseType, L extends LineProps<D>
   yDomainLeft,
   yDomainRight,
 }: UseChartAxisProps<D, L>): UseChartAxisReturnType => {
-  const [notBiaxialLines, biaxialLines] = useMemo(() => series.reduce<[L[], L[]]>(
+  const [notBiaxialLines, biaxialLines] = useMemo<[L[], L[]]>(() => series.reduce<[L[], L[]]>(
     (acc, serie) => {
       acc[serie.side === 'right' ? 1 : 0].push(serie);
       return acc;
@@ -72,7 +72,7 @@ export const useChartAxis = <D extends ChartDataBaseType, L extends LineProps<D>
   ), [series]);
 
   const [yAxisWidthNotBiaxial, yAxisWidthBiaxial] = useMemo(() => {
-    if (data.length === 0) {
+    if (!data || data?.length === 0) {
       return [0, 0];
     }
 

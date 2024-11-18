@@ -1,36 +1,39 @@
-import type { StorybookConfig } from "@storybook/react-vite";
+/* eslint-disable no-param-reassign */
+import { dirname, join, resolve } from 'node:path';
 
-import { resolve, join, dirname } from "node:path";
+import type { StorybookConfig } from '@storybook/react-vite';
 
 /**
  * This function is used to resolve the absolute path of a package.
  * It is needed in projects that use Yarn PnP or are set up within a monorepo.
  */
-function getAbsolutePath(value: string): any {
-  return dirname(require.resolve(join(value, "package.json")));
+function getAbsolutePath(value: string): string {
+  return dirname(require.resolve(join(value, 'package.json')));
 }
+
 const config: StorybookConfig = {
   stories: ['../packages/**/src/**/*.stories.@(js|jsx|ts|tsx)'],
   addons: [
-    getAbsolutePath("@storybook/addon-onboarding"),
-    getAbsolutePath("@storybook/addon-links"),
-    getAbsolutePath("@storybook/addon-essentials"),
-    getAbsolutePath("@storybook/addon-interactions"),
-    getAbsolutePath("@storybook/addon-themes")
+    getAbsolutePath('storybook-addon-tag-badges'),
+    getAbsolutePath('@storybook/addon-onboarding'),
+    getAbsolutePath('@storybook/addon-links'),
+    getAbsolutePath('@storybook/addon-essentials'),
+    getAbsolutePath('@storybook/addon-interactions'),
+    getAbsolutePath('@storybook/addon-themes'),
   ],
   framework: {
-    name: getAbsolutePath("@storybook/react-vite"),
+    name: getAbsolutePath('@storybook/react-vite'),
     options: {},
   },
   docs: {
-    autodocs: "tag",
+    autodocs: true,
   },
   typescript: {
     check: false,
-    reactDocgen: "react-docgen-typescript",
+    reactDocgen: 'react-docgen-typescript',
     reactDocgenTypescriptOptions: {
       shouldExtractLiteralValuesFromEnum: true,
-      propFilter: prop => (prop.parent ? !/node_modules/.test(prop.parent.fileName) : true),
+      propFilter: prop => (prop.parent ? !prop.parent.fileName.includes('node_modules') : true),
     },
   },
   viteFinal: async (config) => {
@@ -39,7 +42,8 @@ const config: StorybookConfig = {
       config.resolve.alias['@/charts'] = resolve(__dirname, '../packages/charts/src');
       return config;
     }
+
     return config;
-  }
+  },
 };
 export default config;

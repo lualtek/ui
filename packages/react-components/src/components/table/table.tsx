@@ -17,7 +17,7 @@ import {
 import clsx from 'clsx';
 import {
   AnimatePresence, domMax, LazyMotion, m,
-} from 'framer-motion';
+} from 'motion/react';
 import {
   ReactNode, useCallback, useEffect, useId, useMemo, useState,
 } from 'react';
@@ -39,7 +39,7 @@ import { TableRow } from './table-row';
 import { CustomColumnMeta } from './types';
 
 declare module '@tanstack/react-table' {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/naming-convention
+  // eslint-disable-next-line @typescript-eslint/naming-convention, @typescript-eslint/no-empty-object-type
   interface ColumnMeta<TData extends RowData, TValue> extends CustomColumnMeta {}
 }
 
@@ -234,6 +234,7 @@ export const Table = <T extends Record<string, unknown>>({
   const [sorting, setSorting] = useState<SortingState>([]);
   const [globalFilter, setGlobalFilter] = useState('');
 
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const setDebouncedGlobalFilter = useDebounce(setGlobalFilter, filterDebounce);
 
   const finalColumns = useMemo(() => (selectableRows ? [
@@ -418,6 +419,7 @@ export const Table = <T extends Record<string, unknown>>({
                 {(enableFilterControl) ? (
                   <FilterControl
                     label={filterControlLabel}
+                    // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-return
                     onChange={event => setDebouncedGlobalFilter(event.target.value)}
                   />
                 ) : null}

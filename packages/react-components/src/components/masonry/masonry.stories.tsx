@@ -88,12 +88,12 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Default = {} satisfies Story;
-export const WithBreakPoints = {
+export const FixedColumns: Story = {};
+export const Responsive: Story = {
   args: {
     columns: {
-      default: 8,
-      wide: 6,
+      default: 5,
+      wide: 5,
       extraLarge: 5,
       large: 4,
       medium: 3,
@@ -101,4 +101,4 @@ export const WithBreakPoints = {
       extraSmall: 1,
     },
   },
-} satisfies Story;
+};

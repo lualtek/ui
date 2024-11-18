@@ -1,6 +1,6 @@
 {
   "name": "@lualtek/charts",
-  "version": "14.0.2",
+  "version": "14.3.3",
   "files": [
     "dist"
   ],
@@ -48,29 +48,31 @@
     "last 2 Chrome versions",
     "last 2 Firefox versions",
     "last 2 Safari versions",
-    "last 2 Edge versions"
+    "last 2 Edge versions",
+    "not dead",
+    "not op_mini all"
   ],
   "peerDependencies": {
     "react": "^18.2",
     "react-dom": "^18.2"
   },
   "devDependencies": {
-    "@types/node": "22.7.5",
-    "@types/react": "18.3.11",
+    "@types/node": "22.9.0",
+    "@types/react": "18.3.12",
     "@types/react-dom": "18.3.1",
     "react": "^18.3",
     "react-dom": "^18.3",
     "tsconfig": "workspace:*",
     "typed-css-modules": "0.9.1",
-    "typedoc": "0.26.9",
-    "typedoc-json-parser": "10.1.6",
+    "typedoc": "0.26.11",
+    "typedoc-json-parser": "10.2.0",
     "typescript": "5.6.3"
   },
   "dependencies": {
     "@lualtek/react-components": "workspace:*",
     "@lualtek/tokens": "workspace:*",
     "clsx": "2.1.1",
-    "recharts": "2.13.0",
+    "recharts": "2.13.3",
     "type-fest": "4.26.1"
   }
 }

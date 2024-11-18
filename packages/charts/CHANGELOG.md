@@ -1,5 +1,66 @@
 # @lualtek/charts
 
+## 14.3.3
+
+### Patch Changes
+
+- Updated dependencies [1fe4e71]
+  - @lualtek/react-components@14.3.3
+  - @lualtek/tokens@14.3.3
+
+## 14.3.2
+
+### Patch Changes
+
+- 36d9dc0: Update deps
+- Updated dependencies [36d9dc0]
+  - @lualtek/react-components@14.3.2
+  - @lualtek/tokens@14.3.2
+
+## 14.3.1
+
+### Patch Changes
+
+- a55bb40: Added support for multi line chart
+  - @lualtek/react-components@14.3.1
+  - @lualtek/tokens@14.3.1
+
+## 14.3.0
+
+### Minor Changes
+
+- 2394554: Add spread props to bar and lines in bar and line charts
+
+### Patch Changes
+
+- @lualtek/react-components@14.3.0
+- @lualtek/tokens@14.3.0
+
+## 14.2.0
+
+### Patch Changes
+
+- Updated dependencies [1f0daff]
+  - @lualtek/react-components@14.2.0
+  - @lualtek/tokens@14.2.0
+
+## 14.1.0
+
+### Patch Changes
+
+- Updated dependencies [1c3e2e5]
+  - @lualtek/react-components@14.1.0
+  - @lualtek/tokens@14.1.0
+
+## 14.0.3
+
+### Patch Changes
+
+- 4d4aa1f: Added optional data for LineChart series
+- Updated dependencies [4d4aa1f]
+  - @lualtek/react-components@14.0.3
+  - @lualtek/tokens@14.0.3
+
 ## 14.0.2
 
 ### Patch Changes

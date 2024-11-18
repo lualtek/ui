@@ -97,7 +97,7 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(({
   defaultValue,
   onInput,
   showClearButton = false,
-  hint = 'Invalid input',
+  hint,
   ...otherProps
 }, forwardedRef) => {
   const [isPasswordVisible, setPasswordVisible] = useState<boolean>(invalid ?? false);
@@ -218,7 +218,7 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(({
           {label}
         </Text>
       </div>
-      {(isUserInvalid) && (
+      {(isUserInvalid && hint) && (
         <Stack
           className={styles.Hint}
           hPadding={16}
