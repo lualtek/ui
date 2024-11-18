@@ -3,8 +3,8 @@
     "default": {
       "$type": "color",
       "value": {
-        "light": "{color.brand.40}",
-        "dark": "{color.brand.60}"
+        "light": "{color.brand.60}",
+        "dark": "{color.brand.40}"
       }
     },
     "dark": {
