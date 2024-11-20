@@ -1,5 +1,21 @@
 # @lualtek/charts
 
+## 15.0.0-next.0
+
+### Minor Changes
+
+- 5612bd4: Update deps
+
+### Patch Changes
+
+- f9de811: Update deps
+- Updated dependencies [ecb5ae0]
+- Updated dependencies [f9de811]
+- Updated dependencies [7b45869]
+- Updated dependencies [5612bd4]
+  - @lualtek/react-components@15.0.0-next.0
+  - @lualtek/tokens@15.0.0-next.0
+
 ## 14.4.0
 
 ### Minor Changes

@@ -6,6 +6,7 @@
     box-sizing: border-box;
     line-height: 1.5;
     background-color: var(--global-background);
+    color-scheme: light dark;
   }
 
   *,

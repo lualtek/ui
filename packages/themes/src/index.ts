@@ -1,6 +1,6 @@
 /* eslint-disable import/extensions */
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-console, no-restricted-syntax */
+/* eslint-disable no-console */
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -8,20 +8,21 @@ import fs from 'fs-extra';
 import StyleDictionary from 'style-dictionary';
 import type { Config } from 'style-dictionary/types';
 
+// import cssLightDark from './transformers/light-dark.ts';
 import OkLCH from './transformers/oklch.ts';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-type ThemeVariants = typeof THEME_VARIANTS[number];
-const THEME_VARIANTS = ['light', 'dark'] as const;
+// type ThemeVariants = typeof THEME_VARIANTS[number];
+// const THEME_VARIANTS = ['light', 'dark'] as const;
 
 /**
  * Generate config for each theme folder
  * and each variant name (eg: light/dark)
  * */
-const getConfig = (name: string, variant: ThemeVariants): Config => ({
-  source: [`./src/themes/${name}/${variant}/*.json`],
+const getConfig = (name: string): Config => ({
+  source: [`./src/themes/${name}/*.json`],
   include: [
     // Inject raw tokens to be used in the transformation/references
     '../tokens/platforms/raw/tokens.json',
@@ -30,7 +31,7 @@ const getConfig = (name: string, variant: ThemeVariants): Config => ({
     // Build configuration for the web platform
     web: {
       basePxFontSize: 18,
-      buildPath: `platforms/web/${name}/`,
+      buildPath: 'platforms/web/',
       transformGroup: 'css',
       transforms: [
         'color/oklch',
@@ -38,16 +39,16 @@ const getConfig = (name: string, variant: ThemeVariants): Config => ({
       files: [
         {
           format: 'css/variables',
-          destination: `${variant}.css`,
+          destination: `${name}.css`,
         },
         {
           format: 'json/flat',
-          destination: `${variant}.json`,
+          destination: `${name}.json`,
         },
       ],
       options: {
         showFileHeader: true,
-        fileHeader: (defaultMessage: string[]) => [
+        fileHeader: (defaultMessage: string[] = []) => [
           ...defaultMessage,
           '© Lualtek Srl. All rights reserved. Developed by Mattia Astorino.',
         ],
@@ -67,22 +68,20 @@ const availableThemes = fs.readdirSync(path.join(__dirname, 'themes')).filter(
  * For each folder inside themes and for each variant (dark, light) just create
  * style dictionary configuration and run the build
  */
-for (const theme of availableThemes) {
-  for (const themeVariant of THEME_VARIANTS) {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-    const SDWithConfig = new StyleDictionary(getConfig(theme, themeVariant));
+availableThemes.forEach(async (theme) => {
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+  const SDWithConfig = new StyleDictionary(getConfig(theme));
 
-    /**
+  /**
    * Register custom transformers to process token values for
    * the web platform
    */
-    SDWithConfig.registerTransform(OkLCH);
+  SDWithConfig.registerTransform(OkLCH);
 
-    /**
+  /**
    * Manually run StyleDictionary for all the configured platforms
    */
-    console.clear();
-    await SDWithConfig.hasInitialized;
-    await SDWithConfig.buildAllPlatforms();
-  }
-}
+  console.clear();
+  await SDWithConfig.hasInitialized;
+  await SDWithConfig.buildAllPlatforms();
+});

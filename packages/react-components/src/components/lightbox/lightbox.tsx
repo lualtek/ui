@@ -8,10 +8,10 @@ import { FocusOn } from 'react-focus-on';
 import { useKeyBindings } from 'rooks';
 
 import {
+  BlankButton,
   IconButton, Overlay, OverlayProps,
 } from '@/components';
 
-import { BlankButton } from '../blank-button';
 import styles from './lightbox.module.css';
 
 export type LightboxProps = {

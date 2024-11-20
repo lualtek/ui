@@ -1,5 +1,11 @@
 # @lualtek/icons
 
+## 15.0.0-next.0
+
+### Minor Changes
+
+- 5612bd4: Update deps
+
 ## 14.4.0
 
 ### Minor Changes

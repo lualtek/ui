@@ -1,0 +1,99 @@
+{
+  "vibrancy": {
+    "foreground": {
+      "value": {
+        "light": "{color.primary.100}",
+        "dark": "{color.primary.30}"
+      },
+      "$type": "color"
+    },
+    "background": {
+      "value": {
+        "light": "{color.support.white}",
+        "dark": "{color.primary.100}"
+      },
+      "transparency": {
+        "light": "30%",
+        "dark": "60%"
+      },
+      "$type": "color"
+    },
+    "background-soft": {
+      "value": {
+        "light": "{color.primary.0}",
+        "dark": "{color.primary.90}"
+      },
+      "transparency": {
+        "light": "60%",
+        "dark": "60%"
+      },
+      "$type": "color"
+    },
+    "background-mid": {
+      "value": {
+        "light": "{color.primary.10}",
+        "dark": "{color.primary.80}"
+      },
+      "transparency": {
+        "light": "60%",
+        "dark": "60%"
+      },
+      "$type": "color"
+    },
+    "background-hard": {
+      "value": {
+        "light": "{color.primary.30}",
+        "dark": "{color.primary.70}"
+      },
+      "transparency": {
+        "light": "60%",
+        "dark": "60%"
+      },
+      "$type": "color"
+    },
+    "background-red": {
+      "value": {
+        "light": "{color.red.50}",
+        "dark": "{color.red.50}"
+      },
+      "transparency": {
+        "light": "10%",
+        "dark": "20%"
+      },
+      "$type": "color"
+    },
+    "background-green": {
+      "value": {
+        "light": "{color.green.40}",
+        "dark": "{color.green.40}"
+      },
+      "transparency": {
+        "light": "10%",
+        "dark": "20%"
+      },
+      "$type": "color"
+    },
+    "background-yellow": {
+      "value": {
+        "light": "{color.yellow.50}",
+        "dark": "{color.yellow.50}"
+      },
+      "transparency": {
+        "light": "10%",
+        "dark": "20%"
+      },
+      "$type": "color"
+    },
+    "background-brand": {
+      "value": {
+        "light": "{color.brand.60}",
+        "dark": "{color.brand.60}"
+      },
+      "transparency": {
+        "light": "10%",
+        "dark": "20%"
+      },
+      "$type": "color"
+    }
+  }
+}
