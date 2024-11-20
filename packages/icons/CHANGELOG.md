@@ -1,5 +1,12 @@
 # @lualtek/icons
 
+## 14.4.0
+
+### Minor Changes
+
+- 5612bd4: Update deps
+- 047772a: Add new gas icon
+
 ## 14.3.3
 
 ## 14.3.2
