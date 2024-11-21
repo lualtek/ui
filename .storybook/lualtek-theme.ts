@@ -12,6 +12,7 @@ export default create({
   // UI
   appBg: 'oklch(15.73% 0.023 265.66)',
   appContentBg: '#231e3b',
+  appPreviewBg: '#231e3b',
   appBorderColor: '#393355',
   barBg: '#231e3b',
 

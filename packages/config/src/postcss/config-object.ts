@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 
 export const postcssObjConfig = (tokens: Record<string, unknown>) => ({
   plugins: {
@@ -7,9 +6,10 @@ export const postcssObjConfig = (tokens: Record<string, unknown>) => ({
       pattern: /token\(.*?--([^\s]+?)\)/gi,
       data: tokens,
     },
-    'postcss-preset-env': {
-      stage: 0,
-    },
+    'postcss-custom-media': {},
+    // 'postcss-preset-env': {
+    //   stage: 0,
+    // },
     cssnano: {
       preset: [
         'default',

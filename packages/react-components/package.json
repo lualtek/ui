@@ -27,7 +27,7 @@
     "dev": "pnpm run --parallel watch:csstypes",
     "prebuild": "pnpm run clean && pnpm run build:csstypes",
     "build": "pnpm run build:ts && pnpm run build:css && pnpm run copy:fonts && pnpm run build:api",
-    "build:css": "cd src && copyfiles \"**/*.css\" \"./../dist\" && cd .. && postcss \"dist/**/!(utils)/*.css\" --replace",
+    "build:css": "cd src && copyfiles \"**/*.css\" \"./../dist\" && cd .. && postcss dist/*.css \"dist/**/!(utils)/*.css\" --replace",
     "copy:fonts": "cd src && copyfiles \"./fonts/*\" \"./../dist\" && cd ..",
     "build:ts": "tsc -p tsconfig.prod.json && tsc-alias",
     "build:api": "typedoc && typedoc-json-parser --json dist/api-temp.json && tsx ./generate-api-doc.ts",
