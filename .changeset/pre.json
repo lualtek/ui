@@ -11,6 +11,7 @@
     "tsconfig": "0.0.4"
   },
   "changesets": [
+    "fast-weeks-joke",
     "few-chefs-shop",
     "lovely-elephants-taste",
     "mean-feet-shake",

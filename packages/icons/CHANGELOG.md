@@ -1,5 +1,7 @@
 # @lualtek/icons
 
+## 15.0.0-next.2
+
 ## 15.0.0-next.1
 
 ### Minor Changes

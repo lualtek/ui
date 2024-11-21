@@ -1,5 +1,11 @@
 # @lualtek/config
 
+## 15.0.0-next.2
+
+### Patch Changes
+
+- @lualtek/tokens@15.0.0-next.2
+
 ## 15.0.0-next.1
 
 ### Major Changes
