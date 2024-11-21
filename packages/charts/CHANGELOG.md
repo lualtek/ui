@@ -1,5 +1,18 @@
 # @lualtek/charts
 
+## 15.0.0-next.1
+
+### Minor Changes
+
+- 19eadb8: Update deps
+
+### Patch Changes
+
+- Updated dependencies [53d82c8]
+- Updated dependencies [19eadb8]
+  - @lualtek/react-components@15.0.0-next.1
+  - @lualtek/tokens@15.0.0-next.1
+
 ## 15.0.0-next.0
 
 ### Minor Changes
