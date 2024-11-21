@@ -1,5 +1,11 @@
 # @lualtek/icons
 
+## 15.0.0-next.1
+
+### Minor Changes
+
+- 19eadb8: Update deps
+
 ## 15.0.0-next.0
 
 ### Minor Changes

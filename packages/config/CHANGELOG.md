@@ -1,5 +1,19 @@
 # @lualtek/config
 
+## 15.0.0-next.1
+
+### Major Changes
+
+- 53d82c8: Remoev postcss-preset-env and precompile static tokens
+
+### Minor Changes
+
+- 19eadb8: Update deps
+
+### Patch Changes
+
+- @lualtek/tokens@15.0.0-next.1
+
 ## 15.0.0-next.0
 
 ### Minor Changes

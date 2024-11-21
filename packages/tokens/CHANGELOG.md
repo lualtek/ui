@@ -1,5 +1,7 @@
 # @lualtek/tokens
 
+## 15.0.0-next.1
+
 ## 15.0.0-next.0
 
 ### Minor Changes

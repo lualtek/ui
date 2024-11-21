@@ -11,9 +11,10 @@
     "tsconfig": "0.0.4"
   },
   "changesets": [
+    "few-chefs-shop",
+    "lovely-elephants-taste",
     "mean-feet-shake",
     "neat-peas-trade",
-    "rare-bulldogs-rush",
-    "short-cougars-remember"
+    "rare-bulldogs-rush"
   ]
 }
