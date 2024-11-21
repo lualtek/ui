@@ -149,6 +149,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(({
           {label && (
             <Text
               as="label"
+              className={styles.Label}
               lineHeight={properties[dimension].text.lh}
               htmlFor={uid}
               size={properties[dimension].text.size}
