@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 15.0.0-next.2
+
+### Patch Changes
+
+- da06b52: Make selection controls label unselectable
+  - @lualtek/icons@15.0.0-next.2
+
 ## 15.0.0-next.1
 
 ### Major Changes
