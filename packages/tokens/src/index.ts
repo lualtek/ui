@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable import/extensions */
 /* eslint-disable no-console */
 import StyleDictionary from 'style-dictionary';

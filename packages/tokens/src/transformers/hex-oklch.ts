@@ -1,4 +1,4 @@
-import Color from 'colorjs.io';
+import Color, { ColorTypes } from 'colorjs.io';
 import type { Transform } from 'style-dictionary/types';
 
 const okLCHValues: Transform = {
@@ -10,7 +10,7 @@ const okLCHValues: Transform = {
       throw new Error(`Color token "${token.name}" has an empty value.`);
     }
 
-    const color = new Color(token.$value).to('oklch');
+    const color = new Color(token.$value as ColorTypes).to('oklch');
     return color.toString().replace('none', '0');
   },
 };
