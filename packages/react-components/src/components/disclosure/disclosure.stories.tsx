@@ -44,6 +44,13 @@ type Story = StoryObj<typeof meta>;
 
 export const Default = {} satisfies Story;
 
+export const Open = {
+  args: {
+    open: true,
+    onToggle: open => console.log(open),
+  },
+} satisfies Story;
+
 export const Nested = {
   render: args => (
     <Disclosure {...args}>
@@ -60,19 +67,21 @@ export const Nested = {
   ),
 } satisfies Story;
 
-export const StackNested = {
+export const Accordion = {
+  args: {
+    name: 'accordion',
+  },
   render: args => (
-    <Stack fill={false} hAlign="start">
+    <Stack fill={false} rowGap={8} hAlign="start">
       <Disclosure {...args}>
         Lorem ipsum dolor sit amet consectetur adipisicing elit.
         Doloribus corporis nobis ipsum natus laudantium dolorem sapiente,
         sint adipisci at asperiores quia ex voluptatum veniam! Quos rerum natus eos excepturi atque!
-
-        <Disclosure summary="Nested">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          Doloribus corporis nobis ipsum natus laudantium dolorem sapiente,
-          sint adipisci at asperiores quia ex voluptatum veniam! Quos rerum natus eos excepturi atque!
-        </Disclosure>
+      </Disclosure>
+      <Disclosure {...args}>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        Doloribus corporis nobis ipsum natus laudantium dolorem sapiente,
+        sint adipisci at asperiores quia ex voluptatum veniam! Quos rerum natus eos excepturi atque!
       </Disclosure>
     </Stack>
   ),

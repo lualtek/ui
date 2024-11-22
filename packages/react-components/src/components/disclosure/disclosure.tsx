@@ -7,7 +7,8 @@ import {
 import {
   DetailsHTMLAttributes,
   forwardRef,
-  ReactNode, useCallback, useEffect, useId, useMemo, useRef, useState,
+  ReactNode, useCallback, useEffect, useId, useImperativeHandle,
+  useMemo, useRef, useState,
 } from 'react';
 
 import {
@@ -59,6 +60,7 @@ export type DisclosureProps = DetailsHTMLAttributes<HTMLDetailsElement> & {
    * @defaultValue true
    */
   expandable?: boolean;
+  onToggle?: (open: boolean) => void;
 }
 
 type SizesType = Record<NonNullable<DisclosureProps['dimension']>, {
@@ -95,7 +97,10 @@ export const Disclosure = forwardRef<HTMLDetailsElement, DisclosureProps>(({
   onToggle,
   ...otherProps
 }, forwardedRef) => {
-  const ref = useRef<any>(forwardedRef);
+  const ref = useRef<HTMLDetailsElement>(null);
+
+  useImperativeHandle(forwardedRef, () => ref.current!);
+
   const [isOpen, setIsOpen] = useState<boolean>(open);
   const uid = useId();
 
@@ -103,14 +108,17 @@ export const Disclosure = forwardRef<HTMLDetailsElement, DisclosureProps>(({
     if (ref.current) {
       ref.current.open = open;
     }
-  }, [expandable, open]);
+  }, [open]);
 
   const handleOpen = useCallback(
-    () => () => {
-      if (ref.current && expandable) setIsOpen(open ?? ref.current.open);
-      if (expandable && open === undefined) onToggle?.(open || ref.current.open);
+    (event: React.SyntheticEvent<HTMLDetailsElement>) => {
+      const hasOpenState = event.currentTarget.open;
+      if (expandable) {
+        setIsOpen(hasOpenState);
+        onToggle?.(hasOpenState);
+      }
     },
-    [expandable, onToggle, open],
+    [expandable, onToggle],
   );
 
   const dynamicStyle = useMemo(() => (
@@ -126,7 +134,7 @@ export const Disclosure = forwardRef<HTMLDetailsElement, DisclosureProps>(({
       data-disclosure-icon-position={iconPosition}
       data-disclosure-dimension={dimension}
       data-disclosure-expandable={expandable}
-      onToggle={handleOpen()}
+      onToggle={handleOpen}
       ref={ref}
       open={isOpen}
       {...otherProps}
