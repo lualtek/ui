@@ -1,5 +1,25 @@
 # @lualtek/react-components
 
+## 15.0.0
+
+### Major Changes
+
+- 53d82c8: Remoev postcss-preset-env and precompile static tokens
+- 19fb67a: Migrate theme system to css light-dark()
+
+### Minor Changes
+
+- 19eadb8: Update deps
+
+### Patch Changes
+
+- da06b52: Make selection controls label unselectable
+- b4dda81: Fix disclosure component
+- 19fb67a: Fix shandow lv 3
+- 19fb67a: Update deps
+- Updated dependencies [19eadb8]
+  - @lualtek/icons@15.0.0
+
 ## 15.0.0-next.2
 
 ### Patch Changes
