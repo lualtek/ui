@@ -1,5 +1,23 @@
 # @lualtek/themes
 
+## 15.0.0-next.2
+
+## 15.0.0-next.1
+
+### Minor Changes
+
+- 19eadb8: Update deps
+
+## 15.0.0-next.0
+
+### Major Changes
+
+- 7b45869: Migrate theme system to css light-dark()
+
+### Minor Changes
+
+- 5612bd4: Update deps
+
 ## 14.4.0
 
 ### Minor Changes
