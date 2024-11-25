@@ -1,5 +1,12 @@
 # @lualtek/config
 
+## 15.0.3
+
+### Patch Changes
+
+- 107292b: Add missing postcss plugin for custom selectors (fixes Prose component)
+  - @lualtek/tokens@15.0.3
+
 ## 15.0.2
 
 ### Patch Changes
