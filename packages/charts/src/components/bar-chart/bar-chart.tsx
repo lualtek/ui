@@ -46,21 +46,14 @@ export type BarProps<D> = {
   name?: string;
 };
 
-export type BarChartProps<D extends ChartDataBaseType, B extends BarProps<D>> = Except<
-BaseChartProps, 'renderChart' | 'children'> & {
+export type BarChartAccessoryProps<T = Record<string, unknown>> = Except<
+  BaseChartProps, 'renderChart' | 'children'
+> & {
   /**
-   * The data to render.
-   */
-  data: D[];
-  /**
-   * The chart series/series to render.
-   */
-  series: B[];
-  /**
-   * Whether to show the Y axis.
-   *
-   * @defaultValue true
-   */
+ * Whether to show the Y axis.
+ *
+ * @defaultValue true
+ */
   showYAxis?: boolean;
   /**
    * The gap between bar groups
@@ -72,7 +65,18 @@ BaseChartProps, 'renderChart' | 'children'> & {
    * Set the size of the bars
    */
   barSize?: number | string;
-}
+} & T
+
+export type BarChartProps<D extends ChartDataBaseType, B extends BarProps<D>> = BarChartAccessoryProps<{
+  /**
+   * The data to render.
+   */
+  data: D[];
+  /**
+   * The chart series/series to render.
+   */
+  series: B[];
+}>
 
 export function BarChart<D extends ChartDataBaseType, B extends BarProps<D>>({
   className,

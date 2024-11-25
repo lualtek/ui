@@ -60,16 +60,8 @@ export type LineProps<D> = {
   data?: D[];
 };
 
-export type LineChartProps<D extends ChartDataBaseType, L extends LineProps<D>> = Except<
+export type LineChartAccessoryProps<T = Record<string, unknown>> = Except<
 BaseChartProps, 'renderChart' | 'children'> & {
-  /**
-   * The data to render.
-   */
-  data?: D[];
-  /**
-   * The chart series/series to render.
-   */
-  series: L[];
   /**
    * Whether to show the dots on the series.
    *
@@ -90,7 +82,18 @@ BaseChartProps, 'renderChart' | 'children'> & {
    * Render areas for the series.
    */
   showAreas?: boolean;
-}
+} & T
+
+export type LineChartProps<D extends ChartDataBaseType, L extends LineProps<D>> = LineChartAccessoryProps<{
+  /**
+   * The data to render.
+   */
+  data?: D[];
+  /**
+   * The chart series/series to render.
+   */
+  series: L[];
+}>;
 
 export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
   className,
