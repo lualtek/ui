@@ -1,5 +1,13 @@
 # @lualtek/charts
 
+## 15.0.2
+
+### Patch Changes
+
+- a3afb4f: Fix chart wrong className type
+  - @lualtek/react-components@15.0.2
+  - @lualtek/tokens@15.0.2
+
 ## 15.0.1
 
 ### Patch Changes
