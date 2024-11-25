@@ -1,5 +1,13 @@
 # @lualtek/charts
 
+## 15.0.1
+
+### Patch Changes
+
+- cd5b08c: Improve charts types
+  - @lualtek/react-components@15.0.1
+  - @lualtek/tokens@15.0.1
+
 ## 15.0.0
 
 ### Minor Changes
