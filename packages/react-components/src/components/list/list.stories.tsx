@@ -40,9 +40,3 @@ export const MarkerColor = {
     markerColor: 'green',
   },
 } satisfies Story;
-
-export const Ordered = {
-  args: {
-    as: 'ol',
-  },
-} satisfies Story;

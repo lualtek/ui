@@ -7,6 +7,7 @@ export const postcssObjConfig = (tokens: Record<string, unknown>) => ({
       data: tokens,
     },
     'postcss-custom-media': {},
+    'postcss-custom-selectors': {},
     // 'postcss-preset-env': {
     //   stage: 0,
     // },
