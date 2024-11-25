@@ -28,6 +28,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default = {} satisfies Story;
+
 export const CustomMarker = {
   args: {
     marker: 'chat',
@@ -37,5 +38,11 @@ export const CustomMarker = {
 export const MarkerColor = {
   args: {
     markerColor: 'green',
+  },
+} satisfies Story;
+
+export const Ordered = {
+  args: {
+    as: 'ol',
   },
 } satisfies Story;
