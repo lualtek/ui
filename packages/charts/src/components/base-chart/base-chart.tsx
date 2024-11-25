@@ -13,12 +13,13 @@ import {
   XAxisProps,
   YAxisProps,
 } from 'recharts';
+import { Except } from 'type-fest';
 
 import { Tooltip, TooltipProps } from '../tooltip';
 
 export type ChartDataBaseType = Record<string, string | number | null>;
 
-export type BaseChartProps = ResponsiveContainerProps & {
+export type BaseChartProps = Except<ResponsiveContainerProps, 'className'> & PropsClassChildren<{
   /**
    * The data key to assign to the x-axis.
    */
@@ -170,7 +171,7 @@ export type BaseChartProps = ResponsiveContainerProps & {
    * @returns ReactElement
    */
   renderChart: (children: ReactNode) => ReactElement;
-};
+}>;
 
 export const DENSITIES: Record<NonNullable<BaseChartProps['density']>, number> = {
   low: 3,
@@ -178,7 +179,7 @@ export const DENSITIES: Record<NonNullable<BaseChartProps['density']>, number> =
   high: 9,
 };
 
-export const BaseChart = forwardRef<HTMLDivElement, PropsClassChildren<BaseChartProps>>(({
+export const BaseChart = forwardRef<HTMLDivElement, BaseChartProps>(({
   className,
   children,
   showGrid = true,
