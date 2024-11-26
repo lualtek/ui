@@ -7,6 +7,7 @@ import lualtekTheme from './lualtek-theme';
 addons.setConfig({
   theme: { ...themes.dark, ...lualtekTheme },
   sidebar: {
+    ...addons.getConfig().sidebar,
     showRoots: true,
   },
 });

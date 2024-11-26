@@ -32,6 +32,9 @@ export const IconButton = forwardRef(({
     disabled={disabled}
     busy={busy}
     className={clsx(styles.IconButton, className)}
+    iconOpticalSize={{
+      big: 24,
+    }}
     {...otherProps}
   />
 )) as PolymorphicIconButton;

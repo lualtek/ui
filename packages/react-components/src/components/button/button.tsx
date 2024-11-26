@@ -32,6 +32,13 @@ export type ButtonProps = {
    */
   icon?: IconProps['source'];
   /**
+   * Set the optical size of the icon. Used only when icon is defined.
+   * This lets you adjust the size of the icon on different button sizes.
+   *
+   * !IMPORTANT: Use only if necessary, the default size is usually the best fit.
+   */
+  iconOpticalSize?: Partial<IconSizeProps>;
+  /**
    * Set the position of the icon. Used only when icon is defined.
    * @defaultValue "start"
    */
@@ -81,6 +88,7 @@ export const Button = forwardRef(({
   children,
   fullWidth,
   icon,
+  iconOpticalSize,
   disabled,
   iconPosition = 'start',
   iconColor,
@@ -100,13 +108,13 @@ export const Button = forwardRef(({
     [disabled, onClick],
   );
 
-  const withIcon = useMemo(() => icon && (
+  const renderIcon = useMemo(() => icon && (
     <Icon
       source={icon}
       fill={iconColor}
-      dimension={iconSize[dimension]}
+      dimension={iconOpticalSize?.[dimension] ?? iconSize[dimension]}
     />
-  ), [icon, dimension, iconColor]);
+  ), [icon, dimension, iconColor, iconOpticalSize]);
 
   return (
     <Wrapper
@@ -126,7 +134,7 @@ export const Button = forwardRef(({
       {...(kind === 'primary' || kind === 'secondary') ? vibrancy.attributes : undefined}
       {...otherProps}
     >
-      {withIcon}
+      {renderIcon}
       {(children && busy) ? <span>{children}</span> : children}
       {busy && (
         <span className={styles.SpinnerIndicator}>
