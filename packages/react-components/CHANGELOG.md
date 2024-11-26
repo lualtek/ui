@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 15.1.2
+
+### Patch Changes
+
+- fa7da57: Tentative to fix chips
+  - @lualtek/icons@15.1.2
+
 ## 15.1.1
 
 ### Patch Changes
