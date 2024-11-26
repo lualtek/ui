@@ -3,7 +3,12 @@
 import type { TokensTypes } from '@lualtek/tokens/platforms/web';
 import clsx from 'clsx';
 import {
+  delay,
+  domMax, LazyMotion, m,
+} from 'motion/react';
+import {
   forwardRef, Ref, useMemo,
+  useState,
 } from 'react';
 
 import {
@@ -43,6 +48,11 @@ export type ChipProps = PropsClassChildren<{
    * The icon is not rendered if `dismissable` is `true`
    */
   icon?: IconProps['source'];
+  /**
+   * Set the content of the chip to be collapsed and save space. Icon is not collpased
+   * Effective only when `icon` is `defined`.
+   */
+  collapsed?: boolean;
 }>
 
 type Sizes = Record<NonNullable<ChipProps['dimension']>, {
@@ -61,6 +71,29 @@ const sizes: Sizes = {
   },
 };
 
+const expandVariants = {
+  hidden: {
+    opacity: 0,
+    width: 0,
+    x: -4,
+    transition: {
+      duration: 0,
+      opacity: {
+        ease: 'linear',
+        duration: 0,
+      },
+    },
+  },
+  visible: {
+    opacity: 1,
+    x: 0,
+    width: 'auto',
+    transition: {
+      duration: 0.1,
+    },
+  },
+};
+
 export const Chip = forwardRef<ForwardedElementType<NonNullable<ChipProps['interactive']>>, ChipProps>(({
   style,
   children,
@@ -70,25 +103,33 @@ export const Chip = forwardRef<ForwardedElementType<NonNullable<ChipProps['inter
   icon,
   interactive,
   dismissable,
+  collapsed,
   onDismissClick,
   ...otherProps
 }, forwardedRef) => {
+  const [isHovered, setIsHovered] = useState(false);
   const commonProps: StackProps & Record<string, unknown> = useMemo(() => ({
     direction: 'row',
-    columnGap: 8,
+    columnGap: (() => {
+      if (collapsed && icon) {
+        return isHovered ? 8 : undefined;
+      }
+
+      return 8;
+    })(),
     inline: true,
     fill: false,
     'data-chip-dimension': dimension,
     className: clsx(styles.Chip, className),
     vAlign: 'center',
-  }), [className, dimension]);
+  }), [className, dimension, collapsed, icon, isHovered]);
 
   const dynamicStyle = useMemo(() => ({
     '--background': `var(--highlight-${color}-background)`,
     '--foreground': `var(--highlight-${color}-foreground)`,
   }), [color]);
 
-  const Content = useMemo(() => (
+  const renderContent = useMemo(() => (
     <>
       {(icon && !dismissable) && (
         <Icon
@@ -98,7 +139,15 @@ export const Chip = forwardRef<ForwardedElementType<NonNullable<ChipProps['inter
         />
       )}
 
-      <b>{children}</b>
+      <m.b
+        variants={expandVariants}
+        initial={(icon && collapsed) ? 'hidden' : undefined}
+        animate={isHovered ? 'visible' : undefined}
+        className={styles.Label}
+      >
+        {children}
+      </m.b>
+
       {(!interactive && dismissable) && (
         <button onClick={onDismissClick} className={styles.Action} type="button">
           <Icon
@@ -108,28 +157,39 @@ export const Chip = forwardRef<ForwardedElementType<NonNullable<ChipProps['inter
         </button>
       )}
     </>
-  ), [children, dimension, dismissable, icon, interactive, onDismissClick]);
+  ), [children, dimension, dismissable, icon, collapsed, isHovered, interactive, onDismissClick]);
 
-  return interactive ? (
-    <Stack
-      as="button"
-      ref={forwardedRef as Ref<HTMLButtonElement>}
-      style={{ ...dynamicStyle, ...style }}
-      {...commonProps}
-      {...otherProps}
-    >
-      {Content}
-    </Stack>
-  ) : (
-    <Stack
-      as="span"
-      ref={forwardedRef as Ref<HTMLSpanElement>}
-      style={{ ...dynamicStyle, ...style }}
-      {...commonProps}
-      {...otherProps}
-    >
-      {Content}
-    </Stack>
+  return (
+    <LazyMotion features={domMax}>
+      {interactive ? (
+        <Stack
+          as={m.button}
+          ref={forwardedRef as Ref<HTMLButtonElement>}
+          style={{ ...dynamicStyle, ...style }}
+          onHoverStart={() => setIsHovered(true)}
+          onHoverEnd={() => setIsHovered(false)}
+          {...commonProps}
+          {...otherProps}
+        >
+          {renderContent}
+        </Stack>
+      ) : (
+        <Stack
+          as={m.span}
+          ref={forwardedRef as Ref<HTMLSpanElement>}
+          style={{ ...dynamicStyle, ...style }}
+          onHoverStart={() => setIsHovered(true)}
+          onHoverEnd={() => setIsHovered(false)}
+          onFocus={() => setIsHovered(true)}
+          onBlur={() => setIsHovered(false)}
+          tabIndex={collapsed ? 0 : undefined}
+          {...commonProps}
+          {...otherProps}
+        >
+          {renderContent}
+        </Stack>
+      )}
+    </LazyMotion>
   );
 });
 

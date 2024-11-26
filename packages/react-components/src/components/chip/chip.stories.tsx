@@ -10,6 +10,7 @@ const meta = {
     dismissable: false,
     interactive: false,
     children: 'chip',
+    collapsed: false,
   },
   argTypes: {
     onDismissClick: {
@@ -48,5 +49,20 @@ export const WithIcon = {
 export const Dismissale = {
   args: {
     dismissable: true,
+  },
+} satisfies Story;
+
+export const Interactive = {
+  args: {
+    // @ts-expect-error messing with types
+    onClick: () => alert('clicked'),
+    interactive: true,
+  },
+} satisfies Story;
+
+export const Collapsed = {
+  args: {
+    icon: 'device',
+    collapsed: true,
   },
 } satisfies Story;
