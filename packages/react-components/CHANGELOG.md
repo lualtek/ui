@@ -1,5 +1,13 @@
 # @lualtek/react-components
 
+## 15.1.1
+
+### Patch Changes
+
+- 8a7f43d: Fix chip label visibility
+- 1dd7bd8: Fix small disclosure icon alignment
+  - @lualtek/icons@15.1.1
+
 ## 15.1.0
 
 ### Minor Changes
