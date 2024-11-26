@@ -12,7 +12,7 @@ import {
 } from 'react';
 
 import {
-  Icon, IconProps, Text, TextProps,
+  Icon, IconProps, Interpolator, Text, TextProps,
 } from '@/components';
 
 import styles from './disclosure.module.css';
@@ -47,6 +47,16 @@ export type DisclosureProps = DetailsHTMLAttributes<HTMLDetailsElement> & {
    */
   dimension?: 'small' | 'regular' | 'big';
   /**
+   * Set the icon to be displayed when the disclosure is closed.
+   * @defaultValue "ctrl-right"
+   */
+  closedIcon?: IconProps['source'];
+  /**
+   * Set the icon to be displayed when the disclosure is open.
+   * @defaultValue "ctrl-down"
+   */
+  openIcon?: IconProps['source'];
+  /**
    * Set the position of the icon indicator. The content padding is automatically
    * applied based on the icon position.
    *
@@ -60,6 +70,11 @@ export type DisclosureProps = DetailsHTMLAttributes<HTMLDetailsElement> & {
    * @defaultValue true
    */
   expandable?: boolean;
+  /**
+   * Callback fired when the disclosure is toggled.
+   * @param open the current state of the disclosure
+   * @returns void
+   */
   onToggle?: (open: boolean) => void;
 }
 
@@ -89,6 +104,8 @@ export const Disclosure = forwardRef<HTMLDetailsElement, DisclosureProps>(({
   padding = true,
   className,
   summary,
+  closedIcon = 'plus',
+  openIcon = 'minus',
   contentMaxHeight,
   dimension = 'regular',
   iconPosition = 'start',
@@ -149,11 +166,33 @@ export const Disclosure = forwardRef<HTMLDetailsElement, DisclosureProps>(({
       >
         {summary}
         {expandable && (
-          <Icon
-            className={styles.ExpandIcon}
-            source="ctrl-right"
-            dimension={sizes[dimension].icon}
-          />
+          <div className={styles.ExpandIcon}>
+            <Interpolator
+              duration={100}
+              interpolating={isOpen}
+              enterComponent={(
+                <Icon
+                  source={openIcon}
+                  dimension={sizes[dimension].icon}
+                />
+              )}
+              enterRotation="-45deg"
+              enterScale={[1, 1]}
+              exitComponent={(
+                <Icon
+                  source={closedIcon}
+                  dimension={sizes[dimension].icon}
+                />
+              )}
+              exitScale={[1, 1]}
+              exitRotation="45deg"
+            />
+          </div>
+          // <Icon
+          //   className={styles.ExpandIcon}
+          //   source="ctrl-right"
+          //   dimension={sizes[dimension].icon}
+          // />
         )}
       </Text>
       <LazyMotion features={domMax}>

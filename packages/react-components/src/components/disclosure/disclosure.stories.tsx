@@ -67,6 +67,13 @@ export const Nested = {
   ),
 } satisfies Story;
 
+export const CustomIcons = {
+  args: {
+    closedIcon: 'remove',
+    openIcon: 'check',
+  },
+} satisfies Story;
+
 export const Accordion = {
   args: {
     name: 'accordion',
