@@ -158,8 +158,8 @@ export const Disclosure = forwardRef<HTMLDetailsElement, DisclosureProps>(({
     >
       <Text
         as="summary"
-        responsive={false}
         className={styles.Summary}
+        responsive={false}
         id={`${uid}-disclosure`}
         size={dimension ? sizes[dimension].summary : undefined}
         weight="bold"
