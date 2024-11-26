@@ -142,7 +142,7 @@ export const Chip = forwardRef<ForwardedElementType<NonNullable<ChipProps['inter
       {icon && collapsed ? (
         <m.b
           variants={expandVariants}
-          initial="hidden"
+          initial={(icon && collapsed) ? 'hidden' : undefined}
           animate={isHovered ? 'visible' : undefined}
           className={styles.Label}
         >
