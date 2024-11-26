@@ -54,8 +54,8 @@ export const ExampleOne = {
 export const ExampleTwo = {
   args: {
     enterScale: [2, 2],
-    enterRotation: 5,
-    exitRotation: -50,
+    enterRotation: '5deg',
+    exitRotation: '-50deg',
     exitScale: [0.5, 0.5],
     duration: 100,
     exitComponent: <Avatar dimension="big" src="https://mighty.tools/mockmind-api/content/human/72.jpg" />,
