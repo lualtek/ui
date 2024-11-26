@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 15.1.3
+
+### Patch Changes
+
+- 57dfc6c: Revert chip collapsed
+  - @lualtek/icons@15.1.3
+
 ## 15.1.2
 
 ### Patch Changes
