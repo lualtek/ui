@@ -1,5 +1,18 @@
 # @lualtek/react-components
 
+## 15.1.0
+
+### Minor Changes
+
+- bb51c72: Add new `collapsed` prop to chip
+- 5e4c91d: Add `enteringDelay` and `exitingDelay` to Interpolator and update component
+- 69be119: Add new iconOpticalSize prop tu button to override icon size
+- 5e4c91d: Add new `closedIcon` and `openIcon` to disclosure and icons interpolations
+
+### Patch Changes
+
+- @lualtek/icons@15.1.0
+
 ## 15.0.3
 
 ### Patch Changes
