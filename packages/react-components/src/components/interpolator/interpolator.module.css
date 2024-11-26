@@ -18,13 +18,14 @@
     scale: var(--enter-scale);
     rotate: var(--enter-rotation);
     transition: all var(--duration) ease-out;
-    transition-delay: 50ms;
+    transition-delay: var(--entering-delay);
     opacity: 0%;
     pointer-events: none;
   }
 
   .Exiting {
     transition: all var(--duration) ease-out;
+    transition-delay: var(--exiting-delay);
     z-index: 1;
   }
 
