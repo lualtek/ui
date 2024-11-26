@@ -139,14 +139,20 @@ export const Chip = forwardRef<ForwardedElementType<NonNullable<ChipProps['inter
         />
       )}
 
-      <m.b
-        variants={expandVariants}
-        initial={(icon && collapsed) ? 'hidden' : undefined}
-        animate={isHovered ? 'visible' : undefined}
-        className={styles.Label}
-      >
-        {children}
-      </m.b>
+      {icon && collapsed ? (
+        <m.b
+          variants={expandVariants}
+          initial="hidden"
+          animate={isHovered ? 'visible' : undefined}
+          className={styles.Label}
+        >
+          {children}
+        </m.b>
+      ) : (
+        <b className={styles.Label}>
+          {children}
+        </b>
+      )}
 
       {(!interactive && dismissable) && (
         <button onClick={onDismissClick} className={styles.Action} type="button">
