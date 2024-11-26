@@ -63,7 +63,8 @@
   }
 
   .ExpandIcon {
-    content: '';
+
+    /* content: ''; */
     transform-box: fill-box;
     position: absolute;
     top: var(--icon-top-offset);
@@ -78,9 +79,10 @@
       right: auto;
     }
 
+/*
     .Disclosure[open] > .Summary > & {
       transform: rotate(90deg);
-    }
+    } */
   }
 
   .Content {

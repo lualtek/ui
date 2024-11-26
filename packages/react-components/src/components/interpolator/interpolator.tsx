@@ -35,7 +35,7 @@ export type InterpolatorProps = {
    *
    * @defaultValue 0
    */
-  enterRotation?: number;
+  enterRotation?: string;
   /**
    * The final scale of the exiting component.
    *
@@ -47,13 +47,21 @@ export type InterpolatorProps = {
    *
    * @defaultValue 0
    */
-  exitRotation?: number;
+  exitRotation?: string;
   /**
    * The duration of the animation.
    *
    * @defaultValue 200
    */
   duration?: TokensTypes['duration'];
+  /**
+   * Set the delay for the entering element.
+   */
+  enteringDelay?: string;
+  /**
+   * Set the delay for the exiting element.
+   */
+  exitingDelay?: string;
 }
 
 export const Interpolator = forwardRef<HTMLDivElement, PropsWithClass<InterpolatorProps>>(({
@@ -62,9 +70,11 @@ export const Interpolator = forwardRef<HTMLDivElement, PropsWithClass<Interpolat
   exitComponent,
   enterComponent,
   interpolating = false,
+  enteringDelay,
+  exitingDelay,
   enterScale = [0.5, 2.5],
-  enterRotation = 0,
-  exitRotation = 0,
+  enterRotation = '0deg',
+  exitRotation = '0deg',
   exitScale = [3.5, 0.5],
   duration = 200,
   ...otherProps
@@ -73,9 +83,11 @@ export const Interpolator = forwardRef<HTMLDivElement, PropsWithClass<Interpolat
     '--enter-scale': `${enterScale[0]} ${enterScale[1]}`,
     '--exit-scale': `${exitScale[0]} ${exitScale[1]}`,
     '--duration': tkns.duration[duration],
-    '--enter-rotation': `${enterRotation}deg`,
-    '--exit-rotation': `${exitRotation}deg`,
-  }), [enterScale, exitScale, duration, enterRotation, exitRotation]);
+    '--entering-delay': enteringDelay,
+    '--exiting-delay': exitingDelay,
+    '--enter-rotation': enterRotation,
+    '--exit-rotation': exitRotation,
+  }), [enterScale, exitScale, duration, enterRotation, exitRotation, enteringDelay, exitingDelay]);
 
   return (
     <div
