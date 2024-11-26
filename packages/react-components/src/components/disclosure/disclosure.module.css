@@ -16,7 +16,7 @@
     }
 
     &[data-disclosure-dimension='small'] {
-      --icon-top-offset: calc(var(--icon-size) / 2.5);
+      --icon-top-offset: calc(var(--icon-size) / 3);
       --icon-size: token(--icon-size-16);
     }
 
