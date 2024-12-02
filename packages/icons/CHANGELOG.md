@@ -1,5 +1,11 @@
 # @lualtek/icons
 
+## 15.2.1
+
+### Patch Changes
+
+- 903996d: Fix icons colorizations
+
 ## 15.2.0
 
 ### Minor Changes

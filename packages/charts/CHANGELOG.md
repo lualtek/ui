@@ -1,5 +1,12 @@
 # @lualtek/charts
 
+## 15.2.1
+
+### Patch Changes
+
+- @lualtek/react-components@15.2.1
+- @lualtek/tokens@15.2.1
+
 ## 15.2.0
 
 ### Patch Changes
