@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 15.2.0
+
+### Patch Changes
+
+- Updated dependencies [4a093af]
+  - @lualtek/icons@15.2.0
+
 ## 15.1.3
 
 ### Patch Changes
