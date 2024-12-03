@@ -50,3 +50,10 @@ export const Dismissale = {
     dismissable: true,
   },
 } satisfies Story;
+
+export const Interactive = {
+  args: {
+    interactive: true,
+    onClick: event => console.log(event),
+  },
+} satisfies Story;

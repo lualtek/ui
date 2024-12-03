@@ -3,7 +3,7 @@
 import type { TokensTypes } from '@lualtek/tokens/platforms/web';
 import clsx from 'clsx';
 import {
-  forwardRef, Ref, useMemo,
+  forwardRef, Ref, SyntheticEvent, useMemo,
 } from 'react';
 
 import {
@@ -43,6 +43,11 @@ export type ChipProps = PropsClassChildren<{
    * The icon is not rendered if `dismissable` is `true`
    */
   icon?: IconProps['source'];
+  /**
+   * Callback function to be called when the chip is clicked.
+   * Only applicable if `interactive` is `true`.
+   */
+  onClick?: (event: SyntheticEvent<HTMLButtonElement, MouseEvent>) => void;
 }>
 
 type Sizes = Record<NonNullable<ChipProps['dimension']>, {
@@ -71,6 +76,7 @@ export const Chip = forwardRef<ForwardedElementType<NonNullable<ChipProps['inter
   interactive,
   dismissable,
   onDismissClick,
+  onClick,
   ...otherProps
 }, forwardedRef) => {
   const commonProps: StackProps & Record<string, unknown> = useMemo(() => ({
@@ -117,6 +123,7 @@ export const Chip = forwardRef<ForwardedElementType<NonNullable<ChipProps['inter
       style={{ ...dynamicStyle, ...style }}
       {...commonProps}
       {...otherProps}
+      onClick={event => onClick?.(event)}
     >
       {Content}
     </Stack>
