@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 15.2.2
+
+### Patch Changes
+
+- 65c1008: Add missin onClick to interactive chips
+  - @lualtek/icons@15.2.2
+
 ## 15.2.1
 
 ### Patch Changes
