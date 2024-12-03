@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 15.2.3
+
+### Patch Changes
+
+- 020805d: Add missing wide breakpoint to responsive context
+  - @lualtek/icons@15.2.3
+
 ## 15.2.2
 
 ### Patch Changes
