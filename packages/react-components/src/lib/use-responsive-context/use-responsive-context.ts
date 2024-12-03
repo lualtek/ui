@@ -9,6 +9,7 @@ type Breakpoints = {
   medium: string;
   large: string;
   extraLarge: string;
+  wide: string;
 };
 
 type BreakpointsKeys = keyof Breakpoints;
@@ -19,6 +20,7 @@ const DEFAULT_BREAKPOINTS: Breakpoints = {
   medium: jsonTokens.breakpoint.medium.em,
   large: jsonTokens.breakpoint.large.em,
   extraLarge: jsonTokens.breakpoint['extra-large'].em,
+  wide: jsonTokens.breakpoint.wide.em,
 };
 
 const breakpointKeys = Object.keys(DEFAULT_BREAKPOINTS) as BreakpointsKeys[];
@@ -29,6 +31,7 @@ const DEFAULT_BREAKPOINTS_MATCHES: Record<BreakpointsKeys, boolean> = {
   medium: false,
   large: false,
   extraLarge: false,
+  wide: false,
 };
 
 const matchMediaFactory = (breakpointKey: BreakpointsKeys) => window.matchMedia(`(${DEFAULT_BREAKPOINTS[breakpointKey]} <= width)`);
