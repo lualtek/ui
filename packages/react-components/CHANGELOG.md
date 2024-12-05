@@ -1,5 +1,15 @@
 # @lualtek/react-components
 
+## 15.3.0
+
+### Minor Changes
+
+- 89f973c: Add data-shrink 1/2 utility attribute to set shrink to element inside stacks
+
+### Patch Changes
+
+- @lualtek/icons@15.3.0
+
 ## 15.2.3
 
 ### Patch Changes
