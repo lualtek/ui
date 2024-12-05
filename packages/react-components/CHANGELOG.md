@@ -1,5 +1,13 @@
 # @lualtek/react-components
 
+## 15.4.2
+
+### Patch Changes
+
+- b6bd061: Update block elements list in prose component
+- 5522154: Fix table style
+  - @lualtek/icons@15.4.2
+
 ## 15.4.1
 
 ### Patch Changes
