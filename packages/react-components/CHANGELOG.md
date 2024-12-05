@@ -1,5 +1,16 @@
 # @lualtek/react-components
 
+## 15.4.0
+
+### Minor Changes
+
+- b05ae51: Add basic style for plain html tables
+
+### Patch Changes
+
+- bd97581: Fix skeleton animation
+  - @lualtek/icons@15.4.0
+
 ## 15.3.0
 
 ### Minor Changes
