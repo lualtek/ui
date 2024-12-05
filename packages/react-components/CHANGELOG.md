@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 15.4.1
+
+### Patch Changes
+
+- 9b4675c: Add basic style to plain table
+  - @lualtek/icons@15.4.1
+
 ## 15.4.0
 
 ### Minor Changes
