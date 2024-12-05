@@ -1,5 +1,5 @@
 @custom-selector :--headings h1, h2, h3, h4, h5, h6;
-@custom-selector :--blocks hgroup, ul, ol, dd, p, figure, img, pre, table, fieldset, blockquote, picture;
+@custom-selector :--blocks hgroup, ul, ol, dd, p, figure, img, pre, table, fieldset, blockquote, picture, div;
 
 @layer components {
   .Prose {
