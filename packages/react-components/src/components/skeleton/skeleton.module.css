@@ -1,9 +1,7 @@
-/* stylelint-disable declaration-no-important */
-
 @layer components {
   .SkeletonItem {
-    --base-color: var(--dimmed-1);
-    --highlight-color: var(--dimmed-2);
+    --base-color: light-dark(var(--dimmed-1), var(--dimmed-0));
+    --highlight-color: light-dark(var(--dimmed-0), var(--dimmed-1));
     --animation-duration: 1.5s;
     --animation-direction: normal;
 
@@ -24,51 +22,40 @@
       margin-top: var(--gap, 0);
     }
 
-    &[data-skeleton-animated='true'] {
-      animation-name: skeleton-pulse;
-      animation-direction: alternate-reverse;
-      animation-duration: 1s;
+    &::after {
+      content: ' ';
+      display: block;
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 100%;
+      background-repeat: no-repeat;
+      background-image:
+        linear-gradient(
+          to right,
+          var(--base-color),
+          var(--highlight-color),
+          var(--base-color)
+        );
+      transform: translateX(-100%);
+    }
+
+    &[data-skeleton-animated='true']::after {
+      animation-name: skeleton-shimmer;
+      animation-direction: normal;
+      animation-duration: 1.5s;
+      animation-timing-function: ease-in-out;
       animation-iteration-count: infinite;
     }
 
     &[data-skeleton-circle='true'] {
       border-radius: 100%;
     }
-
-    &[data-skeleton-children='true'] {
-      max-width: var(--width, max-content);
-      line-height: unset;
-
-      /**
-        * Hide skeleton children and text content
-        */
-      &,
-      & > * {
-        background-image: none !important;
-        background-clip: initial !important;
-        border: none !important;
-        box-shadow: none !important;
-        box-decoration-break: clone !important;
-        color: transparent !important;
-        outline: none !important;
-        pointer-events: none !important;
-        user-select: none !important;
-        cursor: default !important;
-      }
-
-      & > * {
-        visibility: hidden;
-      }
-    }
   }
 }
 
-@keyframes skeleton-pulse {
-  from {
-    background-color: var(--base-color);
-  }
-
-  to {
-    background-color: var(--highlight-color);
+@keyframes skeleton-shimmer {
+  100% {
+    transform: translateX(100%);
   }
 }

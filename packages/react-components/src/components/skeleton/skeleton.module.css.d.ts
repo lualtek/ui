@@ -1,6 +1,6 @@
 declare const styles: {
   readonly "SkeletonItem": string;
-  readonly "skeleton-pulse": string;
+  readonly "skeleton-shimmer": string;
 };
 export = styles;
 
