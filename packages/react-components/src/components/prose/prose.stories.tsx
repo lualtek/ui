@@ -10,6 +10,15 @@ import { Prose } from './prose';
 const meta = {
   title: 'Typography/Prose',
   component: Prose,
+  args: {
+    gap: 'big',
+  },
+  argTypes: {
+    gap: {
+      options: ['small', 'regular', 'big'],
+      control: { type: 'radio' },
+    },
+  },
   render: args => (
     <Container dimension="medium">
       <Prose {...args}>

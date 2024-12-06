@@ -3,16 +3,32 @@
 
 @layer components {
   .Prose {
+    --blocks-gap: 2em;
+    --start-gap: 1.3em;
+    --end-gap: 0.8em;
+
+    &[data-prose-gap='regular'] {
+      --blocks-gap: 1.5em;
+      --start-gap: 1em;
+      --end-gap: 0.6em;
+    }
+
+    &[data-prose-gap='small'] {
+      --blocks-gap: 1em;
+      --start-gap: 0.7em;
+      --end-gap: 0.3em;
+    }
+
     & > :where(:--headings, :--blocks):where(:not(:first-child)) {
-      margin-block: 2em;
+      margin-block: var(--blocks-gap);
     }
 
     & > :where(:--headings) + * {
-      margin-block-start: 1.3em;
+      margin-block-start: var(--start-gap);
     }
 
     & > :where(:--headings) {
-      margin-block-end: 0.8em;
+      margin-block-end: var(--end-gap);
     }
   }
 }
