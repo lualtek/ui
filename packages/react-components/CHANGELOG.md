@@ -1,5 +1,16 @@
 # @lualtek/react-components
 
+## 15.5.0
+
+### Minor Changes
+
+- f9b20a1: Add data-grow utilities
+
+### Patch Changes
+
+- 6504f47: Fix Drawer content height
+  - @lualtek/icons@15.5.0
+
 ## 15.4.2
 
 ### Patch Changes
