@@ -76,6 +76,7 @@ const meta: Meta<typeof Drawer> = {
     closeOnClickOutside: true,
     isModal: true,
     safePadding: true,
+    showHeader: true,
     onClose: () => {
       alert('closed');
     },

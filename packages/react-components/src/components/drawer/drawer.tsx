@@ -194,6 +194,7 @@ export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(({
                       vAlign="start"
                       ref={forwardedRef}
                       data-drawer-content-safe-padding={safePadding}
+                      data-drawer-has-header={showHeader}
                       {...otherProps}
                     >
                       {(showHeader && title) && (
