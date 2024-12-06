@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 15.5.1
+
+### Patch Changes
+
+- 8cea97c: Fix drawer content height
+  - @lualtek/icons@15.5.1
+
 ## 15.5.0
 
 ### Minor Changes

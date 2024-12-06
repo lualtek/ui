@@ -1,5 +1,13 @@
 # @lualtek/charts
 
+## 15.5.1
+
+### Patch Changes
+
+- Updated dependencies [8cea97c]
+  - @lualtek/react-components@15.5.1
+  - @lualtek/tokens@15.5.1
+
 ## 15.5.0
 
 ### Patch Changes
