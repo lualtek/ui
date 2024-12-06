@@ -1,5 +1,16 @@
 # @lualtek/react-components
 
+## 15.6.0
+
+### Minor Changes
+
+- 2959c59: Add new `gap` property to Prose component
+
+### Patch Changes
+
+- d759fff: Fix slider contrast borders
+  - @lualtek/icons@15.6.0
+
 ## 15.5.2
 
 ### Patch Changes
