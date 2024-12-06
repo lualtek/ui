@@ -6,7 +6,10 @@
   },
   "vibrancy": {
     "brightness": {
-      "value": 0.85
+      "value": {
+        "light": 0.95,
+        "dark": 0.85
+      }
     }
   }
 }

@@ -9,6 +9,7 @@ import fs from 'fs-extra';
 import StyleDictionary from 'style-dictionary';
 import type { Config } from 'style-dictionary/types';
 
+import LightDark from './transformers/light-dark.ts';
 // import cssLightDark from './transformers/light-dark.ts';
 import OkLCH from './transformers/oklch.ts';
 
@@ -36,6 +37,7 @@ const getConfig = (name: string): Config => ({
       transformGroup: 'css',
       transforms: [
         'color/oklch',
+        'css/light-dark',
       ],
       files: [
         {
@@ -78,6 +80,7 @@ availableThemes.forEach(async (theme) => {
    * the web platform
    */
   SDWithConfig.registerTransform(OkLCH);
+  SDWithConfig.registerTransform(LightDark);
 
   /**
    * Manually run StyleDictionary for all the configured platforms
