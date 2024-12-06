@@ -35,7 +35,7 @@
   }
 
   .Track {
-    box-shadow: 0 0 0 1px var(--global-background), inset 0 0 0 1px var(--dimmed-2);
+    box-shadow: 0 0 0 1px var(--global-outer-contrast-border), inset 0 0 0 1px var(--global-inner-contrast-border);
     position: relative;
     flex-grow: 1;
     border-radius: token(--radius-full);
