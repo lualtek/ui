@@ -1,5 +1,11 @@
 # @lualtek/themes
 
+## 15.5.2
+
+### Patch Changes
+
+- b787d99: Fix textfield background brightness
+
 ## 15.5.1
 
 ## 15.5.0
