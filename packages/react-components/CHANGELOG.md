@@ -1,5 +1,13 @@
 # @lualtek/react-components
 
+## 15.6.1
+
+### Patch Changes
+
+- ebff6e9: Fix vertical separator height
+- feb539c: Fix ul/ol initial font size
+  - @lualtek/icons@15.6.1
+
 ## 15.6.0
 
 ### Minor Changes
