@@ -10,7 +10,8 @@
 
     &[data-separator-vertical='true'] {
       inline-size: 1px;
-      block-size: 100%;
+      height: auto;
+      block-size: auto;
       border-right: 1px solid var(--color);
       border-bottom: 0;
     }
