@@ -1,17 +1,17 @@
 @layer utilities {
-  [data-shrink='0'] {
+  [data-shrink='false'] {
     flex-shrink: 0;
   }
 
-  [data-shrink='1'] {
+  [data-shrink='true'] {
     flex-shrink: 1;
   }
 
-  [data-grow='0'] {
+  [data-grow='false'] {
     flex-grow: 0;
   }
 
-  [data-grow='1'] {
+  [data-grow='true'] {
     flex-grow: 1;
   }
 }
