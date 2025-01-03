@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 15.6.2
+
+### Patch Changes
+
+- bc5e7c2: Fix data-grow global attribute
+  - @lualtek/icons@15.6.2
+
 ## 15.6.1
 
 ### Patch Changes
