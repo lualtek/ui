@@ -159,9 +159,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(({
           )}
         </Stack>
         {(invalid ?? isUserInvalid) && (
-          <Stack
-            hPadding={properties[dimension].text.padding}
-          >
+          <Stack hPadding={properties[dimension].text.padding}>
             <Text
               as="div"
               size={properties[dimension].text.labelSize}

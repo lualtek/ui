@@ -66,6 +66,7 @@
 
   ul {
     font-size: initial;
+    padding-left: 1rem;
 
     & li::marker {
       font-size: inherit;
