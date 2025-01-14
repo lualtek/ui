@@ -1,5 +1,16 @@
 # @lualtek/react-components
 
+## 15.7.0
+
+### Minor Changes
+
+- 09f58b8: Moving from rooks to react-use
+- 7c8b7a1: Add compactHeader prop to Drawer
+
+### Patch Changes
+
+- @lualtek/icons@15.7.0
+
 ## 15.6.3
 
 ### Patch Changes
