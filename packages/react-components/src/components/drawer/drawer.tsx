@@ -8,7 +8,7 @@ import {
   useMemo,
 } from 'react';
 import { AutoFocusInside, FocusOn } from 'react-focus-on';
-import { useKeys } from 'rooks';
+import { useKey } from 'react-use';
 
 import {
   Elevator,
@@ -135,7 +135,7 @@ export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(({
 }, forwardedRef) => {
   const titleId = useId();
   const { matches } = useResponsiveContext();
-  useKeys(['esc'], () => onClose());
+  useKey('esc', () => onClose());
 
   const dynamicStyle = useMemo(() => (
     {

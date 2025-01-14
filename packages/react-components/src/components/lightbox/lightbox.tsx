@@ -5,7 +5,7 @@ import {
   FC, SetStateAction, useCallback, useMemo,
 } from 'react';
 import { FocusOn } from 'react-focus-on';
-import { useKeyBindings } from 'rooks';
+import { useKeyPressEvent } from 'react-use';
 
 import {
   BlankButton,
@@ -110,11 +110,9 @@ export const Lightbox: FC<LightboxProps> = ({
     }
   }, [data, setActiveIndex]);
 
-  useKeyBindings({
-    ArrowRight: () => goTo('next'),
-    ArrowLeft: () => goTo('prev'),
-    Escape: () => onClose?.(),
-  });
+  useKeyPressEvent('ArrowRight', () => goTo('next'));
+  useKeyPressEvent('ArrowLeft', () => goTo('prev'));
+  useKeyPressEvent('Escaper', () => onClose?.());
 
   const dynamicStyles = useMemo(() => ({
     '--max-h': imageHeight,

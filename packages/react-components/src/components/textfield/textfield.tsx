@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import {
   ChangeEvent, forwardRef, InputHTMLAttributes, ReactNode, useCallback, useEffect, useId, useMemo, useRef, useState,
 } from 'react';
-import { useMergeRefs } from 'rooks';
+import { mergeRefs } from 'react-merge-refs';
 
 import {
   Icon, IconButton, IconProps, Stack, Text,
@@ -107,7 +107,6 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(({
   const inputRef = useRef<HTMLInputElement>(null);
   const isNotDate = !['date', 'datetime-local'].includes(type);
   const fieldID = useMemo(() => id ?? `${uid}-field`, [id, uid]);
-  const refs = useMergeRefs(forwardedRef, inputRef);
   const [isEmpty, setIsEmpty] = useState<boolean>(!(value ?? defaultValue));
 
   const handlePasswordVisibility = useCallback(
@@ -171,7 +170,7 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(({
         <BaseField
           className={styles.InputField}
           id={fieldID}
-          ref={refs}
+          ref={mergeRefs([inputRef, forwardedRef])}
           type={isPasswordVisible ? 'text' : type}
           defaultValue={defaultValue}
           value={value}

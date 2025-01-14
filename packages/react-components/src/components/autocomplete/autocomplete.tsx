@@ -9,7 +9,7 @@ import {
   useMemo,
   useState,
 } from 'react';
-import { useDebouncedValue } from 'rooks';
+import { useDebounce } from 'react-use';
 
 import {
   Menu,
@@ -76,10 +76,14 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(({
   ...otherProps
 }, forwardedRef) => {
   const [currentValue, setCurrentValue] = useState(value);
+  const [debouncedValue, setDebouncedValue] = useState<typeof currentValue>();
   const [isOpen, setIsOpen] = useState(false);
-  const [debouncedValue] = useDebouncedValue(
-    currentValue,
+  const [, cancel] = useDebounce(
+    () => {
+      setDebouncedValue(currentValue);
+    },
     100,
+    [currentValue],
   );
 
   const onInteractOutside = useCallback((currentTarget: EventTarget | null) => {

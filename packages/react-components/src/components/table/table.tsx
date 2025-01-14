@@ -21,7 +21,7 @@ import {
 import {
   ReactNode, useCallback, useEffect, useId, useMemo, useState,
 } from 'react';
-import { useDebounce } from 'rooks';
+import { useDebounce } from 'react-use';
 
 import {
   Panel,
@@ -233,9 +233,17 @@ export const Table = <T extends Record<string, unknown>>({
   const [rowSelection, setRowSelection] = useState({});
   const [sorting, setSorting] = useState<SortingState>([]);
   const [globalFilter, setGlobalFilter] = useState('');
+  const [debouncedGlobalFilter, setDebouncedGlobalFilter] = useState('');
 
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-  const setDebouncedGlobalFilter = useDebounce(setGlobalFilter, filterDebounce);
+  // const setDebouncedGlobalFilter = useDebounce(setGlobalFilter, filterDebounce);
+
+  const [, cancel] = useDebounce(
+    () => {
+      setDebouncedGlobalFilter(globalFilter);
+    },
+    filterDebounce,
+    [globalFilter],
+  );
 
   const finalColumns = useMemo(() => (selectableRows ? [
     {
@@ -272,7 +280,7 @@ export const Table = <T extends Record<string, unknown>>({
       sorting,
       columnVisibility,
       rowSelection,
-      globalFilter,
+      globalFilter: debouncedGlobalFilter,
     },
     defaultColumn: {
       size: undefined,
@@ -419,8 +427,7 @@ export const Table = <T extends Record<string, unknown>>({
                 {(enableFilterControl) ? (
                   <FilterControl
                     label={filterControlLabel}
-                    // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-return
-                    onChange={event => setDebouncedGlobalFilter(event.target.value)}
+                    onChange={event => setGlobalFilter(event.target.value)}
                   />
                 ) : null}
 
