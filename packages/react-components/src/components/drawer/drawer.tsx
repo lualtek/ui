@@ -46,6 +46,15 @@ export type DrawerProps = PropsClassChildren<{
    */
   showHeader?: boolean;
   /**
+   * Set the header of the drawer to be compact to save vertical space.
+   * This is useful when the drawer is used in a mobile context.
+   *
+   * !important: Make sure to pass a title that fits in the compact header.
+   *
+   * @defaultValue false
+   */
+  compactHeader?: boolean;
+  /**
    * Set the maximum width of the drawer, on mobile the drawer will be
    * automatically collapsed when the width is reached.
    *
@@ -110,6 +119,7 @@ export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(({
   className,
   closeOnClickOutside = true,
   showHeader = true,
+  compactHeader = false,
   maxWidth = '400px',
   side = 'right',
   theme = 'auto',
@@ -195,6 +205,7 @@ export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(({
                       ref={forwardedRef}
                       data-drawer-content-safe-padding={safePadding}
                       data-drawer-has-header={showHeader}
+                      data-drawer-compact-header={compactHeader}
                       {...otherProps}
                     >
                       {(showHeader && title) && (

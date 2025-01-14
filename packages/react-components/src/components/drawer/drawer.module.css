@@ -30,6 +30,10 @@
 
     &[data-drawer-has-header='true'] {
       --header-height: token(--space-72);
+
+      &[data-drawer-compact-header='true'] {
+        --header-height: token(--space-48);
+      }
     }
 
     inline-size: 100vw;

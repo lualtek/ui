@@ -77,6 +77,7 @@ const meta: Meta<typeof Drawer> = {
     isModal: true,
     safePadding: true,
     showHeader: true,
+    compactHeader: false,
     onClose: () => {
       alert('closed');
     },
@@ -95,6 +96,12 @@ type Story = StoryObj<typeof meta>;
 
 export const Default = {
   args: {},
+} satisfies Story;
+
+export const CompactHeader = {
+  args: {
+    compactHeader: true,
+  },
 } satisfies Story;
 
 export const NonModal = {
