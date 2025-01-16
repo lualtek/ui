@@ -2,7 +2,9 @@ import { SortDirection } from '@tanstack/react-table';
 import clsx from 'clsx';
 import { forwardRef, useMemo } from 'react';
 
-import { BlankButton, Icon, Polymorphic } from '@/components';
+import {
+  BlankButton, Icon, PolymorphicPropsRef,
+} from '@/components';
 
 import { CustomColumnMeta } from '../types';
 import styles from './table-head-cell.module.css';
@@ -35,70 +37,84 @@ type TableHeadcellProps = CustomColumnMeta & {
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-type PolymorphicCell = Polymorphic.ForwardRefComponent<'td', TableHeadcellProps>;
+type PolymorphicTableHead<T extends React.ElementType = 'th'> = PolymorphicPropsRef<
+  T,
+  TableHeadcellProps
+>;
 
-export const TableHeadCell = forwardRef(({
-  children,
-  className,
-  collapsed,
-  align = 'start',
-  style,
-  sorting = false,
-  canSort,
-  as: Wrapper = 'td',
-  padding = true,
-  width,
-  onClick,
-  ...otherProps
-}, forwardedRef) => {
-  const computedWidth = useMemo(() => {
-    if (!width) return undefined;
+type TableHeadComponent = <T extends React.ElementType = 'th'>(
+  props: PolymorphicTableHead<T>
+) => JSX.Element | React.ReactNode | null
 
-    return typeof width === 'string' ? width : `${width}px`;
-  }, [width]);
+export const TableHeadCell: TableHeadComponent = forwardRef(
+  <T extends React.ElementType = 'th'>(
+    {
+      as,
+      children,
+      className,
+      collapsed,
+      align = 'start',
+      style,
+      sorting = false,
+      canSort,
+      padding = true,
+      width,
+      onClick,
+      ...otherProps
+    }: PolymorphicTableHead<T>,
+    forwardedRef?: React.ForwardedRef<T>,
+  ) => {
+    const Component = as ?? 'th';
 
-  const dynamicStyle = useMemo(() => ({
-    '--width': computedWidth,
-    '--text-align': align,
-  }), [align, computedWidth]);
+    const computedWidth = useMemo(() => {
+      if (!width) return undefined;
 
-  const content = useMemo(() => (
-    <>
-      {children}
-      {Boolean(sorting) && (
-        <Icon
-          dimension={12}
-          className={styles.Icon}
-          fill="var(--highlight-red-foreground)"
-          source={sorting === 'desc' ? 'bars-sort-down' : 'bars-sort-up'}
-        />
-      )}
-    </>
-  ), [children, sorting]);
+      return typeof width === 'string' ? width : `${width}px`;
+    }, [width]);
 
-  return (
-    <Wrapper
-      ref={forwardedRef}
-      className={clsx(styles.TableHeadcell, className)}
-      data-table-cell-collapsed={collapsed}
-      data-table-cell-padding={padding}
-      data-table-cell-fixed={Boolean(width)}
-      style={{
-        ...dynamicStyle,
-        ...style,
-        userSelect: Wrapper === 'td' ? undefined : 'none',
-      }}
-      {...otherProps}
-    >
-      {canSort ? (
-        <BlankButton
-          className={styles.BlankButton}
-          type="button"
-          onClick={onClick}
-        >
-          {content}
-        </BlankButton>
-      ) : content}
-    </Wrapper>
-  );
-}) as PolymorphicCell;
+    const dynamicStyle = useMemo(() => ({
+      '--width': computedWidth,
+      '--text-align': align,
+    }), [align, computedWidth]);
+
+    const content = useMemo(() => (
+      <>
+        {children}
+        {Boolean(sorting) && (
+          <Icon
+            dimension={12}
+            className={styles.Icon}
+            fill="var(--highlight-red-foreground)"
+            source={sorting === 'desc' ? 'bars-sort-down' : 'bars-sort-up'}
+          />
+        )}
+      </>
+    ), [children, sorting]);
+
+    return (
+      <Component
+        ref={forwardedRef}
+        className={clsx(styles.TableHeadcell, className)}
+        data-table-cell-collapsed={collapsed}
+        data-table-cell-padding={padding}
+        data-table-cell-fixed={Boolean(width)}
+        style={{
+          ...dynamicStyle,
+          ...style,
+          userSelect: Component === 'td' ? undefined : 'none',
+        }}
+        {...otherProps}
+      >
+        {canSort ? (
+          <BlankButton
+            className={styles.BlankButton}
+            type="button"
+            onClick={onClick}
+          >
+            {content}
+          </BlankButton>
+        ) : content}
+      </Component>
+    );
+  },
+);
