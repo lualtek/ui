@@ -2,12 +2,15 @@
 
 import clsx from 'clsx';
 import {
-  forwardRef, ReactNode, useCallback, useMemo, useRef,
+  ReactNode,
+  RefObject,
+  useCallback,
+  useMemo,
 } from 'react';
 import { useFocusEffect, useRovingTabIndex } from 'react-roving-tabindex';
 
 import {
-  Icon, IconProps, PolymorphicPropsRef, PropsClassChildren, Stack,
+  Icon, IconProps, polymorphicForwardRef, PropsClassChildren, Stack,
 } from '@/components';
 
 import styles from './menu-item.module.css';
@@ -72,19 +75,10 @@ export type MenuItemProps = {
   sentiment?: 'positive' | 'warning' | 'danger';
 }
 
-type PolymorphicMenuItem<T extends React.ElementType = 'button'> = PolymorphicPropsRef<
-  T,
-  PropsClassChildren<MenuItemProps>
->;
-
-type MenuItemComponent = <T extends React.ElementType = 'button'>(
-  props: PolymorphicMenuItem<T>
-) => JSX.Element | React.ReactNode | null
-
-export const MenuItem: MenuItemComponent = forwardRef(
-  <T extends React.ElementType = 'button'>(
+export const MenuItem = polymorphicForwardRef<'button', PropsClassChildren<MenuItemProps>>(
+  (
     {
-      as,
+      as: Component = 'button',
       className,
       children,
       onClick,
@@ -98,15 +92,18 @@ export const MenuItem: MenuItemComponent = forwardRef(
       value,
       sentiment,
       ...otherProps
-    }: PolymorphicMenuItem<T>,
-    forwardedRef?: React.ForwardedRef<T>,
+    },
+    forwardedRef,
   ) => {
-    const Component = as ?? 'button';
-    const itemRef = useRef<any>(forwardedRef);
-    const [tabIndex, isFocused, handleKeyDown, handleClick] = useRovingTabIndex(itemRef, disabled);
+    const [
+      tabIndex,
+      isFocused,
+      handleKeyDown,
+      handleClick,
+    ] = useRovingTabIndex(forwardedRef as RefObject<HTMLElement>, disabled);
     const isIconAtEnd = useMemo(() => iconPosition === 'end', [iconPosition]);
 
-    useFocusEffect(isFocused, itemRef);
+    useFocusEffect(isFocused, forwardedRef as RefObject<HTMLElement>);
 
     const triggerClick = useCallback(
       (e: React.MouseEvent<HTMLElement>) => {
@@ -158,7 +155,7 @@ export const MenuItem: MenuItemComponent = forwardRef(
       <Stack as="li" role="none">
         <Component
           autoFocus={autoFocus}
-          ref={itemRef}
+          ref={forwardedRef}
           role="menuitem"
           className={clsx(styles.MenuItem, className)}
           onClick={disabled ? undefined : triggerClick}
