@@ -65,7 +65,7 @@ export type MenuItemProps = {
   /**
    * Assign a string value to the menu option. This is returned when the menu item is clicked.
    */
-  value?: string | number;
+  value: string | number;
   /**
    * Set the sentiment color for the item
    */
@@ -104,7 +104,7 @@ export const MenuItem: MenuItemComponent = forwardRef(
     const Component = as ?? 'button';
     const itemRef = useRef<any>(forwardedRef);
     const [tabIndex, isFocused, handleKeyDown, handleClick] = useRovingTabIndex(itemRef, disabled);
-    const isIconAtEnd = iconPosition === 'end';
+    const isIconAtEnd = useMemo(() => iconPosition === 'end', [iconPosition]);
 
     useFocusEffect(isFocused, itemRef);
 
