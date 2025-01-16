@@ -118,12 +118,12 @@ export const Chip = forwardRef<ForwardedElementType<NonNullable<ChipProps['inter
 
   return interactive ? (
     <Stack
+      {...commonProps}
+      {...otherProps}
       as="button"
       ref={forwardedRef as Ref<HTMLButtonElement>}
       style={{ ...dynamicStyle, ...style }}
-      {...commonProps}
-      {...otherProps}
-      onClick={event => onClick?.(event)}
+      onClick={(event: React.MouseEvent<HTMLButtonElement>) => onClick?.(event)}
     >
       {Content}
     </Stack>

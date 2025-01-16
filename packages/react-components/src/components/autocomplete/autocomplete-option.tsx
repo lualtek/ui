@@ -8,8 +8,8 @@ import { Except } from 'type-fest';
 import { ClampText, Menu, MenuItemProps } from '@/components';
 
 export type AutocompleteOptionProps = Except<
-MenuItemProps,
-'padding' | 'autoFocus' | 'onClick'
+  MenuItemProps,
+  'padding' | 'autoFocus' | 'onClick'
 > & {
   /**
    * Callback called when the option is clicked.
