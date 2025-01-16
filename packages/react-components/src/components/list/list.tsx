@@ -8,10 +8,10 @@ import {
   forwardRef, isValidElement, useMemo,
 } from 'react';
 
-import { Polymorphic } from '@/components';
+import { PolymorphicPropsRef, PropsClassChildren } from '@/components';
 
 import styles from './list.module.css';
-import { ListItem, ListItemProps } from './list-item';
+import { Li, ListItemProps } from './list-item';
 
 export type ListProps = {
   /**
@@ -33,49 +33,57 @@ export type ListProps = {
   gap?: TokensTypes['space'];
 }
 
-type PolymorphicList = Polymorphic.ForwardRefComponent<'ul', ListProps> & {
-  Li: React.ForwardRefExoticComponent<ListItemProps>;
-};
+type PolymorphicListProps<T extends React.ElementType = 'ul'> = PolymorphicPropsRef<T, PropsClassChildren<ListProps>>;
 
-export const List = forwardRef(({
-  as: Wrapper = 'ul',
-  children,
-  dimension = 'regular',
-  className,
-  hideMarker = false,
-  gap,
-  style,
-  ...otherProps
-}, forwardedRef) => {
-  const isUnordered = useMemo(() => Wrapper === 'ul', [Wrapper]);
+type ListComponent = (<T extends React.ElementType = 'ul'>(
+  props: PolymorphicListProps<T>
+) => JSX.Element | React.ReactNode | null) & {
+  Li: typeof Li;
+}
 
-  const dynamicStyle = useMemo(() => (
+export const List = forwardRef(
+  <T extends React.ElementType = 'ul'>(
     {
-      '--gap': gap ? tkns.space[gap] : 0,
-    }
-  ), [gap]);
+      as,
+      children,
+      dimension = 'regular',
+      className,
+      hideMarker = false,
+      gap,
+      style,
+      ...otherProps
+    }: PolymorphicListProps<T>,
+    forwardedRef?: React.ForwardedRef<T>,
+  ) => {
+    const Component = as ?? 'ul';
+    const isUnordered = useMemo(() => Component === 'ul', [Component]);
 
-  return (
-    <Wrapper
-      ref={forwardedRef}
-      className={clsx(styles.List, className)}
-      data-list-size={dimension}
-      data-list-ordered={!isUnordered}
-      data-list-no-marker={hideMarker}
-      style={{ ...dynamicStyle, ...style }}
-      {...otherProps}
-    >
-      {Children.map(children, child => isValidElement<ListItemProps>(child) && cloneElement(
-        child,
-        {
-          hideMarker: !isUnordered || hideMarker,
-          dimension,
-        },
-      ))}
-    </Wrapper>
-  );
-}) as PolymorphicList;
+    const dynamicStyle = useMemo(() => (
+      {
+        '--gap': gap ? tkns.space[gap] : 0,
+      }
+    ), [gap]);
 
-List.Li = ListItem;
+    return (
+      <Component
+        ref={forwardedRef}
+        className={clsx(styles.List, className)}
+        data-list-size={dimension}
+        data-list-ordered={!isUnordered}
+        data-list-no-marker={hideMarker}
+        style={{ ...dynamicStyle, ...style }}
+        {...otherProps}
+      >
+        {Children.map(children, child => isValidElement<ListItemProps>(child) && cloneElement(
+          child,
+          {
+            hideMarker: !isUnordered || hideMarker,
+            dimension,
+          },
+        ))}
+      </Component>
+    );
+  },
+) as unknown as ListComponent;
 
-List.displayName = 'List';
+List.Li = Li;

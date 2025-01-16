@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { forwardRef } from 'react';
 
-import { Polymorphic } from '@/components';
+import { PolymorphicPropsRef } from '@/components';
 
 import styles from './base-field.module.css';
 
@@ -15,20 +15,34 @@ export type BaseFieldProps = {
 /**
  * @internal
  */
-type PolymorphicBaseField = Polymorphic.ForwardRefComponent<'input', BaseFieldProps>;
+type PolymorphicBaseField<T extends React.ElementType = 'input'> = PolymorphicPropsRef<T, BaseFieldProps>;
 
-export const BaseField = forwardRef(({
-  as: Wrapper = 'input',
-  invalid,
-  className,
-  ...otherProps
-}, forwardedRef) => (
-  <Wrapper
-    ref={forwardedRef}
-    aria-invalid={invalid}
-    className={clsx(styles.BaseField, className)}
-    {...otherProps}
-  />
-)) as PolymorphicBaseField;
+/**
+ * @internal
+ */
+type BaseFieldComponent = <T extends React.ElementType = 'input'>(
+  props: PolymorphicBaseField<T>
+) => JSX.Element | React.ReactNode | null
 
-BaseField.displayName = 'BaseField';
+export const BaseField: BaseFieldComponent = forwardRef(
+  <T extends React.ElementType = 'input'>(
+    {
+      as,
+      invalid,
+      className,
+      ...otherProps
+    }: PolymorphicBaseField<T>,
+    forwardedRef: React.ForwardedRef<T>,
+  ) => {
+    const Component = as ?? 'input';
+
+    return (
+      <Component
+        ref={forwardedRef}
+        aria-invalid={invalid}
+        className={clsx(styles.BaseField, className)}
+        {...otherProps}
+      />
+    );
+  },
+);

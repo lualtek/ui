@@ -1,12 +1,10 @@
 'use client';
 
-'use client';
-
 import { TokensTypes } from '@lualtek/tokens/platforms/web';
 import clsx from 'clsx';
 import { forwardRef, useMemo } from 'react';
 
-import { Polymorphic } from '@/components';
+import { PolymorphicPropsRef, PropsClassChildren } from '@/components';
 
 import styles from './text.module.css';
 
@@ -65,50 +63,58 @@ export type TextProps = {
   whiteSpace?: 'normal' | 'nowrap' | 'pre' | 'pre-line' | 'pre-wrap' | 'break-spaces';
 }
 
-type PolymorphicText = Polymorphic.ForwardRefComponent<'span', TextProps>;
+type PolymorphicText<T extends React.ElementType = 'span'> = PolymorphicPropsRef<T, PropsClassChildren<TextProps>>;
 
-export const Text = forwardRef(({
-  children,
-  className,
-  size,
-  sentiment,
-  dimmed,
-  weight,
-  maxWidth,
-  align = 'start',
-  as: Wrapper = 'span',
-  responsive = true,
-  lineHeight = 'standard',
-  textColor,
-  whiteSpace = 'normal',
-  style,
-  ...otherProps
-}, forwardedRef) => {
-  const dynamicStyle = useMemo(() => (
+type TextComponent = <T extends React.ElementType = 'span'>(
+  props: PolymorphicText<T>
+) => JSX.Element | React.ReactNode | null
+
+export const Text: TextComponent = forwardRef(
+  <T extends React.ElementType = 'span'>(
     {
-      '--max-w': maxWidth,
-      '--t-align': align,
-      '--text-color': textColor,
-      '--white-space': whiteSpace,
-    }
-  ), [maxWidth, align, textColor, whiteSpace]);
+      as,
+      children,
+      className,
+      size,
+      sentiment,
+      dimmed,
+      weight,
+      maxWidth,
+      align = 'start',
+      responsive = true,
+      lineHeight = 'standard',
+      textColor,
+      whiteSpace = 'normal',
+      style,
+      ...otherProps
+    }: PolymorphicText<T>,
+    forwardedRef?: React.ForwardedRef<T>,
+  ) => {
+    const Component = as ?? 'span';
+    const dynamicStyle = useMemo(() => (
+      {
+        '--max-w': maxWidth,
+        '--t-align': align,
+        '--text-color': textColor,
+        '--white-space': whiteSpace,
+      }
+    ), [maxWidth, align, textColor, whiteSpace]);
 
-  return (
-    <Wrapper
-      ref={forwardedRef}
-      data-text-size={size}
-      data-text-weight={weight}
-      data-text-sentiment={sentiment}
-      data-text-dimmed={dimmed}
-      data-text-line-height={lineHeight}
-      data-text-responsive={size === 12 ? false : responsive}
-      className={clsx(styles.Text, className)}
-      style={{ ...dynamicStyle, ...style }}
-      {...otherProps}
-    >
-      {children}
-    </Wrapper>
-  );
-}) as PolymorphicText;
-
-Text.displayName = 'Text';
+    return (
+      <Component
+        ref={forwardedRef}
+        data-text-size={size}
+        data-text-weight={weight}
+        data-text-sentiment={sentiment}
+        data-text-dimmed={dimmed}
+        data-text-line-height={lineHeight}
+        data-text-responsive={size === 12 ? false : responsive}
+        className={clsx(styles.Text, className)}
+        style={{ ...dynamicStyle, ...style }}
+        {...otherProps}
+      >
+        {children}
+      </Component>
+    );
+  },
+);

@@ -7,10 +7,9 @@ import { forwardRef, useMemo } from 'react';
 
 import {
   Glow,
-  GlowProps,
+  GlowProps, PolymorphicPropsRef, PropsClassChildren,
   useStyles, VibrancyBlur, VibrancyColor, VibrancySaturation,
 } from '@/components';
-import { Polymorphic } from '@/components/types';
 
 import { ConditionalWrapper } from '../conditional-wrapper';
 import styles from './panel.module.css';
@@ -91,92 +90,102 @@ export type PanelProps = {
   rainbowColors?: GlowProps['rainbowColors'];
 }
 
-type PolymorphicPanel = Polymorphic.ForwardRefComponent<'div', PanelProps>;
+type PolymorphicPanel<T extends React.ElementType = 'div'> = PolymorphicPropsRef<T, PropsClassChildren<PanelProps>>;
 
-export const Panel = forwardRef(({
-  className,
-  children,
-  style,
-  vibrant = false,
-  vibrancyLevel = 'strong',
-  vibrancyColor,
-  vibrancySaturation,
-  bordered,
-  borderSide = 'all',
-  radius,
-  hPadding,
-  vPadding,
-  backgroundColor,
-  backgroundColorHover,
-  showGlow = false,
-  glowSpread,
-  glowColor,
-  rainbowColors,
-  as: Wrapper = 'div',
-  ...otherProps
-}, forwardedRef) => {
-  const computedBackground = typeof backgroundColor === 'number' ? `var(--dimmed-${backgroundColor})` : backgroundColor;
-  const computedBackgroundHover = typeof backgroundColorHover === 'number' ? `var(--dimmed-${backgroundColorHover})` : backgroundColorHover;
-  const formatRadius = useMemo(() => {
-    if (!radius) {
-      return undefined;
-    }
+type PanelComponent = <T extends React.ElementType = 'div'>(
+  props: PolymorphicPanel<T>
+) => JSX.Element | React.ReactNode | null
 
-    if (!Array.isArray(radius)) {
-      return tkns.radius[radius];
-    }
+export const Panel: PanelComponent = forwardRef(
+  <T extends React.ElementType = 'div'>(
+    {
+      as,
+      className,
+      children,
+      style,
+      vibrant = false,
+      vibrancyLevel = 'strong',
+      vibrancyColor,
+      vibrancySaturation,
+      bordered,
+      borderSide = 'all',
+      radius,
+      hPadding,
+      vPadding,
+      backgroundColor,
+      backgroundColorHover,
+      showGlow = false,
+      glowSpread,
+      glowColor,
+      rainbowColors,
+      ...otherProps
+    }: PolymorphicPanel<T>,
+    forwardedRef?: React.ForwardedRef<T>,
+  ) => {
+    const Component = as ?? 'div';
+    const computedBackground = typeof backgroundColor === 'number' ? `var(--dimmed-${backgroundColor})` : backgroundColor;
+    const computedBackgroundHover = typeof backgroundColorHover === 'number' ? `var(--dimmed-${backgroundColorHover})` : backgroundColorHover;
+    const formatRadius = useMemo(() => {
+      if (!radius) {
+        return undefined;
+      }
 
-    return radius.map(r => (r !== 0 ? tkns.radius[r!] : 0)).join(' ');
-  }, [radius]);
+      if (!Array.isArray(radius)) {
+        return tkns.radius[radius];
+      }
 
-  const { vibrancy } = useStyles({
-    vibrancy: {
-      blur: vibrancyLevel,
-      saturation: vibrancySaturation,
-      color: vibrancyColor,
-    },
-  });
+      return radius.map(r => (r !== 0 ? tkns.radius[r!] : 0)).join(' ');
+    }, [radius]);
 
-  const dynamicStyle = useMemo(() => ({
-    '--radius': radius && formatRadius,
-    '--v-padding': vPadding ? tkns.space[vPadding] : 0,
-    '--h-padding': hPadding ? tkns.space[hPadding] : 0,
-    '--background': vibrant ? undefined : computedBackground,
-    '--background-hover': vibrant ? undefined : computedBackgroundHover,
-  }), [radius, vPadding, hPadding, vibrant, computedBackground, computedBackgroundHover, formatRadius]);
+    const { vibrancy } = useStyles({
+      vibrancy: {
+        blur: vibrancyLevel,
+        saturation: vibrancySaturation,
+        color: vibrancyColor,
+      },
+    });
 
-  return (
-    <ConditionalWrapper
-      condition={showGlow}
-      wrapper={children => (
-        <Glow
-          innerRadius={radius}
-          glowColor={glowColor ?? 'var(--dimmed-2)'}
-          spread={glowSpread}
-          glowPower={0}
-          borderOffset={-1}
-          borderWidth={1}
-          rainbowColors={rainbowColors}
+    const dynamicStyle = useMemo(() => ({
+      '--radius': radius && formatRadius,
+      '--v-padding': vPadding ? tkns.space[vPadding] : 0,
+      '--h-padding': hPadding ? tkns.space[hPadding] : 0,
+      '--background': vibrant ? undefined : computedBackground,
+      '--background-hover': vibrant ? undefined : computedBackgroundHover,
+    }), [radius, vPadding, hPadding, vibrant, computedBackground, computedBackgroundHover, formatRadius]);
+
+    return (
+      <ConditionalWrapper
+        condition={showGlow}
+        wrapper={children => (
+          <Glow
+            innerRadius={radius}
+            glowColor={glowColor ?? 'var(--dimmed-2)'}
+            spread={glowSpread}
+            glowPower={0}
+            borderOffset={-1}
+            borderWidth={1}
+            rainbowColors={rainbowColors}
+          >
+            {children}
+          </Glow>
+        )}
+      >
+        <Component
+          ref={forwardedRef}
+          className={clsx(styles.Panel, className)}
+          data-panel-bordered={bordered}
+          data-panel-border-side={borderSide}
+          data-panel-radius={Boolean(radius)}
+          data-panel-hover={Boolean(backgroundColorHover)}
+          style={{ ...dynamicStyle, ...style }}
+          {...vibrant && vibrancy.attributes}
+          {...otherProps}
         >
           {children}
-        </Glow>
-      )}
-    >
-      <Wrapper
-        ref={forwardedRef}
-        className={clsx(styles.Panel, className)}
-        data-panel-bordered={bordered}
-        data-panel-border-side={borderSide}
-        data-panel-radius={Boolean(radius)}
-        data-panel-hover={Boolean(backgroundColorHover)}
-        style={{ ...dynamicStyle, ...style }}
-        {...vibrant && vibrancy.attributes}
-        {...otherProps}
-      >
-        {children}
-      </Wrapper>
-    </ConditionalWrapper>
-  );
-}) as PolymorphicPanel;
+        </Component>
+      </ConditionalWrapper>
+    );
+  },
+);
 
-Panel.displayName = 'Panel';
+// Panel.displayName = 'Panel';

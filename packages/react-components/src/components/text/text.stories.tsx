@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
+import { Stack } from '@/components';
+
 import { Text } from './text';
 
 const meta = {
@@ -49,6 +51,12 @@ export const Default = {} satisfies Story;
 export const Weight = {
   args: {
     weight: 'bold',
+  },
+} satisfies Story;
+
+export const CustomWrapper = {
+  args: {
+    as: Stack,
   },
 } satisfies Story;
 

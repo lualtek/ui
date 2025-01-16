@@ -1,29 +1,42 @@
 import clsx from 'clsx';
 import { forwardRef } from 'react';
 
-import { Polymorphic } from '@/components';
+import { PolymorphicPropsRef, PropsClassChildren } from '@/components';
 
 import styles from './prose.module.css';
 
-type PolymorphicProse = Polymorphic.ForwardRefComponent<'div', {
+export type ProseProps = {
   gap?: 'small' | 'medium' | 'big';
-}>;
+};
 
-export const Prose = forwardRef(({
-  children,
-  className,
-  gap = 'big',
-  as: Wrapper = 'div',
-  ...otherProps
-}, forwardedRef) => (
-  <Wrapper
-    ref={forwardedRef}
-    className={clsx(styles.Prose, className)}
-    data-prose-gap={gap}
-    {...otherProps}
-  >
-    {children}
-  </Wrapper>
-)) as PolymorphicProse;
+type PolymorphicProse<T extends React.ElementType = 'div'> = PolymorphicPropsRef<T, PropsClassChildren<ProseProps>>;
 
-Prose.displayName = 'Prose';
+type ProseComponent = <T extends React.ElementType = 'div'>(
+  props: PolymorphicProse<T>
+) => JSX.Element | React.ReactNode | null
+
+export const Prose: ProseComponent = forwardRef(
+  <T extends React.ElementType = 'div'>(
+    {
+      as,
+      children,
+      className,
+      gap = 'big',
+      ...otherProps
+    }: PolymorphicProse<T>,
+    forwardedRef?: React.ForwardedRef<T>,
+  ) => {
+    const Component = as ?? 'div';
+    return (
+      <Component
+        ref={forwardedRef}
+        className={clsx(styles.Prose, className)}
+        data-prose-gap={gap}
+        {...otherProps}
+      >
+        {children}
+      </Component>
+    );
+  },
+);
+

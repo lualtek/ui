@@ -1,61 +1,24 @@
+/* eslint-disable @typescript-eslint/naming-convention, @typescript-eslint/no-empty-object-type */
+
+// A more precise version of just React.ComponentPropsWithoutRef on its own
+type PropsOf<T extends React.ElementType> = React.ComponentPropsWithRef<T>
+
 /**
- * Polymorphic types aretaken from https://github.com/radix-ui/primitives/blob/main/packages/react/polymorphic/src/polymorphic.ts
- * Due the deprecation, we decided to include these types inside Lualtek react-components.
- *
- * All the references and liceses are own by the team Radix
+ * Utility type to extract the `ref` prop from a polymorphic component
  */
+type PolymorphicRef<T extends React.ElementType> = React.ComponentPropsWithRef<T>['ref']
 
- /* -------------------------------------------------------------------------------------------------
-  * Utility types
-  * ----------------------------------------------------------------------------------------------- */
- // eslint-disable-next-line @typescript-eslint/ban-types
- type Merge<P1 = Record<string, unknown>, P2 = Record<string, unknown>> = Omit<P1, keyof P2> & P2;
-
- /**
-  * Infers the OwnProps if E is a ForwardRefExoticComponentWithAs
-  */
- type OwnProps<E> = E extends ForwardRefComponent<any, infer P> ? P : Record<string, unknown>;
-
- /**
-  * Infers the JSX.IntrinsicElement if E is a ForwardRefExoticComponentWithAs
-  */
- type IntrinsicElement<E> = E extends ForwardRefComponent<infer I, any> ? I : never;
-
- type ForwardRefExoticComponent<E, OwnProps> = React.ForwardRefExoticComponent<
- Merge<E extends React.ElementType ? React.ComponentPropsWithRef<E> : never, OwnProps & { as?: E }>
- >;
-
-/* -------------------------------------------------------------------------------------------------
-  * ForwardRefComponent
-  * ----------------------------------------------------------------------------------------------- */
-
-interface ForwardRefComponent<
-   IntrinsicElementString,
-   OwnProps = Record<string, unknown>,
-   /**
-    * Extends original type to ensure built in React types play nice
-    * with polymorphic components still e.g. `React.ElementRef` etc.
-    */
- > extends ForwardRefExoticComponent<IntrinsicElementString, OwnProps> {
-   /**
-    * When `as` prop is passed, use this overload.
-    * Merges original own props (without DOM props) and the inferred props
-    * from `as` element with the own props taking precendence.
-    *
-    * We explicitly avoid `React.ElementType` and manually narrow the prop types
-    * so that events are typed when using JSX.IntrinsicElements.
-    */
-   <As = IntrinsicElementString>(
-    props: As extends ''
-      ? { as: keyof JSX.IntrinsicElements }
-      : As extends React.ComponentType<infer P>
-        ? Merge<P, OwnProps & { as: As }>
-        : As extends keyof JSX.IntrinsicElements
-          ? Merge<JSX.IntrinsicElements[As], OwnProps & { as: As }>
-          : never
-  ): React.ReactElement | null;
+/**
+ * A more sophisticated version of `InheritableElementProps` where
+ * the passed in `as` prop will determine which props can be included
+ */
+type PolymorphicPropsRef<
+  T extends React.ElementType = React.ElementType,
+  TProps = {},
+> = {
+  as?: T extends '' ? { as: keyof JSX.IntrinsicElements } : T;
 }
+& TProps
+& Omit<PropsOf<T>, keyof TProps | 'as' | 'ref' | 'forwardedRef'> & { ref?: PolymorphicRef<T> }
 
-export type {
-  ForwardRefComponent, IntrinsicElement, Merge, OwnProps,
-};
+export type { PolymorphicPropsRef, PropsOf };

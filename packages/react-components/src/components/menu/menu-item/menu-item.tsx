@@ -7,7 +7,7 @@ import {
 import { useFocusEffect, useRovingTabIndex } from 'react-roving-tabindex';
 
 import {
-  Icon, IconProps, Polymorphic, Stack,
+  Icon, IconProps, PolymorphicPropsRef, PropsClassChildren, Stack,
 } from '@/components';
 
 import styles from './menu-item.module.css';
@@ -65,103 +65,116 @@ export type MenuItemProps = {
   /**
    * Assign a string value to the menu option. This is returned when the menu item is clicked.
    */
-  value: string | number;
+  value?: string | number;
   /**
    * Set the sentiment color for the item
    */
   sentiment?: 'positive' | 'warning' | 'danger';
 }
 
-type PolymorphicMenuItem = Polymorphic.ForwardRefComponent<'button', MenuItemProps>;
+type PolymorphicMenuItem<T extends React.ElementType = 'button'> = PolymorphicPropsRef<
+  T,
+  PropsClassChildren<MenuItemProps>
+>;
 
-export const MenuItem = forwardRef(({
-  className,
-  children,
-  onClick,
-  icon,
-  dimension = 'regular',
-  as: Wrapper = 'button',
-  iconPosition = 'start',
-  padding = true,
-  disabled = false,
-  autoFocus,
-  decoration,
-  value,
-  sentiment,
-  ...otherProps
-}, forwardedRef) => {
-  const itemRef = useRef<any>(forwardedRef);
-  const [tabIndex, isFocused, handleKeyDown, handleClick] = useRovingTabIndex(itemRef, disabled);
-  const isIconAtEnd = iconPosition === 'end';
+type MenuItemComponent = <T extends React.ElementType = 'button'>(
+  props: PolymorphicMenuItem<T>
+) => JSX.Element | React.ReactNode | null
 
-  useFocusEffect(isFocused, itemRef);
+export const MenuItem: MenuItemComponent = forwardRef(
+  <T extends React.ElementType = 'button'>(
+    {
+      as,
+      className,
+      children,
+      onClick,
+      icon,
+      dimension = 'regular',
+      iconPosition = 'start',
+      padding = true,
+      disabled = false,
+      autoFocus,
+      decoration,
+      value,
+      sentiment,
+      ...otherProps
+    }: PolymorphicMenuItem<T>,
+    forwardedRef?: React.ForwardedRef<T>,
+  ) => {
+    const Component = as ?? 'button';
+    const itemRef = useRef<any>(forwardedRef);
+    const [tabIndex, isFocused, handleKeyDown, handleClick] = useRovingTabIndex(itemRef, disabled);
+    const isIconAtEnd = iconPosition === 'end';
 
-  const triggerClick = useCallback(
-    (e: React.MouseEvent<HTMLElement>) => {
-      if (onClick) {
-        handleClick();
-        onClick(e, value);
-      }
-    },
-    [handleClick, onClick, value],
-  );
+    useFocusEffect(isFocused, itemRef);
 
-  const InnerContent = useMemo(() => (
-    <Stack
-      direction={isIconAtEnd ? 'row-reverse' : 'row'}
-      fill={false}
-      className={styles.ItemContent}
-      hAlign={isIconAtEnd ? 'space-between' : 'start'}
-      vAlign="center"
-      columnGap={8}
-      hPadding={24}
-      vPadding={8}
-      data-menu-item-icon-right={isIconAtEnd}
-      data-menu-item-has-icon={Boolean(icon)}
-      data-menu-item-padding={padding}
-      style={{ inlineSize: '100%' }}
-    >
-      {icon && (
-        <Icon
-          className={styles.Icon}
-          source={icon}
-          dimension={dimension === 'small' ? 12 : 18}
-        />
-      )}
+    const triggerClick = useCallback(
+      (e: React.MouseEvent<HTMLElement>) => {
+        if (onClick) {
+          handleClick();
+          onClick(e, value ?? '');
+        }
+      },
+      [handleClick, onClick, value],
+    );
+
+    const InnerContent = useMemo(() => (
       <Stack
-        className={styles.DecorationContent}
-        columnGap={16}
+        direction={isIconAtEnd ? 'row-reverse' : 'row'}
         fill={false}
-        direction="row"
-        hAlign="space-between"
+        className={styles.ItemContent}
+        hAlign={isIconAtEnd ? 'space-between' : 'start'}
         vAlign="center"
+        columnGap={8}
+        hPadding={24}
+        vPadding={8}
+        data-menu-item-icon-right={isIconAtEnd}
+        data-menu-item-has-icon={Boolean(icon)}
+        data-menu-item-padding={padding}
+        style={{ inlineSize: '100%' }}
       >
-        {children}
-        {decoration}
+        {icon && (
+          <Icon
+            className={styles.Icon}
+            source={icon}
+            dimension={dimension === 'small' ? 12 : 18}
+          />
+        )}
+        <Stack
+          className={styles.DecorationContent}
+          columnGap={16}
+          fill={false}
+          direction="row"
+          hAlign="space-between"
+          vAlign="center"
+        >
+          {children}
+          {decoration}
+        </Stack>
       </Stack>
-    </Stack>
-  ), [children, dimension, icon, isIconAtEnd, decoration, padding]);
+    ), [children, dimension, icon, isIconAtEnd, decoration, padding]);
 
-  return (
-    <Stack as="li" role="none">
-      <Wrapper
-        autoFocus={autoFocus}
-        ref={itemRef}
-        role="menuitem"
-        className={clsx(styles.MenuItem, className)}
-        onClick={disabled ? undefined : triggerClick}
-        onKeyDown={disabled ? undefined : handleKeyDown}
-        tabIndex={tabIndex}
-        aria-disabled={disabled}
-        type={Wrapper === 'button' ? 'button' : undefined}
-        data-menu-item-dimension={dimension}
-        data-menu-item-sentiment={sentiment}
-        {...otherProps}
-      >
-        {InnerContent}
-      </Wrapper>
-    </Stack>
-  );
-}) as PolymorphicMenuItem;
+    return (
+      <Stack as="li" role="none">
+        <Component
+          autoFocus={autoFocus}
+          ref={itemRef}
+          role="menuitem"
+          className={clsx(styles.MenuItem, className)}
+          onClick={disabled ? undefined : triggerClick}
+          onKeyDown={disabled ? undefined : handleKeyDown}
+          tabIndex={tabIndex}
+          aria-disabled={disabled}
+          type={Component === 'button' ? 'button' : undefined}
+          data-menu-item-dimension={dimension}
+          data-menu-item-sentiment={sentiment}
+          {...otherProps}
+        >
+          {InnerContent}
+        </Component>
+      </Stack>
+    );
+  },
+);
 
-MenuItem.displayName = 'Menu.Item';
+// MenuItem.displayName = 'Menu.Item';

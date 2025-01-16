@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { List } from './list';
+import { ListItemProps } from './list-item';
 
 const meta = {
   title: 'Typography/List',
@@ -14,14 +15,14 @@ const meta = {
       control: { type: 'radio' },
     },
   },
-  render: ({ marker, markerColor, ...args }) => (
+  render: ({ marker, markerColor, ...args }: ListItemProps) => (
     <List {...args}>
       <List.Li marker={marker} hideMarker markerColor={markerColor}>List item text</List.Li>
       <List.Li marker={marker} markerColor={markerColor}>List item text List item textList text</List.Li>
       <List.Li marker={marker} markerColor={markerColor}>List item text</List.Li>
     </List>
   ),
-} satisfies Meta<typeof List & typeof List.Li>;
+} satisfies Meta<typeof List>;
 
 export default meta;
 

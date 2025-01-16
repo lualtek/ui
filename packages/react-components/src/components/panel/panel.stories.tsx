@@ -92,6 +92,7 @@ export const WithHover = {
       backgroundColor={2}
       backgroundColorHover={3}
       bordered
+      as={BlankButton}
       vPadding={24}
       hPadding={24}
     >

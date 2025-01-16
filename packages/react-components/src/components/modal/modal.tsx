@@ -11,7 +11,7 @@ import {
   OverlayProps, PropsClassChildren, useResponsiveContext,
 } from '@/components';
 
-import { ModalContent, ModalContentProps } from './content/modal-content';
+import { ModalContent } from './content/modal-content';
 import styles from './modal.module.css';
 
 export type ModalProps = PropsClassChildren<{
@@ -44,7 +44,7 @@ export type ModalProps = PropsClassChildren<{
 }>
 
 type ModalComponent = React.ForwardRefExoticComponent<ModalProps> & {
-  Content: React.ForwardRefExoticComponent<ModalContentProps>;
+  Content: typeof ModalContent;
 }
 
 export const Modal = forwardRef<HTMLDivElement, ModalProps>(({

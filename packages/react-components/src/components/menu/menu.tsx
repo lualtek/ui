@@ -2,13 +2,12 @@
 
 import clsx from 'clsx';
 import {
-  forwardRef, ForwardRefExoticComponent, HTMLAttributes, ReactNode, useMemo,
+  forwardRef, HTMLAttributes, ReactNode, useMemo,
 } from 'react';
 import { RovingTabIndexProvider } from 'react-roving-tabindex';
 
 import {
-  Panel,
-  Polymorphic, Stack,
+  Panel, Stack,
 } from '@/components';
 
 import styles from './menu.module.css';
@@ -27,25 +26,22 @@ export type MenuProps = HTMLAttributes<HTMLUListElement> & {
   maxHeight?: string;
 }
 
-type MenuComponent = ForwardRefExoticComponent<MenuProps> & {
-  Item: Polymorphic.ForwardRefComponent<
-  Polymorphic.IntrinsicElement<typeof MenuItem>,
-  Polymorphic.OwnProps<typeof MenuItem> & MenuItemProps
-  >;
-  ItemCheckbox: Polymorphic.ForwardRefComponent<
-  Polymorphic.IntrinsicElement<typeof MenuItemCheckbox>,
-  Polymorphic.OwnProps<typeof MenuItemCheckbox> & MenuItemCheckboxProps
-  >;
+type MenuComponent = React.ForwardRefExoticComponent<MenuProps> & {
+  Item: typeof MenuItem;
+  ItemCheckbox: typeof MenuItemCheckbox;
   Separator: typeof MenuSeparator;
 }
 
-export const Menu = forwardRef<HTMLUListElement, MenuProps>(({
-  className,
-  children,
-  maxHeight,
-  style,
-  ...otherProps
-}, forwardedRef) => {
+export const Menu = forwardRef((
+  {
+    className,
+    children,
+    maxHeight,
+    style,
+    ...otherProps
+  },
+  forwardedRef?: React.ForwardedRef<HTMLUListElement>,
+) => {
   const dynamicStyle = useMemo(() => (
     {
       '--max-height': maxHeight,

@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { forwardRef } from 'react';
 
-import { Polymorphic } from '@/components';
+import { PolymorphicPropsRef, PropsClassChildren } from '@/components';
 
 import styles from './container.module.css';
 
@@ -18,25 +18,39 @@ export type ContainerProps = {
   padding?: boolean;
 }
 
-type PolymorphicContainer = Polymorphic.ForwardRefComponent<'div', ContainerProps>;
+type PolymorphicContainer<T extends React.ElementType = 'div'> = PolymorphicPropsRef<
+  T,
+  PropsClassChildren<ContainerProps>
+>;
 
-export const Container = forwardRef(({
-  children,
-  className,
-  dimension = 'full',
-  padding = true,
-  as: Wrapper = 'div',
-  ...otherProps
-}, forwardedRef) => (
-  <Wrapper
-    ref={forwardedRef}
-    className={clsx(styles.Container, className)}
-    data-container-dimension={dimension}
-    data-container-padding={padding}
-    {...otherProps}
-  >
-    {children}
-  </Wrapper>
-)) as PolymorphicContainer;
+type ContainerComponent = <T extends React.ElementType = 'div'>(
+  props: PolymorphicContainer<T>
+) => JSX.Element | React.ReactNode | null
 
-Container.displayName = 'Container';
+export const Container: ContainerComponent = forwardRef(
+  <T extends React.ElementType = 'div'>(
+    {
+      as,
+      children,
+      className,
+      dimension = 'full',
+      padding = true,
+      ...otherProps
+    }: PolymorphicContainer<T>,
+    forwardedRef?: React.ForwardedRef<T>,
+  ) => {
+    const Component = as ?? 'div';
+
+    return (
+      <Component
+        ref={forwardedRef}
+        className={clsx(styles.Container, className)}
+        data-container-dimension={dimension}
+        data-container-padding={padding}
+        {...otherProps}
+      >
+        {children}
+      </Component>
+    );
+  },
+);

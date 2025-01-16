@@ -1,6 +1,9 @@
 import { forwardRef } from 'react';
 
-import { MenuItem, MenuItemProps, Polymorphic } from '@/components';
+import {
+  MenuItem, MenuItemProps, PolymorphicPropsRef, PropsClassChildren,
+  PropsOf,
+} from '@/components';
 
 export type MenuItemCheckboxProps = MenuItemProps & {
   /**
@@ -9,24 +12,33 @@ export type MenuItemCheckboxProps = MenuItemProps & {
   checked?: boolean;
 }
 
-type MenuItemCheckboxComponent = Polymorphic.ForwardRefComponent<
-Polymorphic.IntrinsicElement<typeof MenuItem>,
-Polymorphic.OwnProps<typeof MenuItem> & MenuItemCheckboxProps
+type PolymorphicMenuItemCheckbox<T extends React.ElementType = typeof MenuItem> = PolymorphicPropsRef<
+  T,
+  PropsOf<typeof MenuItem> & PropsClassChildren<MenuItemCheckboxProps>
 >;
 
-export const MenuItemCheckbox = forwardRef(({
-  children,
-  checked,
-  ...otherProps
-}, forwardedRef) => (
-  <MenuItem
-    role="menuitemcheckbox"
-    aria-checked={checked}
-    ref={forwardedRef}
-    {...otherProps}
-  >
-    {children}
-  </MenuItem>
-)) as MenuItemCheckboxComponent;
+type MenuItemCheckboxComponent = <T extends React.ElementType = typeof MenuItem>(
+  props: PolymorphicMenuItemCheckbox<T>,
+) => JSX.Element | React.ReactNode | null
 
-MenuItemCheckbox.displayName = 'Menu.ItemCheckbox';
+export const MenuItemCheckbox: MenuItemCheckboxComponent = forwardRef(
+  <T extends React.ElementType = typeof MenuItem>(
+    {
+      as,
+      children,
+      checked,
+      ...otherProps
+    }: PolymorphicMenuItemCheckbox<T>,
+    forwardedRef?: React.ForwardedRef<T>,
+  ) => (
+    <MenuItem
+      as={as}
+      role="menuitemcheckbox"
+      aria-checked={checked}
+      ref={forwardedRef}
+      {...otherProps}
+    >
+      {children}
+    </MenuItem>
+  ),
+);

@@ -1,2 +1,2 @@
 export * from './custom';
-export * as Polymorphic from './polymorphic';
+export type { PolymorphicPropsRef, PropsOf } from './polymorphic';

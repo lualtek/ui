@@ -47,7 +47,7 @@ const sizes: SizesType = {
   },
 };
 
-export const ListItem = forwardRef<HTMLLIElement, ListItemProps>(({
+export const Li = forwardRef<HTMLLIElement, ListItemProps>(({
   className,
   hideMarker,
   marker = 'circle',
@@ -79,4 +79,4 @@ export const ListItem = forwardRef<HTMLLIElement, ListItemProps>(({
   </Stack>
 ));
 
-ListItem.displayName = 'List.Li';
+Li.displayName = 'List.Li';
