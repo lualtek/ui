@@ -1,3 +1,3 @@
 export * from './custom';
 export type { PolymorphicPropsRef, PropsOf } from './polymorphic';
-export { polymorphicForwardRef } from './polymorphic/new';
+export type { PolyRefComponent } from './polymorphic/new';

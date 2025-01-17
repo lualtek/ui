@@ -2,6 +2,8 @@
 
 import clsx from 'clsx';
 import {
+  forwardRef,
+  PropsWithChildren,
   ReactNode,
   RefObject,
   useCallback,
@@ -10,7 +12,7 @@ import {
 import { useFocusEffect, useRovingTabIndex } from 'react-roving-tabindex';
 
 import {
-  Icon, IconProps, polymorphicForwardRef, PropsClassChildren, Stack,
+  Icon, IconProps, PolyRefComponent, PropsClassChildren, Stack,
 } from '@/components';
 
 import styles from './menu-item.module.css';
@@ -75,7 +77,7 @@ export type MenuItemProps = {
   sentiment?: 'positive' | 'warning' | 'danger';
 }
 
-export const MenuItem = polymorphicForwardRef<'button', PropsClassChildren<MenuItemProps>>(
+export const MenuItem = forwardRef(
   (
     {
       as: Component = 'button',
@@ -172,6 +174,6 @@ export const MenuItem = polymorphicForwardRef<'button', PropsClassChildren<MenuI
       </Stack>
     );
   },
-);
+) as PolyRefComponent<'button', PropsWithChildren<MenuItemProps>>;
 
 // MenuItem.displayName = 'Menu.Item';

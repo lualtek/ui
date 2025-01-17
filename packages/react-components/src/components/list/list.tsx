@@ -8,7 +8,7 @@ import {
   forwardRef, isValidElement, useMemo,
 } from 'react';
 
-import { PolymorphicPropsRef, PropsClassChildren } from '@/components';
+import { PolyRefComponent, PropsClassChildren } from '@/components';
 
 import styles from './list.module.css';
 import { Li, ListItemProps } from './list-item';
@@ -33,16 +33,8 @@ export type ListProps = {
   gap?: TokensTypes['space'];
 }
 
-type PolymorphicListProps<T extends React.ElementType = 'ul'> = PolymorphicPropsRef<T, PropsClassChildren<ListProps>>;
-
-type ListComponent = (<T extends React.ElementType = 'ul'>(
-  props: PolymorphicListProps<T>
-) => JSX.Element | React.ReactNode | null) & {
-  Li: typeof Li;
-}
-
 export const List = forwardRef(
-  <T extends React.ElementType = 'ul'>(
+  (
     {
       as,
       children,
@@ -52,8 +44,8 @@ export const List = forwardRef(
       gap,
       style,
       ...otherProps
-    }: PolymorphicListProps<T>,
-    forwardedRef?: React.ForwardedRef<T>,
+    },
+    forwardedRef,
   ) => {
     const Component = as ?? 'ul';
     const isUnordered = useMemo(() => Component === 'ul', [Component]);
@@ -84,6 +76,8 @@ export const List = forwardRef(
       </Component>
     );
   },
-) as unknown as ListComponent;
+) as PolyRefComponent<'ul', PropsClassChildren<ListProps>> & {
+  Li: typeof Li;
+};
 
 List.Li = Li;

@@ -1,39 +1,19 @@
 import {
-  ComponentPropsWithRef, ElementType, forwardRef, ForwardRefExoticComponent, ForwardRefRenderFunction, ReactElement,
+  ComponentPropsWithRef, ElementType, ForwardRefExoticComponent, ReactElement,
 } from 'react';
 
-type DistributiveOmit<T, K extends keyof any> = T extends any ? Omit<T, K> : never;
+type Merge<P1 = Record<string, unknown>, P2 = Record<string, unknown>> = Omit<P1, keyof P2> & P2;
+type MergeProps<E, P = Record<string, unknown>> = P
+  & Merge<E extends ElementType ? ComponentPropsWithRef<E> : never, P>;
 
-type Merge<A, B> = Omit<A, keyof B> & B;
-type DistributiveMerge<A, B> = DistributiveOmit<A, keyof B> & B;
+export interface PolyRefComponent<IntrinsicElementString, OwnProps = Record<string, unknown>>
+  extends ForwardRefExoticComponent<
+    MergeProps<IntrinsicElementString, OwnProps & { as?: IntrinsicElementString }>
+  > {
+  <As extends keyof JSX.IntrinsicElements>(props: MergeProps<As, OwnProps & { as: As }>): ReactElement | null;
 
-export type AsProps<
-  Component extends ElementType,
-  PermanentProps extends Record<string, unknown>,
-  ComponentProps extends Record<string, unknown>,
-> = DistributiveMerge<ComponentProps, PermanentProps & { as?: Component }>;
-
-export type PolymorphicWithRef<
-  Default extends OnlyAs,
-  Props extends Record<string, unknown> = Record<string, unknown>,
-  OnlyAs extends ElementType = ElementType,
-> = <T extends OnlyAs = Default>(props: AsProps<T, Props, ComponentPropsWithRef<T>>) => ReactElement | null;
-
-export type PolyForwardComponent<
-  Default extends OnlyAs,
-  Props extends Record<string, unknown> = Record<string, unknown>,
-  OnlyAs extends ElementType = ElementType,
-> = Merge<
-  ForwardRefExoticComponent<Merge<ComponentPropsWithRef<Default>, Props & { as?: Default }>>,
-  PolymorphicWithRef<Default, Props, OnlyAs>
->;
-
-export type PolyRefFunction = <
-  Default extends OnlyAs,
-  Props extends Record<string, unknown> = Record<string, unknown>,
-  OnlyAs extends ElementType = ElementType,
->(
-  Component: ForwardRefRenderFunction<Default, Props & { as?: OnlyAs }>,
-) => PolyForwardComponent<Default, Props, OnlyAs>;
-
-export const polymorphicForwardRef = forwardRef as PolyRefFunction;
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  <As extends ElementType<unknown>, _AsWithProps = As extends ElementType<infer P> ? ElementType<P> : never>(
+    props: MergeProps<_AsWithProps, OwnProps & { as: _AsWithProps }>,
+  ): ReactElement | null;
+}

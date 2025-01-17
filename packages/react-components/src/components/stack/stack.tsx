@@ -5,7 +5,7 @@ import tkns from '@lualtek/tokens/platforms/web/tokens.json';
 import clsx from 'clsx';
 import { forwardRef, useMemo } from 'react';
 
-import { PolymorphicPropsRef, PropsClassChildren } from '@/components';
+import { PolyRefComponent, PropsClassChildren } from '@/components';
 
 import styles from './stack.module.css';
 
@@ -62,14 +62,8 @@ export type StackProps = {
   direction?: 'row' | 'column' | 'row-reverse' | 'column-reverse';
 }
 
-type PolymorphicStack<T extends React.ElementType = 'div'> = PolymorphicPropsRef<T, PropsClassChildren<StackProps>>;
-
-type StackComponent = <T extends React.ElementType = 'div'>(
-  props: PolymorphicStack<T>
-) => JSX.Element | React.ReactNode | null
-
-export const Stack: StackComponent = forwardRef(
-  <T extends React.ElementType = 'div'>(
+export const Stack = forwardRef(
+  (
     {
       as,
       children,
@@ -86,8 +80,8 @@ export const Stack: StackComponent = forwardRef(
       vPadding,
       style,
       ...otherProps
-    }: PolymorphicStack<T>,
-    forwardedRef?: React.ForwardedRef<T>,
+    },
+    forwardedRef,
   ) => {
     const Component = as ?? 'div';
     const alignmentTemplate = (prop: string) => {
@@ -125,4 +119,4 @@ export const Stack: StackComponent = forwardRef(
       </Component>
     );
   },
-);
+) as PolyRefComponent<'div', PropsClassChildren<StackProps>>;

@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { ComponentPropsWithRef, forwardRef } from 'react';
+import { ComponentPropsWithRef, forwardRef, ForwardRefExoticComponent } from 'react';
 
 import styles from './blank-button.module.css';
 
@@ -20,6 +20,6 @@ export const BlankButton = forwardRef<HTMLButtonElement, BlankButtonProps>(({
   >
     {children}
   </button>
-));
+)) as ForwardRefExoticComponent<BlankButtonProps>;
 
 BlankButton.displayName = 'BlankButton';
