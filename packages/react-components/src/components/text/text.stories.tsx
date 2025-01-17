@@ -56,7 +56,8 @@ export const Weight = {
 
 export const CustomWrapper = {
   args: {
-    as: Stack,
+    // Storybook merda a causa del typeof su Meta
+    as: Stack as unknown as 'span',
   },
 } satisfies Story;
 
