@@ -2,12 +2,12 @@
 
 import clsx from 'clsx';
 import {
-  forwardRef, HTMLAttributes, useCallback, useMemo,
+  forwardRef, useCallback, useMemo,
 } from 'react';
 
 import styles from './circular-progress.module.css';
 
-export type CircularProgressProps = HTMLAttributes<HTMLDivElement> & {
+export type CircularProgressProps = React.ComponentPropsWithRef<'div'> & {
   /**
    * Set the current progress of the progress bar.
    * This value should be between 0 and 'max'. The percentage is
@@ -85,5 +85,3 @@ export const CircularProgress = forwardRef<HTMLDivElement, CircularProgressProps
     </div>
   );
 });
-
-CircularProgress.displayName = 'CircularProgress';

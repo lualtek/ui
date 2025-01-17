@@ -14,7 +14,6 @@ import {
   Elevator,
   IconButton, Overlay, OverlayProps,
   Panel,
-  PropsClassChildren,
   Stack,
   Title,
   useResponsiveContext,
@@ -22,7 +21,7 @@ import {
 
 import styles from './drawer.module.css';
 
-export type DrawerProps = PropsClassChildren<{
+export type DrawerProps = React.ComponentPropsWithRef<'div'> & {
   /**
    * This enables the drawer to be closed by clicking on the overlay.
    * Even if this can be set to `false` we strongly recommend to leave
@@ -112,7 +111,7 @@ export type DrawerProps = PropsClassChildren<{
    *
    */
   scrollerRef?: React.RefObject<HTMLDivElement>;
-}>
+}
 
 export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(({
   children,

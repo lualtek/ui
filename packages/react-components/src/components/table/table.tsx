@@ -25,7 +25,7 @@ import { useDebounce } from 'react-use';
 
 import {
   Panel,
-  PropsWithClass, Skeleton, Stack, Text,
+  Skeleton, Stack, Text,
 } from '@/components';
 
 import styles from './table.module.css';
@@ -43,7 +43,7 @@ declare module '@tanstack/react-table' {
   interface ColumnMeta<TData extends RowData, TValue> extends CustomColumnMeta {}
 }
 
-export type TableProps<T> = PropsWithClass<{
+export type TableProps<T> = React.ComponentPropsWithRef<'table'> & {
   /**
    * Pass the data structure to the table. Each object key can be used as `accessor` for a column.
    */
@@ -151,7 +151,7 @@ export type TableProps<T> = PropsWithClass<{
    * Get Table instance
   */
   getTableInstance?: (instance: TableType<T>) => void;
-}>
+}
 
 export type TableConditionalProps<T> = {
   /**

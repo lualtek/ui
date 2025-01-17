@@ -4,12 +4,12 @@ import { TokensTypes } from '@lualtek/tokens/platforms/web';
 import tkns from '@lualtek/tokens/platforms/web/tokens.json';
 import clsx from 'clsx';
 import {
-  forwardRef, HTMLAttributes, useMemo,
+  forwardRef, useMemo,
 } from 'react';
 
 import styles from './separator.module.css';
 
-export type SeparatorProps = HTMLAttributes<HTMLHRElement> & {
+export type SeparatorProps = React.ComponentPropsWithRef<'hr'> & {
   /**
    * Add top and bottom space using margins.
    */
@@ -57,5 +57,3 @@ export const Separator = forwardRef<HTMLHRElement, SeparatorProps>(({
     />
   );
 });
-
-Separator.displayName = 'Separator';

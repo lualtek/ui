@@ -15,13 +15,13 @@ export type EmojiProps = {
   className?: string;
 }
 
-export const Emoji = ({
+export const Emoji: React.FC<EmojiProps> = ({
   className,
   unified = '1f346',
   emojiStyle = EmojiStyle.NATIVE,
   size = 24,
   ...otherProps
-}: EmojiProps) => {
+}) => {
   const computedSize = useMemo(() => size / 1.2, [size]);
 
   return (
@@ -35,5 +35,3 @@ export const Emoji = ({
     </span>
   );
 };
-
-Emoji.displayName = 'Emoji';

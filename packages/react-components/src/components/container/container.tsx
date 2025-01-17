@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { forwardRef } from 'react';
 
-import { PolyRefComponent, PropsClassChildren } from '@/components';
+import { PolyRefComponent } from '@/components';
 
 import styles from './container.module.css';
 
@@ -40,4 +40,4 @@ export const Container = forwardRef(
       {children}
     </Component>
   ),
-) as PolyRefComponent<'div', PropsClassChildren<ContainerProps>>;
+) as PolyRefComponent<'div', ContainerProps>;

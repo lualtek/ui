@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useState } from 'react';
+import { forwardRef, useState } from 'react';
 
 import { Button, Stack } from '@/components';
 
@@ -96,7 +96,7 @@ export const WithIcon = {
   },
 } satisfies Story;
 
-const SearchTemplate = ({ value, ...props }: TextfieldProps) => {
+const SearchTemplate = forwardRef<HTMLInputElement, TextfieldProps>(({ value, ...props }) => {
   const [stateValue, setStateValue] = useState<TextfieldProps['value']>(value ?? '');
 
   return (
@@ -114,7 +114,7 @@ const SearchTemplate = ({ value, ...props }: TextfieldProps) => {
       />
     </>
   );
-};
+});
 
 export const WithActionButton = {
   args: {

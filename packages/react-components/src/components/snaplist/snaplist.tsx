@@ -9,7 +9,8 @@ import {
 import { Except } from 'type-fest';
 
 import {
-  PropsClassChildren, Stack, StackProps,
+  PolyRefComponent,
+  Stack, StackProps,
 } from '@/components';
 
 import styles from './snaplist.module.css';
@@ -44,9 +45,8 @@ export type SnaplistProps = {
   snapItemWidth?: string;
 }
 
-type PolymorphicSnaplist = PropsClassChildren<Except<StackProps, 'wrap' | 'fill'> & SnaplistProps>
-
-export const Snaplist = forwardRef<HTMLDivElement, PolymorphicSnaplist>(({
+export const Snaplist = forwardRef(({
+  as,
   children,
   className,
   rowGap = 32,
@@ -70,6 +70,7 @@ export const Snaplist = forwardRef<HTMLDivElement, PolymorphicSnaplist>(({
   return (
     <Stack
       {...otherProps}
+      as={as}
       ref={forwardedRef}
       direction="row"
       rowGap={rowGap}
@@ -97,6 +98,4 @@ export const Snaplist = forwardRef<HTMLDivElement, PolymorphicSnaplist>(({
       })}
     </Stack>
   );
-});
-
-// Snaplist.displayName = 'Snaplist';
+}) as PolyRefComponent<typeof Stack, Except<StackProps, 'wrap' | 'fill'> & SnaplistProps>;

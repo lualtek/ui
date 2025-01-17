@@ -2,7 +2,7 @@
 
 import clsx from 'clsx';
 import {
-  forwardRef, HTMLAttributes, ReactNode, useMemo,
+  forwardRef, ReactNode, useMemo,
 } from 'react';
 import { RovingTabIndexProvider } from 'react-roving-tabindex';
 
@@ -15,7 +15,7 @@ import { MenuItem } from './menu-item/menu-item';
 import { MenuItemCheckbox } from './menu-item/menu-item-checkbox';
 import { MenuSeparator } from './menu-separator/menu-separator';
 
-export type MenuProps = HTMLAttributes<HTMLUListElement> & {
+export type MenuProps = React.ComponentPropsWithRef<'ul'> & {
   /**
    * The items of the menu.
    */
@@ -32,7 +32,7 @@ type MenuComponent = React.ForwardRefExoticComponent<MenuProps> & {
   Separator: typeof MenuSeparator;
 }
 
-export const Menu = forwardRef((
+export const Menu = forwardRef<HTMLUListElement, MenuProps>((
   {
     className,
     children,
@@ -40,7 +40,7 @@ export const Menu = forwardRef((
     style,
     ...otherProps
   },
-  forwardedRef?: React.ForwardedRef<HTMLUListElement>,
+  forwardedRef,
 ) => {
   const dynamicStyle = useMemo(() => (
     {
@@ -73,8 +73,6 @@ export const Menu = forwardRef((
     </Panel>
   );
 }) as MenuComponent;
-
-Menu.displayName = 'Menu';
 
 Menu.Item = MenuItem;
 Menu.ItemCheckbox = MenuItemCheckbox;

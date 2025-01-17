@@ -7,16 +7,14 @@ import {
   forwardRef, useMemo,
 } from 'react';
 
-import { PropsClassChildren } from '@/components';
-
 import styles from './badge.module.css';
 
-export type BadgeProps = PropsClassChildren<{
+export type BadgeProps = React.ComponentPropsWithRef<'div'> & {
   gap?: number;
   badgeSize?: number;
   color?: TokensTypes['colors'];
   showBadge?: boolean;
-}>
+}
 
 export const Badge = forwardRef<HTMLDivElement, BadgeProps>(({
   children,

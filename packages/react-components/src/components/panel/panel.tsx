@@ -7,7 +7,7 @@ import { forwardRef, useMemo } from 'react';
 
 import {
   Glow,
-  GlowProps, PolyRefComponent, PropsClassChildren,
+  GlowProps, PolyRefComponent,
   useStyles, VibrancyBlur, VibrancyColor, VibrancySaturation,
 } from '@/components';
 
@@ -177,4 +177,4 @@ export const Panel = forwardRef((
       </Component>
     </ConditionalWrapper>
   );
-}) as PolyRefComponent<'div', PropsClassChildren<PanelProps>>;
+}) as PolyRefComponent<'div', PanelProps>;

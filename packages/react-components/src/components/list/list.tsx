@@ -8,7 +8,7 @@ import {
   forwardRef, isValidElement, useMemo,
 } from 'react';
 
-import { PolyRefComponent, PropsClassChildren } from '@/components';
+import { PolyRefComponent } from '@/components';
 
 import styles from './list.module.css';
 import { Li, ListItemProps } from './list-item';
@@ -75,7 +75,7 @@ export const List = forwardRef(
       </Component>
     );
   },
-) as PolyRefComponent<'ul', PropsClassChildren<ListProps>> & {
+) as PolyRefComponent<'ul', ListProps> & {
   Li: typeof Li;
 };
 

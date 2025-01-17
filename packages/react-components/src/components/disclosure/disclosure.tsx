@@ -5,7 +5,6 @@ import {
   domMax, LazyMotion, m,
 } from 'motion/react';
 import {
-  DetailsHTMLAttributes,
   forwardRef,
   ReactNode, useCallback, useEffect, useId, useImperativeHandle,
   useMemo, useRef, useState,
@@ -17,7 +16,7 @@ import {
 
 import styles from './disclosure.module.css';
 
-export type DisclosureProps = DetailsHTMLAttributes<HTMLDetailsElement> & {
+export type DisclosureProps = React.ComponentPropsWithRef<'details'> & {
   /**
    * Set the initial state of the disclosure.
    * @defaultValue false

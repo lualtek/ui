@@ -3,14 +3,14 @@
 import clsx from 'clsx';
 import { domAnimation, LazyMotion, m } from 'motion/react';
 import {
-  ChangeEvent, forwardRef, InputHTMLAttributes, ReactNode, useId,
+  ChangeEvent, forwardRef, ReactNode, useId,
 } from 'react';
 
 import { Stack, Text, TextProps } from '@/components';
 
 import styles from '../selection-controls.module.css';
 
-export type RadioProps = InputHTMLAttributes<HTMLInputElement> & {
+export type RadioProps = React.ComponentPropsWithRef<'input'> & {
   /**
    * Set disabled state. The component is not interactive and grayed out.
    */
@@ -114,5 +114,3 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(({
     </LazyMotion>
   );
 });
-
-Radio.displayName = 'Radio';

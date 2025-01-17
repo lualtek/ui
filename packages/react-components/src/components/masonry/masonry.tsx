@@ -4,7 +4,7 @@ import { TokensTypes } from '@lualtek/tokens/platforms/web';
 import tkns from '@lualtek/tokens/platforms/web/tokens.json';
 import clsx from 'clsx';
 import {
-  Children, cloneElement, CSSProperties, isValidElement, ReactElement, useMemo,
+  Children, cloneElement, CSSProperties, FC, isValidElement, ReactElement, useMemo,
 } from 'react';
 import MasonryLayout from 'react-masonry-css';
 import { FCChildrenClass } from 'src/types/custom';
@@ -21,7 +21,7 @@ type Columns = {
   wide?: number;
 }
 
-export type MasonryProps = {
+export type MasonryProps = React.ComponentPropsWithoutRef<'div'> & {
   /**
    * Set the space between items. This is applied on both vertical
    * and horizontal axis.
@@ -61,7 +61,7 @@ const breakpoints: Record<string, number> = {
   wide: 2100,
 };
 
-export const Masonry: FCChildrenClass<MasonryProps> = ({
+export const Masonry: FC<MasonryProps> = ({
   className,
   children,
   columns = 3,
@@ -87,7 +87,7 @@ export const Masonry: FCChildrenClass<MasonryProps> = ({
       return ({
         ...acc,
         [breakpoint]: column,
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+
         default: columns.default,
       });
     }, {
@@ -113,5 +113,3 @@ export const Masonry: FCChildrenClass<MasonryProps> = ({
     </MasonryLayout>
   );
 };
-
-Masonry.displayName = 'Masonry';

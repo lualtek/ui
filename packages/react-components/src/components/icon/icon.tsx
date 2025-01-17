@@ -1,7 +1,7 @@
 'use client';
 
 import { IconNames } from '@lualtek/icons';
-import sprite from '@lualtek/icons/sprite' assert { type: 'svg' };
+import sprite from '@lualtek/icons/sprite';
 import { TokensTypes } from '@lualtek/tokens/platforms/web';
 import clsx from 'clsx';
 import {
@@ -9,13 +9,12 @@ import {
   cloneElement,
   forwardRef,
   ReactElement,
-  SVGAttributes,
   useMemo,
 } from 'react';
 
 import styles from './icon.module.css';
 
-export type IconProps = SVGAttributes<SVGElement | SVGSVGElement> & {
+export type IconProps = React.ComponentPropsWithRef<'svg'> & {
   /**
    * Set the icon name to display. Icon names are defined in
    * the `IconNames` enum and are part of Lualtek iconography system.
@@ -68,4 +67,3 @@ export const Icon = forwardRef<SVGSVGElement, IconProps>(({
     );
 });
 
-Icon.displayName = 'Icon';

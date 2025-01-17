@@ -7,13 +7,12 @@ import {
 
 import {
   Icon, IconProps,
-  PropsWithClass,
   Stack, Text, TextProps,
 } from '@/components';
 
 import styles from './icon-meter.module.css';
 
-export type IconMeterProps = {
+export type IconMeterProps = React.ComponentPropsWithRef<'div'> & {
   /**
    * Set the value of the icon meter.
    * This value must be between `0` and `iconCount`.
@@ -64,7 +63,7 @@ export type IconMeterProps = {
   iconColor?: string;
 }
 
-export const IconMeter = forwardRef<HTMLDivElement, PropsWithClass<IconMeterProps>>(
+export const IconMeter = forwardRef<HTMLDivElement, IconMeterProps>(
   (
     {
       className,
@@ -184,5 +183,3 @@ export const IconMeter = forwardRef<HTMLDivElement, PropsWithClass<IconMeterProp
     );
   },
 );
-
-IconMeter.displayName = 'IconMeter';

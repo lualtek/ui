@@ -1,7 +1,7 @@
 import { forwardRef } from 'react';
 
 import {
-  MenuItem, MenuItemProps, PolyRefComponent, PropsClassChildren,
+  MenuItem, MenuItemProps, PolyRefComponent,
 } from '@/components';
 
 export type MenuItemCheckboxProps = MenuItemProps & {
@@ -31,4 +31,4 @@ export const MenuItemCheckbox = forwardRef(
       {children}
     </MenuItem>
   ),
-) as PolyRefComponent<typeof MenuItem, PropsClassChildren<MenuItemCheckboxProps>>;
+) as PolyRefComponent<typeof MenuItem, MenuItemCheckboxProps>;

@@ -5,11 +5,9 @@ import tkns from '@lualtek/tokens/platforms/web/tokens.json';
 import clsx from 'clsx';
 import { forwardRef, ReactNode, useMemo } from 'react';
 
-import { PropsWithClass } from '@/components/types';
-
 import styles from './interpolator.module.css';
 
-export type InterpolatorProps = {
+export type InterpolatorProps = React.ComponentPropsWithRef<'div'> & {
   /**
    * The component to be rendered as default which will be animated out.
    */
@@ -64,7 +62,7 @@ export type InterpolatorProps = {
   exitingDelay?: string;
 }
 
-export const Interpolator = forwardRef<HTMLDivElement, PropsWithClass<InterpolatorProps>>(({
+export const Interpolator = forwardRef<HTMLDivElement, InterpolatorProps>(({
   className,
   style,
   exitComponent,
@@ -102,6 +100,4 @@ export const Interpolator = forwardRef<HTMLDivElement, PropsWithClass<Interpolat
     </div>
   );
 });
-
-Interpolator.displayName = 'Interpolator';
 

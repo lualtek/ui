@@ -5,11 +5,11 @@ import {
   forwardRef, useMemo,
 } from 'react';
 
-import { PolyRefComponent, PropsClassChildren } from '@/components';
+import { PolyRefComponent } from '@/components';
 
 import styles from './title.module.css';
 
-export type TitleProps = PropsClassChildren<{
+export type TitleProps = React.ComponentPropsWithRef<'span'> & {
   /**
    * Set the level of the title. This property only
    * affects the visual appearance of the title and not the
@@ -44,7 +44,7 @@ export type TitleProps = PropsClassChildren<{
    * Set the white-space property of the title.
    */
   whiteSpace?: 'normal' | 'nowrap' | 'pre' | 'pre-line' | 'pre-wrap' | 'break-spaces';
-}>
+}
 
 export const Title = forwardRef(
   (

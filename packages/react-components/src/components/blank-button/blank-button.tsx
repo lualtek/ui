@@ -1,9 +1,9 @@
 import clsx from 'clsx';
-import { ComponentPropsWithRef, forwardRef, ForwardRefExoticComponent } from 'react';
+import { forwardRef, ForwardRefExoticComponent } from 'react';
 
 import styles from './blank-button.module.css';
 
-export type BlankButtonProps = ComponentPropsWithRef<'button'>
+export type BlankButtonProps = React.ComponentPropsWithRef<'button'>
 
 export const BlankButton = forwardRef<HTMLButtonElement, BlankButtonProps>(({
   children,

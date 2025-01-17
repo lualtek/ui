@@ -4,7 +4,7 @@ import { TokensTypes } from '@lualtek/tokens/platforms/web';
 import clsx from 'clsx';
 import { forwardRef, useMemo } from 'react';
 
-import { PolyRefComponent, PropsClassChildren } from '@/components';
+import { PolyRefComponent } from '@/components';
 
 import styles from './text.module.css';
 
@@ -110,4 +110,4 @@ export const Text = forwardRef(
       </Component>
     );
   },
-) as PolyRefComponent<'span', PropsClassChildren<TextProps>>;
+) as PolyRefComponent<'span', TextProps>;

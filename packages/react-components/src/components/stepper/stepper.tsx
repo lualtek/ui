@@ -77,5 +77,3 @@ export const Stepper = forwardRef<HTMLDivElement, StepperProps>(({
     </Stack>
   );
 });
-
-Stepper.displayName = 'Stepper';

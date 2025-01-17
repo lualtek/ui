@@ -3,7 +3,6 @@ import { forwardRef } from 'react';
 
 import {
   Button, ButtonProps, PolyRefComponent,
-  PropsClassChildren, PropsOf,
 } from '@/components';
 
 import styles from './icon-button.module.css';
@@ -40,4 +39,4 @@ export const IconButton = forwardRef((
     }}
     {...otherProps}
   />
-)) as PolyRefComponent<typeof Button, PropsClassChildren<IconButtonProps>>;
+)) as PolyRefComponent<typeof Button, IconButtonProps>;

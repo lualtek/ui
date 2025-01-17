@@ -8,7 +8,7 @@ import React, {
   CSSProperties,
   forwardRef,
   Fragment,
-  MutableRefObject,
+  RefObject,
   useCallback,
   useEffect,
   useId,
@@ -17,11 +17,9 @@ import React, {
   useState,
 } from 'react';
 
-import { PropsClassChildren } from '@/components/types';
-
 import styles from './marquee.module.css';
 
-export type MarqueeProps = PropsClassChildren<{
+export type MarqueeProps = React.ComponentPropsWithRef<'div'> & {
   /**
    * Whether to automatically fill blank space in the marquee with copies of the children or not
    * @defaultValue true
@@ -89,7 +87,7 @@ export type MarqueeProps = PropsClassChildren<{
    * It can be utilized to recalculate the page size, if necessary.
    */
   onMount?: () => void;
-}>;
+};
 
 export const Marquee = forwardRef<HTMLDivElement, MarqueeProps>((
   {
@@ -118,7 +116,7 @@ export const Marquee = forwardRef<HTMLDivElement, MarqueeProps>((
   const [multiplier, setMultiplier] = useState(1);
   const [isMounted, setIsMounted] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
-  const containerRef = (forwardedRef as MutableRefObject<HTMLDivElement>) || rootRef;
+  const containerRef = (forwardedRef as RefObject<HTMLDivElement>) || rootRef;
   const marqueeRef = useRef<HTMLDivElement>(null);
   const uid = useId();
 

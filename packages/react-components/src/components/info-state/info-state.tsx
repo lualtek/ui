@@ -3,7 +3,7 @@
 import { TokensTypes } from '@lualtek/tokens/platforms/web';
 import { domMax, LazyMotion, m } from 'motion/react';
 import {
-  forwardRef, HTMLAttributes, ReactNode, useMemo,
+  forwardRef, ReactNode, useMemo,
 } from 'react';
 
 import {
@@ -13,7 +13,7 @@ import {
 
 import styles from './info-state.module.css';
 
-export type InfoStateProps = HTMLAttributes<HTMLDivElement> & {
+export type InfoStateProps = React.ComponentPropsWithRef<'div'> & {
   /**
    * Set the main tagline of the info state. This should be catchy and short
    * as much as possible.
@@ -153,5 +153,3 @@ export const InfoState = forwardRef<HTMLDivElement, InfoStateProps>(({
     </Stack>
   );
 });
-
-InfoState.displayName = 'InfoState';

@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { forwardRef } from 'react';
 
-import { PolyRefComponent, PropsClassChildren } from '@/components';
+import { PolyRefComponent } from '@/components';
 
 import styles from './prose.module.css';
 
@@ -27,5 +27,5 @@ export const Prose = forwardRef((
   >
     {children}
   </Component>
-)) as PolyRefComponent<'div', PropsClassChildren<ProseProps>>;
+)) as PolyRefComponent<'div', ProseProps>;
 

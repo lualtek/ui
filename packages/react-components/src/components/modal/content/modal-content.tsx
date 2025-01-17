@@ -2,7 +2,7 @@
 
 import clsx from 'clsx';
 import {
-  forwardRef, HTMLAttributes, ReactNode, useMemo,
+  forwardRef, ReactNode, useMemo,
 } from 'react';
 import { AutoFocusInside } from 'react-focus-on';
 import { Except } from 'type-fest';
@@ -13,7 +13,7 @@ import {
 
 import styles from './modal-content.module.css';
 
-export type ModalContentProps = Except<HTMLAttributes<HTMLDivElement>, 'title'> & {
+export type ModalContentProps = Except<React.ComponentPropsWithRef<'div'>, 'title'> & {
   /**
    * Set the accessible title of the modal. This is used by screen readers to
    * announce the title of the modal when opened.
@@ -98,5 +98,3 @@ export const ModalContent = forwardRef<HTMLDivElement, ModalContentProps>(({
     </Elevator>
   );
 });
-
-ModalContent.displayName = 'Modal.Content';

@@ -6,7 +6,7 @@ import {
 } from 'react';
 
 import {
-  Icon, IconProps, PolyRefComponent, PropsClassChildren,
+  Icon, IconProps, PolyRefComponent,
   Spinner, useStyles,
 } from '@/components';
 
@@ -148,4 +148,4 @@ export const Button = forwardRef(
       </Component>
     );
   },
-) as PolyRefComponent<'button', PropsClassChildren<ButtonProps>>;
+) as PolyRefComponent<'button', ButtonProps>;

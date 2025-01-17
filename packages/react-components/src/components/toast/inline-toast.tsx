@@ -3,7 +3,7 @@
 import * as ToastPrimitive from '@radix-ui/react-toast';
 import clsx from 'clsx';
 import {
-  forwardRef, OutputHTMLAttributes, ReactNode, useMemo,
+  forwardRef, ReactNode, useMemo,
 } from 'react';
 
 import {
@@ -17,7 +17,7 @@ import styles from './toast.module.css';
 
 const PrimitiveNoopComponent: FCChildren<{ asChild?: boolean }> = ({ children }) => <>{children}</>;
 
-export type InlineToastProps = OutputHTMLAttributes<HTMLOutputElement> & {
+export type InlineToastProps = React.ComponentPropsWithRef<'output'> & {
   /**
    * The message to display. Describes the action that the toast takes
    * or the feedback that the user has received.

@@ -4,7 +4,7 @@ import { Except } from 'type-fest';
 
 import {
   Button, ButtonProps, PolyRefComponent, Popover,
-  PopoverContentProps, PropsClassChildren, Stack,
+  PopoverContentProps, Stack,
 } from '@/components';
 
 import { Elevator } from '../elevator';
@@ -79,5 +79,5 @@ export const SplitButton = forwardRef(
     );
   },
 ) as PolyRefComponent<typeof Button,
-  PropsClassChildren<SplitButtonProps> & Except<ButtonProps, 'iconPosition' | 'iconColor'>
+  SplitButtonProps & Except<ButtonProps, 'iconPosition' | 'iconColor'>
 >;

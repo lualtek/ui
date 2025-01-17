@@ -9,12 +9,11 @@ import { Except } from 'type-fest';
 
 import {
   Icon, IconButton, IconButtonProps, IconProps,
-  PropsWithClass,
 } from '@/components';
 
 import styles from './toggle-button.module.css';
 
-export type ToggleButtonProps = Except<IconButtonProps, 'icon'> & {
+export type ToggleButtonProps = React.ComponentPropsWithRef<'button'> & Except<IconButtonProps, 'icon'> & {
   /**
    * Set the icon to show when the button is resting.
    */
@@ -51,86 +50,82 @@ const scaleAnimation = {
   },
 };
 
-export const ToggleButton = forwardRef<HTMLButtonElement, PropsWithClass<ToggleButtonProps>>(
-  (
-    {
-      className,
-      restingIcon,
-      pressedIcon,
-      dimension,
-      kind,
-      disabled,
-      pressed = false,
-      onClick,
-      ...otherProps
-    },
-    forwardedRef?: React.ForwardedRef<HTMLButtonElement>,
-  ) => {
-    const [isPressed, setIsPressed] = useState<boolean>(pressed);
-    const [isFirstRender, setFirstRender] = useState(true);
-
-    useEffect(() => {
-      setFirstRender(false);
-    }, [pressed]);
-
-    const handleClick = useCallback(
-      (event: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {
-        setIsPressed(!isPressed);
-        onClick?.(event);
-      },
-      [onClick, isPressed],
-    );
-
-    const renderIcon = useCallback(
-      (icon: IconProps['source'], dimension?: IconProps['dimension']) => {
-        const iconSize: Record<string, IconProps['dimension']> = {
-          big: 24,
-          regular: 18,
-          small: 12,
-        };
-
-        return (<Icon source={icon} dimension={iconSize[dimension ?? 'regular']} />);
-      },
-      [],
-    );
-
-    return (
-      <IconButton
-        as="button"
-        ref={forwardedRef}
-        dimension={dimension}
-        aria-pressed={isPressed}
-        kind={kind}
-        disabled={disabled}
-        onClick={handleClick}
-        className={clsx(styles.ToggleButton, className)}
-        {...otherProps}
-      >
-        {isPressed && pressedIcon
-          ? (
-            <motion.span
-              key="pressedIcon"
-              variants={scaleAnimation}
-              initial={isFirstRender && isPressed ? false : 'scaleOut'}
-              animate="scaleIn"
-            >
-              {renderIcon(pressedIcon, dimension as IconProps['dimension'])}
-            </motion.span>
-          )
-          : restingIcon && (
-            <motion.span
-              key="restingIcon"
-              variants={scaleAnimation}
-              initial={isFirstRender && !isPressed ? false : 'scaleOut'}
-              animate="scaleIn"
-            >
-              {renderIcon(restingIcon, dimension as IconProps['dimension'])}
-            </motion.span>
-          )
-      }
-      </IconButton>
-    );
+export const ToggleButton = forwardRef<HTMLButtonElement, ToggleButtonProps>((
+  {
+    className,
+    restingIcon,
+    pressedIcon,
+    dimension,
+    kind,
+    disabled,
+    pressed = false,
+    onClick,
+    ...otherProps
   },
-);
+  forwardedRef?: React.ForwardedRef<HTMLButtonElement>,
+) => {
+  const [isPressed, setIsPressed] = useState<boolean>(pressed);
+  const [isFirstRender, setFirstRender] = useState(true);
 
-ToggleButton.displayName = 'ToggleButton';
+  useEffect(() => {
+    setFirstRender(false);
+  }, [pressed]);
+
+  const handleClick = useCallback(
+    (event: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {
+      setIsPressed(!isPressed);
+      onClick?.(event);
+    },
+    [onClick, isPressed],
+  );
+
+  const renderIcon = useCallback(
+    (icon: IconProps['source'], dimension?: IconProps['dimension']) => {
+      const iconSize: Record<string, IconProps['dimension']> = {
+        big: 24,
+        regular: 18,
+        small: 12,
+      };
+
+      return (<Icon source={icon} dimension={iconSize[dimension ?? 'regular']} />);
+    },
+    [],
+  );
+
+  return (
+    <IconButton
+      as="button"
+      ref={forwardedRef}
+      dimension={dimension}
+      aria-pressed={isPressed}
+      kind={kind}
+      disabled={disabled}
+      onClick={handleClick}
+      className={clsx(styles.ToggleButton, className)}
+      {...otherProps}
+    >
+      {isPressed && pressedIcon
+        ? (
+          <motion.span
+            key="pressedIcon"
+            variants={scaleAnimation}
+            initial={isFirstRender && isPressed ? false : 'scaleOut'}
+            animate="scaleIn"
+          >
+            {renderIcon(pressedIcon, dimension as IconProps['dimension'])}
+          </motion.span>
+        )
+        : restingIcon && (
+          <motion.span
+            key="restingIcon"
+            variants={scaleAnimation}
+            initial={isFirstRender && !isPressed ? false : 'scaleOut'}
+            animate="scaleIn"
+          >
+            {renderIcon(restingIcon, dimension as IconProps['dimension'])}
+          </motion.span>
+        )
+      }
+    </IconButton>
+  );
+});

@@ -1,11 +1,11 @@
 'use client';
 
 import clsx from 'clsx';
-import React, {
+import {
   forwardRef, useMemo,
 } from 'react';
 
-import { PolyRefComponent, PropsClassChildren } from '@/components';
+import { PolyRefComponent } from '@/components';
 
 import styles from './clamp-text.module.css';
 
@@ -50,4 +50,4 @@ export const ClampText = forwardRef(
       </Component>
     );
   },
-) as PolyRefComponent<'span', PropsClassChildren<ClampTextProps>>;
+) as PolyRefComponent<'span', ClampTextProps>;

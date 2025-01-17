@@ -5,7 +5,7 @@ import tkns from '@lualtek/tokens/platforms/web/tokens.json';
 import clsx from 'clsx';
 import { forwardRef, useMemo } from 'react';
 
-import { PolyRefComponent, PropsClassChildren } from '@/components';
+import { PolyRefComponent } from '@/components';
 
 import styles from './stack.module.css';
 
@@ -119,4 +119,4 @@ export const Stack = forwardRef(
       </Component>
     );
   },
-) as PolyRefComponent<'div', PropsClassChildren<StackProps>>;
+) as PolyRefComponent<'div', StackProps>;

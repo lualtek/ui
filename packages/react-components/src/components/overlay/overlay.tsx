@@ -13,7 +13,7 @@ import { FCChildren } from '@/components/types';
 import styles from './overlay.module.css';
 import { OverlayProvider } from './overlay-context';
 
-export type OverlayProps = {
+export type OverlayProps = React.ComponentPropsWithoutRef<'div'> & {
   /**
    * The children to render inside the overlay. This content
    * will be rendered in a React `portal`, which means that it will be
@@ -121,5 +121,3 @@ export const Overlay: FCChildren<OverlayProps> = ({
 
   return defaultRoot && createPortal(content, defaultRoot);
 };
-
-Overlay.displayName = 'Overlay';
