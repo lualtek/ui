@@ -2,7 +2,7 @@ import { SortDirection } from '@tanstack/react-table';
 import clsx from 'clsx';
 import { forwardRef, useMemo } from 'react';
 
-import { PolymorphicPropsRef } from '@/components';
+import { PolyRefComponent } from '@/components';
 
 import { CustomColumnMeta } from '../types';
 import styles from './table-cell.module.css';
@@ -39,16 +39,10 @@ type TableCellProps = CustomColumnMeta & {
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-type PolymorphicCell<T extends React.ElementType = 'td'> = PolymorphicPropsRef<T, TableCellProps>;
-
-type CellComponent = <T extends React.ElementType = 'td'>(
-  props: PolymorphicCell<T>
-) => JSX.Element | React.ReactNode | null
-
-export const TableCell: CellComponent = forwardRef(
-  <T extends React.ElementType = 'td'>(
+export const TableCell = forwardRef(
+  (
     {
-      as,
+      as: Component = 'td',
       children,
       className,
       collapsed,
@@ -59,10 +53,9 @@ export const TableCell: CellComponent = forwardRef(
       minWidth,
       onClick,
       ...otherProps
-    }: PolymorphicCell<T>,
-    forwardedRef?: React.ForwardedRef<T>,
+    },
+    forwardedRef,
   ) => {
-    const Component = as ?? 'td';
     const dynamicStyle = useMemo(() => ({
       '--width': width ? `${width}px` : undefined,
       '--min-width': minWidth ? `${minWidth}px` : undefined,
@@ -87,4 +80,4 @@ export const TableCell: CellComponent = forwardRef(
       </Component>
     );
   },
-);
+) as PolyRefComponent<'td', TableCellProps>;

@@ -11,8 +11,8 @@ import {
 } from '@/components';
 
 import styles from './menu.module.css';
-import { MenuItem, MenuItemProps } from './menu-item/menu-item';
-import { MenuItemCheckbox, MenuItemCheckboxProps } from './menu-item/menu-item-checkbox';
+import { MenuItem } from './menu-item/menu-item';
+import { MenuItemCheckbox } from './menu-item/menu-item-checkbox';
 import { MenuSeparator } from './menu-separator/menu-separator';
 
 export type MenuProps = HTMLAttributes<HTMLUListElement> & {

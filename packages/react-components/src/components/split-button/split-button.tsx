@@ -3,8 +3,8 @@ import { forwardRef } from 'react';
 import { Except } from 'type-fest';
 
 import {
-  Button, ButtonProps, PolymorphicPropsRef, Popover,
-  PopoverContentProps, PropsClassChildren, PropsOf, Stack,
+  Button, ButtonProps, PolyRefComponent, Popover,
+  PopoverContentProps, PropsClassChildren, Stack,
 } from '@/components';
 
 import { Elevator } from '../elevator';
@@ -21,18 +21,8 @@ export type SplitButtonProps = Pick<PopoverContentProps, 'side' | 'offset' | 'al
   children?: React.ReactNode;
 }
 
-type PolymorphicSplitButton<T extends React.ElementType = typeof Button> = PolymorphicPropsRef<
-  T,
-  PropsOf<typeof Button> & PropsClassChildren<SplitButtonProps>
-  & Except<ButtonProps, 'iconPosition' | 'iconColor'>
->;
-
-type SplitButtonComponent = <T extends React.ElementType = typeof Button>(
-  props: PolymorphicSplitButton<T>,
-) => JSX.Element | React.ReactNode | null
-
-export const SplitButton: SplitButtonComponent = forwardRef(
-  <T extends React.ElementType = typeof Button>(
+export const SplitButton = forwardRef(
+  (
     {
       as,
       className,
@@ -50,8 +40,8 @@ export const SplitButton: SplitButtonComponent = forwardRef(
       sentiment,
       onClick,
       ...otherProps
-    }: PolymorphicSplitButton<T>,
-    forwardedRef?: React.ForwardedRef<T>,
+    },
+    forwardedRef,
   ) => {
     const commonProps = {
       kind,
@@ -88,4 +78,6 @@ export const SplitButton: SplitButtonComponent = forwardRef(
       </Stack>
     );
   },
-);
+) as PolyRefComponent<typeof Button,
+  PropsClassChildren<SplitButtonProps> & Except<ButtonProps, 'iconPosition' | 'iconColor'>
+>;

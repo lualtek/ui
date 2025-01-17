@@ -5,7 +5,7 @@ import React, {
   forwardRef, useMemo,
 } from 'react';
 
-import { PolymorphicPropsRef, PropsClassChildren } from '@/components';
+import { PolyRefComponent, PropsClassChildren } from '@/components';
 
 import styles from './clamp-text.module.css';
 
@@ -21,30 +21,19 @@ export type ClampTextProps = {
   inline?: boolean;
 }
 
-type PolymorphicClampText<T extends React.ElementType = 'span'> = PolymorphicPropsRef<
-  T,
-  PropsClassChildren<ClampTextProps>
->;
-
-type ClampTextComponent = <T extends React.ElementType = 'span'>(
-  props: PolymorphicClampText<T>
-) => JSX.Element | React.ReactNode | null
-
-export const ClampText: ClampTextComponent = forwardRef(
-  <T extends React.ElementType = 'span'>(
+export const ClampText = forwardRef(
+  (
     {
-      as,
+      as: Component = 'span',
       className,
       children,
       rows = 1,
       style,
       inline,
       ...otherProps
-    }: PolymorphicClampText<T>,
-    forwardedRef?: React.ForwardedRef<T>,
+    },
+    forwardedRef,
   ) => {
-    const Component = as ?? 'span';
-
     const dynamicStyle = useMemo(() => ({
       '--r': rows,
     }), [rows]);
@@ -61,4 +50,4 @@ export const ClampText: ClampTextComponent = forwardRef(
       </Component>
     );
   },
-);
+) as PolyRefComponent<'span', PropsClassChildren<ClampTextProps>>;

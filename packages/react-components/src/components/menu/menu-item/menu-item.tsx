@@ -12,7 +12,7 @@ import {
 import { useFocusEffect, useRovingTabIndex } from 'react-roving-tabindex';
 
 import {
-  Icon, IconProps, PolyRefComponent, PropsClassChildren, Stack,
+  Icon, IconProps, PolyRefComponent, Stack,
 } from '@/components';
 
 import styles from './menu-item.module.css';
@@ -175,5 +175,3 @@ export const MenuItem = forwardRef(
     );
   },
 ) as PolyRefComponent<'button', PropsWithChildren<MenuItemProps>>;
-
-// MenuItem.displayName = 'Menu.Item';

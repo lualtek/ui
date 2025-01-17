@@ -5,7 +5,7 @@ import {
   forwardRef, useMemo,
 } from 'react';
 
-import { PolymorphicPropsRef, PropsClassChildren } from '@/components';
+import { PolyRefComponent, PropsClassChildren } from '@/components';
 
 import styles from './title.module.css';
 
@@ -46,19 +46,10 @@ export type TitleProps = PropsClassChildren<{
   whiteSpace?: 'normal' | 'nowrap' | 'pre' | 'pre-line' | 'pre-wrap' | 'break-spaces';
 }>
 
-type PolymorphicTitle<T extends React.ElementType = 'span'> = PolymorphicPropsRef<
-  T,
-  TitleProps
->;
-
-type TitleComponent = <T extends React.ElementType = 'span'>(
-  props: PolymorphicTitle<T>
-) => JSX.Element | React.ReactNode | null
-
-export const Title: TitleComponent = forwardRef(
-  <T extends React.ElementType = 'span'>(
+export const Title = forwardRef(
+  (
     {
-      as,
+      as: Component = 'span',
       children,
       className,
       lineHeight = 'standard',
@@ -69,10 +60,9 @@ export const Title: TitleComponent = forwardRef(
       responsive = true,
       style,
       ...otherProps
-    }: PolymorphicTitle<T>,
-    forwardedRef?: React.ForwardedRef<T>,
+    },
+    forwardedRef,
   ) => {
-    const Component = as ?? 'span';
     const computedLevel = level.match(/\d/g) ? `H${level}` : level.charAt(0).toUpperCase() + level.slice(1);
     // @ts-expect-error: generated className is not pure in CSS
 
@@ -98,6 +88,4 @@ export const Title: TitleComponent = forwardRef(
       </Component>
     );
   },
-);
-
-// Title.displayName = 'Title';
+) as PolyRefComponent<'span', TitleProps>;

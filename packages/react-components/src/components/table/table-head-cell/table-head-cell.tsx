@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import { forwardRef, useMemo } from 'react';
 
 import {
-  BlankButton, Icon, PolymorphicPropsRef,
+  BlankButton, Icon, PolyRefComponent,
 } from '@/components';
 
 import { CustomColumnMeta } from '../types';
@@ -37,84 +37,72 @@ type TableHeadcellProps = CustomColumnMeta & {
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-type PolymorphicTableHead<T extends React.ElementType = 'th'> = PolymorphicPropsRef<
-  T,
-  TableHeadcellProps
->;
-
-type TableHeadComponent = <T extends React.ElementType = 'th'>(
-  props: PolymorphicTableHead<T>
-) => JSX.Element | React.ReactNode | null
-
-export const TableHeadCell: TableHeadComponent = forwardRef(
-  <T extends React.ElementType = 'th'>(
-    {
-      as,
-      children,
-      className,
-      collapsed,
-      align = 'start',
-      style,
-      sorting = false,
-      canSort,
-      padding = true,
-      width,
-      onClick,
-      ...otherProps
-    }: PolymorphicTableHead<T>,
-    forwardedRef?: React.ForwardedRef<T>,
-  ) => {
-    const Component = as ?? 'th';
-
-    const computedWidth = useMemo(() => {
-      if (!width) return undefined;
-
-      return typeof width === 'string' ? width : `${width}px`;
-    }, [width]);
-
-    const dynamicStyle = useMemo(() => ({
-      '--width': computedWidth,
-      '--text-align': align,
-    }), [align, computedWidth]);
-
-    const content = useMemo(() => (
-      <>
-        {children}
-        {Boolean(sorting) && (
-          <Icon
-            dimension={12}
-            className={styles.Icon}
-            fill="var(--highlight-red-foreground)"
-            source={sorting === 'desc' ? 'bars-sort-down' : 'bars-sort-up'}
-          />
-        )}
-      </>
-    ), [children, sorting]);
-
-    return (
-      <Component
-        ref={forwardedRef}
-        className={clsx(styles.TableHeadcell, className)}
-        data-table-cell-collapsed={collapsed}
-        data-table-cell-padding={padding}
-        data-table-cell-fixed={Boolean(width)}
-        style={{
-          ...dynamicStyle,
-          ...style,
-          userSelect: Component === 'td' ? undefined : 'none',
-        }}
-        {...otherProps}
-      >
-        {canSort ? (
-          <BlankButton
-            className={styles.BlankButton}
-            type="button"
-            onClick={onClick}
-          >
-            {content}
-          </BlankButton>
-        ) : content}
-      </Component>
-    );
+export const TableHeadCell = forwardRef((
+  {
+    as: Component = 'th',
+    children,
+    className,
+    collapsed,
+    align = 'start',
+    style,
+    sorting = false,
+    canSort,
+    padding = true,
+    width,
+    onClick,
+    ...otherProps
   },
-);
+  forwardedRef,
+) => {
+  const computedWidth = useMemo(() => {
+    if (!width) return undefined;
+
+    return typeof width === 'string' ? width : `${width}px`;
+  }, [width]);
+
+  const dynamicStyle = useMemo(() => ({
+    '--width': computedWidth,
+    '--text-align': align,
+  }), [align, computedWidth]);
+
+  const content = useMemo(() => (
+    <>
+      {children}
+      {Boolean(sorting) && (
+        <Icon
+          dimension={12}
+          className={styles.Icon}
+          fill="var(--highlight-red-foreground)"
+          source={sorting === 'desc' ? 'bars-sort-down' : 'bars-sort-up'}
+        />
+      )}
+    </>
+  ), [children, sorting]);
+
+  return (
+    <Component
+      ref={forwardedRef}
+      className={clsx(styles.TableHeadcell, className)}
+      data-table-cell-collapsed={collapsed}
+      data-table-cell-padding={padding}
+      data-table-cell-fixed={Boolean(width)}
+      style={{
+        ...dynamicStyle,
+        ...style,
+        userSelect: 'none',
+      }}
+      {...otherProps}
+    >
+      {canSort ? (
+        <BlankButton
+          className={styles.BlankButton}
+          type="button"
+          onClick={onClick}
+        >
+          {content}
+        </BlankButton>
+      ) : content}
+    </Component>
+  );
+}) as PolyRefComponent<'th', TableHeadcellProps>;
+

@@ -6,7 +6,7 @@ import {
 } from 'react';
 
 import {
-  Icon, IconProps, PolymorphicPropsRef, PropsClassChildren,
+  Icon, IconProps, PolyRefComponent, PropsClassChildren,
   Spinner, useStyles,
 } from '@/components';
 
@@ -72,15 +72,6 @@ export type ButtonProps = {
   sentiment?: 'positive' | 'warning' | 'danger';
 }
 
-type PolymorphicButton<T extends React.ElementType = 'button'> = PolymorphicPropsRef<
-  T,
-  PropsClassChildren<ButtonProps>
->;
-
-type ButtonComponent = <T extends React.ElementType = 'button'>(
-  props: PolymorphicButton<T>
-) => JSX.Element | React.ReactNode | null
-
 type IconSizeProps = Record<NonNullable<ButtonProps['dimension']>, IconProps['dimension']>
 
 const iconSize: IconSizeProps = {
@@ -89,10 +80,10 @@ const iconSize: IconSizeProps = {
   small: 14,
 };
 
-export const Button: ButtonComponent = forwardRef(
-  <T extends React.ElementType = 'button'>(
+export const Button = forwardRef(
+  (
     {
-      as,
+      as: Component = 'button',
       kind = 'primary',
       dimension = 'regular',
       className,
@@ -108,10 +99,9 @@ export const Button: ButtonComponent = forwardRef(
       busy,
       sentiment,
       ...otherProps
-    }: PolymorphicButton<T>,
-    forwardedRef?: React.ForwardedRef<T>,
+    },
+    forwardedRef,
   ) => {
-    const Component = as ?? 'button';
     const { vibrancy } = useStyles();
 
     const handleClick = useCallback(
@@ -158,6 +148,4 @@ export const Button: ButtonComponent = forwardRef(
       </Component>
     );
   },
-);
-
-// Button.displayName = 'Button';
+) as PolyRefComponent<'button', PropsClassChildren<ButtonProps>>;

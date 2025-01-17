@@ -4,7 +4,7 @@ import { TokensTypes } from '@lualtek/tokens/platforms/web';
 import clsx from 'clsx';
 import { forwardRef, useMemo } from 'react';
 
-import { PolymorphicPropsRef, PropsClassChildren } from '@/components';
+import { PolyRefComponent, PropsClassChildren } from '@/components';
 
 import styles from './text.module.css';
 
@@ -63,16 +63,10 @@ export type TextProps = {
   whiteSpace?: 'normal' | 'nowrap' | 'pre' | 'pre-line' | 'pre-wrap' | 'break-spaces';
 }
 
-type PolymorphicText<T extends React.ElementType = 'span'> = PolymorphicPropsRef<T, PropsClassChildren<TextProps>>;
-
-type TextComponent = <T extends React.ElementType = 'span'>(
-  props: PolymorphicText<T>
-) => JSX.Element | React.ReactNode | null
-
-export const Text: TextComponent = forwardRef(
-  <T extends React.ElementType = 'span'>(
+export const Text = forwardRef(
+  (
     {
-      as,
+      as: Component = 'span',
       children,
       className,
       size,
@@ -87,10 +81,9 @@ export const Text: TextComponent = forwardRef(
       whiteSpace = 'normal',
       style,
       ...otherProps
-    }: PolymorphicText<T>,
-    forwardedRef?: React.ForwardedRef<T>,
+    },
+    forwardedRef,
   ) => {
-    const Component = as ?? 'span';
     const dynamicStyle = useMemo(() => (
       {
         '--max-w': maxWidth,
@@ -117,4 +110,4 @@ export const Text: TextComponent = forwardRef(
       </Component>
     );
   },
-);
+) as PolyRefComponent<'span', PropsClassChildren<TextProps>>;

@@ -36,7 +36,7 @@ export type ListProps = {
 export const List = forwardRef(
   (
     {
-      as,
+      as: Component = 'ul',
       children,
       dimension = 'regular',
       className,
@@ -47,7 +47,6 @@ export const List = forwardRef(
     },
     forwardedRef,
   ) => {
-    const Component = as ?? 'ul';
     const isUnordered = useMemo(() => Component === 'ul', [Component]);
 
     const dynamicStyle = useMemo(() => (
