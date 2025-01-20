@@ -11,6 +11,7 @@
     "tsconfig": "0.0.4"
   },
   "changesets": [
+    "blue-tools-bow",
     "fuzzy-cows-itch",
     "quiet-rivers-camp"
   ]
