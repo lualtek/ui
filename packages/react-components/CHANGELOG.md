@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 16.0.0-next.1
+
+### Patch Changes
+
+- b1804d5: Fix menu-item ref
+  - @lualtek/icons@16.0.0-next.1
+
 ## 16.0.0-next.0
 
 ### Major Changes
