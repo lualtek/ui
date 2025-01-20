@@ -10,5 +10,8 @@
     "@lualtek/tokens": "15.7.0",
     "tsconfig": "0.0.4"
   },
-  "changesets": []
+  "changesets": [
+    "fuzzy-cows-itch",
+    "quiet-rivers-camp"
+  ]
 }
