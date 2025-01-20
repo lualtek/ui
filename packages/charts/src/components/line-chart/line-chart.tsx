@@ -272,4 +272,3 @@ export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
   );
 }
 
-LineChart.displayName = 'LineChart';

@@ -184,4 +184,4 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(({
 }) as AutocompleteComponent;
 
 Autocomplete.Option = AutocompleteOption;
-Autocomplete.displayName = 'Autocomplete';
+

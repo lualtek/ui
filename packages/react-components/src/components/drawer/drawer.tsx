@@ -243,4 +243,3 @@ export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(({
   );
 });
 
-Drawer.displayName = 'Drawer';

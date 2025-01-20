@@ -79,4 +79,3 @@ export const Li = forwardRef<HTMLLIElement, ListItemProps>(({
   </Stack>
 ));
 
-Li.displayName = 'List.Li';

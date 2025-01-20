@@ -27,4 +27,4 @@ export const AspectRatio: FCChildren<AspectRatioProps> = ({
     },
   },
 ));
-AspectRatio.displayName = 'AspectRatio';
+

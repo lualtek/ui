@@ -55,4 +55,3 @@ export const AutocompleteOption = forwardRef<HTMLButtonElement, AutocompleteOpti
   );
 });
 
-AutocompleteOption.displayName = 'Autocomplete.Option';

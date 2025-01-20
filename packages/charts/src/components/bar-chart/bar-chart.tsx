@@ -207,4 +207,3 @@ export function BarChart<D extends ChartDataBaseType, B extends BarProps<D>>({
   );
 }
 
-BarChart.displayName = 'BarChart';

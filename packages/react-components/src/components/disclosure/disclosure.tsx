@@ -214,4 +214,3 @@ export const Disclosure = forwardRef<HTMLDetailsElement, DisclosureProps>(({
   );
 });
 
-Disclosure.displayName = 'Disclosure';

@@ -110,4 +110,3 @@ export const Tooltip: FC<TooltipProps> = ({
   </Elevator>
 );
 
-Tooltip.displayName = 'ChartTooltip';

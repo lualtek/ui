@@ -118,5 +118,4 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>(({
   );
 }) as ModalComponent;
 
-Modal.displayName = 'Modal';
 Modal.Content = ModalContent;

@@ -1,7 +1,5 @@
 'use client';
 
-/* eslint-disable @typescript-eslint/naming-convention */
-
 import { TokensTypes } from '@lualtek/tokens/platforms/web';
 import tkns from '@lualtek/tokens/platforms/web/tokens.json';
 import {
@@ -186,4 +184,3 @@ export const Glow: FCChildrenClass<GlowProps> = ({
   );
 };
 
-Glow.displayName = 'Glow';

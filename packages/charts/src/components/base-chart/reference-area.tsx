@@ -1,4 +1,4 @@
-import { FC, LegacyRef } from 'react';
+import { FC } from 'react';
 import type { ReferenceArea as ReferenceAreaType, ReferenceAreaProps as RechartReferenceAreaProps } from 'recharts';
 import { ReferenceArea as RechartReferenceArea } from 'recharts';
 import { Except } from 'type-fest';
@@ -24,8 +24,6 @@ export const ReferenceArea: FC<ReferenceAreaProps> = ({
     fillOpacity={opacity}
   />
 );
-
-ReferenceArea.displayName = 'ReferenceArea';
 
 // Esclude default props, see https://github.com/recharts/recharts/issues/544#issuecomment-2008058998
 const { fill, fillOpacity, ...defaultProps } = RechartReferenceArea.defaultProps;

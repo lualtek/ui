@@ -19,8 +19,6 @@ export const OverlayContext = createContext<OverlayContextProps>({
   titleId: '',
 });
 
-OverlayContext.displayName = 'OverlayContext';
-
 export const OverlayProvider = (props: PropsWithChildren<OverlayContextProps>) => {
   const uid = useId();
   const {

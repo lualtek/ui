@@ -22,4 +22,3 @@ export const BlankButton = forwardRef<HTMLButtonElement, BlankButtonProps>(({
   </button>
 )) as ForwardRefExoticComponent<BlankButtonProps>;
 
-BlankButton.displayName = 'BlankButton';

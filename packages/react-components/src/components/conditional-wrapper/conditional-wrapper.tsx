@@ -21,4 +21,3 @@ export const ConditionalWrapper: FC<ConditionalWrapperProps> = ({
   wrapper = children => <>{children}</>,
 }) => (condition ? wrapper(children) : children);
 
-ConditionalWrapper.displayName = 'ConditionalWrapper';

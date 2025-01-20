@@ -286,4 +286,3 @@ export const BaseChart = forwardRef<HTMLDivElement, BaseChartProps>(({
   );
 });
 
-BaseChart.displayName = 'XYChart';
