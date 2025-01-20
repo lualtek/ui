@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 
-import { FCClass } from '@/components/types';
+import { FC } from 'react';
 
 export type LogoProps = React.ComponentPropsWithRef<'svg'> & {
   /**
@@ -53,7 +53,7 @@ const viewBoxes: ViewBoxType = {
   },
 };
 
-export const Logo: FCClass<LogoProps> = ({
+export const Logo: FC<LogoProps> = ({
   className,
   fill = 'var(--dimmed-8)',
   width = '100%',
