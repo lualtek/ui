@@ -7,7 +7,6 @@ import {
   Children, cloneElement, CSSProperties, FC, isValidElement, ReactElement, useMemo,
 } from 'react';
 import MasonryLayout from 'react-masonry-css';
-import { FCChildrenClass } from 'src/types/custom';
 
 import styles from './masonry.module.css';
 

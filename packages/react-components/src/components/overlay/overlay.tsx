@@ -4,11 +4,10 @@ import {
   AnimatePresence, domMax, LazyMotion, m,
 } from 'motion/react';
 import {
+  FC,
   ReactNode, useEffect, useId, useMemo,
 } from 'react';
 import { createPortal } from 'react-dom';
-
-import { FCChildren } from '@/components/types';
 
 import styles from './overlay.module.css';
 import { OverlayProvider } from './overlay-context';
@@ -56,7 +55,7 @@ export type OverlayProps = React.ComponentPropsWithoutRef<'div'> & {
   backdropOpacity?: number;
 }
 
-export const Overlay: FCChildren<OverlayProps> = ({
+export const Overlay: FC<OverlayProps> = ({
   children,
   root,
   theme = 'auto',

@@ -1,13 +1,16 @@
 import {
-  Children, cloneElement, CSSProperties, isValidElement, ReactElement,
+  Children, cloneElement, CSSProperties, FC, isValidElement, ReactElement,
 } from 'react';
 
 import {
   ElevationDirection, ElevationLevel, ElevationShadowColor, useStyles,
 } from '@/components';
-import type { FCChildren } from '@/components/types';
 
 export type ElevatorProps = {
+  /**
+   * The children to apply the elevation to.
+   */
+  children: React.ReactNode;
   /**
    * Set the elevation of the component when is resting.
   */
@@ -33,7 +36,7 @@ export type ElevatorProps = {
   extraShadow?: string;
 }
 
-export const Elevator: FCChildren<ElevatorProps> = ({
+export const Elevator: FC<ElevatorProps> = ({
   children,
   resting,
   direction = 'bottom',

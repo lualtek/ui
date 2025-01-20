@@ -11,11 +11,12 @@ import {
   Stack, Text,
   Title,
 } from '@/components';
-import { FCChildren } from '@/components/types';
 
 import styles from './toast.module.css';
 
-const PrimitiveNoopComponent: FCChildren<{ asChild?: boolean }> = ({ children }) => <>{children}</>;
+const PrimitiveNoopComponent: React.FC<{
+  asChild?: boolean; children: React.ReactNode;
+}> = ({ children }) => <>{children}</>;
 
 export type InlineToastProps = React.ComponentPropsWithRef<'output'> & {
   /**

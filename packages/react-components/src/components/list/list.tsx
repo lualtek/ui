@@ -14,6 +14,7 @@ import styles from './list.module.css';
 import { Li, ListItemProps } from './list-item';
 
 export type ListProps = {
+  children: React.ReactNode[] | React.ReactNode;
   /**
    * Set the dimension of the items in the list.
    * This affects also the marker size.

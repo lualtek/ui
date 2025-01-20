@@ -18,12 +18,21 @@ export type UIComponentWithChildren<Props, Other = Record<string, unknown>> = {
   theme: Themes;
 } & Other & React.PropsWithChildren<UIComponent<Props>>
 
+/**
+ * @deprecated
+ */
 export type FCChildren<P = Record<string, unknown>> = React.FC<React.PropsWithChildren<P>>
-
+/**
+ * @deprecated
+ */
 export type FCChildrenClass<P = Record<string, unknown>> = FCChildren<PropsWithClass<P>>
-
+/**
+ * @deprecated
+ */
 export type FCForwardRef<P = Record<string, unknown>> = React.ForwardRefExoticComponent<PropsWithClass<P>>
-
+/**
+ * @deprecated
+ */
 export type PropsClassChildren<P = Record<string, unknown>> = React.PropsWithChildren<PropsWithClass<P>>
 
 export type Prettify<T> = {
