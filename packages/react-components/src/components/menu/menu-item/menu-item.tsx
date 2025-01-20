@@ -8,6 +8,7 @@ import {
   RefObject,
   useCallback,
   useMemo,
+  useRef,
 } from 'react';
 import { useFocusEffect, useRovingTabIndex } from 'react-roving-tabindex';
 
@@ -97,15 +98,16 @@ export const MenuItem = forwardRef(
     },
     forwardedRef,
   ) => {
+    const itemRef = useRef<any>(forwardedRef);
     const [
       tabIndex,
       isFocused,
       handleKeyDown,
       handleClick,
-    ] = useRovingTabIndex(forwardedRef as RefObject<HTMLElement>, disabled);
+    ] = useRovingTabIndex(itemRef as RefObject<HTMLElement>, disabled);
     const isIconAtEnd = useMemo(() => iconPosition === 'end', [iconPosition]);
 
-    useFocusEffect(isFocused, forwardedRef as RefObject<HTMLElement>);
+    useFocusEffect(isFocused, itemRef as RefObject<HTMLElement>);
 
     const triggerClick = useCallback(
       (e: React.MouseEvent<HTMLElement>) => {
@@ -157,7 +159,7 @@ export const MenuItem = forwardRef(
       <Stack as="li" role="none">
         <Component
           autoFocus={autoFocus}
-          ref={forwardedRef}
+          ref={itemRef}
           role="menuitem"
           className={clsx(styles.MenuItem, className)}
           onClick={disabled ? undefined : triggerClick}
