@@ -1,4 +1,3 @@
-import { PropsWithClass } from '@lualtek/react-components';
 import {
   useEffect, useRef, useState, useTransition,
 } from 'react';
@@ -96,7 +95,6 @@ export type LineChartProps<D extends ChartDataBaseType, L extends LineProps<D>> 
 }>;
 
 export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
-  className,
   data,
   series,
   showDots = false,
@@ -113,7 +111,7 @@ export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
   dotsSize = 3,
   syncId,
   ...otherProps
-}: PropsWithClass<LineChartProps<D, L>>) {
+}: LineChartProps<D, L>) {
   const chartRef = useRef<HTMLDivElement>(null);
   const [isAnimationActive, setIsAnimationActive] = useState(!disableAnimation);
   const [currentChartWidth, setCurrentChartWidth] = useState<number>();

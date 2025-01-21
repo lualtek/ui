@@ -1,4 +1,3 @@
-import { PropsWithClass } from '@lualtek/react-components';
 import {
   useEffect, useRef, useState, useTransition,
 } from 'react';
@@ -95,7 +94,7 @@ export function BarChart<D extends ChartDataBaseType, B extends BarProps<D>>({
   focusable = false,
   syncId,
   ...otherProps
-}: PropsWithClass<BarChartProps<D, B>>) {
+}: BarChartProps<D, B>) {
   const chartRef = useRef<HTMLDivElement>(null);
   const [isAnimationActive, setIsAnimationActive] = useState(disableAnimation);
   const [currentChartWidth, setCurrentChartWidth] = useState<number>();

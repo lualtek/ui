@@ -1,4 +1,4 @@
-import { PropsClassChildren, Stack, Text } from '@lualtek/react-components';
+import { Stack, Text } from '@lualtek/react-components';
 import {
   forwardRef, ReactElement, ReactNode, useMemo,
 } from 'react';
@@ -19,7 +19,8 @@ import { Tooltip, TooltipProps } from '../tooltip';
 
 export type ChartDataBaseType = Record<string, string | number | null>;
 
-export type BaseChartProps = Except<ResponsiveContainerProps, 'className'> & PropsClassChildren<{
+export type BaseChartProps = Except<ResponsiveContainerProps, 'className'> & {
+  className?: string;
   /**
    * The data key to assign to the x-axis.
    */
@@ -171,7 +172,7 @@ export type BaseChartProps = Except<ResponsiveContainerProps, 'className'> & Pro
    * @returns ReactElement
    */
   renderChart: (children: ReactNode) => ReactElement;
-}>;
+};
 
 export const DENSITIES: Record<NonNullable<BaseChartProps['density']>, number> = {
   low: 3,
