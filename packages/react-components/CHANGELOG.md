@@ -1,5 +1,19 @@
 # @lualtek/react-components
 
+## 16.0.0-next.4
+
+### Major Changes
+
+- 846a5e3: Rename `Stepper` title prop into `heading`
+
+### Minor Changes
+
+- 86b533b: fix table typo
+
+### Patch Changes
+
+- @lualtek/icons@16.0.0-next.4
+
 ## 16.0.0-next.3
 
 ### Major Changes
