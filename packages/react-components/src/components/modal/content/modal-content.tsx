@@ -17,7 +17,7 @@ export type ModalContentProps = React.ComponentPropsWithRef<'div'> & {
    * Set the accessible title of the modal. This is used by screen readers to
    * announce the title of the modal when opened.
    */
-  headeing: ReactNode;
+  heading: ReactNode;
   /**
    * Set the theme of the content card. To ensure contrast with the default overlay color (dark),
    * this is set to `light` by default.
@@ -47,7 +47,7 @@ export type ModalContentProps = React.ComponentPropsWithRef<'div'> & {
 export const ModalContent = forwardRef<HTMLDivElement, ModalContentProps>(({
   children,
   className,
-  headeing,
+  heading,
   theme = 'auto',
   scrollInside = true,
   headerTint,
@@ -55,7 +55,7 @@ export const ModalContent = forwardRef<HTMLDivElement, ModalContentProps>(({
   style,
   ...otherProps
 }, forwardedRef) => {
-  const { onClose, titleId } = useOverlayContext();
+  const { onClose, headingId } = useOverlayContext();
   const { matches } = useResponsiveContext();
 
   const dynamicStyle = useMemo(() => (
@@ -84,7 +84,7 @@ export const ModalContent = forwardRef<HTMLDivElement, ModalContentProps>(({
           {...otherProps}
         >
           <Stack vAlign="center" fill={false} hAlign="space-between" direction="row" className={styles.Header}>
-            <Title lineHeight="small" responsive={false} level="5" id={titleId}>{headeing}</Title>
+            <Title lineHeight="small" responsive={false} level="5" id={headingId}>{heading}</Title>
             {onClose && <IconButton onClick={onClose} className={styles.CloseButton} icon="remove" kind="flat" />}
           </Stack>
           <div className={styles.Scroller} data-modal-content-scroll={scrollInside}>

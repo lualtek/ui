@@ -63,7 +63,7 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>(({
   onDrag,
   ...otherProps
 }, forwardedRef) => {
-  const titleId = useId();
+  const headingId = useId();
   const { matches } = useResponsiveContext();
 
   const ModalAnimation = useMemo(() => ({
@@ -104,7 +104,7 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>(({
               exit="hidden"
               role="dialog"
               aria-modal="true"
-              aria-labelledby={titleId}
+              aria-labelledby={headingId}
               className={clsx(styles.Modal, className)}
               ref={forwardedRef}
               {...otherProps}

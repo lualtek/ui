@@ -25,7 +25,7 @@ const options = [
 ];
 
 const meta: Meta<typeof Drawer> = {
-  title: 'Dialogs/Drawer',
+  heading: 'Dialogs/Drawer',
   component: Drawer,
   decorators: [
     Story => (
@@ -72,7 +72,7 @@ const meta: Meta<typeof Drawer> = {
   },
   args: {
     side: 'right',
-    title: 'Drawer title',
+    heading: 'Drawer title',
     closeOnClickOutside: true,
     isModal: true,
     safePadding: true,

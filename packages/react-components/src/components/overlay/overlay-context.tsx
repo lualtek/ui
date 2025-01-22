@@ -12,23 +12,23 @@ type OverlayContextProps = Pick<OverlayProps, 'onClose'> & {
    * @internal
    * @defaultValue ""
    */
-  titleId?: string;
+  headingId?: string;
 }
 
 export const OverlayContext = createContext<OverlayContextProps>({
-  titleId: '',
+  headingId: '',
 });
 
 export const OverlayProvider = (props: PropsWithChildren<OverlayContextProps>) => {
   const uid = useId();
   const {
     children,
-    titleId = `${uid}-overlay-title`, onClose,
+    headingId = `${uid}-overlay-title`, onClose,
   } = props;
 
   return (
     <OverlayContext.Provider value={{
-      titleId,
+      headingId,
       onClose,
     }}
     >
