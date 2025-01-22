@@ -1,5 +1,11 @@
 # @lualtek/config
 
+## 16.0.0
+
+### Patch Changes
+
+- @lualtek/tokens@16.0.0
+
 ## 16.0.0-next.5
 
 ### Patch Changes
