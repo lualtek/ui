@@ -1,6 +1,8 @@
 import { forwardRef } from 'react';
 
-import { MenuItem, MenuItemProps, Polymorphic } from '@/components';
+import {
+  MenuItem, MenuItemProps, PolyRefComponent,
+} from '@/components';
 
 export type MenuItemCheckboxProps = MenuItemProps & {
   /**
@@ -9,24 +11,24 @@ export type MenuItemCheckboxProps = MenuItemProps & {
   checked?: boolean;
 }
 
-type MenuItemCheckboxComponent = Polymorphic.ForwardRefComponent<
-Polymorphic.IntrinsicElement<typeof MenuItem>,
-Polymorphic.OwnProps<typeof MenuItem> & MenuItemCheckboxProps
->;
-
-export const MenuItemCheckbox = forwardRef(({
-  children,
-  checked,
-  ...otherProps
-}, forwardedRef) => (
-  <MenuItem
-    role="menuitemcheckbox"
-    aria-checked={checked}
-    ref={forwardedRef}
-    {...otherProps}
-  >
-    {children}
-  </MenuItem>
-)) as MenuItemCheckboxComponent;
-
-MenuItemCheckbox.displayName = 'Menu.ItemCheckbox';
+export const MenuItemCheckbox = forwardRef(
+  (
+    {
+      as,
+      children,
+      checked,
+      ...otherProps
+    },
+    forwardedRef,
+  ) => (
+    <MenuItem
+      as={as}
+      role="menuitemcheckbox"
+      aria-checked={checked}
+      ref={forwardedRef}
+      {...otherProps}
+    >
+      {children}
+    </MenuItem>
+  ),
+) as PolyRefComponent<typeof MenuItem, MenuItemCheckboxProps>;

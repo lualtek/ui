@@ -3,15 +3,14 @@
 import { TokensTypes } from '@lualtek/tokens/platforms/web';
 import tkns from '@lualtek/tokens/platforms/web/tokens.json';
 import {
+  FC,
   Fragment, useCallback, useId,
   useMemo,
 } from 'react';
 
-import { FCChildrenClass } from '@/components/types';
-
 import styles from './skeleton.module.css';
 
-export type SkeletonProps = {
+export type SkeletonProps = React.ComponentPropsWithRef<'span'> & {
   /**
    * Set the edge radius of each skeleton block.
    * This value must be one of the available `radius` tokens
@@ -63,7 +62,7 @@ export type SkeletonProps = {
   loading?: boolean;
 }
 
-export const Skeleton: FCChildrenClass<SkeletonProps> = ({
+export const Skeleton: FC<SkeletonProps> = ({
   className,
   children,
   radius = 4,

@@ -1,34 +1,36 @@
 import clsx from 'clsx';
 import { forwardRef } from 'react';
 
-import { Button, ButtonProps, Polymorphic } from '@/components';
+import {
+  Button, ButtonProps, PolyRefComponent,
+} from '@/components';
 
 import styles from './icon-button.module.css';
 
 export type IconButtonProps = Pick<
-ButtonProps,
-'kind' | 'dimension' | 'icon' | 'disabled' | 'onClick' | 'busy' | 'sentiment' | 'type'
+  ButtonProps,
+  'kind' | 'dimension' | 'icon' | 'disabled' | 'onClick' | 'busy' | 'sentiment' | 'type'
 >
 
-type PolymorphicIconButton = Polymorphic.ForwardRefComponent<
-Polymorphic.IntrinsicElement<typeof Button>,
-Polymorphic.OwnProps<typeof Button> & IconButtonProps
->;
-
-export const IconButton = forwardRef(({
-  className,
-  icon,
-  dimension,
-  kind,
-  disabled,
-  busy,
-  ...otherProps
-}, forwardedRef) => (
+export const IconButton = forwardRef((
+  {
+    as,
+    className,
+    icon,
+    dimension,
+    kind,
+    disabled,
+    busy,
+    ...otherProps
+  },
+  forwardedRef,
+) => (
   <Button
     ref={forwardedRef}
     icon={icon}
     dimension={dimension}
     kind={kind}
+    as={as}
     disabled={disabled}
     busy={busy}
     className={clsx(styles.IconButton, className)}
@@ -37,6 +39,4 @@ export const IconButton = forwardRef(({
     }}
     {...otherProps}
   />
-)) as PolymorphicIconButton;
-
-IconButton.displayName = 'IconButton';
+)) as PolyRefComponent<typeof Button, IconButtonProps>;

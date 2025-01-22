@@ -1,13 +1,13 @@
 import { TokensTypes } from '@lualtek/tokens/platforms/web';
 import tkns from '@lualtek/tokens/platforms/web/tokens.json';
 import clsx from 'clsx';
-import { forwardRef, ImgHTMLAttributes, useState } from 'react';
+import { forwardRef, useState } from 'react';
 
 import { Skeleton } from '@/components';
 
 import styles from './avatar.module.css';
 
-export type AvatarProps = ImgHTMLAttributes<HTMLImageElement> & {
+export type AvatarProps = React.ComponentPropsWithRef<'img'> & {
   /**
    * The source of the image to use as avatar
    */
@@ -90,4 +90,3 @@ export const Avatar = forwardRef<HTMLImageElement, AvatarProps>(({
   );
 });
 
-Avatar.displayName = 'Avatar';

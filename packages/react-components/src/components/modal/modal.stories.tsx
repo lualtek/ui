@@ -85,7 +85,7 @@ const meta: Meta<typeof Modal> = {
           isOpen={isVisible}
           onClose={() => handleClose(false)}
         >
-          <Modal.Content title="Modal title">
+          <Modal.Content heading="Modal title">
             {args.children}
           </Modal.Content>
         </Modal>
@@ -100,12 +100,12 @@ type Story = StoryObj<typeof meta>;
 export const Default = {} satisfies Story;
 
 const CustomContentModal = () => {
-  const { onClose, titleId } = useOverlayContext();
+  const { onClose, headingId } = useOverlayContext();
 
   return (
     <Stack vAlign="center">
       <Stack direction="row" fill={false} vAlign="center" hAlign="space-between">
-        <Title level="5" id={titleId}>{titleId}</Title>
+        <Title level="5" id={headingId}>{headingId}</Title>
         <IconButton onClick={() => onClose?.()} icon="remove" kind="flat" aria-label="Close modal" />
       </Stack>
       <Textfield label="Test" />
@@ -137,7 +137,7 @@ export const WithTitleComponent = {
           isOpen={isVisible}
           onClose={() => handleClose(false)}
         >
-          <Modal.Content title={<TextChip text="MA" />}>
+          <Modal.Content heading={<TextChip text="MA" />}>
             {args.children}
           </Modal.Content>
         </Modal>

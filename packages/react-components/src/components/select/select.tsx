@@ -13,7 +13,7 @@ import {
 
 import styles from './select.module.css';
 
-export type SelectProps = SelectHTMLAttributes<HTMLSelectElement> & {
+export type SelectProps = React.ComponentPropsWithRef<'select'> & {
   /**
    * Change the default icon displayed on the side of the select.
    *
@@ -138,5 +138,3 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(({
     </Stack>
   );
 });
-
-Select.displayName = 'Select';

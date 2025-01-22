@@ -1,25 +1,25 @@
 import {
-  cloneElement, HTMLAttributes, isValidElement, ReactNode,
+  cloneElement, forwardRef, isValidElement, ReactNode,
 } from 'react';
-import { Except } from 'type-fest';
 
-import { FCChildrenClass, Stack, Title } from '@/components';
+import { Stack, Title } from '@/components';
 
 import styles from './table-header.module.css';
 
-export type TableHeaderProps = Except<HTMLAttributes<HTMLElement>, 'title'> & {
+export type TableHeaderProps = React.ComponentPropsWithRef<'div'> & {
   /**
    * Set the title of the table.
    */
-  title?: ReactNode;
+  heading?: ReactNode;
 }
 
-export const TableHeader: FCChildrenClass<TableHeaderProps> = ({
+export const TableHeader = forwardRef<HTMLDivElement, TableHeaderProps>(({
   children,
-  title,
+  heading,
   id,
   ...otherProps
-}) => (
+},
+forwardRef) => (
   <Stack
     direction="row"
     columnGap={32}
@@ -28,14 +28,15 @@ export const TableHeader: FCChildrenClass<TableHeaderProps> = ({
     hAlign="space-between"
     wrap
     fill={false}
+    ref={forwardRef}
     className={styles.TableHeader}
     {...otherProps}
   >
     <div>
-      {typeof title === 'string'
-        ? <Title id={id} level="5">{title}</Title>
-        : isValidElement<HTMLElement>(title) && cloneElement(
-          title,
+      {typeof heading === 'string'
+        ? <Title id={id} level="5">{heading}</Title>
+        : isValidElement<HTMLElement>(heading) && cloneElement(
+          heading,
           {
             id,
           },
@@ -46,4 +47,4 @@ export const TableHeader: FCChildrenClass<TableHeaderProps> = ({
       {children}
     </Stack>
   </Stack>
-);
+));

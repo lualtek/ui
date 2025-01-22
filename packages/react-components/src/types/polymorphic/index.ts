@@ -1,61 +1,48 @@
+/* eslint-disable @typescript-eslint/naming-convention */
+import {
+  ComponentPropsWithRef, ElementType, ForwardRefExoticComponent, ReactElement,
+} from 'react';
+
 /**
- * Polymorphic types aretaken from https://github.com/radix-ui/primitives/blob/main/packages/react/polymorphic/src/polymorphic.ts
- * Due the deprecation, we decided to include these types inside Lualtek react-components.
- *
- * All the references and liceses are own by the team Radix
+ * Utility type to merge two types, with properties from the second type overriding those from the first type.
+ * @template P1 - The first type.
+ * @template P2 - The second type.
  */
+type Merge<P1 = Record<string, unknown>, P2 = Record<string, unknown>> = Omit<P1, keyof P2> & P2;
 
- /* -------------------------------------------------------------------------------------------------
-  * Utility types
-  * ----------------------------------------------------------------------------------------------- */
- // eslint-disable-next-line @typescript-eslint/ban-types
- type Merge<P1 = Record<string, unknown>, P2 = Record<string, unknown>> = Omit<P1, keyof P2> & P2;
+/**
+ * Utility type to merge props of a given element type with additional props.
+ * @template E - The element type.
+ * @template P - Additional props.
+ */
+type MergeProps<E, P = Record<string, unknown>> = P
+  & Merge<E extends ElementType ? ComponentPropsWithRef<E> : never, P>;
 
- /**
-  * Infers the OwnProps if E is a ForwardRefExoticComponentWithAs
-  */
- type OwnProps<E> = E extends ForwardRefComponent<any, infer P> ? P : Record<string, unknown>;
+/**
+ * Interface for a polymorphic component with a ref.
+ * @template IntrinsicElementString - The intrinsic element type as a string.
+ * @template OwnProps - Additional props for the component.
+ */
+export interface PolyRefComponent<IntrinsicElementString, OwnProps = Record<string, unknown>>
+  extends ForwardRefExoticComponent<
+    MergeProps<IntrinsicElementString, OwnProps & { as?: IntrinsicElementString }>
+  > {
+  /**
+   * Polymorphic component that can render as any intrinsic element.
+   * @template As - The intrinsic element type.
+   * @param props - The props for the component.
+   * @returns A React element or null.
+   */
+  <As extends keyof JSX.IntrinsicElements>(props: MergeProps<As, OwnProps & { as: As }>): ReactElement | null;
 
- /**
-  * Infers the JSX.IntrinsicElement if E is a ForwardRefExoticComponentWithAs
-  */
- type IntrinsicElement<E> = E extends ForwardRefComponent<infer I, any> ? I : never;
-
- type ForwardRefExoticComponent<E, OwnProps> = React.ForwardRefExoticComponent<
- Merge<E extends React.ElementType ? React.ComponentPropsWithRef<E> : never, OwnProps & { as?: E }>
- >;
-
-/* -------------------------------------------------------------------------------------------------
-  * ForwardRefComponent
-  * ----------------------------------------------------------------------------------------------- */
-
-interface ForwardRefComponent<
-   IntrinsicElementString,
-   OwnProps = Record<string, unknown>,
-   /**
-    * Extends original type to ensure built in React types play nice
-    * with polymorphic components still e.g. `React.ElementRef` etc.
-    */
- > extends ForwardRefExoticComponent<IntrinsicElementString, OwnProps> {
-   /**
-    * When `as` prop is passed, use this overload.
-    * Merges original own props (without DOM props) and the inferred props
-    * from `as` element with the own props taking precendence.
-    *
-    * We explicitly avoid `React.ElementType` and manually narrow the prop types
-    * so that events are typed when using JSX.IntrinsicElements.
-    */
-   <As = IntrinsicElementString>(
-    props: As extends ''
-      ? { as: keyof JSX.IntrinsicElements }
-      : As extends React.ComponentType<infer P>
-        ? Merge<P, OwnProps & { as: As }>
-        : As extends keyof JSX.IntrinsicElements
-          ? Merge<JSX.IntrinsicElements[As], OwnProps & { as: As }>
-          : never
-  ): React.ReactElement | null;
+  /**
+   * Polymorphic component that can render as any custom element type.
+   * @template As - The custom element type.
+   * @template _AsWithProps - The inferred props for the custom element type.
+   * @param props - The props for the component.
+   * @returns A React element or null.
+   */
+  <As extends ElementType<unknown>, _AsWithProps = As extends ElementType<infer P> ? ElementType<P> : never>(
+    props: MergeProps<_AsWithProps, OwnProps & { as: _AsWithProps }>,
+  ): ReactElement | null;
 }
-
-export type {
-  ForwardRefComponent, IntrinsicElement, Merge, OwnProps,
-};

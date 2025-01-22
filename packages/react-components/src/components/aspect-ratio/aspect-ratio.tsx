@@ -1,12 +1,14 @@
 'use client';
 
 import {
-  Children, cloneElement, CSSProperties, isValidElement, ReactElement,
+  Children, cloneElement, CSSProperties, FC, isValidElement, ReactElement,
 } from 'react';
 
-import { FCChildren } from '@/components/types';
-
 export type AspectRatioProps = {
+  /**
+   * The children to apply the aspect ratio to.
+   */
+  children: React.ReactNode;
   /**
    * Set the aspect ratio string to apply to the children.
    * The string format is `width / height`.
@@ -15,7 +17,7 @@ export type AspectRatioProps = {
   ratio: string;
 }
 
-export const AspectRatio: FCChildren<AspectRatioProps> = ({
+export const AspectRatio: FC<AspectRatioProps> = ({
   children,
   ratio,
 }) => Children.map(children, child => isValidElement(child) && cloneElement(
@@ -27,4 +29,4 @@ export const AspectRatio: FCChildren<AspectRatioProps> = ({
     },
   },
 ));
-AspectRatio.displayName = 'AspectRatio';
+

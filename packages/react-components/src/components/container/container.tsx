@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { forwardRef } from 'react';
 
-import { Polymorphic } from '@/components';
+import { PolyRefComponent } from '@/components';
 
 import styles from './container.module.css';
 
@@ -18,25 +18,26 @@ export type ContainerProps = {
   padding?: boolean;
 }
 
-type PolymorphicContainer = Polymorphic.ForwardRefComponent<'div', ContainerProps>;
-
-export const Container = forwardRef(({
-  children,
-  className,
-  dimension = 'full',
-  padding = true,
-  as: Wrapper = 'div',
-  ...otherProps
-}, forwardedRef) => (
-  <Wrapper
-    ref={forwardedRef}
-    className={clsx(styles.Container, className)}
-    data-container-dimension={dimension}
-    data-container-padding={padding}
-    {...otherProps}
-  >
-    {children}
-  </Wrapper>
-)) as PolymorphicContainer;
-
-Container.displayName = 'Container';
+export const Container = forwardRef(
+  (
+    {
+      as: Component = 'div',
+      children,
+      className,
+      dimension = 'full',
+      padding = true,
+      ...otherProps
+    },
+    forwardedRef,
+  ) => (
+    <Component
+      ref={forwardedRef}
+      className={clsx(styles.Container, className)}
+      data-container-dimension={dimension}
+      data-container-padding={padding}
+      {...otherProps}
+    >
+      {children}
+    </Component>
+  ),
+) as PolyRefComponent<'div', ContainerProps>;

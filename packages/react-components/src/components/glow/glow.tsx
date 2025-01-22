@@ -1,20 +1,17 @@
 'use client';
 
-/* eslint-disable @typescript-eslint/naming-convention */
-
 import { TokensTypes } from '@lualtek/tokens/platforms/web';
 import tkns from '@lualtek/tokens/platforms/web/tokens.json';
 import {
+  FC,
   useCallback, useEffect, useMemo, useRef, useState,
 } from 'react';
-
-import { FCChildrenClass } from '@/components/types';
 
 import styles from './glow.module.css';
 
 type RadiusType = Exclude<TokensTypes['radius'], string> | 0
 
-export type GlowProps = {
+export type GlowProps = React.ComponentPropsWithRef<'div'> & {
   /**
    * The distance from the edge of the card to start the glow effect
    *
@@ -81,7 +78,7 @@ export type GlowProps = {
   rainbowColors?: boolean;
 }
 
-export const Glow: FCChildrenClass<GlowProps> = ({
+export const Glow: FC<GlowProps> = ({
   className,
   children,
   proximity = 170,
@@ -186,4 +183,3 @@ export const Glow: FCChildrenClass<GlowProps> = ({
   );
 };
 
-Glow.displayName = 'Glow';

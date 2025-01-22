@@ -8,12 +8,12 @@ import {
 import { Except } from 'type-fest';
 
 import {
-  Icon, IconButton, IconButtonProps, IconProps, Polymorphic,
+  Icon, IconButton, IconButtonProps, IconProps,
 } from '@/components';
 
 import styles from './toggle-button.module.css';
 
-export type ToggleButtonProps = Except<IconButtonProps, 'icon'> & {
+export type ToggleButtonProps = React.ComponentPropsWithRef<'button'> & Except<IconButtonProps, 'icon'> & {
   /**
    * Set the icon to show when the button is resting.
    */
@@ -30,11 +30,6 @@ export type ToggleButtonProps = Except<IconButtonProps, 'icon'> & {
    */
   pressed?: boolean;
 }
-
-type PolymorphicToggleButton = Polymorphic.ForwardRefComponent<
-Polymorphic.IntrinsicElement<typeof IconButton>,
-Polymorphic.OwnProps<typeof IconButton> & ToggleButtonProps
->;
 
 const scaleAnimation = {
   scaleIn: {
@@ -55,18 +50,20 @@ const scaleAnimation = {
   },
 };
 
-export const ToggleButton = forwardRef(({
-  className,
-  restingIcon,
-  pressedIcon,
-  dimension,
-  kind,
-  disabled,
-  iconColor,
-  pressed = false,
-  onClick,
-  ...otherProps
-}, forwardedRef) => {
+export const ToggleButton = forwardRef<HTMLButtonElement, ToggleButtonProps>((
+  {
+    className,
+    restingIcon,
+    pressedIcon,
+    dimension,
+    kind,
+    disabled,
+    pressed = false,
+    onClick,
+    ...otherProps
+  },
+  forwardedRef?: React.ForwardedRef<HTMLButtonElement>,
+) => {
   const [isPressed, setIsPressed] = useState<boolean>(pressed);
   const [isFirstRender, setFirstRender] = useState(true);
 
@@ -131,6 +128,4 @@ export const ToggleButton = forwardRef(({
       }
     </IconButton>
   );
-}) as PolymorphicToggleButton;
-
-ToggleButton.displayName = 'ToggleButton';
+});

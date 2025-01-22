@@ -5,11 +5,11 @@ import {
   forwardRef, useMemo,
 } from 'react';
 
-import { Polymorphic, PropsClassChildren } from '@/components';
+import { PolyRefComponent } from '@/components';
 
 import styles from './title.module.css';
 
-export type TitleProps = PropsClassChildren<{
+export type TitleProps = React.ComponentPropsWithRef<'span'> & {
   /**
    * Set the level of the title. This property only
    * affects the visual appearance of the title and not the
@@ -24,7 +24,7 @@ export type TitleProps = PropsClassChildren<{
    * the predefined tokens from the typography system.
    * @defaultValue "standard"
    */
-  lineHeight?: 'none' | 'extra-small' | 'small' | 'standard' |'large';
+  lineHeight?: 'none' | 'extra-small' | 'small' | 'standard' | 'large';
   /**
    * Set the text alignment of the title based on the text direction.
    *
@@ -44,47 +44,48 @@ export type TitleProps = PropsClassChildren<{
    * Set the white-space property of the title.
    */
   whiteSpace?: 'normal' | 'nowrap' | 'pre' | 'pre-line' | 'pre-wrap' | 'break-spaces';
-}>
+}
 
-type PolymorphicTitle = Polymorphic.ForwardRefComponent<'span', TitleProps>;
-
-export const Title = forwardRef(({
-  children,
-  className,
-  as: Wrapper = 'span',
-  lineHeight = 'standard',
-  level = '1',
-  align = 'start',
-  whiteSpace = 'normal',
-  maxWidth,
-  responsive = true,
-  style,
-  ...otherProps
-}, forwardedRef) => {
-  const computedLevel = level.match(/\d/g) ? `H${level}` : level.charAt(0).toUpperCase() + level.slice(1);
-  // @ts-expect-error: generated className is not pure in CSS
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-  const computedCSSClass = styles[computedLevel];
-  const dynamicStyle = useMemo(() => (
+export const Title = forwardRef(
+  (
     {
-      '--max-w': maxWidth,
-      '--t-align': align,
-      '--white-space': whiteSpace,
-    }
-  ), [maxWidth, align, whiteSpace]);
+      as: Component = 'span',
+      children,
+      className,
+      lineHeight = 'standard',
+      level = '1',
+      align = 'start',
+      whiteSpace = 'normal',
+      maxWidth,
+      responsive = true,
+      style,
+      ...otherProps
+    },
+    forwardedRef,
+  ) => {
+    const computedLevel = level.match(/\d/g) ? `H${level}` : level.charAt(0).toUpperCase() + level.slice(1);
+    // @ts-expect-error: generated className is not pure in CSS
 
-  return (
-    <Wrapper
-      ref={forwardedRef}
-      data-title-line-height={lineHeight}
-      data-title-responsive={responsive}
-      className={clsx(styles.Title, computedCSSClass, className)}
-      style={{ ...dynamicStyle, ...style }}
-      {...otherProps}
-    >
-      {children}
-    </Wrapper>
-  );
-}) as PolymorphicTitle;
+    const computedCSSClass = String(styles[computedLevel]);
+    const dynamicStyle = useMemo(() => (
+      {
+        '--max-w': maxWidth,
+        '--t-align': align,
+        '--white-space': whiteSpace,
+      }
+    ), [maxWidth, align, whiteSpace]);
 
-Title.displayName = 'Title';
+    return (
+      <Component
+        ref={forwardedRef}
+        data-title-line-height={lineHeight}
+        data-title-responsive={responsive}
+        className={clsx(styles.Title, computedCSSClass, className)}
+        style={{ ...dynamicStyle, ...style }}
+        {...otherProps}
+      >
+        {children}
+      </Component>
+    );
+  },
+) as PolyRefComponent<'span', TitleProps>;

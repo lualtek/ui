@@ -6,15 +6,15 @@ import { Elevator } from './elevator';
 const meta = {
   title: 'Widgets/Elevator',
   component: Elevator,
-  render: args => (
-    <Elevator {...args}>
+  args: {
+    children: (
       <Panel bordered radius={16} vibrant vibrancyColor="soft">
         <Stack hPadding={16} vPadding={16}>
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maxime, unde.
         </Stack>
       </Panel>
-    </Elevator>
-  ),
+    ),
+  },
   argTypes: {
     resting: {
       options: ['0', '1', '2', '3', '4'],

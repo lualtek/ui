@@ -9,13 +9,12 @@ import {
 import {
   Icon, IconProps, Stack, StackProps,
 } from '@/components';
-import { PropsClassChildren } from '@/components/types';
 
 import styles from './chip.module.css';
 
 type ForwardedElementType<T extends boolean> = T extends true ? HTMLButtonElement : HTMLSpanElement;
 
-export type ChipProps = PropsClassChildren<{
+export type ChipProps = React.ComponentPropsWithRef<'button'> & {
   /**
    * Set the dimension of the component.
    * @defaultValue "regular"
@@ -48,7 +47,7 @@ export type ChipProps = PropsClassChildren<{
    * Only applicable if `interactive` is `true`.
    */
   onClick?: (event: SyntheticEvent<HTMLButtonElement, MouseEvent>) => void;
-}>
+}
 
 type Sizes = Record<NonNullable<ChipProps['dimension']>, {
   icon: IconProps['dimension'];
@@ -118,12 +117,12 @@ export const Chip = forwardRef<ForwardedElementType<NonNullable<ChipProps['inter
 
   return interactive ? (
     <Stack
+      {...commonProps}
+      {...otherProps}
       as="button"
       ref={forwardedRef as Ref<HTMLButtonElement>}
       style={{ ...dynamicStyle, ...style }}
-      {...commonProps}
-      {...otherProps}
-      onClick={event => onClick?.(event)}
+      onClick={(event: React.MouseEvent<HTMLButtonElement>) => onClick?.(event)}
     >
       {Content}
     </Stack>
@@ -139,5 +138,3 @@ export const Chip = forwardRef<ForwardedElementType<NonNullable<ChipProps['inter
     </Stack>
   );
 });
-
-Chip.displayName = 'Chip';

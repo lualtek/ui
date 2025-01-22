@@ -1,5 +1,64 @@
 # @lualtek/charts
 
+## 16.0.0-next.5
+
+### Patch Changes
+
+- Updated dependencies [f21caa3]
+  - @lualtek/react-components@16.0.0-next.5
+  - @lualtek/tokens@16.0.0-next.5
+
+## 16.0.0-next.4
+
+### Patch Changes
+
+- Updated dependencies [846a5e3]
+- Updated dependencies [86b533b]
+  - @lualtek/react-components@16.0.0-next.4
+  - @lualtek/tokens@16.0.0-next.4
+
+## 16.0.0-next.3
+
+### Patch Changes
+
+- Updated dependencies [4936fb2]
+- Updated dependencies [e8cb348]
+  - @lualtek/react-components@16.0.0-next.3
+  - @lualtek/tokens@16.0.0-next.3
+
+## 16.0.0-next.2
+
+### Minor Changes
+
+- a5bb84e: Clean types
+
+### Patch Changes
+
+- Updated dependencies [b0b4562]
+  - @lualtek/react-components@16.0.0-next.2
+  - @lualtek/tokens@16.0.0-next.2
+
+## 16.0.0-next.1
+
+### Patch Changes
+
+- Updated dependencies [b1804d5]
+  - @lualtek/react-components@16.0.0-next.1
+  - @lualtek/tokens@16.0.0-next.1
+
+## 16.0.0-next.0
+
+### Major Changes
+
+- c44ecdc: Update internal types and remove deprecated ones
+
+### Patch Changes
+
+- Updated dependencies [c44ecdc]
+- Updated dependencies [b8ac7f6]
+  - @lualtek/react-components@16.0.0-next.0
+  - @lualtek/tokens@16.0.0-next.0
+
 ## 15.7.0
 
 ### Patch Changes

@@ -1,5 +1,68 @@
 # @lualtek/react-components
 
+## 16.0.0-next.5
+
+### Patch Changes
+
+- f21caa3: Due coglioni
+  - @lualtek/icons@16.0.0-next.5
+
+## 16.0.0-next.4
+
+### Major Changes
+
+- 846a5e3: Rename `Stepper` title prop into `heading`
+
+### Minor Changes
+
+- 86b533b: fix table typo
+
+### Patch Changes
+
+- @lualtek/icons@16.0.0-next.4
+
+## 16.0.0-next.3
+
+### Major Changes
+
+- 4936fb2: Rename titleId from overlyContext to headingId
+- e8cb348: Rename title props of drawer, table and motal-content into title
+
+### Patch Changes
+
+- @lualtek/icons@16.0.0-next.3
+
+## 16.0.0-next.2
+
+### Minor Changes
+
+- b0b4562: Update stylelint and related deps
+
+### Patch Changes
+
+- @lualtek/icons@16.0.0-next.2
+
+## 16.0.0-next.1
+
+### Patch Changes
+
+- b1804d5: Fix menu-item ref
+  - @lualtek/icons@16.0.0-next.1
+
+## 16.0.0-next.0
+
+### Major Changes
+
+- c44ecdc: Update internal types and remove deprecated ones
+
+### Minor Changes
+
+- b8ac7f6: Update polymorphic types
+
+### Patch Changes
+
+- @lualtek/icons@16.0.0-next.0
+
 ## 15.7.0
 
 ### Minor Changes

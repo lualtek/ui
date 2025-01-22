@@ -72,7 +72,7 @@ const meta: Meta<typeof Drawer> = {
   },
   args: {
     side: 'right',
-    title: 'Drawer title',
+    heading: 'Drawer title',
     closeOnClickOutside: true,
     isModal: true,
     safePadding: true,

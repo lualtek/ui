@@ -4,16 +4,15 @@ import {
   AnimatePresence, domMax, LazyMotion, m,
 } from 'motion/react';
 import {
+  FC,
   ReactNode, useEffect, useId, useMemo,
 } from 'react';
 import { createPortal } from 'react-dom';
 
-import { FCChildren } from '@/components/types';
-
 import styles from './overlay.module.css';
 import { OverlayProvider } from './overlay-context';
 
-export type OverlayProps = {
+export type OverlayProps = React.ComponentPropsWithoutRef<'div'> & {
   /**
    * The children to render inside the overlay. This content
    * will be rendered in a React `portal`, which means that it will be
@@ -56,7 +55,7 @@ export type OverlayProps = {
   backdropOpacity?: number;
 }
 
-export const Overlay: FCChildren<OverlayProps> = ({
+export const Overlay: FC<OverlayProps> = ({
   children,
   root,
   theme = 'auto',
@@ -121,5 +120,3 @@ export const Overlay: FCChildren<OverlayProps> = ({
 
   return defaultRoot && createPortal(content, defaultRoot);
 };
-
-Overlay.displayName = 'Overlay';

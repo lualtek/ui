@@ -36,14 +36,14 @@ type Story = StoryObj<typeof Stepper>;
 
 export const Default: Story = {
   args: {
-    title: 'Sample title',
+    heading: 'Sample title',
     step: 1,
   },
 };
 
 export const WithCustomTitle: Story = {
   args: {
-    title: <Chip>Custom title</Chip>,
+    heading: <Chip>Custom title</Chip>,
     step: 1,
   },
 };

@@ -6,7 +6,6 @@ import React, {
   FC,
   Fragment,
   isValidElement,
-  PropsWithChildren,
   useEffect,
   useId,
   useMemo,
@@ -14,7 +13,7 @@ import React, {
   useState,
 } from 'react';
 
-export type StickySpyProps = PropsWithChildren<{
+export type StickySpyProps = React.ComponentPropsWithRef<'div'> & {
   /**
    * Set a custom name for the attribute
    * @defaultValue "data-react-is-sticky"
@@ -28,7 +27,7 @@ export type StickySpyProps = PropsWithChildren<{
    * Set the root element to observe. Must be a sticky element's ancestor.
    */
   root?: HTMLElement;
-}>
+}
 
 export const StickySpy: FC<StickySpyProps> = ({
   children,

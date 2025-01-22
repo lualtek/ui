@@ -5,7 +5,7 @@ import tkns from '@lualtek/tokens/platforms/web/tokens.json';
 import clsx from 'clsx';
 import { forwardRef, useMemo } from 'react';
 
-import { Polymorphic } from '@/components';
+import { PolyRefComponent } from '@/components';
 
 import styles from './stack.module.css';
 
@@ -62,59 +62,61 @@ export type StackProps = {
   direction?: 'row' | 'column' | 'row-reverse' | 'column-reverse';
 }
 
-type PolymorphicStack = Polymorphic.ForwardRefComponent<'div', StackProps>;
-
-export const Stack = forwardRef(({
-  children,
-  className,
-  rowGap,
-  columnGap,
-  as: Wrapper = 'div',
-  inline = false,
-  direction = 'column',
-  wrap = false,
-  fill = true,
-  vAlign = 'initial',
-  hAlign = 'initial',
-  hPadding,
-  vPadding,
-  style,
-  ...otherProps
-}, forwardedRef) => {
-  const alignmentTemplate = (prop: string) => {
-    if (prop.includes('start') || prop.includes('end')) {
-      return `flex-${prop}`;
-    }
-
-    return prop;
-  };
-
-  const dynamicStyle = useMemo(() => (
+export const Stack = forwardRef(
+  (
     {
-      '--r-gap': rowGap ? tkns.space[rowGap] : 0,
-      '--c-gap': columnGap ? tkns.space[columnGap] : 0,
-      '--v-align': vAlign && alignmentTemplate(vAlign),
-      '--h-align': hAlign && alignmentTemplate(hAlign),
-      '--v-padding': vPadding ? tkns.space[vPadding] : 0,
-      '--h-padding': hPadding ? tkns.space[hPadding] : 0,
-    }
-  ), [columnGap, hAlign, hPadding, rowGap, vAlign, vPadding]);
+      as,
+      children,
+      className,
+      rowGap,
+      columnGap,
+      inline = false,
+      direction = 'column',
+      wrap = false,
+      fill = true,
+      vAlign = 'initial',
+      hAlign = 'initial',
+      hPadding,
+      vPadding,
+      style,
+      ...otherProps
+    },
+    forwardedRef,
+  ) => {
+    const Component = as ?? 'div';
+    const alignmentTemplate = (prop: string) => {
+      if (prop.includes('start') || prop.includes('end')) {
+        return `flex-${prop}`;
+      }
 
-  return (
-    <Wrapper
-      ref={forwardedRef}
-      style={{ ...dynamicStyle, ...style }}
-      data-stack-inline={inline}
-      data-stack-wrap={wrap}
-      data-stack-direction={direction}
-      data-stack-fill={fill}
-      data-stack-has-padding={Boolean(hPadding ?? vPadding)}
-      className={clsx(styles.Stack, className)}
-      {...otherProps}
-    >
-      {children}
-    </Wrapper>
-  );
-}) as PolymorphicStack;
+      return prop;
+    };
 
-Stack.displayName = 'Stack';
+    const dynamicStyle = useMemo(() => (
+      {
+        '--r-gap': rowGap ? tkns.space[rowGap] : 0,
+        '--c-gap': columnGap ? tkns.space[columnGap] : 0,
+        '--v-align': vAlign && alignmentTemplate(vAlign),
+        '--h-align': hAlign && alignmentTemplate(hAlign),
+        '--v-padding': vPadding ? tkns.space[vPadding] : 0,
+        '--h-padding': hPadding ? tkns.space[hPadding] : 0,
+      }
+    ), [columnGap, hAlign, hPadding, rowGap, vAlign, vPadding]);
+
+    return (
+      <Component
+        ref={forwardedRef}
+        style={{ ...dynamicStyle, ...style }}
+        data-stack-inline={inline}
+        data-stack-wrap={wrap}
+        data-stack-direction={direction}
+        data-stack-fill={fill}
+        data-stack-has-padding={Boolean(hPadding ?? vPadding)}
+        className={clsx(styles.Stack, className)}
+        {...otherProps}
+      >
+        {children}
+      </Component>
+    );
+  },
+) as PolyRefComponent<'div', StackProps>;

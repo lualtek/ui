@@ -5,7 +5,7 @@ import {
   forwardRef, useMemo,
 } from 'react';
 
-import { Polymorphic } from '@/components';
+import { PolyRefComponent } from '@/components';
 
 import styles from './clamp-text.module.css';
 
@@ -21,32 +21,33 @@ export type ClampTextProps = {
   inline?: boolean;
 }
 
-type PolymorphicClampText = Polymorphic.ForwardRefComponent<'span', ClampTextProps>;
+export const ClampText = forwardRef(
+  (
+    {
+      as: Component = 'span',
+      className,
+      children,
+      rows = 1,
+      style,
+      inline,
+      ...otherProps
+    },
+    forwardedRef,
+  ) => {
+    const dynamicStyle = useMemo(() => ({
+      '--r': rows,
+    }), [rows]);
 
-export const ClampText = forwardRef(({
-  className,
-  children,
-  rows = 1,
-  style,
-  as: Wrapper = 'span',
-  inline,
-  ...otherProps
-}, forwardedRef) => {
-  const dynamicStyle = useMemo(() => ({
-    '--r': rows,
-  }), [rows]);
-
-  return (
-    <Wrapper
-      ref={forwardedRef}
-      style={{ ...dynamicStyle, ...style }}
-      className={clsx(styles.ClampText, className)}
-      data-clamp-text-inline={inline}
-      {...otherProps}
-    >
-      {children}
-    </Wrapper>
-  );
-}) as PolymorphicClampText;
-
-ClampText.displayName = 'ClampText';
+    return (
+      <Component
+        ref={forwardedRef}
+        style={{ ...dynamicStyle, ...style }}
+        className={clsx(styles.ClampText, className)}
+        data-clamp-text-inline={inline}
+        {...otherProps}
+      >
+        {children}
+      </Component>
+    );
+  },
+) as PolyRefComponent<'span', ClampTextProps>;

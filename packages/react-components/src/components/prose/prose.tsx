@@ -1,29 +1,31 @@
 import clsx from 'clsx';
 import { forwardRef } from 'react';
 
-import { Polymorphic } from '@/components';
+import { PolyRefComponent } from '@/components';
 
 import styles from './prose.module.css';
 
-type PolymorphicProse = Polymorphic.ForwardRefComponent<'div', {
+export type ProseProps = {
   gap?: 'small' | 'medium' | 'big';
-}>;
+};
 
-export const Prose = forwardRef(({
-  children,
-  className,
-  gap = 'big',
-  as: Wrapper = 'div',
-  ...otherProps
-}, forwardedRef) => (
-  <Wrapper
+export const Prose = forwardRef((
+  {
+    as: Component = 'div',
+    children,
+    className,
+    gap = 'big',
+    ...otherProps
+  },
+  forwardedRef,
+) => (
+  <Component
     ref={forwardedRef}
     className={clsx(styles.Prose, className)}
     data-prose-gap={gap}
     {...otherProps}
   >
     {children}
-  </Wrapper>
-)) as PolymorphicProse;
+  </Component>
+)) as PolyRefComponent<'div', ProseProps>;
 
-Prose.displayName = 'Prose';

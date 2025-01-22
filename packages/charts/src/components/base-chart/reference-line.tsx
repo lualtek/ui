@@ -27,4 +27,3 @@ export const ReferenceLine: FC<ReferenceLineProps> = ({
   />
 );
 
-ReferenceLine.displayName = 'ReferenceLine';

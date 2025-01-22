@@ -2,7 +2,7 @@ import { SortDirection } from '@tanstack/react-table';
 import clsx from 'clsx';
 import { forwardRef, useMemo } from 'react';
 
-import { Polymorphic } from '@/components';
+import { PolyRefComponent } from '@/components';
 
 import { CustomColumnMeta } from '../types';
 import styles from './table-cell.module.css';
@@ -39,42 +39,45 @@ type TableCellProps = CustomColumnMeta & {
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-type PolymorphicCell = Polymorphic.ForwardRefComponent<'td', TableCellProps>;
+export const TableCell = forwardRef(
+  (
+    {
+      as: Component = 'td',
+      children,
+      className,
+      collapsed,
+      align = 'start',
+      style,
+      padding = true,
+      width,
+      minWidth,
+      onClick,
+      ...otherProps
+    },
+    forwardedRef,
+  ) => {
+    const dynamicStyle = useMemo(() => ({
+      '--width': width ? `${width}px` : undefined,
+      '--min-width': minWidth ? `${minWidth}px` : undefined,
+      '--text-align': align,
+    }), [align, width, minWidth]);
 
-export const TableCell = forwardRef(({
-  children,
-  className,
-  collapsed,
-  align = 'start',
-  style,
-  as: Wrapper = 'td',
-  padding = true,
-  width,
-  minWidth,
-  onClick,
-  ...otherProps
-}, forwardedRef) => {
-  const dynamicStyle = useMemo(() => ({
-    '--width': width ? `${width}px` : undefined,
-    '--min-width': minWidth ? `${minWidth}px` : undefined,
-    '--text-align': align,
-  }), [align, width, minWidth]);
-
-  return (
-    <Wrapper
-      ref={forwardedRef}
-      className={clsx(styles.TableCell, className)}
-      data-table-cell-collapsed={collapsed}
-      data-table-cell-padding={padding}
-      data-table-cell-fixed={Boolean(width)}
-      style={{
-        ...dynamicStyle,
-        ...style,
-        userSelect: Wrapper === 'td' ? undefined : 'none',
-      }}
-      {...otherProps}
-    >
-      {children}
-    </Wrapper>
-  );
-}) as PolymorphicCell;
+    return (
+      <Component
+        ref={forwardedRef}
+        className={clsx(styles.TableCell, className)}
+        data-table-cell-collapsed={collapsed}
+        data-table-cell-padding={padding}
+        data-table-cell-fixed={Boolean(width)}
+        style={{
+          ...dynamicStyle,
+          ...style,
+          userSelect: Component === 'td' ? undefined : 'none',
+        }}
+        {...otherProps}
+      >
+        {children}
+      </Component>
+    );
+  },
+) as PolyRefComponent<'td', TableCellProps>;

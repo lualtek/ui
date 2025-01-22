@@ -6,7 +6,8 @@ import {
 } from 'react';
 
 import {
-  Icon, IconProps, Polymorphic, Spinner, useStyles,
+  Icon, IconProps, PolyRefComponent,
+  Spinner, useStyles,
 } from '@/components';
 
 import styles from './button.module.css';
@@ -71,8 +72,6 @@ export type ButtonProps = {
   sentiment?: 'positive' | 'warning' | 'danger';
 }
 
-type PolymorphicButton = Polymorphic.ForwardRefComponent<'button', ButtonProps>;
-
 type IconSizeProps = Record<NonNullable<ButtonProps['dimension']>, IconProps['dimension']>
 
 const iconSize: IconSizeProps = {
@@ -81,68 +80,72 @@ const iconSize: IconSizeProps = {
   small: 14,
 };
 
-export const Button = forwardRef(({
-  kind = 'primary',
-  dimension = 'regular',
-  className,
-  children,
-  fullWidth,
-  icon,
-  iconOpticalSize,
-  disabled,
-  iconPosition = 'start',
-  iconColor,
-  type = 'button',
-  onClick,
-  busy,
-  as: Wrapper = 'button',
-  sentiment,
-  ...otherProps
-}, forwardedRef) => {
-  const { vibrancy } = useStyles();
-  const handleClick = useCallback(
-    (event: MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {
-      if (!disabled && onClick) onClick(event);
-      if (disabled) event.preventDefault();
+export const Button = forwardRef(
+  (
+    {
+      as: Component = 'button',
+      kind = 'primary',
+      dimension = 'regular',
+      className,
+      children,
+      fullWidth,
+      icon,
+      iconOpticalSize,
+      disabled,
+      iconPosition = 'start',
+      iconColor,
+      type = 'button',
+      onClick,
+      busy,
+      sentiment,
+      ...otherProps
     },
-    [disabled, onClick],
-  );
+    forwardedRef,
+  ) => {
+    const { vibrancy } = useStyles();
 
-  const renderIcon = useMemo(() => icon && (
-    <Icon
-      source={icon}
-      fill={iconColor}
-      dimension={iconOpticalSize?.[dimension] ?? iconSize[dimension]}
-    />
-  ), [icon, dimension, iconColor, iconOpticalSize]);
+    const handleClick = useCallback(
+      (event: MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {
+        if (!disabled && onClick) onClick(event);
+        if (disabled) event.preventDefault();
+      },
+      [disabled, onClick],
+    );
 
-  return (
-    <Wrapper
-      ref={forwardedRef}
-      type={Wrapper === 'button' ? type : undefined}
-      className={clsx(styles.Button, className)}
-      data-button-icon-position={iconPosition}
-      data-button-dimension={dimension}
-      data-button-kind={kind}
-      data-button-sentiment={sentiment}
-      data-button-fullwidth={fullWidth}
-      aria-disabled={disabled}
-      disabled={busy}
-      aria-busy={busy}
-      aria-live={busy ? 'polite' : undefined}
-      onClick={handleClick}
-      {...(kind === 'primary' || kind === 'secondary') ? vibrancy.attributes : undefined}
-      {...otherProps}
-    >
-      {renderIcon}
-      {(children && busy) ? <span>{children}</span> : children}
-      {busy && (
-        <span className={styles.SpinnerIndicator}>
-          <Spinner dimension={dimension} />
-        </span>
-      )}
-    </Wrapper>
-  );
-}) as PolymorphicButton;
+    const renderIcon = useMemo(() => icon && (
+      <Icon
+        source={icon}
+        fill={iconColor}
+        dimension={iconOpticalSize?.[dimension] ?? iconSize[dimension]}
+      />
+    ), [icon, dimension, iconColor, iconOpticalSize]);
 
-Button.displayName = 'Button';
+    return (
+      <Component
+        ref={forwardedRef}
+        type={Component === 'button' ? type : undefined}
+        className={clsx(styles.Button, className)}
+        data-button-icon-position={iconPosition}
+        data-button-dimension={dimension}
+        data-button-kind={kind}
+        data-button-sentiment={sentiment}
+        data-button-fullwidth={fullWidth}
+        aria-disabled={disabled}
+        disabled={busy}
+        aria-busy={busy}
+        aria-live={busy ? 'polite' : undefined}
+        onClick={handleClick}
+        {...(kind === 'primary' || kind === 'secondary') ? vibrancy.attributes : undefined}
+        {...otherProps}
+      >
+        {renderIcon}
+        {(children && busy) ? <span>{children}</span> : children}
+        {busy && (
+          <span className={styles.SpinnerIndicator}>
+            <Spinner dimension={dimension} />
+          </span>
+        )}
+      </Component>
+    );
+  },
+) as PolyRefComponent<'button', ButtonProps>;

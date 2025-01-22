@@ -1,5 +1,41 @@
 # @lualtek/config
 
+## 16.0.0-next.5
+
+### Patch Changes
+
+- @lualtek/tokens@16.0.0-next.5
+
+## 16.0.0-next.4
+
+### Patch Changes
+
+- @lualtek/tokens@16.0.0-next.4
+
+## 16.0.0-next.3
+
+### Patch Changes
+
+- @lualtek/tokens@16.0.0-next.3
+
+## 16.0.0-next.2
+
+### Patch Changes
+
+- @lualtek/tokens@16.0.0-next.2
+
+## 16.0.0-next.1
+
+### Patch Changes
+
+- @lualtek/tokens@16.0.0-next.1
+
+## 16.0.0-next.0
+
+### Patch Changes
+
+- @lualtek/tokens@16.0.0-next.0
+
 ## 15.7.0
 
 ### Patch Changes

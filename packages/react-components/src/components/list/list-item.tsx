@@ -4,12 +4,11 @@ import { forwardRef } from 'react';
 import {
   Icon, IconProps, Stack,
 } from '@/components';
-import { PropsClassChildren } from '@/components/types';
 
 import { ListProps } from './list';
 import styles from './list.module.css';
 
-export type ListItemProps = PropsClassChildren<Pick<ListProps, 'dimension' | 'hideMarker'> & {
+export type ListItemProps = Pick<ListProps, 'dimension' | 'hideMarker'> & React.ComponentPropsWithRef<'li'> & {
   /**
    * Set the marker style. You can use any icon from the iconography as marker
    * by passing its name.
@@ -21,7 +20,7 @@ export type ListItemProps = PropsClassChildren<Pick<ListProps, 'dimension' | 'hi
    * Set the color of the marker.
    */
   markerColor?: string;
-}>
+}
 
 type SizesType = Record<NonNullable<ListProps['dimension']>, {
   icon: {
@@ -47,7 +46,7 @@ const sizes: SizesType = {
   },
 };
 
-export const ListItem = forwardRef<HTMLLIElement, ListItemProps>(({
+export const Li = forwardRef<HTMLLIElement, ListItemProps>(({
   className,
   hideMarker,
   marker = 'circle',
@@ -59,6 +58,7 @@ export const ListItem = forwardRef<HTMLLIElement, ListItemProps>(({
   <Stack
     className={clsx(styles.ListItem, className)}
     as="li"
+    value="00"
     direction="row"
     hAlign="start"
     vAlign="start"
@@ -79,4 +79,3 @@ export const ListItem = forwardRef<HTMLLIElement, ListItemProps>(({
   </Stack>
 ));
 
-ListItem.displayName = 'List.Li';

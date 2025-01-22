@@ -6,11 +6,11 @@ import {
   domAnimation, LazyMotion, m,
 } from 'motion/react';
 import {
-  Children, cloneElement, isValidElement, ReactNode, useMemo, useRef,
+  Children, cloneElement, FC,
+  isValidElement, ReactNode, useMemo, useRef,
 } from 'react';
 
 import { ConditionalWrapper } from '@/components';
-import { FCChildrenClass } from '@/components/types';
 
 import { Elevator } from '../elevator';
 import styles from './tooltip.module.css';
@@ -32,7 +32,7 @@ export type TooltipProps = TooltipPrimitive.TooltipProps & TooltipPrimitive.Tool
   usePortal?: boolean;
 }
 
-export const Tooltip: FCChildrenClass<TooltipProps> = ({
+export const Tooltip: FC<TooltipProps> = ({
   children,
   className,
   trigger,

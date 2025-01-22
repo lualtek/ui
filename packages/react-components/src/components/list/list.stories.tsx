@@ -7,6 +7,13 @@ const meta = {
   component: List,
   args: {
     hideMarker: false,
+    children: (
+      <>
+        <List.Li>List item text</List.Li>
+        <List.Li>List item text List item textList text</List.Li>
+        <List.Li>List item text</List.Li>
+      </>
+    ),
   },
   argTypes: {
     dimension: {
@@ -14,29 +21,31 @@ const meta = {
       control: { type: 'radio' },
     },
   },
-  render: ({ marker, markerColor, ...args }) => (
-    <List {...args}>
-      <List.Li marker={marker} hideMarker markerColor={markerColor}>List item text</List.Li>
-      <List.Li marker={marker} markerColor={markerColor}>List item text List item textList text</List.Li>
-      <List.Li marker={marker} markerColor={markerColor}>List item text</List.Li>
+  render: ({ ...args }) => (
+    <List as="ul" {...args}>
+      <List.Li>List item text</List.Li>
+      <List.Li>List item text List item textList text</List.Li>
+      <List.Li>List item text</List.Li>
     </List>
   ),
-} satisfies Meta<typeof List & typeof List.Li>;
+} satisfies Meta<typeof List>;
 
 export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Default = {} satisfies Story;
-
-export const CustomMarker = {
-  args: {
-    marker: 'chat',
-  },
+export const Default = {
+  args: {},
 } satisfies Story;
 
-export const MarkerColor = {
-  args: {
-    markerColor: 'green',
-  },
+export const WithCustomMarker = {
+  args: {},
+  render: ({ ...args }) => (
+    <List as="ul" {...args}>
+      <List.Li marker="chat" markerColor="green" hideMarker>List item text</List.Li>
+      <List.Li marker="chat" markerColor="green">List item text List item textList text</List.Li>
+      <List.Li marker="chat" markerColor="green">List item text</List.Li>
+    </List>
+  ),
 } satisfies Story;
+

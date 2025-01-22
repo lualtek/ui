@@ -2,7 +2,7 @@
 
 import clsx from 'clsx';
 import {
-  ChangeEvent, forwardRef, ReactNode, TextareaHTMLAttributes, useCallback, useId, useMemo,
+  ChangeEvent, forwardRef, ReactNode, useCallback, useId, useMemo,
   useState,
 } from 'react';
 
@@ -13,7 +13,7 @@ import {
 import { BaseField, BaseFieldProps } from '../base-field';
 import styles from './textarea.module.css';
 
-export type TextareaProps = BaseFieldProps & TextareaHTMLAttributes<HTMLTextAreaElement> & {
+export type TextareaProps = BaseFieldProps & React.ComponentPropsWithRef<'textarea'> & {
   /**
    * Define the accessible label of the textarea. While this is not
    * mandatory, an textarea should always have a label. If not using this property
@@ -121,5 +121,3 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(({
     </Stack>
   );
 });
-
-Textarea.displayName = 'Textarea';

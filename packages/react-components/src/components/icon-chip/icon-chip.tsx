@@ -2,16 +2,15 @@
 
 import { TokensTypes } from '@lualtek/tokens/platforms/web';
 import clsx from 'clsx';
-import { useMemo } from 'react';
+import { forwardRef, useMemo } from 'react';
 
 import {
   Icon, IconProps, Stack,
 } from '@/components';
-import { FCClass } from '@/components/types';
 
 import styles from './icon-chip.module.css';
 
-export type IconChipProps = {
+export type IconChipProps = React.ComponentPropsWithRef<'span'> & {
   /**
    * Set the dimension of the component.
    *
@@ -46,14 +45,15 @@ const sizes: Sizes = {
   },
 };
 
-export const IconChip: FCClass<IconChipProps> = ({
+export const IconChip = forwardRef<HTMLSpanElement, IconChipProps>(({
   style,
   className,
   dimension = 'regular',
   color = 'primary',
   icon,
   ...otherProps
-}) => {
+},
+forwardedRef) => {
   const dynamicStyle = useMemo(() => ({
     '--background': `var(--highlight-${color}-background)`,
     '--foreground': `var(--highlight-${color}-foreground)`,
@@ -64,6 +64,7 @@ export const IconChip: FCClass<IconChipProps> = ({
       as="span"
       direction="row"
       inline
+      ref={forwardedRef}
       fill={false}
       data-icon-chip-dimension={dimension}
       className={clsx(styles.IconChip, className)}
@@ -79,6 +80,4 @@ export const IconChip: FCClass<IconChipProps> = ({
       />
     </Stack>
   );
-};
-
-IconChip.displayName = 'IconChip';
+});

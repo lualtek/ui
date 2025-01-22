@@ -206,4 +206,3 @@ export const Lightbox: FC<LightboxProps> = ({
   );
 };
 
-Lightbox.displayName = 'LightBox';

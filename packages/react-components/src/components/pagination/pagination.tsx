@@ -1,16 +1,15 @@
 'use client';
 
 import clsx from 'clsx';
-import { useEffect, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import ReactPaginate, { ReactPaginateProps } from 'react-paginate';
 import { Except } from 'type-fest';
 
 import { Icon } from '@/components';
-import { FCChildrenClass } from '@/components/types';
 
 import styles from './pagination.module.css';
 
-export type PaginationProps = Except<ReactPaginateProps, 'pageCount'> & {
+export type PaginationProps = Except<ReactPaginateProps, 'pageCount'> & React.ComponentPropsWithoutRef<'div'> & {
   /**
    * Set the total number of items to paginate through.
    */
@@ -47,7 +46,7 @@ export type PaginationProps = Except<ReactPaginateProps, 'pageCount'> & {
   marginPagesDisplayed?: ReactPaginateProps['marginPagesDisplayed'];
 }
 
-export const Pagination: FCChildrenClass<PaginationProps> = ({
+export const Pagination: FC<PaginationProps> = ({
   className,
   itemsCount,
   itemsPerPage = 10,
@@ -86,5 +85,3 @@ export const Pagination: FCChildrenClass<PaginationProps> = ({
     />
   );
 };
-
-Pagination.displayName = 'Pagination';

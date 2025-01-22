@@ -1,29 +1,29 @@
 import {
-  Children, cloneElement, isValidElement, ReactElement,
+  Children, cloneElement, forwardRef,
+  isValidElement, ReactElement,
   useRef,
 } from 'react';
 import { useIntersection } from 'react-use';
-import { FCChildren } from 'src/types/custom';
 
 import styles from './snaplist.module.css';
 
-type SnaplistItemProps = Record<string, unknown>
+type SnaplistItemProps = React.ComponentPropsWithRef<'div'>;
 
-export const SnaplistItem: FCChildren<SnaplistItemProps> = ({
+export const SnaplistItem = forwardRef<HTMLDivElement, SnaplistItemProps>(({
   className,
   children,
   ...otherProps
-}) => {
+},
+forwardedRef) => {
   const snapItemRef = useRef<HTMLDivElement>(null);
-  // const [snapItemRef, isInView] = useInViewRef(() => null, { threshold: 0.5 });
   const intersection = useIntersection(snapItemRef, {
     root: null,
     rootMargin: '0px',
-    threshold: 1,
+    threshold: 0.5,
   });
 
   return (
-    <div ref={snapItemRef} className={styles.Slide} {...otherProps}>
+    <div ref={forwardedRef} className={styles.Slide} {...otherProps}>
       {Children.map(
         children,
         child => isValidElement(child as React.ReactNode) && cloneElement(child as ReactElement, {
@@ -32,4 +32,4 @@ export const SnaplistItem: FCChildren<SnaplistItemProps> = ({
       )}
     </div>
   );
-};
+});

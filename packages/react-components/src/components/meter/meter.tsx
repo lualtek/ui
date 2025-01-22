@@ -1,7 +1,6 @@
 'use client';
 
 import {
-  ComponentPropsWithRef,
   forwardRef,
   ReactNode,
   useId,
@@ -12,7 +11,7 @@ import { Stack, Text } from '@/components';
 
 import styles from './meter.module.css';
 
-export type MeterProps = Except<ComponentPropsWithRef<'meter'>, 'min' | 'max'> & {
+export type MeterProps = Except<React.ComponentPropsWithRef<'meter'>, 'min' | 'max'> & {
   /**
    * Set the dimension of the meter.
    */
@@ -72,5 +71,3 @@ export const Meter = forwardRef<HTMLMeterElement, MeterProps>(({
     </Stack>
   );
 });
-
-Meter.displayName = 'Meter';

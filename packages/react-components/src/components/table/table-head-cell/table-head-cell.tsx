@@ -2,7 +2,9 @@ import { SortDirection } from '@tanstack/react-table';
 import clsx from 'clsx';
 import { forwardRef, useMemo } from 'react';
 
-import { BlankButton, Icon, Polymorphic } from '@/components';
+import {
+  BlankButton, Icon, PolyRefComponent,
+} from '@/components';
 
 import { CustomColumnMeta } from '../types';
 import styles from './table-head-cell.module.css';
@@ -35,22 +37,23 @@ type TableHeadcellProps = CustomColumnMeta & {
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-type PolymorphicCell = Polymorphic.ForwardRefComponent<'td', TableHeadcellProps>;
-
-export const TableHeadCell = forwardRef(({
-  children,
-  className,
-  collapsed,
-  align = 'start',
-  style,
-  sorting = false,
-  canSort,
-  as: Wrapper = 'td',
-  padding = true,
-  width,
-  onClick,
-  ...otherProps
-}, forwardedRef) => {
+export const TableHeadCell = forwardRef((
+  {
+    as: Component = 'th',
+    children,
+    className,
+    collapsed,
+    align = 'start',
+    style,
+    sorting = false,
+    canSort,
+    padding = true,
+    width,
+    onClick,
+    ...otherProps
+  },
+  forwardedRef,
+) => {
   const computedWidth = useMemo(() => {
     if (!width) return undefined;
 
@@ -77,7 +80,7 @@ export const TableHeadCell = forwardRef(({
   ), [children, sorting]);
 
   return (
-    <Wrapper
+    <Component
       ref={forwardedRef}
       className={clsx(styles.TableHeadcell, className)}
       data-table-cell-collapsed={collapsed}
@@ -86,7 +89,7 @@ export const TableHeadCell = forwardRef(({
       style={{
         ...dynamicStyle,
         ...style,
-        userSelect: Wrapper === 'td' ? undefined : 'none',
+        userSelect: 'none',
       }}
       {...otherProps}
     >
@@ -99,6 +102,7 @@ export const TableHeadCell = forwardRef(({
           {content}
         </BlankButton>
       ) : content}
-    </Wrapper>
+    </Component>
   );
-}) as PolymorphicCell;
+}) as PolyRefComponent<'th', TableHeadcellProps>;
+

@@ -66,5 +66,3 @@ export const EmojiPicker: FC<EmojiPickerProps> = ({
     />
   </Stack>
 );
-
-EmojiPicker.displayName = 'EmojiPicker';

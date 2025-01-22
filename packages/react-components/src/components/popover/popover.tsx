@@ -3,15 +3,13 @@
 import * as PopoverPrimitive from '@radix-ui/react-popover';
 import { FC } from 'react';
 
-import { PropsWithClass } from '@/components/types';
-
 import { PopoverAnchor } from './popover-anchor';
 import { PopoverClose } from './popover-close';
 import { PopoverContent } from './popover-content';
 import { PopoverPortal } from './popover-portal';
 import { PopoverTrigger } from './popover-trigger';
 
-export type PopoverProps = PropsWithClass<PopoverPrimitive.PopoverProps>
+export type PopoverProps = React.ComponentPropsWithRef<'div'> & PopoverPrimitive.PopoverProps
 
 type PopoverComponentProps = FC<PopoverProps> & {
   Anchor: typeof PopoverAnchor;

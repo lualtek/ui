@@ -7,10 +7,9 @@ import { forwardRef, useMemo } from 'react';
 
 import {
   Glow,
-  GlowProps,
+  GlowProps, PolyRefComponent,
   useStyles, VibrancyBlur, VibrancyColor, VibrancySaturation,
 } from '@/components';
-import { Polymorphic } from '@/components/types';
 
 import { ConditionalWrapper } from '../conditional-wrapper';
 import styles from './panel.module.css';
@@ -91,30 +90,31 @@ export type PanelProps = {
   rainbowColors?: GlowProps['rainbowColors'];
 }
 
-type PolymorphicPanel = Polymorphic.ForwardRefComponent<'div', PanelProps>;
-
-export const Panel = forwardRef(({
-  className,
-  children,
-  style,
-  vibrant = false,
-  vibrancyLevel = 'strong',
-  vibrancyColor,
-  vibrancySaturation,
-  bordered,
-  borderSide = 'all',
-  radius,
-  hPadding,
-  vPadding,
-  backgroundColor,
-  backgroundColorHover,
-  showGlow = false,
-  glowSpread,
-  glowColor,
-  rainbowColors,
-  as: Wrapper = 'div',
-  ...otherProps
-}, forwardedRef) => {
+export const Panel = forwardRef((
+  {
+    as: Component = 'div',
+    className,
+    children,
+    style,
+    vibrant = false,
+    vibrancyLevel = 'strong',
+    vibrancyColor,
+    vibrancySaturation,
+    bordered,
+    borderSide = 'all',
+    radius,
+    hPadding,
+    vPadding,
+    backgroundColor,
+    backgroundColorHover,
+    showGlow = false,
+    glowSpread,
+    glowColor,
+    rainbowColors,
+    ...otherProps
+  },
+  forwardedRef,
+) => {
   const computedBackground = typeof backgroundColor === 'number' ? `var(--dimmed-${backgroundColor})` : backgroundColor;
   const computedBackgroundHover = typeof backgroundColorHover === 'number' ? `var(--dimmed-${backgroundColorHover})` : backgroundColorHover;
   const formatRadius = useMemo(() => {
@@ -162,7 +162,7 @@ export const Panel = forwardRef(({
         </Glow>
       )}
     >
-      <Wrapper
+      <Component
         ref={forwardedRef}
         className={clsx(styles.Panel, className)}
         data-panel-bordered={bordered}
@@ -174,9 +174,7 @@ export const Panel = forwardRef(({
         {...otherProps}
       >
         {children}
-      </Wrapper>
+      </Component>
     </ConditionalWrapper>
   );
-}) as PolymorphicPanel;
-
-Panel.displayName = 'Panel';
+}) as PolyRefComponent<'div', PanelProps>;

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Stack } from '@/components';
+import { Stack, Text } from '@/components';
 
 import { Disclosure } from './disclosure';
 
@@ -81,14 +81,24 @@ export const Accordion = {
   render: args => (
     <Stack fill={false} rowGap={8} hAlign="start">
       <Disclosure {...args}>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Doloribus corporis nobis ipsum natus laudantium dolorem sapiente,
-        sint adipisci at asperiores quia ex voluptatum veniam! Quos rerum natus eos excepturi atque!
+        <Text dimmed={5} weight="regular">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          Doloribus corporis nobis ipsum natus laudantium dolorem sapiente,
+          sint adipisci at asperiores quia ex voluptatum veniam! Quos rerum natus eos excepturi atque!
+        </Text>
       </Disclosure>
       <Disclosure {...args}>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Doloribus corporis nobis ipsum natus laudantium dolorem sapiente,
-        sint adipisci at asperiores quia ex voluptatum veniam! Quos rerum natus eos excepturi atque!
+        <Text dimmed={5} weight="regular">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          Doloribus corporis nobis ipsum natus laudantium dolorem sapiente.
+        </Text>
+      </Disclosure>
+      <Disclosure {...args}>
+        <Text dimmed={5} weight="regular">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          Doloribus corporis nobis ipsum natus laudantium dolorem sapiente,
+          sint adipisci at asperiores quia ex voluptatum veniam! Quos rerum natus eos excepturi atque!
+        </Text>
       </Disclosure>
     </Stack>
   ),

@@ -25,7 +25,7 @@ import { useDebounce } from 'react-use';
 
 import {
   Panel,
-  PropsWithClass, Skeleton, Stack, Text,
+  Skeleton, Stack, Text,
 } from '@/components';
 
 import styles from './table.module.css';
@@ -43,7 +43,7 @@ declare module '@tanstack/react-table' {
   interface ColumnMeta<TData extends RowData, TValue> extends CustomColumnMeta {}
 }
 
-export type TableProps<T> = PropsWithClass<{
+export type TableProps<T> = React.ComponentPropsWithRef<'table'> & {
   /**
    * Pass the data structure to the table. Each object key can be used as `accessor` for a column.
    */
@@ -92,7 +92,7 @@ export type TableProps<T> = PropsWithClass<{
   /**
    * Add an accessible title to the table component
    */
-  title?: TableHeaderProps['title'];
+  heading?: TableHeaderProps['heading'];
   /**
    * Hide the header which includes the title and controls.
    * This option is ignored and set to `true` if `selectableRows` is set to `true`.
@@ -151,7 +151,7 @@ export type TableProps<T> = PropsWithClass<{
    * Get Table instance
   */
   getTableInstance?: (instance: TableType<T>) => void;
-}>
+}
 
 export type TableConditionalProps<T> = {
   /**
@@ -210,7 +210,7 @@ export const Table = <T extends Record<string, unknown>>({
   pageClusters,
   clustersLabel,
   actions,
-  title,
+  heading,
   showHeader = false,
   enableToggleColumns = false,
   toggleColumnsLabel,
@@ -423,7 +423,7 @@ export const Table = <T extends Record<string, unknown>>({
                 },
               }}
             >
-              <TableHeader title={title} id={`${uid}-table-title`}>
+              <TableHeader heading={heading} id={`${uid}-table-title`}>
                 {(enableFilterControl) ? (
                   <FilterControl
                     label={filterControlLabel}

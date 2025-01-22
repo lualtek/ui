@@ -5,7 +5,7 @@ import tkns from '@lualtek/tokens/platforms/web/tokens.json';
 import clsx from 'clsx';
 import { forwardRef, useMemo } from 'react';
 
-import { Polymorphic } from '@/components';
+import { PolyRefComponent } from '@/components';
 
 import styles from './scroll-area.module.css';
 
@@ -61,24 +61,25 @@ export type ScrollAreaProps = {
   overscrollBehavior?: 'auto' | 'contain' | 'none';
 }
 
-type PolymorphicScrollArea = Polymorphic.ForwardRefComponent<'div', ScrollAreaProps>;
-
-export const ScrollArea = forwardRef(({
-  children,
-  className,
-  as: Wrapper = 'div',
-  canScroll = true,
-  thumbColor,
-  trackColor,
-  useSystemStyle = true,
-  hideScrollbars = false,
-  gutterBehavior = 'auto',
-  fadeDirection,
-  overscrollBehavior = 'contain',
-  fadeSize = 16,
-  style,
-  ...otherProps
-}, forwardedRef) => {
+export const ScrollArea = forwardRef((
+  {
+    as: Component = 'div',
+    children,
+    className,
+    canScroll = true,
+    thumbColor,
+    trackColor,
+    useSystemStyle = true,
+    hideScrollbars = false,
+    gutterBehavior = 'auto',
+    fadeDirection,
+    overscrollBehavior = 'contain',
+    fadeSize = 16,
+    style,
+    ...otherProps
+  },
+  forwardedRef,
+) => {
   const computedFadeDirection = useMemo(() => {
     if (fadeSize) {
       return typeof fadeSize === 'string' ? fadeSize : tkns.space[fadeSize];
@@ -98,7 +99,7 @@ export const ScrollArea = forwardRef(({
   ), [thumbColor, trackColor, gutterBehavior, overscrollBehavior, computedFadeDirection]);
 
   return (
-    <Wrapper
+    <Component
       ref={forwardedRef}
       className={clsx(styles.ScrollArea, className)}
       data-scroll-area-scrolling={canScroll}
@@ -109,8 +110,6 @@ export const ScrollArea = forwardRef(({
       {...otherProps}
     >
       {children}
-    </Wrapper>
+    </Component>
   );
-}) as PolymorphicScrollArea;
-
-ScrollArea.displayName = 'ScrollArea';
+}) as PolyRefComponent<'div', ScrollAreaProps>;

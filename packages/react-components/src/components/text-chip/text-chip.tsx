@@ -3,17 +3,16 @@
 import { TokensTypes } from '@lualtek/tokens/platforms/web';
 import clsx from 'clsx';
 import { EmojiClickData } from 'emoji-picker-react';
-import { useMemo } from 'react';
+import { forwardRef, useMemo } from 'react';
 
 import {
   Emoji,
   Stack, Text, TextProps,
 } from '@/components';
-import { FCClass } from '@/components/types';
 
 import styles from './text-chip.module.css';
 
-export type TextChipProps = {
+export type TextChipProps = React.ComponentPropsWithRef<'span'> & {
   /**
    * Set the dimension of the component.
    * @defaultValue "regular"
@@ -65,7 +64,7 @@ const sizes: Sizes = {
 
 const emojiRegex = /\p{Extended_Pictographic}/ug;
 
-export const TextChip: FCClass<TextChipProps> = ({
+export const TextChip = forwardRef<HTMLSpanElement, TextChipProps>(({
   text,
   style,
   className,
@@ -74,7 +73,8 @@ export const TextChip: FCClass<TextChipProps> = ({
   tinted = true,
   emoji,
   ...otherProps
-}) => {
+},
+forwardedRef) => {
   const isEmoji = useMemo(() => text && emojiRegex.test(text), [text]);
   const dynamicStyle = useMemo(() => ({
     '--background': `var(--highlight-${color}-background)`,
@@ -86,6 +86,7 @@ export const TextChip: FCClass<TextChipProps> = ({
       as="span"
       direction="row"
       inline
+      ref={forwardedRef}
       fill={false}
       data-text-chip-dimension={dimension}
       data-text-chip-tinted={tinted}
@@ -112,6 +113,4 @@ export const TextChip: FCClass<TextChipProps> = ({
       </Text>
     </Stack>
   );
-};
-
-TextChip.displayName = 'TextChip';
+});

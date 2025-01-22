@@ -3,9 +3,8 @@ import { FC, useId, useMemo } from 'react';
 import {
   Pagination, Select, Stack, Text,
 } from '@/components';
-import { PropsWithClass } from '@/components/types';
 
-export type TablePaginationProps = PropsWithClass & {
+export type TablePaginationProps = React.ComponentPropsWithRef<'div'> & {
   /**
    * Set the options for the items per page select.
    *

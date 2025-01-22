@@ -4,7 +4,7 @@ import { TokensTypes } from '@lualtek/tokens/platforms/web';
 import clsx from 'clsx';
 import { domAnimation, LazyMotion, m } from 'motion/react';
 import {
-  ChangeEvent, forwardRef, InputHTMLAttributes, ReactNode, useCallback, useEffect, useId, useRef,
+  ChangeEvent, forwardRef, ReactNode, useCallback, useEffect, useId, useRef,
   useState,
 } from 'react';
 
@@ -12,7 +12,7 @@ import { Stack, Text, TextProps } from '@/components';
 
 import styles from '../selection-controls.module.css';
 
-export type CheckboxProps = InputHTMLAttributes<HTMLInputElement> & {
+export type CheckboxProps = React.ComponentPropsWithRef<'input'> & {
   /**
    * Set disabled state. The component is not interactive and grayed out.
    */
@@ -176,4 +176,3 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(({
   );
 });
 
-Checkbox.displayName = 'Checkbox';

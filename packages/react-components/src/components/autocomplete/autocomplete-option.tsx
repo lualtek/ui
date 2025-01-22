@@ -8,8 +8,8 @@ import { Except } from 'type-fest';
 import { ClampText, Menu, MenuItemProps } from '@/components';
 
 export type AutocompleteOptionProps = Except<
-MenuItemProps,
-'padding' | 'autoFocus' | 'onClick'
+  MenuItemProps,
+  'padding' | 'autoFocus' | 'onClick'
 > & {
   /**
    * Callback called when the option is clicked.
@@ -55,4 +55,3 @@ export const AutocompleteOption = forwardRef<HTMLButtonElement, AutocompleteOpti
   );
 });
 
-AutocompleteOption.displayName = 'Autocomplete.Option';

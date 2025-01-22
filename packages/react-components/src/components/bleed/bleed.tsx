@@ -9,7 +9,7 @@ import {
 
 import styles from './bleed.module.css';
 
-export type BleedProps = HTMLAttributes<HTMLDivElement> &{
+export type BleedProps = HTMLAttributes<HTMLDivElement> & {
   /**
    * Sets the amount of bleed on each inline side.
    */
@@ -50,4 +50,3 @@ export const Bleed = forwardRef<HTMLDivElement, BleedProps>(({
   );
 });
 
-Bleed.displayName = 'Bleed';

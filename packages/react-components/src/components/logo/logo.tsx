@@ -1,11 +1,8 @@
 /* eslint-disable max-len */
-import {
-  SVGAttributes,
-} from 'react';
 
-import { FCClass } from '@/components/types';
+import { FC } from 'react';
 
-export type LogoProps = SVGAttributes<SVGElement> & {
+export type LogoProps = React.ComponentPropsWithRef<'svg'> & {
   /**
    * Set the fil color as string
    *
@@ -56,7 +53,7 @@ const viewBoxes: ViewBoxType = {
   },
 };
 
-export const Logo: FCClass<LogoProps> = ({
+export const Logo: FC<LogoProps> = ({
   className,
   fill = 'var(--dimmed-8)',
   width = '100%',
@@ -107,5 +104,3 @@ export const Logo: FCClass<LogoProps> = ({
     )}
   </svg>
 );
-
-Logo.displayName = 'Logo';

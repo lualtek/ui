@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { forwardRef } from 'react';
 
-import { Polymorphic } from '@/components';
+import { PolyRefComponent } from '@/components';
 
 import styles from './base-field.module.css';
 
@@ -12,23 +12,19 @@ export type BaseFieldProps = {
   invalid?: boolean;
 }
 
-/**
- * @internal
- */
-type PolymorphicBaseField = Polymorphic.ForwardRefComponent<'input', BaseFieldProps>;
-
-export const BaseField = forwardRef(({
-  as: Wrapper = 'input',
-  invalid,
-  className,
-  ...otherProps
-}, forwardedRef) => (
-  <Wrapper
+export const BaseField = forwardRef((
+  {
+    as: Component = 'input',
+    invalid,
+    className,
+    ...otherProps
+  },
+  forwardedRef,
+) => (
+  <Component
     ref={forwardedRef}
     aria-invalid={invalid}
     className={clsx(styles.BaseField, className)}
     {...otherProps}
   />
-)) as PolymorphicBaseField;
-
-BaseField.displayName = 'BaseField';
+)) as PolyRefComponent<'input', BaseFieldProps>;

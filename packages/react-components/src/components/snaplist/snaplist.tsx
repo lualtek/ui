@@ -8,7 +8,10 @@ import {
 } from 'react';
 import { Except } from 'type-fest';
 
-import { Polymorphic, Stack } from '@/components';
+import {
+  PolyRefComponent,
+  Stack, StackProps,
+} from '@/components';
 
 import styles from './snaplist.module.css';
 import { SnaplistItem } from './snaplist-item';
@@ -42,12 +45,8 @@ export type SnaplistProps = {
   snapItemWidth?: string;
 }
 
-type PolymorphicSnaplist = Polymorphic.ForwardRefComponent<
-Polymorphic.IntrinsicElement<typeof Stack>,
-Except<Polymorphic.OwnProps<typeof Stack>, 'wrap' | 'fill'> & SnaplistProps
->;
-
 export const Snaplist = forwardRef(({
+  as,
   children,
   className,
   rowGap = 32,
@@ -70,19 +69,20 @@ export const Snaplist = forwardRef(({
 
   return (
     <Stack
+      {...otherProps}
+      as={as}
       ref={forwardedRef}
       direction="row"
       rowGap={rowGap}
       columnGap={columnGap}
       className={clsx(styles.Snaplist, className)}
       style={{ ...dynamicStyle, ...style }}
-      {...otherProps}
     >
       {Children.toArray(children).map((child) => {
         if (isValidElement(child)) {
           if (child.type === Fragment) {
             return Children.map(
-              child.props.children,
+              child.props.children as React.ReactNode,
               (fragmentChild: React.ReactNode) => isValidElement(fragmentChild) && (
                 <SnaplistItem key={fragmentChild.key}>
                   {fragmentChild}
@@ -98,6 +98,4 @@ export const Snaplist = forwardRef(({
       })}
     </Stack>
   );
-}) as PolymorphicSnaplist;
-
-Snaplist.displayName = 'Snaplist';
+}) as PolyRefComponent<typeof Stack, Except<StackProps, 'wrap' | 'fill'> & SnaplistProps>;

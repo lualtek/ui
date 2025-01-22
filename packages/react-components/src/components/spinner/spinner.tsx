@@ -1,8 +1,8 @@
 import clsx from 'clsx';
 import { motion } from 'motion/react';
-import { forwardRef, SVGAttributes } from 'react';
+import { forwardRef } from 'react';
 
-export type SpinnerProps = SVGAttributes<SVGElement> & {
+export type SpinnerProps = React.ComponentPropsWithRef<'svg'> & {
   /**
    * Set the size of the spinner
    *
@@ -74,5 +74,3 @@ export const Spinner = forwardRef<SVGSVGElement, SpinnerProps>(({
     </g>
   </motion.svg>
 ));
-
-Spinner.displayName = 'Spinner';
