@@ -24,7 +24,7 @@
     z-index: 0;
 
     &[data-glow-fit-content='true'] {
-      max-widtasdh: fit-content;
+      max-width: fit-content;
     }
 
 
