@@ -1,5 +1,15 @@
 # @lualtek/react-components
 
+## 16.0.0-next.2
+
+### Minor Changes
+
+- b0b4562: Update stylelint and related deps
+
+### Patch Changes
+
+- @lualtek/icons@16.0.0-next.2
+
 ## 16.0.0-next.1
 
 ### Patch Changes

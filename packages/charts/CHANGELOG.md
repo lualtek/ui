@@ -1,5 +1,17 @@
 # @lualtek/charts
 
+## 16.0.0-next.2
+
+### Minor Changes
+
+- a5bb84e: Clean types
+
+### Patch Changes
+
+- Updated dependencies [b0b4562]
+  - @lualtek/react-components@16.0.0-next.2
+  - @lualtek/tokens@16.0.0-next.2
+
 ## 16.0.0-next.1
 
 ### Patch Changes
