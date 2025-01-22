@@ -92,7 +92,7 @@ export type TableProps<T> = React.ComponentPropsWithRef<'table'> & {
   /**
    * Add an accessible title to the table component
    */
-  heading?: TableHeaderProps['title'];
+  heading?: TableHeaderProps['heading'];
   /**
    * Hide the header which includes the title and controls.
    * This option is ignored and set to `true` if `selectableRows` is set to `true`.
