@@ -23,7 +23,7 @@
       content: '';
       position: absolute;
       border-radius: token(--radius-16);
-      inset: 0 token(--space-8) 0 token(--space-8);
+      inset: 0 token(--space-8);
       opacity: 60%;
       z-index: 0;
       display: none;
