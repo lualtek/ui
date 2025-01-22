@@ -92,7 +92,7 @@ export type TableProps<T> = React.ComponentPropsWithRef<'table'> & {
   /**
    * Add an accessible title to the table component
    */
-  headeing?: TableHeaderProps['title'];
+  heading?: TableHeaderProps['title'];
   /**
    * Hide the header which includes the title and controls.
    * This option is ignored and set to `true` if `selectableRows` is set to `true`.
@@ -210,7 +210,7 @@ export const Table = <T extends Record<string, unknown>>({
   pageClusters,
   clustersLabel,
   actions,
-  headeing,
+  heading,
   showHeader = false,
   enableToggleColumns = false,
   toggleColumnsLabel,
@@ -423,7 +423,7 @@ export const Table = <T extends Record<string, unknown>>({
                 },
               }}
             >
-              <TableHeader title={headeing} id={`${uid}-table-title`}>
+              <TableHeader title={heading} id={`${uid}-table-title`}>
                 {(enableFilterControl) ? (
                   <FilterControl
                     label={filterControlLabel}
