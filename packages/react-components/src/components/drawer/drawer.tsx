@@ -35,7 +35,7 @@ export type DrawerProps = React.ComponentPropsWithRef<'div'> & {
    * Set the accessible title of the drawer. This is used by screen readers to
    * announce the title of the drawer when opened.
    */
-  title?: ReactNode;
+  headeing?: ReactNode;
   /**
    * Hide or show the drawer header which includes the title and the close button.
    * If you hide the title, make sure to add yuor own title element in order
@@ -125,14 +125,14 @@ export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(({
   isModal = true,
   autoFocus = true,
   safePadding = true,
-  title,
+  headeing,
   onClose,
   isOpen,
   index,
   scrollerRef,
   ...otherProps
 }, forwardedRef) => {
-  const titleId = useId();
+  const headeingId = useId();
   const { matches } = useResponsiveContext();
   useKey('esc', () => onClose());
 
@@ -168,7 +168,7 @@ export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(({
           role="dialog"
           aria-modal={isModal}
           data-theme={theme}
-          aria-labelledby={titleId}
+          aria-labelledby={headeingId}
           className={clsx(styles.Drawer, className)}
           ref={forwardedRef}
           {...otherProps}
@@ -207,7 +207,7 @@ export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(({
                       data-drawer-compact-header={compactHeader}
                       {...otherProps}
                     >
-                      {(showHeader && title) && (
+                      {(showHeader && headeing) && (
                         <Stack
                           vAlign="center"
                           hAlign="space-between"
@@ -215,7 +215,7 @@ export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(({
                           className={styles.Header}
                           columnGap={24}
                         >
-                          <Title responsive={false} level="5" id={titleId} lineHeight="small">{title}</Title>
+                          <Title responsive={false} level="5" id={headeingId} lineHeight="small">{headeing}</Title>
                           {onClose && (
                             <IconButton
                               onClick={onClose}

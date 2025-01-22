@@ -98,16 +98,16 @@ export const MenuItem = forwardRef(
     },
     forwardedRef,
   ) => {
-    const itemRef = useRef<any>(forwardedRef);
+    const itemRef = useRef(forwardedRef) as RefObject<HTMLButtonElement>;
     const [
       tabIndex,
       isFocused,
       handleKeyDown,
       handleClick,
-    ] = useRovingTabIndex(itemRef as RefObject<HTMLElement>, disabled);
+    ] = useRovingTabIndex(itemRef, disabled);
     const isIconAtEnd = useMemo(() => iconPosition === 'end', [iconPosition]);
 
-    useFocusEffect(isFocused, itemRef as RefObject<HTMLElement>);
+    useFocusEffect(isFocused, itemRef);
 
     const triggerClick = useCallback(
       (e: React.MouseEvent<HTMLElement>) => {

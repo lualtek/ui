@@ -5,7 +5,6 @@ import {
   forwardRef, ReactNode, useMemo,
 } from 'react';
 import { AutoFocusInside } from 'react-focus-on';
-import { Except } from 'type-fest';
 
 import {
   Elevator, IconButton, Panel, Stack, Title, useOverlayContext, useResponsiveContext,
@@ -13,12 +12,12 @@ import {
 
 import styles from './modal-content.module.css';
 
-export type ModalContentProps = Except<React.ComponentPropsWithRef<'div'>, 'title'> & {
+export type ModalContentProps = React.ComponentPropsWithRef<'div'> & {
   /**
    * Set the accessible title of the modal. This is used by screen readers to
    * announce the title of the modal when opened.
    */
-  title: ReactNode;
+  headeing: ReactNode;
   /**
    * Set the theme of the content card. To ensure contrast with the default overlay color (dark),
    * this is set to `light` by default.
@@ -48,7 +47,7 @@ export type ModalContentProps = Except<React.ComponentPropsWithRef<'div'>, 'titl
 export const ModalContent = forwardRef<HTMLDivElement, ModalContentProps>(({
   children,
   className,
-  title,
+  headeing,
   theme = 'auto',
   scrollInside = true,
   headerTint,
@@ -85,7 +84,7 @@ export const ModalContent = forwardRef<HTMLDivElement, ModalContentProps>(({
           {...otherProps}
         >
           <Stack vAlign="center" fill={false} hAlign="space-between" direction="row" className={styles.Header}>
-            <Title lineHeight="small" responsive={false} level="5" id={titleId}>{title}</Title>
+            <Title lineHeight="small" responsive={false} level="5" id={titleId}>{headeing}</Title>
             {onClose && <IconButton onClick={onClose} className={styles.CloseButton} icon="remove" kind="flat" />}
           </Stack>
           <div className={styles.Scroller} data-modal-content-scroll={scrollInside}>
