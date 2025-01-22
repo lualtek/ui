@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 16.0.0-next.5
+
+### Patch Changes
+
+- f21caa3: Due coglioni
+  - @lualtek/icons@16.0.0-next.5
+
 ## 16.0.0-next.4
 
 ### Major Changes
