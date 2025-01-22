@@ -1,5 +1,29 @@
 # @lualtek/charts
 
+## 16.0.0
+
+### Major Changes
+
+- c44ecdc: Update internal types and remove deprecated ones
+
+### Minor Changes
+
+- a5bb84e: Clean types
+
+### Patch Changes
+
+- Updated dependencies [b1804d5]
+- Updated dependencies [4936fb2]
+- Updated dependencies [f21caa3]
+- Updated dependencies [e8cb348]
+- Updated dependencies [b0b4562]
+- Updated dependencies [c44ecdc]
+- Updated dependencies [846a5e3]
+- Updated dependencies [b8ac7f6]
+- Updated dependencies [86b533b]
+  - @lualtek/react-components@16.0.0
+  - @lualtek/tokens@16.0.0
+
 ## 16.0.0-next.5
 
 ### Patch Changes
