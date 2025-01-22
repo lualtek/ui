@@ -1,5 +1,16 @@
 # @lualtek/react-components
 
+## 16.0.0-next.3
+
+### Major Changes
+
+- 4936fb2: Rename titleId from overlyContext to headingId
+- e8cb348: Rename title props of drawer, table and motal-content into title
+
+### Patch Changes
+
+- @lualtek/icons@16.0.0-next.3
+
 ## 16.0.0-next.2
 
 ### Minor Changes
