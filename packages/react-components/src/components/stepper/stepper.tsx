@@ -4,7 +4,6 @@ import clsx from 'clsx';
 import {
   ComponentPropsWithoutRef, forwardRef, useMemo,
 } from 'react';
-import { Except } from 'type-fest';
 
 import {
   Glow,
@@ -13,11 +12,11 @@ import {
 
 import styles from './stepper.module.css';
 
-export type StepperProps = Except<ComponentPropsWithoutRef<'div'>, 'title'> & {
+export type StepperProps = ComponentPropsWithoutRef<'div'> & {
   /**
    * The title of the step.
    */
-  title: TitleProps['children'];
+  heading: TitleProps['children'];
   /**
    * The step number.
    */
@@ -42,7 +41,7 @@ export type StepperProps = Except<ComponentPropsWithoutRef<'div'>, 'title'> & {
 export const Stepper = forwardRef<HTMLDivElement, StepperProps>(({
   className,
   children,
-  title,
+  heading,
   step,
   contentGap = 16,
   fillContent = false,
@@ -71,7 +70,7 @@ export const Stepper = forwardRef<HTMLDivElement, StepperProps>(({
         rowGap={contentGap}
         className={styles.Content}
       >
-        <Title level="5" as="h5">{title}</Title>
+        <Title level="5" as="h5">{heading}</Title>
         {children}
       </Stack>
     </Stack>

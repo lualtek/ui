@@ -423,7 +423,7 @@ export const Table = <T extends Record<string, unknown>>({
                 },
               }}
             >
-              <TableHeader title={heading} id={`${uid}-table-title`}>
+              <TableHeader heading={heading} id={`${uid}-table-title`}>
                 {(enableFilterControl) ? (
                   <FilterControl
                     label={filterControlLabel}
