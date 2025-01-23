@@ -19,7 +19,7 @@
     "*.jsx": "${capture}.js",
     "*.tsx": "${capture}.ts, ${capture}.module.css, ${capture}-*.tsx, ${capture}.module.css.d.ts, ${capture}.stories.tsx",
     "tsconfig.json": "tsconfig.*.json",
-    "package.json": "package-lock.json, yarn.lock"
+    "package.json": "sentry.*.config.js, next.config.js, *.config.mjs, .npmrc, *.config.js, *.config.ts, *.config.cjs, package-lock.json, pnpm-lock.yaml, jest.config.json",
   },
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit",
