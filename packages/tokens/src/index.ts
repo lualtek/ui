@@ -16,9 +16,25 @@ const config: Config = {
       buildPath: 'platforms/web/',
       transformGroup: 'css',
       transforms: [
+        /**
+         * Custom transformer
+         * @see ./transformers/px-rem.ts
+         */
         'size/pxToRem',
+        /**
+         * Built-in transformer
+         * @see https://amzn.github.io/style-dictionary/#/transforms?id=sizepx
+         */
         'size/px',
+        /**
+         * Custom transformer
+         * @see ./transformers/px-rootem.ts
+         */
         'size/px-rootem',
+        /**
+         * Custom transformer
+         * @see ./transformers/hex-oklch.ts
+         */
         'color/hex-to-oklch',
       ],
       files: [

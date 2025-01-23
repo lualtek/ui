@@ -36,7 +36,15 @@ const getConfig = (name: string): Config => ({
       buildPath: 'platforms/web/',
       transformGroup: 'css',
       transforms: [
+        /**
+         * Custom transformer
+         * @see ./transformers/oklch.ts
+         */
         'color/oklch',
+        /**
+         * Custom transformer
+         * @see ./transformers/light-dark.ts
+         */
         'css/light-dark',
       ],
       files: [
