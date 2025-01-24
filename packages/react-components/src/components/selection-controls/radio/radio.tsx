@@ -3,10 +3,10 @@
 import clsx from 'clsx';
 import { domAnimation, LazyMotion, m } from 'motion/react';
 import {
-  ChangeEvent, forwardRef, ReactNode, useId,
+  type ChangeEvent, forwardRef, type ReactNode, useId,
 } from 'react';
 
-import { Stack, Text, TextProps } from '@/components';
+import { Stack, Text, type TextProps } from '@/components';
 
 import styles from '../selection-controls.module.css';
 
@@ -91,7 +91,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(({
             aria-disabled={disabled}
             data-control-dimension={dimension}
             onChange={onChange}
-            className={clsx(styles.RadioInput, className)}
+            className={clsx(styles.CheckboxInput, styles.RadioInput, className)}
             ref={forwardedRef}
             id={label ? uid : undefined}
             {...otherProps}

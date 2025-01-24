@@ -11,7 +11,8 @@
   },
   "formatter": {
     "enabled": true,
-    "indentStyle": "space"
+    "indentStyle": "space",
+    "lineWidth": 120
   },
   "organizeImports": {
     "enabled": true
@@ -24,9 +25,6 @@
       "correctness": {
         "noUnknownFunction": "off",
         "noUnknownMediaFeatureName": "off"
-      },
-      "suspicious": {
-        "noDuplicateFontNames": "off"
       }
     }
   },

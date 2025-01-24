@@ -28,7 +28,7 @@
     backdrop-filter: brightness(1.35);
 
     &::after {
-      content: '';
+      content: "";
       display: none;
       position: absolute;
       left: 50%;
@@ -61,7 +61,7 @@
       cursor: not-allowed;
     }
 
-    &[data-control-dimension='small'] {
+    &[data-control-dimension="small"] {
       --w: 16px;
       --h: 16px;
 
@@ -75,7 +75,7 @@
     }
 
     &:user-invalid,
-    .InputWrapper[data-selection-control-invalid='true'] & {
+    .InputWrapper[data-selection-control-invalid="true"] & {
       box-shadow: 0 0 0 2px var(--invalid-foreground);
     }
   }
@@ -86,9 +86,6 @@
 }
 @layer overrides {
   .RadioInput {
-
-    /* stylelint-disable-next-line value-keyword-case */
-    composes: CheckboxInput;
     border-radius: 100%;
 
     &:checked,
