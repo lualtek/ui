@@ -1,7 +1,6 @@
 {
-  "stylelint.enable": true,
-  "css.validate": false,
-  "editor.formatOnSave": false,
+  "css.validate": true,
+  "editor.formatOnSave": true,
   "javascript.validate.enable": false,
   "typescript.tsdk": "./node_modules/typescript/lib",
   "cssvar.files": [
@@ -9,34 +8,39 @@
   ],
   // Do not ignore node_modules css files, which is ignored by default
   "cssvar.ignore": [],
-  "cssvar.extensions": [
-    "css", "postcss","jsx", "tsx"
+  "cssvar.extensions": ["css", "postcss", "jsx", "tsx"],
+  "cssEnvVarsAutocomplete.envFiles": [
+    "./node_modules/@lualtek/tokens/platforms/web/tokens.css"
   ],
-  "cssEnvVarsAutocomplete.envFiles": ["./node_modules/@lualtek/tokens/platforms/web/tokens.css"],
   "explorer.fileNesting.patterns": {
     "*.ts": "${capture}.js",
     "*.js": "${capture}.js.map, ${capture}.min.js, ${capture}.d.ts",
     "*.jsx": "${capture}.js",
     "*.tsx": "${capture}.ts, ${capture}.module.css, ${capture}-*.tsx, ${capture}.module.css.d.ts, ${capture}.stories.tsx",
     "tsconfig.json": "tsconfig.*.json",
-    "package.json": "sentry.*.config.js, next.config.js, *.config.mjs, .npmrc, *.config.js, *.config.ts, *.config.cjs, package-lock.json, pnpm-lock.yaml, jest.config.json",
+    "package.json": "sentry.*.config.js, next.config.js, *.config.mjs, .npmrc, *.config.js, *.config.ts, *.config.cjs, package-lock.json, pnpm-lock.yaml, jest.config.json"
   },
+  "editor.defaultFormatter": "biomejs.biome",
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit",
-    "source.fixAll.stylelint": "explicit"
+    "quickfix.biome": "explicit",
+    "source.fixAll.eslint": "explicit"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
   },
   "[yaml]": {
     "editor.formatOnSave": true,
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "biomejs.biome"
   },
   "[markdown]": {
     "editor.formatOnSave": true,
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.rulers": [80],
-    "editor.wordWrap": "wordWrapColumn",
+    "editor.defaultFormatter": "biomejs.biome"
   },
   "[json]": {
     "editor.formatOnSave": true,
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "biomejs.biome"
   }
 }

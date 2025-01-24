@@ -20,7 +20,7 @@
     }
 
     &::before {
-      content: '';
+      content: "";
       position: absolute;
       border-radius: token(--radius-16);
       inset: 0 token(--space-8);
@@ -30,7 +30,9 @@
       background-color: var(--vibrancy-background-hard);
     }
 
-    &:is(:hover, :focus-visible, [aria-pressed='true']):not([aria-disabled='true']) {
+    &:is(:hover, :focus-visible, [aria-pressed="true"]):not(
+        [aria-disabled="true"]
+      ) {
       outline-offset: -8px;
       border-radius: token(--radius-16);
 
@@ -39,7 +41,7 @@
       }
     }
 
-    &[data-menu-item-dimension='small'] {
+    &[data-menu-item-dimension="small"] {
       --padding: calc(token(--space-32) + token(--space-8) + token(--space-4));
 
       font-size: token(--font-size-14);
@@ -49,20 +51,22 @@
       position: relative;
     }
 
-    &[aria-disabled='true'] {
+    &[aria-disabled="true"] {
       color: var(--global-disabled-foreground);
       cursor: not-allowed;
     }
 
-    & [data-menu-item-padding='true'][data-menu-item-has-icon='false'][data-menu-item-icon-right='false'] {
+    &
+      [data-menu-item-padding="true"][data-menu-item-has-icon="false"][data-menu-item-icon-right="false"] {
       padding-left: var(--padding);
     }
 
-    & [data-menu-item-padding='true'][data-menu-item-has-icon='false'][data-menu-item-icon-right='true'] {
+    &
+      [data-menu-item-padding="true"][data-menu-item-has-icon="false"][data-menu-item-icon-right="true"] {
       padding-right: var(--padding);
     }
 
-    &[data-menu-item-sentiment='positive'] {
+    &[data-menu-item-sentiment="positive"] {
       color: var(--highlight-green-foreground);
 
       &::before {
@@ -70,7 +74,7 @@
       }
     }
 
-    &[data-menu-item-sentiment='danger'] {
+    &[data-menu-item-sentiment="danger"] {
       color: var(--highlight-red-foreground);
 
       &::before {
@@ -78,7 +82,7 @@
       }
     }
 
-    &[data-menu-item-sentiment='warning'] {
+    &[data-menu-item-sentiment="warning"] {
       color: var(--highlight-yellow-foreground);
 
       &::before {
@@ -100,11 +104,11 @@
     align-self: flex-start;
     flex-grow: 0;
 
-    .MenuItem[data-menu-item-dimension='small'] & {
+    .MenuItem[data-menu-item-dimension="small"] & {
       margin-top: 4px;
     }
 
-    .MenuItem[data-menu-item-dimension='regular'] & {
+    .MenuItem[data-menu-item-dimension="regular"] & {
       margin-top: 2px;
     }
   }
