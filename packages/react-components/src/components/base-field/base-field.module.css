@@ -28,7 +28,6 @@
     box-shadow: 0 0 0 1px var(--global-outer-contrast-border), inset 0 0 0 1px var(--inner-border-color);
     border-radius: token(--radius-16);
 
-
     &::-webkit-calendar-picker-indicator {
       background-image: none;
       background-color: currentcolor;
@@ -85,16 +84,13 @@
     &:-webkit-autofill:focus,
     &:-webkit-autofill:active {
       -webkit-text-fill-color: var(--vibrancy-foreground);
-      box-shadow:
- 0 0 0 1px var(--global-outer-contrast-border), inset 0 0 0 1px var(--global-inner-contrast-border),
-       0 0 0 100px var(--vibrancy-background-soft) inset,
-       0 0 0 100px var(--global-background) inset;
+      box-shadow: 0 0 0 1px var(--global-outer-contrast-border), inset 0 0 0 1px var(--global-inner-contrast-border), 0
+        0 0 100px var(--vibrancy-background-soft) inset, 0 0 0 100px var(--global-background) inset;
 
       &::selection {
         -webkit-text-fill-color: var(--dimmed-0);
       }
     }
-
 
     &[type='number'] {
       appearance: textfield;
@@ -122,17 +118,13 @@
     outline-color: var(--invalid-forground, var(--highlight-yellow-foreground));
   }
 
-
   textarea.BaseField {
     block-size: auto;
     min-block-size: token(--space-32);
     line-height: token(--font-lh-standard);
     resize: vertical;
-    padding:
-      calc(token(--space-24) - token(--space-4))
-      calc(var(--field-padding) + token(--space-16))
-      calc(var(--field-padding) / 2)
-      var(--field-padding);
+    padding: calc(token(--space-24) - token(--space-4)) calc(var(--field-padding) + token(--space-16))
+      calc(var(--field-padding) / 2) var(--field-padding);
 
     &::-webkit-datetime-edit-text {
       opacity: 30%;

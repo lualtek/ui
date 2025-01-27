@@ -23,9 +23,11 @@ const meta = {
       control: { type: 'inline-radio' },
     },
   },
-  render: args => (
+  render: (args) => (
     <Select defaultValue="placeholder" {...args}>
-      <option value="placeholder" hidden disabled>Pick an option</option>
+      <option value="placeholder" hidden disabled>
+        Pick an option
+      </option>
       <optgroup label="Option Group One">
         <option value="1">This is a very long option selected</option>
         <option value="2">Option 2</option>
@@ -58,7 +60,7 @@ export const Required = {
     label: 'Label',
     required: true,
   },
-  render: args => (
+  render: (args) => (
     <Stack as="form">
       <Select {...args} />
       <Button type="submit">Submit</Button>
@@ -80,7 +82,7 @@ export const Multiple = {
     label: 'Label',
     kind: 'multiple',
   },
-  render: args => (
+  render: (args) => (
     <Select {...args} kind="multiple">
       <optgroup label="Option Group">
         <option>Option 1</option>

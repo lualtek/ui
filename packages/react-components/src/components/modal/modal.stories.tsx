@@ -1,56 +1,37 @@
 import { useArgs } from '@storybook/preview-api';
 import type { Meta, StoryObj } from '@storybook/react';
 
-import {
-  Button, IconButton, ResponsiveProvider,
-  Stack, TextChip, Textfield,
-  Title, useOverlayContext,
-} from '../..';
+import { Button, IconButton, ResponsiveProvider, Stack, TextChip, Textfield, Title, useOverlayContext } from '../..';
 import { Modal } from './modal';
 
 const DefaultChildren = () => (
   <Stack hPadding={24}>
     <Textfield label="Test" />
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
-    distinctio qui quod ducimus libero magni earum perspiciatis.
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
-    distinctio qui quod ducimus libero magni earum perspiciatis.
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
-    distinctio qui quod ducimus libero magni earum perspiciatis.
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
-    distinctio qui quod ducimus libero magni earum perspiciatis.
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
-    distinctio qui quod ducimus libero magni earum perspiciatis.
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
-    distinctio qui quod ducimus libero magni earum perspiciatis.
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
-    distinctio qui quod ducimus libero magni earum perspiciatis.
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
-    distinctio qui quod ducimus libero magni earum perspiciatis.
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
-    distinctio qui quod ducimus libero magni earum perspiciatis.
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
-    distinctio qui quod ducimus libero magni earum perspiciatis.
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
-    distinctio qui quod ducimus libero magni earum perspiciatis.
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
-    distinctio qui quod ducimus libero magni earum perspiciatis.
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
-    distinctio qui quod ducimus libero magni earum perspiciatis.
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
-    distinctio qui quod ducimus libero magni earum perspiciatis.
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
-    distinctio qui quod ducimus libero magni earum perspiciatis.
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
-    distinctio qui quod ducimus libero magni earum perspiciatis.
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
-    distinctio qui quod ducimus libero magni earum perspiciatis.
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
-    distinctio qui quod ducimus libero magni earum perspiciatis.
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
-    distinctio qui quod ducimus libero magni earum perspiciatis.
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
-    distinctio qui quod ducimus libero magni earum perspiciatis.
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam distinctio qui quod ducimus libero
+    magni earum perspiciatis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam distinctio
+    qui quod ducimus libero magni earum perspiciatis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus
+    et magnam distinctio qui quod ducimus libero magni earum perspiciatis. Lorem ipsum dolor sit amet consectetur
+    adipisicing elit. Doloribus et magnam distinctio qui quod ducimus libero magni earum perspiciatis. Lorem ipsum dolor
+    sit amet consectetur adipisicing elit. Doloribus et magnam distinctio qui quod ducimus libero magni earum
+    perspiciatis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam distinctio qui quod
+    ducimus libero magni earum perspiciatis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et
+    magnam distinctio qui quod ducimus libero magni earum perspiciatis. Lorem ipsum dolor sit amet consectetur
+    adipisicing elit. Doloribus et magnam distinctio qui quod ducimus libero magni earum perspiciatis. Lorem ipsum dolor
+    sit amet consectetur adipisicing elit. Doloribus et magnam distinctio qui quod ducimus libero magni earum
+    perspiciatis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam distinctio qui quod
+    ducimus libero magni earum perspiciatis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et
+    magnam distinctio qui quod ducimus libero magni earum perspiciatis. Lorem ipsum dolor sit amet consectetur
+    adipisicing elit. Doloribus et magnam distinctio qui quod ducimus libero magni earum perspiciatis. Lorem ipsum dolor
+    sit amet consectetur adipisicing elit. Doloribus et magnam distinctio qui quod ducimus libero magni earum
+    perspiciatis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam distinctio qui quod
+    ducimus libero magni earum perspiciatis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et
+    magnam distinctio qui quod ducimus libero magni earum perspiciatis. Lorem ipsum dolor sit amet consectetur
+    adipisicing elit. Doloribus et magnam distinctio qui quod ducimus libero magni earum perspiciatis. Lorem ipsum dolor
+    sit amet consectetur adipisicing elit. Doloribus et magnam distinctio qui quod ducimus libero magni earum
+    perspiciatis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam distinctio qui quod
+    ducimus libero magni earum perspiciatis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et
+    magnam distinctio qui quod ducimus libero magni earum perspiciatis. Lorem ipsum dolor sit amet consectetur
+    adipisicing elit. Doloribus et magnam distinctio qui quod ducimus libero magni earum perspiciatis.
     <button type="button">click</button>
   </Stack>
 );
@@ -66,7 +47,7 @@ const meta: Meta<typeof Modal> = {
     },
   },
   decorators: [
-    Story => (
+    (Story) => (
       <ResponsiveProvider>
         <Story />
       </ResponsiveProvider>
@@ -79,15 +60,8 @@ const meta: Meta<typeof Modal> = {
     return (
       <>
         <Button onClick={() => handleClose(true)}>Show Modal</Button>
-        <Modal
-          {...args}
-          key="dynamic-modal"
-          isOpen={isVisible}
-          onClose={() => handleClose(false)}
-        >
-          <Modal.Content heading="Modal title">
-            {args.children}
-          </Modal.Content>
+        <Modal {...args} key="dynamic-modal" isOpen={isVisible} onClose={() => handleClose(false)}>
+          <Modal.Content heading="Modal title">{args.children}</Modal.Content>
         </Modal>
       </>
     );
@@ -105,13 +79,19 @@ const CustomContentModal = () => {
   return (
     <Stack vAlign="center">
       <Stack direction="row" fill={false} vAlign="center" hAlign="space-between">
-        <Title level="5" id={headingId}>{headingId}</Title>
+        <Title level="5" id={headingId}>
+          {headingId}
+        </Title>
         <IconButton onClick={() => onClose?.()} icon="remove" kind="flat" aria-label="Close modal" />
       </Stack>
       <Textfield label="Test" />
-      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-      Doloribus et magnam distinctio qui quod ducimus libero magni earum perspiciatis.
-      <img width="100%" height="auto" src="https://images.unsplash.com/photo-1579332649290-10b7da0cd111?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=cover&w=1600&q=80" />
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam distinctio qui quod ducimus libero
+      magni earum perspiciatis.
+      <img
+        width="100%"
+        height="auto"
+        src="https://images.unsplash.com/photo-1579332649290-10b7da0cd111?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=cover&w=1600&q=80"
+      />
     </Stack>
   );
 };
@@ -131,15 +111,8 @@ export const WithTitleComponent = {
     return (
       <>
         <Button onClick={() => handleClose(true)}>Show Modal</Button>
-        <Modal
-          {...args}
-          key="dynamic-modal"
-          isOpen={isVisible}
-          onClose={() => handleClose(false)}
-        >
-          <Modal.Content heading={<TextChip text="MA" />}>
-            {args.children}
-          </Modal.Content>
+        <Modal {...args} key="dynamic-modal" isOpen={isVisible} onClose={() => handleClose(false)}>
+          <Modal.Content heading={<TextChip text="MA" />}>{args.children}</Modal.Content>
         </Modal>
       </>
     );

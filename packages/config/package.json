@@ -8,9 +8,7 @@
     "access": "restricted"
   },
   "main": "dist/index",
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "repository": {
     "type": "git",
     "url": "ssh+https://github.com/lualtek/ui.git",

@@ -58,11 +58,8 @@
 
   .Header {
     max-height: var(--header-height);
-    padding:
-      calc(env(safe-area-inset-top) + token(--space-16))
-      calc(env(safe-area-inset-right) + token(--space-16))
-      token(--space-16)
-      calc(env(safe-area-inset-left) + token(--space-24));
+    padding: calc(env(safe-area-inset-top) + token(--space-16)) calc(env(safe-area-inset-right) + token(--space-16))
+      token(--space-16) calc(env(safe-area-inset-left) + token(--space-24));
   }
 }
 @layer overrides {

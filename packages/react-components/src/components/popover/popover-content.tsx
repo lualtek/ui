@@ -1,7 +1,7 @@
-import { TokensTypes } from '@lualtek/tokens/platforms/web';
+import type { TokensTypes } from '@lualtek/tokens/platforms/web';
 import * as PopoverPrimitive from '@radix-ui/react-popover';
-import { domAnimation, LazyMotion, m } from 'motion/react';
-import { FC, useMemo } from 'react';
+import { LazyMotion, domAnimation, m } from 'motion/react';
+import { type FC, useMemo } from 'react';
 
 import { Elevator } from '@/components';
 
@@ -34,7 +34,7 @@ export type PopoverContentProps = PopoverPrimitive.PopoverContentProps & {
    * @defaultValue true
    */
   usePortal?: boolean;
-}
+};
 
 export const PopoverContent: FC<PopoverContentProps> = ({
   showArrow = false,
@@ -61,42 +61,46 @@ export const PopoverContent: FC<PopoverContentProps> = ({
     return { x: 0, y: -8 };
   }, [side]);
 
-  const animation = useMemo(() => ({
-    hidden: {
-      ...computeOrigin,
-    },
-    visible: {
-      y: 0,
-      x: 0,
-    },
-  }), [computeOrigin]);
+  const animation = useMemo(
+    () => ({
+      hidden: {
+        ...computeOrigin,
+      },
+      visible: {
+        y: 0,
+        x: 0,
+      },
+    }),
+    [computeOrigin],
+  );
 
-  const renderContent = useMemo(() => (
-    <PopoverPrimitive.Content
-      asChild
-      sideOffset={Number(offset)}
-      side={side}
-      style={{ zIndex: 'var(--overlay-z-index)' }}
-      {...otherProps}
-    >
-      <m.div
-        initial="hidden"
-        animate="visible"
-        exit="hidden"
-        variants={animation}
-        transition={{
-          type: 'spring',
-          stiffness: 700,
-          damping: 30,
-        }}
+  const renderContent = useMemo(
+    () => (
+      <PopoverPrimitive.Content
+        asChild
+        sideOffset={Number(offset)}
+        side={side}
+        style={{ zIndex: 'var(--overlay-z-index)' }}
+        {...otherProps}
       >
-        <Elevator resting={2}>
-          {children}
-        </Elevator>
-        {showArrow && <PopoverPrimitive.Arrow fill={arrowColor} />}
-      </m.div>
-    </PopoverPrimitive.Content>
-  ), [animation, arrowColor, children, offset, otherProps, showArrow, side]);
+        <m.div
+          initial="hidden"
+          animate="visible"
+          exit="hidden"
+          variants={animation}
+          transition={{
+            type: 'spring',
+            stiffness: 700,
+            damping: 30,
+          }}
+        >
+          <Elevator resting={2}>{children}</Elevator>
+          {showArrow && <PopoverPrimitive.Arrow fill={arrowColor} />}
+        </m.div>
+      </PopoverPrimitive.Content>
+    ),
+    [animation, arrowColor, children, offset, otherProps, showArrow, side],
+  );
 
   return (
     <LazyMotion features={domAnimation} strict>

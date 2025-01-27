@@ -45,7 +45,7 @@
     overflow: hidden;
     flex-shrink: 0;
 
-    &[aria-current="true"] {
+    &[aria-current='true'] {
       outline: 2px solid var(--highlight-brand-foreground);
       outline-offset: 2px;
     }

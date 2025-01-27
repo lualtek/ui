@@ -5,8 +5,7 @@ import { ResponsiveProvider, useResponsiveContext } from '../..';
 const meta = {
   title: 'Utils/ResponsiveContext',
   component: ResponsiveProvider,
-  argTypes: {
-  },
+  argTypes: {},
 } satisfies Meta<typeof ResponsiveProvider>;
 
 export default meta;

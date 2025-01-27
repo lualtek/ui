@@ -31,7 +31,6 @@
     }
   }
 
-
   del {
     padding: 0 4px;
     background-color: var(--highlight-red-background);
@@ -62,7 +61,6 @@
     margin: 0;
     padding: 0;
   }
-
 
   ul {
     font-size: initial;
@@ -117,6 +115,7 @@
     box-shadow: 0 0 0 1px var(--global-outer-contrast-border), inset 0 0 0 1px var(--global-inner-contrast-border);
     padding: 0 4px 3px;
     font-size: 1em;
+    /* biome-ignore lint/a11y/useGenericFontNames: <explanation> */
     font-family: token(--font-family-mono);
     vertical-align: top;
   }

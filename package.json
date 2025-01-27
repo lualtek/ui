@@ -19,8 +19,8 @@
     "upgrade-interactive": "pnpm dlx npm-upgrade-monorepo"
   },
   "lint-staged": {
-    "*.{ts,tsx,js,jsx}": "biome check --no-errors-on-unmatched --files-ignore-unknown=true",
-    "*.css": "biome check --no-errors-on-unmatched --files-ignore-unknown=true"
+    "*.{ts,tsx,js,jsx}": "biome lint --no-errors-on-unmatched --files-ignore-unknown=true",
+    "*.css": "biome lint --no-errors-on-unmatched --files-ignore-unknown=true"
   },
   "browserslist": [
     "last 2 Chrome versions",
@@ -32,6 +32,7 @@
   ],
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
+    "@biomejs/monorepo": "github:biomejs/biome#e5d99dfa4e48fd76a59c50785236b6958e860518",
     "@changesets/cli": "2.27.10",
     "@commitlint/cli": "19.6.0",
     "@commitlint/config-conventional": "19.6.0",

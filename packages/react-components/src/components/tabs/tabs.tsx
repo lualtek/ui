@@ -1,22 +1,18 @@
 'use client';
 
-import { TokensTypes } from '@lualtek/tokens/platforms/web';
+import type { TokensTypes } from '@lualtek/tokens/platforms/web';
 import tkns from '@lualtek/tokens/platforms/web/tokens.json';
 import * as TabsPrimitive from '@radix-ui/react-tabs';
 import clsx from 'clsx';
-import { domMax, LazyMotion, m } from 'motion/react';
-import {
-  Children, FC, isValidElement, useCallback, useId, useState,
-} from 'react';
+import { LazyMotion, domMax, m } from 'motion/react';
+import { Children, type FC, isValidElement, useCallback, useId, useState } from 'react';
 
-import {
-  Button, Panel, Stack,
-} from '@/components';
+import { Button, Panel, Stack } from '@/components';
 
+import { TabPanel, type TabPanelProps } from './tabs-panel';
 import styles from './tabs.module.css';
-import { TabPanel, TabPanelProps } from './tabs-panel';
 
-type RadiusType = Record<NonNullable<TabsProps['dimension']>, Exclude<TokensTypes['radius'], string>>
+type RadiusType = Record<NonNullable<TabsProps['dimension']>, Exclude<TokensTypes['radius'], string>>;
 
 export type TabsProps = TabsPrimitive.TabsProps & {
   /**
@@ -33,7 +29,7 @@ export type TabsProps = TabsPrimitive.TabsProps & {
 
 type TabsComponent = FC<TabsProps> & {
   Panel: typeof TabPanel;
-}
+};
 
 export const Tabs: TabsComponent = ({
   className,
@@ -85,38 +81,37 @@ export const Tabs: TabsComponent = ({
           vibrancyColor="soft"
           className={styles.List}
         >
-          <Stack
-            as={TabsPrimitive.List}
-            direction="row"
-            fill={false}
-            hAlign="start"
-          >
-            {Children.map(children, child => isValidElement<TabPanelProps>(child) && (
-              <TabsPrimitive.Trigger
-                value={child.props.value}
-                disabled={child.props.disabled}
-                className={styles.Trigger}
-                asChild
-              >
-                <Button kind="flat" dimension={dimension} icon={child.props.icon}>
-                  <Stack
-                    as="span"
-                    className={styles.Label}
-                    direction="row"
-                    vAlign="center"
-                    hAlign="center"
-                    columnGap={8}
-                    inline
+          <Stack as={TabsPrimitive.List} direction="row" fill={false} hAlign="start">
+            {Children.map(
+              children,
+              (child) =>
+                isValidElement<TabPanelProps>(child) && (
+                  <TabsPrimitive.Trigger
+                    value={child.props.value}
+                    disabled={child.props.disabled}
+                    className={styles.Trigger}
+                    asChild
                   >
-                    {child.props.label}
-                    {child.props.decorator}
-                  </Stack>
-                  {(child.props.value === activeItem) && (
-                    <m.span className={styles.Highlight} layoutId={`${uid}-tab-highlight-lazy`} />
-                  )}
-                </Button>
-              </TabsPrimitive.Trigger>
-            ))}
+                    <Button kind="flat" dimension={dimension} icon={child.props.icon}>
+                      <Stack
+                        as="span"
+                        className={styles.Label}
+                        direction="row"
+                        vAlign="center"
+                        hAlign="center"
+                        columnGap={8}
+                        inline
+                      >
+                        {child.props.label}
+                        {child.props.decorator}
+                      </Stack>
+                      {child.props.value === activeItem && (
+                        <m.span className={styles.Highlight} layoutId={`${uid}-tab-highlight-lazy`} />
+                      )}
+                    </Button>
+                  </TabsPrimitive.Trigger>
+                ),
+            )}
           </Stack>
         </Panel>
       </LazyMotion>

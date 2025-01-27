@@ -30,11 +30,7 @@ const meta = {
       control: { type: 'select' },
     },
   },
-  render: args => (
-    <Panel {...args}>
-      Ciao
-    </Panel>
-  ),
+  render: (args) => <Panel {...args}>Ciao</Panel>,
 } satisfies Meta<typeof Panel>;
 
 export default meta;
@@ -48,16 +44,14 @@ export const WithVibrancy = {
     vibrant: true,
     vibrancyColor: 'mid',
   },
-  render: args => (
+  render: (args) => (
     <>
       <img
         width="100%"
         style={{ position: 'absolute', zIndex: -1 }}
         src="https://images.unsplash.com/photo-1579332649290-10b7da0cd111?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=cover&w=1600&q=80"
       />
-      <Panel {...args}>
-        Ciao
-      </Panel>
+      <Panel {...args}>Ciao</Panel>
     </>
   ),
 } satisfies Story;
@@ -88,14 +82,7 @@ export const WithHover = {
     backgroundColorHover: 1,
   },
   render: () => (
-    <Panel
-      backgroundColor={2}
-      backgroundColorHover={3}
-      bordered
-      as={BlankButton}
-      vPadding={24}
-      hPadding={24}
-    >
+    <Panel backgroundColor={2} backgroundColorHover={3} bordered as={BlankButton} vPadding={24} hPadding={24}>
       Ciao
     </Panel>
   ),

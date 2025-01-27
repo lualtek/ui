@@ -11,7 +11,7 @@ const meta: Meta<typeof Stepper> = {
     title: 'Sample title',
   },
   decorators: [
-    Story => (
+    (Story) => (
       <ResponsiveProvider>
         <Story />
       </ResponsiveProvider>
@@ -21,9 +21,7 @@ const meta: Meta<typeof Stepper> = {
     <>
       {Array.from(Array(4).keys()).map((n, i) => (
         <Stepper title={title} step={i + 1} {...otherArgs}>
-          Step
-          {' '}
-          {step}
+          Step {step}
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aliquam amet aperiam cum dolorem doloribus
         </Stepper>
       ))}

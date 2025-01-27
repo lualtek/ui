@@ -2,13 +2,9 @@
 
 import type { TokensTypes } from '@lualtek/tokens/platforms/web';
 import clsx from 'clsx';
-import {
-  forwardRef, Ref, SyntheticEvent, useMemo,
-} from 'react';
+import { type Ref, type SyntheticEvent, forwardRef, useMemo } from 'react';
 
-import {
-  Icon, IconProps, Stack, StackProps,
-} from '@/components';
+import { Icon, type IconProps, Stack, type StackProps } from '@/components';
 
 import styles from './chip.module.css';
 
@@ -47,11 +43,14 @@ export type ChipProps = React.ComponentPropsWithRef<'button'> & {
    * Only applicable if `interactive` is `true`.
    */
   onClick?: (event: SyntheticEvent<HTMLButtonElement, MouseEvent>) => void;
-}
+};
 
-type Sizes = Record<NonNullable<ChipProps['dimension']>, {
-  icon: IconProps['dimension'];
-}>
+type Sizes = Record<
+  NonNullable<ChipProps['dimension']>,
+  {
+    icon: IconProps['dimension'];
+  }
+>;
 
 const sizes: Sizes = {
   small: {
@@ -65,76 +64,81 @@ const sizes: Sizes = {
   },
 };
 
-export const Chip = forwardRef<ForwardedElementType<NonNullable<ChipProps['interactive']>>, ChipProps>(({
-  style,
-  children,
-  className,
-  dimension = 'regular',
-  color = 'primary',
-  icon,
-  interactive,
-  dismissable,
-  onDismissClick,
-  onClick,
-  ...otherProps
-}, forwardedRef) => {
-  const commonProps: StackProps & Record<string, unknown> = useMemo(() => ({
-    direction: 'row',
-    columnGap: 8,
-    inline: true,
-    fill: false,
-    'data-chip-dimension': dimension,
-    className: clsx(styles.Chip, className),
-    vAlign: 'center',
-  }), [className, dimension]);
+export const Chip = forwardRef<ForwardedElementType<NonNullable<ChipProps['interactive']>>, ChipProps>(
+  (
+    {
+      style,
+      children,
+      className,
+      dimension = 'regular',
+      color = 'primary',
+      icon,
+      interactive,
+      dismissable,
+      onDismissClick,
+      onClick,
+      ...otherProps
+    },
+    forwardedRef,
+  ) => {
+    const commonProps: StackProps & Record<string, unknown> = useMemo(
+      () => ({
+        direction: 'row',
+        columnGap: 8,
+        inline: true,
+        fill: false,
+        'data-chip-dimension': dimension,
+        className: clsx(styles.Chip, className),
+        vAlign: 'center',
+      }),
+      [className, dimension],
+    );
 
-  const dynamicStyle = useMemo(() => ({
-    '--background': `var(--highlight-${color}-background)`,
-    '--foreground': `var(--highlight-${color}-foreground)`,
-  }), [color]);
+    const dynamicStyle = useMemo(
+      () => ({
+        '--background': `var(--highlight-${color}-background)`,
+        '--foreground': `var(--highlight-${color}-foreground)`,
+      }),
+      [color],
+    );
 
-  const Content = useMemo(() => (
-    <>
-      {(icon && !dismissable) && (
-        <Icon
-          source={icon}
-          dimension={sizes[dimension].icon}
-          className={styles.Icon}
-        />
-      )}
+    const Content = useMemo(
+      () => (
+        <>
+          {icon && !dismissable && <Icon source={icon} dimension={sizes[dimension].icon} className={styles.Icon} />}
 
-      <b>{children}</b>
-      {(!interactive && dismissable) && (
-        <button onClick={onDismissClick} className={styles.Action} type="button">
-          <Icon
-            source="remove"
-            dimension={sizes[dimension].icon}
-          />
-        </button>
-      )}
-    </>
-  ), [children, dimension, dismissable, icon, interactive, onDismissClick]);
+          <b>{children}</b>
+          {!interactive && dismissable && (
+            <button onClick={onDismissClick} className={styles.Action} type="button">
+              <Icon source="remove" dimension={sizes[dimension].icon} />
+            </button>
+          )}
+        </>
+      ),
+      [children, dimension, dismissable, icon, interactive, onDismissClick],
+    );
 
-  return interactive ? (
-    <Stack
-      {...commonProps}
-      {...otherProps}
-      as="button"
-      ref={forwardedRef as Ref<HTMLButtonElement>}
-      style={{ ...dynamicStyle, ...style }}
-      onClick={(event: React.MouseEvent<HTMLButtonElement>) => onClick?.(event)}
-    >
-      {Content}
-    </Stack>
-  ) : (
-    <Stack
-      as="span"
-      ref={forwardedRef as Ref<HTMLSpanElement>}
-      style={{ ...dynamicStyle, ...style }}
-      {...commonProps}
-      {...otherProps}
-    >
-      {Content}
-    </Stack>
-  );
-});
+    return interactive ? (
+      <Stack
+        {...commonProps}
+        {...otherProps}
+        as="button"
+        ref={forwardedRef as Ref<HTMLButtonElement>}
+        style={{ ...dynamicStyle, ...style }}
+        onClick={(event: React.MouseEvent<HTMLButtonElement>) => onClick?.(event)}
+      >
+        {Content}
+      </Stack>
+    ) : (
+      <Stack
+        as="span"
+        ref={forwardedRef as Ref<HTMLSpanElement>}
+        style={{ ...dynamicStyle, ...style }}
+        {...commonProps}
+        {...otherProps}
+      >
+        {Content}
+      </Stack>
+    );
+  },
+);

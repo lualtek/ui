@@ -1,17 +1,14 @@
 'use client';
 
-import { TokensTypes } from '@lualtek/tokens/platforms/web';
+import type { TokensTypes } from '@lualtek/tokens/platforms/web';
 import tkns from '@lualtek/tokens/platforms/web/tokens.json';
 import clsx from 'clsx';
-import {
-  Children, cloneElement,
-  forwardRef, isValidElement, useMemo,
-} from 'react';
+import { Children, cloneElement, forwardRef, isValidElement, useMemo } from 'react';
 
-import { PolyRefComponent } from '@/components';
+import type { PolyRefComponent } from '@/components';
 
+import { Li, type ListItemProps } from './list-item';
 import styles from './list.module.css';
-import { Li, ListItemProps } from './list-item';
 
 export type ListProps = {
   children: React.ReactNode[] | React.ReactNode;
@@ -32,29 +29,21 @@ export type ListProps = {
    * Set the gap between each list item
    */
   gap?: TokensTypes['space'];
-}
+};
 
 export const List = forwardRef(
   (
-    {
-      as: Component = 'ul',
-      children,
-      dimension = 'regular',
-      className,
-      hideMarker = false,
-      gap,
-      style,
-      ...otherProps
-    },
+    { as: Component = 'ul', children, dimension = 'regular', className, hideMarker = false, gap, style, ...otherProps },
     forwardedRef,
   ) => {
     const isUnordered = useMemo(() => Component === 'ul', [Component]);
 
-    const dynamicStyle = useMemo(() => (
-      {
+    const dynamicStyle = useMemo(
+      () => ({
         '--gap': gap ? tkns.space[gap] : 0,
-      }
-    ), [gap]);
+      }),
+      [gap],
+    );
 
     return (
       <Component
@@ -66,13 +55,15 @@ export const List = forwardRef(
         style={{ ...dynamicStyle, ...style }}
         {...otherProps}
       >
-        {Children.map(children, child => isValidElement<ListItemProps>(child) && cloneElement(
-          child,
-          {
-            hideMarker: !isUnordered || hideMarker,
-            dimension,
-          },
-        ))}
+        {Children.map(
+          children,
+          (child) =>
+            isValidElement<ListItemProps>(child) &&
+            cloneElement(child, {
+              hideMarker: !isUnordered || hideMarker,
+              dimension,
+            }),
+        )}
       </Component>
     );
   },

@@ -49,10 +49,7 @@ const config: Config = {
       ],
       options: {
         showFileHeader: true,
-        fileHeader: (defaultMessage: string[] = []) => [
-          ...defaultMessage,
-          '© Lualtek Srl. All rights reserved.',
-        ],
+        fileHeader: (defaultMessage: string[] = []) => [...defaultMessage, '© Lualtek Srl. All rights reserved.'],
       },
     },
     raw: {

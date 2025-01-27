@@ -110,7 +110,6 @@
       transform: translateY(-50%);
     }
 
-
     &:hover {
       cursor: grab;
     }
@@ -118,7 +117,6 @@
     &:active {
       cursor: grabbing;
     }
-
 
     &[data-disabled] {
       background-color: var(--global-disabled-foreground);

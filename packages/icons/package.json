@@ -15,15 +15,9 @@
   },
   "typesVersions": {
     "*": {
-      "*": [
-        "./dist/*"
-      ],
-      "sprite": [
-        "dist/sprite.d.ts"
-      ],
-      "structure": [
-        "dist/structure.json"
-      ]
+      "*": ["./dist/*"],
+      "sprite": ["dist/sprite.d.ts"],
+      "structure": ["dist/structure.json"]
     }
   },
   "engines": {

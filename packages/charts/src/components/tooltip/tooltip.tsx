@@ -1,9 +1,6 @@
-import {
-  Elevator,
-  Panel, Stack, Text, Title,
-} from '@lualtek/react-components';
-import { FC, Fragment, ReactNode } from 'react';
-import { SetRequired } from 'type-fest';
+import { Elevator, Panel, Stack, Text, Title } from '@lualtek/react-components';
+import { type FC, Fragment, type ReactNode } from 'react';
+import type { SetRequired } from 'type-fest';
 
 export type TooltipEntry = {
   dataKey?: string | number;
@@ -12,7 +9,7 @@ export type TooltipEntry = {
   unit?: ReactNode;
   color?: string;
   payload?: Record<string, number>;
-}
+};
 
 export type TooltipProps = {
   /**
@@ -26,7 +23,7 @@ export type TooltipProps = {
   /**
    * The payload of the tooltip.
    */
-  payload?: TooltipEntry[];
+  payload?: Array<TooltipEntry>;
   /**
    * Whether to show the payload colors inside tooltip.
    *
@@ -57,7 +54,7 @@ export type TooltipProps = {
    * @returns React.ReactNode
    */
   tooltipDecorator?: (entry: TooltipEntry) => React.ReactNode;
-}
+};
 
 export const Tooltip: FC<TooltipProps> = ({
   active,
@@ -70,43 +67,33 @@ export const Tooltip: FC<TooltipProps> = ({
   label,
 }) => (
   <Elevator resting={3}>
-    <Panel
-      radius={8}
-      vibrant
-      showGlow
-      vibrancyColor="soft"
-      bordered
-    >
+    <Panel radius={8} vibrant showGlow vibrancyColor="soft" bordered>
       <Stack vPadding={8} hPadding={8} rowGap={8} fill={false} hAlign="start">
         {label && <Title level="6">{label && formatLabel ? formatLabel(label) : label}</Title>}
-        {active && payload?.map(entry => (
-          <Fragment key={entry.name}>
-            <Stack
-              direction="row"
-              vAlign="center"
-              fill={false}
-              inline
-              columnGap={4}
-            >
-              <Text as="strong" lineHeight="extra-small" size={14} textColor={tooltipColors ? entry.color : undefined}>
-                {entry.name && formatName
-                  ? formatName(entry as SetRequired<TooltipEntry, 'name'>)
-                  : entry.name}
-                :
-              </Text>
-              <Text size={14} lineHeight="extra-small">
-                {/** It can be zero! */}
-                {(entry.value !== null && entry.value !== undefined) && formatValue
-                  ? formatValue(entry as SetRequired<TooltipEntry, 'value'>)
-                  : entry.value}
-                {entry.unit}
-              </Text>
-            </Stack>
-            {tooltipDecorator?.(entry)}
-          </Fragment>
-        ))}
+        {active &&
+          payload?.map((entry) => (
+            <Fragment key={entry.name}>
+              <Stack direction="row" vAlign="center" fill={false} inline columnGap={4}>
+                <Text
+                  as="strong"
+                  lineHeight="extra-small"
+                  size={14}
+                  textColor={tooltipColors ? entry.color : undefined}
+                >
+                  {entry.name && formatName ? formatName(entry as SetRequired<TooltipEntry, 'name'>) : entry.name}:
+                </Text>
+                <Text size={14} lineHeight="extra-small">
+                  {/** It can be zero! */}
+                  {entry.value !== null && entry.value !== undefined && formatValue
+                    ? formatValue(entry as SetRequired<TooltipEntry, 'value'>)
+                    : entry.value}
+                  {entry.unit}
+                </Text>
+              </Stack>
+              {tooltipDecorator?.(entry)}
+            </Fragment>
+          ))}
       </Stack>
     </Panel>
   </Elevator>
 );
-

@@ -6,7 +6,7 @@ const pxToRemBuiltin = StyleDictionary.hooks.transforms['size/pxToRem'] as Value
 
 const pxToRem: ValueTransform = {
   ...pxToRemBuiltin,
-  filter: prop => prop.$type === 'dimension-px-to-rem',
+  filter: (prop) => prop.$type === 'dimension-px-to-rem',
   name: 'size/pxToRem',
 };
 

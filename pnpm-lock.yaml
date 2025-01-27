@@ -11,6 +11,9 @@ importers:
       '@biomejs/biome':
         specifier: 1.9.4
         version: 1.9.4
+      '@biomejs/monorepo':
+        specifier: github:biomejs/biome#e5d99dfa4e48fd76a59c50785236b6958e860518
+        version: https://codeload.github.com/biomejs/biome/tar.gz/e5d99dfa4e48fd76a59c50785236b6958e860518
       '@changesets/cli':
         specifier: 2.27.10
         version: 2.27.10
@@ -590,6 +593,10 @@ packages:
     engines: {node: '>=14.21.3'}
     cpu: [x64]
     os: [win32]
+
+  '@biomejs/monorepo@https://codeload.github.com/biomejs/biome/tar.gz/e5d99dfa4e48fd76a59c50785236b6958e860518':
+    resolution: {tarball: https://codeload.github.com/biomejs/biome/tar.gz/e5d99dfa4e48fd76a59c50785236b6958e860518}
+    version: 0.0.0
 
   '@bundled-es-modules/deepmerge@4.3.1':
     resolution: {integrity: sha512-Rk453EklPUPC3NRWc3VUNI/SSUjdBaFoaQvFRmNBNtMHVtOFD5AntiWg5kEE1hqcPqedYFDzxE3ZcMYPcA195w==}
@@ -6202,6 +6209,8 @@ snapshots:
 
   '@biomejs/cli-win32-x64@1.9.4':
     optional: true
+
+  '@biomejs/monorepo@https://codeload.github.com/biomejs/biome/tar.gz/e5d99dfa4e48fd76a59c50785236b6958e860518': {}
 
   '@bundled-es-modules/deepmerge@4.3.1':
     dependencies:

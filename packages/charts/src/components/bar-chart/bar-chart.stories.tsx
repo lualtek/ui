@@ -2,11 +2,8 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import SimpleData from '../../../fixtures/data';
 import MultiAxisData from '../../../fixtures/multi-y-data';
-import { ChartDataBaseType } from '../base-chart/base-chart';
-import {
-  BarChart,
-  BarProps,
-} from './bar-chart';
+import type { ChartDataBaseType } from '../base-chart/base-chart';
+import { BarChart, type BarProps } from './bar-chart';
 
 type Data = ChartDataBaseType;
 
@@ -17,15 +14,17 @@ const meta = {
   component: BarChart,
   args: {
     data,
-    series: [{
-      dataKey: 'y',
-      serieKeyId: 'y',
-      side: 'left',
-    }, {
-      dataKey: 'z',
-      serieKeyId: 'z',
-      side: 'left',
-    },
+    series: [
+      {
+        dataKey: 'y',
+        serieKeyId: 'y',
+        side: 'left',
+      },
+      {
+        dataKey: 'z',
+        serieKeyId: 'z',
+        side: 'left',
+      },
     ],
     showGrid: true,
     showYAxis: true,
@@ -43,9 +42,7 @@ const meta = {
       },
     },
   },
-  render: args => (
-    <BarChart {...args} />
-  ),
+  render: (args) => <BarChart {...args} />,
 } satisfies Meta<typeof BarChart>;
 
 export default meta;
@@ -62,18 +59,20 @@ export const CustomBarSize = {
 
 export const StackedBars = {
   args: {
-    series: [{
-      dataKey: 'y',
-      serieKeyId: 'y',
-      stackId: 'stack',
-      side: 'left',
-    },
-    {
-      dataKey: 'z',
-      serieKeyId: 'z',
-      stackId: 'stack',
-      side: 'left',
-    }],
+    series: [
+      {
+        dataKey: 'y',
+        serieKeyId: 'y',
+        stackId: 'stack',
+        side: 'left',
+      },
+      {
+        dataKey: 'z',
+        serieKeyId: 'z',
+        stackId: 'stack',
+        side: 'left',
+      },
+    ],
   },
 } satisfies Story;
 

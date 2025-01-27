@@ -2,17 +2,16 @@
 
 import tkns from '@lualtek/tokens/platforms/web/tokens.json';
 import clsx from 'clsx';
-import { domMax, LazyMotion, m } from 'motion/react';
-import {
-  forwardRef, ReactNode, useId,
-  useMemo,
-} from 'react';
+import { LazyMotion, domMax, m } from 'motion/react';
+import { type ReactNode, forwardRef, useId, useMemo } from 'react';
 import { AutoFocusInside, FocusOn } from 'react-focus-on';
 import { useKey } from 'react-use';
 
 import {
   Elevator,
-  IconButton, Overlay, OverlayProps,
+  IconButton,
+  Overlay,
+  type OverlayProps,
   Panel,
   Stack,
   Title,
@@ -111,135 +110,135 @@ export type DrawerProps = React.ComponentPropsWithRef<'div'> & {
    *
    */
   scrollerRef?: React.RefObject<HTMLDivElement>;
-}
+};
 
-export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(({
-  children,
-  className,
-  closeOnClickOutside = true,
-  showHeader = true,
-  compactHeader = false,
-  maxWidth = '400px',
-  side = 'right',
-  theme = 'auto',
-  isModal = true,
-  autoFocus = true,
-  safePadding = true,
-  heading,
-  onClose,
-  isOpen,
-  index,
-  scrollerRef,
-  ...otherProps
-}, forwardedRef) => {
-  const headingId = useId();
-  const { matches } = useResponsiveContext();
-  useKey('esc', () => onClose());
-
-  const dynamicStyle = useMemo(() => (
+export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(
+  (
     {
-      '--max-w': maxWidth,
-    }
-  ), [maxWidth]);
-
-  const DrawerAnimation = {
-    visible: {
-      x: 0,
-      transition: {
-        type: 'spring',
-        bounce: 0,
-        duration: parseFloat(tkns.duration[500].replace('s', '')),
-      },
+      children,
+      className,
+      closeOnClickOutside = true,
+      showHeader = true,
+      compactHeader = false,
+      maxWidth = '400px',
+      side = 'right',
+      theme = 'auto',
+      isModal = true,
+      autoFocus = true,
+      safePadding = true,
+      heading,
+      onClose,
+      isOpen,
+      index,
+      scrollerRef,
+      ...otherProps
     },
-    hidden: {
-      x: side === 'right' ? '100%' : '-100%',
-      transition: {
-        type: 'spring',
-        bounce: 0,
-        duration: parseFloat(tkns.duration[500].replace('s', '')),
-      },
-    },
-  };
+    forwardedRef,
+  ) => {
+    const headingId = useId();
+    const { matches } = useResponsiveContext();
+    useKey('esc', () => onClose());
 
-  return (
-    <Overlay obfuscate={isModal} onClose={onClose} index={index}>
-      {isOpen && (
-        <div
-          role="dialog"
-          aria-modal={isModal}
-          data-theme={theme}
-          aria-labelledby={headingId}
-          className={clsx(styles.Drawer, className)}
-          ref={forwardedRef}
-          {...otherProps}
-        >
-          <FocusOn
-            enabled={isModal}
-            onClickOutside={closeOnClickOutside ? onClose : undefined}
-            onEscapeKey={onClose}
-            autoFocus={autoFocus}
+    const dynamicStyle = useMemo(
+      () => ({
+        '--max-w': maxWidth,
+      }),
+      [maxWidth],
+    );
+
+    const DrawerAnimation = {
+      visible: {
+        x: 0,
+        transition: {
+          type: 'spring',
+          bounce: 0,
+          duration: Number.parseFloat(tkns.duration[500].replace('s', '')),
+        },
+      },
+      hidden: {
+        x: side === 'right' ? '100%' : '-100%',
+        transition: {
+          type: 'spring',
+          bounce: 0,
+          duration: Number.parseFloat(tkns.duration[500].replace('s', '')),
+        },
+      },
+    };
+
+    return (
+      <Overlay obfuscate={isModal} onClose={onClose} index={index}>
+        {isOpen && (
+          <div
+            role="dialog"
+            aria-modal={isModal}
+            data-theme={theme}
+            aria-labelledby={headingId}
+            className={clsx(styles.Drawer, className)}
+            ref={forwardedRef}
+            {...otherProps}
           >
-            <LazyMotion features={domMax}>
-              <m.div
-                variants={DrawerAnimation}
-                initial="hidden"
-                animate="visible"
-                exit="hidden"
-                className={styles.Container}
-                data-drawer-side={side}
-              >
-                <Elevator resting={4} direction={side === 'left' ? 'right' : 'left'}>
-                  <Panel
-                    vibrant
-                    vibrancyColor="soft"
-                    showGlow={matches.small}
-                    bordered
-                    borderSide={side === 'left' ? 'right' : 'left'}
-                  >
-                    <Stack
-                      className={styles.Content}
-                      style={dynamicStyle}
-                      fill={false}
-                      vAlign="start"
-                      ref={forwardedRef}
-                      data-drawer-content-safe-padding={safePadding}
-                      data-drawer-has-header={showHeader}
-                      data-drawer-compact-header={compactHeader}
-                      {...otherProps}
+            <FocusOn
+              enabled={isModal}
+              onClickOutside={closeOnClickOutside ? onClose : undefined}
+              onEscapeKey={onClose}
+              autoFocus={autoFocus}
+            >
+              <LazyMotion features={domMax}>
+                <m.div
+                  variants={DrawerAnimation}
+                  initial="hidden"
+                  animate="visible"
+                  exit="hidden"
+                  className={styles.Container}
+                  data-drawer-side={side}
+                >
+                  <Elevator resting={4} direction={side === 'left' ? 'right' : 'left'}>
+                    <Panel
+                      vibrant
+                      vibrancyColor="soft"
+                      showGlow={matches.small}
+                      bordered
+                      borderSide={side === 'left' ? 'right' : 'left'}
                     >
-                      {(showHeader && heading) && (
-                        <Stack
-                          vAlign="center"
-                          hAlign="space-between"
-                          direction="row"
-                          className={styles.Header}
-                          columnGap={24}
-                        >
-                          <Title responsive={false} level="5" id={headingId} lineHeight="small">{heading}</Title>
-                          {onClose && (
-                            <IconButton
-                              onClick={onClose}
-                              className={styles.CloseButton}
-                              icon="remove"
-                              kind="flat"
-                            />
-                          )}
-                        </Stack>
-                      )}
-                      <div className={styles.Scroller} ref={scrollerRef}>
-                        <AutoFocusInside>
-                          {children}
-                        </AutoFocusInside>
-                      </div>
-                    </Stack>
-                  </Panel>
-                </Elevator>
-              </m.div>
-            </LazyMotion>
-          </FocusOn>
-        </div>
-      )}
-    </Overlay>
-  );
-});
-
+                      <Stack
+                        className={styles.Content}
+                        style={dynamicStyle}
+                        fill={false}
+                        vAlign="start"
+                        ref={forwardedRef}
+                        data-drawer-content-safe-padding={safePadding}
+                        data-drawer-has-header={showHeader}
+                        data-drawer-compact-header={compactHeader}
+                        {...otherProps}
+                      >
+                        {showHeader && heading && (
+                          <Stack
+                            vAlign="center"
+                            hAlign="space-between"
+                            direction="row"
+                            className={styles.Header}
+                            columnGap={24}
+                          >
+                            <Title responsive={false} level="5" id={headingId} lineHeight="small">
+                              {heading}
+                            </Title>
+                            {onClose && (
+                              <IconButton onClick={onClose} className={styles.CloseButton} icon="remove" kind="flat" />
+                            )}
+                          </Stack>
+                        )}
+                        <div className={styles.Scroller} ref={scrollerRef}>
+                          <AutoFocusInside>{children}</AutoFocusInside>
+                        </div>
+                      </Stack>
+                    </Panel>
+                  </Elevator>
+                </m.div>
+              </LazyMotion>
+            </FocusOn>
+          </div>
+        )}
+      </Overlay>
+    );
+  },
+);

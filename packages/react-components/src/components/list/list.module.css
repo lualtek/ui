@@ -41,7 +41,6 @@
     block-size: var(--marker-size);
     margin-block-start: calc(var(--marker-size) / 2.5);
 
-
     &[data-list-default-marker='true'] {
       transform: scale(0.7);
       margin-block-start: calc(var(--marker-size) / 3);

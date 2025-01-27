@@ -1,14 +1,15 @@
 'use client';
 
-import { TokensTypes } from '@lualtek/tokens/platforms/web';
+import type { TokensTypes } from '@lualtek/tokens/platforms/web';
 import tkns from '@lualtek/tokens/platforms/web/tokens.json';
 import clsx from 'clsx';
-import React, {
+import type React from 'react';
+import {
+  type CSSProperties,
   Children,
-  CSSProperties,
-  forwardRef,
   Fragment,
-  RefObject,
+  type RefObject,
+  forwardRef,
   useCallback,
   useEffect,
   useId,
@@ -89,105 +90,99 @@ export type MarqueeProps = React.ComponentPropsWithRef<'div'> & {
   onMount?: () => void;
 };
 
-export const Marquee = forwardRef<HTMLDivElement, MarqueeProps>((
-  {
-    autoFill = true,
-    play = true,
-    pauseOnHover = false,
-    pauseOnClick = false,
-    direction = 'left',
-    speed = 50,
-    delay = 0,
-    loop = 0,
-    fade,
-    fadeSize = '88px',
-    gap,
-    onFinish,
-    onCycleComplete,
-    children,
-    style,
-    className,
-    ...otherProps
-  },
-  forwardedRef,
-) => {
-  const [containerWidth, setContainerWidth] = useState(0);
-  const [marqueeWidth, setMarqueeWidth] = useState(0);
-  const [multiplier, setMultiplier] = useState(1);
-  const [isMounted, setIsMounted] = useState(false);
-  const rootRef = useRef<HTMLDivElement>(null);
-  const containerRef = (forwardedRef as RefObject<HTMLDivElement>) || rootRef;
-  const marqueeRef = useRef<HTMLDivElement>(null);
-  const uid = useId();
+export const Marquee = forwardRef<HTMLDivElement, MarqueeProps>(
+  (
+    {
+      autoFill = true,
+      play = true,
+      pauseOnHover = false,
+      pauseOnClick = false,
+      direction = 'left',
+      speed = 50,
+      delay = 0,
+      loop = 0,
+      fade,
+      fadeSize = '88px',
+      gap,
+      onFinish,
+      onCycleComplete,
+      children,
+      style,
+      className,
+      ...otherProps
+    },
+    forwardedRef,
+  ) => {
+    const [containerWidth, setContainerWidth] = useState(0);
+    const [marqueeWidth, setMarqueeWidth] = useState(0);
+    const [multiplier, setMultiplier] = useState(1);
+    const [isMounted, setIsMounted] = useState(false);
+    const rootRef = useRef<HTMLDivElement>(null);
+    const containerRef = (forwardedRef as RefObject<HTMLDivElement>) || rootRef;
+    const marqueeRef = useRef<HTMLDivElement>(null);
+    const uid = useId();
 
-  // Calculate width of container and marquee and set multiplier
-  const calculateWidth = useCallback(() => {
-    if (marqueeRef.current && containerRef.current) {
-      const containerRect = containerRef.current.getBoundingClientRect();
-      const marqueeRect = marqueeRef.current.getBoundingClientRect();
-      let containerWidth = containerRect.width;
-      let marqueeWidth = marqueeRect.width;
+    // Calculate width of container and marquee and set multiplier
+    const calculateWidth = useCallback(() => {
+      if (marqueeRef.current && containerRef.current) {
+        const containerRect = containerRef.current.getBoundingClientRect();
+        const marqueeRect = marqueeRef.current.getBoundingClientRect();
+        let containerWidth = containerRect.width;
+        let marqueeWidth = marqueeRect.width;
 
-      // Swap width and height if direction is up or down
-      if (direction === 'up' || direction === 'down') {
-        containerWidth = containerRect.height;
-        marqueeWidth = marqueeRect.height;
+        // Swap width and height if direction is up or down
+        if (direction === 'up' || direction === 'down') {
+          containerWidth = containerRect.height;
+          marqueeWidth = marqueeRect.height;
+        }
+
+        if (autoFill && containerWidth && marqueeWidth) {
+          setMultiplier(marqueeWidth < containerWidth ? Math.ceil(containerWidth / marqueeWidth) : 1);
+        } else {
+          setMultiplier(1);
+        }
+
+        setContainerWidth(containerWidth);
+        setMarqueeWidth(marqueeWidth);
+      }
+    }, [autoFill, containerRef, direction]);
+
+    // Calculate width and multiplier on mount and on window resize
+    useEffect(() => {
+      if (!isMounted) return () => undefined;
+
+      calculateWidth();
+      const resizeObserver = new ResizeObserver(() => calculateWidth());
+      if (marqueeRef.current && containerRef.current) {
+        resizeObserver.observe(containerRef.current);
+        resizeObserver.observe(marqueeRef.current);
       }
 
-      if (autoFill && containerWidth && marqueeWidth) {
-        setMultiplier(
-          marqueeWidth < containerWidth
-            ? Math.ceil(containerWidth / marqueeWidth)
-            : 1,
-        );
-      } else {
-        setMultiplier(1);
+      return () => {
+        if (!resizeObserver) return;
+        resizeObserver.disconnect();
+      };
+    }, [calculateWidth, containerRef, isMounted]);
+
+    // Recalculate width when children change
+    useEffect(() => {
+      calculateWidth();
+    }, [calculateWidth, children]);
+
+    useEffect(() => {
+      setIsMounted(true);
+    }, []);
+
+    // Animation duration
+    const duration = useMemo(() => {
+      if (autoFill) {
+        return (marqueeWidth * multiplier) / speed;
       }
 
-      setContainerWidth(containerWidth);
-      setMarqueeWidth(marqueeWidth);
-    }
-  }, [autoFill, containerRef, direction]);
+      return marqueeWidth < containerWidth ? containerWidth / speed : marqueeWidth / speed;
+    }, [autoFill, containerWidth, marqueeWidth, multiplier, speed]);
 
-  // Calculate width and multiplier on mount and on window resize
-  useEffect(() => {
-    if (!isMounted) return () => undefined;
-
-    calculateWidth();
-    const resizeObserver = new ResizeObserver(() => calculateWidth());
-    if (marqueeRef.current && containerRef.current) {
-      resizeObserver.observe(containerRef.current);
-      resizeObserver.observe(marqueeRef.current);
-    }
-
-    return () => {
-      if (!resizeObserver) return;
-      resizeObserver.disconnect();
-    };
-  }, [calculateWidth, containerRef, isMounted]);
-
-  // Recalculate width when children change
-  useEffect(() => {
-    calculateWidth();
-  }, [calculateWidth, children]);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  // Animation duration
-  const duration = useMemo(() => {
-    if (autoFill) {
-      return (marqueeWidth * multiplier) / speed;
-    }
-
-    return marqueeWidth < containerWidth
-      ? containerWidth / speed
-      : marqueeWidth / speed;
-  }, [autoFill, containerWidth, marqueeWidth, multiplier, speed]);
-
-  const dynamicStyle: CSSProperties = useMemo(
-    () => {
+    const dynamicStyle: CSSProperties = useMemo(() => {
       const computedContainerTransform = () => {
         if (direction === 'up') return 'rotate(-90deg)';
         if (direction === 'down') return 'rotate(90deg)';
@@ -195,31 +190,28 @@ export const Marquee = forwardRef<HTMLDivElement, MarqueeProps>((
       };
 
       return {
-        '--pause-on-hover': (!play || pauseOnHover) ? 'paused' : 'running',
-        '--pause-on-click': (!play || (pauseOnHover && !pauseOnClick) || pauseOnClick) ? 'paused' : 'running',
+        '--pause-on-hover': !play || pauseOnHover ? 'paused' : 'running',
+        '--pause-on-click': !play || (pauseOnHover && !pauseOnClick) || pauseOnClick ? 'paused' : 'running',
         '--width': direction === 'up' || direction === 'down' ? '100vh' : '100%',
         '--transform': computedContainerTransform(),
         '--gap': gap ? tkns.space[gap] : 0,
         '--fade-size': fadeSize,
       };
-    },
-    [play, pauseOnHover, pauseOnClick, direction, gap, fadeSize],
-  );
+    }, [play, pauseOnHover, pauseOnClick, direction, gap, fadeSize]);
 
-  const sliderStyle: CSSProperties = useMemo(
-    () => ({
-      '--play': play ? 'running' : 'paused',
-      '--direction': direction === 'left' ? 'normal' : 'reverse',
-      '--duration': `${duration}s`,
-      '--delay': `${delay}s`,
-      '--iteration-count': loop ? `${loop}` : 'infinite',
-      '--min-width': autoFill ? 'auto' : '100%',
-    }),
-    [play, direction, duration, delay, loop, autoFill],
-  );
+    const sliderStyle: CSSProperties = useMemo(
+      () => ({
+        '--play': play ? 'running' : 'paused',
+        '--direction': direction === 'left' ? 'normal' : 'reverse',
+        '--duration': `${duration}s`,
+        '--delay': `${delay}s`,
+        '--iteration-count': loop ? `${loop}` : 'infinite',
+        '--min-width': autoFill ? 'auto' : '100%',
+      }),
+      [play, direction, duration, delay, loop, autoFill],
+    );
 
-  const slideStyle = useMemo(
-    () => {
+    const slideStyle = useMemo(() => {
       const computedSlideTransform = () => {
         if (direction === 'up') return 'rotate(90deg)';
         if (direction === 'down') return 'rotate(-90deg)';
@@ -229,52 +221,50 @@ export const Marquee = forwardRef<HTMLDivElement, MarqueeProps>((
       return {
         '--transform': computedSlideTransform(),
       };
-    },
-    [direction],
-  );
+    }, [direction]);
 
-  // Render {multiplier} number of children
-  const multiplyChildren = useCallback(
-    (multiplier: number) => [
-      ...Array<number>(Number.isFinite(multiplier) && multiplier >= 0 ? multiplier : 0),
-    ].map(_ => (
-      <Fragment key={uid}>
-        {Children.map(children, child => (
-          <div style={slideStyle} className={styles.Slide}>
-            {child}
-          </div>
-        ))}
-      </Fragment>
-    )),
-    [uid, children, slideStyle],
-  );
+    // Render {multiplier} number of children
+    const multiplyChildren = useCallback(
+      (multiplier: number) =>
+        [...Array<number>(Number.isFinite(multiplier) && multiplier >= 0 ? multiplier : 0)].map((_) => (
+          <Fragment key={uid}>
+            {Children.map(children, (child) => (
+              <div style={slideStyle} className={styles.Slide}>
+                {child}
+              </div>
+            ))}
+          </Fragment>
+        )),
+      [uid, children, slideStyle],
+    );
 
-  return !isMounted ? null : (
-    <div
-      ref={containerRef}
-      style={{ ...dynamicStyle, style }}
-      className={clsx(styles.Marquee, className)}
-      data-carousel-fade={fade}
-      {...otherProps}
-    >
+    return !isMounted ? null : (
       <div
-        className={styles.Slider}
-        style={sliderStyle}
-        onAnimationIteration={onCycleComplete}
-        onAnimationEnd={onFinish}
+        ref={containerRef}
+        style={{ ...dynamicStyle, style }}
+        className={clsx(styles.Marquee, className)}
+        data-carousel-fade={fade}
+        {...otherProps}
       >
-        <div className={styles.ChildContainer} ref={marqueeRef}>
-          {Children.map(children, child => (
-            <div style={slideStyle} className={styles.Slide}>
-              {child}
-            </div>
-          ))}
+        <div
+          className={styles.Slider}
+          style={sliderStyle}
+          onAnimationIteration={onCycleComplete}
+          onAnimationEnd={onFinish}
+        >
+          <div className={styles.ChildContainer} ref={marqueeRef}>
+            {Children.map(children, (child) => (
+              <div style={slideStyle} className={styles.Slide}>
+                {child}
+              </div>
+            ))}
+          </div>
+          {multiplyChildren(multiplier - 1)}
         </div>
-        {multiplyChildren(multiplier - 1)}
+        <div className={styles.Slider} style={sliderStyle}>
+          {multiplyChildren(multiplier)}
+        </div>
       </div>
-      <div className={styles.Slider} style={sliderStyle}>
-        {multiplyChildren(multiplier)}
-      </div>
-    </div>
-  );
-});
+    );
+  },
+);

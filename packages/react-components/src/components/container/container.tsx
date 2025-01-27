@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { forwardRef } from 'react';
 
-import { PolyRefComponent } from '@/components';
+import type { PolyRefComponent } from '@/components';
 
 import styles from './container.module.css';
 
@@ -16,20 +16,10 @@ export type ContainerProps = {
    * @defaultValue true
    */
   padding?: boolean;
-}
+};
 
 export const Container = forwardRef(
-  (
-    {
-      as: Component = 'div',
-      children,
-      className,
-      dimension = 'full',
-      padding = true,
-      ...otherProps
-    },
-    forwardedRef,
-  ) => (
+  ({ as: Component = 'div', children, className, dimension = 'full', padding = true, ...otherProps }, forwardedRef) => (
     <Component
       ref={forwardedRef}
       className={clsx(styles.Container, className)}

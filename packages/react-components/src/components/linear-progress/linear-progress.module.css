@@ -27,18 +27,17 @@
     &:indeterminate {
       background-size: 200% 100%;
       animation: progress-stripes 2s linear infinite;
-      background-image:
-        linear-gradient(
-          to right,
-          transparent 50%,
-          var(--fill-color) 50%,
-          var(--fill-color) 60%,
-          transparent 60%,
-          transparent 71.5%,
-          var(--fill-color) 71.5%,
-          var(--fill-color) 84%,
-          transparent 84%
-        );
+      background-image: linear-gradient(
+        to right,
+        transparent 50%,
+        var(--fill-color) 50%,
+        var(--fill-color) 60%,
+        transparent 60%,
+        transparent 71.5%,
+        var(--fill-color) 71.5%,
+        var(--fill-color) 84%,
+        transparent 84%
+      );
     }
   }
 

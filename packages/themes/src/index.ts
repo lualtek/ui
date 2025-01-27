@@ -13,8 +13,8 @@ import LightDark from './transformers/light-dark.ts';
 // import cssLightDark from './transformers/light-dark.ts';
 import OkLCH from './transformers/oklch.ts';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const Filename = fileURLToPath(import.meta.url);
+const Dirname = path.dirname(Filename);
 
 // type ThemeVariants = typeof THEME_VARIANTS[number];
 // const THEME_VARIANTS = ['light', 'dark'] as const;
@@ -71,9 +71,9 @@ const getConfig = (name: string): Config => ({
 /**
  * Get all the folders inside the foldeer `themes` (eg, default, pro etc)
  */
-const availableThemes = fs.readdirSync(path.join(__dirname, 'themes')).filter(
-  file => fs.statSync(path.join(__dirname, 'themes', file)).isDirectory(),
-);
+const availableThemes = fs
+  .readdirSync(path.join(Dirname, 'themes'))
+  .filter((file) => fs.statSync(path.join(Dirname, 'themes', file)).isDirectory());
 
 /**
  * For each folder inside themes and for each variant (dark, light) just create

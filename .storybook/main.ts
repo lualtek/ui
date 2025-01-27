@@ -33,11 +33,11 @@ const config: StorybookConfig = {
     reactDocgen: 'react-docgen-typescript',
     reactDocgenTypescriptOptions: {
       shouldExtractLiteralValuesFromEnum: true,
-      propFilter: prop => (prop.parent ? !prop.parent.fileName.includes('node_modules') : true),
+      propFilter: (prop) => (prop.parent ? !prop.parent.fileName.includes('node_modules') : true),
     },
   },
   viteFinal: async (config) => {
-    if (config && config.resolve && config.resolve.alias) {
+    if (config?.resolve?.alias) {
       config.resolve.alias['@/components'] = resolve(__dirname, '../packages/react-components/src');
       config.resolve.alias['@/charts'] = resolve(__dirname, '../packages/charts/src');
       return config;

@@ -1,4 +1,4 @@
-@import "../../../core/utils/media.css";
+@import '../../../core/utils/media.css';
 
 @layer components {
   .Content {
@@ -20,7 +20,7 @@
 
     flex-grow: 1;
 
-    &[data-modal-content-safe-padding="true"] {
+    &[data-modal-content-safe-padding='true'] {
       padding-block-end: max(env(safe-area-inset-bottom), var(--safe-padding));
     }
   }
@@ -29,7 +29,7 @@
     overflow: hidden;
     overscroll-behavior: contain;
 
-    &[data-modal-content-scroll="true"] {
+    &[data-modal-content-scroll='true'] {
       overflow: auto;
     }
   }

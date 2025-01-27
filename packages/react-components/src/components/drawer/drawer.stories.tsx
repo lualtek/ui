@@ -1,18 +1,18 @@
 import { useArgs } from '@storybook/preview-api';
 import type { Meta, StoryObj } from '@storybook/react';
 
-import {
-  Autocomplete,
-  Button, Chip, ResponsiveProvider,
-  Stack,
-} from '../..';
+import { Autocomplete, Button, Chip, ResponsiveProvider, Stack } from '../..';
 import { Drawer } from './drawer';
 
 const options = [
   {
     value: 'apple',
     children: '🍎 Apple',
-    decoration: <Chip dimension="small" color="green">110 Cal</Chip>,
+    decoration: (
+      <Chip dimension="small" color="green">
+        110 Cal
+      </Chip>
+    ),
   },
   {
     value: 'banana',
@@ -28,7 +28,7 @@ const meta: Meta<typeof Drawer> = {
   title: 'Dialogs/Drawer',
   component: Drawer,
   decorators: [
-    Story => (
+    (Story) => (
       <ResponsiveProvider>
         <Story />
       </ResponsiveProvider>
@@ -42,28 +42,25 @@ const meta: Meta<typeof Drawer> = {
       <>
         <Button onClick={() => updateArgs({ isVisible: true })}>Show Drawer</Button>
         <Drawer {...args} onClose={handleClose} isOpen={isVisible}>
-          <Stack
-            vAlign="center"
-            hPadding={24}
-          >
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Doloribus et magnam distinctio qui quod ducimus libero magni earum perspiciatis.
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Doloribus et magnam distinctio qui quod ducimus libero magni earum perspiciatis.
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Doloribus et magnam distinctio qui quod ducimus libero magni earum perspiciatis.
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Doloribus et magnam distinctio qui quod ducimus libero magni earum perspiciatis.
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Doloribus et magnam distinctio qui quod ducimus libero magni earum perspiciatis.
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Doloribus et magnam distinctio qui quod ducimus libero magni earum perspiciatis.
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Doloribus et magnam distinctio qui quod ducimus libero magni earum perspiciatis.
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Doloribus et magnam distinctio qui quod ducimus libero magni earum perspiciatis.
+          <Stack vAlign="center" hPadding={24}>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam distinctio qui quod ducimus
+            libero magni earum perspiciatis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et
+            magnam distinctio qui quod ducimus libero magni earum perspiciatis. Lorem ipsum dolor sit amet consectetur
+            adipisicing elit. Doloribus et magnam distinctio qui quod ducimus libero magni earum perspiciatis. Lorem
+            ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam distinctio qui quod ducimus libero
+            magni earum perspiciatis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
+            distinctio qui quod ducimus libero magni earum perspiciatis. Lorem ipsum dolor sit amet consectetur
+            adipisicing elit. Doloribus et magnam distinctio qui quod ducimus libero magni earum perspiciatis. Lorem
+            ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam distinctio qui quod ducimus libero
+            magni earum perspiciatis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus et magnam
+            distinctio qui quod ducimus libero magni earum perspiciatis.
             <Autocomplete matchFieldWidth label="dio" options={options} align="center" />
-            <img width="100%" alt="" height="auto" src="https://images.unsplash.com/photo-1579332649290-10b7da0cd111?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=cover&w=1600&q=80" />
+            <img
+              width="100%"
+              alt=""
+              height="auto"
+              src="https://images.unsplash.com/photo-1579332649290-10b7da0cd111?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=cover&w=1600&q=80"
+            />
             <Button onClick={handleClose}>Close drawer</Button>
           </Stack>
         </Drawer>

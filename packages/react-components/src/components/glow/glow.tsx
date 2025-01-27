@@ -1,15 +1,12 @@
 'use client';
 
-import { TokensTypes } from '@lualtek/tokens/platforms/web';
+import type { TokensTypes } from '@lualtek/tokens/platforms/web';
 import tkns from '@lualtek/tokens/platforms/web/tokens.json';
-import {
-  FC,
-  useCallback, useEffect, useMemo, useRef, useState,
-} from 'react';
+import { type FC, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import styles from './glow.module.css';
 
-type RadiusType = Exclude<TokensTypes['radius'], string> | 0
+type RadiusType = Exclude<TokensTypes['radius'], string> | 0;
 
 export type GlowProps = React.ComponentPropsWithRef<'div'> & {
   /**
@@ -76,7 +73,7 @@ export type GlowProps = React.ComponentPropsWithRef<'div'> & {
    * Whether the highlight should be rainbow colored
    */
   rainbowColors?: boolean;
-}
+};
 
 export const Glow: FC<GlowProps> = ({
   className,
@@ -109,7 +106,7 @@ export const Glow: FC<GlowProps> = ({
       return tkns.radius[innerRadius];
     }
 
-    return innerRadius.map(r => (r !== 0 ? tkns.radius[r!] : 0)).join(' ');
+    return innerRadius.map((r) => (r !== 0 ? tkns.radius[r!] : 0)).join(' ');
   }, [innerRadius]);
 
   const paint = useCallback(
@@ -121,22 +118,20 @@ export const Glow: FC<GlowProps> = ({
       const CARD_BOUNDS = containerRef.current.getBoundingClientRect();
       // Get distance between pointer and outerbounds of card
       if (
-        event?.x > CARD_BOUNDS.left - proximity
-          && event?.x < CARD_BOUNDS.left + CARD_BOUNDS.width + proximity
-          && event?.y > CARD_BOUNDS.top - proximity
-          && event?.y < CARD_BOUNDS.top + CARD_BOUNDS.height + proximity) {
+        event?.x > CARD_BOUNDS.left - proximity &&
+        event?.x < CARD_BOUNDS.left + CARD_BOUNDS.width + proximity &&
+        event?.y > CARD_BOUNDS.top - proximity &&
+        event?.y < CARD_BOUNDS.top + CARD_BOUNDS.height + proximity
+      ) {
         // If within proximity set the active opacity
         setActiveOpacity(1);
       } else {
         setActiveOpacity(opacity);
       }
 
-      const CARD_CENTER = [
-        CARD_BOUNDS.left + CARD_BOUNDS.width * 0.5,
-        CARD_BOUNDS.top + CARD_BOUNDS.height * 0.5,
-      ];
+      const CARD_CENTER = [CARD_BOUNDS.left + CARD_BOUNDS.width * 0.5, CARD_BOUNDS.top + CARD_BOUNDS.height * 0.5];
 
-      let ANGLE = Math.atan2(event?.y - CARD_CENTER[1], event?.x - CARD_CENTER[0]) * 180 / Math.PI;
+      let ANGLE = (Math.atan2(event?.y - CARD_CENTER[1], event?.x - CARD_CENTER[0]) * 180) / Math.PI;
       ANGLE = ANGLE < 0 ? ANGLE + 360 : ANGLE;
       setStartingAngle(String(ANGLE + 90));
     },
@@ -150,22 +145,32 @@ export const Glow: FC<GlowProps> = ({
     };
   }, [paint]);
 
-  const dynamicStyle = useMemo(() => ({
-    '--active-opacity': activeOpacity,
-    '--starting-angle': startingAngle,
-    '--blur': 50,
-    '--spread': spread,
-    '--glow-color': glowColor,
-    '--glow-power': `${glowPower}px`,
-    '--border-offset': `${borderOffset}px`,
-    '--border-width': `${borderWidth}px`,
-    '--border-color': borderColor,
-    '--radius': innerRadius && formatRadius,
-  }), [
-    activeOpacity, startingAngle, spread,
-    glowPower, borderOffset, borderWidth,
-    borderColor, innerRadius, glowColor, formatRadius,
-  ]);
+  const dynamicStyle = useMemo(
+    () => ({
+      '--active-opacity': activeOpacity,
+      '--starting-angle': startingAngle,
+      '--blur': 50,
+      '--spread': spread,
+      '--glow-color': glowColor,
+      '--glow-power': `${glowPower}px`,
+      '--border-offset': `${borderOffset}px`,
+      '--border-width': `${borderWidth}px`,
+      '--border-color': borderColor,
+      '--radius': innerRadius && formatRadius,
+    }),
+    [
+      activeOpacity,
+      startingAngle,
+      spread,
+      glowPower,
+      borderOffset,
+      borderWidth,
+      borderColor,
+      innerRadius,
+      glowColor,
+      formatRadius,
+    ],
+  );
 
   return (
     <div
@@ -182,4 +187,3 @@ export const Glow: FC<GlowProps> = ({
     </div>
   );
 };
-

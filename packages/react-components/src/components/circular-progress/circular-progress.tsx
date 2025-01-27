@@ -1,9 +1,7 @@
 'use client';
 
 import clsx from 'clsx';
-import {
-  forwardRef, useCallback, useMemo,
-} from 'react';
+import { forwardRef, useCallback, useMemo } from 'react';
 
 import styles from './circular-progress.module.css';
 
@@ -38,50 +36,53 @@ export type CircularProgressProps = React.ComponentPropsWithRef<'div'> & {
    * Change the color of the progress bar.
    */
   color?: string;
-}
+};
 
-export const CircularProgress = forwardRef<HTMLDivElement, CircularProgressProps>(({
-  className,
-  value,
-  max = 100,
-  dimension = 'regular',
-  showProgress,
-  progressLabel = val => val,
-  color,
-  style,
-  ...otherProps
-}, forwardedRef) => {
-  const getPercentage = useCallback(
-    () => (value ? Math.round((100 * value) / max) : 0),
-    [max, value],
-  );
-
-  const clamp = useMemo(() => (num: number, min: number, max: number) => Math.min(Math.max(num, min), max), []);
-
-  const dynamicStyle = useMemo(() => (
+export const CircularProgress = forwardRef<HTMLDivElement, CircularProgressProps>(
+  (
     {
-      '--progress': `${getPercentage()}%`,
-      '--rotation': `${getPercentage() / 100}turn`,
-      '--progress-color': color,
-    }
-  ), [color, getPercentage]);
+      className,
+      value,
+      max = 100,
+      dimension = 'regular',
+      showProgress,
+      progressLabel = (val) => val,
+      color,
+      style,
+      ...otherProps
+    },
+    forwardedRef,
+  ) => {
+    const getPercentage = useCallback(() => (value ? Math.round((100 * value) / max) : 0), [max, value]);
 
-  return (
-    <div
-      ref={forwardedRef}
-      role="progressbar"
-      aria-valuenow={value}
-      aria-valuemin={0}
-      aria-valuemax={max}
-      className={clsx(styles.CircularProgress, className)}
-      data-circular-progress={progressLabel?.(clamp(getPercentage(), 0, 100))}
-      data-circular-progress-dimension={dimension}
-      data-circular-progress-show-progress={showProgress}
-      style={{ ...dynamicStyle, ...style }}
-      {...otherProps}
-    >
-      <span className={styles.Start} />
-      <span className={styles.End} />
-    </div>
-  );
-});
+    const clamp = useMemo(() => (num: number, min: number, max: number) => Math.min(Math.max(num, min), max), []);
+
+    const dynamicStyle = useMemo(
+      () => ({
+        '--progress': `${getPercentage()}%`,
+        '--rotation': `${getPercentage() / 100}turn`,
+        '--progress-color': color,
+      }),
+      [color, getPercentage],
+    );
+
+    return (
+      <div
+        ref={forwardedRef}
+        role="progressbar"
+        aria-valuenow={value}
+        aria-valuemin={0}
+        aria-valuemax={max}
+        className={clsx(styles.CircularProgress, className)}
+        data-circular-progress={progressLabel?.(clamp(getPercentage(), 0, 100))}
+        data-circular-progress-dimension={dimension}
+        data-circular-progress-show-progress={showProgress}
+        style={{ ...dynamicStyle, ...style }}
+        {...otherProps}
+      >
+        <span className={styles.Start} />
+        <span className={styles.End} />
+      </div>
+    );
+  },
+);

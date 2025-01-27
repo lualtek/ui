@@ -22,7 +22,7 @@ const meta = {
       control: { type: 'radio' },
     },
   },
-  render: args => <ToggleButton {...args} />,
+  render: (args) => <ToggleButton {...args} />,
 } satisfies Meta<typeof ToggleButton>;
 
 export default meta;
