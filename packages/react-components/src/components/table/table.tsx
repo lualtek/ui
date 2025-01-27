@@ -234,7 +234,7 @@ export const Table = <T extends Record<string, unknown>>({
   filterControlLabel = 'Search across data',
   filterDebounce = 230,
   itemsPerPage = 50,
-  filterControlDefaultValue,
+  filterControlDefaultValue = '',
   getTableInstance,
   defaultColumnVisibility = {},
   style,
@@ -243,10 +243,8 @@ export const Table = <T extends Record<string, unknown>>({
   const [columnVisibility, setColumnVisibility] = useState(defaultColumnVisibility);
   const [rowSelection, setRowSelection] = useState({});
   const [sorting, setSorting] = useState<SortingState>([]);
-  const [globalFilter, setGlobalFilter] = useState('');
-  const [debouncedGlobalFilter, setDebouncedGlobalFilter] = useState('');
-
-  // const setDebouncedGlobalFilter = useDebounce(setGlobalFilter, filterDebounce);
+  const [globalFilter, setGlobalFilter] = useState(filterControlDefaultValue);
+  const [debouncedGlobalFilter, setDebouncedGlobalFilter] = useState(filterControlDefaultValue);
 
   const [, cancel] = useDebounce(
     () => {
