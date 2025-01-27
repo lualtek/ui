@@ -26,6 +26,7 @@
         "noUnknownMediaFeatureName": "off",
         "noNodejsModules": "off",
         "useJsxKeyInIterable": "off",
+        "noUnusedImports": "error",
         "useExhaustiveDependencies": "error",
         "useHookAtTopLevel": "error",
         "noEmptyPattern": "error",
