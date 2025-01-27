@@ -111,7 +111,6 @@ async function saveTypeAliasesToJsonFiles() {
 
     try {
       await writeFile(jsonFilePath, JSON.stringify(alias, null, 2), 'utf8');
-      console.log(`Doc for ${alias.name.replace('Props', '')} →`, `${jsonFileName}`, '\x1b[32m✔\x1b[0m');
     } catch (err) {
       console.error(`Error saving ${jsonFileName}:`, err);
     }

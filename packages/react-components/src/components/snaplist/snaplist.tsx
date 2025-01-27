@@ -3,6 +3,7 @@
 import type { TokensTypes } from '@lualtek/tokens/platforms/web';
 import tkns from '@lualtek/tokens/platforms/web/tokens.json';
 import clsx from 'clsx';
+import type React from 'react';
 import { Children, Fragment, forwardRef, isValidElement, useMemo } from 'react';
 import type { Except } from 'type-fest';
 
@@ -87,7 +88,7 @@ export const Snaplist = forwardRef(
                 child.props.children as React.ReactNode,
                 (fragmentChild: React.ReactNode) =>
                   isValidElement(fragmentChild) && <SnaplistItem key={fragmentChild.key}>{fragmentChild}</SnaplistItem>,
-              ) as JSX.Element[];
+              ) as Array<React.JSX.Element>;
             }
 
             return <SnaplistItem key={child.key}>{child}</SnaplistItem>;

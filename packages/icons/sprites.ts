@@ -1,4 +1,4 @@
-import path from 'path';
+import path from 'node:path';
 import dt from 'directory-tree';
 import fs from 'fs-extra';
 import { createSpinner } from 'nanospinner';
@@ -6,7 +6,7 @@ import colors from 'picocolors';
 // @ts-expect-error: missing types
 import svgstore from 'svgstore';
 
-const generateTypes = (jsonStructure: { iconNames: string[]; iconStyles: string[] }) => `
+const generateTypes = (jsonStructure: { iconNames: Array<string>; iconStyles: Array<string> }) => `
 export type IconNames = '${jsonStructure.iconNames.join("' |\n'")}';
 export type IconStyles = '${jsonStructure.iconStyles.join("' |\n'")}';
 `;
@@ -17,9 +17,9 @@ const run = () => {
   fs.ensureDirSync('dist');
 
   const jsonStructure: {
-    svgs: Record<string, string[]>;
-    iconNames: string[];
-    iconStyles: string[];
+    svgs: Record<string, Array<string>>;
+    iconNames: Array<string>;
+    iconStyles: Array<string>;
   } = {
     svgs: {},
     iconNames: [],
@@ -29,25 +29,21 @@ const run = () => {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const sprite = svgstore();
 
-  directories.children
-    ?.filter((dir) => dir.name !== '.DS_Store')
-    .forEach((dir) => {
-      jsonStructure.svgs[dir.name] = [];
-      jsonStructure.iconStyles.push(dir.name);
-      dir.children
-        ?.filter((file) => file.name !== '.DS_Store')
-        .forEach((file) => {
-          const formattedName = file.name
-            .replace(/-\d.*/gm, '')
-            .replace('.svg', '')
-            .replace(/(Source=).*?/gm, '');
-          const iconID = `${dir.name}/${formattedName}`;
+  for (const dir of directories.children?.filter((dir) => dir.name !== '.DS_Store') || []) {
+    jsonStructure.svgs[dir.name] = [];
+    jsonStructure.iconStyles.push(dir.name);
+    for (const file of dir.children?.filter((file) => file.name !== '.DS_Store') || []) {
+      const formattedName = file.name
+        .replace(/-\d.*/gm, '')
+        .replace('.svg', '')
+        .replace(/(Source=).*?/gm, '');
+      const iconID = `${dir.name}/${formattedName}`;
 
-          sprite.add(iconID, fs.readFileSync(file.path, 'utf8'));
-          jsonStructure.svgs[dir.name].push(file.name);
-          jsonStructure.iconNames.push(`${formattedName}`);
-        });
-    });
+      sprite.add(iconID, fs.readFileSync(file.path, 'utf8'));
+      jsonStructure.svgs[dir.name].push(file.name);
+      jsonStructure.iconNames.push(`${formattedName}`);
+    }
+  }
   fs.writeFileSync(path.join('dist', 'sprite.svg'), sprite.toString());
   fs.writeFileSync(
     path.join('dist', 'sprite.d.ts'),

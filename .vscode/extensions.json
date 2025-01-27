@@ -5,8 +5,7 @@
   // List of extensions which should be recommended for users of this workspace.
   "recommendations": [
     "vunguyentuan.vscode-postcss",
-    "dbaeumer.vscode-eslint",
-    "stylelint.vscode-stylelint",
+    "biomejs.biome",
     "kamikillerto.vscode-colorize",
     "lasalefamine.vscode-css-vars",
     "editorconfig.editorconfig",

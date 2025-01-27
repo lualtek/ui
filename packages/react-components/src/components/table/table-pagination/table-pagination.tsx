@@ -8,7 +8,7 @@ export type TablePaginationProps = React.ComponentPropsWithRef<'div'> & {
    *
    * @defaultValue `[5, 10, 20, 30, 50, 100]`
    */
-  clusters?: number[];
+  clusters?: Array<number>;
   /**
    * Set the number of items per page.
    */

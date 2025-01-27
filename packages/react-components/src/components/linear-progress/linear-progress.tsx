@@ -50,7 +50,6 @@ export const LinearProgress = forwardRef<HTMLProgressElement, LinearProgressProp
     return (
       <div className={clsx(styles.LinearProgress, className)} style={{ ...dynamicStyle, ...style }}>
         <progress
-          role="progressbar"
           ref={forwardedRef}
           className={styles.Progress}
           data-progress-dimension={dimension}

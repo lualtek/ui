@@ -104,7 +104,7 @@ export const Skeleton: FC<SkeletonProps> = ({
   return (
     <span className={className} aria-live="polite" aria-busy={enableAnimation} {...otherProps}>
       {!children ? (
-        Array.from(Array(count).keys()).map((n) =>
+        Array.from(new Array(count).keys()).map((n) =>
           inline ? (
             <SkeletonItem key={`${uid}-${n}`} />
           ) : (

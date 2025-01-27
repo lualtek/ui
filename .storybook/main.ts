@@ -1,4 +1,3 @@
-/* eslint-disable no-param-reassign */
 import { dirname, join, resolve } from 'node:path';
 
 import type { StorybookConfig } from '@storybook/react-vite';

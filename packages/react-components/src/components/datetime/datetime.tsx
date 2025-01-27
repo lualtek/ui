@@ -11,7 +11,7 @@ export type DatetimeProps = React.ComponentPropsWithRef<'time'> & {
    * Set the locale to use to format the date.
    * @defaultValue "en-US"
    */
-  locale?: string | string[];
+  locale?: string | Array<string>;
   /**
    * Customize the date format by passing options from Intl.DateTimeFormat
    *

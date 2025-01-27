@@ -23,8 +23,11 @@ export type MenuProps = React.ComponentPropsWithRef<'ul'> & {
 };
 
 type MenuComponent = React.ForwardRefExoticComponent<MenuProps> & {
+  // biome-ignore lint/style/useNamingConvention: <explanation>
   Item: typeof MenuItem;
+  // biome-ignore lint/style/useNamingConvention: <explanation>
   ItemCheckbox: typeof MenuItemCheckbox;
+  // biome-ignore lint/style/useNamingConvention: <explanation>
   Separator: typeof MenuSeparator;
 };
 
@@ -40,7 +43,7 @@ export const Menu = forwardRef<HTMLUListElement, MenuProps>(
     return (
       <Panel bordered vibrant vibrancyColor="background" showGlow radius={24}>
         <Stack
-          as="ul"
+          as="menu"
           ref={forwardedRef}
           className={clsx(styles.Menu, className)}
           style={{ ...dynamicStyle, ...style }}

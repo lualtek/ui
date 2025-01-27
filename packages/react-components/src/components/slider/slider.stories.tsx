@@ -66,14 +66,14 @@ export const Dynamic = {
     // Calculate limo using useMemo
     const limo = useMemo(() => Math.max(0, 100 - sabbia - argilla), [sabbia, argilla]);
 
-    const handleSabbiaChange = (values: number[]) => {
+    const handleSabbiaChange = (values: Array<number>) => {
       const value = values[0];
       const adjustedArgilla = argilla > 100 - value ? 100 - value : argilla;
       setSabbia({ sabbia: value });
       setArgilla({ argilla: adjustedArgilla });
     };
 
-    const handleArgillaChange = (values: number[]) => {
+    const handleArgillaChange = (values: Array<number>) => {
       const value = values[0];
       const adjustedSabbia = sabbia > 100 - value ? 100 - value : sabbia;
       setArgilla({ argilla: value });

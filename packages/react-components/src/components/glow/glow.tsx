@@ -106,12 +106,15 @@ export const Glow: FC<GlowProps> = ({
       return tkns.radius[innerRadius];
     }
 
+    // biome-ignore lint/style/noNonNullAssertion: this is a valid check
     return innerRadius.map((r) => (r !== 0 ? tkns.radius[r!] : 0)).join(' ');
   }, [innerRadius]);
 
   const paint = useCallback(
     (event: PointerEvent) => {
-      if (containerRef.current === null) return;
+      if (containerRef.current === null) {
+        return;
+      }
 
       // get the angle based on the center point of the card and pointer position
       // Check the card against the proximity and then start updating

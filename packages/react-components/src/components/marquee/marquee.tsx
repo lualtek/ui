@@ -149,7 +149,9 @@ export const Marquee = forwardRef<HTMLDivElement, MarqueeProps>(
 
     // Calculate width and multiplier on mount and on window resize
     useEffect(() => {
-      if (!isMounted) return () => undefined;
+      if (!isMounted) {
+        return () => undefined;
+      }
 
       calculateWidth();
       const resizeObserver = new ResizeObserver(() => calculateWidth());
@@ -159,12 +161,14 @@ export const Marquee = forwardRef<HTMLDivElement, MarqueeProps>(
       }
 
       return () => {
-        if (!resizeObserver) return;
+        if (!resizeObserver) {
+          return;
+        }
         resizeObserver.disconnect();
       };
     }, [calculateWidth, containerRef, isMounted]);
 
-    // Recalculate width when children change
+    // biome-ignore lint/correctness/useExhaustiveDependencies: Recalculate width when children change
     useEffect(() => {
       calculateWidth();
     }, [calculateWidth, children]);
@@ -184,8 +188,12 @@ export const Marquee = forwardRef<HTMLDivElement, MarqueeProps>(
 
     const dynamicStyle: CSSProperties = useMemo(() => {
       const computedContainerTransform = () => {
-        if (direction === 'up') return 'rotate(-90deg)';
-        if (direction === 'down') return 'rotate(90deg)';
+        if (direction === 'up') {
+          return 'rotate(-90deg)';
+        }
+        if (direction === 'down') {
+          return 'rotate(90deg)';
+        }
         return 'none';
       };
 
@@ -213,8 +221,12 @@ export const Marquee = forwardRef<HTMLDivElement, MarqueeProps>(
 
     const slideStyle = useMemo(() => {
       const computedSlideTransform = () => {
-        if (direction === 'up') return 'rotate(90deg)';
-        if (direction === 'down') return 'rotate(-90deg)';
+        if (direction === 'up') {
+          return 'rotate(90deg)';
+        }
+        if (direction === 'down') {
+          return 'rotate(-90deg)';
+        }
         return 'none';
       };
 
@@ -226,7 +238,7 @@ export const Marquee = forwardRef<HTMLDivElement, MarqueeProps>(
     // Render {multiplier} number of children
     const multiplyChildren = useCallback(
       (multiplier: number) =>
-        [...Array<number>(Number.isFinite(multiplier) && multiplier >= 0 ? multiplier : 0)].map((_) => (
+        [...new Array(Number.isFinite(multiplier) && multiplier >= 0 ? multiplier : 0)].map((_) => (
           <Fragment key={uid}>
             {Children.map(children, (child) => (
               <div style={slideStyle} className={styles.Slide}>

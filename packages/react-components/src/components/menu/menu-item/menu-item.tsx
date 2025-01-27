@@ -149,12 +149,10 @@ export const MenuItem = forwardRef(
     );
 
     return (
-      // biome-ignore lint/a11y/useValidAriaRole: none is a valid aria-role
-      <Stack as="li" role="none">
+      <Stack as="li" role="menuitem">
         <Component
           autoFocus={autoFocus}
           ref={itemRef}
-          role="menuitem"
           className={clsx(styles.MenuItem, className)}
           onClick={disabled ? undefined : triggerClick}
           onKeyDown={disabled ? undefined : handleKeyDown}

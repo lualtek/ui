@@ -48,10 +48,10 @@ export const Slider = forwardRef<ElementRef<typeof SliderPrimitive.Root>, Slider
     });
     const val = useMemo(() => value ?? defaultValue, [value, defaultValue]);
     const uid = useId();
-    const [changedValue, setChangedValue] = useState<number[] | undefined>(val);
+    const [changedValue, setChangedValue] = useState<Array<number> | undefined>(val);
 
     const handleChange = useCallback(
-      (value: number[]) => {
+      (value: Array<number>) => {
         setChangedValue(value);
         onValueChange?.(value);
       },

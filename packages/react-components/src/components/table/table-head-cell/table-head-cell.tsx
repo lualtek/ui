@@ -54,7 +54,9 @@ export const TableHeadCell = forwardRef(
     forwardedRef,
   ) => {
     const computedWidth = useMemo(() => {
-      if (!width) return undefined;
+      if (!width) {
+        return undefined;
+      }
 
       return typeof width === 'string' ? width : `${width}px`;
     }, [width]);

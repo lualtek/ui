@@ -23,7 +23,7 @@ const DEFAULT_BREAKPOINTS: Breakpoints = {
   wide: jsonTokens.breakpoint.wide.em,
 };
 
-const breakpointKeys = Object.keys(DEFAULT_BREAKPOINTS) as BreakpointsKeys[];
+const breakpointKeys = Object.keys(DEFAULT_BREAKPOINTS) as Array<BreakpointsKeys>;
 
 const DEFAULT_BREAKPOINTS_MATCHES: Record<BreakpointsKeys, boolean> = {
   extraSmall: false,
@@ -72,9 +72,9 @@ const useResponsive = () => {
     );
 
     return () => {
-      (Object.keys(mediaQueryList) as BreakpointsKeys[]).forEach((src) =>
-        mediaQueryList[src].removeEventListener('change', onChange(src)),
-      );
+      for (const breakpoint of Object.keys(mediaQueryList) as Array<BreakpointsKeys>) {
+        mediaQueryList[breakpoint].removeEventListener('change', onChange(breakpoint));
+      }
     };
   }, [onChange]);
 

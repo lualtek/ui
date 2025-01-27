@@ -59,7 +59,7 @@ const getConfig = (name: string): Config => ({
       ],
       options: {
         showFileHeader: true,
-        fileHeader: (defaultMessage: string[] = []) => [
+        fileHeader: (defaultMessage: Array<string> = []) => [
           ...defaultMessage,
           '© Lualtek Srl. All rights reserved. Developed by Mattia Astorino.',
         ],
@@ -79,7 +79,7 @@ const availableThemes = fs
  * For each folder inside themes and for each variant (dark, light) just create
  * style dictionary configuration and run the build
  */
-availableThemes.forEach(async (theme) => {
+for (const theme of availableThemes) {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const SDWithConfig = new StyleDictionary(getConfig(theme));
 
@@ -96,4 +96,4 @@ availableThemes.forEach(async (theme) => {
   console.clear();
   await SDWithConfig.hasInitialized;
   await SDWithConfig.buildAllPlatforms();
-});
+}

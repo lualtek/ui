@@ -49,7 +49,7 @@ const config: Config = {
       ],
       options: {
         showFileHeader: true,
-        fileHeader: (defaultMessage: string[] = []) => [...defaultMessage, '© Lualtek Srl. All rights reserved.'],
+        fileHeader: (defaultMessage: Array<string> = []) => [...defaultMessage, '© Lualtek Srl. All rights reserved.'],
       },
     },
     raw: {
@@ -63,7 +63,7 @@ const config: Config = {
       ],
       options: {
         showFileHeader: true,
-        fileHeader: (defaultMessage: string[] = []) => [
+        fileHeader: (defaultMessage: Array<string> = []) => [
           ...defaultMessage,
           '© Lualtek Srl. All rights reserved. Developed by Mattia Astorino.',
         ],

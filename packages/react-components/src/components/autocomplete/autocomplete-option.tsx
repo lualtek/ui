@@ -15,7 +15,7 @@ export type AutocompleteOptionProps = Except<MenuItemProps, 'padding' | 'autoFoc
    * Label of the option. This is the text that will be displayed in the option, which can be
    * different from the value.
    */
-  children: string | string[];
+  children: string | Array<string>;
 };
 
 export const AutocompleteOption = forwardRef<HTMLButtonElement, AutocompleteOptionProps>(
@@ -26,6 +26,7 @@ export const AutocompleteOption = forwardRef<HTMLButtonElement, AutocompleteOpti
     }, [onClick, value]);
 
     return (
+      // biome-ignore lint/a11y/useSemanticElements: option is used as item role for listbox
       <Menu.Item value={value} ref={forwardedRef} role="option" padding={false} onClick={handleClick} {...otherProps}>
         <span ref={contentRef}>
           <ClampText rows={1}>{children}</ClampText>

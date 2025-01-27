@@ -101,8 +101,12 @@ export const Button = forwardRef(
 
     const handleClick = useCallback(
       (event: MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {
-        if (!disabled && onClick) onClick(event);
-        if (disabled) event.preventDefault();
+        if (!disabled && onClick) {
+          onClick(event);
+        }
+        if (disabled) {
+          event.preventDefault();
+        }
       },
       [disabled, onClick],
     );

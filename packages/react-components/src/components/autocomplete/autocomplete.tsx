@@ -53,7 +53,7 @@ export type AutocompleteProps = TextfieldProps & {
   /**
    * List of options to use as suggestion
    */
-  options?: AutocompleteOptionProps[];
+  options?: Array<AutocompleteOptionProps>;
   /**
    * Whether the menu is forced to match the width of the field by clipping overflowing items.\
    * @defaultValue false
@@ -66,6 +66,7 @@ export type AutocompleteProps = TextfieldProps & {
 };
 
 type AutocompleteComponent = ForwardRefExoticComponent<AutocompleteProps> & {
+  // biome-ignore lint/style/useNamingConvention: <explanation>
   Option: ForwardRefExoticComponent<AutocompleteOptionProps>;
 };
 
@@ -91,7 +92,7 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(
     const [currentValue, setCurrentValue] = useState(value);
     const [debouncedValue, setDebouncedValue] = useState<typeof currentValue>();
     const [isOpen, setIsOpen] = useState(false);
-    const [, cancel] = useDebounce(
+    const [,] = useDebounce(
       () => {
         setDebouncedValue(currentValue);
       },
@@ -159,6 +160,7 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(
           >
             <Panel bordered radius={24} vibrant vibrancyColor="background">
               <Menu
+                // biome-ignore lint/a11y/useSemanticElements: Autocomplete is a custom listbox/select
                 role="listbox"
                 className={styles.OptionsList}
                 data-autocomplete-match-width={matchFieldWidth || loading}

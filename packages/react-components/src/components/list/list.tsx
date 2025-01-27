@@ -11,7 +11,7 @@ import { Li, type ListItemProps } from './list-item';
 import styles from './list.module.css';
 
 export type ListProps = {
-  children: React.ReactNode[] | React.ReactNode;
+  children: Array<React.ReactNode> | React.ReactNode;
   /**
    * Set the dimension of the items in the list.
    * This affects also the marker size.
@@ -68,6 +68,7 @@ export const List = forwardRef(
     );
   },
 ) as PolyRefComponent<'ul', ListProps> & {
+  // biome-ignore lint/style/useNamingConvention: This is not a "prop" but a sub-component
   Li: typeof Li;
 };
 
