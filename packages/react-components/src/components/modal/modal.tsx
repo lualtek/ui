@@ -2,7 +2,7 @@
 
 import tkns from '@lualtek/tokens/platforms/web/tokens.json';
 import clsx from 'clsx';
-import { LazyMotion, MotionProps, domMax, m } from 'motion/react';
+import { LazyMotion, domMax, m } from 'motion/react';
 import { forwardRef, useId, useMemo } from 'react';
 import { FocusOn } from 'react-focus-on';
 

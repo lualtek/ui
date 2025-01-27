@@ -4,7 +4,6 @@ import clsx from 'clsx';
 import {
   type ChangeEvent,
   type ReactNode,
-  SelectHTMLAttributes,
   forwardRef,
   useCallback,
   useId,
