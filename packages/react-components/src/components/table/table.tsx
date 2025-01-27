@@ -169,6 +169,11 @@ export type TableConditionalProps<T> = {
    */
   filterControlLabel: string;
   /**
+   * Set the label default value filter textfield control
+   *
+   */
+  filterControlDefaultValue?: string;
+  /**
    * Set debounce time for filter search
    * @defaultValue 230
    */
@@ -186,6 +191,11 @@ export type TableConditionalProps<T> = {
    * Set the label for the filter textfield control
    */
   filterControlLabel?: never;
+  /**
+   * Set the label default value filter textfield control
+   *
+   */
+  filterControlDefaultValue?: never;
   /**
    * Set debounce time for filter search
    * @defaultValue 230
@@ -224,6 +234,7 @@ export const Table = <T extends Record<string, unknown>>({
   filterControlLabel = 'Search across data',
   filterDebounce = 230,
   itemsPerPage = 50,
+  filterControlDefaultValue,
   getTableInstance,
   defaultColumnVisibility = {},
   style,
@@ -428,6 +439,7 @@ export const Table = <T extends Record<string, unknown>>({
                   <FilterControl
                     label={filterControlLabel}
                     onChange={event => setGlobalFilter(event.target.value)}
+                    defaultValue={filterControlDefaultValue}
                   />
                 ) : null}
 
