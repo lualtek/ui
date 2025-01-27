@@ -6,5 +6,5 @@
     "noEmit": true,
     "moduleResolution": "NodeNext",
     "module": "NodeNext"
-  },
+  }
 }

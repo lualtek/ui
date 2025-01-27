@@ -1,9 +1,7 @@
 {
   "name": "@lualtek/react-components",
-  "version": "16.0.0",
-  "files": [
-    "dist"
-  ],
+  "version": "16.0.1",
+  "files": ["dist"],
   "type": "module",
   "types": "dist/index.d.ts",
   "module": "dist/index.js",

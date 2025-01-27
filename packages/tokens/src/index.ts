@@ -1,6 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable import/extensions */
-/* eslint-disable no-console */
 import StyleDictionary from 'style-dictionary';
 import type { Config } from 'style-dictionary/types';
 
@@ -16,9 +13,25 @@ const config: Config = {
       buildPath: 'platforms/web/',
       transformGroup: 'css',
       transforms: [
+        /**
+         * Custom transformer
+         * @see ./transformers/px-rem.ts
+         */
         'size/pxToRem',
+        /**
+         * Built-in transformer
+         * @see https://amzn.github.io/style-dictionary/#/transforms?id=sizepx
+         */
         'size/px',
+        /**
+         * Custom transformer
+         * @see ./transformers/px-rootem.ts
+         */
         'size/px-rootem',
+        /**
+         * Custom transformer
+         * @see ./transformers/hex-oklch.ts
+         */
         'color/hex-to-oklch',
       ],
       files: [
@@ -33,10 +46,7 @@ const config: Config = {
       ],
       options: {
         showFileHeader: true,
-        fileHeader: (defaultMessage: string[] = []) => [
-          ...defaultMessage,
-          '© Lualtek Srl. All rights reserved.',
-        ],
+        fileHeader: (defaultMessage: Array<string> = []) => [...defaultMessage, '© Lualtek Srl. All rights reserved.'],
       },
     },
     raw: {
@@ -50,7 +60,7 @@ const config: Config = {
       ],
       options: {
         showFileHeader: true,
-        fileHeader: (defaultMessage: string[] = []) => [
+        fileHeader: (defaultMessage: Array<string> = []) => [
           ...defaultMessage,
           '© Lualtek Srl. All rights reserved. Developed by Mattia Astorino.',
         ],
@@ -59,7 +69,6 @@ const config: Config = {
   },
 };
 
-// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
 const SDWithConfig = new StyleDictionary(config);
 
 /**

@@ -1,14 +1,11 @@
 'use client';
 
-import { TokensTypes } from '@lualtek/tokens/platforms/web';
+import type { TokensTypes } from '@lualtek/tokens/platforms/web';
 import clsx from 'clsx';
-import { domAnimation, LazyMotion, m } from 'motion/react';
-import {
-  ChangeEvent, forwardRef, ReactNode, useCallback, useEffect, useId, useRef,
-  useState,
-} from 'react';
+import { LazyMotion, domAnimation, m } from 'motion/react';
+import { type ChangeEvent, type ReactNode, forwardRef, useCallback, useEffect, useId, useRef, useState } from 'react';
 
-import { Stack, Text, TextProps } from '@/components';
+import { Stack, Text, type TextProps } from '@/components';
 
 import styles from '../selection-controls.module.css';
 
@@ -54,16 +51,19 @@ export type CheckboxProps = React.ComponentPropsWithRef<'input'> & {
    * This prop is not visible when the field is not invalid, is disabled, or readnly
    */
   hint?: ReactNode;
-}
+};
 
-type Properties = Record<NonNullable<CheckboxProps['dimension']>, {
-  text: {
-    size: TextProps['size'];
-    labelSize?: TextProps['size'];
-    lh?: TextProps['lineHeight'];
-    padding?: TokensTypes['space'];
-  };
-}>
+type Properties = Record<
+  NonNullable<CheckboxProps['dimension']>,
+  {
+    text: {
+      size: TextProps['size'];
+      labelSize?: TextProps['size'];
+      lh?: TextProps['lineHeight'];
+      padding?: TokensTypes['space'];
+    };
+  }
+>;
 
 const properties: Properties = {
   small: {
@@ -83,96 +83,100 @@ const properties: Properties = {
   },
 };
 
-export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(({
-  className,
-  disabled,
-  dimension = 'regular',
-  labelPosition = 'end',
-  onChange,
-  indeterminate,
-  label,
-  onInput,
-  invalid,
-  hint = 'Required input',
-  ...otherProps
-}, forwardedRef) => {
-  const ref = useRef<any>(forwardedRef);
-  const [isUserInvalid, setIsUserInvalid] = useState<boolean>(invalid ?? false);
-  const uid = useId();
-
-  useEffect(() => {
-    if (ref.current) {
-      ref.current.indeterminate = indeterminate;
-    }
-  }, [indeterminate]);
-
-  const handleInvalid = useCallback(
-    (event: ChangeEvent<HTMLInputElement>) => {
-      event.preventDefault();
-      onInput?.(event);
-      setIsUserInvalid(!event.currentTarget.validity.valid);
+export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
+  (
+    {
+      className,
+      disabled,
+      dimension = 'regular',
+      labelPosition = 'end',
+      onChange,
+      indeterminate,
+      label,
+      onInput,
+      invalid,
+      hint = 'Required input',
+      ...otherProps
     },
-    [onInput],
-  );
+    forwardedRef,
+  ) => {
+    const ref = useRef<any>(forwardedRef);
+    const [isUserInvalid, setIsUserInvalid] = useState<boolean>(invalid ?? false);
+    const uid = useId();
 
-  return (
-    <LazyMotion features={domAnimation} strict>
-      <Stack className={styles.SelectionControl}>
-        <Stack
-          direction={labelPosition === 'end' ? 'row' : 'row-reverse'}
-          vAlign="start"
-          columnGap={8}
-          fill={false}
-          inline
-        >
-          <m.span
-            className={styles.InputWrapper}
-            whileTap={!disabled ? { scale: 1.15 } : undefined}
-            tabIndex={-1}
-            transition={{ duration: 0.3, ease: 'backOut' }}
-            data-selection-control-invalid={invalid ?? isUserInvalid}
+    useEffect(() => {
+      if (ref.current) {
+        ref.current.indeterminate = indeterminate;
+      }
+    }, [indeterminate]);
+
+    const handleInvalid = useCallback(
+      (event: ChangeEvent<HTMLInputElement>) => {
+        event.preventDefault();
+        onInput?.(event);
+        setIsUserInvalid(!event.currentTarget.validity.valid);
+      },
+      [onInput],
+    );
+
+    return (
+      <LazyMotion features={domAnimation} strict>
+        <Stack className={styles.SelectionControl}>
+          <Stack
+            direction={labelPosition === 'end' ? 'row' : 'row-reverse'}
+            vAlign="start"
+            columnGap={8}
+            fill={false}
+            inline
           >
-            <input
-              type="checkbox"
-              disabled={disabled}
-              aria-disabled={disabled}
-              data-control-dimension={dimension}
-              onChange={onChange}
-              className={clsx(styles.CheckboxInput, className)}
-              ref={ref}
-              onInvalid={handleInvalid}
-              onInput={handleInvalid}
-              id={label ? uid : undefined}
-              {...otherProps}
-            />
-          </m.span>
-          {label && (
-            <Text
-              as="label"
-              className={styles.Label}
-              lineHeight={properties[dimension].text.lh}
-              htmlFor={uid}
-              size={properties[dimension].text.size}
+            <m.span
+              className={styles.InputWrapper}
+              whileTap={!disabled ? { scale: 1.15 } : undefined}
+              tabIndex={-1}
+              transition={{ duration: 0.3, ease: 'backOut' }}
+              data-selection-control-invalid={invalid ?? isUserInvalid}
             >
-              {label}
-            </Text>
+              <input
+                type="checkbox"
+                disabled={disabled}
+                aria-disabled={disabled}
+                data-control-dimension={dimension}
+                onChange={onChange}
+                className={clsx(styles.CheckboxInput, className)}
+                ref={ref}
+                onInvalid={handleInvalid}
+                onInput={handleInvalid}
+                id={label ? uid : undefined}
+                {...otherProps}
+              />
+            </m.span>
+            {label && (
+              <Text
+                as="label"
+                className={styles.Label}
+                lineHeight={properties[dimension].text.lh}
+                htmlFor={uid}
+                size={properties[dimension].text.size}
+              >
+                {label}
+              </Text>
+            )}
+          </Stack>
+          {(invalid ?? isUserInvalid) && (
+            <Stack hPadding={properties[dimension].text.padding}>
+              <Text
+                as="div"
+                size={properties[dimension].text.labelSize}
+                weight="bold"
+                textColor="var(--invalid-foreground)"
+              >
+                &nbsp;
+                {hint}
+              </Text>
+            </Stack>
           )}
         </Stack>
-        {(invalid ?? isUserInvalid) && (
-          <Stack hPadding={properties[dimension].text.padding}>
-            <Text
-              as="div"
-              size={properties[dimension].text.labelSize}
-              weight="bold"
-              textColor="var(--invalid-foreground)"
-            >
-              &nbsp;
-              {hint}
-            </Text>
-          </Stack>
-        )}
-      </Stack>
-    </LazyMotion>
-  );
-});
-
+      </LazyMotion>
+    );
+  },
+);

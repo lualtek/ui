@@ -1,7 +1,7 @@
 {
   "name": "@lualtek/themes",
   "description": "Lualtek design system themes",
-  "version": "16.0.0",
+  "version": "16.0.1",
   "author": "Lualtek",
   "style": "platforms/web/themes.css",
   "publishConfig": {
@@ -9,9 +9,7 @@
     "access": "restricted"
   },
   "type": "module",
-  "files": [
-    "platforms/"
-  ],
+  "files": ["platforms/"],
   "exports": {
     "./web": "./platforms/web/default.css",
     "./web/pro": "./platforms/web/pro.css",

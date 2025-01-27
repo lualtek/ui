@@ -1,9 +1,6 @@
-import { Column, flexRender } from '@tanstack/react-table';
+import { type Column, flexRender } from '@tanstack/react-table';
 
-import {
-  Button, IconButton,
-  Menu, Popover, useResponsiveContext,
-} from '@/components';
+import { Button, IconButton, Menu, Popover, useResponsiveContext } from '@/components';
 
 type ToggleColumnsControlProps<T extends Record<string, unknown>> = {
   /**
@@ -16,7 +13,7 @@ type ToggleColumnsControlProps<T extends Record<string, unknown>> = {
    * @defaultValue "Toggle columns"
    */
   label?: string;
-}
+};
 
 export const ToggleColumnsControl = <T extends Record<string, unknown>>({
   columns,
@@ -27,27 +24,32 @@ export const ToggleColumnsControl = <T extends Record<string, unknown>>({
   return (
     <Popover>
       <Popover.Trigger>
-        {matches.medium
-          ? <Button kind="secondary" dimension="big">{label}</Button>
-          : <IconButton icon="view" kind="secondary" dimension="big" />}
+        {matches.medium ? (
+          <Button kind="secondary" dimension="big">
+            {label}
+          </Button>
+        ) : (
+          <IconButton icon="view" kind="secondary" dimension="big" />
+        )}
       </Popover.Trigger>
       <Popover.Content side="bottom" align="start">
         <Menu>
-          {columns.filter(column => column.getCanHide()).map((column, i) => (
-            <Menu.ItemCheckbox
-              key={column.id}
-              value={column.id}
-              autoFocus={i === 0}
-              checked={column.getIsVisible()}
-              icon={column.getIsVisible() ? 'check' : undefined}
-              onClick={column.getToggleVisibilityHandler()}
-            >
-              {flexRender<any>(column.columnDef.header, {})}
-            </Menu.ItemCheckbox>
-          ))}
+          {columns
+            .filter((column) => column.getCanHide())
+            .map((column, i) => (
+              <Menu.ItemCheckbox
+                key={column.id}
+                value={column.id}
+                autoFocus={i === 0}
+                checked={column.getIsVisible()}
+                icon={column.getIsVisible() ? 'check' : undefined}
+                onClick={column.getToggleVisibilityHandler()}
+              >
+                {flexRender<any>(column.columnDef.header, {})}
+              </Menu.ItemCheckbox>
+            ))}
         </Menu>
       </Popover.Content>
     </Popover>
   );
 };
-

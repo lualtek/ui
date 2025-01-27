@@ -10,7 +10,7 @@
       padding: var(--v-padding, 0) var(--h-padding, 0);
     }
 
-    :where(&[data-stack-fill='true'] > *)  {
+    :where(&[data-stack-fill='true'] > *) {
       flex-grow: 1;
     }
 

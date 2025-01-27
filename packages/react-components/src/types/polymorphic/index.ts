@@ -1,7 +1,4 @@
-/* eslint-disable @typescript-eslint/naming-convention */
-import {
-  ComponentPropsWithRef, ElementType, ForwardRefExoticComponent, ReactElement,
-} from 'react';
+import type { ComponentPropsWithRef, ElementType, ForwardRefExoticComponent, JSX, ReactElement } from 'react';
 
 /**
  * Utility type to merge two types, with properties from the second type overriding those from the first type.
@@ -15,8 +12,8 @@ type Merge<P1 = Record<string, unknown>, P2 = Record<string, unknown>> = Omit<P1
  * @template E - The element type.
  * @template P - Additional props.
  */
-type MergeProps<E, P = Record<string, unknown>> = P
-  & Merge<E extends ElementType ? ComponentPropsWithRef<E> : never, P>;
+type MergeProps<E, P = Record<string, unknown>> = P &
+  Merge<E extends ElementType ? ComponentPropsWithRef<E> : never, P>;
 
 /**
  * Interface for a polymorphic component with a ref.
@@ -24,9 +21,7 @@ type MergeProps<E, P = Record<string, unknown>> = P
  * @template OwnProps - Additional props for the component.
  */
 export interface PolyRefComponent<IntrinsicElementString, OwnProps = Record<string, unknown>>
-  extends ForwardRefExoticComponent<
-    MergeProps<IntrinsicElementString, OwnProps & { as?: IntrinsicElementString }>
-  > {
+  extends ForwardRefExoticComponent<MergeProps<IntrinsicElementString, OwnProps & { as?: IntrinsicElementString }>> {
   /**
    * Polymorphic component that can render as any intrinsic element.
    * @template As - The intrinsic element type.
@@ -42,6 +37,8 @@ export interface PolyRefComponent<IntrinsicElementString, OwnProps = Record<stri
    * @param props - The props for the component.
    * @returns A React element or null.
    */
+
+  // biome-ignore lint/style/useNamingConvention: internal naming convention
   <As extends ElementType<unknown>, _AsWithProps = As extends ElementType<infer P> ? ElementType<P> : never>(
     props: MergeProps<_AsWithProps, OwnProps & { as: _AsWithProps }>,
   ): ReactElement | null;

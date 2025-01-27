@@ -2,19 +2,19 @@
 
 import clsx from 'clsx';
 import {
+  type MouseEvent,
+  type PropsWithChildren,
+  type ReactNode,
+  type RefObject,
   forwardRef,
-  PropsWithChildren,
-  ReactNode,
-  RefObject,
   useCallback,
   useMemo,
   useRef,
 } from 'react';
+
 import { useFocusEffect, useRovingTabIndex } from 'react-roving-tabindex';
 
-import {
-  Icon, IconProps, PolyRefComponent, Stack,
-} from '@/components';
+import { Icon, type IconProps, type PolyRefComponent, Stack } from '@/components';
 
 import styles from './menu-item.module.css';
 
@@ -39,7 +39,7 @@ export type MenuItemProps = {
   /**
    * Callback function to be called when the menu item is pressed.
    */
-  onClick?: (event: React.MouseEvent<HTMLElement>, value: string | number) => void;
+  onClick?: (event: MouseEvent<HTMLElement>, value: string | number) => void;
   /**
    * Set disabled state. The item is not interactive and grayed out.
    *
@@ -76,7 +76,7 @@ export type MenuItemProps = {
    * Set the sentiment color for the item
    */
   sentiment?: 'positive' | 'warning' | 'danger';
-}
+};
 
 export const MenuItem = forwardRef(
   (
@@ -99,18 +99,14 @@ export const MenuItem = forwardRef(
     forwardedRef,
   ) => {
     const itemRef = useRef(forwardedRef) as RefObject<HTMLButtonElement>;
-    const [
-      tabIndex,
-      isFocused,
-      handleKeyDown,
-      handleClick,
-    ] = useRovingTabIndex(itemRef, disabled);
+    const [tabIndex, isFocused, handleKeyDown, handleClick] = useRovingTabIndex(itemRef, disabled);
+
     const isIconAtEnd = useMemo(() => iconPosition === 'end', [iconPosition]);
 
     useFocusEffect(isFocused, itemRef);
 
     const triggerClick = useCallback(
-      (e: React.MouseEvent<HTMLElement>) => {
+      (e: MouseEvent<HTMLElement>) => {
         if (onClick) {
           handleClick();
           onClick(e, value ?? '');
@@ -119,48 +115,44 @@ export const MenuItem = forwardRef(
       [handleClick, onClick, value],
     );
 
-    const InnerContent = useMemo(() => (
-      <Stack
-        direction={isIconAtEnd ? 'row-reverse' : 'row'}
-        fill={false}
-        className={styles.ItemContent}
-        hAlign={isIconAtEnd ? 'space-between' : 'start'}
-        vAlign="center"
-        columnGap={8}
-        hPadding={24}
-        vPadding={8}
-        data-menu-item-icon-right={isIconAtEnd}
-        data-menu-item-has-icon={Boolean(icon)}
-        data-menu-item-padding={padding}
-        style={{ inlineSize: '100%' }}
-      >
-        {icon && (
-          <Icon
-            className={styles.Icon}
-            source={icon}
-            dimension={dimension === 'small' ? 12 : 18}
-          />
-        )}
+    const InnerContent = useMemo(
+      () => (
         <Stack
-          className={styles.DecorationContent}
-          columnGap={16}
+          direction={isIconAtEnd ? 'row-reverse' : 'row'}
           fill={false}
-          direction="row"
-          hAlign="space-between"
+          className={styles.ItemContent}
+          hAlign={isIconAtEnd ? 'space-between' : 'start'}
           vAlign="center"
+          columnGap={8}
+          hPadding={24}
+          vPadding={8}
+          data-menu-item-icon-right={isIconAtEnd}
+          data-menu-item-has-icon={Boolean(icon)}
+          data-menu-item-padding={padding}
+          style={{ inlineSize: '100%' }}
         >
-          {children}
-          {decoration}
+          {icon && <Icon className={styles.Icon} source={icon} dimension={dimension === 'small' ? 12 : 18} />}
+          <Stack
+            className={styles.DecorationContent}
+            columnGap={16}
+            fill={false}
+            direction="row"
+            hAlign="space-between"
+            vAlign="center"
+          >
+            {children}
+            {decoration}
+          </Stack>
         </Stack>
-      </Stack>
-    ), [children, dimension, icon, isIconAtEnd, decoration, padding]);
+      ),
+      [children, dimension, icon, isIconAtEnd, decoration, padding],
+    );
 
     return (
-      <Stack as="li" role="none">
+      <Stack as="li" role="menuitem">
         <Component
           autoFocus={autoFocus}
           ref={itemRef}
-          role="menuitem"
           className={clsx(styles.MenuItem, className)}
           onClick={disabled ? undefined : triggerClick}
           onKeyDown={disabled ? undefined : handleKeyDown}
