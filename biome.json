@@ -29,6 +29,9 @@
     }
   },
   "css": {
+    "parser": {
+      "cssModules": true
+    },
     "formatter": {
       "quoteStyle": "double"
     }
