@@ -1,7 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable import/extensions */
-/* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-console */
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -80,7 +76,6 @@ const availableThemes = fs
  * style dictionary configuration and run the build
  */
 for (const theme of availableThemes) {
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const SDWithConfig = new StyleDictionary(getConfig(theme));
 
   /**

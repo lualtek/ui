@@ -5,7 +5,6 @@ import { Button, Stack } from '@/components';
 
 import { Textfield, type TextfieldProps } from './textfield';
 
-// eslint-disable-next-line no-useless-escape
 const pattern = /^[a-zA-Z0-9À-ÖØ-öø-ÿ\s\-_.\(\)<>"&\/+^$*!?@#%~\|:;]*$/;
 
 const meta = {

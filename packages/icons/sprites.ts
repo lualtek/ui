@@ -26,7 +26,6 @@ const run = () => {
     iconStyles: [],
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const sprite = svgstore();
 
   for (const dir of directories.children?.filter((dir) => dir.name !== '.DS_Store') || []) {

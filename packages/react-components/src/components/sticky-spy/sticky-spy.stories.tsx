@@ -15,7 +15,7 @@ const Template = ({ ...args }) => {
           {isSticky && 'dio'}
         </Title>
       </StickySpy>
-      {/* eslint-disable max-len */}
+      {}
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni modi, aliquid qui repellat ipsum velit accusantium
       laudantium. Nisi, minus labore eligendi sint autem ipsum, doloribus accusantium vitae, praesentium aspernatur
       dolorum. Aliquid id magnam nisi sunt, aut doloribus. Consectetur vel maiores voluptas corporis pariatur facilis

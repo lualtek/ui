@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 declare module '*.module.css' {
   const classes: Record<string, string>;
   export default classes;

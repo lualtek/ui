@@ -1,7 +1,3 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-/* eslint-disable global-require */
-
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { createRequire } from 'node:module';
 import path from 'node:path';
 

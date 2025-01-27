@@ -1,5 +1,3 @@
-/* eslint-disable max-len */
-
 import type { FC } from 'react';
 
 export type LogoProps = React.ComponentPropsWithRef<'svg'> & {

@@ -9,7 +9,7 @@ const sampleStyle = {
 
 const meta = {
   title: 'Layouts/Masonry',
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+
   component: Masonry,
   args: {
     gap: 24,

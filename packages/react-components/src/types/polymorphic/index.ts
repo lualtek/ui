@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/naming-convention */
 import type { ComponentPropsWithRef, ElementType, ForwardRefExoticComponent, JSX, ReactElement } from 'react';
 
 /**

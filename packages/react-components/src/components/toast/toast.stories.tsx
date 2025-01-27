@@ -42,11 +42,11 @@ export const WithActions = {
     dismissable: true,
     actions: (
       <>
-        {/* eslint-disable-next-line no-alert */}
+        {}
         <ToastAction altText="Click me" onClick={() => alert('dio')}>
           Click Me
         </ToastAction>
-        {/* eslint-disable-next-line no-alert */}
+        {}
         <ToastAction altText="Click me" onClick={() => alert('dio')}>
           Click Me
         </ToastAction>
