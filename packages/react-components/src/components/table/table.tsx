@@ -32,7 +32,8 @@ import styles from './table.module.css';
 import type { CustomColumnMeta } from './types';
 
 declare module '@tanstack/react-table' {
-  // biome-ignore lint/correctness/noUnusedVariables: <explanation>
+  // All declarations of 'ColumnMeta' must have identical type parameters.ts(2428)
+  // biome-ignore lint/correctness/noUnusedVariables:
   interface ColumnMeta<TData extends RowData, TValue> extends CustomColumnMeta {}
 }
 
@@ -146,55 +147,57 @@ export type TableProps<T> = React.ComponentPropsWithRef<'table'> & {
   getTableInstance?: (instance: TableType<T>) => void;
 };
 
-export type TableConditionalProps<T> = {
-  /**
-   * Enable the global filter function
-   */
-  enableFilterControl: boolean;
-  /**
-   * Custom function used to filters table data.
-   */
-  filterFn: FilterFnOption<T>;
-  /**
-   * Set the label for the filter textfield control
-   *
-   * @defaultValue "Search across data"
-   */
-  filterControlLabel: string;
-  /**
-   * Set the label default value filter textfield control
-   *
-   */
-  filterControlDefaultValue?: string;
-  /**
-   * Set debounce time for filter search
-   * @defaultValue 230
-   */
-  filterDebounce?: number;
-} | {
-  /**
-   * Enable the global filter function
-   */
-  enableFilterControl?: never;
-  /**
-   * Custom function used to filters table data.
-   */
-  filterFn?: never;
-  /**
-   * Set the label for the filter textfield control
-   */
-  filterControlLabel?: never;
-  /**
-   * Set the label default value filter textfield control
-   *
-   */
-  filterControlDefaultValue?: never;
-  /**
-   * Set debounce time for filter search
-   * @defaultValue 230
-   */
-  filterDebounce?: never;
-}
+export type TableConditionalProps<T> =
+  | {
+      /**
+       * Enable the global filter function
+       */
+      enableFilterControl: boolean;
+      /**
+       * Custom function used to filters table data.
+       */
+      filterFn: FilterFnOption<T>;
+      /**
+       * Set the label for the filter textfield control
+       *
+       * @defaultValue "Search across data"
+       */
+      filterControlLabel: string;
+      /**
+       * Set the label default value filter textfield control
+       *
+       */
+      filterControlDefaultValue?: string;
+      /**
+       * Set debounce time for filter search
+       * @defaultValue 230
+       */
+      filterDebounce?: number;
+    }
+  | {
+      /**
+       * Enable the global filter function
+       */
+      enableFilterControl?: never;
+      /**
+       * Custom function used to filters table data.
+       */
+      filterFn?: never;
+      /**
+       * Set the label for the filter textfield control
+       */
+      filterControlLabel?: never;
+      /**
+       * Set the label default value filter textfield control
+       *
+       */
+      filterControlDefaultValue?: never;
+      /**
+       * Set debounce time for filter search
+       * @defaultValue 230
+       */
+      filterDebounce?: never;
+    };
 
 /**
  * {@link TableProps}
@@ -239,7 +242,7 @@ export const Table = <T extends Record<string, unknown>>({
   const [globalFilter, setGlobalFilter] = useState(filterControlDefaultValue);
   const [debouncedGlobalFilter, setDebouncedGlobalFilter] = useState(filterControlDefaultValue);
 
-  const [, cancel] = useDebounce(
+  const [,] = useDebounce(
     () => {
       setDebouncedGlobalFilter(globalFilter);
     },
@@ -437,10 +440,10 @@ export const Table = <T extends Record<string, unknown>>({
               }}
             >
               <TableHeader heading={heading} id={`${uid}-table-title`}>
-                {(enableFilterControl) ? (
+                {enableFilterControl ? (
                   <FilterControl
                     label={filterControlLabel}
-                    onChange={event => setGlobalFilter(event.target.value)}
+                    onChange={(event) => setGlobalFilter(event.target.value)}
                     defaultValue={filterControlDefaultValue}
                   />
                 ) : null}
