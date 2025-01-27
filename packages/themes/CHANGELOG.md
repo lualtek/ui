@@ -1,5 +1,11 @@
 # @lualtek/themes
 
+## 16.1.0-next.0
+
+### Minor Changes
+
+- 7756ac1: Migrate to biomejs
+
 ## 16.0.1
 
 ## 16.0.0

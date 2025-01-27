@@ -1,14 +1,16 @@
 {
   "name": "@lualtek/config",
   "description": "Lualtek UI shared configurations",
-  "version": "16.0.1",
+  "version": "16.1.0-next.0",
   "author": "Lualtek",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com",
     "access": "restricted"
   },
   "main": "dist/index",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "repository": {
     "type": "git",
     "url": "ssh+https://github.com/lualtek/ui.git",
