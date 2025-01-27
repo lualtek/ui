@@ -41,6 +41,7 @@ export type ModalProps = React.ComponentPropsWithRef<'div'> & {
 };
 
 type ModalComponent = React.ForwardRefExoticComponent<ModalProps> & {
+  // biome-ignore lint/style/useNamingConvention: This is not a prop but a nested component
   Content: typeof ModalContent;
 };
 
@@ -103,6 +104,7 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>(
                 initial="hidden"
                 animate="visible"
                 exit="hidden"
+                // biome-ignore lint/a11y/useSemanticElements: TODO Refactor as dialog
                 role="dialog"
                 aria-modal="true"
                 aria-labelledby={headingId}

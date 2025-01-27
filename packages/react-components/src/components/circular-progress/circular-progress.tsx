@@ -67,6 +67,7 @@ export const CircularProgress = forwardRef<HTMLDivElement, CircularProgressProps
     );
 
     return (
+      // biome-ignore lint/a11y/useFocusableInteractive: progressbar is not interactive
       <div
         ref={forwardedRef}
         role="progressbar"

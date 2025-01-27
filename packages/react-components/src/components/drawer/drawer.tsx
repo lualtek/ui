@@ -168,14 +168,11 @@ export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(
     return (
       <Overlay obfuscate={isModal} onClose={onClose} index={index}>
         {isOpen && (
-          <div
-            role="dialog"
+          <dialog
             aria-modal={isModal}
             data-theme={theme}
             aria-labelledby={headingId}
             className={clsx(styles.Drawer, className)}
-            ref={forwardedRef}
-            {...otherProps}
           >
             <FocusOn
               enabled={isModal}
@@ -236,7 +233,7 @@ export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(
                 </m.div>
               </LazyMotion>
             </FocusOn>
-          </div>
+          </dialog>
         )}
       </Overlay>
     );

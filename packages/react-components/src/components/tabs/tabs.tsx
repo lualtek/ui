@@ -28,6 +28,7 @@ export type TabsProps = TabsPrimitive.TabsProps & {
 };
 
 type TabsComponent = FC<TabsProps> & {
+  // biome-ignore lint/style/useNamingConvention: This is a sub-component
   Panel: typeof TabPanel;
 };
 

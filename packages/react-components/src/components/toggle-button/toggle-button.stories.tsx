@@ -36,3 +36,10 @@ export const MultipleIcons = {
     pressedIcon: 'hide',
   },
 } satisfies Story;
+
+export const DefaultPressed = {
+  args: {
+    pressed: true,
+    pressedIcon: 'hide',
+  },
+} satisfies Story;

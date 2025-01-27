@@ -66,35 +66,31 @@ export const Masonry: FC<MasonryProps> = ({ className, children, columns = 3, ga
     [gap],
   );
 
-  const computedColumnsGiuste = useMemo(
-    () =>
-      typeof columns === 'object'
-        ? Object.keys(columns).reduce(
-            (acc, current) => {
-              if (current === 'default') {
-                return acc;
-              }
+  const computedColumnsGiuste = useMemo(() => {
+    if (typeof columns !== 'object') {
+      return undefined;
+    }
 
-              const breakpoint = breakpoints[current as keyof Columns];
-              const column = columns[current as keyof Columns];
+    return Object.keys(columns).reduce(
+      (acc, current) => {
+        if (current === 'default') {
+          return acc;
+        }
 
-              return {
-                ...acc,
-                [breakpoint]: column,
+        const breakpoint = breakpoints[current as keyof Columns];
+        const column = columns[current as keyof Columns];
 
-                default: columns.default,
-              };
-            },
-            {
-              default: 0,
-            },
-          )
-        : undefined,
-    [columns],
-  );
+        return Object.assign({}, acc, { [breakpoint]: column }, { default: columns.default });
+      },
+      {
+        default: 0,
+      },
+    );
+  }, [columns]);
 
   return (
     <MasonryLayout
+      // biome-ignore lint/a11y/useSemanticElements: MasonryLayout is external lib
       role="list"
       className={clsx(styles.Masonry, className)}
       columnClassName={styles.Column}

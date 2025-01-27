@@ -104,7 +104,6 @@ export const InlineToast = forwardRef<HTMLOutputElement, InlineToastProps>(
         vibrancyColor="soft"
         bordered
         radius={24}
-        role="status"
         {...otherProps}
       >
         <Stack hPadding={16} vPadding={16} vAlign="start" hAlign="start" direction="row" columnGap={16}>

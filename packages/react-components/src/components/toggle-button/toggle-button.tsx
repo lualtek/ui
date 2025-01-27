@@ -57,7 +57,7 @@ export const ToggleButton = forwardRef<HTMLButtonElement, ToggleButtonProps>(
 
     useEffect(() => {
       setFirstRender(false);
-    }, [pressed]);
+    }, []);
 
     const handleClick = useCallback(
       (event: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {

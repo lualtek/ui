@@ -90,6 +90,7 @@ const CustomContentModal = () => {
       <img
         width="100%"
         height="auto"
+        alt=""
         src="https://images.unsplash.com/photo-1579332649290-10b7da0cd111?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=cover&w=1600&q=80"
       />
     </Stack>

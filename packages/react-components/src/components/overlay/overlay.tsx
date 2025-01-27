@@ -81,7 +81,7 @@ export const Overlay: FC<OverlayProps> = ({
         document.body?.removeAttribute('data-overlay-open');
       }
     }
-  }, [children, defaultRoot, index]);
+  }, [children, index]);
 
   const content = (
     <OverlayProvider onClose={onClose}>

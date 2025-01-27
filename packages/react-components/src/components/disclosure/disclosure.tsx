@@ -195,7 +195,7 @@ export const Disclosure = forwardRef<HTMLDetailsElement, DisclosureProps>(
           )}
         </Text>
         <LazyMotion features={domMax}>
-          <m.div
+          <m.section
             className={styles.Content}
             data-disclosure-padding={padding}
             data-disclosure-height={Boolean(contentMaxHeight)}
@@ -211,11 +211,10 @@ export const Disclosure = forwardRef<HTMLDetailsElement, DisclosureProps>(
             }
             transition={{ ease: 'easeOut', duration: 0.1, delay: 0 }}
             initial={false}
-            role="region"
             aria-labelledby={`${uid}-disclosure`}
           >
             {children}
-          </m.div>
+          </m.section>
         </LazyMotion>
       </details>
     );

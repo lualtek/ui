@@ -58,7 +58,7 @@ export const StickySpy: FC<StickySpyProps> = ({
     }
 
     return () => (spy ? observer.unobserve(spy) : undefined);
-  }, [children, spyRef, onStickyChange, defaultRoot]);
+  }, [onStickyChange, defaultRoot]);
 
   return (
     <Fragment key={uid}>

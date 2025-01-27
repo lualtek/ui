@@ -19,6 +19,7 @@ export const Basic = () => (
       <a href="https://wooo.google.com">Text link</a>
     </p>
     <p>
+      {/* biome-ignore lint/a11y/useValidAnchor: Intented */}
       <a>
         This is a link without
         <em>href</em>

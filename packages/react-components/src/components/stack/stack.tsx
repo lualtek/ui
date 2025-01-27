@@ -84,13 +84,17 @@ export const Stack = forwardRef(
     forwardedRef,
   ) => {
     const Component = as ?? 'div';
-    const alignmentTemplate = (prop: string) => {
-      if (prop.includes('start') || prop.includes('end')) {
-        return `flex-${prop}`;
-      }
 
-      return prop;
-    };
+    const alignmentTemplate = useMemo(
+      () => (prop: string) => {
+        if (prop.includes('start') || prop.includes('end')) {
+          return `flex-${prop}`;
+        }
+
+        return prop;
+      },
+      [],
+    );
 
     const dynamicStyle = useMemo(
       () => ({
@@ -101,7 +105,7 @@ export const Stack = forwardRef(
         '--v-padding': vPadding ? tkns.space[vPadding] : 0,
         '--h-padding': hPadding ? tkns.space[hPadding] : 0,
       }),
-      [columnGap, hAlign, hPadding, rowGap, vAlign, vPadding],
+      [alignmentTemplate, columnGap, hAlign, hPadding, rowGap, vAlign, vPadding],
     );
 
     return (

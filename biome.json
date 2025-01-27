@@ -53,6 +53,7 @@
         "noVoidElementsWithChildren": "error"
       },
       "style": {
+        "noNonNullAssertion": "off",
         "noImplicitBoolean": "off",
         "noDefaultExport": "off",
         "noNegationElse": "off",
@@ -183,6 +184,7 @@
         "noDuplicateJsxProps": "error"
       },
       "a11y": {
+        "useGenericFontNames": "off",
         "noBlankTarget": "error",
         "useButtonType": "error"
       }

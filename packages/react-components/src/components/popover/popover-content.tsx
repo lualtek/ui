@@ -75,13 +75,13 @@ export const PopoverContent: FC<PopoverContentProps> = ({
   );
 
   const renderContent = useMemo(
-    () => (
+    () => (props: PopoverPrimitive.PopoverContentProps) => (
       <PopoverPrimitive.Content
         asChild
         sideOffset={Number(offset)}
         side={side}
         style={{ zIndex: 'var(--overlay-z-index)' }}
-        {...otherProps}
+        {...props}
       >
         <m.div
           initial="hidden"
@@ -99,12 +99,16 @@ export const PopoverContent: FC<PopoverContentProps> = ({
         </m.div>
       </PopoverPrimitive.Content>
     ),
-    [animation, arrowColor, children, offset, otherProps, showArrow, side],
+    [animation, arrowColor, children, offset, showArrow, side],
   );
 
   return (
     <LazyMotion features={domAnimation} strict>
-      {usePortal ? <PopoverPrimitive.Portal>{renderContent}</PopoverPrimitive.Portal> : renderContent}
+      {usePortal ? (
+        <PopoverPrimitive.Portal>{renderContent(otherProps)}</PopoverPrimitive.Portal>
+      ) : (
+        renderContent(otherProps)
+      )}
     </LazyMotion>
   );
 };

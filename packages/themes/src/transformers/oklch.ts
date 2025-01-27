@@ -1,14 +1,5 @@
-import Color, { type ColorTypes } from 'colorjs.io';
+import Color from 'colorjs.io';
 import type { Transform } from 'style-dictionary/types';
-
-type ThemeToken = {
-  name: string;
-  value: ColorTypes;
-  $value: ColorTypes;
-  $type: string;
-  saturation: number;
-  tranparency: { light: string; dark: string };
-};
 
 const OkLCH: Transform = {
   name: 'color/oklch',

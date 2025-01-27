@@ -49,6 +49,7 @@ export const WithVibrancy = {
       <img
         width="100%"
         style={{ position: 'absolute', zIndex: -1 }}
+        alt=""
         src="https://images.unsplash.com/photo-1579332649290-10b7da0cd111?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=cover&w=1600&q=80"
       />
       <Panel {...args}>Ciao</Panel>

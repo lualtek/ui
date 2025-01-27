@@ -66,13 +66,13 @@ export const Avatar = forwardRef<HTMLImageElement, AvatarProps>(
 
         {src && (
           <img
+            {...otherProps}
             ref={forwardedRef}
             draggable={false}
             hidden={isLoading}
             onLoad={() => setIsLoading(false)}
-            alt=""
             src={src}
-            {...otherProps}
+            alt=""
           />
         )}
       </picture>

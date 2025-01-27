@@ -12,10 +12,15 @@ import { PopoverTrigger } from './popover-trigger';
 export type PopoverProps = React.ComponentPropsWithRef<'div'> & PopoverPrimitive.PopoverProps;
 
 type PopoverComponentProps = FC<PopoverProps> & {
+  // biome-ignore lint/style/useNamingConvention: This is not a component, but a sub-component
   Anchor: typeof PopoverAnchor;
+  // biome-ignore lint/style/useNamingConvention: This is not a component, but a sub-component
   Close: typeof PopoverClose;
+  // biome-ignore lint/style/useNamingConvention: This is not a component, but a sub-component
   Content: typeof PopoverContent;
+  // biome-ignore lint/style/useNamingConvention: This is not a component, but a sub-component
   Portal: typeof PopoverPortal;
+  // biome-ignore lint/style/useNamingConvention: This is not a component, but a sub-component
   Trigger: typeof PopoverTrigger;
 };
 

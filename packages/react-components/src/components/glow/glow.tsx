@@ -106,7 +106,6 @@ export const Glow: FC<GlowProps> = ({
       return tkns.radius[innerRadius];
     }
 
-    // biome-ignore lint/style/noNonNullAssertion: this is a valid check
     return innerRadius.map((r) => (r !== 0 ? tkns.radius[r!] : 0)).join(' ');
   }, [innerRadius]);
 
