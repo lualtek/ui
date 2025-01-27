@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 16.0.1
+
+### Patch Changes
+
+- dc6b82e: Added default value to Textfield of Table FilterControl
+  - @lualtek/icons@16.0.1
+
 ## 16.0.0
 
 ### Major Changes
