@@ -2,22 +2,19 @@
 
 import clsx from 'clsx';
 import {
-  forwardRef,
+  type MouseEvent,
   type PropsWithChildren,
   type ReactNode,
   type RefObject,
+  forwardRef,
   useCallback,
   useMemo,
   useRef,
 } from 'react';
+
 import { useFocusEffect, useRovingTabIndex } from 'react-roving-tabindex';
 
-import {
-  Icon,
-  type IconProps,
-  type PolyRefComponent,
-  Stack,
-} from '@/components';
+import { Icon, type IconProps, type PolyRefComponent, Stack } from '@/components';
 
 import styles from './menu-item.module.css';
 
@@ -42,10 +39,7 @@ export type MenuItemProps = {
   /**
    * Callback function to be called when the menu item is pressed.
    */
-  onClick?: (
-    event: React.MouseEvent<HTMLElement>,
-    value: string | number,
-  ) => void;
+  onClick?: (event: MouseEvent<HTMLElement>, value: string | number) => void;
   /**
    * Set disabled state. The item is not interactive and grayed out.
    *
@@ -105,17 +99,14 @@ export const MenuItem = forwardRef(
     forwardedRef,
   ) => {
     const itemRef = useRef(forwardedRef) as RefObject<HTMLButtonElement>;
-    const [tabIndex, isFocused, handleKeyDown, handleClick] = useRovingTabIndex(
-      itemRef,
-      disabled,
-    );
+    const [tabIndex, isFocused, handleKeyDown, handleClick] = useRovingTabIndex(itemRef, disabled);
 
     const isIconAtEnd = useMemo(() => iconPosition === 'end', [iconPosition]);
 
     useFocusEffect(isFocused, itemRef);
 
     const triggerClick = useCallback(
-      (e: React.MouseEvent<HTMLElement>) => {
+      (e: MouseEvent<HTMLElement>) => {
         if (onClick) {
           handleClick();
           onClick(e, value ?? '');
@@ -140,13 +131,7 @@ export const MenuItem = forwardRef(
           data-menu-item-padding={padding}
           style={{ inlineSize: '100%' }}
         >
-          {icon && (
-            <Icon
-              className={styles.Icon}
-              source={icon}
-              dimension={dimension === 'small' ? 12 : 18}
-            />
-          )}
+          {icon && <Icon className={styles.Icon} source={icon} dimension={dimension === 'small' ? 12 : 18} />}
           <Stack
             className={styles.DecorationContent}
             columnGap={16}

@@ -18,25 +18,23 @@
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "biomejs.biome",
   "editor.codeActionsOnSave": {
+    "source.fixAll.biome": "explicit",
     "quickfix.biome": "explicit",
-    "source.fixAll.eslint": "explicit"
+    "source.organizeImports.biome": "explicit"
   },
   "[css]": {
     "editor.defaultFormatter": "biomejs.biome"
-  },
-  "[typescriptreact]": {
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
-  },
-  "[yaml]": {
-    "editor.formatOnSave": true,
-    "editor.defaultFormatter": "biomejs.biome"
-  },
-  "[markdown]": {
-    "editor.formatOnSave": true,
-    "editor.defaultFormatter": "biomejs.biome"
-  },
-  "[json]": {
-    "editor.formatOnSave": true,
-    "editor.defaultFormatter": "biomejs.biome"
   }
+  // "[typescriptreact]": {
+  //   "editor.defaultFormatter": "biomejs.biome"
+  // }
+  // "[yaml]": {
+  //   "editor.defaultFormatter": "biomejs.biome"
+  // },
+  // "[markdown]": {
+  //   "editor.defaultFormatter": "biomejs.biome"
+  // },
+  // "[json]": {
+  //   "editor.defaultFormatter": "biomejs.biome"
+  // }
 }

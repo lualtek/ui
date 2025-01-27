@@ -19,7 +19,7 @@
     "upgrade-interactive": "pnpm dlx npm-upgrade-monorepo"
   },
   "lint-staged": {
-    "*.{ts,tsx,js,jsx}": "eslint",
+    "*.{ts,tsx,js,jsx}": "biome check --no-errors-on-unmatched --files-ignore-unknown=true",
     "*.css": "biome check --no-errors-on-unmatched --files-ignore-unknown=true"
   },
   "browserslist": [
