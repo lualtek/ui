@@ -1,6 +1,4 @@
-/* eslint-disable max-len */
-
-import { FC } from 'react';
+import type { FC } from 'react';
 
 export type LogoProps = React.ComponentPropsWithRef<'svg'> & {
   /**
@@ -31,12 +29,15 @@ export type LogoProps = React.ComponentPropsWithRef<'svg'> & {
    * Trim the white space around the logo.
    */
   trim?: boolean;
-}
+};
 
-type ViewBoxType = Record<NonNullable<LogoProps['variant']>, {
-  default: string;
-  trim: string;
-}>
+type ViewBoxType = Record<
+  NonNullable<LogoProps['variant']>,
+  {
+    default: string;
+    trim: string;
+  }
+>;
 
 const viewBoxes: ViewBoxType = {
   full: {

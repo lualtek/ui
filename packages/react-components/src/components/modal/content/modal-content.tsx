@@ -1,14 +1,10 @@
 'use client';
 
 import clsx from 'clsx';
-import {
-  forwardRef, ReactNode, useMemo,
-} from 'react';
+import { type ReactNode, forwardRef, useMemo } from 'react';
 import { AutoFocusInside } from 'react-focus-on';
 
-import {
-  Elevator, IconButton, Panel, Stack, Title, useOverlayContext, useResponsiveContext,
-} from '@/components';
+import { Elevator, IconButton, Panel, Stack, Title, useOverlayContext, useResponsiveContext } from '@/components';
 
 import styles from './modal-content.module.css';
 
@@ -42,58 +38,64 @@ export type ModalContentProps = React.ComponentPropsWithRef<'div'> & {
    * @defaultValue true
    */
   safePadding?: boolean;
-}
+};
 
-export const ModalContent = forwardRef<HTMLDivElement, ModalContentProps>(({
-  children,
-  className,
-  heading,
-  theme = 'auto',
-  scrollInside = true,
-  headerTint,
-  safePadding = true,
-  style,
-  ...otherProps
-}, forwardedRef) => {
-  const { onClose, headingId } = useOverlayContext();
-  const { matches } = useResponsiveContext();
-
-  const dynamicStyle = useMemo(() => (
+export const ModalContent = forwardRef<HTMLDivElement, ModalContentProps>(
+  (
     {
-      '--header-tint': headerTint,
-    }
-  ), [headerTint]);
+      children,
+      className,
+      heading,
+      theme = 'auto',
+      scrollInside = true,
+      headerTint,
+      safePadding = true,
+      style,
+      ...otherProps
+    },
+    forwardedRef,
+  ) => {
+    const { onClose, headingId } = useOverlayContext();
+    const { matches } = useResponsiveContext();
 
-  return (
-    <Elevator resting={4} direction={matches.small ? 'bottom' : 'top'}>
-      <Panel
-        className={clsx(styles.Content, className)}
-        vibrant
-        vibrancyColor="soft"
-        bordered
-        showGlow={matches.small}
-        radius={matches.small ? 24 : [24, 24, 0, 0]}
-        borderSide={matches.small ? 'all' : 'top'}
-      >
-        <Stack
-          style={{ ...dynamicStyle, ...style }}
-          className={styles.ContentLayout}
-          data-modal-content-safe-padding={safePadding}
-          ref={forwardedRef}
-          data-theme={theme}
-          {...otherProps}
+    const dynamicStyle = useMemo(
+      () => ({
+        '--header-tint': headerTint,
+      }),
+      [headerTint],
+    );
+
+    return (
+      <Elevator resting={4} direction={matches.small ? 'bottom' : 'top'}>
+        <Panel
+          className={clsx(styles.Content, className)}
+          vibrant
+          vibrancyColor="soft"
+          bordered
+          showGlow={matches.small}
+          radius={matches.small ? 24 : [24, 24, 0, 0]}
+          borderSide={matches.small ? 'all' : 'top'}
         >
-          <Stack vAlign="center" fill={false} hAlign="space-between" direction="row" className={styles.Header}>
-            <Title lineHeight="small" responsive={false} level="5" id={headingId}>{heading}</Title>
-            {onClose && <IconButton onClick={onClose} className={styles.CloseButton} icon="remove" kind="flat" />}
+          <Stack
+            style={{ ...dynamicStyle, ...style }}
+            className={styles.ContentLayout}
+            data-modal-content-safe-padding={safePadding}
+            ref={forwardedRef}
+            data-theme={theme}
+            {...otherProps}
+          >
+            <Stack vAlign="center" fill={false} hAlign="space-between" direction="row" className={styles.Header}>
+              <Title lineHeight="small" responsive={false} level="5" id={headingId}>
+                {heading}
+              </Title>
+              {onClose && <IconButton onClick={onClose} className={styles.CloseButton} icon="remove" kind="flat" />}
+            </Stack>
+            <div className={styles.Scroller} data-modal-content-scroll={scrollInside}>
+              <AutoFocusInside>{children}</AutoFocusInside>
+            </div>
           </Stack>
-          <div className={styles.Scroller} data-modal-content-scroll={scrollInside}>
-            <AutoFocusInside>
-              {children}
-            </AutoFocusInside>
-          </div>
-        </Stack>
-      </Panel>
-    </Elevator>
-  );
-});
+        </Panel>
+      </Elevator>
+    );
+  },
+);

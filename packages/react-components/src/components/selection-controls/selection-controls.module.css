@@ -86,9 +86,6 @@
 }
 @layer overrides {
   .RadioInput {
-
-    /* stylelint-disable-next-line value-keyword-case */
-    composes: CheckboxInput;
     border-radius: 100%;
 
     &:checked,

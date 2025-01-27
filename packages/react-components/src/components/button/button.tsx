@@ -1,14 +1,9 @@
 'use client';
 
 import clsx from 'clsx';
-import {
-  forwardRef, MouseEvent, useCallback, useMemo,
-} from 'react';
+import { type MouseEvent, forwardRef, useCallback, useMemo } from 'react';
 
-import {
-  Icon, IconProps, PolyRefComponent,
-  Spinner, useStyles,
-} from '@/components';
+import { Icon, type IconProps, type PolyRefComponent, Spinner, useStyles } from '@/components';
 
 import styles from './button.module.css';
 
@@ -70,9 +65,9 @@ export type ButtonProps = {
    * Set a sentiment color/status to convey meaning and important to the action
    */
   sentiment?: 'positive' | 'warning' | 'danger';
-}
+};
 
-type IconSizeProps = Record<NonNullable<ButtonProps['dimension']>, IconProps['dimension']>
+type IconSizeProps = Record<NonNullable<ButtonProps['dimension']>, IconProps['dimension']>;
 
 const iconSize: IconSizeProps = {
   big: 18,
@@ -106,19 +101,21 @@ export const Button = forwardRef(
 
     const handleClick = useCallback(
       (event: MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {
-        if (!disabled && onClick) onClick(event);
-        if (disabled) event.preventDefault();
+        if (!disabled && onClick) {
+          onClick(event);
+        }
+        if (disabled) {
+          event.preventDefault();
+        }
       },
       [disabled, onClick],
     );
 
-    const renderIcon = useMemo(() => icon && (
-      <Icon
-        source={icon}
-        fill={iconColor}
-        dimension={iconOpticalSize?.[dimension] ?? iconSize[dimension]}
-      />
-    ), [icon, dimension, iconColor, iconOpticalSize]);
+    const renderIcon = useMemo(
+      () =>
+        icon && <Icon source={icon} fill={iconColor} dimension={iconOpticalSize?.[dimension] ?? iconSize[dimension]} />,
+      [icon, dimension, iconColor, iconOpticalSize],
+    );
 
     return (
       <Component
@@ -135,11 +132,11 @@ export const Button = forwardRef(
         aria-busy={busy}
         aria-live={busy ? 'polite' : undefined}
         onClick={handleClick}
-        {...(kind === 'primary' || kind === 'secondary') ? vibrancy.attributes : undefined}
+        {...(kind === 'primary' || kind === 'secondary' ? vibrancy.attributes : undefined)}
         {...otherProps}
       >
         {renderIcon}
-        {(children && busy) ? <span>{children}</span> : children}
+        {children && busy ? <span>{children}</span> : children}
         {busy && (
           <span className={styles.SpinnerIndicator}>
             <Spinner dimension={dimension} />

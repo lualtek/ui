@@ -4,14 +4,12 @@
   .Content {
     inline-size: 100vw;
     -webkit-overflow-scrolling: touch;
-    max-block-size: 95vh;
     max-block-size: 95dvh;
     place-self: end center;
     display: flex;
 
     @media (--from-small) {
       max-inline-size: 600px;
-      max-block-size: 80vh;
       max-block-size: 80dvh;
       place-self: center center;
     }
@@ -43,11 +41,7 @@
     border-radius: token(--radius-24) token(--radius-24) 0 0;
     background-color: var(--header-tint);
     position: relative;
-    padding:
-      token(--space-16)
-      token(--space-80)
-      token(--space-16)
-      token(--space-24);
+    padding: token(--space-16) token(--space-80) token(--space-16) token(--space-24);
   }
 
   .CloseButton {

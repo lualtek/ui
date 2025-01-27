@@ -27,9 +27,7 @@ const meta = {
       control: { type: 'inline-radio' },
     },
   },
-  render: args => (
-    <Title {...args}>Sample title</Title>
-  ),
+  render: (args) => <Title {...args}>Sample title</Title>,
 } satisfies Meta<typeof Title>;
 
 export default meta;

@@ -1,8 +1,6 @@
 'use client';
 
-import {
-  Children, cloneElement, CSSProperties, FC, isValidElement, ReactElement,
-} from 'react';
+import { type CSSProperties, Children, type FC, type ReactElement, cloneElement, isValidElement } from 'react';
 
 export type AspectRatioProps = {
   /**
@@ -15,18 +13,17 @@ export type AspectRatioProps = {
    * @example '16 / 9'
    */
   ratio: string;
-}
+};
 
-export const AspectRatio: FC<AspectRatioProps> = ({
-  children,
-  ratio,
-}) => Children.map(children, child => isValidElement(child) && cloneElement(
-  child as ReactElement,
-  {
-    style: {
-      ...child.props.style as CSSProperties,
-      aspectRatio: ratio,
-    },
-  },
-));
-
+export const AspectRatio: FC<AspectRatioProps> = ({ children, ratio }) =>
+  Children.map(
+    children,
+    (child) =>
+      isValidElement(child) &&
+      cloneElement(child as ReactElement, {
+        style: {
+          ...(child.props.style as CSSProperties),
+          aspectRatio: ratio,
+        },
+      }),
+  );

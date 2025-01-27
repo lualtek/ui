@@ -2,16 +2,11 @@
 
 import tkns from '@lualtek/tokens/platforms/web/tokens.json';
 import clsx from 'clsx';
-import {
-  domMax, LazyMotion, m, MotionProps,
-} from 'motion/react';
+import { LazyMotion, domMax, m } from 'motion/react';
 import { forwardRef, useId, useMemo } from 'react';
 import { FocusOn } from 'react-focus-on';
 
-import {
-  Overlay,
-  OverlayProps, useResponsiveContext,
-} from '@/components';
+import { Overlay, type OverlayProps, useResponsiveContext } from '@/components';
 
 import { ModalContent } from './content/modal-content';
 import styles from './modal.module.css';
@@ -43,79 +38,88 @@ export type ModalProps = React.ComponentPropsWithRef<'div'> & {
    * Callback for closing the modal
    */
   onClose: NonNullable<OverlayProps['onClose']>;
-}
+};
 
 type ModalComponent = React.ForwardRefExoticComponent<ModalProps> & {
+  // biome-ignore lint/style/useNamingConvention: This is not a prop but a nested component
   Content: typeof ModalContent;
-}
+};
 
-export const Modal = forwardRef<HTMLDivElement, ModalProps>(({
-  children,
-  className,
-  closeOnClickOutside = true,
-  autoFocus = true,
-  onClose,
-  isOpen,
-  index,
-  onAnimationStart,
-  onDragStart,
-  onDragEnd,
-  onDrag,
-  ...otherProps
-}, forwardedRef) => {
-  const headingId = useId();
-  const { matches } = useResponsiveContext();
-
-  const ModalAnimation = useMemo(() => ({
-    visible: {
-      scale: 1,
-      opacity: 1,
-      y: 0,
-      transition: {
-        easing: tkns.easing.entrance,
-        duration: parseFloat((matches.small ? tkns.duration[100] : tkns.duration[300]).replace('s', '')),
-      },
+export const Modal = forwardRef<HTMLDivElement, ModalProps>(
+  (
+    {
+      children,
+      className,
+      closeOnClickOutside = true,
+      autoFocus = true,
+      onClose,
+      isOpen,
+      index,
+      onAnimationStart,
+      onDragStart,
+      onDragEnd,
+      onDrag,
+      ...otherProps
     },
-    hidden: {
-      scale: matches.small ? 0.98 : 1,
-      opacity: matches.small ? 0 : 1,
-      y: matches.small ? 0 : '100%',
-      transition: {
-        easing: tkns.easing.exit,
-        duration: parseFloat(tkns.duration[100].replace('s', '')),
-      },
-    },
-  }), [matches]);
+    forwardedRef,
+  ) => {
+    const headingId = useId();
+    const { matches } = useResponsiveContext();
 
-  return (
-    <Overlay onClose={onClose} index={index}>
-      {isOpen
-      && (
-        <FocusOn
-          onClickOutside={closeOnClickOutside ? onClose : undefined}
-          onEscapeKey={onClose}
-          autoFocus={autoFocus}
-        >
-          <LazyMotion features={domMax}>
-            <m.div
-              variants={ModalAnimation}
-              initial="hidden"
-              animate="visible"
-              exit="hidden"
-              role="dialog"
-              aria-modal="true"
-              aria-labelledby={headingId}
-              className={clsx(styles.Modal, className)}
-              ref={forwardedRef}
-              {...otherProps}
-            >
-              {children}
-            </m.div>
-          </LazyMotion>
-        </FocusOn>
-      )}
-    </Overlay>
-  );
-}) as ModalComponent;
+    const ModalAnimation = useMemo(
+      () => ({
+        visible: {
+          scale: 1,
+          opacity: 1,
+          y: 0,
+          transition: {
+            easing: tkns.easing.entrance,
+            duration: Number.parseFloat((matches.small ? tkns.duration[100] : tkns.duration[300]).replace('s', '')),
+          },
+        },
+        hidden: {
+          scale: matches.small ? 0.98 : 1,
+          opacity: matches.small ? 0 : 1,
+          y: matches.small ? 0 : '100%',
+          transition: {
+            easing: tkns.easing.exit,
+            duration: Number.parseFloat(tkns.duration[100].replace('s', '')),
+          },
+        },
+      }),
+      [matches],
+    );
+
+    return (
+      <Overlay onClose={onClose} index={index}>
+        {isOpen && (
+          <FocusOn
+            onClickOutside={closeOnClickOutside ? onClose : undefined}
+            onEscapeKey={onClose}
+            autoFocus={autoFocus}
+          >
+            <LazyMotion features={domMax}>
+              <m.div
+                variants={ModalAnimation}
+                initial="hidden"
+                animate="visible"
+                exit="hidden"
+                // biome-ignore lint/a11y/useSemanticElements: TODO Refactor as dialog
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby={headingId}
+                className={clsx(styles.Modal, className)}
+                ref={forwardedRef}
+                {...otherProps}
+              >
+                {children}
+              </m.div>
+            </LazyMotion>
+          </FocusOn>
+        )}
+      </Overlay>
+    );
+  },
+) as ModalComponent;
 
 Modal.Content = ModalContent;

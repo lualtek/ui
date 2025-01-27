@@ -1,14 +1,11 @@
 'use client';
 
-import { TokensTypes } from '@lualtek/tokens/platforms/web';
+import type { TokensTypes } from '@lualtek/tokens/platforms/web';
 import clsx from 'clsx';
-import { EmojiClickData } from 'emoji-picker-react';
+import type { EmojiClickData } from 'emoji-picker-react';
 import { forwardRef, useMemo } from 'react';
 
-import {
-  Emoji,
-  Stack, Text, TextProps,
-} from '@/components';
+import { Emoji, Stack, Text, type TextProps } from '@/components';
 
 import styles from './text-chip.module.css';
 
@@ -36,13 +33,16 @@ export type TextChipProps = React.ComponentPropsWithRef<'span'> & {
    * The emoji unified code to display.
    */
   emoji?: EmojiClickData['unified'];
-}
+};
 
-type Sizes = Record<string, {
-  text: Exclude<NonNullable<TextProps['size']>, string>;
-  emojiText: Exclude<NonNullable<TextProps['size']>, string>;
-  emoji: Exclude<NonNullable<TokensTypes['icon']['size']>, string>;
-}>
+type Sizes = Record<
+  string,
+  {
+    text: Exclude<NonNullable<TextProps['size']>, string>;
+    emojiText: Exclude<NonNullable<TextProps['size']>, string>;
+    emoji: Exclude<NonNullable<TokensTypes['icon']['size']>, string>;
+  }
+>;
 
 const sizes: Sizes = {
   small: {
@@ -62,55 +62,48 @@ const sizes: Sizes = {
   },
 };
 
-const emojiRegex = /\p{Extended_Pictographic}/ug;
+const emojiRegex = /\p{Extended_Pictographic}/gu;
 
-export const TextChip = forwardRef<HTMLSpanElement, TextChipProps>(({
-  text,
-  style,
-  className,
-  dimension = 'regular',
-  color = 'primary',
-  tinted = true,
-  emoji,
-  ...otherProps
-},
-forwardedRef) => {
-  const isEmoji = useMemo(() => text && emojiRegex.test(text), [text]);
-  const dynamicStyle = useMemo(() => ({
-    '--background': `var(--highlight-${color}-background)`,
-    '--foreground': `var(--highlight-${color}-foreground)`,
-  }), [color]);
+export const TextChip = forwardRef<HTMLSpanElement, TextChipProps>(
+  (
+    { text, style, className, dimension = 'regular', color = 'primary', tinted = true, emoji, ...otherProps },
+    forwardedRef,
+  ) => {
+    const isEmoji = useMemo(() => text && emojiRegex.test(text), [text]);
+    const dynamicStyle = useMemo(
+      () => ({
+        '--background': `var(--highlight-${color}-background)`,
+        '--foreground': `var(--highlight-${color}-foreground)`,
+      }),
+      [color],
+    );
 
-  return (
-    <Stack
-      as="span"
-      direction="row"
-      inline
-      ref={forwardedRef}
-      fill={false}
-      data-text-chip-dimension={dimension}
-      data-text-chip-tinted={tinted}
-      className={clsx(styles.TextChip, className)}
-      vAlign="center"
-      hAlign="center"
-      style={{ ...dynamicStyle, ...style }}
-      {...otherProps}
-    >
-      <Text
-        className={styles.TextWrapper}
-        align="center"
-        size={isEmoji ? sizes[dimension]?.emojiText : sizes[dimension]?.text}
-        weight="bold"
+    return (
+      <Stack
         as="span"
+        direction="row"
+        inline
+        ref={forwardedRef}
+        fill={false}
+        data-text-chip-dimension={dimension}
+        data-text-chip-tinted={tinted}
+        className={clsx(styles.TextChip, className)}
+        vAlign="center"
+        hAlign="center"
+        style={{ ...dynamicStyle, ...style }}
+        {...otherProps}
       >
-        {(text && !emoji) && text.slice(0, 2)}
-        {(emoji) && (
-          <Emoji
-            unified={emoji}
-            size={sizes[dimension]?.emoji}
-          />
-        ) }
-      </Text>
-    </Stack>
-  );
-});
+        <Text
+          className={styles.TextWrapper}
+          align="center"
+          size={isEmoji ? sizes[dimension]?.emojiText : sizes[dimension]?.text}
+          weight="bold"
+          as="span"
+        >
+          {text && !emoji && text.slice(0, 2)}
+          {emoji && <Emoji unified={emoji} size={sizes[dimension]?.emoji} />}
+        </Text>
+      </Stack>
+    );
+  },
+);

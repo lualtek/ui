@@ -1,11 +1,9 @@
 'use client';
 
 import clsx from 'clsx';
-import {
-  forwardRef, useMemo,
-} from 'react';
+import { forwardRef, useMemo } from 'react';
 
-import { PolyRefComponent } from '@/components';
+import type { PolyRefComponent } from '@/components';
 
 import styles from './title.module.css';
 
@@ -44,7 +42,7 @@ export type TitleProps = React.ComponentPropsWithRef<'span'> & {
    * Set the white-space property of the title.
    */
   whiteSpace?: 'normal' | 'nowrap' | 'pre' | 'pre-line' | 'pre-wrap' | 'break-spaces';
-}
+};
 
 export const Title = forwardRef(
   (
@@ -67,13 +65,14 @@ export const Title = forwardRef(
     // @ts-expect-error: generated className is not pure in CSS
 
     const computedCSSClass = String(styles[computedLevel]);
-    const dynamicStyle = useMemo(() => (
-      {
+    const dynamicStyle = useMemo(
+      () => ({
         '--max-w': maxWidth,
         '--t-align': align,
         '--white-space': whiteSpace,
-      }
-    ), [maxWidth, align, whiteSpace]);
+      }),
+      [maxWidth, align, whiteSpace],
+    );
 
     return (
       <Component

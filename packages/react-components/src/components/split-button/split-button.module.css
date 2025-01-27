@@ -19,7 +19,6 @@
 
       &[data-button-kind='primary']:not([aria-disabled='true']) {
         --separator-color: var(--highlight-brand-background);
-
       }
 
       &:is([data-button-dimension='regular']) {

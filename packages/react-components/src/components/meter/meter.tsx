@@ -1,11 +1,7 @@
 'use client';
 
-import {
-  forwardRef,
-  ReactNode,
-  useId,
-} from 'react';
-import { Except } from 'type-fest';
+import { type ReactNode, forwardRef, useId } from 'react';
+import type { Except } from 'type-fest';
 
 import { Stack, Text } from '@/components';
 
@@ -34,40 +30,37 @@ export type MeterProps = Except<React.ComponentPropsWithRef<'meter'>, 'min' | 'm
   label?: ReactNode;
 };
 
-export const Meter = forwardRef<HTMLMeterElement, MeterProps>(({
-  className,
-  dimension = 'regular',
-  value,
-  label,
-  showLabel = true,
-  labelPosition = 'end',
-  ...otherProps
-}, forwardedRef) => {
-  const uid = useId();
+export const Meter = forwardRef<HTMLMeterElement, MeterProps>(
+  (
+    { className, dimension = 'regular', value, label, showLabel = true, labelPosition = 'end', ...otherProps },
+    forwardedRef,
+  ) => {
+    const uid = useId();
 
-  return (
-    <Stack
-      inline
-      direction={labelPosition === 'end' ? 'row' : 'row-reverse'}
-      vAlign="center"
-      columnGap={4}
-      className={className}
-    >
-      <meter
-        data-meter-dimension={dimension}
-        min={0}
-        max={6}
-        ref={forwardedRef}
-        value={Math.floor(Number(value))}
-        className={styles.Meter}
-        aria-labelledby={`${uid}-meter`}
-        {...otherProps}
-      />
-      {showLabel && (
-        <Text id={`${uid}-meter`} size={14} lineHeight="extra-small">
-          {label ?? Math.floor(Number(value))}
-        </Text>
-      )}
-    </Stack>
-  );
-});
+    return (
+      <Stack
+        inline
+        direction={labelPosition === 'end' ? 'row' : 'row-reverse'}
+        vAlign="center"
+        columnGap={4}
+        className={className}
+      >
+        <meter
+          data-meter-dimension={dimension}
+          min={0}
+          max={6}
+          ref={forwardedRef}
+          value={Math.floor(Number(value))}
+          className={styles.Meter}
+          aria-labelledby={`${uid}-meter`}
+          {...otherProps}
+        />
+        {showLabel && (
+          <Text id={`${uid}-meter`} size={14} lineHeight="extra-small">
+            {label ?? Math.floor(Number(value))}
+          </Text>
+        )}
+      </Stack>
+    );
+  },
+);

@@ -2,35 +2,31 @@
 
 import * as TooltipPrimitive from '@radix-ui/react-tooltip';
 import clsx from 'clsx';
-import {
-  domAnimation, LazyMotion, m,
-} from 'motion/react';
-import {
-  Children, cloneElement, FC,
-  isValidElement, ReactNode, useMemo, useRef,
-} from 'react';
+import { LazyMotion, domAnimation, m } from 'motion/react';
+import { Children, type FC, type ReactNode, cloneElement, isValidElement, useMemo, useRef } from 'react';
 
 import { ConditionalWrapper } from '@/components';
 
 import { Elevator } from '../elevator';
 import styles from './tooltip.module.css';
 
-export type TooltipProps = TooltipPrimitive.TooltipProps & TooltipPrimitive.TooltipContentProps & {
-  /**
-   * The trigger element that will show the tooltip when hovered or focused.
-   */
-  trigger: ReactNode;
-  /**
-   * Where to place the tooltip relative to the trigger.
-   *
-   * @defaultValue "top"
-   */
-  side?: TooltipPrimitive.TooltipContentProps['side'];
-  /**
-   * Use a portal to render the tooltip.
-   */
-  usePortal?: boolean;
-}
+export type TooltipProps = TooltipPrimitive.TooltipProps &
+  TooltipPrimitive.TooltipContentProps & {
+    /**
+     * The trigger element that will show the tooltip when hovered or focused.
+     */
+    trigger: ReactNode;
+    /**
+     * Where to place the tooltip relative to the trigger.
+     *
+     * @defaultValue "top"
+     */
+    side?: TooltipPrimitive.TooltipContentProps['side'];
+    /**
+     * Use a portal to render the tooltip.
+     */
+    usePortal?: boolean;
+  };
 
 export const Tooltip: FC<TooltipProps> = ({
   children,
@@ -62,41 +58,41 @@ export const Tooltip: FC<TooltipProps> = ({
     return { x: 0, y: -20 };
   }, [side]);
 
-  const animation = useMemo(() => ({
-    hidden: {
-      opacity: 0,
-      ...computeOrigin,
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      x: 0,
-    },
-  }), [computeOrigin]);
+  const animation = useMemo(
+    () => ({
+      hidden: {
+        opacity: 0,
+        ...computeOrigin,
+      },
+      visible: {
+        opacity: 1,
+        y: 0,
+        x: 0,
+      },
+    }),
+    [computeOrigin],
+  );
 
   return (
-    <TooltipPrimitive.Root
-      delayDuration={delayDuration}
-      {...otherProps}
-    >
-
-      {Children.map(trigger, child => isValidElement<any>(child) && (
-        <TooltipPrimitive.Trigger asChild>
-          {cloneElement(
-            child,
-            {
-              ref: triggerRef,
-              tabIndex: 0,
-            },
-          )}
-        </TooltipPrimitive.Trigger>
-      ))}
+    <TooltipPrimitive.Root delayDuration={delayDuration} {...otherProps}>
+      {Children.map(
+        trigger,
+        (child) =>
+          isValidElement<any>(child) && (
+            <TooltipPrimitive.Trigger asChild>
+              {cloneElement(child, {
+                ref: triggerRef,
+                tabIndex: 0,
+              })}
+            </TooltipPrimitive.Trigger>
+          ),
+      )}
 
       <LazyMotion features={domAnimation}>
         <Elevator resting={3}>
           <ConditionalWrapper
             condition={usePortal}
-            wrapper={children => <TooltipPrimitive.Portal>{children}</TooltipPrimitive.Portal>}
+            wrapper={(children) => <TooltipPrimitive.Portal>{children}</TooltipPrimitive.Portal>}
           >
             <TooltipPrimitive.Content
               asChild

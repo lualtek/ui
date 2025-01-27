@@ -13,8 +13,7 @@
     appearance: none;
     mask-position: 0 50%;
     mask-repeat: space no-repeat;
-    mask-image: radial-gradient( red 0, red var(--dot-size), transparent var(--dot-size));
-
+    mask-image: radial-gradient(red 0, red var(--dot-size), transparent var(--dot-size));
 
     &[data-meter-dimension='small'] {
       --dot-size: 2px;
@@ -31,7 +30,6 @@
       height: token(--space-16);
       mask-size: token(--space-16) token(--space-16);
     }
-
 
     &::-webkit-meter-inner-element {
       display: block;

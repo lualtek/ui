@@ -17,8 +17,7 @@
     }
 
     &[data-carousel-fade='true'] {
-      mask-image:
- linear-gradient(
+      mask-image: linear-gradient(
         to right,
         transparent 0%,
         red var(--fade-size) calc(100% - var(--fade-size)),

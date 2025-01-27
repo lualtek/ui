@@ -1,21 +1,19 @@
 import { Stack, Text } from '@lualtek/react-components';
-import {
-  forwardRef, ReactElement, ReactNode, useMemo,
-} from 'react';
+import { type JSX, type ReactElement, type ReactNode, forwardRef, useMemo } from 'react';
 import {
   CartesianGrid,
   Legend,
-  LegendProps,
-  ResponsiveContainer,
-  ResponsiveContainerProps,
+  type LegendProps,
   Tooltip as ReTooltip,
+  ResponsiveContainer,
+  type ResponsiveContainerProps,
   XAxis,
-  XAxisProps,
-  YAxisProps,
+  type XAxisProps,
+  type YAxisProps,
 } from 'recharts';
-import { Except } from 'type-fest';
+import type { Except } from 'type-fest';
 
-import { Tooltip, TooltipProps } from '../tooltip';
+import { Tooltip, type TooltipProps } from '../tooltip';
 
 export type ChartDataBaseType = Record<string, string | number | null>;
 
@@ -180,110 +178,116 @@ export const DENSITIES: Record<NonNullable<BaseChartProps['density']>, number> =
   high: 9,
 };
 
-export const BaseChart = forwardRef<HTMLDivElement, BaseChartProps>(({
-  className,
-  children,
-  showGrid = true,
-  height = 300,
-  showXAxis = false,
-  showTooltip = true,
-  showLegend = false,
-  legendAlign = 'right',
-  xType,
-  dataKeyX = 'x',
-  xPadding = 0,
-  xFormatter,
-  xDomain,
-  xAllowDuplicatedCategory,
-  density = 'mid',
-  tooltipColors,
-  customTooltip,
-  formatTooltipLabel,
-  formatTooltipName,
-  formatTooltipValue,
-  tooltipDecorator,
-  referenceComponent,
-  cursorStyle,
-  renderChart,
-  ...otherProps
-}, forwardedRef) => {
-  const cursor = useMemo(() => ({
-    stroke: 'var(--dimmed-3)',
-    strokeWidth: 2,
-    fill: 'var(--dimmed-2)',
-    ...cursorStyle,
-  }), [cursorStyle]);
+export const BaseChart = forwardRef<HTMLDivElement, BaseChartProps>(
+  (
+    {
+      className,
+      children,
+      showGrid = true,
+      height = 300,
+      showXAxis = false,
+      showTooltip = true,
+      showLegend = false,
+      legendAlign = 'right',
+      xType,
+      dataKeyX = 'x',
+      xPadding = 0,
+      xFormatter,
+      xDomain,
+      xAllowDuplicatedCategory,
+      density = 'mid',
+      tooltipColors,
+      customTooltip,
+      formatTooltipLabel,
+      formatTooltipName,
+      formatTooltipValue,
+      tooltipDecorator,
+      referenceComponent,
+      cursorStyle,
+      renderChart,
+      ...otherProps
+    },
+    forwardedRef,
+  ) => {
+    const cursor = useMemo(
+      () => ({
+        stroke: 'var(--dimmed-3)',
+        strokeWidth: 2,
+        fill: 'var(--dimmed-2)',
+        ...cursorStyle,
+      }),
+      [cursorStyle],
+    );
 
-  return (
-    <div ref={forwardedRef} className={className}>
-      <ResponsiveContainer
-        width="100%"
-        debounce={0}
-        height={height}
-        {...otherProps}
-      >
-        {renderChart(
-          <>
-            {showGrid && (
-              <CartesianGrid
-                strokeDasharray="4 4"
-                stroke="color-mix(in oklch, var(--global-foreground), transparent 80%)"
+    return (
+      <div ref={forwardedRef} className={className}>
+        <ResponsiveContainer width="100%" debounce={0} height={height} {...otherProps}>
+          {renderChart(
+            <>
+              {showGrid && (
+                <CartesianGrid
+                  strokeDasharray="4 4"
+                  stroke="color-mix(in oklch, var(--global-foreground), transparent 80%)"
+                />
+              )}
+              {showTooltip && (
+                <ReTooltip
+                  cursor={cursor}
+                  content={
+                    customTooltip ?? (
+                      <Tooltip
+                        formatLabel={formatTooltipLabel}
+                        formatName={formatTooltipName}
+                        formatValue={formatTooltipValue}
+                        tooltipDecorator={tooltipDecorator}
+                        tooltipColors={tooltipColors}
+                      />
+                    )
+                  }
+                />
+              )}
+              <XAxis
+                dataKey={dataKeyX}
+                tickCount={DENSITIES[density]}
+                hide={!showXAxis}
+                type={xType}
+                minTickGap={32}
+                tick={{ fill: 'var(--dimmed-3)', fontSize: '0.8em' }}
+                tickFormatter={xFormatter}
+                padding={{ left: xPadding, right: xPadding }}
+                tickLine={{ stroke: 'var(--dimmed-3)' }}
+                axisLine={{ stroke: 'var(--dimmed-4)' }}
+                tickSize={8}
+                allowDataOverflow
+                tickMargin={8}
+                domain={xDomain}
+                allowDuplicatedCategory={xAllowDuplicatedCategory}
               />
-            )}
-            {showTooltip && (
-              <ReTooltip
-                cursor={cursor}
-                content={customTooltip ?? (
-                  <Tooltip
-                    formatLabel={formatTooltipLabel}
-                    formatName={formatTooltipName}
-                    formatValue={formatTooltipValue}
-                    tooltipDecorator={tooltipDecorator}
-                    tooltipColors={tooltipColors}
-                  />
-                )}
-              />
-            )}
-            <XAxis
-              dataKey={dataKeyX}
-              tickCount={DENSITIES[density]}
-              hide={!showXAxis}
-              type={xType}
-              minTickGap={32}
-              tick={{ fill: 'var(--dimmed-3)', fontSize: '0.8em' }}
-              tickFormatter={xFormatter}
-              padding={{ left: xPadding, right: xPadding }}
-              tickLine={{ stroke: 'var(--dimmed-3)' }}
-              axisLine={{ stroke: 'var(--dimmed-4)' }}
-              tickSize={8}
-              allowDataOverflow
-              tickMargin={8}
-              domain={xDomain}
-              allowDuplicatedCategory={xAllowDuplicatedCategory}
-            />
-            {referenceComponent}
+              {referenceComponent}
 
-            {children}
+              {children}
 
-            {showLegend && (
-              <Legend
-                align={legendAlign}
-                iconType="circle"
-                iconSize={8}
-                formatter={(value, entry) => {
-                  const { color } = entry;
-                  return (
-                    <Stack inline fill={false} vPadding={8}>
-                      <Text as="span" size={14} style={{ color }}>{value}</Text>
-                    </Stack>
-                  );
-                }}
-              />
-            )}
-          </>,
-        )}
-      </ResponsiveContainer>
-    </div>
-  );
-});
-
+              {showLegend && (
+                <Legend
+                  align={legendAlign}
+                  iconType="circle"
+                  iconSize={8}
+                  formatter={(value, entry) => {
+                    const { color } = entry;
+                    return (
+                      <Stack inline fill={false} vPadding={8}>
+                        <Text as="span" size={14} style={{ color }}>
+                          {value}
+                        </Text>
+                      </Stack>
+                    );
+                  }}
+                />
+              )}
+            </>,
+          )}
+        </ResponsiveContainer>
+      </div>
+    );
+  },
+);

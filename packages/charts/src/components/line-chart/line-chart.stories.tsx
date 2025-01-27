@@ -5,11 +5,8 @@ import SimpleData from '../../../fixtures/data';
 import { MultiDataSeries } from '../../../fixtures/multi-data-axes';
 import MultiAxisData from '../../../fixtures/multi-y-data';
 import { ReferenceArea, ReferenceLine } from '../base-chart';
-import { ChartDataBaseType } from '../base-chart/base-chart';
-import {
-  LineChart,
-  LineProps,
-} from './line-chart';
+import type { ChartDataBaseType } from '../base-chart/base-chart';
+import { LineChart, type LineProps } from './line-chart';
 
 type Data = ChartDataBaseType;
 
@@ -20,11 +17,13 @@ const meta = {
   component: LineChart,
   args: {
     data,
-    series: [{
-      dataKey: 'y',
-      serieKeyId: 'y',
-      side: 'left',
-    }],
+    series: [
+      {
+        dataKey: 'y',
+        serieKeyId: 'y',
+        side: 'left',
+      },
+    ],
     showGrid: true,
     showDots: false,
     showYAxis: true,
@@ -45,9 +44,7 @@ const meta = {
       },
     },
   },
-  render: args => (
-    <LineChart {...args} />
-  ),
+  render: (args) => <LineChart {...args} />,
 } satisfies Meta<typeof LineChart>;
 
 export default meta;
@@ -77,11 +74,7 @@ export const WithMinWidth = {
 
 export const WithCustomTooltip = {
   args: {
-    customTooltip: ({ label }) => (
-      <div style={{ color: 'red' }}>
-        {label}
-      </div>
-    ),
+    customTooltip: ({ label }) => <div style={{ color: 'red' }}>{label}</div>,
   },
 } satisfies Story;
 
@@ -117,7 +110,6 @@ export const WithFormattedTooltip = {
     formatTooltipName: ({ name }) => `Formatted ${name}`,
     formatTooltipValue: ({ value }) => `${value}.00`,
   },
-
 } satisfies Story;
 
 export const WithoutTooltipColors = {
@@ -126,16 +118,13 @@ export const WithoutTooltipColors = {
     series: MultiAxisData.series as Array<LineProps<Data>>,
     tooltipColors: false,
   },
-
 } satisfies Story;
 
 export const WithTooltipDecorator = {
   args: {
     data: MultiAxisData.data,
     series: MultiAxisData.series as Array<LineProps<Data>>,
-    tooltipDecorator: entry => (
-      <Chip>{Number(entry.value).toFixed(0)}</Chip>
-    ),
+    tooltipDecorator: (entry) => <Chip>{Number(entry.value).toFixed(0)}</Chip>,
   },
 } satisfies Story;
 
@@ -166,35 +155,10 @@ export const WithReferenceAreas = {
 export const WithReferenceAreasAndLines = {
   args: {
     referenceComponent: [
-      <ReferenceLine
-        yAxisId="left"
-        key="line1"
-        y={40}
-        dashed
-        color="var(--highlight-green-foreground)"
-      />,
-      <ReferenceLine
-        yAxisId="left"
-        key="line2"
-        y={70}
-        dashed
-        color="var(--highlight-yellow-foreground)"
-      />,
-      <ReferenceLine
-        yAxisId="left"
-        key="line2"
-        y={100}
-        dashed
-        color="var(--highlight-red-foreground)"
-      />,
-      <ReferenceArea
-        yAxisId="left"
-        color="var(--highlight-green-background)"
-        key="area1"
-        y1={0}
-        y2={40}
-        label="low"
-      />,
+      <ReferenceLine yAxisId="left" key="line1" y={40} dashed color="var(--highlight-green-foreground)" />,
+      <ReferenceLine yAxisId="left" key="line2" y={70} dashed color="var(--highlight-yellow-foreground)" />,
+      <ReferenceLine yAxisId="left" key="line2" y={100} dashed color="var(--highlight-red-foreground)" />,
+      <ReferenceArea yAxisId="left" color="var(--highlight-green-background)" key="area1" y1={0} y2={40} label="low" />,
       <ReferenceArea
         yAxisId="left"
         color="var(--highlight-yellow-background)"
@@ -223,7 +187,7 @@ export const WithCustomYDomain = {
 
 export const WithFormattedXLabels = {
   args: {
-    xFormatter: value => `${value} Formatted`,
+    xFormatter: (value) => `${value} Formatted`,
   },
 } satisfies Story;
 
