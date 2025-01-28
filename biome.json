@@ -185,9 +185,7 @@
         "noDuplicateJsxProps": "error"
       },
       "a11y": {
-        "useGenericFontNames": "off",
-        "noBlankTarget": "error",
-        "useButtonType": "error"
+        "useGenericFontNames": "off"
       }
     },
     "ignore": ["**/dist", "**/*.module.css.d.ts"]
@@ -201,6 +199,9 @@
   "css": {
     "parser": {
       "cssModules": true
+    },
+    "linter": {
+      "enabled": true
     },
     "formatter": {
       "quoteStyle": "single"
