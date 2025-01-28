@@ -1,6 +1,6 @@
 {
   "name": "@lualtek/tokens",
-  "version": "16.0.1",
+  "version": "16.1.0-next.0",
   "description": "Design tokens from Lualtek design language",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com",
@@ -15,10 +15,14 @@
   },
   "typesVersions": {
     "*": {
-      "platforms/*": ["platforms/*"]
+      "platforms/*": [
+        "platforms/*"
+      ]
     }
   },
-  "files": ["platforms/"],
+  "files": [
+    "platforms/"
+  ],
   "scripts": {
     "prebuild": "rimraf platforms/",
     "build": "pnpm run build:tokens && pnpm run build:types",

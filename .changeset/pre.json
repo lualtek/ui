@@ -10,5 +10,7 @@
     "@lualtek/tokens": "16.0.1",
     "tsconfig": "0.0.4"
   },
-  "changesets": []
+  "changesets": [
+    "weak-pandas-fetch"
+  ]
 }
