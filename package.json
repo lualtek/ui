@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "packageManager": "pnpm@9.9.0",
-  "workspaces": ["packages/*"],
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
     "build": "turbo run build",
     "build:nocache": "turbo run build --force",
@@ -34,6 +36,7 @@
     "@changesets/cli": "2.27.10",
     "@commitlint/cli": "19.6.0",
     "@commitlint/config-conventional": "19.6.0",
+    "@lualtek/biome-config": "0.0.3",
     "@lualtek/config": "workspace:*",
     "@lualtek/themes": "workspace:*",
     "@lualtek/tokens": "workspace:*",
