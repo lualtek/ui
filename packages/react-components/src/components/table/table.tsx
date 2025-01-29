@@ -147,63 +147,65 @@ export type TableProps<T> = React.ComponentPropsWithRef<'table'> & {
   getTableInstance?: (instance: TableType<T>) => void;
 };
 
-export type TableConditionalProps<T> = {
-  /**
-   * Enable the global filter function
-   */
-  enableFilterControl: boolean;
-  /**
-   * Custom function used to filters table data.
-   */
-  filterFn: FilterFnOption<T>;
-  /**
-   * Set the label for the filter textfield control
-   *
-   * @defaultValue "Search across data"
-   */
-  filterControlLabel: string;
-  /**
-   * Set the label default value filter textfield control
-   *
-   */
-  filterControlDefaultValue?: string;
-  /**
-   * Set debounce time for filter search
-   * @defaultValue 230
-   */
-  filterDebounce?: number;
-  /**
-   * Triggers when the text search of the table changes
-   */
-  onFilterTextChange?: (value: string) => void;
-} | {
-  /**
-   * Enable the global filter function
-   */
-  enableFilterControl?: never;
-  /**
-   * Custom function used to filters table data.
-   */
-  filterFn?: never;
-  /**
-   * Set the label for the filter textfield control
-   */
-  filterControlLabel?: never;
-  /**
-   * Set the label default value filter textfield control
-   *
-   */
-  filterControlDefaultValue?: never;
-  /**
-   * Set debounce time for filter search
-   * @defaultValue 230
-   */
-  filterDebounce?: never;
-  /**
-   * Triggers when the text search of the table changes
-   */
-  onFilterTextChange?: never;
-}
+export type TableConditionalProps<T> =
+  | {
+      /**
+       * Enable the global filter function
+       */
+      enableFilterControl: boolean;
+      /**
+       * Custom function used to filters table data.
+       */
+      filterFn: FilterFnOption<T>;
+      /**
+       * Set the label for the filter textfield control
+       *
+       * @defaultValue "Search across data"
+       */
+      filterControlLabel: string;
+      /**
+       * Set the label default value filter textfield control
+       *
+       */
+      filterControlDefaultValue?: string;
+      /**
+       * Set debounce time for filter search
+       * @defaultValue 230
+       */
+      filterDebounce?: number;
+      /**
+       * Triggers when the text search of the table changes
+       */
+      onFilterTextChange?: (value: string) => void;
+    }
+  | {
+      /**
+       * Enable the global filter function
+       */
+      enableFilterControl?: never;
+      /**
+       * Custom function used to filters table data.
+       */
+      filterFn?: never;
+      /**
+       * Set the label for the filter textfield control
+       */
+      filterControlLabel?: never;
+      /**
+       * Set the label default value filter textfield control
+       *
+       */
+      filterControlDefaultValue?: never;
+      /**
+       * Set debounce time for filter search
+       * @defaultValue 230
+       */
+      filterDebounce?: never;
+      /**
+       * Triggers when the text search of the table changes
+       */
+      onFilterTextChange?: never;
+    };
 
 /**
  * {@link TableProps}
