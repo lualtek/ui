@@ -1,5 +1,15 @@
 # @lualtek/react-components
 
+## 16.2.0
+
+### Minor Changes
+
+- 1c565e9: Exposing text search for table filter
+
+### Patch Changes
+
+- @lualtek/icons@16.2.0
+
 ## 16.1.0
 
 ### Minor Changes
