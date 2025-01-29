@@ -40,8 +40,7 @@
     /* stylelint-disable number-max-precision */
 
     @media not all and (resolution >= 0.001dpcm) {
-
-      @supports (-webkit-appearance:none) and (stroke-color:transparent) {
+      @supports (-webkit-appearance: none) and (stroke-color: transparent) {
         box-shadow: none;
         border-bottom: 3px solid var(--dimmed-2);
       }

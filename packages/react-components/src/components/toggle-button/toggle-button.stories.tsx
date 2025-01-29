@@ -22,7 +22,7 @@ const meta = {
       control: { type: 'radio' },
     },
   },
-  render: args => <ToggleButton {...args} />,
+  render: (args) => <ToggleButton {...args} />,
 } satisfies Meta<typeof ToggleButton>;
 
 export default meta;
@@ -33,6 +33,13 @@ export const Default = {} satisfies Story;
 
 export const MultipleIcons = {
   args: {
+    pressedIcon: 'hide',
+  },
+} satisfies Story;
+
+export const DefaultPressed = {
+  args: {
+    pressed: true,
     pressedIcon: 'hide',
   },
 } satisfies Story;

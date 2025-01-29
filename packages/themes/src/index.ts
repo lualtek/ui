@@ -1,7 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable import/extensions */
-/* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-console */
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -13,8 +9,8 @@ import LightDark from './transformers/light-dark.ts';
 // import cssLightDark from './transformers/light-dark.ts';
 import OkLCH from './transformers/oklch.ts';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const Filename = fileURLToPath(import.meta.url);
+const Dirname = path.dirname(Filename);
 
 // type ThemeVariants = typeof THEME_VARIANTS[number];
 // const THEME_VARIANTS = ['light', 'dark'] as const;
@@ -59,7 +55,7 @@ const getConfig = (name: string): Config => ({
       ],
       options: {
         showFileHeader: true,
-        fileHeader: (defaultMessage: string[] = []) => [
+        fileHeader: (defaultMessage: Array<string> = []) => [
           ...defaultMessage,
           '© Lualtek Srl. All rights reserved. Developed by Mattia Astorino.',
         ],
@@ -71,16 +67,15 @@ const getConfig = (name: string): Config => ({
 /**
  * Get all the folders inside the foldeer `themes` (eg, default, pro etc)
  */
-const availableThemes = fs.readdirSync(path.join(__dirname, 'themes')).filter(
-  file => fs.statSync(path.join(__dirname, 'themes', file)).isDirectory(),
-);
+const availableThemes = fs
+  .readdirSync(path.join(Dirname, 'themes'))
+  .filter((file) => fs.statSync(path.join(Dirname, 'themes', file)).isDirectory());
 
 /**
  * For each folder inside themes and for each variant (dark, light) just create
  * style dictionary configuration and run the build
  */
-availableThemes.forEach(async (theme) => {
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+for (const theme of availableThemes) {
   const SDWithConfig = new StyleDictionary(getConfig(theme));
 
   /**
@@ -96,4 +91,4 @@ availableThemes.forEach(async (theme) => {
   console.clear();
   await SDWithConfig.hasInitialized;
   await SDWithConfig.buildAllPlatforms();
-});
+}

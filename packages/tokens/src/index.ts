@@ -1,6 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable import/extensions */
-/* eslint-disable no-console */
 import StyleDictionary from 'style-dictionary';
 import type { Config } from 'style-dictionary/types';
 
@@ -49,10 +46,7 @@ const config: Config = {
       ],
       options: {
         showFileHeader: true,
-        fileHeader: (defaultMessage: string[] = []) => [
-          ...defaultMessage,
-          '© Lualtek Srl. All rights reserved.',
-        ],
+        fileHeader: (defaultMessage: Array<string> = []) => [...defaultMessage, '© Lualtek Srl. All rights reserved.'],
       },
     },
     raw: {
@@ -66,7 +60,7 @@ const config: Config = {
       ],
       options: {
         showFileHeader: true,
-        fileHeader: (defaultMessage: string[] = []) => [
+        fileHeader: (defaultMessage: Array<string> = []) => [
           ...defaultMessage,
           '© Lualtek Srl. All rights reserved. Developed by Mattia Astorino.',
         ],
@@ -75,7 +69,6 @@ const config: Config = {
   },
 };
 
-// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
 const SDWithConfig = new StyleDictionary(config);
 
 /**

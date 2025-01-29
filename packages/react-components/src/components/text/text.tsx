@@ -1,10 +1,10 @@
 'use client';
 
-import { TokensTypes } from '@lualtek/tokens/platforms/web';
+import type { TokensTypes } from '@lualtek/tokens/platforms/web';
 import clsx from 'clsx';
 import { forwardRef, useMemo } from 'react';
 
-import { PolyRefComponent } from '@/components';
+import type { PolyRefComponent } from '@/components';
 
 import styles from './text.module.css';
 
@@ -27,7 +27,7 @@ export type TextProps = {
    * Set the font weight of the text. The values are
    * consistent with the typography system.
    */
-  weight?: 'light' | 'regular' | 'semibold' | 'bold' ;
+  weight?: 'light' | 'regular' | 'semibold' | 'bold';
   /**
    * Set the maximum width of the text after which it will wrap.
    */
@@ -61,7 +61,7 @@ export type TextProps = {
    * Set the white-space property of the text.
    */
   whiteSpace?: 'normal' | 'nowrap' | 'pre' | 'pre-line' | 'pre-wrap' | 'break-spaces';
-}
+};
 
 export const Text = forwardRef(
   (
@@ -84,14 +84,15 @@ export const Text = forwardRef(
     },
     forwardedRef,
   ) => {
-    const dynamicStyle = useMemo(() => (
-      {
+    const dynamicStyle = useMemo(
+      () => ({
         '--max-w': maxWidth,
         '--t-align': align,
         '--text-color': textColor,
         '--white-space': whiteSpace,
-      }
-    ), [maxWidth, align, textColor, whiteSpace]);
+      }),
+      [maxWidth, align, textColor, whiteSpace],
+    );
 
     return (
       <Component

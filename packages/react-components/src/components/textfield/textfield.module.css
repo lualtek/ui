@@ -41,7 +41,6 @@
       left: auto;
       right: calc(var(--field-padding) / 1.5);
     }
-
   }
 
   .Label {
@@ -67,21 +66,17 @@
 
   .InputField {
     display: block;
-    padding:
-      calc(token(--space-24) - token(--space-4))
-      var(--field-padding)
-      token(--space-4)
-      var(--field-padding);
+    padding: calc(token(--space-24) - token(--space-4)) var(--field-padding) token(--space-4) var(--field-padding);
 
-      [data-textfield-has-icon='true'][data-textfield-icon-position='end'] & {
-        padding-right: calc(var(--field-padding) * (var(--factor)));
-        padding-left: var(--field-padding);
-      }
+    [data-textfield-has-icon='true'][data-textfield-icon-position='end'] & {
+      padding-right: calc(var(--field-padding) * (var(--factor)));
+      padding-left: var(--field-padding);
+    }
 
-      [data-textfield-has-icon='true'][data-textfield-icon-position='start'] & {
-        padding-right: var(--field-padding);
-        padding-left: calc(var(--field-padding) * (var(--factor)));
-      }
+    [data-textfield-has-icon='true'][data-textfield-icon-position='start'] & {
+      padding-right: var(--field-padding);
+      padding-left: calc(var(--field-padding) * (var(--factor)));
+    }
   }
 
   .Hint {

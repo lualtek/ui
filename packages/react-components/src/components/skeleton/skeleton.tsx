@@ -1,12 +1,8 @@
 'use client';
 
-import { TokensTypes } from '@lualtek/tokens/platforms/web';
+import type { TokensTypes } from '@lualtek/tokens/platforms/web';
 import tkns from '@lualtek/tokens/platforms/web/tokens.json';
-import {
-  FC,
-  Fragment, useCallback, useId,
-  useMemo,
-} from 'react';
+import { type FC, Fragment, useCallback, useId, useMemo } from 'react';
 
 import styles from './skeleton.module.css';
 
@@ -60,7 +56,7 @@ export type SkeletonProps = React.ComponentPropsWithRef<'span'> & {
    * Enable or disable the loading state.
    */
   loading?: boolean;
-}
+};
 
 export const Skeleton: FC<SkeletonProps> = ({
   className,
@@ -81,62 +77,65 @@ export const Skeleton: FC<SkeletonProps> = ({
   const computedWidth = useMemo(() => (typeof width === 'number' ? `${width}px` : width), [width]);
   const computedHeight = useMemo(() => (typeof height === 'number' ? `${height}px` : height), [height]);
 
-  const dynamicStyle = useMemo(() => ({
-    '--radius': radius && tkns.radius[radius],
-    '--width': width && computedWidth,
-    '--height': height && computedHeight,
-    '--gap': gap ? tkns.space[gap] : undefined,
-  }), [radius, width, computedWidth, height, computedHeight, gap]);
+  const dynamicStyle = useMemo(
+    () => ({
+      '--radius': radius && tkns.radius[radius],
+      '--width': width && computedWidth,
+      '--height': height && computedHeight,
+      '--gap': gap ? tkns.space[gap] : undefined,
+    }),
+    [radius, width, computedWidth, height, computedHeight, gap],
+  );
 
-  const SkeletonItem = useCallback(() => (
-    <span
-      className={styles.SkeletonItem}
-      data-skeleton-circle={circle}
-      data-skeleton-animated={enableAnimation}
-      style={{ ...dynamicStyle, ...style }}
-    >
-      &zwnj;
-    </span>
-  ), [circle, enableAnimation, dynamicStyle, style]);
+  const SkeletonItem = useCallback(
+    () => (
+      <span
+        className={styles.SkeletonItem}
+        data-skeleton-circle={circle}
+        data-skeleton-animated={enableAnimation}
+        style={{ ...dynamicStyle, ...style }}
+      >
+        &zwnj;
+      </span>
+    ),
+    [circle, enableAnimation, dynamicStyle, style],
+  );
 
   return (
-    <span
-      className={className}
-      aria-live="polite"
-      aria-busy={enableAnimation}
-      {...otherProps}
-    >
-      {!children
-        ? Array.from(Array(count).keys()).map(n => (inline
-          ? <SkeletonItem key={`${uid}-${n}`} />
-          : (
+    <span className={className} aria-live="polite" aria-busy={enableAnimation} {...otherProps}>
+      {!children ? (
+        Array.from(new Array(count).keys()).map((n) =>
+          inline ? (
+            <SkeletonItem key={`${uid}-${n}`} />
+          ) : (
             <Fragment key={`${uid}-${n}`}>
               <SkeletonItem />
               <br />
             </Fragment>
-          )
-        ))
+          ),
+        )
+      ) : (
         /**
          * If children are provided we hide them and show the skeleton instead
          * while the loading state is active
          */
-        : (
-          <>
-            {loading ? (
-              <div
-                className={styles.SkeletonItem}
-                data-skeleton-circle={circle}
-                data-skeleton-animated={enableAnimation}
-                data-skeleton-children={Boolean(children)}
-                data-skeleton-inline={inline}
-                style={{ ...dynamicStyle, ...style }}
-              >
-                {children}
-              </div>
-            ) : children}
-          </>
-        )
-      }
+        <>
+          {loading ? (
+            <div
+              className={styles.SkeletonItem}
+              data-skeleton-circle={circle}
+              data-skeleton-animated={enableAnimation}
+              data-skeleton-children={Boolean(children)}
+              data-skeleton-inline={inline}
+              style={{ ...dynamicStyle, ...style }}
+            >
+              {children}
+            </div>
+          ) : (
+            children
+          )}
+        </>
+      )}
     </span>
   );
 };

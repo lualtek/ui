@@ -1,0 +1,210 @@
+{
+  "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+  "vcs": {
+    "enabled": true,
+    "clientKind": "git",
+    "useIgnoreFile": true
+  },
+  "files": {
+    "ignoreUnknown": true
+  },
+  "formatter": {
+    "enabled": true,
+    "indentStyle": "space",
+    "lineWidth": 120,
+    "ignore": ["**/dist", "**/*.module.css.d.ts"]
+  },
+  "organizeImports": {
+    "enabled": true
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "recommended": true,
+      "correctness": {
+        "noUnknownFunction": "off",
+        "noUnknownMediaFeatureName": "off",
+        "noNodejsModules": "off",
+        "useJsxKeyInIterable": "off",
+        "noUnusedImports": "error",
+        "useExhaustiveDependencies": "error",
+        "useHookAtTopLevel": "error",
+        "noEmptyPattern": "error",
+        "noSelfAssign": "error",
+        "noSwitchDeclarations": "error",
+        "noUnusedLabels": "error",
+        "noConstantCondition": "warn",
+        "noEmptyCharacterClassInRegex": "error",
+        "noGlobalObjectCalls": "error",
+        "noInnerDeclarations": "error",
+        "noUnreachable": "error",
+        "noUnsafeFinally": "error",
+        "useIsNan": "error",
+        "useValidForDirection": "error",
+        "noConstAssign": "error",
+        "noInvalidConstructorSuper": "error",
+        "noNewSymbol": "error",
+        "noUnreachableSuper": "error",
+        "useYield": "error",
+        "noInvalidUseBeforeDeclaration": "error",
+        "noUndeclaredVariables": "error",
+        "noUnusedVariables": "error",
+        "useArrayLiterals": "error",
+        "noChildrenProp": "error",
+        "noVoidElementsWithChildren": "error"
+      },
+      "style": {
+        "noNonNullAssertion": "off",
+        "noImplicitBoolean": "off",
+        "noDefaultExport": "off",
+        "noNegationElse": "off",
+        "useDefaultParameterLast": "off",
+        "noArguments": "error",
+        "noVar": "error",
+        "useConst": "error",
+        "useNumericLiterals": "error",
+        "useTemplate": "error",
+        "noCommaOperator": "error",
+        "noParameterAssign": "error",
+        "noUselessElse": "error",
+        "noYodaExpression": "error",
+        "useBlockStatements": "error",
+        "useConsistentBuiltinInstantiation": "error",
+        "useDefaultSwitchClause": "error",
+        "useThrowOnlyError": "error",
+        "useCollapsedElseIf": "error",
+        "useShorthandAssign": "error",
+        "useSingleVarDeclarator": "error",
+        "noInferrableTypes": "error",
+        "noNamespace": "error",
+        "noParameterProperties": "error",
+        "useAsConstAssertion": "error",
+        "useConsistentArrayType": {
+          "level": "error",
+          "options": {
+            "syntax": "generic"
+          }
+        },
+        "useForOf": "error",
+        "useNamingConvention": {
+          "level": "error",
+          "options": {
+            "strictCase": false,
+            "conventions": [
+              {
+                "selector": {
+                  "kind": "objectLiteralProperty"
+                },
+                "formats": ["camelCase", "snake_case", "PascalCase", "CONSTANT_CASE"]
+              },
+              {
+                "selector": {
+                  "kind": "variable"
+                },
+                "formats": ["camelCase", "PascalCase", "CONSTANT_CASE"]
+              },
+              {
+                "selector": {
+                  "kind": "typeLike"
+                },
+                "formats": ["PascalCase"]
+              }
+            ]
+          }
+        },
+        "useShorthandFunctionType": "error",
+        "useFragmentSyntax": "error"
+      },
+      "complexity": {
+        "noUselessCatch": "off",
+        "noUselessLabel": "error",
+        "noUselessLoneBlockStatements": "error",
+        "noUselessStringConcat": "error",
+        "noVoid": "error",
+        "noUselessTernary": "error",
+        "noUselessConstructor": "error",
+        "noUselessRename": "error",
+        "useArrowFunction": "error",
+        "noUselessUndefinedInitialization": "error",
+        "noStaticOnlyClass": "error",
+        "noUselessEmptyExport": "error",
+        "noUselessThisAlias": "error",
+        "noUselessTypeConstraint": "error",
+        "useLiteralKeys": "error",
+        "useOptionalChain": "error",
+        "noExtraBooleanCast": "error",
+        "noMultipleSpacesInRegularExpressionLiterals": "error"
+      },
+      "security": {
+        "noGlobalEval": "error",
+        "noDangerouslySetInnerHtml": "warn",
+        "noDangerouslySetInnerHtmlWithChildren": "error"
+      },
+      "suspicious": {
+        "useAwait": "off",
+        "noAsyncPromiseExecutor": "off",
+        "noMisleadingCharacterClass": "off",
+        "noExplicitAny": "off",
+        "noConfusingLabels": "error",
+        "noDoubleEquals": "error",
+        "noEmptyBlockStatements": "error",
+        "noFallthroughSwitchClause": "error",
+        "noGlobalAssign": "error",
+        "noRedeclare": "error",
+        "noSelfCompare": "error",
+        "noAssignInExpressions": "error",
+        "noCatchAssign": "error",
+        "noCompareNegZero": "error",
+        "noConsole": {
+          "level": "warn",
+          "options": {
+            "allow": ["warn", "error", "clear"]
+          }
+        },
+        "noControlCharactersInRegex": "error",
+        "noDebugger": "error",
+        "noDuplicateCase": "error",
+        "noDuplicateObjectKeys": "error",
+        "noDuplicateParameters": "error",
+        "noFunctionAssign": "error",
+        "noPrototypeBuiltins": "error",
+        "noSparseArray": "error",
+        "noUnsafeNegation": "error",
+        "useGetterReturn": "error",
+        "useValidTypeof": "error",
+        "noClassAssign": "error",
+        "noDuplicateClassMembers": "error",
+        "noConfusingVoidType": "error",
+        "noEmptyInterface": "error",
+        "noExtraNonNullAssertion": "error",
+        "noMisleadingInstantiator": "error",
+        "noUnsafeDeclarationMerging": "error",
+        "useNamespaceKeyword": "error",
+        "noArrayIndexKey": "error",
+        "noCommentText": "error",
+        "noDuplicateJsxProps": "error"
+      },
+      "a11y": {
+        "useGenericFontNames": "off"
+      }
+    },
+    "ignore": ["**/dist", "**/*.module.css.d.ts"]
+  },
+  "javascript": {
+    "formatter": {
+      "quoteStyle": "single"
+    },
+    "globals": ["React"]
+  },
+  "css": {
+    "parser": {
+      "cssModules": true
+    },
+    "linter": {
+      "enabled": true
+    },
+    "formatter": {
+      "quoteStyle": "single"
+    }
+  }
+}

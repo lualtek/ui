@@ -1,5 +1,16 @@
 # @lualtek/config
 
+## 16.1.0-next.0
+
+### Minor Changes
+
+- 7756ac1: Migrate to biomejs
+
+### Patch Changes
+
+- Updated dependencies [7756ac1]
+  - @lualtek/tokens@16.1.0-next.0
+
 ## 16.0.1
 
 ### Patch Changes

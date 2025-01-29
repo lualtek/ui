@@ -1,4 +1,3 @@
-/* eslint-disable no-alert */
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { Chip } from '../..';
@@ -8,7 +7,11 @@ const options = [
   {
     value: 'apple',
     children: '🍎 Apple',
-    decoration: <Chip dimension="small" color="green">110 Cal</Chip>,
+    decoration: (
+      <Chip dimension="small" color="green">
+        110 Cal
+      </Chip>
+    ),
   },
   {
     value: 'banana',
@@ -47,6 +50,6 @@ export const Loading = {
 
 export const CustomEvent = {
   args: {
-    onClickOption: value => alert(value),
+    onClickOption: (value) => alert(value),
   },
 } satisfies Story;

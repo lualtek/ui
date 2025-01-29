@@ -1,11 +1,11 @@
 'use client';
 
-import { TokensTypes } from '@lualtek/tokens/platforms/web';
+import type { TokensTypes } from '@lualtek/tokens/platforms/web';
 import tkns from '@lualtek/tokens/platforms/web/tokens.json';
 import clsx from 'clsx';
 import { forwardRef, useMemo } from 'react';
 
-import { PolyRefComponent } from '@/components';
+import type { PolyRefComponent } from '@/components';
 
 import styles from './scroll-area.module.css';
 
@@ -59,57 +59,60 @@ export type ScrollAreaProps = {
    * @defaultValue 'contain'
    */
   overscrollBehavior?: 'auto' | 'contain' | 'none';
-}
+};
 
-export const ScrollArea = forwardRef((
-  {
-    as: Component = 'div',
-    children,
-    className,
-    canScroll = true,
-    thumbColor,
-    trackColor,
-    useSystemStyle = true,
-    hideScrollbars = false,
-    gutterBehavior = 'auto',
-    fadeDirection,
-    overscrollBehavior = 'contain',
-    fadeSize = 16,
-    style,
-    ...otherProps
-  },
-  forwardedRef,
-) => {
-  const computedFadeDirection = useMemo(() => {
-    if (fadeSize) {
-      return typeof fadeSize === 'string' ? fadeSize : tkns.space[fadeSize];
-    }
-
-    return '0';
-  }, [fadeSize]);
-
-  const dynamicStyle = useMemo(() => (
+export const ScrollArea = forwardRef(
+  (
     {
-      '--thumb-color': thumbColor,
-      '--track-color': trackColor,
-      '--gutter-behaviour': gutterBehavior,
-      '--fade-size': computedFadeDirection,
-      '--overscroll-behavior': overscrollBehavior,
-    }
-  ), [thumbColor, trackColor, gutterBehavior, overscrollBehavior, computedFadeDirection]);
+      as: Component = 'div',
+      children,
+      className,
+      canScroll = true,
+      thumbColor,
+      trackColor,
+      useSystemStyle = true,
+      hideScrollbars = false,
+      gutterBehavior = 'auto',
+      fadeDirection,
+      overscrollBehavior = 'contain',
+      fadeSize = 16,
+      style,
+      ...otherProps
+    },
+    forwardedRef,
+  ) => {
+    const computedFadeDirection = useMemo(() => {
+      if (fadeSize) {
+        return typeof fadeSize === 'string' ? fadeSize : tkns.space[fadeSize];
+      }
 
-  return (
-    <Component
-      ref={forwardedRef}
-      className={clsx(styles.ScrollArea, className)}
-      data-scroll-area-scrolling={canScroll}
-      data-scroll-visible={!hideScrollbars}
-      data-scroll-use-system={useSystemStyle}
-      data-scroll-fade-direction={fadeDirection}
-      style={{ ...dynamicStyle, ...style }}
-      {...otherProps}
-    >
-      {children}
-    </Component>
-  );
-}) as PolyRefComponent<'div', ScrollAreaProps>;
+      return '0';
+    }, [fadeSize]);
+
+    const dynamicStyle = useMemo(
+      () => ({
+        '--thumb-color': thumbColor,
+        '--track-color': trackColor,
+        '--gutter-behaviour': gutterBehavior,
+        '--fade-size': computedFadeDirection,
+        '--overscroll-behavior': overscrollBehavior,
+      }),
+      [thumbColor, trackColor, gutterBehavior, overscrollBehavior, computedFadeDirection],
+    );
+
+    return (
+      <Component
+        ref={forwardedRef}
+        className={clsx(styles.ScrollArea, className)}
+        data-scroll-area-scrolling={canScroll}
+        data-scroll-visible={!hideScrollbars}
+        data-scroll-use-system={useSystemStyle}
+        data-scroll-fade-direction={fadeDirection}
+        style={{ ...dynamicStyle, ...style }}
+        {...otherProps}
+      >
+        {children}
+      </Component>
+    );
+  },
+) as PolyRefComponent<'div', ScrollAreaProps>;

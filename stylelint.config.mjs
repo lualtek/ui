@@ -17,11 +17,5 @@ export default {
       },
     ],
   },
-  ignoreFiles: [
-    '!**/*.css',
-    '**/*.jsx',
-    '**/*.tsx',
-    '**/*.ts',
-    'node_modules',
-  ],
+  ignoreFiles: ['!**/*.css', '**/*.jsx', '**/*.tsx', '**/*.ts', 'node_modules'],
 };

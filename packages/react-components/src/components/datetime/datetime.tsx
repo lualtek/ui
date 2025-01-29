@@ -1,9 +1,6 @@
 'use client';
 
-import {
-  forwardRef,
-  useMemo,
-} from 'react';
+import { forwardRef, useMemo } from 'react';
 
 export type DatetimeProps = React.ComponentPropsWithRef<'time'> & {
   /**
@@ -14,7 +11,7 @@ export type DatetimeProps = React.ComponentPropsWithRef<'time'> & {
    * Set the locale to use to format the date.
    * @defaultValue "en-US"
    */
-  locale?: string | string[];
+  locale?: string | Array<string>;
   /**
    * Customize the date format by passing options from Intl.DateTimeFormat
    *
@@ -22,7 +19,7 @@ export type DatetimeProps = React.ComponentPropsWithRef<'time'> & {
    * @defaultValue { year: 'numeric', month: 'long', day: 'numeric' }
    */
   options?: Intl.DateTimeFormatOptions;
-}
+};
 
 const defaultOptions: Partial<Intl.DateTimeFormatOptions> = {
   year: 'numeric',
@@ -30,24 +27,21 @@ const defaultOptions: Partial<Intl.DateTimeFormatOptions> = {
   day: 'numeric',
 };
 
-export const Datetime = forwardRef<HTMLTimeElement, DatetimeProps>(({
-  date,
-  locale = 'en-US',
-  options,
-  ...otherProps
-},
-forwardedRef) => {
-  const hasDateTimeStyle = useMemo(() => options?.timeStyle ?? options?.dateStyle, [options]);
-  const humanDate = useMemo(() => {
-    const timeDate: Date = new Date(date);
-    return new Intl.DateTimeFormat(
-      locale, hasDateTimeStyle ? { ...options } : { ...defaultOptions, ...options },
-    ).format(timeDate);
-  }, [date, hasDateTimeStyle, locale, options]);
+export const Datetime = forwardRef<HTMLTimeElement, DatetimeProps>(
+  ({ date, locale = 'en-US', options, ...otherProps }, forwardedRef) => {
+    const hasDateTimeStyle = useMemo(() => options?.timeStyle ?? options?.dateStyle, [options]);
+    const humanDate = useMemo(() => {
+      const timeDate: Date = new Date(date);
+      return new Intl.DateTimeFormat(
+        locale,
+        hasDateTimeStyle ? { ...options } : { ...defaultOptions, ...options },
+      ).format(timeDate);
+    }, [date, hasDateTimeStyle, locale, options]);
 
-  return (
-    <time dateTime={date} ref={forwardedRef} {...otherProps}>
-      {humanDate}
-    </time>
-  );
-});
+    return (
+      <time dateTime={date} ref={forwardedRef} {...otherProps}>
+        {humanDate}
+      </time>
+    );
+  },
+);

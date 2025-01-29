@@ -31,7 +31,6 @@
     }
   }
 
-
   del {
     padding: 0 4px;
     background-color: var(--highlight-red-background);
@@ -62,7 +61,6 @@
     margin: 0;
     padding: 0;
   }
-
 
   ul {
     font-size: initial;
