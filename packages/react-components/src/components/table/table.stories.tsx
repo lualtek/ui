@@ -118,6 +118,7 @@ export const WithFilterDefaultValue: Story = {
     filterFn: (row, columnId, value: string) =>
       String(row.getValue(columnId)).toLowerCase().includes(value.toLowerCase()),
     filterControlDefaultValue: 'John',
+    onFilterTextChange: (value: string) => console.log(value),
   },
 };
 

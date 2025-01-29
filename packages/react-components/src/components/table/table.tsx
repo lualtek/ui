@@ -173,6 +173,10 @@ export type TableConditionalProps<T> =
        * @defaultValue 230
        */
       filterDebounce?: number;
+      /**
+       * Triggers when the text search of the table changes
+       */
+      onFilterTextChange?: (value: string) => void;
     }
   | {
       /**
@@ -197,6 +201,10 @@ export type TableConditionalProps<T> =
        * @defaultValue 230
        */
       filterDebounce?: never;
+      /**
+       * Triggers when the text search of the table changes
+       */
+      onFilterTextChange?: never;
     };
 
 /**
@@ -229,6 +237,7 @@ export const Table = <T extends Record<string, unknown>>({
   filterFn,
   filterControlLabel = 'Search across data',
   filterDebounce = 230,
+  onFilterTextChange,
   itemsPerPage = 50,
   filterControlDefaultValue = '',
   getTableInstance,
@@ -384,6 +393,12 @@ export const Table = <T extends Record<string, unknown>>({
       getTableInstance(table);
     }
   }, [table, getTableInstance]);
+
+  useEffect(() => {
+    if (onFilterTextChange) {
+      onFilterTextChange(debouncedGlobalFilter);
+    }
+  }, [debouncedGlobalFilter, onFilterTextChange]);
 
   return (
     <div className={clsx(styles.Table, className)} style={{ ...dynamicStyle, ...style }}>
