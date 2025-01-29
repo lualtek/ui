@@ -1,5 +1,16 @@
 # @lualtek/react-components
 
+## 16.1.0
+
+### Minor Changes
+
+- f8ffab8: Migrate to biomejs
+
+### Patch Changes
+
+- Updated dependencies [f8ffab8]
+  - @lualtek/icons@16.1.0
+
 ## 16.1.0-next.0
 
 ### Minor Changes
