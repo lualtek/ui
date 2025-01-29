@@ -19,6 +19,7 @@
   },
   "linter": {
     "enabled": true,
+    "ignore": ["**/dist", "**/*.module.css.d.ts"],
     "rules": {
       "recommended": true,
       "correctness": {
@@ -187,8 +188,7 @@
       "a11y": {
         "useGenericFontNames": "off"
       }
-    },
-    "ignore": ["**/dist", "**/*.module.css.d.ts"]
+    }
   },
   "javascript": {
     "formatter": {

@@ -19,7 +19,7 @@
     "upgrade-interactive": "pnpm dlx npm-upgrade-monorepo"
   },
   "lint-staged": {
-    "*.{ts,tsx,js,jsx,css}": "biome lint --no-errors-on-unmatched --files-ignore-unknown=true"
+    "*": "biome lint --no-errors-on-unmatched --files-ignore-unknown=true"
   },
   "browserslist": [
     "last 2 Chrome versions",
