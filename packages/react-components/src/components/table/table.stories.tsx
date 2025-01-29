@@ -115,21 +115,8 @@ export const WithFilterDefaultValue: Story = {
     showHeader: true,
     selectableRows: true,
     enableFilterControl: true,
-    filterFn: (row, columnId, value: string) => String(
-      row.getValue(columnId),
-    ).toLowerCase().includes(value.toLowerCase()),
-    filterControlDefaultValue: 'John',
-  },
-};
-
-export const WithFilterDefaultValue: Story = {
-  args: {
-    showHeader: true,
-    selectableRows: true,
-    enableFilterControl: true,
-    filterFn: (row, columnId, value: string) => String(
-      row.getValue(columnId),
-    ).toLowerCase().includes(value.toLowerCase()),
+    filterFn: (row, columnId, value: string) =>
+      String(row.getValue(columnId)).toLowerCase().includes(value.toLowerCase()),
     filterControlDefaultValue: 'John',
   },
 };

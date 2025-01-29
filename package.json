@@ -3,9 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "packageManager": "pnpm@9.9.0",
-  "workspaces": [
-    "packages/*"
-  ],
+  "workspaces": ["packages/*"],
   "scripts": {
     "build": "turbo run build",
     "build:nocache": "turbo run build --force",
@@ -21,8 +19,7 @@
     "upgrade-interactive": "pnpm dlx npm-upgrade-monorepo"
   },
   "lint-staged": {
-    "*.{ts,tsx,js,jsx}": "biome lint --no-errors-on-unmatched --files-ignore-unknown=true",
-    "*.css": "biome lint --no-errors-on-unmatched --files-ignore-unknown=true"
+    "*.{ts,tsx,js,jsx,css}": "biome lint --no-errors-on-unmatched --files-ignore-unknown=true"
   },
   "browserslist": [
     "last 2 Chrome versions",
