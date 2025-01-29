@@ -5,7 +5,6 @@ import tkns from '@lualtek/tokens/platforms/web/tokens.json';
 import clsx from 'clsx';
 import type React from 'react';
 import {
-  type CSSProperties,
   Children,
   Fragment,
   type RefObject,
@@ -186,7 +185,7 @@ export const Marquee = forwardRef<HTMLDivElement, MarqueeProps>(
       return marqueeWidth < containerWidth ? containerWidth / speed : marqueeWidth / speed;
     }, [autoFill, containerWidth, marqueeWidth, multiplier, speed]);
 
-    const dynamicStyle: CSSProperties = useMemo(() => {
+    const dynamicStyle = useMemo(() => {
       const computedContainerTransform = () => {
         if (direction === 'up') {
           return 'rotate(-90deg)';
@@ -207,7 +206,7 @@ export const Marquee = forwardRef<HTMLDivElement, MarqueeProps>(
       };
     }, [play, pauseOnHover, pauseOnClick, direction, gap, fadeSize]);
 
-    const sliderStyle: CSSProperties = useMemo(
+    const sliderStyle = useMemo(
       () => ({
         '--play': play ? 'running' : 'paused',
         '--direction': direction === 'left' ? 'normal' : 'reverse',
