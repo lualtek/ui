@@ -21,8 +21,8 @@ importers:
         specifier: 19.6.0
         version: 19.6.0
       '@lualtek/biome-config':
-        specifier: 0.0.3
-        version: 0.0.3
+        specifier: 1.0.1
+        version: 1.0.1
       '@lualtek/config':
         specifier: workspace:*
         version: link:packages/config
@@ -1286,8 +1286,8 @@ packages:
     peerDependencies:
       tslib: '2'
 
-  '@lualtek/biome-config@0.0.3':
-    resolution: {integrity: sha512-UDGUeu49Sl7V0ribxFW1gNkLsd5jeFKdBwSFBNh+2dXVTGpphUnPex7nDJt4lLaNg+wq28QLTdD2YZ5oib00ug==, tarball: https://npm.pkg.github.com/download/@lualtek/biome-config/0.0.3/d81eff27e40775c4975b884dc9666a932dba0802}
+  '@lualtek/biome-config@1.0.1':
+    resolution: {integrity: sha512-m87jpY86tGN8I12zY46IHZnNpyMSVk0ur9OV+MFq4ulxHdfEIxfIytNPyL9f2J2Osj0NpdpAII3SRL/gSZ0oRg==, tarball: https://npm.pkg.github.com/download/@lualtek/biome-config/1.0.1/c565bdb36916f7a5c83e91a4395a3f0bfe9de8d7}
     engines: {node: '>=20'}
 
   '@manypkg/find-root@1.1.0':
@@ -6226,7 +6226,7 @@ snapshots:
     dependencies:
       tslib: 2.6.3
 
-  '@lualtek/biome-config@0.0.3': {}
+  '@lualtek/biome-config@1.0.1': {}
 
   '@manypkg/find-root@1.1.0':
     dependencies:

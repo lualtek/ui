@@ -1,4 +1,7 @@
 {
   "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
-  "extends": ["@lualtek/biome-config/core"]
+  "extends": ["@lualtek/biome-config/core"],
+  "javascript": {
+    "globals": ["React"]
+  }
 }
