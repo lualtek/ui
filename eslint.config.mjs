@@ -24,7 +24,7 @@ const jsFiles = ['**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx'];
 
 export default [
   {
-    ignores: ['**/dist', '**/*.module.css.d.ts'],
+    ignores: ['**/dist', '**/*.module.css.d.ts', '**/*.json'],
   },
   ...lasalefamineConfig.map((config) => ({ ...config, files: jsFiles, languageOptions })),
   ...reactHooksConfig,

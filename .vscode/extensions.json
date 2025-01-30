@@ -9,6 +9,7 @@
     "kamikillerto.vscode-colorize",
     "lasalefamine.vscode-css-vars",
     "editorconfig.editorconfig",
-    "aaron-bond.better-comments"
+    "aaron-bond.better-comments",
+    "dbaeumer.vscode-eslint"
 	]
 }
