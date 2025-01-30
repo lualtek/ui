@@ -27,3 +27,4 @@ export const ReferenceArea: FC<ReferenceAreaProps> = ({
 const { fill, fillOpacity, ...defaultProps } = RechartReferenceArea.defaultProps;
 // @ts-expect-error https://github.com/recharts/recharts/issues/544#issuecomment-2008058998
 ReferenceArea.defaultProps = defaultProps;
+ReferenceArea.displayName = 'ReferenceArea';
