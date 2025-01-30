@@ -1,11 +1,11 @@
 /** Breakpoints
- *  Conversion Table (base 16px)
- *  extra-small = 30em → 480px
- *  small = 48em → 768px
- *  medium = 60em → 960px
- *  large = 80em → 1280px
- *  extra-large = 100em → 1600px
- */
+  *  Conversion Table (base 16px)
+  *  extra-small = 30em → 480px
+  *  small = 48em → 768px
+  *  medium = 60em → 960px
+  *  large = 80em → 1280px
+  *  extra-large = 100em → 1600px
+  */
 
 /* Mobile First Media Queries */
 

@@ -6,7 +6,7 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
 
-    &[data-clamp-text-inline='true'] {
+    &[data-clamp-text-inline="true"] {
       display: -webkit-inline-box;
     }
   }

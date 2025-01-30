@@ -28,7 +28,7 @@ const meta = {
     wrap: true,
     as: 'div',
   },
-  render: (args) => (
+  render: args => (
     <Stack rowGap={80} columnGap={24} {...args}>
       <div className="DivEx">01</div>
       <div className="DivEx">02</div>

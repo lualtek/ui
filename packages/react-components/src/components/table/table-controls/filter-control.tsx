@@ -1,9 +1,18 @@
-import type { FC } from 'react';
+import { FC } from 'react';
 
-import { Textfield, type TextfieldProps } from '@/components';
+import {
+  Textfield, TextfieldProps,
+} from '@/components';
 
-type FilterControlProps = TextfieldProps;
+type FilterControlProps = TextfieldProps
 
-export const FilterControl: FC<FilterControlProps> = ({ ...otherProps }) => (
-  <Textfield type="search" icon="zoom" {...otherProps} />
+export const FilterControl: FC<FilterControlProps> = ({
+  ...otherProps
+}) => (
+  <Textfield
+    type="search"
+    icon="zoom"
+    {...otherProps}
+  />
 );
+

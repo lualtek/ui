@@ -1,6 +1,7 @@
 .Lightbox {
   position: fixed;
   inset: 0;
+  height: 100vh;
   height: 100dvh;
   display: flex;
   justify-content: center;
@@ -13,6 +14,7 @@
   top: token(--space-32);
   right: token(--space-32);
 }
+
 
 .ArrowRight {
   position: absolute;

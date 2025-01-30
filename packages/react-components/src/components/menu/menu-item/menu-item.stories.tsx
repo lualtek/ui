@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 
-import { Menu, type MenuItemCheckboxProps } from '..';
 import { Chip, Text } from '../..';
+import { Menu, MenuItemCheckboxProps } from '..';
 
 const meta = {
   title: 'Navigation/Menu/Menu Item',
@@ -26,20 +26,20 @@ const meta = {
       control: { type: 'inline-radio' },
     },
   },
-  render: (args) => (
+  render: args => (
     <>
-      <Menu.Item {...args} value="1" icon="sun">
+      <Menu.Item
+        {...args}
+        value="1"
+        icon="sun"
+      >
         List item text
       </Menu.Item>
       <Menu.Item
         {...args}
         icon="sun"
         value="2"
-        decoration={
-          <Chip dimension="small" color="blue">
-            Decoration
-          </Chip>
-        }
+        decoration={<Chip dimension="small" color="blue">Decoration</Chip>}
       >
         List item text
       </Menu.Item>
@@ -60,7 +60,7 @@ const WithCheckboxTemplate = (args: MenuItemCheckboxProps) => {
         {...args}
         checked={isChecked}
         icon={isChecked ? 'check' : undefined}
-        onClick={() => setIsChecked((val) => !val)}
+        onClick={() => setIsChecked(val => !val)}
         value="1"
       >
         Checkable item
@@ -68,11 +68,7 @@ const WithCheckboxTemplate = (args: MenuItemCheckboxProps) => {
       <Menu.Item
         {...args}
         icon="sun"
-        decoration={
-          <Chip dimension="small" color="blue">
-            Decoration
-          </Chip>
-        }
+        decoration={<Chip dimension="small" color="blue">Decoration</Chip>}
         value="2"
       >
         List item text
@@ -85,23 +81,20 @@ export const WithCheckboxes = {
   args: {
     value: '1',
   },
-  render: (args) => <WithCheckboxTemplate {...args} />,
+  render: args => <WithCheckboxTemplate {...args} />,
 } satisfies Story;
 
 export const WithDecorations = {
   args: {
     value: '1',
   },
-  render: (args) => (
+  render: args => (
     <>
       <Menu.Item
         {...args}
         value="1"
         decoration={
-          <Chip dimension="small" color="yellow">
-            Good
-          </Chip>
-        }
+          <Chip dimension="small" color="yellow">Good</Chip>}
         icon="sun"
       >
         List item text
@@ -110,10 +103,7 @@ export const WithDecorations = {
         {...args}
         value="2"
         decoration={
-          <Chip dimension="small" color="blue">
-            Example
-          </Chip>
-        }
+          <Chip dimension="small" color="blue">Example</Chip>}
         icon="chat"
       >
         List item text List item
@@ -122,10 +112,7 @@ export const WithDecorations = {
         {...args}
         value="3"
         decoration={
-          <Text size={14} sentiment="danger">
-            Warning
-          </Text>
-        }
+          <Text size={14} sentiment="danger">Warning</Text>}
         icon="view"
       >
         List item text
@@ -134,10 +121,7 @@ export const WithDecorations = {
         {...args}
         value="4"
         decoration={
-          <Chip dimension="small" color="purple">
-            Decoration
-          </Chip>
-        }
+          <Chip dimension="small" color="purple">Decoration</Chip>}
         icon="file"
       >
         List item text

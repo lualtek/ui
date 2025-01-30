@@ -13,7 +13,7 @@ const meta = {
     enableAnimation: true,
     inline: false,
   },
-  render: (args) => <Skeleton {...args} />,
+  render: args => <Skeleton {...args} />,
 } satisfies Meta<typeof Skeleton>;
 
 export default meta;
@@ -55,7 +55,7 @@ export const WithChildren = {
   args: {
     loading: true,
   },
-  render: (args) => (
+  render: args => (
     <Stack rowGap={8} fill={false} hAlign="start">
       <Skeleton {...args}>
         <Switch />

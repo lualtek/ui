@@ -1,9 +1,11 @@
-import type { FC } from 'react';
-import type { ReferenceAreaProps as RechartReferenceAreaProps, ReferenceArea as ReferenceAreaType } from 'recharts';
+import { FC } from 'react';
+import type { ReferenceArea as ReferenceAreaType, ReferenceAreaProps as RechartReferenceAreaProps } from 'recharts';
 import { ReferenceArea as RechartReferenceArea } from 'recharts';
-import type { Except } from 'type-fest';
+import { Except } from 'type-fest';
 
-export type ReferenceAreaProps = Except<RechartReferenceAreaProps, 'fill' | 'fillOpacity'> & {
+export type ReferenceAreaProps = Except<
+RechartReferenceAreaProps, 'fill' | 'fillOpacity'
+> & {
   color?: string;
   opacity?: number;
 };

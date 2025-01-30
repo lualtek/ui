@@ -20,7 +20,7 @@ type UseStylesParams = {
     direction?: ElevationDirection;
     shadowColor?: ElevationShadowColor;
   };
-};
+}
 
 const DEFAULT_PARAMS = {
   elevation: {

@@ -1,14 +1,10 @@
 import clsx from 'clsx';
 import { forwardRef } from 'react';
-import type { Except } from 'type-fest';
+import { Except } from 'type-fest';
 
 import {
-  Button,
-  type ButtonProps,
-  type PolyRefComponent,
-  Popover,
-  type PopoverContentProps,
-  Stack,
+  Button, ButtonProps, PolyRefComponent, Popover,
+  PopoverContentProps, Stack,
 } from '@/components';
 
 import { Elevator } from '../elevator';
@@ -23,7 +19,7 @@ export type SplitButtonProps = Pick<PopoverContentProps, 'side' | 'offset' | 'al
    * Pass the content for the popover.
    */
   children?: React.ReactNode;
-};
+}
 
 export const SplitButton = forwardRef(
   (
@@ -55,7 +51,11 @@ export const SplitButton = forwardRef(
     };
 
     return (
-      <Stack className={clsx(styles.SplitButton, className)} direction="row" inline={!fullWidth}>
+      <Stack
+        className={clsx(styles.SplitButton, className)}
+        direction="row"
+        inline={!fullWidth}
+      >
         <Button
           as={as}
           busy={busy}
@@ -68,14 +68,16 @@ export const SplitButton = forwardRef(
           {label}
         </Button>
         <Popover>
-          <Popover.Trigger>
-            <Button icon={icon} {...commonProps} />
-          </Popover.Trigger>
+          <Popover.Trigger><Button icon={icon} {...commonProps} /></Popover.Trigger>
           <Popover.Content side={side} align={align} offset={offset}>
-            <Elevator resting={2}>{children}</Elevator>
+            <Elevator resting={2}>
+              {children}
+            </Elevator>
           </Popover.Content>
         </Popover>
       </Stack>
     );
   },
-) as PolyRefComponent<typeof Button, SplitButtonProps & Except<ButtonProps, 'iconPosition' | 'iconColor'>>;
+) as PolyRefComponent<typeof Button,
+  SplitButtonProps & Except<ButtonProps, 'iconPosition' | 'iconColor'>
+>;

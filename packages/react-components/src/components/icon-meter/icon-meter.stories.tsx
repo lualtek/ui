@@ -16,7 +16,7 @@ const meta = {
       control: { type: 'radio' },
     },
   },
-  render: (args) => <IconMeter {...args} />,
+  render: args => <IconMeter {...args} />,
 } satisfies Meta<typeof IconMeter>;
 
 export default meta;

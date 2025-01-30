@@ -1,24 +1,20 @@
 'use client';
 
-import type { TokensTypes } from '@lualtek/tokens/platforms/web';
+import { TokensTypes } from '@lualtek/tokens/platforms/web';
 import tkns from '@lualtek/tokens/platforms/web/tokens.json';
 import clsx from 'clsx';
 import { forwardRef, useMemo } from 'react';
 
 import {
   Glow,
-  type GlowProps,
-  type PolyRefComponent,
-  type VibrancyBlur,
-  type VibrancyColor,
-  type VibrancySaturation,
-  useStyles,
+  GlowProps, PolyRefComponent,
+  useStyles, VibrancyBlur, VibrancyColor, VibrancySaturation,
 } from '@/components';
 
 import { ConditionalWrapper } from '../conditional-wrapper';
 import styles from './panel.module.css';
 
-type RadiusType = Exclude<TokensTypes['radius'], string> | 0;
+type RadiusType = Exclude<TokensTypes['radius'], string> | 0
 
 export type PanelProps = {
   /**
@@ -58,8 +54,8 @@ export type PanelProps = {
    */
   bordered?: boolean;
   /**
-   * Define the edge radius of the card.
-   */
+ * Define the edge radius of the card.
+ */
   radius?: TokensTypes['radius'] | [RadiusType?, RadiusType?, RadiusType?, RadiusType?];
   /**
    * Enable border on a specific side.
@@ -92,100 +88,93 @@ export type PanelProps = {
    * Set the rainbow colors of the glow effect.
    */
   rainbowColors?: GlowProps['rainbowColors'];
-};
+}
 
-export const Panel = forwardRef(
-  (
-    {
-      as: Component = 'div',
-      className,
-      children,
-      style,
-      vibrant = false,
-      vibrancyLevel = 'strong',
-      vibrancyColor,
-      vibrancySaturation,
-      bordered,
-      borderSide = 'all',
-      radius,
-      hPadding,
-      vPadding,
-      backgroundColor,
-      backgroundColorHover,
-      showGlow = false,
-      glowSpread,
-      glowColor,
-      rainbowColors,
-      ...otherProps
+export const Panel = forwardRef((
+  {
+    as: Component = 'div',
+    className,
+    children,
+    style,
+    vibrant = false,
+    vibrancyLevel = 'strong',
+    vibrancyColor,
+    vibrancySaturation,
+    bordered,
+    borderSide = 'all',
+    radius,
+    hPadding,
+    vPadding,
+    backgroundColor,
+    backgroundColorHover,
+    showGlow = false,
+    glowSpread,
+    glowColor,
+    rainbowColors,
+    ...otherProps
+  },
+  forwardedRef,
+) => {
+  const computedBackground = typeof backgroundColor === 'number' ? `var(--dimmed-${backgroundColor})` : backgroundColor;
+  const computedBackgroundHover = typeof backgroundColorHover === 'number' ? `var(--dimmed-${backgroundColorHover})` : backgroundColorHover;
+  const formatRadius = useMemo(() => {
+    if (!radius) {
+      return undefined;
+    }
+
+    if (!Array.isArray(radius)) {
+      return tkns.radius[radius];
+    }
+
+    return radius.map(r => (r !== 0 ? tkns.radius[r!] : 0)).join(' ');
+  }, [radius]);
+
+  const { vibrancy } = useStyles({
+    vibrancy: {
+      blur: vibrancyLevel,
+      saturation: vibrancySaturation,
+      color: vibrancyColor,
     },
-    forwardedRef,
-  ) => {
-    const computedBackground =
-      typeof backgroundColor === 'number' ? `var(--dimmed-${backgroundColor})` : backgroundColor;
-    const computedBackgroundHover =
-      typeof backgroundColorHover === 'number' ? `var(--dimmed-${backgroundColorHover})` : backgroundColorHover;
-    const formatRadius = useMemo(() => {
-      if (!radius) {
-        return undefined;
-      }
+  });
 
-      if (!Array.isArray(radius)) {
-        return tkns.radius[radius];
-      }
+  const dynamicStyle = useMemo(() => ({
+    '--radius': radius && formatRadius,
+    '--v-padding': vPadding ? tkns.space[vPadding] : 0,
+    '--h-padding': hPadding ? tkns.space[hPadding] : 0,
+    '--background': vibrant ? undefined : computedBackground,
+    '--background-hover': vibrant ? undefined : computedBackgroundHover,
+  }), [radius, vPadding, hPadding, vibrant, computedBackground, computedBackgroundHover, formatRadius]);
 
-      return radius.map((r) => (r !== 0 ? tkns.radius[r!] : 0)).join(' ');
-    }, [radius]);
-
-    const { vibrancy } = useStyles({
-      vibrancy: {
-        blur: vibrancyLevel,
-        saturation: vibrancySaturation,
-        color: vibrancyColor,
-      },
-    });
-
-    const dynamicStyle = useMemo(
-      () => ({
-        '--radius': radius && formatRadius,
-        '--v-padding': vPadding ? tkns.space[vPadding] : 0,
-        '--h-padding': hPadding ? tkns.space[hPadding] : 0,
-        '--background': vibrant ? undefined : computedBackground,
-        '--background-hover': vibrant ? undefined : computedBackgroundHover,
-      }),
-      [radius, vPadding, hPadding, vibrant, computedBackground, computedBackgroundHover, formatRadius],
-    );
-
-    return (
-      <ConditionalWrapper
-        condition={showGlow}
-        wrapper={(children) => (
-          <Glow
-            innerRadius={radius}
-            glowColor={glowColor ?? 'var(--dimmed-2)'}
-            spread={glowSpread}
-            glowPower={0}
-            borderOffset={-1}
-            borderWidth={1}
-            rainbowColors={rainbowColors}
-          >
-            {children}
-          </Glow>
-        )}
-      >
-        <Component
-          ref={forwardedRef}
-          className={clsx(styles.Panel, className)}
-          data-panel-bordered={bordered}
-          data-panel-border-side={borderSide}
-          data-panel-radius={Boolean(radius)}
-          data-panel-hover={Boolean(backgroundColorHover)}
-          style={{ ...dynamicStyle, ...style }}
-          {...(vibrant && vibrancy.attributes)}
-          {...otherProps}
+  return (
+    <ConditionalWrapper
+      condition={showGlow}
+      wrapper={children => (
+        <Glow
+          innerRadius={radius}
+          glowColor={glowColor ?? 'var(--dimmed-2)'}
+          spread={glowSpread}
+          glowPower={0}
+          borderOffset={-1}
+          borderWidth={1}
+          rainbowColors={rainbowColors}
         >
           {children}
-        </Component>
-      </ConditionalWrapper>
-    );
-  },
-) as PolyRefComponent<'div', PanelProps>;
+        </Glow>
+      )}
+    >
+      <Component
+        ref={forwardedRef}
+        className={clsx(styles.Panel, className)}
+        data-panel-bordered={bordered}
+        data-panel-border-side={borderSide}
+        data-panel-radius={Boolean(radius)}
+        data-panel-hover={Boolean(backgroundColorHover)}
+        style={{ ...dynamicStyle, ...style }}
+        {...vibrant && vibrancy.attributes}
+        {...otherProps}
+      >
+        {children}
+      </Component>
+    </ConditionalWrapper>
+  );
+}) as PolyRefComponent<'div', PanelProps>;

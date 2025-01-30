@@ -11,7 +11,7 @@ type PaginationType = Array<{
   browser: string;
   position: string;
   application: string;
-}>;
+}>
 
 const items: PaginationType = [
   {
@@ -427,10 +427,16 @@ const Template = ({ ...args }) => {
 
   return (
     <>
-      {currentItems?.map((item) => (
-        <h3 key={item.ip}>{item.ip}</h3>
+      {currentItems?.map(item => (
+        <h3 key={item.ip}>
+          {item.ip}
+        </h3>
       ))}
-      <Pagination {...args} itemsCount={items.length} onPageClick={(data) => handlePageClick(data)} />
+      <Pagination
+        {...args}
+        itemsCount={items.length}
+        onPageClick={data => handlePageClick(data)}
+      />
     </>
   );
 };
@@ -439,7 +445,7 @@ const meta = {
   title: 'Navigation/Pagination',
   component: Pagination,
   args: {},
-  render: (args) => <Template {...args} />,
+  render: args => <Template {...args} />,
 } satisfies Meta<typeof Pagination>;
 
 export default meta;

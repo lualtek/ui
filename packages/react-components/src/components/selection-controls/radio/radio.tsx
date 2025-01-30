@@ -1,14 +1,16 @@
 'use client';
 
 import clsx from 'clsx';
-import { LazyMotion, domAnimation, m } from 'motion/react';
-import { type ChangeEvent, type ComponentPropsWithRef, type ReactNode, forwardRef, useId } from 'react';
+import { domAnimation, LazyMotion, m } from 'motion/react';
+import {
+  ChangeEvent, forwardRef, ReactNode, useId,
+} from 'react';
 
-import { Stack, Text, type TextProps } from '@/components';
+import { Stack, Text, TextProps } from '@/components';
 
 import styles from '../selection-controls.module.css';
 
-export type RadioProps = ComponentPropsWithRef<'input'> & {
+export type RadioProps = React.ComponentPropsWithRef<'input'> & {
   /**
    * Set disabled state. The component is not interactive and grayed out.
    */
@@ -34,79 +36,81 @@ export type RadioProps = ComponentPropsWithRef<'input'> & {
    * @defaultValue "end"
    */
   labelPosition?: 'start' | 'end';
-};
+}
 
-type Properties = Record<
-  NonNullable<RadioProps['dimension']>,
-  {
-    text: {
-      size: TextProps['size'];
-      lh?: TextProps['lineHeight'];
-    };
-  }
->;
+type Properties = Record<NonNullable<RadioProps['dimension']>, {
+  text: {
+    size: TextProps['size'];
+    lh?: TextProps['lineHeight'];
+  };
+}>
 
-export const Radio = forwardRef<HTMLInputElement, RadioProps>(
-  (
-    { className, disabled, dimension = 'regular', labelPosition = 'end', onChange, label, ...otherProps },
-    forwardedRef,
-  ) => {
-    const uid = useId();
+export const Radio = forwardRef<HTMLInputElement, RadioProps>(({
+  className,
+  disabled,
+  dimension = 'regular',
+  labelPosition = 'end',
+  onChange,
+  label,
+  ...otherProps
+}, forwardedRef) => {
+  const uid = useId();
 
-    const properties: Properties = {
-      small: {
-        text: {
-          size: 16,
-          lh: 'extra-small',
-        },
+  const properties: Properties = {
+    small: {
+      text: {
+        size: 16,
+        lh: 'extra-small',
       },
-      regular: {
-        text: {
-          size: 18,
-        },
+    },
+    regular: {
+      text: {
+        size: 18,
       },
-    };
+    },
+  };
 
-    return (
-      <LazyMotion features={domAnimation} strict>
-        <Stack
-          direction={labelPosition === 'end' ? 'row' : 'row-reverse'}
-          vAlign="start"
-          columnGap={8}
-          fill={false}
-          inline
+  return (
+    <LazyMotion features={domAnimation} strict>
+      <Stack
+        direction={labelPosition === 'end' ? 'row' : 'row-reverse'}
+        vAlign="start"
+        columnGap={8}
+        fill={false}
+        inline
+      >
+        <m.span
+          className={styles.InputWrapper}
+          whileTap={!disabled ? { scale: 1.15 } : undefined}
+          tabIndex={-1}
+          transition={{ duration: 0.3, ease: 'backOut' }}
         >
-          <m.span
-            className={styles.InputWrapper}
-            whileTap={!disabled ? { scale: 1.15 } : undefined}
-            tabIndex={-1}
-            transition={{ duration: 0.3, ease: 'backOut' }}
+          <input
+            type="radio"
+            disabled={disabled}
+            aria-disabled={disabled}
+            data-control-dimension={dimension}
+            onChange={onChange}
+            className={clsx(styles.RadioInput, className)}
+            ref={forwardedRef}
+            id={label ? uid : undefined}
+            {...otherProps}
+          />
+        </m.span>
+        {label && (
+          <Text
+            as="label"
+            className={styles.Label}
+            lineHeight={properties[dimension].text.lh}
+            htmlFor={uid}
+            size={properties[dimension].text.size}
           >
-            <input
-              type="radio"
-              disabled={disabled}
-              aria-disabled={disabled}
-              data-control-dimension={dimension}
-              onChange={onChange}
-              className={clsx(styles.CheckboxInput, styles.RadioInput, className)}
-              ref={forwardedRef}
-              id={label ? uid : undefined}
-              {...otherProps}
-            />
-          </m.span>
-          {label && (
-            <Text
-              as="label"
-              className={styles.Label}
-              lineHeight={properties[dimension].text.lh}
-              htmlFor={uid}
-              size={properties[dimension].text.size}
-            >
-              {label}
-            </Text>
-          )}{' '}
-        </Stack>
-      </LazyMotion>
-    );
-  },
-);
+            {label}
+          </Text>
+        )}
+        {' '}
+
+      </Stack>
+    </LazyMotion>
+  );
+});

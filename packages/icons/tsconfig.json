@@ -2,6 +2,6 @@
   "extends": "tsconfig/base.json",
   "compilerOptions": {
     "baseUrl": ".",
-    "downlevelIteration": true
+    "downlevelIteration": true,
   }
 }

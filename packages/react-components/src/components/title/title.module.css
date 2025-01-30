@@ -99,6 +99,7 @@
     &.Display {
       --fs-min: 4.2rem;
       --fs-max: 5.6rem;
+
       font-family: token(--font-family-heading);
       font-weight: token(--font-weight-regular);
       letter-spacing: -0.03em;

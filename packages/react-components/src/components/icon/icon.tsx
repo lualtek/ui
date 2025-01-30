@@ -1,10 +1,16 @@
 'use client';
 
-import type { IconNames } from '@lualtek/icons';
+import { IconNames } from '@lualtek/icons';
 import sprite from '@lualtek/icons/sprite';
-import type { TokensTypes } from '@lualtek/tokens/platforms/web';
+import { TokensTypes } from '@lualtek/tokens/platforms/web';
 import clsx from 'clsx';
-import { Children, type ReactElement, cloneElement, forwardRef, useMemo } from 'react';
+import {
+  Children,
+  cloneElement,
+  forwardRef,
+  ReactElement,
+  useMemo,
+} from 'react';
 
 import styles from './icon.module.css';
 
@@ -21,13 +27,19 @@ export type IconProps = React.ComponentPropsWithRef<'svg'> & {
    * @defaultValue 18
    */
   dimension?: TokensTypes['icon']['size'];
-};
+}
 
-export const Icon = forwardRef<SVGSVGElement, IconProps>(
-  ({ className, source, dimension = 18, fill, ...otherProps }, forwardedRef) => {
-    const dynamicStyle = useMemo(() => (Number(dimension) < 18 ? 'solid' : 'duotone'), [dimension]);
+export const Icon = forwardRef<SVGSVGElement, IconProps>(({
+  className,
+  source,
+  dimension = 18,
+  fill,
+  ...otherProps
+}, forwardedRef) => {
+  const dynamicStyle = useMemo(() => (Number(dimension) < 18 ? 'solid' : 'duotone'), [dimension]);
 
-    return typeof source === 'string' ? (
+  return (typeof source === 'string')
+    ? (
       <svg
         aria-hidden="true"
         width={dimension}
@@ -39,17 +51,19 @@ export const Icon = forwardRef<SVGSVGElement, IconProps>(
       >
         <use href={`${sprite}#${dynamicStyle}/${source}`} />
       </svg>
-    ) : (
+    )
+    : (
       <>
-        {Children.map(source, (child: ReactElement) =>
-          cloneElement(child, {
+        {Children.map(source, (child: ReactElement) => cloneElement(
+          child,
+          {
             className,
             'aria-hidden': 'true',
             width: dimension,
             height: dimension,
-          }),
-        )}
+          },
+        ))}
       </>
     );
-  },
-);
+});
+

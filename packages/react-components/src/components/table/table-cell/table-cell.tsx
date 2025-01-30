@@ -1,10 +1,10 @@
-import type { SortDirection } from '@tanstack/react-table';
+import { SortDirection } from '@tanstack/react-table';
 import clsx from 'clsx';
 import { forwardRef, useMemo } from 'react';
 
-import type { PolyRefComponent } from '@/components';
+import { PolyRefComponent } from '@/components';
 
-import type { CustomColumnMeta } from '../types';
+import { CustomColumnMeta } from '../types';
 import styles from './table-cell.module.css';
 
 type TableCellProps = CustomColumnMeta & {
@@ -12,7 +12,7 @@ type TableCellProps = CustomColumnMeta & {
    * Set the default sorting direction of the column.
    *
    * @defaultValue false
-   */
+  */
   sorting?: false | SortDirection;
   /**
    * Enable sorting change on the column.
@@ -37,7 +37,7 @@ type TableCellProps = CustomColumnMeta & {
    * Used only when `canSort` is `true`.
    */
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
-};
+}
 
 export const TableCell = forwardRef(
   (
@@ -56,14 +56,11 @@ export const TableCell = forwardRef(
     },
     forwardedRef,
   ) => {
-    const dynamicStyle = useMemo(
-      () => ({
-        '--width': width ? `${width}px` : undefined,
-        '--min-width': minWidth ? `${minWidth}px` : undefined,
-        '--text-align': align,
-      }),
-      [align, width, minWidth],
-    );
+    const dynamicStyle = useMemo(() => ({
+      '--width': width ? `${width}px` : undefined,
+      '--min-width': minWidth ? `${minWidth}px` : undefined,
+      '--text-align': align,
+    }), [align, width, minWidth]);
 
     return (
       <Component

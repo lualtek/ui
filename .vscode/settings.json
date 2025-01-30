@@ -1,10 +1,17 @@
 {
+  "stylelint.enable": true,
+  "css.validate": false,
+  "editor.formatOnSave": false,
   "javascript.validate.enable": false,
   "typescript.tsdk": "./node_modules/typescript/lib",
-  "cssvar.files": ["./node_modules/@lualtek/themes/platforms/web/default/light.css"],
+  "cssvar.files": [
+    "./node_modules/@lualtek/themes/platforms/web/default/light.css"
+  ],
   // Do not ignore node_modules css files, which is ignored by default
   "cssvar.ignore": [],
-  "cssvar.extensions": ["css", "postcss", "jsx", "tsx"],
+  "cssvar.extensions": [
+    "css", "postcss","jsx", "tsx"
+  ],
   "cssEnvVarsAutocomplete.envFiles": ["./node_modules/@lualtek/tokens/platforms/web/tokens.css"],
   "explorer.fileNesting.patterns": {
     "*.ts": "${capture}.js",
@@ -14,13 +21,9 @@
     "tsconfig.json": "tsconfig.*.json",
     "package.json": "sentry.*.config.js, biome.json, .npmrc, .graphqlrc, pnpm-workspace.yaml, next.config.js, *.config.mjs, .npmrc, *.config.js, *.config.ts, *.config.cjs, package-lock.json, pnpm-lock.yaml, jest.config.json"
   },
-  "css.validate": false,
-  "editor.formatOnSave": true,
-  "editor.defaultFormatter": "biomejs.biome",
   "editor.codeActionsOnSave": {
-    "source.fixAll.biome": "explicit",
-    "quickfix.biome": "explicit",
-    "source.organizeImports.biome": "explicit"
+    "source.fixAll.eslint": "explicit",
+    "source.fixAll.stylelint": "explicit"
   },
   "[css]": {
     "editor.defaultFormatter": "biomejs.biome"

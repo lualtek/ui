@@ -8,7 +8,7 @@ const meta = {
   args: {
     vertical: false,
   },
-  render: (args) => <Separator {...args} />,
+  render: args => <Separator {...args} />,
 } satisfies Meta<typeof Separator>;
 
 export default meta;
@@ -24,9 +24,5 @@ export const Vertical = {
   args: {
     vertical: true,
   },
-  render: (args) => (
-    <div style={{ height: '500px' }}>
-      <Separator {...args} />
-    </div>
-  ),
+  render: args => <div style={{ height: '500px' }}><Separator {...args} /></div>,
 } satisfies Story;

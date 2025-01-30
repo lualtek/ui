@@ -1,11 +1,11 @@
 'use client';
 
-import type { TokensTypes } from '@lualtek/tokens/platforms/web';
+import { TokensTypes } from '@lualtek/tokens/platforms/web';
 import tkns from '@lualtek/tokens/platforms/web/tokens.json';
 import clsx from 'clsx';
 import { forwardRef, useMemo } from 'react';
 
-import type { PolyRefComponent } from '@/components';
+import { PolyRefComponent } from '@/components';
 
 import styles from './stack.module.css';
 
@@ -60,7 +60,7 @@ export type StackProps = {
    * @defaultValue 'column'
    */
   direction?: 'row' | 'column' | 'row-reverse' | 'column-reverse';
-};
+}
 
 export const Stack = forwardRef(
   (
@@ -84,29 +84,24 @@ export const Stack = forwardRef(
     forwardedRef,
   ) => {
     const Component = as ?? 'div';
+    const alignmentTemplate = (prop: string) => {
+      if (prop.includes('start') || prop.includes('end')) {
+        return `flex-${prop}`;
+      }
 
-    const alignmentTemplate = useMemo(
-      () => (prop: string) => {
-        if (prop.includes('start') || prop.includes('end')) {
-          return `flex-${prop}`;
-        }
+      return prop;
+    };
 
-        return prop;
-      },
-      [],
-    );
-
-    const dynamicStyle = useMemo(
-      () => ({
+    const dynamicStyle = useMemo(() => (
+      {
         '--r-gap': rowGap ? tkns.space[rowGap] : 0,
         '--c-gap': columnGap ? tkns.space[columnGap] : 0,
         '--v-align': vAlign && alignmentTemplate(vAlign),
         '--h-align': hAlign && alignmentTemplate(hAlign),
         '--v-padding': vPadding ? tkns.space[vPadding] : 0,
         '--h-padding': hPadding ? tkns.space[hPadding] : 0,
-      }),
-      [alignmentTemplate, columnGap, hAlign, hPadding, rowGap, vAlign, vPadding],
-    );
+      }
+    ), [columnGap, hAlign, hPadding, rowGap, vAlign, vPadding]);
 
     return (
       <Component

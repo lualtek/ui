@@ -1,9 +1,11 @@
 'use client';
 
-import type { TokensTypes } from '@lualtek/tokens/platforms/web';
+import { TokensTypes } from '@lualtek/tokens/platforms/web';
 import tkns from '@lualtek/tokens/platforms/web/tokens.json';
 import clsx from 'clsx';
-import { type ReactNode, forwardRef, useMemo } from 'react';
+import {
+  forwardRef, ReactNode, useMemo,
+} from 'react';
 
 import styles from './grid.module.css';
 import { GridItem } from './item/grid-item';
@@ -60,59 +62,52 @@ export type GridProps = React.ComponentPropsWithRef<'ul'> & {
    * Set the vertical padding (top/bottom)
    */
   vPadding?: TokensTypes['space'];
-};
+}
 
 type GridComponent = React.ForwardRefExoticComponent<GridProps> & {
-  // biome-ignore lint/style/useNamingConvention: This is not a prop but a sub-component
   Item: typeof GridItem;
-};
+}
 
-export const Grid = forwardRef<HTMLUListElement, GridProps>(
-  (
+export const Grid = forwardRef<HTMLUListElement, GridProps>(({
+  className,
+  children,
+  columns,
+  rows,
+  rowGap,
+  columnGap,
+  style,
+  filling = 'fill',
+  colMinWidth = '10rem',
+  rowMinHeight = '1fr',
+  hPadding,
+  vPadding,
+  ...otherProps
+}, forwardedRef) => {
+  const dynamicStyle = useMemo(() => (
     {
-      className,
-      children,
-      columns,
-      rows,
-      rowGap,
-      columnGap,
-      style,
-      filling = 'fill',
-      colMinWidth = '10rem',
-      rowMinHeight = '1fr',
-      hPadding,
-      vPadding,
-      ...otherProps
-    },
-    forwardedRef,
-  ) => {
-    const dynamicStyle = useMemo(
-      () => ({
-        '--row-gap': rowGap ? tkns.space[rowGap] : 0,
-        '--column-gap': columnGap ? tkns.space[columnGap] : 0,
-        '--columns': columns,
-        '--column-min-w': colMinWidth,
-        '--rows': rows,
-        '--row-min-h': rowMinHeight,
-        '--v-padding': vPadding ? tkns.space[vPadding] : 0,
-        '--h-padding': hPadding ? tkns.space[hPadding] : 0,
-      }),
-      [colMinWidth, columnGap, columns, hPadding, rowGap, rowMinHeight, rows, vPadding],
-    );
+      '--row-gap': rowGap ? tkns.space[rowGap] : 0,
+      '--column-gap': columnGap ? tkns.space[columnGap] : 0,
+      '--columns': columns,
+      '--column-min-w': colMinWidth,
+      '--rows': rows,
+      '--row-min-h': rowMinHeight,
+      '--v-padding': vPadding ? tkns.space[vPadding] : 0,
+      '--h-padding': hPadding ? tkns.space[hPadding] : 0,
+    }
+  ), [colMinWidth, columnGap, columns, hPadding, rowGap, rowMinHeight, rows, vPadding]);
 
-    return (
-      <ul
-        className={clsx(styles.Grid, className)}
-        style={{ ...dynamicStyle, ...style }}
-        data-grid-filling-type={filling}
-        data-stack-has-padding={Boolean(hPadding ?? vPadding)}
-        ref={forwardedRef}
-        {...otherProps}
-      >
-        {children}
-      </ul>
-    );
-  },
-) as GridComponent;
+  return (
+    <ul
+      className={clsx(styles.Grid, className)}
+      style={{ ...dynamicStyle, ...style }}
+      data-grid-filling-type={filling}
+      data-stack-has-padding={Boolean(hPadding ?? vPadding)}
+      ref={forwardedRef}
+      {...otherProps}
+    >
+      {children}
+    </ul>
+  );
+}) as GridComponent;
 
 Grid.Item = GridItem;

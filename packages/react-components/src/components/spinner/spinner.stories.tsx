@@ -15,7 +15,7 @@ const meta = {
       control: { type: 'radio' },
     },
   },
-  render: (args) => <Spinner {...args} data-chromatic="ignore" />,
+  render: args => <Spinner {...args} data-chromatic="ignore" />,
 } satisfies Meta<typeof Spinner>;
 
 export default meta;

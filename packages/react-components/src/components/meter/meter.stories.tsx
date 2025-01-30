@@ -17,31 +17,22 @@ const meta = {
   argTypes: {
     value: {
       control: {
-        type: 'range',
-        min: 0,
-        max: 6,
-        step: 0.1,
+        type: 'range', min: 0, max: 6, step: 0.1,
       },
     },
     low: {
       control: {
-        type: 'range',
-        min: 0,
-        max: 6,
+        type: 'range', min: 0, max: 6,
       },
     },
     high: {
       control: {
-        type: 'range',
-        min: 0,
-        max: 6,
+        type: 'range', min: 0, max: 6,
       },
     },
     optimum: {
       control: {
-        type: 'range',
-        min: 0,
-        max: 6,
+        type: 'range', min: 0, max: 6,
       },
     },
     dimension: { options: ['small', 'regular'], control: { type: 'inline-radio' } },

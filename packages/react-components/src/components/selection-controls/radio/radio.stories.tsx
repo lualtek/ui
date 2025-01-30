@@ -10,7 +10,7 @@ const meta = {
     disabled: false,
     dimension: 'regular',
   },
-  render: (args) => (
+  render: args => (
     <fieldset>
       <Radio {...args} defaultChecked value="1" name="story" />
       <Radio {...args} value="2" name="story" />
@@ -26,7 +26,7 @@ type Story = StoryObj<typeof meta>;
 export const Default = {} satisfies Story;
 
 export const Indeterminate = {
-  render: (args) => (
+  render: args => (
     <fieldset>
       <Radio {...args} value="1" name="story" />
       <Radio {...args} value="2" name="story" />

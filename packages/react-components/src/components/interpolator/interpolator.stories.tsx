@@ -2,7 +2,10 @@ import { useArgs } from '@storybook/preview-api';
 import type { Meta, StoryObj } from '@storybook/react';
 import { useCallback } from 'react';
 
-import { Avatar, Button, Icon, LinearProgress, Stack } from '../..';
+import {
+  Avatar,
+  Button, Icon, LinearProgress, Stack,
+} from '../..';
 import { Interpolator } from './interpolator';
 
 const meta = {
@@ -18,20 +21,23 @@ const meta = {
   render: function Render({ ...args }) {
     const [{ isInterpolating }, updateArgs] = useArgs<{ isInterpolating: boolean }>();
 
-    const handleClose = useCallback(() => {
-      updateArgs({ isInterpolating: true });
-      setTimeout(() => {
-        updateArgs({ isInterpolating: false });
-      }, 2000);
-    }, [updateArgs]);
+    const handleClose = useCallback(
+      () => {
+        updateArgs({ isInterpolating: true });
+        setTimeout(() => {
+          updateArgs({ isInterpolating: false });
+        }, 2000);
+      }, [updateArgs],
+    );
 
     return (
       <Stack hAlign="center" vAlign="center" fill={false} rowGap={88}>
-        <button type="button" onClick={() => handleClose()}>
-          Interpolate
-        </button>
+        <button type="button" onClick={() => handleClose()}>Interpolate</button>
 
-        <Interpolator {...args} interpolating={isInterpolating} />
+        <Interpolator
+          {...args}
+          interpolating={isInterpolating}
+        />
       </Stack>
     );
   },

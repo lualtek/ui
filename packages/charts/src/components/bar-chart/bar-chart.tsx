@@ -1,11 +1,17 @@
-import { useEffect, useRef, useState, useTransition } from 'react';
-import { Bar, BarChart as ReBarChart, YAxis } from 'recharts';
-import type { Except } from 'type-fest';
+import {
+  useEffect, useRef, useState, useTransition,
+} from 'react';
+import {
+  Bar,
+  BarChart as ReBarChart,
+  YAxis,
+} from 'recharts';
+import { Except } from 'type-fest';
 
 import { useChartAxis } from '@/charts/hooks/use-chart-axis';
 
-import { BaseChart, type BaseChartProps, DENSITIES } from '../base-chart';
-import type { ChartDataBaseType } from '../base-chart/base-chart';
+import { BaseChart, BaseChartProps, DENSITIES } from '../base-chart';
+import { ChartDataBaseType } from '../base-chart/base-chart';
 import { getChartDefaultColor } from '../base-chart/colors';
 
 export type BarProps<D> = {
@@ -39,12 +45,14 @@ export type BarProps<D> = {
   name?: string;
 };
 
-export type BarChartAccessoryProps<T = Record<string, unknown>> = Except<BaseChartProps, 'renderChart' | 'children'> & {
+export type BarChartAccessoryProps<T = Record<string, unknown>> = Except<
+  BaseChartProps, 'renderChart' | 'children'
+> & {
   /**
-   * Whether to show the Y axis.
-   *
-   * @defaultValue true
-   */
+ * Whether to show the Y axis.
+ *
+ * @defaultValue true
+ */
   showYAxis?: boolean;
   /**
    * The gap between bar groups
@@ -56,18 +64,18 @@ export type BarChartAccessoryProps<T = Record<string, unknown>> = Except<BaseCha
    * Set the size of the bars
    */
   barSize?: number | string;
-} & T;
+} & T
 
 export type BarChartProps<D extends ChartDataBaseType, B extends BarProps<D>> = BarChartAccessoryProps<{
   /**
    * The data to render.
    */
-  data: Array<D>;
+  data: D[];
   /**
    * The chart series/series to render.
    */
-  series: Array<B>;
-}>;
+  series: B[];
+}>
 
 export function BarChart<D extends ChartDataBaseType, B extends BarProps<D>>({
   className,
@@ -91,8 +99,14 @@ export function BarChart<D extends ChartDataBaseType, B extends BarProps<D>>({
   const [isAnimationActive, setIsAnimationActive] = useState(disableAnimation);
   const [currentChartWidth, setCurrentChartWidth] = useState<number>();
   const [, startTransition] = useTransition();
-
-  const { yAxisWidthBiaxial, yAxisWidthNotBiaxial, hasLeftY, hasRightY } = useChartAxis({
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+  const {
+    yAxisWidthBiaxial,
+    yAxisWidthNotBiaxial,
+    hasLeftY,
+    hasRightY,
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+  } = useChartAxis({
     data,
     series,
     yDomainLeft,
@@ -124,7 +138,7 @@ export function BarChart<D extends ChartDataBaseType, B extends BarProps<D>>({
       onResize={handleResize}
       density={density}
       cursorStyle={{ strokeWidth: 0 }}
-      renderChart={(children) => (
+      renderChart={children => (
         <ReBarChart
           data={data}
           accessibilityLayer={focusable}
@@ -145,6 +159,7 @@ export function BarChart<D extends ChartDataBaseType, B extends BarProps<D>>({
             type={yTypeRight}
             hide={!showYAxis}
             tickCount={DENSITIES[density]}
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
             width={yAxisWidthBiaxial}
             tick={{ fill: 'var(--dimmed-4)', fontSize: '0.8em' }}
             tickLine={{ stroke: 'var(--dimmed-2)' }}
@@ -161,6 +176,7 @@ export function BarChart<D extends ChartDataBaseType, B extends BarProps<D>>({
             type={yTypeLeft}
             hide={!showYAxis}
             tickCount={DENSITIES[density]}
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
             width={yAxisWidthNotBiaxial}
             tick={{ fill: 'var(--dimmed-4)', fontSize: '0.8em' }}
             tickLine={{ stroke: 'var(--dimmed-2)' }}
@@ -169,12 +185,24 @@ export function BarChart<D extends ChartDataBaseType, B extends BarProps<D>>({
           />
         )}
 
-        {series.map(({ side, color, ...barProps }, index) => {
+        {series.map(({
+          side,
+          color,
+          ...barProps
+        }, index) => {
           const computedStrokeColor = color ?? getChartDefaultColor(index);
 
-          return <Bar {...barProps} isAnimationActive={isAnimationActive} fill={computedStrokeColor} yAxisId={side} />;
+          return (
+            <Bar
+              {...barProps}
+              isAnimationActive={isAnimationActive}
+              fill={computedStrokeColor}
+              yAxisId={side}
+            />
+          );
         })}
       </>
     </BaseChart>
   );
 }
+

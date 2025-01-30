@@ -1,9 +1,11 @@
 'use client';
 
 import clsx from 'clsx';
-import { forwardRef, useMemo } from 'react';
+import {
+  forwardRef, useMemo,
+} from 'react';
 
-import type { PolyRefComponent } from '@/components';
+import { PolyRefComponent } from '@/components';
 
 import styles from './clamp-text.module.css';
 
@@ -17,16 +19,24 @@ export type ClampTextProps = {
    * Put the text as inline element instead of block.
    */
   inline?: boolean;
-};
+}
 
 export const ClampText = forwardRef(
-  ({ as: Component = 'span', className, children, rows = 1, style, inline, ...otherProps }, forwardedRef) => {
-    const dynamicStyle = useMemo(
-      () => ({
-        '--r': rows,
-      }),
-      [rows],
-    );
+  (
+    {
+      as: Component = 'span',
+      className,
+      children,
+      rows = 1,
+      style,
+      inline,
+      ...otherProps
+    },
+    forwardedRef,
+  ) => {
+    const dynamicStyle = useMemo(() => ({
+      '--r': rows,
+    }), [rows]);
 
     return (
       <Component

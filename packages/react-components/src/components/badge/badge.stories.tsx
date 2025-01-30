@@ -11,9 +11,13 @@ const meta = {
     showBadge: true,
   },
   tags: ['code-only'],
-  render: (args) => (
+  render: args => (
     <Badge {...args}>
-      <IconButton aria-label="Enable or disable notifications" icon="bell" dimension="big" />
+      <IconButton
+        aria-label="Enable or disable notifications"
+        icon="bell"
+        dimension="big"
+      />
     </Badge>
   ),
 } satisfies Meta<typeof Badge>;

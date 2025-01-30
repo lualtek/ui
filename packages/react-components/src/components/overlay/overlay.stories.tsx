@@ -22,12 +22,16 @@ const meta = {
   args: {
     obfuscate: true,
     children: (
-      <Stack fill={false} hAlign="center" vAlign="center">
+      <Stack
+        fill={false}
+        hAlign="center"
+        vAlign="center"
+      >
         I am over the top
       </Stack>
     ),
   },
-  render: (args) => <Template {...args} />,
+  render: args => <Template {...args} />,
 } satisfies Meta<typeof Overlay>;
 
 export default meta;

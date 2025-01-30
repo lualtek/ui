@@ -19,7 +19,10 @@ const meta = {
         <Grid.Item style={{ background: 'var(--dimmed-2)', padding: 24 }}>7</Grid.Item>
         <Grid.Item style={{ background: 'var(--dimmed-2)', padding: 24 }}>8</Grid.Item>
         <Grid.Item style={{ background: 'var(--dimmed-2)', padding: 24 }}>9</Grid.Item>
-        <Grid.Item column="span 2" style={{ background: 'var(--dimmed-2)', padding: 24 }}>
+        <Grid.Item
+          column="span 2"
+          style={{ background: 'var(--dimmed-2)', padding: 24 }}
+        >
           10
         </Grid.Item>
         <Grid.Item style={{ background: 'var(--dimmed-2)', padding: 24 }}>11</Grid.Item>
@@ -35,8 +38,13 @@ const meta = {
       </>
     ),
   },
-  argTypes: {},
-  render: (args) => <Grid {...args}>{args.children}</Grid>,
+  argTypes: {
+  },
+  render: args => (
+    <Grid {...args}>
+      {args.children}
+    </Grid>
+  ),
 } satisfies Meta<typeof Grid>;
 
 export default meta;

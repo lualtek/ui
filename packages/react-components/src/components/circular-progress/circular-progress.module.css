@@ -50,15 +50,17 @@
       z-index: -1;
       border: 1px solid var(--global-background);
       box-shadow: inset 0 0 0 1px var(--global-inner-contrast-border);
-      background: conic-gradient(
-        var(--progress-color, var(--cta-default)),
-        var(--progress-color, var(--cta-default)) var(--progress, 0%),
-        var(--track-bg) var(--progress, 0%) 100%
-      );
-      mask-image: radial-gradient(
-        transparent calc(71% - var(--track-size)),
-        black calc(71.5% - var(--track-size) + 0.5px)
-      );
+      background:
+        conic-gradient(
+          var(--progress-color, var(--cta-default)),
+          var(--progress-color, var(--cta-default)) var(--progress, 0%),
+          var(--track-bg) var(--progress, 0%) 100%
+        );
+      mask-image:
+        radial-gradient(
+          transparent calc(71% - var(--track-size)),
+          black calc(71.5% - var(--track-size) + 0.5px)
+        );
     }
   }
 

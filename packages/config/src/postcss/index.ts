@@ -7,11 +7,10 @@ const flatTokens: Record<string, any> = flatten(jsonTokens, {
   delimiter: '-',
 });
 
-const prepareTokens = () =>
-  Object.keys(flatTokens).reduce<Record<string, string>>((acc, key) => {
-    const newKey = key;
-    acc[newKey] = `${flatTokens[key]}`;
-    return acc;
-  }, {});
+const prepareTokens = () => Object.keys(flatTokens).reduce<Record<string, string>>((acc, key) => {
+  const newKey = key;
+  acc[newKey] = `${flatTokens[key]}`;
+  return acc;
+}, {});
 
 export const getConfigObject = () => postcssObjConfig(prepareTokens());

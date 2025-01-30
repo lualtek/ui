@@ -42,15 +42,10 @@ export const WithCustomMarker = {
   args: {},
   render: ({ ...args }) => (
     <List as="ul" {...args}>
-      <List.Li marker="chat" markerColor="green" hideMarker>
-        List item text
-      </List.Li>
-      <List.Li marker="chat" markerColor="green">
-        List item text List item textList text
-      </List.Li>
-      <List.Li marker="chat" markerColor="green">
-        List item text
-      </List.Li>
+      <List.Li marker="chat" markerColor="green" hideMarker>List item text</List.Li>
+      <List.Li marker="chat" markerColor="green">List item text List item textList text</List.Li>
+      <List.Li marker="chat" markerColor="green">List item text</List.Li>
     </List>
   ),
 } satisfies Story;
+

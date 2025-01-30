@@ -30,7 +30,12 @@ module.exports = {
     {
       name: 'removeAttrs',
       params: {
-        attrs: ['*:fill:#000000', '*:fill:black', '*:fill:#000', '*:fill:none'],
+        attrs: [
+          '*:fill:#000000',
+          '*:fill:black',
+          '*:fill:#000',
+          '*:fill:none',
+        ],
       },
     },
   ],

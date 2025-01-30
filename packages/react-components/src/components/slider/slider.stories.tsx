@@ -21,7 +21,7 @@ const meta = {
       control: { type: 'inline-radio' },
     },
   },
-  render: (args) => (
+  render: args => (
     <div style={{ height: 50 }}>
       <Slider {...args} />
     </div>
@@ -50,7 +50,7 @@ export const ValueLabel = {
     defaultValue: [6000, 9000],
     min: 5000,
     max: 10000,
-    valueLabel: (val) => (val ? `${new Intl.NumberFormat('en-GB').format(val)}K` : ''),
+    valueLabel: val => (val ? `${new Intl.NumberFormat('en-GB').format(val)}K` : ''),
   },
 } satisfies Story;
 
@@ -66,25 +66,41 @@ export const Dynamic = {
     // Calculate limo using useMemo
     const limo = useMemo(() => Math.max(0, 100 - sabbia - argilla), [sabbia, argilla]);
 
-    const handleSabbiaChange = (values: Array<number>) => {
+    const handleSabbiaChange = (values: number[]) => {
       const value = values[0];
-      const adjustedArgilla = argilla > 100 - value ? 100 - value : argilla;
+      const adjustedArgilla = argilla > (100 - value) ? (100 - value) : argilla;
       setSabbia({ sabbia: value });
       setArgilla({ argilla: adjustedArgilla });
     };
 
-    const handleArgillaChange = (values: Array<number>) => {
+    const handleArgillaChange = (values: number[]) => {
       const value = values[0];
-      const adjustedSabbia = sabbia > 100 - value ? 100 - value : sabbia;
+      const adjustedSabbia = sabbia > (100 - value) ? (100 - value) : sabbia;
       setArgilla({ argilla: value });
       setSabbia({ sabbia: adjustedSabbia });
     };
 
     return (
       <div>
-        <Slider label="Sabbia" value={[sabbia]} defaultValue={[sabbia]} onValueCommit={handleSabbiaChange} {...args} />
-        <Slider label="Argilla" value={[argilla]} onValueCommit={handleArgillaChange} {...args} />
-        <Slider label="Limo" value={[limo]} disabled {...args} />
+        <Slider
+          label="Sabbia"
+          value={[sabbia]}
+          defaultValue={[sabbia]}
+          onValueCommit={handleSabbiaChange}
+          {...args}
+        />
+        <Slider
+          label="Argilla"
+          value={[argilla]}
+          onValueCommit={handleArgillaChange}
+          {...args}
+        />
+        <Slider
+          label="Limo"
+          value={[limo]}
+          disabled
+          {...args}
+        />
       </div>
     );
   },

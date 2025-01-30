@@ -1,8 +1,11 @@
 import { useState } from '@storybook/preview-api';
-import type { Meta, StoryObj } from '@storybook/react';
-import { type ReactNode, useRef } from 'react';
+import { Meta, StoryObj } from '@storybook/react';
+import { ReactNode, useRef } from 'react';
 
-import { Button, InlineToast, Toast, ToastAction, ToastProvider, ToastViewport } from '../..';
+import {
+  Button, InlineToast, Toast, ToastAction,
+  ToastProvider, ToastViewport,
+} from '../..';
 
 const meta = {
   title: 'Dialogs/Inline Toast',
@@ -17,7 +20,11 @@ const meta = {
       control: { type: 'radio' },
     },
   },
-  render: (args) => <InlineToast {...args}>{args.children}</InlineToast>,
+  render: args => (
+    <InlineToast {...args}>
+      {args.children}
+    </InlineToast>
+  ),
 } satisfies Meta<typeof InlineToast>;
 
 export default meta;
@@ -42,11 +49,11 @@ export const WithActions = {
     dismissable: true,
     actions: (
       <>
-        {}
+        {/* eslint-disable-next-line no-alert */}
         <ToastAction altText="Click me" onClick={() => alert('dio')}>
           Click Me
         </ToastAction>
-        {}
+        {/* eslint-disable-next-line no-alert */}
         <ToastAction altText="Click me" onClick={() => alert('dio')}>
           Click Me
         </ToastAction>
@@ -64,7 +71,7 @@ const TemplateToast = ({ ...args }) => {
   const toastsShown = useRef(0);
 
   const onShowToast = () => {
-    setToasts((oldToasts) => [
+    setToasts(oldToasts => [
       ...oldToasts,
       {
         title: `Toast super ${toastsShown.current * 100000}`,
@@ -79,7 +86,11 @@ const TemplateToast = ({ ...args }) => {
       <Button onClick={onShowToast}>Click me</Button>
 
       {toasts.map(({ title, children }) => (
-        <Toast key={title} title={title} {...args}>
+        <Toast
+          key={title}
+          title={title}
+          {...args}
+        >
           {children}
         </Toast>
       ))}

@@ -6,9 +6,11 @@ import { GradientText } from './gradient-text';
 const meta = {
   title: 'Typography/Gradient Text',
   component: GradientText,
-  render: (args) => (
+  render: args => (
     <Title level="4">
-      <GradientText {...args}>Gradient Title</GradientText>
+      <GradientText {...args}>
+        Gradient Title
+      </GradientText>
     </Title>
   ),
   argTypes: {

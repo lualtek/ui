@@ -11,7 +11,7 @@
     }
 
     & > button:nth-child(2) {
-      --separator-color: oklch(0 0 40deg / 40%);
+      --separator-color: oklch(0% 0 40deg / 40%);
 
       border-top-left-radius: 0;
       border-bottom-left-radius: 0;
@@ -19,6 +19,7 @@
 
       &[data-button-kind='primary']:not([aria-disabled='true']) {
         --separator-color: var(--highlight-brand-background);
+
       }
 
       &:is([data-button-dimension='regular']) {

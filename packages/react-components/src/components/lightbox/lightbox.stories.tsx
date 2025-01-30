@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 
 import { BlankButton } from '../..';
-import { Lightbox, type LightboxProps } from './lightbox';
+import { Lightbox, LightboxProps } from './lightbox';
 
 const meta = {
   title: 'Dialogs/Lightbox',
@@ -24,10 +24,19 @@ const meta = {
               setIsOpen({ isOpen: true });
             }}
           >
-            <img style={{ width: 150, height: 150 }} src={item.image} alt={item.title} />
+            <img
+              style={{ width: 150, height: 150 }}
+              src={item.image}
+              alt={item.title}
+            />
           </BlankButton>
         ))}
-        <Lightbox {...args} selectedState={state} onClose={() => setIsOpen({ isOpen: false })} isOpen={isOpen} />
+        <Lightbox
+          {...args}
+          selectedState={state}
+          onClose={() => setIsOpen({ isOpen: false })}
+          isOpen={isOpen}
+        />
       </>
     );
   },
@@ -35,20 +44,16 @@ const meta = {
     onClose: () => {
       alert('closed');
     },
-    data: [
-      {
-        image: 'https://ik.imagekit.io/thingstek/photos/installations/aa-device-con-pannello_bJ5kjnb5SmR',
-        title: 'Image 1',
-      },
-      {
-        image: 'https://ik.imagekit.io/thingstek/photos/installations/aa-termoigrometro_4hIRcoH4bZcf.jpeg',
-        title: 'Image 1',
-      },
-      {
-        image: 'https://ik.imagekit.io/thingstek/photos/installations/aa-tensiometro_ysEqRIkGmne.jpeg',
-        title: 'Image 2',
-      },
-    ],
+    data: [{
+      image: 'https://ik.imagekit.io/thingstek/photos/installations/aa-device-con-pannello_bJ5kjnb5SmR',
+      title: 'Image 1',
+    }, {
+      image: 'https://ik.imagekit.io/thingstek/photos/installations/aa-termoigrometro_4hIRcoH4bZcf.jpeg',
+      title: 'Image 1',
+    }, {
+      image: 'https://ik.imagekit.io/thingstek/photos/installations/aa-tensiometro_ysEqRIkGmne.jpeg',
+      title: 'Image 2',
+    }],
   },
 } satisfies Meta<typeof Lightbox>;
 

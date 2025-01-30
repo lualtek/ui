@@ -23,7 +23,7 @@ const meta = {
       control: { type: 'inline-radio' },
     },
   },
-  render: (args) => (
+  render: args => (
     <Snaplist {...args}>
       <div style={{ minWidth: '30vw', ...style }}>Aaskdjfhasdf </div>
       <div style={style}>Bsdfasdfa sdfsdfg</div>
@@ -45,7 +45,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default = {} satisfies Story;
 export const WithFragments = {
-  render: (args) => (
+  render: args => (
     <Snaplist {...args}>
       <>
         <div style={{ minWidth: '30vw', ...style }}>Aaskdjfhasdf </div>

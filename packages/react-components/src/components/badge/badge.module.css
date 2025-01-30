@@ -20,11 +20,14 @@
 }
 
 .Mask {
-  --mask-size: calc(var(--badge-size) / 2 + var(--gap));
+  --mask-size: calc(var(--badge-size) / 2 + var(--gap)) ;
 
   .Badge[data-badge-show='true'] & {
-    mask-image: radial-gradient(
-      circle at calc(var(--badge-position-x) - (var(--badge-size) / 2)) calc(0% + (var(--badge-size) / 2)),
+    mask-image:
+    radial-gradient(
+      circle at
+      calc(var(--badge-position-x) - (var(--badge-size) / 2))
+      calc(0% + (var(--badge-size) / 2)),
       transparent 0 var(--mask-size),
       red calc(var(--mask-size) + 1px)
     );

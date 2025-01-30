@@ -2,15 +2,14 @@
 
 import clsx from 'clsx';
 import {
-  type ChangeEvent,
-  type ReactNode,
-  forwardRef,
-  useCallback,
-  useId,
+  ChangeEvent, forwardRef, ReactNode, SelectHTMLAttributes, useCallback, useId,
   useState,
 } from 'react';
 
-import { Icon, type IconProps, Stack, Text } from '@/components';
+import {
+  Icon, IconProps, Stack,
+  Text,
+} from '@/components';
 
 import styles from './select.module.css';
 
@@ -54,80 +53,88 @@ export type SelectProps = React.ComponentPropsWithRef<'select'> & {
    * Set the hint message to show when the field is invalid.
    */
   hint?: ReactNode;
-};
+}
 
-export const Select = forwardRef<HTMLSelectElement, SelectProps>(
-  (
-    {
-      children,
-      className,
-      disabled = false,
-      icon = 'increase',
-      label,
-      kind = 'single',
-      onChange,
-      fullWidth = false,
-      invalid,
-      hint = 'Invalid input',
-      ...otherProps
-    },
-    forwardedRef,
-  ) => {
-    const uid = useId();
-    const [isUserInvalid, setIsUserInvalid] = useState<boolean>(invalid ?? false);
+export const Select = forwardRef<HTMLSelectElement, SelectProps>(({
+  children,
+  className,
+  disabled = false,
+  icon = 'increase',
+  label,
+  kind = 'single',
+  onChange,
+  fullWidth = false,
+  invalid,
+  hint = 'Invalid input',
+  ...otherProps
+}, forwardedRef) => {
+  const uid = useId();
+  const [isUserInvalid, setIsUserInvalid] = useState<boolean>(invalid ?? false);
 
-    const handleInvalid = useCallback((event: ChangeEvent<HTMLSelectElement>) => {
+  const handleInvalid = useCallback(
+    (event: ChangeEvent<HTMLSelectElement>) => {
       event.preventDefault();
       setIsUserInvalid(!event.currentTarget.validity.valid);
-    }, []);
+    },
+    [],
+  );
 
-    return (
-      <Stack
-        as="fieldset"
-        rowGap={4}
-        className={clsx(styles.Select, className)}
-        data-select-is-multiple={kind === 'multiple'}
-        data-select-invalid={invalid}
-        data-select-has-label={Boolean(label)}
-        data-select-is-full-width={fullWidth}
-        aria-disabled={disabled}
-        hAlign="start"
-        vAlign="start"
-        tabIndex={disabled ? 0 : undefined}
-      >
-        <div className={styles.FieldContainer}>
-          <select
-            disabled={disabled}
-            className={styles.InputField}
-            id={`${uid}-select`}
-            multiple={kind === 'multiple'}
-            onChange={onChange}
-            ref={forwardedRef}
-            onInvalid={handleInvalid}
-            {...otherProps}
-          >
-            {children}
-            {label && (
-              <option hidden disabled>
-                {label}
-              </option>
-            )}
-          </select>
+  return (
+    <Stack
+      as="fieldset"
+      rowGap={4}
+      className={clsx(styles.Select, className)}
+      data-select-is-multiple={kind === 'multiple'}
+      data-select-invalid={invalid}
+      data-select-has-label={Boolean(label)}
+      data-select-is-full-width={fullWidth}
+      aria-disabled={disabled}
+      hAlign="start"
+      vAlign="start"
+      tabIndex={disabled ? 0 : undefined}
+    >
+      <div className={styles.FieldContainer}>
+        <select
+          disabled={disabled}
+          className={styles.InputField}
+          id={`${uid}-select`}
+          multiple={kind === 'multiple'}
+          onChange={onChange}
+          ref={forwardedRef}
+          onInvalid={handleInvalid}
+          {...otherProps}
+        >
+          {children}
+          {label && <option hidden disabled>{label}</option>}
+        </select>
 
-          {kind === 'single' && <Icon className={styles.Icon} source={icon} dimension={18} />}
-
-          <Text as="label" dimmed={5} size={14} responsive={false} htmlFor={`${uid}-select`} className={styles.Label}>
-            {label}
-          </Text>
-        </div>
-        {(invalid ?? isUserInvalid) && (
-          <Stack className={styles.Hint} hPadding={16}>
-            <Text as="div" size={14} weight="bold" textColor="var(--invalid-foreground)">
-              {hint}
-            </Text>
-          </Stack>
+        {kind === 'single' && (
+          <Icon
+            className={styles.Icon}
+            source={icon}
+            dimension={18}
+          />
         )}
-      </Stack>
-    );
-  },
-);
+
+        <Text
+          as="label"
+          dimmed={5}
+          size={14}
+          responsive={false}
+          htmlFor={`${uid}-select`}
+          className={styles.Label}
+        >
+          {label}
+        </Text>
+      </div>
+      {(invalid ?? isUserInvalid) && (
+        <Stack
+          className={styles.Hint}
+          hPadding={16}
+        >
+          <Text as="div" size={14} weight="bold" textColor="var(--invalid-foreground)">{hint}</Text>
+        </Stack>
+      )}
+    </Stack>
+  );
+});

@@ -1,8 +1,13 @@
 import * as PopoverPrimitive from '@radix-ui/react-popover';
-import type { FC } from 'react';
+import { FC } from 'react';
 
 export type PopoverPortalProps = PopoverPrimitive.PopoverPortalProps;
 
-export const PopoverPortal: FC<PopoverPortalProps> = ({ children, ...otherProps }) => (
-  <PopoverPrimitive.Portal {...otherProps}>{children}</PopoverPrimitive.Portal>
+export const PopoverPortal: FC<PopoverPortalProps> = ({
+  children,
+  ...otherProps
+}) => (
+  <PopoverPrimitive.Portal {...otherProps}>
+    {children}
+  </PopoverPrimitive.Portal>
 );

@@ -1,5 +1,5 @@
-import type { Meta, } from '@storybook/react';
-import type { ElementType, } from 'react';
+import { Meta, StoryObj } from '@storybook/react';
+import { ElementType, ReactElement } from 'react';
 
 import { Container } from '../components/container';
 

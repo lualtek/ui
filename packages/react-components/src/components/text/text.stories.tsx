@@ -39,7 +39,7 @@ const meta = {
       control: { type: 'inline-radio' },
     },
   },
-  render: (args) => <Text {...args} />,
+  render: args => <Text {...args} />,
 } satisfies Meta<typeof Text>;
 
 export default meta;
@@ -65,9 +65,11 @@ export const Nested = {
   args: {
     size: 22,
   },
-  render: (args) => (
+  render: args => (
     <Text {...args}>
-      Lorem, ipsum dolor sit <Text size={14}>amet consectetur adipisicing elit.</Text>
+      Lorem, ipsum dolor sit
+      {' '}
+      <Text size={14}>amet consectetur adipisicing elit.</Text>
     </Text>
   ),
 } satisfies Story;

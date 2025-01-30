@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
-import type { AxisDomain } from 'recharts/types/util/types';
-import type { ChartDataBaseType } from 'src/components/base-chart/base-chart';
-import type { LineProps } from 'src/components/line-chart/line-chart';
+import { AxisDomain } from 'recharts/types/util/types';
+import { ChartDataBaseType } from 'src/components/base-chart/base-chart';
+import { LineProps } from 'src/components/line-chart/line-chart';
 
 type UseChartAxisReturnType = {
   yAxisWidthNotBiaxial: number;
@@ -11,15 +11,16 @@ type UseChartAxisReturnType = {
 };
 
 type UseChartAxisProps<D extends ChartDataBaseType, L extends LineProps<D>> = {
-  data?: Array<D>;
-  series: Array<L>;
+  data?: D[];
+  series: L[];
   yDomainLeft?: AxisDomain;
   yDomainRight?: AxisDomain;
 };
 
 const parseMaxValueDomain = (yDomain?: AxisDomain) => {
-  const result =
-    yDomain && typeof yDomain !== 'function' && yDomain?.[1] && typeof yDomain[1] === 'number' ? yDomain[1] : 0;
+  const result = yDomain && typeof yDomain !== 'function' && yDomain?.[1] && typeof yDomain[1] === 'number'
+    ? yDomain[1]
+    : 0;
   return result;
 };
 
@@ -31,28 +32,25 @@ const getYValuesLength = <D extends ChartDataBaseType, L extends LineProps<D>>({
   yDomainLeft,
   yDomainRight,
 }: {
-  data: Array<D>;
-  notBiaxialLines: Array<L>;
-  biaxialLines: Array<L>;
+  data: D[];
+  notBiaxialLines: L[];
+  biaxialLines: L[];
   yDomainLeft?: AxisDomain;
   yDomainRight?: AxisDomain;
 }) => {
   const maxValueDomainLeft = parseMaxValueDomain(yDomainLeft);
   const maxValueDomainRight = parseMaxValueDomain(yDomainRight);
-  const [maxLabelLengthNotBiaxial, maxLabelLengthBiaxial] = data.reduce(
-    (acc, item) => {
-      const valuesLinesNotBiaxial = notBiaxialLines.map((serie) => Number(item[serie.serieKeyId]));
-      const valuesLinesBiaxial = biaxialLines.map((serie) => Number(item[serie.serieKeyId]));
+  const [maxLabelLengthNotBiaxial, maxLabelLengthBiaxial] = data.reduce((acc, item) => {
+    const valuesLinesNotBiaxial = notBiaxialLines.map(serie => Number(item[serie.serieKeyId]));
+    const valuesLinesBiaxial = biaxialLines.map(serie => Number(item[serie.serieKeyId]));
 
-      const valuesNotBiaxial = Math.floor(Math.max(...valuesLinesNotBiaxial));
-      const valuesBiaxial = Math.floor(Math.max(...valuesLinesBiaxial));
-      return [
-        String(valuesNotBiaxial).length + 1 > acc[0] ? String(valuesNotBiaxial).length + 1 : acc[0],
-        String(valuesBiaxial).length + 1 > acc[1] ? String(valuesBiaxial).length + 1 : acc[1],
-      ];
-    },
-    [0, 0],
-  );
+    const valuesNotBiaxial = Math.floor(Math.max(...valuesLinesNotBiaxial));
+    const valuesBiaxial = Math.floor(Math.max(...valuesLinesBiaxial));
+    return [
+      String(valuesNotBiaxial).length + 1 > acc[0] ? String(valuesNotBiaxial).length + 1 : acc[0],
+      String(valuesBiaxial).length + 1 > acc[1] ? String(valuesBiaxial).length + 1 : acc[1],
+    ];
+  }, [0, 0]);
 
   return [
     Math.max(maxLabelLengthNotBiaxial, String(maxValueDomainLeft).length + 1),
@@ -66,17 +64,12 @@ export const useChartAxis = <D extends ChartDataBaseType, L extends LineProps<D>
   yDomainLeft,
   yDomainRight,
 }: UseChartAxisProps<D, L>): UseChartAxisReturnType => {
-  const [notBiaxialLines, biaxialLines] = useMemo<[Array<L>, Array<L>]>(
-    () =>
-      series.reduce<[Array<L>, Array<L>]>(
-        (acc, serie) => {
-          acc[serie.side === 'right' ? 1 : 0].push(serie);
-          return acc;
-        },
-        [[], []],
-      ),
-    [series],
-  );
+  const [notBiaxialLines, biaxialLines] = useMemo<[L[], L[]]>(() => series.reduce<[L[], L[]]>(
+    (acc, serie) => {
+      acc[serie.side === 'right' ? 1 : 0].push(serie);
+      return acc;
+    }, [[], []],
+  ), [series]);
 
   const [yAxisWidthNotBiaxial, yAxisWidthBiaxial] = useMemo(() => {
     if (!data || data?.length === 0) {
@@ -91,7 +84,10 @@ export const useChartAxis = <D extends ChartDataBaseType, L extends LineProps<D>
       yDomainRight,
     });
 
-    return [maxLabelLengthNotBiaxial * 10, maxLabelLengthBiaxial * 10];
+    return [
+      maxLabelLengthNotBiaxial * 10,
+      maxLabelLengthBiaxial * 10,
+    ];
   }, [data, notBiaxialLines, biaxialLines, yDomainLeft, yDomainRight]);
 
   const hasLeftY = series.some(({ side }) => side === 'left');

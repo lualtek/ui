@@ -19,6 +19,7 @@
       }
     }
 
+
     &:last-child::before {
       mask-image: linear-gradient(to bottom, red 60%, transparent calc(100% - 20px));
       background: linear-gradient(to bottom, var(--dimmed-2) 20px, var(--highlight-brand-foreground));

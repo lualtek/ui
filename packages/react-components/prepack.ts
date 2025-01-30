@@ -7,7 +7,7 @@ const data = fs.readFileSync('package.json', 'utf-8');
 const packageObj = JSON.parse(data) as { type?: string };
 
 // Remove the type property
-packageObj.type = undefined;
+delete packageObj.type;
 
 // Convert the modified object back to a JSON string
 const newPackageJson = JSON.stringify(packageObj, null, 2);

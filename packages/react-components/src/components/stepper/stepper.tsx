@@ -1,9 +1,14 @@
 'use client';
 
 import clsx from 'clsx';
-import { type ComponentPropsWithoutRef, forwardRef, useMemo } from 'react';
+import {
+  ComponentPropsWithoutRef, forwardRef, useMemo,
+} from 'react';
 
-import { Glow, Stack, type StackProps, TextChip, Title, type TitleProps, useResponsiveContext } from '@/components';
+import {
+  Glow,
+  Stack, StackProps, TextChip, Title, TitleProps, useResponsiveContext,
+} from '@/components';
 
 import styles from './stepper.module.css';
 
@@ -31,36 +36,43 @@ export type StepperProps = ComponentPropsWithoutRef<'div'> & {
    * Fill the width of the stepper.
    */
   fullWidth?: boolean;
-};
+}
 
-export const Stepper = forwardRef<HTMLDivElement, StepperProps>(
-  (
-    { className, children, heading, step, contentGap = 16, fillContent = false, fullWidth = false, ...otherProps },
-    forwardedRef,
-  ) => {
-    const padStep = useMemo(() => String(step).padStart(2, '0'), [step]);
-    const { matches } = useResponsiveContext();
+export const Stepper = forwardRef<HTMLDivElement, StepperProps>(({
+  className,
+  children,
+  heading,
+  step,
+  contentGap = 16,
+  fillContent = false,
+  fullWidth = false,
+  ...otherProps
+}, forwardedRef) => {
+  const padStep = useMemo(() => String(step).padStart(2, '0'), [step]);
+  const { matches } = useResponsiveContext();
 
-    return (
+  return (
+    <Stack
+      direction="row"
+      columnGap={matches.medium ? 24 : 16}
+      className={clsx(styles.Stepper, className)}
+      fill={fullWidth}
+      vAlign="start"
+      ref={forwardedRef}
+      {...otherProps}
+    >
+      <Glow innerRadius={matches.medium ? 12 : 8} borderOffset={0} borderWidth={1} spread={200} fitContent>
+        <TextChip dimension={matches.medium ? 'regular' : 'small'} text={padStep} />
+      </Glow>
       <Stack
-        direction="row"
-        columnGap={matches.medium ? 24 : 16}
-        className={clsx(styles.Stepper, className)}
-        fill={fullWidth}
-        vAlign="start"
-        ref={forwardedRef}
-        {...otherProps}
+        vPadding={matches.medium ? 8 : 4}
+        fill={fillContent}
+        rowGap={contentGap}
+        className={styles.Content}
       >
-        <Glow innerRadius={matches.medium ? 12 : 8} borderOffset={0} borderWidth={1} spread={200} fitContent>
-          <TextChip dimension={matches.medium ? 'regular' : 'small'} text={padStep} />
-        </Glow>
-        <Stack vPadding={matches.medium ? 8 : 4} fill={fillContent} rowGap={contentGap} className={styles.Content}>
-          <Title level="5" as="h5">
-            {heading}
-          </Title>
-          {children}
-        </Stack>
+        <Title level="5" as="h5">{heading}</Title>
+        {children}
       </Stack>
-    );
-  },
-);
+    </Stack>
+  );
+});

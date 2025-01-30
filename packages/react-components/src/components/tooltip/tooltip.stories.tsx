@@ -10,16 +10,12 @@ const meta: Meta<typeof Tooltip> = {
     side: 'bottom',
     children: (
       <Text as="p" maxWidth="30ch">
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit expedita, saepe numquam illo quas, Lorem ipsum
-        dolor, sit amet consectetur adipisicing elit. Impedit expedita, saepe numquam illo quas, Lorem ipsum dolor, sit
-        amet consectetur adipisicing elit.
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+        Impedit expedita, saepe numquam illo quas, Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+        Impedit expedita, saepe numquam illo quas, Lorem ipsum dolor, sit amet consectetur adipisicing elit.
       </Text>
     ),
-    trigger: (
-      <Text as="mark" sentiment="informative">
-        HTML
-      </Text>
-    ),
+    trigger: <Text as="mark" sentiment="informative">HTML</Text>,
   },
   argTypes: {
     side: {
@@ -28,13 +24,13 @@ const meta: Meta<typeof Tooltip> = {
     },
   },
   decorators: [
-    (Story) => (
+    Story => (
       <TooltipProvider>
         <Story />
       </TooltipProvider>
     ),
   ],
-  render: (args) => (
+  render: args => (
     <Stack hAlign="center" fill={false}>
       <Tooltip {...args} />
     </Stack>
@@ -45,7 +41,8 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Default = {} satisfies Story;
+export const Default = {
+} satisfies Story;
 
 export const WithSVG = {
   args: {

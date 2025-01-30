@@ -11,7 +11,7 @@ const CssLightDark: Transform = {
       throw new Error(`Color token "${token.name}" has an empty value.`);
     }
 
-    const tokenValue = (token.value as ValueType) || (token.$value as ValueType);
+    const tokenValue = token.value as ValueType || token.$value as ValueType;
     // check if tokenValue is an object with light and dark keys
     if (typeof tokenValue === 'object' && tokenValue.light && tokenValue.dark) {
       return `light-dark(${tokenValue.light}, ${tokenValue.dark})`;

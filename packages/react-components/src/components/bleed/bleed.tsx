@@ -1,9 +1,11 @@
 'use client';
 
-import type { TokensTypes } from '@lualtek/tokens/platforms/web';
+import { TokensTypes } from '@lualtek/tokens/platforms/web';
 import tkns from '@lualtek/tokens/platforms/web/tokens.json';
 import clsx from 'clsx';
-import { type HTMLAttributes, forwardRef, useMemo } from 'react';
+import {
+  forwardRef, HTMLAttributes, useMemo,
+} from 'react';
 
 import styles from './bleed.module.css';
 
@@ -18,28 +20,33 @@ export type BleedProps = HTMLAttributes<HTMLDivElement> & {
    * This will ignore the `amount` prop.
    */
   full?: boolean;
-};
+}
 
-export const Bleed = forwardRef<HTMLDivElement, BleedProps>(
-  ({ className, children, style, full = false, amount, ...otherProps }, forwardedRef) => {
-    const amountType = typeof amount === 'string' ? amount : tkns.space[amount as TokensTypes['space']];
-    const dynamicStyle = useMemo(
-      () => ({
-        '--bleed': amount ? amountType : 0,
-      }),
-      [amount, amountType],
-    );
+export const Bleed = forwardRef<HTMLDivElement, BleedProps>(({
+  className,
+  children,
+  style,
+  full = false,
+  amount,
+  ...otherProps
+}, forwardedRef) => {
+  const amountType = (typeof amount === 'string') ? amount : tkns.space[amount as TokensTypes['space']];
+  const dynamicStyle = useMemo(() => (
+    {
+      '--bleed': amount ? amountType : 0,
+    }
+  ), [amount, amountType]);
 
-    return (
-      <div
-        ref={forwardedRef}
-        className={clsx(styles.Bleed, className)}
-        style={{ ...dynamicStyle, ...style }}
-        data-bleed-full={full}
-        {...otherProps}
-      >
-        {children}
-      </div>
-    );
-  },
-);
+  return (
+    <div
+      ref={forwardedRef}
+      className={clsx(styles.Bleed, className)}
+      style={{ ...dynamicStyle, ...style }}
+      data-bleed-full={full}
+      {...otherProps}
+    >
+      {children}
+    </div>
+  );
+});
+

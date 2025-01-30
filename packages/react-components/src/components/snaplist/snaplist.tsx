@@ -1,16 +1,20 @@
 'use client';
 
-import type { TokensTypes } from '@lualtek/tokens/platforms/web';
+import { TokensTypes } from '@lualtek/tokens/platforms/web';
 import tkns from '@lualtek/tokens/platforms/web/tokens.json';
 import clsx from 'clsx';
-import type React from 'react';
-import { Children, Fragment, forwardRef, isValidElement, useMemo } from 'react';
-import type { Except } from 'type-fest';
+import {
+  Children, forwardRef, Fragment, isValidElement, useMemo,
+} from 'react';
+import { Except } from 'type-fest';
 
-import { type PolyRefComponent, Stack, type StackProps } from '@/components';
+import {
+  PolyRefComponent,
+  Stack, StackProps,
+} from '@/components';
 
-import { SnaplistItem } from './snaplist-item';
 import styles from './snaplist.module.css';
+import { SnaplistItem } from './snaplist-item';
 
 export type SnaplistProps = {
   /**
@@ -39,64 +43,59 @@ export type SnaplistProps = {
    * @defaultValue "max-content"
    */
   snapItemWidth?: string;
-};
+}
 
-export const Snaplist = forwardRef(
-  (
-    {
-      as,
-      children,
-      className,
-      rowGap = 32,
-      columnGap = 32,
-      bleed,
-      snapAlign = 'center',
-      snapType = 'mandatory',
-      scrollPadding,
-      snapItemWidth,
-      style,
-      ...otherProps
-    },
-    forwardedRef,
-  ) => {
-    const dynamicStyle = useMemo(
-      () => ({
-        '--snap-align': snapAlign,
-        '--snap-type': snapType,
-        '--scroll-padding': scrollPadding ? tkns.space[scrollPadding] : 0,
-        '--snap-item-width': snapItemWidth,
-        '--bleed': bleed ? tkns.space[bleed] : 0,
-      }),
-      [bleed, snapAlign, snapType, scrollPadding, snapItemWidth],
-    );
+export const Snaplist = forwardRef(({
+  as,
+  children,
+  className,
+  rowGap = 32,
+  columnGap = 32,
+  bleed,
+  snapAlign = 'center',
+  snapType = 'mandatory',
+  scrollPadding,
+  snapItemWidth,
+  style,
+  ...otherProps
+}, forwardedRef) => {
+  const dynamicStyle = useMemo(() => ({
+    '--snap-align': snapAlign,
+    '--snap-type': snapType,
+    '--scroll-padding': scrollPadding ? tkns.space[scrollPadding] : 0,
+    '--snap-item-width': snapItemWidth,
+    '--bleed': bleed ? tkns.space[bleed] : 0,
+  }), [bleed, snapAlign, snapType, scrollPadding, snapItemWidth]);
 
-    return (
-      <Stack
-        {...otherProps}
-        as={as}
-        ref={forwardedRef}
-        direction="row"
-        rowGap={rowGap}
-        columnGap={columnGap}
-        className={clsx(styles.Snaplist, className)}
-        style={{ ...dynamicStyle, ...style }}
-      >
-        {Children.toArray(children).map((child) => {
-          if (isValidElement(child)) {
-            if (child.type === Fragment) {
-              return Children.map(
-                child.props.children as React.ReactNode,
-                (fragmentChild: React.ReactNode) =>
-                  isValidElement(fragmentChild) && <SnaplistItem key={fragmentChild.key}>{fragmentChild}</SnaplistItem>,
-              ) as Array<React.JSX.Element>;
-            }
-
-            return <SnaplistItem key={child.key}>{child}</SnaplistItem>;
+  return (
+    <Stack
+      {...otherProps}
+      as={as}
+      ref={forwardedRef}
+      direction="row"
+      rowGap={rowGap}
+      columnGap={columnGap}
+      className={clsx(styles.Snaplist, className)}
+      style={{ ...dynamicStyle, ...style }}
+    >
+      {Children.toArray(children).map((child) => {
+        if (isValidElement(child)) {
+          if (child.type === Fragment) {
+            return Children.map(
+              child.props.children as React.ReactNode,
+              (fragmentChild: React.ReactNode) => isValidElement(fragmentChild) && (
+                <SnaplistItem key={fragmentChild.key}>
+                  {fragmentChild}
+                </SnaplistItem>
+              ),
+            ) as JSX.Element[];
           }
 
-          return null;
-        })}
-      </Stack>
-    );
-  },
-) as PolyRefComponent<typeof Stack, Except<StackProps, 'wrap' | 'fill'> & SnaplistProps>;
+          return <SnaplistItem key={child.key}>{child}</SnaplistItem>;
+        }
+
+        return null;
+      })}
+    </Stack>
+  );
+}) as PolyRefComponent<typeof Stack, Except<StackProps, 'wrap' | 'fill'> & SnaplistProps>;

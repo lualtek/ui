@@ -7,10 +7,11 @@ import { Disclosure } from './disclosure';
 const meta = {
   title: 'Actions/Disclosure',
   component: Disclosure,
-  render: (args) => (
+  render: args => (
     <Disclosure {...args}>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus corporis nobis ipsum natus laudantium dolorem
-      sapiente, sint adipisci at asperiores quia ex voluptatum veniam! Quos rerum natus eos excepturi atque!
+      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+      Doloribus corporis nobis ipsum natus laudantium dolorem sapiente,
+      sint adipisci at asperiores quia ex voluptatum veniam! Quos rerum natus eos excepturi atque!
     </Disclosure>
   ),
   args: {
@@ -46,18 +47,21 @@ export const Default = {} satisfies Story;
 export const Open = {
   args: {
     open: true,
-    onToggle: (open) => console.log(open),
+    onToggle: open => console.log(open),
   },
 } satisfies Story;
 
 export const Nested = {
-  render: (args) => (
+  render: args => (
     <Disclosure {...args}>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus corporis nobis ipsum natus laudantium dolorem
-      sapiente, sint adipisci at asperiores quia ex voluptatum veniam! Quos rerum natus eos excepturi atque!
+      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+      Doloribus corporis nobis ipsum natus laudantium dolorem sapiente,
+      sint adipisci at asperiores quia ex voluptatum veniam! Quos rerum natus eos excepturi atque!
+
       <Disclosure summary="Nested">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus corporis nobis ipsum natus laudantium dolorem
-        sapiente, sint adipisci at asperiores quia ex voluptatum veniam! Quos rerum natus eos excepturi atque!
+        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        Doloribus corporis nobis ipsum natus laudantium dolorem sapiente,
+        sint adipisci at asperiores quia ex voluptatum veniam! Quos rerum natus eos excepturi atque!
       </Disclosure>
     </Disclosure>
   ),
@@ -74,24 +78,26 @@ export const Accordion = {
   args: {
     name: 'accordion',
   },
-  render: (args) => (
+  render: args => (
     <Stack fill={false} rowGap={8} hAlign="start">
       <Disclosure {...args}>
         <Text dimmed={5} weight="regular">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus corporis nobis ipsum natus laudantium
-          dolorem sapiente, sint adipisci at asperiores quia ex voluptatum veniam! Quos rerum natus eos excepturi atque!
+          Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          Doloribus corporis nobis ipsum natus laudantium dolorem sapiente,
+          sint adipisci at asperiores quia ex voluptatum veniam! Quos rerum natus eos excepturi atque!
         </Text>
       </Disclosure>
       <Disclosure {...args}>
         <Text dimmed={5} weight="regular">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus corporis nobis ipsum natus laudantium
-          dolorem sapiente.
+          Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          Doloribus corporis nobis ipsum natus laudantium dolorem sapiente.
         </Text>
       </Disclosure>
       <Disclosure {...args}>
         <Text dimmed={5} weight="regular">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus corporis nobis ipsum natus laudantium
-          dolorem sapiente, sint adipisci at asperiores quia ex voluptatum veniam! Quos rerum natus eos excepturi atque!
+          Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          Doloribus corporis nobis ipsum natus laudantium dolorem sapiente,
+          sint adipisci at asperiores quia ex voluptatum veniam! Quos rerum natus eos excepturi atque!
         </Text>
       </Disclosure>
     </Stack>

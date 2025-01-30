@@ -1,9 +1,11 @@
 'use client';
 
-import type { TokensTypes } from '@lualtek/tokens/platforms/web';
+import { TokensTypes } from '@lualtek/tokens/platforms/web';
 import tkns from '@lualtek/tokens/platforms/web/tokens.json';
 import clsx from 'clsx';
-import { type CSSProperties, Children, type FC, type ReactElement, cloneElement, isValidElement, useMemo } from 'react';
+import {
+  Children, cloneElement, CSSProperties, FC, isValidElement, ReactElement, useMemo,
+} from 'react';
 import MasonryLayout from 'react-masonry-css';
 
 import styles from './masonry.module.css';
@@ -16,7 +18,7 @@ type Columns = {
   large?: number;
   extraLarge?: number;
   wide?: number;
-};
+}
 
 export type MasonryProps = React.ComponentPropsWithoutRef<'div'> & {
   /**
@@ -47,7 +49,7 @@ export type MasonryProps = React.ComponentPropsWithoutRef<'div'> & {
    * @defaultValue 3
    */
   columns?: number | Columns;
-};
+}
 
 const breakpoints: Record<string, number> = {
   extraSmall: 480,
@@ -58,39 +60,42 @@ const breakpoints: Record<string, number> = {
   wide: 2100,
 };
 
-export const Masonry: FC<MasonryProps> = ({ className, children, columns = 3, gap, style, ...otherProps }) => {
-  const dynamicStyle = useMemo(
-    () => ({
+export const Masonry: FC<MasonryProps> = ({
+  className,
+  children,
+  columns = 3,
+  gap,
+  style,
+  ...otherProps
+}) => {
+  const dynamicStyle = useMemo(() => (
+    {
       '--gap': gap ? tkns.space[gap as keyof typeof tkns.space] : 0,
-    }),
-    [gap],
-  );
-
-  const computedColumnsGiuste = useMemo(() => {
-    if (typeof columns !== 'object') {
-      return undefined;
     }
+  ), [gap]);
 
-    return Object.keys(columns).reduce(
-      (acc, current) => {
-        if (current === 'default') {
-          return acc;
-        }
+  const computedColumnsGiuste = useMemo(() => (typeof columns === 'object' ? Object.keys(columns).reduce(
+    (acc, current) => {
+      if (current === 'default') {
+        return acc;
+      }
 
-        const breakpoint = breakpoints[current as keyof Columns];
-        const column = columns[current as keyof Columns];
+      const breakpoint = breakpoints[current as keyof Columns];
+      const column = columns[current as keyof Columns];
 
-        return Object.assign({}, acc, { [breakpoint]: column }, { default: columns.default });
-      },
-      {
-        default: 0,
-      },
-    );
-  }, [columns]);
+      return ({
+        ...acc,
+        [breakpoint]: column,
+
+        default: columns.default,
+      });
+    }, {
+      default: 0,
+    },
+  ) : undefined), [columns]);
 
   return (
     <MasonryLayout
-      // biome-ignore lint/a11y/useSemanticElements: MasonryLayout is external lib
       role="list"
       className={clsx(styles.Masonry, className)}
       columnClassName={styles.Column}
@@ -98,14 +103,12 @@ export const Masonry: FC<MasonryProps> = ({ className, children, columns = 3, ga
       style={{ ...dynamicStyle, ...style } as CSSProperties}
       {...otherProps}
     >
-      {Children.map(
-        children,
-        (child) =>
-          isValidElement(child) &&
-          cloneElement(child as ReactElement, {
-            role: 'listitem',
-          }),
-      )}
+      {Children.map(children, child => isValidElement(child) && cloneElement(
+        child as ReactElement,
+        {
+          role: 'listitem',
+        },
+      ))}
     </MasonryLayout>
   );
 };

@@ -22,46 +22,31 @@ const meta = {
   argTypes: {
     spread: {
       control: {
-        type: 'range',
-        min: 0,
-        max: 200,
-        step: 1,
+        type: 'range', min: 0, max: 200, step: 1,
       },
     },
     opacity: {
       control: {
-        type: 'range',
-        min: 0,
-        max: 1,
-        step: 0.1,
+        type: 'range', min: 0, max: 1, step: 0.1,
       },
     },
     glowPower: {
       control: {
-        type: 'range',
-        min: 0,
-        max: 10,
-        step: 1,
+        type: 'range', min: 0, max: 10, step: 1,
       },
     },
     borderOffset: {
       control: {
-        type: 'range',
-        min: -10,
-        max: 10,
-        step: 1,
+        type: 'range', min: -10, max: 10, step: 1,
       },
     },
     borderWidth: {
       control: {
-        type: 'range',
-        min: 1,
-        max: 10,
-        step: 1,
+        type: 'range', min: 1, max: 10, step: 1,
       },
     },
   },
-  render: (args) => (
+  render: args => (
     <Stack direction="row" fill={false} columnGap={32} rowGap={32} wrap>
       <Glow {...args}>
         <Panel radius={24} bordered vibrant vibrancyColor="mid" style={{ width: 200, height: 200 }} />
@@ -102,35 +87,47 @@ export const WithContent = {
     innerRadius: undefined,
     fitContent: true,
   },
-  render: (args) => (
+  render: args => (
     <Glow {...args}>
       <Panel bordered style={{ width: '50vw' }}>
         <ScrollArea fadeDirection="vertical" useSystemStyle={false} style={{ height: 400 }}>
           <Stack vPadding={32} hPadding={32}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi ut, beatae autem quam maxime iste excepturi
-            ipsum, vero reiciendis natus alias quae asperiores eaque voluptates tempore explicabo, eum ad nihil. Lorem
-            ipsum dolor sit amet consectetur adipisicing elit. Quasi ut, beatae autem quam maxime iste excepturi ipsum,
-            vero reiciendis natus alias quae asperiores eaque voluptates tempore explicabo, eum ad nihil. Lorem ipsum
-            dolor sit amet consectetur adipisicing elit. Quasi ut, beatae autem quam maxime iste excepturi ipsum, vero
-            reiciendis natus alias quae asperiores eaque voluptates tempore explicabo, eum ad nihil. Lorem ipsum dolor
-            sit amet consectetur adipisicing elit. Quasi ut, beatae autem quam maxime iste excepturi ipsum, vero
-            reiciendis natus alias quae asperiores eaque voluptates tempore explicabo, eum ad nihil. Lorem ipsum dolor
-            sit amet consectetur adipisicing elit. Quasi ut, beatae autem quam maxime iste excepturi ipsum, vero
-            reiciendis natus alias quae asperiores eaque voluptates tempore explicabo, eum ad nihil. Lorem ipsum dolor
-            sit amet consectetur adipisicing elit. Quasi ut, beatae autem quam maxime iste excepturi ipsum, vero
-            reiciendis natus alias quae asperiores eaque voluptates tempore explicabo, eum ad nihil. Lorem ipsum dolor
-            sit amet consectetur adipisicing elit. Quasi ut, beatae autem quam maxime iste excepturi ipsum, vero
-            reiciendis natus alias quae asperiores eaque voluptates tempore explicabo, eum ad nihil. Lorem ipsum dolor
-            sit amet consectetur adipisicing elit. Quasi ut, beatae autem quam maxime iste excepturi ipsum, vero
-            reiciendis natus alias quae asperiores eaque voluptates tempore explicabo, eum ad nihil. Lorem ipsum dolor
-            sit amet consectetur adipisicing elit. Quasi ut, beatae autem quam maxime iste excepturi ipsum, vero
-            reiciendis natus alias quae asperiores eaque voluptates tempore explicabo, eum ad nihil. Lorem ipsum dolor
-            sit amet consectetur adipisicing elit. Quasi ut, beatae autem quam maxime iste excepturi ipsum, vero
-            reiciendis natus alias quae asperiores eaque voluptates tempore explicabo, eum ad nihil. Lorem ipsum dolor
-            sit amet consectetur adipisicing elit. Quasi ut, beatae autem quam maxime iste excepturi ipsum, vero
-            reiciendis natus alias quae asperiores eaque voluptates tempore explicabo, eum ad nihil. Lorem ipsum dolor
-            sit amet consectetur adipisicing elit. Quasi ut, beatae autem quam maxime iste excepturi ipsum, vero
-            reiciendis natus alias quae asperiores eaque voluptates tempore explicabo, eum ad nihil.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi ut,
+            beatae autem quam maxime iste excepturi ipsum, vero reiciendis natus alias
+            quae asperiores eaque voluptates tempore explicabo, eum ad nihil.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi ut,
+            beatae autem quam maxime iste excepturi ipsum, vero reiciendis natus alias
+            quae asperiores eaque voluptates tempore explicabo, eum ad nihil.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi ut,
+            beatae autem quam maxime iste excepturi ipsum, vero reiciendis natus alias
+            quae asperiores eaque voluptates tempore explicabo, eum ad nihil.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi ut,
+            beatae autem quam maxime iste excepturi ipsum, vero reiciendis natus alias
+            quae asperiores eaque voluptates tempore explicabo, eum ad nihil.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi ut,
+            beatae autem quam maxime iste excepturi ipsum, vero reiciendis natus alias
+            quae asperiores eaque voluptates tempore explicabo, eum ad nihil.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi ut,
+            beatae autem quam maxime iste excepturi ipsum, vero reiciendis natus alias
+            quae asperiores eaque voluptates tempore explicabo, eum ad nihil.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi ut,
+            beatae autem quam maxime iste excepturi ipsum, vero reiciendis natus alias
+            quae asperiores eaque voluptates tempore explicabo, eum ad nihil.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi ut,
+            beatae autem quam maxime iste excepturi ipsum, vero reiciendis natus alias
+            quae asperiores eaque voluptates tempore explicabo, eum ad nihil.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi ut,
+            beatae autem quam maxime iste excepturi ipsum, vero reiciendis natus alias
+            quae asperiores eaque voluptates tempore explicabo, eum ad nihil.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi ut,
+            beatae autem quam maxime iste excepturi ipsum, vero reiciendis natus alias
+            quae asperiores eaque voluptates tempore explicabo, eum ad nihil.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi ut,
+            beatae autem quam maxime iste excepturi ipsum, vero reiciendis natus alias
+            quae asperiores eaque voluptates tempore explicabo, eum ad nihil.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi ut,
+            beatae autem quam maxime iste excepturi ipsum, vero reiciendis natus alias
+            quae asperiores eaque voluptates tempore explicabo, eum ad nihil.
           </Stack>
         </ScrollArea>
       </Panel>
@@ -143,7 +140,7 @@ export const CustomElement = {
     innerRadius: undefined,
     fitContent: true,
   },
-  render: (args) => (
+  render: args => (
     <Glow {...args}>
       <div
         style={{
@@ -159,30 +156,42 @@ export const CustomElement = {
           style={{ height: 200 }}
         >
           <Stack vPadding={32} hPadding={32}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi ut, beatae autem quam maxime iste excepturi
-            ipsum, vero reiciendis natus alias quae asperiores eaque voluptates tempore explicabo, eum ad nihil. Lorem
-            ipsum dolor sit amet consectetur adipisicing elit. Quasi ut, beatae autem quam maxime iste excepturi ipsum,
-            vero reiciendis natus alias quae asperiores eaque voluptates tempore explicabo, eum ad nihil. Lorem ipsum
-            dolor sit amet consectetur adipisicing elit. Quasi ut, beatae autem quam maxime iste excepturi ipsum, vero
-            reiciendis natus alias quae asperiores eaque voluptates tempore explicabo, eum ad nihil. Lorem ipsum dolor
-            sit amet consectetur adipisicing elit. Quasi ut, beatae autem quam maxime iste excepturi ipsum, vero
-            reiciendis natus alias quae asperiores eaque voluptates tempore explicabo, eum ad nihil. Lorem ipsum dolor
-            sit amet consectetur adipisicing elit. Quasi ut, beatae autem quam maxime iste excepturi ipsum, vero
-            reiciendis natus alias quae asperiores eaque voluptates tempore explicabo, eum ad nihil. Lorem ipsum dolor
-            sit amet consectetur adipisicing elit. Quasi ut, beatae autem quam maxime iste excepturi ipsum, vero
-            reiciendis natus alias quae asperiores eaque voluptates tempore explicabo, eum ad nihil. Lorem ipsum dolor
-            sit amet consectetur adipisicing elit. Quasi ut, beatae autem quam maxime iste excepturi ipsum, vero
-            reiciendis natus alias quae asperiores eaque voluptates tempore explicabo, eum ad nihil. Lorem ipsum dolor
-            sit amet consectetur adipisicing elit. Quasi ut, beatae autem quam maxime iste excepturi ipsum, vero
-            reiciendis natus alias quae asperiores eaque voluptates tempore explicabo, eum ad nihil. Lorem ipsum dolor
-            sit amet consectetur adipisicing elit. Quasi ut, beatae autem quam maxime iste excepturi ipsum, vero
-            reiciendis natus alias quae asperiores eaque voluptates tempore explicabo, eum ad nihil. Lorem ipsum dolor
-            sit amet consectetur adipisicing elit. Quasi ut, beatae autem quam maxime iste excepturi ipsum, vero
-            reiciendis natus alias quae asperiores eaque voluptates tempore explicabo, eum ad nihil. Lorem ipsum dolor
-            sit amet consectetur adipisicing elit. Quasi ut, beatae autem quam maxime iste excepturi ipsum, vero
-            reiciendis natus alias quae asperiores eaque voluptates tempore explicabo, eum ad nihil. Lorem ipsum dolor
-            sit amet consectetur adipisicing elit. Quasi ut, beatae autem quam maxime iste excepturi ipsum, vero
-            reiciendis natus alias quae asperiores eaque voluptates tempore explicabo, eum ad nihil.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi ut,
+            beatae autem quam maxime iste excepturi ipsum, vero reiciendis natus alias
+            quae asperiores eaque voluptates tempore explicabo, eum ad nihil.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi ut,
+            beatae autem quam maxime iste excepturi ipsum, vero reiciendis natus alias
+            quae asperiores eaque voluptates tempore explicabo, eum ad nihil.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi ut,
+            beatae autem quam maxime iste excepturi ipsum, vero reiciendis natus alias
+            quae asperiores eaque voluptates tempore explicabo, eum ad nihil.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi ut,
+            beatae autem quam maxime iste excepturi ipsum, vero reiciendis natus alias
+            quae asperiores eaque voluptates tempore explicabo, eum ad nihil.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi ut,
+            beatae autem quam maxime iste excepturi ipsum, vero reiciendis natus alias
+            quae asperiores eaque voluptates tempore explicabo, eum ad nihil.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi ut,
+            beatae autem quam maxime iste excepturi ipsum, vero reiciendis natus alias
+            quae asperiores eaque voluptates tempore explicabo, eum ad nihil.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi ut,
+            beatae autem quam maxime iste excepturi ipsum, vero reiciendis natus alias
+            quae asperiores eaque voluptates tempore explicabo, eum ad nihil.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi ut,
+            beatae autem quam maxime iste excepturi ipsum, vero reiciendis natus alias
+            quae asperiores eaque voluptates tempore explicabo, eum ad nihil.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi ut,
+            beatae autem quam maxime iste excepturi ipsum, vero reiciendis natus alias
+            quae asperiores eaque voluptates tempore explicabo, eum ad nihil.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi ut,
+            beatae autem quam maxime iste excepturi ipsum, vero reiciendis natus alias
+            quae asperiores eaque voluptates tempore explicabo, eum ad nihil.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi ut,
+            beatae autem quam maxime iste excepturi ipsum, vero reiciendis natus alias
+            quae asperiores eaque voluptates tempore explicabo, eum ad nihil.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi ut,
+            beatae autem quam maxime iste excepturi ipsum, vero reiciendis natus alias
+            quae asperiores eaque voluptates tempore explicabo, eum ad nihil.
           </Stack>
         </ScrollArea>
       </div>

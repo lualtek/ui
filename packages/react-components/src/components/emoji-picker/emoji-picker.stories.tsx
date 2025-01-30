@@ -1,4 +1,7 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type {
+  Meta,
+  StoryObj,
+} from '@storybook/react';
 
 import { EmojiPicker } from './emoji-picker';
 
@@ -14,13 +17,13 @@ type Story = StoryObj<typeof meta>;
 
 export const Default = {
   args: {
-    onEmojiClick: (emoji) => console.log(emoji),
+    onEmojiClick: emoji => console.log(emoji),
   },
 } satisfies Story;
 
 export const WithColor = {
   args: {
-    onEmojiClick: (emoji) => console.log(emoji),
-    onColorClick: (color) => console.log(color),
+    onEmojiClick: emoji => console.log(emoji),
+    onColorClick: color => console.log(color),
   },
 } satisfies Story;

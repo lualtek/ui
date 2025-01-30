@@ -21,7 +21,7 @@ Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
 This turborepo has some additional tools already setup for you:
 
 - [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [Biome](https://biomejs.dev) for code linting and formatting
+- [ESLint](https://eslint.org/) for code linting and formatting
 
 ### Build
 

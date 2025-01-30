@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 
-import { Stack, type SwitchProps } from '@/components';
+import { Stack, SwitchProps } from '@/components';
 
 import { Switch } from './switch';
 
@@ -18,7 +18,7 @@ const meta = {
       control: { type: 'inline-radio' },
     },
   },
-  render: (args) => <Switch {...args} />,
+  render: args => <Switch {...args} />,
 } satisfies Meta<typeof Switch>;
 
 export default meta;
@@ -43,7 +43,13 @@ export const WithLabel = {
 const ControlledSwitch = ({ checked, ...args }: SwitchProps) => {
   const [isChecked, setIsChecked] = useState(checked);
 
-  return <Switch {...args} checked={isChecked} onCheckedChange={setIsChecked} />;
+  return (
+    <Switch
+      {...args}
+      checked={isChecked}
+      onCheckedChange={setIsChecked}
+    />
+  );
 };
 
 export const Controlled = {
@@ -51,19 +57,20 @@ export const Controlled = {
     label: 'Sample label',
     checked: true,
   },
-  render: (args) => <ControlledSwitch {...args} />,
+  render: args => <ControlledSwitch {...args} />,
 } satisfies Story;
 
 export const WithDynamicLabel = {
   args: {
     label: 'Sample default label',
     checkedLabel: 'Checked label',
-    onCheckedChange: (checked) => console.log('checked:', checked),
+    onCheckedChange: checked => console.log('checked:', checked),
   },
-  render: (args) => (
+  render: args => (
     <Stack direction="row" columnGap={8}>
       <Switch defaultChecked {...args} />
       <Switch label="Sample default label" />
     </Stack>
   ),
 } satisfies Story;
+

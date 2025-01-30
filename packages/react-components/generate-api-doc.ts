@@ -1,5 +1,6 @@
-import { readFile, writeFile } from 'node:fs/promises';
-import path from 'node:path';
+/* eslint-disable no-restricted-syntax */
+import { readFile, writeFile } from 'fs/promises';
+import path from 'path';
 
 const API_JSON_PATH = 'dist/api-temp.json';
 const OUTPUT_FOLDER = 'dist/components';
@@ -27,7 +28,7 @@ type SinglePropType = {
       value: string;
     }>;
   };
-};
+}
 
 type TypeAlias = {
   name: string;
@@ -36,9 +37,9 @@ type TypeAlias = {
     path: string;
   };
   type: {
-    properties?: Array<SinglePropType>;
+    properties?: SinglePropType[];
     types?: Array<{
-      properties: Array<SinglePropType>;
+      properties: SinglePropType[];
     }>;
     typeArguments?: Array<{
       [key: string]: unknown;
@@ -46,25 +47,25 @@ type TypeAlias = {
       types?: SinglePropType['type']['types'];
     }>;
   };
-};
+}
 
 type InputJson = {
-  typeAliases: Array<TypeAlias>;
+  typeAliases: TypeAlias[];
 };
 
 function pascalToKebabCase(str: string): string {
   return str
     .split(/(?=[A-Z])/) // Split the string based on uppercase letters
-    .map((word) => word.toLowerCase()) // Convert each word to lowercase
+    .map(word => word.toLowerCase()) // Convert each word to lowercase
     .join('-') // Join the words with a hyphen
     .replace('-props', ''); // Remove the trailing word 'props'
 }
 
-async function mapToTypeAliases(): Promise<Array<TypeAlias>> {
+async function mapToTypeAliases(): Promise<TypeAlias[]> {
   try {
     const jsonData = await readFile(API_JSON_PATH, 'utf8');
     const parsedData = JSON.parse(jsonData) as InputJson;
-    const filteredAliases = parsedData.typeAliases.filter((alias) => alias.name.endsWith('Props'));
+    const filteredAliases = parsedData.typeAliases.filter(alias => alias.name.endsWith('Props'));
 
     if (!Array.isArray(parsedData.typeAliases)) {
       return [];
@@ -73,23 +74,23 @@ async function mapToTypeAliases(): Promise<Array<TypeAlias>> {
     // Qui si possono modificare cose
     return filteredAliases.map((alias) => {
       // Get the whole type and props referenced by the component
-      const referencedProps = filteredAliases.filter(
-        (props) => props.name === alias.type.typeArguments?.[0]?.name,
-      )?.[0];
+      const referencedProps = filteredAliases.filter(props => props.name === alias.type.typeArguments?.[0]?.name)?.[0];
       // Extract the types from the typeArguments like Pick, Omit, etc.
-      const toFilterTypes = alias.type.typeArguments?.find((type) => type.types)?.types?.map((type) => type.value);
+      const toFilterTypes = alias.type.typeArguments?.find(type => type.types)?.types!.map(type => type.value);
       // Filter the properties of the referenced type by the types extracted above
-      const filteredProviders = referencedProps?.type.properties?.filter((prop) => toFilterTypes?.includes(prop.name));
+      const filteredProviders = referencedProps?.type.properties?.filter(prop => toFilterTypes?.includes(prop.name));
 
       return {
         name: alias.name,
         source: alias.source,
         type: alias.type,
         properties:
-          alias.type.properties ??
-          alias.type.types?.find((type) => type.properties)?.properties ??
-          filteredProviders ??
-          [],
+        alias.type.properties
+        ?? (
+          alias.type.types?.find(type => type.properties)?.properties
+          ?? filteredProviders
+          ?? []
+        ),
       };
     });
 
@@ -111,6 +112,7 @@ async function saveTypeAliasesToJsonFiles() {
 
     try {
       await writeFile(jsonFilePath, JSON.stringify(alias, null, 2), 'utf8');
+      console.log(`Doc for ${alias.name.replace('Props', '')} →`, `${jsonFileName}`, '\x1b[32m✔\x1b[0m');
     } catch (err) {
       console.error(`Error saving ${jsonFileName}:`, err);
     }

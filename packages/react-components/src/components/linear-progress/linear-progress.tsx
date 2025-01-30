@@ -1,7 +1,10 @@
 'use client';
 
 import clsx from 'clsx';
-import { forwardRef, useCallback, useMemo } from 'react';
+import {
+  forwardRef,
+  useCallback, useMemo,
+} from 'react';
 
 import { Text } from '@/components';
 
@@ -31,41 +34,55 @@ export type LinearProgressProps = React.ComponentPropsWithRef<'progress'> & {
    * Show or hide the progress value.
    */
   showProgress?: boolean;
-};
+}
 
-export const LinearProgress = forwardRef<HTMLProgressElement, LinearProgressProps>(
-  ({ className, style, value, max = 100, dimension = 'regular', showProgress, ...otherProps }, forwardedRef) => {
-    const getPercentage = useCallback(() => (value ? Math.round((100 * value) / max) : 0), [max, value]);
+export const LinearProgress = forwardRef<HTMLProgressElement, LinearProgressProps>(({
+  className,
+  style,
+  value,
+  max = 100,
+  dimension = 'regular',
+  showProgress,
+  ...otherProps
+}, forwardedRef) => {
+  const getPercentage = useCallback(
+    () => (value ? Math.round((100 * value) / max) : 0),
+    [max, value],
+  );
 
-    const clamp = useMemo(() => (num: number, min: number, max: number) => Math.min(Math.max(num, min), max), []);
+  const clamp = useMemo(() => (num: number, min: number, max: number) => Math.min(Math.max(num, min), max), []);
 
-    const dynamicStyle = useMemo(
-      () => ({
-        '--percentage-offset': `${getPercentage()}%`,
-        '--percentage-translation': value !== 0 ? '-100%' : '-50%',
-      }),
-      [getPercentage, value],
-    );
+  const dynamicStyle = useMemo(() => (
+    {
+      '--percentage-offset': `${getPercentage()}%`,
+      '--percentage-translation': value !== 0 ? '-100%' : '-50%',
+    }
+  ), [getPercentage, value]);
 
-    return (
-      <div className={clsx(styles.LinearProgress, className)} style={{ ...dynamicStyle, ...style }}>
-        <progress
-          ref={forwardedRef}
-          className={styles.Progress}
-          data-progress-dimension={dimension}
-          aria-valuemin={0}
-          aria-valuenow={value}
-          aria-valuemax={max}
-          value={value}
-          max={max}
-          {...otherProps}
-        />
-        {showProgress && (
-          <Text as="span" className={styles.Percentage} weight="bold" size={dimension === 'regular' ? 16 : 18}>
-            {value && clamp(getPercentage(), 0, 100)}
-          </Text>
-        )}
-      </div>
-    );
-  },
-);
+  return (
+    <div className={clsx(styles.LinearProgress, className)} style={{ ...dynamicStyle, ...style }}>
+      <progress
+        role="progressbar"
+        ref={forwardedRef}
+        className={styles.Progress}
+        data-progress-dimension={dimension}
+        aria-valuemin={0}
+        aria-valuenow={value}
+        aria-valuemax={max}
+        value={value}
+        max={max}
+        {...otherProps}
+      />
+      {(showProgress) && (
+        <Text
+          as="span"
+          className={styles.Percentage}
+          weight="bold"
+          size={dimension === 'regular' ? 16 : 18}
+        >
+          {value && clamp(getPercentage(), 0, 100)}
+        </Text>
+      )}
+    </div>
+  );
+});

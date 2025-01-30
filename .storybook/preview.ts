@@ -4,7 +4,7 @@ import './overrides.css';
 
 import { withThemeByDataAttribute } from '@storybook/addon-themes';
 import type { ReactRenderer } from '@storybook/react';
-import type { Preview } from '@storybook/react';
+import { Preview } from '@storybook/react';
 import { themes } from '@storybook/theming';
 
 import lualtekTheme from './lualtek-theme';

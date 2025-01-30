@@ -12,27 +12,17 @@ const meta = {
   argTypes: {
     iconColor: {
       options: [
-        'brand',
-        'gray',
-        'cyan',
-        'green',
-        'purple',
-        'yellow',
-        'red',
-        'blue',
-        'slate',
-        'indigo',
-        'salmon',
-        'dipsy',
-        'magenta',
+        'brand', 'gray', 'cyan', 'green',
+        'purple', 'yellow', 'red', 'blue', 'slate',
+        'indigo', 'salmon', 'dipsy', 'magenta',
       ],
       control: { type: 'select' },
     },
   },
-  render: (args) => (
+  render: args => (
     <InfoState {...args}>
-      Cras ultricies, elit sit amet cursus consectetur, risus felis ullamcorper nulla, ut scelerisque sapien lorem non
-      sem.
+      Cras ultricies, elit sit amet cursus consectetur,
+      risus felis ullamcorper nulla, ut scelerisque sapien lorem non sem.
     </InfoState>
   ),
 } satisfies Meta<typeof InfoState>;
@@ -71,9 +61,7 @@ export const WithActions = {
   args: {
     actions: [
       <Button key="primary">Primary</Button>,
-      <Button kind="flat" key="secondary">
-        Secondary
-      </Button>,
+      <Button kind="flat" key="secondary">Secondary</Button>,
     ],
   },
 } satisfies Story;
@@ -83,9 +71,7 @@ export const WithTitleLevel = {
     titleSize: '5',
     actions: [
       <Button key="primary">Primary</Button>,
-      <Button kind="flat" key="secondary">
-        Secondary
-      </Button>,
+      <Button kind="flat" key="secondary">Secondary</Button>,
     ],
   },
 } satisfies Story;

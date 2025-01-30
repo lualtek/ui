@@ -1,6 +1,8 @@
-import { type FC, useId, useMemo } from 'react';
+import { FC, useId, useMemo } from 'react';
 
-import { Pagination, Select, Stack, Text } from '@/components';
+import {
+  Pagination, Select, Stack, Text,
+} from '@/components';
 
 export type TablePaginationProps = React.ComponentPropsWithRef<'div'> & {
   /**
@@ -8,7 +10,7 @@ export type TablePaginationProps = React.ComponentPropsWithRef<'div'> & {
    *
    * @defaultValue `[5, 10, 20, 30, 50, 100]`
    */
-  clusters?: Array<number>;
+  clusters?: number[];
   /**
    * Set the number of items per page.
    */
@@ -45,7 +47,7 @@ export type TablePaginationProps = React.ComponentPropsWithRef<'div'> & {
    * @defaultValue `Items per page`
    */
   clustersLabel?: string;
-};
+}
 
 export const TablePagination: FC<TablePaginationProps> = ({
   children,
@@ -61,13 +63,21 @@ export const TablePagination: FC<TablePaginationProps> = ({
 }) => {
   const uid = useId();
   const computedItemsInPageStart = useMemo(
-    () => currentPage && itemsPerPage && currentPage * itemsPerPage,
+    () => (currentPage && itemsPerPage) && currentPage * itemsPerPage,
     [currentPage, itemsPerPage],
   );
   const computedItemsInPageEnd = useMemo(() => currentPage * itemsPerPage + itemsPerPage, [currentPage, itemsPerPage]);
 
   return (
-    <Stack fill={false} direction="row" columnGap={16} vAlign="center" hAlign="end" vPadding={16} {...otherProps}>
+    <Stack
+      fill={false}
+      direction="row"
+      columnGap={16}
+      vAlign="center"
+      hAlign="end"
+      vPadding={16}
+      {...otherProps}
+    >
       <Stack direction="row" columnGap={4}>
         <Select
           value={itemsPerPage}
@@ -77,10 +87,8 @@ export const TablePagination: FC<TablePaginationProps> = ({
             onPageSizeChange?.(Number(target.value));
           }}
         >
-          {clusters.map((cluster) => (
-            <option key={cluster} value={cluster}>
-              {cluster}
-            </option>
+          {clusters.map(cluster => (
+            <option key={cluster} value={cluster}>{cluster}</option>
           ))}
         </Select>
       </Stack>

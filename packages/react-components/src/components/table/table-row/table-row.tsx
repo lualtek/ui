@@ -1,4 +1,6 @@
-import type { Row } from '@tanstack/react-table';
+import {
+  Row,
+} from '@tanstack/react-table';
 import clsx from 'clsx';
 
 import styles from './table-row.module.css';
@@ -8,7 +10,7 @@ type TableRowProps<T extends Record<string, unknown>> = React.ComponentPropsWith
    * The row data.
    */
   rowData?: Row<T>;
-};
+}
 
 export const TableRow = <T extends Record<string, unknown>>({
   children,
@@ -16,7 +18,10 @@ export const TableRow = <T extends Record<string, unknown>>({
   rowData,
   ...otherProps
 }: TableRowProps<T>) => (
-  <tr className={clsx(styles.TableRow, className)} {...otherProps}>
+  <tr
+    className={clsx(styles.TableRow, className)}
+    {...otherProps}
+  >
     {children}
   </tr>
-);
+  );

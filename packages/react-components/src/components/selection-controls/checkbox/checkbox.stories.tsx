@@ -22,7 +22,7 @@ const meta = {
       control: { type: 'inline-radio' },
     },
   },
-  render: (args) => <Checkbox {...args} />,
+  render: args => (<Checkbox {...args} />),
 } satisfies Meta<typeof Checkbox>;
 
 export default meta;

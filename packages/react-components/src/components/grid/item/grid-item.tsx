@@ -1,5 +1,7 @@
 import clsx from 'clsx';
-import { forwardRef, useMemo } from 'react';
+import {
+  forwardRef, useMemo,
+} from 'react';
 
 import styles from './grid-item.module.css';
 
@@ -24,28 +26,33 @@ export type GridItemProps = React.ComponentPropsWithRef<'li'> & {
    * @see [grid-row](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-row)
    */
   row?: string;
-};
+}
 
-export const GridItem = forwardRef<HTMLLIElement, GridItemProps>(
-  ({ style, children, className, fullWidth = false, column, row, ...otherProps }, forwardedRef) => {
-    const dynamicStyle = useMemo(
-      () => ({
-        '--column': column,
-        '--row': row,
-      }),
-      [column, row],
-    );
+export const GridItem = forwardRef<HTMLLIElement, GridItemProps>(({
+  style,
+  children,
+  className,
+  fullWidth = false,
+  column,
+  row,
+  ...otherProps
+}, forwardedRef) => {
+  const dynamicStyle = useMemo(() => (
+    {
+      '--column': column,
+      '--row': row,
+    }
+  ), [column, row]);
 
-    return (
-      <li
-        ref={forwardedRef}
-        className={clsx(styles.GridItem, className)}
-        style={{ ...dynamicStyle, ...style }}
-        data-grid-item-fullwidth={fullWidth}
-        {...otherProps}
-      >
-        {children}
-      </li>
-    );
-  },
-);
+  return (
+    <li
+      ref={forwardedRef}
+      className={clsx(styles.GridItem, className)}
+      style={{ ...dynamicStyle, ...style }}
+      data-grid-item-fullwidth={fullWidth}
+      {...otherProps}
+    >
+      {children}
+    </li>
+  );
+});

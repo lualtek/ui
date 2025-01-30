@@ -1,20 +1,18 @@
 'use client';
 
 import clsx from 'clsx';
-import { LazyMotion, domMax, m } from 'motion/react';
 import {
-  type ReactNode,
+  domMax, LazyMotion, m,
+} from 'motion/react';
+import {
   forwardRef,
-  useCallback,
-  useEffect,
-  useId,
-  useImperativeHandle,
-  useMemo,
-  useRef,
-  useState,
+  ReactNode, useCallback, useEffect, useId, useImperativeHandle,
+  useMemo, useRef, useState,
 } from 'react';
 
-import { Icon, type IconProps, Interpolator, Text, type TextProps } from '@/components';
+import {
+  Icon, IconProps, Interpolator, Text, TextProps,
+} from '@/components';
 
 import styles from './disclosure.module.css';
 
@@ -77,15 +75,12 @@ export type DisclosureProps = React.ComponentPropsWithRef<'details'> & {
    * @returns void
    */
   onToggle?: (open: boolean) => void;
-};
+}
 
-type SizesType = Record<
-  NonNullable<DisclosureProps['dimension']>,
-  {
-    summary: TextProps['size'];
-    icon: IconProps['dimension'];
-  }
->;
+type SizesType = Record<NonNullable<DisclosureProps['dimension']>, {
+  summary: TextProps['size'];
+  icon: IconProps['dimension'];
+}>
 
 const sizes: SizesType = {
   small: {
@@ -102,121 +97,120 @@ const sizes: SizesType = {
   },
 };
 
-export const Disclosure = forwardRef<HTMLDetailsElement, DisclosureProps>(
-  (
-    {
-      children,
-      open = false,
-      padding = true,
-      className,
-      summary,
-      closedIcon = 'plus',
-      openIcon = 'minus',
-      contentMaxHeight,
-      dimension = 'regular',
-      iconPosition = 'start',
-      expandable = true,
-      style,
-      onToggle,
-      ...otherProps
-    },
-    forwardedRef,
-  ) => {
-    const ref = useRef<HTMLDetailsElement>(null);
+export const Disclosure = forwardRef<HTMLDetailsElement, DisclosureProps>(({
+  children,
+  open = false,
+  padding = true,
+  className,
+  summary,
+  closedIcon = 'plus',
+  openIcon = 'minus',
+  contentMaxHeight,
+  dimension = 'regular',
+  iconPosition = 'start',
+  expandable = true,
+  style,
+  onToggle,
+  ...otherProps
+}, forwardedRef) => {
+  const ref = useRef<HTMLDetailsElement>(null);
 
-    useImperativeHandle(forwardedRef, () => ref.current!);
+  useImperativeHandle(forwardedRef, () => ref.current!);
 
-    const [isOpen, setIsOpen] = useState<boolean>(open);
-    const uid = useId();
+  const [isOpen, setIsOpen] = useState<boolean>(open);
+  const uid = useId();
 
-    useEffect(() => {
-      if (ref.current) {
-        ref.current.open = open;
+  useEffect(() => {
+    if (ref.current) {
+      ref.current.open = open;
+    }
+  }, [open]);
+
+  const handleOpen = useCallback(
+    (event: React.SyntheticEvent<HTMLDetailsElement>) => {
+      const hasOpenState = event.currentTarget.open;
+      if (expandable) {
+        setIsOpen(hasOpenState);
+        onToggle?.(hasOpenState);
       }
-    }, [open]);
+    },
+    [expandable, onToggle],
+  );
 
-    const handleOpen = useCallback(
-      (event: React.SyntheticEvent<HTMLDetailsElement>) => {
-        const hasOpenState = event.currentTarget.open;
-        if (expandable) {
-          setIsOpen(hasOpenState);
-          onToggle?.(hasOpenState);
-        }
-      },
-      [expandable, onToggle],
-    );
+  const dynamicStyle = useMemo(() => (
+    {
+      '--max-height': contentMaxHeight,
+    }
+  ), [contentMaxHeight]);
 
-    const dynamicStyle = useMemo(
-      () => ({
-        '--max-height': contentMaxHeight,
-      }),
-      [contentMaxHeight],
-    );
-
-    return (
-      <details
-        style={{ ...dynamicStyle, ...style }}
-        className={clsx(styles.Disclosure, className)}
-        data-disclosure-icon-position={iconPosition}
-        data-disclosure-dimension={dimension}
-        data-disclosure-expandable={expandable}
-        onToggle={handleOpen}
-        ref={ref}
-        open={isOpen}
-        {...otherProps}
+  return (
+    <details
+      style={{ ...dynamicStyle, ...style }}
+      className={clsx(styles.Disclosure, className)}
+      data-disclosure-icon-position={iconPosition}
+      data-disclosure-dimension={dimension}
+      data-disclosure-expandable={expandable}
+      onToggle={handleOpen}
+      ref={ref}
+      open={isOpen}
+      {...otherProps}
+    >
+      <Text
+        as="summary"
+        className={styles.Summary}
+        responsive={false}
+        id={`${uid}-disclosure`}
+        size={dimension ? sizes[dimension].summary : undefined}
+        weight="bold"
       >
-        <Text
-          as="summary"
-          className={styles.Summary}
-          responsive={false}
-          id={`${uid}-disclosure`}
-          size={dimension ? sizes[dimension].summary : undefined}
-          weight="bold"
+        {summary}
+        {expandable && (
+          <div className={styles.ExpandIcon}>
+            <Interpolator
+              duration={100}
+              interpolating={isOpen}
+              enterComponent={(
+                <Icon
+                  source={openIcon}
+                  dimension={sizes[dimension].icon}
+                />
+              )}
+              enterRotation="-45deg"
+              enterScale={[1, 1]}
+              exitComponent={(
+                <Icon
+                  source={closedIcon}
+                  dimension={sizes[dimension].icon}
+                />
+              )}
+              exitScale={[1, 1]}
+              exitRotation="45deg"
+            />
+          </div>
+          // <Icon
+          //   className={styles.ExpandIcon}
+          //   source="ctrl-right"
+          //   dimension={sizes[dimension].icon}
+          // />
+        )}
+      </Text>
+      <LazyMotion features={domMax}>
+        <m.div
+          className={styles.Content}
+          data-disclosure-padding={padding}
+          data-disclosure-height={Boolean(contentMaxHeight)}
+          animate={isOpen ? { y: 5, opacity: 1, height: 'auto' } : {
+            y: 0, opacity: 0, height: 0, overflow: 'hidden',
+          }}
+          transition={{ ease: 'easeOut', duration: 0.1, delay: 0 }}
+          initial={false}
+          role="region"
+          aria-labelledby={`${uid}-disclosure`}
         >
-          {summary}
-          {expandable && (
-            <div className={styles.ExpandIcon}>
-              <Interpolator
-                duration={100}
-                interpolating={isOpen}
-                enterComponent={<Icon source={openIcon} dimension={sizes[dimension].icon} />}
-                enterRotation="-45deg"
-                enterScale={[1, 1]}
-                exitComponent={<Icon source={closedIcon} dimension={sizes[dimension].icon} />}
-                exitScale={[1, 1]}
-                exitRotation="45deg"
-              />
-            </div>
-            // <Icon
-            //   className={styles.ExpandIcon}
-            //   source="ctrl-right"
-            //   dimension={sizes[dimension].icon}
-            // />
-          )}
-        </Text>
-        <LazyMotion features={domMax}>
-          <m.section
-            className={styles.Content}
-            data-disclosure-padding={padding}
-            data-disclosure-height={Boolean(contentMaxHeight)}
-            animate={
-              isOpen
-                ? { y: 5, opacity: 1, height: 'auto' }
-                : {
-                    y: 0,
-                    opacity: 0,
-                    height: 0,
-                    overflow: 'hidden',
-                  }
-            }
-            transition={{ ease: 'easeOut', duration: 0.1, delay: 0 }}
-            initial={false}
-            aria-labelledby={`${uid}-disclosure`}
-          >
-            {children}
-          </m.section>
-        </LazyMotion>
-      </details>
-    );
-  },
-);
+          {children}
+        </m.div>
+      </LazyMotion>
+    </details>
+  );
+});
+
