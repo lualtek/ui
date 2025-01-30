@@ -1,5 +1,13 @@
 # @lualtek/charts
 
+## 16.2.1
+
+### Patch Changes
+
+- fe5d435: Fix reference components display name
+  - @lualtek/react-components@16.2.1
+  - @lualtek/tokens@16.2.1
+
 ## 16.2.0
 
 ### Patch Changes
