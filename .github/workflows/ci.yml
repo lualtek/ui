@@ -15,6 +15,7 @@ jobs:
   ci:
     uses: lualtek/workflows/.github/workflows/ui_ci.yml@master
     secrets:
+      NPM_TOKEN_DOWNLOAD: ${{ secrets.NPM_TOKEN_GITHUB }}
       DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
       LUALTEK_RELEASE_APP_ID: ${{ secrets.LUALTEK_RELEASE_APP_ID }}
       LUALTEK_RELEASE_APP_PRIVATE_KEY: ${{ secrets.LUALTEK_RELEASE_APP_PRIVATE_KEY }}
