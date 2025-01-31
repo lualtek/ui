@@ -2,15 +2,11 @@
   "css.validate": false,
   "javascript.validate.enable": false,
   "typescript.tsdk": "./node_modules/typescript/lib",
-  "cssvar.files": [
-    "./node_modules/@lualtek/themes/platforms/web/default/light.css"
+  "cssVariables.lookupFiles": [
+    "**/*.css",
+    "node_modules/@lualtek/tokens/platforms/web/tokens.css",
+    "node_modules/@lualtek/themes/platforms/web/default/default.css"
   ],
-  // Do not ignore node_modules css files, which is ignored by default
-  "cssvar.ignore": [],
-  "cssvar.extensions": [
-    "css", "postcss","jsx", "tsx"
-  ],
-  "cssEnvVarsAutocomplete.envFiles": ["./node_modules/@lualtek/tokens/platforms/web/tokens.css"],
   "explorer.fileNesting.patterns": {
     "*.ts": "${capture}.js",
     "*.js": "${capture}.js.map, ${capture}.min.js, ${capture}.d.ts",

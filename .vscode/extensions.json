@@ -7,8 +7,8 @@
     "vunguyentuan.vscode-postcss",
     "biomejs.biome",
     "kamikillerto.vscode-colorize",
-    "lasalefamine.vscode-css-vars",
     "editorconfig.editorconfig",
+    "vunguyentuan.vscode-css-variables",
     "aaron-bond.better-comments",
     "dbaeumer.vscode-eslint"
 	]
