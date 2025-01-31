@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "packageManager": "pnpm@9.9.0",
-  "workspaces": ["packages/*"],
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
     "build": "turbo run build",
     "build:nocache": "turbo run build --force",
@@ -39,7 +41,7 @@
     "@eslint/eslintrc": "3.2.0",
     "@eslint/js": "9.15.0",
     "@lasalefamine/eslint-config": "5.0.0",
-    "@lualtek/biome-config": "1.0.1",
+    "@lualtek/biome-config": "1.0.2",
     "@lualtek/config": "workspace:*",
     "@lualtek/themes": "workspace:*",
     "@lualtek/tokens": "workspace:*",

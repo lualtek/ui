@@ -29,10 +29,10 @@
     --safe-padding: calc(env(safe-area-inset-bottom, 0) * 0.7);
 
     &[data-drawer-has-header='true'] {
-      --header-height: token(--space-72);
+      --header-height: --token(--space-72);
 
       &[data-drawer-compact-header='true'] {
-        --header-height: token(--space-48);
+        --header-height: --token(--space-48);
       }
     }
 
@@ -59,10 +59,10 @@
   .Header {
     max-height: var(--header-height);
     padding:
-      calc(env(safe-area-inset-top) + token(--space-16))
-      calc(env(safe-area-inset-right) + token(--space-16))
-      token(--space-16)
-      calc(env(safe-area-inset-left) + token(--space-24));
+      calc(env(safe-area-inset-top) + --token(--space-16))
+      calc(env(safe-area-inset-right) + --token(--space-16))
+      --token(--space-16)
+      calc(env(safe-area-inset-left) + --token(--space-24));
   }
 }
 @layer overrides {

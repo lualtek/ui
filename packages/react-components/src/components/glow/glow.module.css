@@ -12,11 +12,11 @@
     --gradient:
  var(--glow-color, conic-gradient(
       from 180deg at 50% 70%,
-          token(--color-cyan-50),
-          token(--color-brand-50),
-          token(--color-green-50),
-          token(--color-purple-50),
-          token(--color-cyan-50)
+          --token(--color-cyan-50),
+          --token(--color-brand-50),
+          --token(--color-green-50),
+          --token(--color-purple-50),
+          --token(--color-cyan-50)
         ));
 
     border-radius: var(--radius);
@@ -32,16 +32,16 @@
       --gradient:
       conic-gradient(
            from 180deg at 50% 50%,
-           token(--color-cyan-50),
-           token(--color-brand-50),
-           token(--color-dipsy-50),
-           token(--color-red-50),
-           token(--color-indigo-50),
-           token(--color-green-50),
-           token(--color-yellow-50),
-           token(--color-purple-50),
-           token(--color-salmon-50),
-           token(--color-cyan-50)
+           --token(--color-cyan-50),
+           --token(--color-brand-50),
+           --token(--color-dipsy-50),
+           --token(--color-red-50),
+           --token(--color-indigo-50),
+           --token(--color-green-50),
+           --token(--color-yellow-50),
+           --token(--color-purple-50),
+           --token(--color-salmon-50),
+           --token(--color-cyan-50)
          );
     }
   }

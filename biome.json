@@ -5,7 +5,12 @@
     "ignore": ["**/*.{js,ts,tsx,mjs,cjs}"]
   },
   "linter": {
-    "ignore": ["types/**", "**/*.{js,ts,tsx,mjs,cjs}"]
+    "ignore": ["types/**", "**/*.{js,ts,tsx,mjs,cjs}"],
+    "rules": {
+      "correctness": {
+        "noUnknownFunction": "error"
+      }
+    }
   },
   "javascript": {
     "linter": {

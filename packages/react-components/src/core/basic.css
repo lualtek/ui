@@ -16,7 +16,7 @@
   *::after {
     margin: 0;
     box-sizing: inherit;
-    -webkit-tap-highlight-color: oklch(from token(--color-brand-60) l c h / 20%);
+    -webkit-tap-highlight-color: oklch(from --token(--color-brand-60) l c h / 20%);
   }
 
   *:focus-visible {
@@ -26,8 +26,8 @@
 
   body {
     color: var(--global-foreground);
-    font-family: token(--font-family-body);
-    font-weight: token(--font-weight-semi-bold);
+    font-family: --token(--font-family-body);
+    font-weight: --token(--font-weight-semi-bold);
     font-feature-settings: 'calt' off;
     font-size: 1rem;
     margin: 0;
@@ -81,16 +81,16 @@
       border: none;
       text-align: left;
       font-size: initial;
-      padding: calc(token(--space-4) + token(--space-2)) token(--space-8);
+      padding: calc(--token(--space-4) + --token(--space-2)) --token(--space-8);
 
       @media (--from-small) {
-        padding: calc(token(--space-8) + token(--space-4)) token(--space-16);
+        padding: calc(--token(--space-8) + --token(--space-4)) --token(--space-16);
       }
     }
 
     th {
       white-space: nowrap;
-      font-weight: token(--font-weight-bold);
+      font-weight: --token(--font-weight-bold);
 
       table[data-layout-fixed] & {
         white-space: unset;

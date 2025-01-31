@@ -5,9 +5,9 @@
   }
 
   .Input {
-    --thumb-size: token(--space-24);
-    --thumb-radius: token(--radius-8);
-    --track-h: token(--space-8);
+    --thumb-size: --token(--space-24);
+    --thumb-radius: --token(--radius-8);
+    --track-h: --token(--space-8);
 
     position: relative;
     display: flex;
@@ -19,12 +19,12 @@
     flex-grow: 1;
 
     &[data-orientation='horizontal'] {
-      block-size: token(--space-24);
+      block-size: --token(--space-24);
     }
 
     &[data-orientation='vertical'] {
       flex-direction: column;
-      inline-size: token(--space-24);
+      inline-size: --token(--space-24);
       block-size: 100%;
       min-block-size: 8rem;
     }
@@ -38,7 +38,7 @@
     box-shadow: 0 0 0 1px var(--global-outer-contrast-border), inset 0 0 0 1px var(--global-inner-contrast-border);
     position: relative;
     flex-grow: 1;
-    border-radius: token(--radius-full);
+    border-radius: --token(--radius-full);
     overflow: hidden;
     backdrop-filter: brightness(1.35);
 
@@ -88,24 +88,24 @@
     }
 
     .Input[data-disabled]:has(span > &) & {
-      backdrop-filter: blur(token(--vibrancy-blur-strong));
+      backdrop-filter: blur(--token(--vibrancy-blur-strong));
     }
 
     .Input[data-slider-show-values='true'] &::after {
       content: attr(data-slider-value-label);
       position: absolute;
       white-space: nowrap;
-      top: calc(100% + token(--space-8));
+      top: calc(100% + --token(--space-8));
       left: 50%;
       transform: translateX(-50%);
       text-align: center;
-      font-size: token(--font-size-16);
+      font-size: --token(--font-size-16);
       color: var(--dimmed-6);
-      font-weight: token(--font-weight-bold);
+      font-weight: --token(--font-weight-bold);
     }
 
     .Input[data-slider-show-values='true'] &[data-orientation='vertical']::after {
-      left: calc(100% + token(--space-8));
+      left: calc(100% + --token(--space-8));
       top: 50%;
       transform: translateY(-50%);
     }

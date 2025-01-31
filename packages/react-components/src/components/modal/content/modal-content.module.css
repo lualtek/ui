@@ -38,21 +38,21 @@
 
   .Header {
     flex-shrink: 0;
-    height: token(--space-56);
+    height: --token(--space-56);
     overflow: hidden;
-    border-radius: token(--radius-24) token(--radius-24) 0 0;
+    border-radius: --token(--radius-24) --token(--radius-24) 0 0;
     background-color: var(--header-tint);
     position: relative;
     padding:
-      token(--space-16)
-      token(--space-80)
-      token(--space-16)
-      token(--space-24);
+      --token(--space-16)
+      --token(--space-80)
+      --token(--space-16)
+      --token(--space-24);
   }
 
   .CloseButton {
     position: absolute;
-    top: token(--space-8);
-    right: token(--space-8);
+    top: --token(--space-8);
+    right: --token(--space-8);
   }
 }

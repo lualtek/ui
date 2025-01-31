@@ -6,19 +6,19 @@
     background-color: var(--background);
 
     &[data-vibrancy-blur='soft'] {
-      --blur: token(--vibrancy-blur-soft);
+      --blur: --token(--vibrancy-blur-soft);
     }
 
     &[data-vibrancy-blur='strong'] {
-      --blur: token(--vibrancy-blur-strong);
+      --blur: --token(--vibrancy-blur-strong);
     }
 
     &[data-vibrancy-saturation='standard'] {
-      --saturation: token(--vibrancy-saturation-standard);
+      --saturation: --token(--vibrancy-saturation-standard);
     }
 
     &[data-vibrancy-saturation='high'] {
-      --saturation: token(--vibrancy-saturation-high);
+      --saturation: --token(--vibrancy-saturation-high);
     }
 
     &[data-vibrancy-color='background'] {

@@ -3,7 +3,7 @@ export const postcssObjConfig = (tokens: Record<string, unknown>) => ({
   plugins: {
     'postcss-import': {},
     'postcss-replace': {
-      pattern: /token\(.*?--([^\s]+?)\)/gi,
+      pattern: /--token\(.*?--([^\s]+?)\)/gi,
       data: tokens,
     },
     'postcss-custom-media': {},

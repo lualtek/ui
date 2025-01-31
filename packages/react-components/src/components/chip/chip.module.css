@@ -1,10 +1,10 @@
 @layer components {
   .Chip {
     font: unset;
-    padding: 0 token(--space-8);
-    border-radius: token(--radius-full);
-    font-size: token(--font-size-16);
-    block-size: token(--space-24);
+    padding: 0 --token(--space-8);
+    border-radius: --token(--radius-full);
+    font-size: --token(--font-size-16);
+    block-size: --token(--space-24);
     max-width: 100%;
     background-color: var(--background, var(--highlight-slate-background));
     color: var(--foreground, var(--highlight-slate-foreground));
@@ -23,14 +23,14 @@
     }
 
     &[data-chip-dimension='small'] {
-      block-size: token(--space-16);
-      font-size: token(--font-size-14);
-      padding: 10px token(--space-8);
+      block-size: --token(--space-16);
+      font-size: --token(--font-size-14);
+      padding: 10px --token(--space-8);
     }
 
     &[data-chip-dimension='big'] {
-      font-size: token(--font-size-18);
-      block-size: token(--space-32);
+      font-size: --token(--font-size-18);
+      block-size: --token(--space-32);
     }
   }
 

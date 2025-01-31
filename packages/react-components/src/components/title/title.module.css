@@ -6,7 +6,7 @@
     white-space: var(--white-space, normal);
 
     &:is(.H1, .H2, .H3, .H4, .H5, .H6, .Display) {
-      --lh: token(--font-lh-standard);
+      --lh: --token(--font-lh-standard);
 
       display: block;
       line-height: var(--lh);
@@ -22,19 +22,19 @@
       }
 
       &[data-title-line-height='extra-small'] {
-        line-height: token(--font-lh-extra-small);
+        line-height: --token(--font-lh-extra-small);
       }
 
       &[data-title-line-height='small'] {
-        --lh: token(--font-lh-small);
+        --lh: --token(--font-lh-small);
       }
 
       &[data-title-line-height='standard'] {
-        --lh: token(--font-lh-standard);
+        --lh: --token(--font-lh-standard);
       }
 
       &[data-title-line-height='large'] {
-        --lh: token(--font-lh-large);
+        --lh: --token(--font-lh-large);
       }
 
       &::before {
@@ -55,53 +55,53 @@
     }
 
     &:is(.H6) {
-      --fs-min: token(--font-size-14);
-      --fs-max: token(--font-size-18);
+      --fs-min: --token(--font-size-14);
+      --fs-max: --token(--font-size-18);
 
-      font-weight: token(--font-weight-bold);
+      font-weight: --token(--font-weight-bold);
     }
 
     &:is(.H5) {
       --fs-min: 1rem;
       --fs-max: 1.33rem;
 
-      font-weight: token(--font-weight-bold);
+      font-weight: --token(--font-weight-bold);
     }
 
     &:is(.H4) {
       --fs-min: 1.33rem;
       --fs-max: 1.77rem;
 
-      font-weight: token(--font-weight-bold);
+      font-weight: --token(--font-weight-bold);
     }
 
     &:is(.H3) {
       --fs-min: 1.77rem;
       --fs-max: 2.37rem;
 
-      font-weight: token(--font-weight-light);
+      font-weight: --token(--font-weight-light);
     }
 
     &:is(.H2) {
       --fs-min: 2.37rem;
       --fs-max: 3.16rem;
 
-      font-weight: token(--font-weight-light);
+      font-weight: --token(--font-weight-light);
     }
 
     &:is(.H1) {
       --fs-min: 3.16rem;
       --fs-max: 4.2rem;
 
-      font-weight: token(--font-weight-light);
+      font-weight: --token(--font-weight-light);
     }
 
     &.Display {
       --fs-min: 4.2rem;
       --fs-max: 5.6rem;
 
-      font-family: token(--font-family-heading);
-      font-weight: token(--font-weight-regular);
+      font-family: --token(--font-family-heading);
+      font-weight: --token(--font-weight-regular);
       letter-spacing: -0.03em;
     }
 

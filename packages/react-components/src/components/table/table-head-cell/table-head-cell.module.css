@@ -8,12 +8,12 @@
     margin: 0;
     max-width: var(--width);
     font-variant-numeric: tabular-nums;
-    line-height: token(--font-lh-small);
+    line-height: --token(--font-lh-small);
     text-align: start;
     padding: 0;
     word-wrap: break-word;
     color: var(--global-foreground);
-    font-weight: token(--font-weight-bold);
+    font-weight: --token(--font-weight-bold);
 
     &:not(:only-child) {
       text-align: var(--text-align, start);
@@ -28,16 +28,16 @@
     }
 
     &[data-table-cell-padding='true'] {
-      padding: calc(token(--space-4) + token(--space-2)) token(--space-8);
+      padding: calc(--token(--space-4) + --token(--space-2)) --token(--space-8);
 
       @media (--from-small) {
-        padding: calc(token(--space-8) + token(--space-4)) token(--space-16);
+        padding: calc(--token(--space-8) + --token(--space-4)) --token(--space-16);
       }
     }
   }
 
   .Icon {
-    margin-inline-start: token(--space-8);
+    margin-inline-start: --token(--space-8);
   }
 
 }
@@ -46,7 +46,7 @@
     align-items: center;
     justify-content: flex-start;
     text-align: var(--text-align, start);
-    font-weight: token(--font-weight-bold);
+    font-weight: --token(--font-weight-bold);
     white-space: nowrap;
   }
 

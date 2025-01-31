@@ -1,14 +1,14 @@
 @layer components {
   .Select {
-    --field-height: token(--space-40);
-    --field-padding: token(--space-16);
-    --font-size: token(--font-size-16);
-    --field-radius: token(--radius-16);
+    --field-height: --token(--space-40);
+    --field-padding: --token(--space-16);
+    --font-size: --token(--font-size-16);
+    --field-radius: --token(--radius-16);
     --factor: 2.5;
     --invalid-foreground: var(--highlight-yellow-foreground);
     --invalid-background: var(--vibrancy-background-yellow);
 
-    border-radius: token(--radius-16);
+    border-radius: --token(--radius-16);
     appearance: none;
     position: relative;
     padding: 0;
@@ -37,7 +37,7 @@
   .Label {
     position: absolute;
     pointer-events: none;
-    top: token(--space-4);
+    top: --token(--space-4);
     left: var(--field-padding);
     transform: translateZ(0);
 
@@ -59,9 +59,9 @@
     box-sizing: border-box;
     overflow: hidden;
     color: inherit;
-    min-block-size: token(--space-48);
+    min-block-size: --token(--space-48);
     block-size: var(--field-height);
-    font-weight: token(--font-weight-semi-bold);
+    font-weight: --token(--font-weight-semi-bold);
     border-radius: var(--field-radius);
     backdrop-filter: brightness(var(--vibrancy-brightness));
     border: 0;
@@ -73,9 +73,9 @@
         var(--vibrancy-background-soft)
       );
     padding:
-      calc(token(--space-24) - token(--space-4))
+      calc(--token(--space-24) - --token(--space-4))
       calc(var(--field-padding) * var(--factor))
-      token(--space-4)
+      --token(--space-4)
       var(--field-padding);
 
     &:disabled {
@@ -109,9 +109,9 @@
     &[multiple] {
       block-size: auto;
       padding:
-        calc(token(--space-32) - token(--space-4))
+        calc(--token(--space-32) - --token(--space-4))
         var(--field-padding)
-        token(--space-4)
+        --token(--space-4)
         var(--field-padding);
       overflow: auto;
 
@@ -122,7 +122,7 @@
         var(--field-padding)
         calc(var(--field-padding) / 2)
         0;
-        font-weight: token(--font-weight-semi-bold);
+        font-weight: --token(--font-weight-semi-bold);
       }
 
       & optgroup > option {
@@ -146,7 +146,7 @@
   }
 
   .Icon {
-    border-radius: token(--radius-4);
+    border-radius: --token(--radius-4);
     pointer-events: none;
     position: absolute;
     top: 50%;

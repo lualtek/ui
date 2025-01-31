@@ -4,7 +4,7 @@
     --extra-shadow: 0 0 0 1px transparent;
     --shadow-color: oklch(0% 0 0deg);
 
-    transition: box-shadow token(--duration-100) token(--easing-standard);
+    transition: box-shadow --token(--duration-100) --token(--easing-standard);
 
     &:where([data-elevation-direction='bottom'], [data-elevation-direction='right']) {
       --shadow-direction: 1;

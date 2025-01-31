@@ -2,7 +2,7 @@
   :where(p) {
     line-height: 1.5;
     min-block-size: 0.01vh;
-    font-size: token(--font-size-16);
+    font-size: --token(--font-size-16);
   }
 
   small {
@@ -11,7 +11,7 @@
 
   strong,
   b {
-    font-weight: token(--font-weight-bold);
+    font-weight: --token(--font-weight-bold);
   }
 
   :where(a:any-link):not([data-no-link-style]) {
@@ -22,7 +22,7 @@
     &:not([class]) {
       background: linear-gradient(currentcolor, currentcolor) no-repeat 0 100%;
       background-size: 0 1px;
-      transition: background-size token(--duration-200) token(--easing-entrance);
+      transition: background-size --token(--duration-200) --token(--easing-entrance);
 
       &:hover,
       &:focus {
@@ -37,7 +37,7 @@
     background-color: var(--highlight-red-background);
     box-shadow: 0 0 0 2px var(--highlight-red-background);
     color: var(--highlight-red-foreground);
-    border-radius: token(--radius-8);
+    border-radius: --token(--radius-8);
   }
 
   ins {
@@ -46,7 +46,7 @@
     box-shadow: 0 0 0 2px var(--highlight-green-background);
     text-decoration: none;
     color: var(--highlight-green-foreground);
-    border-radius: token(--radius-8);
+    border-radius: --token(--radius-8);
   }
 
   address {
@@ -72,7 +72,7 @@
       font-size: inherit;
       text-align: right;
       font-weight: 600;
-      min-inline-size: token(--space-32);
+      min-inline-size: --token(--space-32);
     }
   }
 
@@ -82,7 +82,7 @@
     & li::marker {
       font-size: inherit;
       font-weight: 600;
-      min-inline-size: token(--space-32);
+      min-inline-size: --token(--space-32);
       font-variant-numeric: tabular-nums;
       white-space: nowrap;
     }
@@ -90,7 +90,7 @@
 
   kbd {
     padding: 2px 4px;
-    border-radius: token(--radius-8);
+    border-radius: --token(--radius-8);
     font-weight: 600;
     box-shadow: 0 0 0 1px var(--global-outer-contrast-border), inset 0 0 0 1px var(--global-inner-contrast-border);
     background: var(--vibrancy-background-mid);
@@ -113,11 +113,11 @@
 
   code {
     background-color: var(--vibrancy-background-mid);
-    border-radius: token(--radius-8);
+    border-radius: --token(--radius-8);
     box-shadow: 0 0 0 1px var(--global-outer-contrast-border), inset 0 0 0 1px var(--global-inner-contrast-border);
     padding: 0 4px 3px;
     font-size: 1em;
-    font-family: token(--font-family-mono);
+    font-family: --token(--font-family-mono);
     vertical-align: top;
   }
 
