@@ -1,5 +1,3 @@
-/* stylelint-disable property-no-vendor-prefix */
-
 @layer components {
   .GradientText {
     -webkit-background-clip: text;
@@ -17,7 +15,12 @@
     }
 
     &[data-gradient-text='rainbow'] {
-      background-image: linear-gradient(92deg, token(--color-brand-60) 10%, token(--color-purple-40) 60%, token(--color-yellow-50) 100%);
+      background-image: linear-gradient(
+        92deg,
+        token(--color-brand-60) 10%,
+        token(--color-purple-40) 60%,
+        token(--color-yellow-50) 100%
+      );
     }
 
     &[data-gradient-text='brand'] {
