@@ -3,8 +3,7 @@
 import { TokensTypes } from '@lualtek/tokens/platforms/web';
 import tkns from '@lualtek/tokens/platforms/web/tokens.json';
 import clsx from 'clsx';
-import type React from 'react';
-import {
+import React, {
   Children,
   CSSProperties,
   forwardRef,
@@ -176,7 +175,19 @@ export const Marquee = forwardRef<HTMLDivElement, MarqueeProps>((
     setIsMounted(true);
   }, []);
 
-    const dynamicStyle = useMemo(() => {
+  // Animation duration
+  const duration = useMemo(() => {
+    if (autoFill) {
+      return (marqueeWidth * multiplier) / speed;
+    }
+
+    return marqueeWidth < containerWidth
+      ? containerWidth / speed
+      : marqueeWidth / speed;
+  }, [autoFill, containerWidth, marqueeWidth, multiplier, speed]);
+
+  const dynamicStyle: CSSProperties = useMemo(
+    () => {
       const computedContainerTransform = () => {
         if (direction === 'up') return 'rotate(-90deg)';
         if (direction === 'down') return 'rotate(90deg)';
@@ -195,17 +206,17 @@ export const Marquee = forwardRef<HTMLDivElement, MarqueeProps>((
     [play, pauseOnHover, pauseOnClick, direction, gap, fadeSize],
   );
 
-    const sliderStyle = useMemo(
-      () => ({
-        '--play': play ? 'running' : 'paused',
-        '--direction': direction === 'left' ? 'normal' : 'reverse',
-        '--duration': `${duration}s`,
-        '--delay': `${delay}s`,
-        '--iteration-count': loop ? `${loop}` : 'infinite',
-        '--min-width': autoFill ? 'auto' : '100%',
-      }),
-      [play, direction, duration, delay, loop, autoFill],
-    );
+  const sliderStyle: CSSProperties = useMemo(
+    () => ({
+      '--play': play ? 'running' : 'paused',
+      '--direction': direction === 'left' ? 'normal' : 'reverse',
+      '--duration': `${duration}s`,
+      '--delay': `${delay}s`,
+      '--iteration-count': loop ? `${loop}` : 'infinite',
+      '--min-width': autoFill ? 'auto' : '100%',
+    }),
+    [play, direction, duration, delay, loop, autoFill],
+  );
 
   const slideStyle = useMemo(
     () => {

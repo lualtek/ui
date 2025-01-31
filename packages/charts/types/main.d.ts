@@ -1,20 +1,6 @@
-/* eslint-disable no-unused-vars */
-declare module '*.module.css' {
-  const classes: Record<string, string>;
-  export default classes;
-}
-
 /**
  * Default CSS definition for typescript
  */
 declare module 'csstype' {
-  type Properties = Record<string, any>;
+  type Properties = React.CSSProperties;
 }
-
-declare module '*.svg' {
-  const svgUrl: string;
-  const svgComponent: React.StatelessComponent<React.SVGAttributes<SVGElement>>;
-  export default svgUrl;
-  export { svgComponent as ReactComponent };
-}
-
