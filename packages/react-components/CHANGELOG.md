@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 16.2.2
+
+### Patch Changes
+
+- 1f50350: Fix marquee
+  - @lualtek/icons@16.2.2
+
 ## 16.2.1
 
 ### Patch Changes

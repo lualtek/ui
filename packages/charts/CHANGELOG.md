@@ -1,5 +1,14 @@
 # @lualtek/charts
 
+## 16.2.2
+
+### Patch Changes
+
+- 1f50350: Fix marquee
+- Updated dependencies [1f50350]
+  - @lualtek/react-components@16.2.2
+  - @lualtek/tokens@16.2.2
+
 ## 16.2.1
 
 ### Patch Changes
