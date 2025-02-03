@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 16.2.3
+
+### Patch Changes
+
+- b092bd5: Fix icon-button icon size and overrides
+  - @lualtek/icons@16.2.3
+
 ## 16.2.2
 
 ### Patch Changes
