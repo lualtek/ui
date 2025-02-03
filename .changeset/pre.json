@@ -10,5 +10,7 @@
     "@lualtek/tokens": "16.2.2",
     "tsconfig": "0.0.4"
   },
-  "changesets": []
+  "changesets": [
+    "silly-rules-nail"
+  ]
 }
