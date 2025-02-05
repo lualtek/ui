@@ -29,7 +29,7 @@ export type OverlayProps = React.ComponentPropsWithoutRef<'div'> & {
    *
    * @defaultValue 4
    */
-  index?: number;
+  index?: 'auto' | number;
   /**
    * Set the overlay style. This is used to obscure the content
    * behind the overlay if `obfuscate` is `true`. If set to `auto`, the overlay
@@ -59,7 +59,7 @@ export const Overlay: FC<OverlayProps> = ({
   children,
   root,
   theme = 'auto',
-  index = 4,
+  index = 'auto',
   obfuscate = true,
   backdropOpacity = 0.7,
   onClose,
