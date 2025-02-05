@@ -1,5 +1,15 @@
 # @lualtek/react-components
 
+## 17.0.0-next.2
+
+### Major Changes
+
+- 1d74335: Set overlay default index to "auto" and update prop type
+
+### Patch Changes
+
+- @lualtek/icons@17.0.0-next.2
+
 ## 17.0.0-next.1
 
 ### Patch Changes
