@@ -1,5 +1,14 @@
 # @lualtek/react-components
 
+## 17.0.0-next.1
+
+### Patch Changes
+
+- 000be08: Fix google font import
+- Updated dependencies [741320a]
+- Updated dependencies [0aaa805]
+  - @lualtek/icons@17.0.0-next.1
+
 ## 17.0.0-next.0
 
 ### Major Changes
