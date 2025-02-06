@@ -1,5 +1,11 @@
 # @lualtek/icons
 
+## 17.1.0
+
+### Minor Changes
+
+- 3f5a485: Update dependecies
+
 ## 17.0.0
 
 ### Minor Changes

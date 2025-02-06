@@ -1,5 +1,18 @@
 # @lualtek/charts
 
+## 17.1.0
+
+### Minor Changes
+
+- 3f5a485: Update dependecies
+
+### Patch Changes
+
+- Updated dependencies [61884f7]
+- Updated dependencies [3f5a485]
+  - @lualtek/react-components@17.1.0
+  - @lualtek/tokens@17.1.0
+
 ## 17.0.0
 
 ### Patch Changes

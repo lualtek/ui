@@ -1,5 +1,17 @@
 # @lualtek/react-components
 
+## 17.1.0
+
+### Minor Changes
+
+- 61884f7: Add new `inline` prop to `Tabs` to prevent the tablist to fill the space horizontally
+- 3f5a485: Update dependecies
+
+### Patch Changes
+
+- Updated dependencies [3f5a485]
+  - @lualtek/icons@17.1.0
+
 ## 17.0.0
 
 ### Major Changes
