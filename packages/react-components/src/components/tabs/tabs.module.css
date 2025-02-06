@@ -43,20 +43,20 @@
     background: color-mix(in oklch, var(--vibrancy-background-hard), transparent 50%);
     pointer-events: none;
     box-shadow: 0 0 0 1px var(--global-outer-contrast-border), inset 0 0 0 1px var(--global-inner-contrast-border);
-    border-radius: calc(token(--radius-8) + token(--radius-4));
+    border-radius: calc(--token(--radius-8) + --token(--radius-4));
 
     .Tabs[data-tabs-dimension='small'] & {
-      border-radius: calc(token(--radius-16) - token(--radius-4) - 2px);
+      border-radius: calc(--token(--radius-16) - --token(--radius-4) - 2px);
       inset: -2px;
     }
 
     .Tabs[data-tabs-dimension='big'] & {
-      border-radius: calc(token(--radius-16) + token(--radius-4));
+      border-radius: calc(--token(--radius-16) + --token(--radius-4));
     }
   }
 
   .Panel {
-    animation: fade-in token(--duration-200) ease-in-out;
+    animation: fade-in --token(--duration-200) ease-in-out;
   }
 
   @keyframes fade-in {

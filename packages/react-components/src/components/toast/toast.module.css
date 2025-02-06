@@ -37,11 +37,11 @@
 
 
   .Viewport {
-    --viewport-padding: token(--space-24);
+    --viewport-padding: --token(--space-24);
 
     display: flex;
     flex-direction: column;
-    gap: token(--space-8);
+    gap: --token(--space-8);
     position: fixed;
     inset: auto 0 0 auto;
     padding: var(--viewport-padding);

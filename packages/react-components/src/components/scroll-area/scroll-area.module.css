@@ -22,7 +22,7 @@
       scrollbar-color: var(--thumb-color, var(--vibrancy-background-hard)) var(--track-color, transparent);
 
       &::-webkit-scrollbar {
-        width: token(--space-8);
+        width: --token(--space-8);
         background: transparent;
       }
 

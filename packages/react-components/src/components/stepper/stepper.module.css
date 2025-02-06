@@ -8,7 +8,7 @@
       content: '';
       position: absolute;
       top: 4px;
-      left: calc(token(--space-16) - token(--space-4));
+      left: calc(--token(--space-16) - --token(--space-4));
       bottom: -4px;
       width: 1px;
       background: var(--dimmed-2);
@@ -27,10 +27,10 @@
   }
 
   .Content {
-    padding-bottom: token(--space-64);
+    padding-bottom: --token(--space-64);
 
     @media (--from-medium) {
-      padding-bottom: token(--space-80);
+      padding-bottom: --token(--space-80);
     }
   }
 }

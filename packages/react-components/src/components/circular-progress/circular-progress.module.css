@@ -5,13 +5,13 @@
     --track-bg: var(--vibrancy-background-mid);
     --thumb-size: calc(var(--track-size) - 2.5px);
 
-    inline-size: token(--space-64);
+    inline-size: --token(--space-64);
     min-inline-size: 64px;
     aspect-ratio: 1 / 1;
     display: grid;
     place-items: center;
     position: relative;
-    font-weight: token(--font-weight-bold);
+    font-weight: --token(--font-weight-bold);
     font-size: 1rem;
 
     &::after {
@@ -31,15 +31,15 @@
     &[data-circular-progress-dimension='regular'] {
       --track-size: 8px;
 
-      font-size: token(--font-size-32);
-      inline-size: token(--space-136);
+      font-size: --token(--font-size-32);
+      inline-size: --token(--space-136);
     }
 
     &[data-circular-progress-dimension='big'] {
       --track-size: 16px;
 
-      font-size: token(--font-size-42);
-      inline-size: token(--space-184);
+      font-size: --token(--font-size-42);
+      inline-size: --token(--space-184);
     }
 
     &::before {

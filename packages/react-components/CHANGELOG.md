@@ -1,5 +1,34 @@
 # @lualtek/react-components
 
+## 17.0.0-next.2
+
+### Major Changes
+
+- 1d74335: Set overlay default index to "auto" and update prop type
+
+### Patch Changes
+
+- @lualtek/icons@17.0.0-next.2
+
+## 17.0.0-next.1
+
+### Patch Changes
+
+- 000be08: Fix google font import
+- Updated dependencies [741320a]
+- Updated dependencies [0aaa805]
+  - @lualtek/icons@17.0.0-next.1
+
+## 17.0.0-next.0
+
+### Major Changes
+
+- d9dd73c: Rename custom CSS function `token()` into `--token()` to match standard naming convention
+
+### Patch Changes
+
+- @lualtek/icons@17.0.0-next.0
+
 ## 16.2.3
 
 ### Patch Changes

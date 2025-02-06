@@ -21,6 +21,7 @@ const config: StorybookConfig = {
     getAbsolutePath('@storybook/addon-interactions'),
     getAbsolutePath('@storybook/addon-themes'),
   ],
+  staticDirs: [{ from: '../packages/react-components/src/fonts', to: '/fonts' }],
   framework: {
     name: getAbsolutePath('@storybook/react-vite'),
     options: {},

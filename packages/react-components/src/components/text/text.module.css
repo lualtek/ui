@@ -2,8 +2,8 @@
 
 @layer components {
   .Text {
-    --fs-min: token(--font-size-16);
-    --fs-max: token(--font-size-18);
+    --fs-min: --token(--font-size-16);
+    --fs-max: --token(--font-size-18);
 
     min-block-size: 0.01vh;
     font-size: inherit;
@@ -58,81 +58,81 @@
     }
 
     &[data-text-size='12'] {
-      --fs-min: token(--font-size-12);
-      --fs-max: token(--font-size-12);
+      --fs-min: --token(--font-size-12);
+      --fs-max: --token(--font-size-12);
     }
 
     &[data-text-size='14'] {
-      --fs-min: token(--font-size-12);
-      --fs-max: token(--font-size-14);
+      --fs-min: --token(--font-size-12);
+      --fs-max: --token(--font-size-14);
     }
 
     &[data-text-size='16'] {
-      --fs-min: token(--font-size-14);
-      --fs-max: token(--font-size-16);
+      --fs-min: --token(--font-size-14);
+      --fs-max: --token(--font-size-16);
     }
 
     &[data-text-size='18'] {
-      --fs-min: token(--font-size-16);
-      --fs-max: token(--font-size-18);
+      --fs-min: --token(--font-size-16);
+      --fs-max: --token(--font-size-18);
     }
 
     &[data-text-size='22'] {
-      --fs-min: token(--font-size-18);
-      --fs-max: token(--font-size-22);
+      --fs-min: --token(--font-size-18);
+      --fs-max: --token(--font-size-22);
     }
 
     &[data-text-size='24'] {
-      --fs-min: token(--font-size-18);
-      --fs-max: token(--font-size-24);
+      --fs-min: --token(--font-size-18);
+      --fs-max: --token(--font-size-24);
     }
 
     &[data-text-size='28'] {
-      --fs-min: token(--font-size-22);
-      --fs-max: token(--font-size-28);
+      --fs-min: --token(--font-size-22);
+      --fs-max: --token(--font-size-28);
     }
 
     &[data-text-size='32'] {
-      --fs-min: token(--font-size-28);
-      --fs-max: token(--font-size-32);
+      --fs-min: --token(--font-size-28);
+      --fs-max: --token(--font-size-32);
     }
 
     &[data-text-size='42'] {
-      --fs-min: token(--font-size-32);
-      --fs-max: token(--font-size-42);
+      --fs-min: --token(--font-size-32);
+      --fs-max: --token(--font-size-42);
     }
 
     &[data-text-size='56'] {
-      --fs-min: token(--font-size-42);
-      --fs-max: token(--font-size-56);
+      --fs-min: --token(--font-size-42);
+      --fs-max: --token(--font-size-56);
     }
 
     &[data-text-size='75'] {
-      --fs-min: token(--font-size-56);
-      --fs-max: token(--font-size-75);
+      --fs-min: --token(--font-size-56);
+      --fs-max: --token(--font-size-75);
     }
 
     &[data-text-size='100'] {
-      --fs-min: token(--font-size-75);
-      --fs-max: token(--font-size-100);
+      --fs-min: --token(--font-size-75);
+      --fs-max: --token(--font-size-100);
     }
 
     /* Weights */
 
     &[data-text-weight='light'] {
-      font-weight: token(--font-weight-light);
+      font-weight: --token(--font-weight-light);
     }
 
     &[data-text-weight='regular'] {
-      font-weight: token(--font-weight-regular);
+      font-weight: --token(--font-weight-regular);
     }
 
     &[data-text-weight='semibold'] {
-      font-weight: token(--font-weight-semi-bold);
+      font-weight: --token(--font-weight-semi-bold);
     }
 
     &[data-text-weight='bold'] {
-      font-weight: token(--font-weight-bold);
+      font-weight: --token(--font-weight-bold);
     }
 
     /* Responsiveness */
@@ -151,19 +151,19 @@
     }
 
     &[data-text-line-height='extra-small'] {
-      line-height: token(--font-lh-extra-small);
+      line-height: --token(--font-lh-extra-small);
     }
 
     &[data-text-line-height='small'] {
-      line-height: token(--font-lh-small);
+      line-height: --token(--font-lh-small);
     }
 
     &[data-text-line-height='standard'] {
-      line-height: token(--font-lh-standard);
+      line-height: --token(--font-lh-standard);
     }
 
     &[data-text-line-height='large'] {
-      line-height: token(--font-lh-large);
+      line-height: --token(--font-lh-large);
     }
   }
 }

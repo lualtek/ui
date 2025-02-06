@@ -18,7 +18,7 @@
     max-inline-size: var(--w);
     max-block-size: var(--h);
     color: var(--cta-foreground);
-    border-radius: token(--radius-8);
+    border-radius: --token(--radius-8);
     position: relative;
     background-color: var(--vibrancy-background-hard);
     box-shadow: 0 0 0 1px var(--global-outer-contrast-border), inset 0 0 0 1px var(--global-inner-contrast-border);
@@ -65,7 +65,7 @@
       --w: 16px;
       --h: 16px;
 
-      border-radius: token(--radius-4);
+      border-radius: --token(--radius-4);
     }
 
     &:indeterminate::after {

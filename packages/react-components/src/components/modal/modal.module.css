@@ -5,14 +5,13 @@
     position: absolute;
     display: grid;
     inset: 0;
-    z-index: 1;
     pointer-events: none;
     align-items: center;
     justify-content: center;
 
     @media (--from-small) {
       overflow: auto;
-      padding: 0 token(--space-24);
+      padding: 0 --token(--space-24);
     }
 
     & > * {

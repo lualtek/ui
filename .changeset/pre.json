@@ -1,0 +1,20 @@
+{
+  "mode": "pre",
+  "tag": "next",
+  "initialVersions": {
+    "@lualtek/charts": "16.2.2",
+    "@lualtek/config": "16.2.2",
+    "@lualtek/icons": "16.2.2",
+    "@lualtek/react-components": "16.2.2",
+    "@lualtek/themes": "16.2.2",
+    "@lualtek/tokens": "16.2.2",
+    "tsconfig": "0.0.4"
+  },
+  "changesets": [
+    "cool-nails-applaud",
+    "lovely-llamas-sell",
+    "silly-rules-nail",
+    "smart-guests-invite",
+    "two-donuts-design"
+  ]
+}

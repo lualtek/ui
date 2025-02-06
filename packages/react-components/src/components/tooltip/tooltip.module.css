@@ -1,11 +1,11 @@
 @layer components {
   .Tooltip {
-    padding: token(--space-8) token(--space-16);
+    padding: --token(--space-8) --token(--space-16);
     background-color: var(--global-foreground);
     border: 1px solid var(--global-inner-contrast-border);
     color: var(--global-background);
-    border-radius: token(--radius-16);
-    font-size: token(--font-size-16);
+    border-radius: --token(--radius-16);
+    font-size: --token(--font-size-16);
     pointer-events: none;
     outline: 1px solid var(--global-outer-contrast-border);
 

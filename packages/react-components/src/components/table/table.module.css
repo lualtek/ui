@@ -19,7 +19,7 @@
   .TableElement {
     width: 100%;
     border-collapse: collapse;
-    font-size: token(--font-size-16);
+    font-size: --token(--font-size-16);
 
     &[data-table-loading='true'] {
       pointer-events: none;
@@ -45,8 +45,8 @@
     }
 
     & th {
-      padding-top: token(--space-16);
-      padding-bottom: token(--space-16);
+      padding-top: --token(--space-16);
+      padding-bottom: --token(--space-16);
     }
   }
 
@@ -58,7 +58,7 @@
     z-index: 4;
 
     & > * {
-      min-block-size: token(--space-56);
+      min-block-size: --token(--space-56);
     }
   }
 }

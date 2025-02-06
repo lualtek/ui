@@ -1,5 +1,16 @@
 # @lualtek/icons
 
+## 17.0.0-next.2
+
+## 17.0.0-next.1
+
+### Minor Changes
+
+- 741320a: Add new hourglass icon
+- 0aaa805: Add new refresh-pause icon
+
+## 17.0.0-next.0
+
 ## 16.2.3
 
 ## 16.2.2

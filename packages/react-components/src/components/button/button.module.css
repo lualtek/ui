@@ -18,10 +18,10 @@
     white-space: nowrap;
     border: 0;
     appearance: none;
-    font-weight: token(--font-weight-bold);
+    font-weight: --token(--font-weight-bold);
     overflow: hidden;
     background: var(--background);
-    gap: token(--space-8);
+    gap: --token(--space-8);
     position: relative;
     box-shadow:
     inset 0 0 0 1px color-mix(in oklab, var(--border-color), transparent calc(100% - var(--border-opacity))),
@@ -30,25 +30,25 @@
     /* Sizes */
 
     &[data-button-dimension='big'] {
-      padding: 0.55rem token(--space-24) 0.66rem;
-      font-size: token(--font-size-18);
-      block-size: token(--space-48);
-      border-radius: token(--radius-16);
+      padding: 0.55rem --token(--space-24) 0.66rem;
+      font-size: --token(--font-size-18);
+      block-size: --token(--space-48);
+      border-radius: --token(--radius-16);
     }
 
     &[data-button-dimension='regular'] {
-      padding: 0.33rem token(--space-16) token(--space-8);
-      font-size: token(--font-size-16);
-      block-size: token(--space-40);
-      border-radius: token(--radius-16);
+      padding: 0.33rem --token(--space-16) --token(--space-8);
+      font-size: --token(--font-size-16);
+      block-size: --token(--space-40);
+      border-radius: --token(--radius-16);
     }
 
     &[data-button-dimension='small'] {
-      font-size: token(--font-size-14);
-      padding: 0 token(--space-8);
-      block-size: token(--space-24);
-      gap: token(--space-4);
-      border-radius: token(--radius-8);
+      font-size: --token(--font-size-14);
+      padding: 0 --token(--space-8);
+      block-size: --token(--space-24);
+      gap: --token(--space-4);
+      border-radius: --token(--radius-8);
     }
 
     /* Types */
@@ -61,7 +61,7 @@
       --glow-color: color-mix(in oklab, var(--highlight-brand-foreground), transparent 70%);
       --shine-position: 65%;
 
-      transition: all token(--duration-200) ease-out;
+      transition: all --token(--duration-200) ease-out;
       background: linear-gradient(to top, var(--background), var(--global-background));
 
       &::before,

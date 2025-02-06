@@ -1,9 +1,9 @@
 @layer components {
   .Meter {
     --meter-background-color: var(--dimmed-2);
-    --meter-strong-color: token(--color-green-50);
-    --meter-good-color: token(--color-dipsy-50);
-    --meter-weak-color: token(--color-red-60);
+    --meter-strong-color: --token(--color-green-50);
+    --meter-good-color: --token(--color-dipsy-50);
+    --meter-weak-color: --token(--color-red-60);
     --dot-size: 6px;
 
     position: relative;
@@ -20,16 +20,16 @@
       --dot-size: 2px;
 
       width: 53px;
-      height: token(--space-16);
-      mask-size: token(--space-8) token(--space-8);
+      height: --token(--space-16);
+      mask-size: --token(--space-8) --token(--space-8);
     }
 
     &[data-meter-dimension='regular'] {
       --dot-size: 4px;
 
       width: 105px;
-      height: token(--space-16);
-      mask-size: token(--space-16) token(--space-16);
+      height: --token(--space-16);
+      mask-size: --token(--space-16) --token(--space-16);
     }
 
 

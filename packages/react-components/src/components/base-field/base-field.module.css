@@ -7,7 +7,7 @@
     margin: 0;
     text-overflow: ellipsis;
     font-size: var(--font-size);
-    font-weight: token(--font-weight-regular);
+    font-weight: --token(--font-weight-regular);
     font-family: inherit;
     line-height: 1;
     appearance: none;
@@ -21,10 +21,10 @@
     display: flex;
     caret-color: var(--cta-default);
     outline-offset: 2px;
-    min-block-size: token(--space-48);
+    min-block-size: --token(--space-48);
     border: 0;
     box-shadow: 0 0 0 1px var(--global-outer-contrast-border), inset 0 0 0 1px var(--inner-border-color);
-    border-radius: token(--radius-16);
+    border-radius: --token(--radius-16);
 
     &::-webkit-calendar-picker-indicator {
       background-image: none;
@@ -118,10 +118,10 @@
 
   textarea.BaseField {
     block-size: auto;
-    min-block-size: token(--space-32);
-    line-height: token(--font-lh-standard);
+    min-block-size: --token(--space-32);
+    line-height: --token(--font-lh-standard);
     resize: vertical;
-    padding: calc(token(--space-24) - token(--space-4)) calc(var(--field-padding) + token(--space-16))
+    padding: calc(--token(--space-24) - --token(--space-4)) calc(var(--field-padding) + --token(--space-16))
       calc(var(--field-padding) / 2) var(--field-padding);
 
     &::-webkit-datetime-edit-text {

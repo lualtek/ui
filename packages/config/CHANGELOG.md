@@ -1,5 +1,27 @@
 # @lualtek/config
 
+## 17.0.0-next.2
+
+### Patch Changes
+
+- @lualtek/tokens@17.0.0-next.2
+
+## 17.0.0-next.1
+
+### Patch Changes
+
+- @lualtek/tokens@17.0.0-next.1
+
+## 17.0.0-next.0
+
+### Major Changes
+
+- d9dd73c: Rename custom CSS function `token()` into `--token()` to match standard naming convention
+
+### Patch Changes
+
+- @lualtek/tokens@17.0.0-next.0
+
 ## 16.2.3
 
 ### Patch Changes

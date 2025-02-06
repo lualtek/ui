@@ -1,23 +1,23 @@
 @layer components {
   .IconChip {
-    border-radius: calc(token(--radius-8) + token(--radius-4));
-    block-size: var(--size, token(--space-40));
-    inline-size: var(--size, token(--space-40));
+    border-radius: calc(--token(--radius-8) + --token(--radius-4));
+    block-size: var(--size, --token(--space-40));
+    inline-size: var(--size, --token(--space-40));
     flex-shrink: 0;
     background-color: var(--background, var(--highlight-slate-background));
     color: var(--foreground, var(--highlight-slate-foreground));
     border: 1px solid color-mix(in oklch, var(--foreground, var(--highlight-slate-foreground)), transparent 80%);
 
     &[data-icon-chip-dimension='small'] {
-      --size: token(--space-24);
+      --size: --token(--space-24);
 
-      border-radius: token(--radius-8);
+      border-radius: --token(--radius-8);
     }
 
     &[data-icon-chip-dimension='big'] {
-      border-radius: token(--radius-16);
+      border-radius: --token(--radius-16);
 
-      --size: token(--space-48);
+      --size: --token(--space-48);
     }
   }
 

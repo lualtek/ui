@@ -1,12 +1,12 @@
 @layer components {
   .Textarea {
     --factor: 3.5;
-    --field-padding: token(--space-16);
-    --font-size: token(--font-size-16);
+    --field-padding: --token(--space-16);
+    --font-size: --token(--font-size-16);
     --invalid-foreground: var(--highlight-yellow-foreground);
     --invalid-background: var(--vibrancy-background-yellow);
 
-    border-radius: token(--radius-16);
+    border-radius: --token(--radius-16);
     appearance: none;
     position: relative;
     padding: 0;
@@ -29,7 +29,7 @@
   .Label {
     position: absolute;
     pointer-events: none;
-    top: token(--space-4);
+    top: --token(--space-4);
     left: var(--field-padding);
     right: var(--field-padding);
     transform: translateZ(0);
@@ -47,6 +47,6 @@
 }
 @layer overrides {
   .InputField {
-    min-block-size: token(--space-48);
+    min-block-size: --token(--space-48);
   }
 }
