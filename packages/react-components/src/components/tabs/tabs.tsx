@@ -29,6 +29,11 @@ export type TabsProps = TabsPrimitive.TabsProps & {
    * @defaultValue "regular"
    */
   dimension?: 'small' | 'regular' | 'big';
+  /**
+   * Prevents the tabs list to fill the whole space horizontally.
+   * Useful for short tabs.
+   */
+  inline?: boolean;
 };
 
 type TabsComponent = FC<TabsProps> & {
@@ -42,6 +47,7 @@ export const Tabs: TabsComponent = ({
   defaultValue,
   listGap,
   dimension = 'regular',
+  inline,
   style,
   ...otherProps
 }) => {
@@ -84,6 +90,7 @@ export const Tabs: TabsComponent = ({
           vibrant
           vibrancyColor="soft"
           className={styles.List}
+          data-tabs-inline={inline}
         >
           <Stack
             as={TabsPrimitive.List}

@@ -29,6 +29,12 @@ type Story = StoryObj<typeof meta>;
 
 export const Default = {} satisfies Story;
 
+export const Inline = {
+  args: {
+    inline: true,
+  },
+} satisfies Story;
+
 export const InitialTab = {
   args: {
     defaultValue: '3',
