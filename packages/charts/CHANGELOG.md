@@ -1,5 +1,12 @@
 # @lualtek/charts
 
+## 17.1.1
+
+### Patch Changes
+
+- @lualtek/react-components@17.1.1
+- @lualtek/tokens@17.1.1
+
 ## 17.1.0
 
 ### Minor Changes

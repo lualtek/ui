@@ -1,5 +1,11 @@
 # @lualtek/icons
 
+## 17.1.1
+
+### Patch Changes
+
+- c122c45: Fix icons rendering
+
 ## 17.1.0
 
 ### Minor Changes
