@@ -4,7 +4,9 @@ import { TokensTypes } from '@lualtek/tokens/platforms/web';
 import tkns from '@lualtek/tokens/platforms/web/tokens.json';
 import clsx from 'clsx';
 import {
-  forwardRef, ReactNode, useMemo,
+  forwardRef,
+  ReactNode,
+  useMemo,
 } from 'react';
 
 import styles from './grid.module.css';
@@ -100,7 +102,7 @@ export const Grid = forwardRef<HTMLUListElement, GridProps>(({
     <ul
       className={clsx(styles.Grid, className)}
       style={{ ...dynamicStyle, ...style }}
-      data-grid-filling-type={filling}
+      data-grid-filling-type={columns ? undefined : filling}
       data-stack-has-padding={Boolean(hPadding ?? vPadding)}
       ref={forwardedRef}
       {...otherProps}

@@ -33,6 +33,11 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default = {};
+export const WithScroll = {
+  args: {
+    maxHeight: '100px',
+  },
+};
 
 export const WithIcons = {
   render: args => (
