@@ -1,5 +1,11 @@
 # @lualtek/icons
 
+## 17.2.0
+
+### Patch Changes
+
+- 8410dfb: Fix solid refresh icon arrows direction to match duotone one
+
 ## 17.1.1
 
 ### Patch Changes

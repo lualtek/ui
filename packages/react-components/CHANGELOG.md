@@ -1,5 +1,16 @@
 # @lualtek/react-components
 
+## 17.2.0
+
+### Minor Changes
+
+- 5afce32: Fix badge props to require a single valid element as child
+
+### Patch Changes
+
+- Updated dependencies [8410dfb]
+  - @lualtek/icons@17.2.0
+
 ## 17.1.1
 
 ### Patch Changes
