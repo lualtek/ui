@@ -6,13 +6,31 @@ import clsx from 'clsx';
 import {
   forwardRef, useMemo,
 } from 'react';
+import { Except } from 'type-fest';
 
 import styles from './badge.module.css';
 
-export type BadgeProps = React.ComponentPropsWithRef<'div'> & {
+export type BadgeProps = Except<React.ComponentPropsWithRef<'div'>, 'children'> & {
+  children: React.ReactElement;
+  /**
+   * The size of the gap border around the badge.
+   * @defaultValue 4
+   */
   gap?: number;
+  /**
+   * The size of the badge.
+   * @defaultValue 12
+   */
   badgeSize?: number;
+  /**
+   * The color of the badge.
+   * @defaultValue 'yellow' (`color-yellow-50`)
+   */
   color?: TokensTypes['colors'];
+  /**
+   * Whether to show the badge.
+   * @defaultValue false
+   */
   showBadge?: boolean;
 }
 

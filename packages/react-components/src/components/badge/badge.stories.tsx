@@ -9,17 +9,13 @@ const meta = {
   component: Badge,
   args: {
     showBadge: true,
+    children: <IconButton
+      aria-label="Enable or disable notifications"
+      icon="bell"
+      dimension="big"
+    />,
   },
   tags: ['code-only'],
-  render: args => (
-    <Badge {...args}>
-      <IconButton
-        aria-label="Enable or disable notifications"
-        icon="bell"
-        dimension="big"
-      />
-    </Badge>
-  ),
 } satisfies Meta<typeof Badge>;
 
 export default meta;
