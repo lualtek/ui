@@ -1,5 +1,11 @@
 # @lualtek/tokens
 
+## 18.0.0
+
+### Major Changes
+
+- 351098b: Remove `platforms` from tokens and themes imports.
+
 ## 17.2.0
 
 ## 17.1.1

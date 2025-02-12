@@ -1,5 +1,20 @@
 # @lualtek/config
 
+## 18.0.0
+
+### Major Changes
+
+- 351098b: Remove `platforms` from tokens and themes imports.
+
+### Minor Changes
+
+- 49c5290: Update internal token replacing with postcss-function and remove postcss-replace
+
+### Patch Changes
+
+- Updated dependencies [351098b]
+  - @lualtek/tokens@18.0.0
+
 ## 17.2.0
 
 ### Patch Changes

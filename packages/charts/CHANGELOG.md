@@ -1,5 +1,17 @@
 # @lualtek/charts
 
+## 18.0.0
+
+### Major Changes
+
+- 351098b: Remove `platforms` from tokens and themes imports.
+
+### Patch Changes
+
+- Updated dependencies [351098b]
+  - @lualtek/react-components@18.0.0
+  - @lualtek/tokens@18.0.0
+
 ## 17.2.0
 
 ### Patch Changes
