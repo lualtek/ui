@@ -1,5 +1,11 @@
 # @lualtek/tokens
 
+## 18.0.1
+
+### Patch Changes
+
+- 109b012: Fix types import
+
 ## 18.0.1-next.0
 
 ### Patch Changes

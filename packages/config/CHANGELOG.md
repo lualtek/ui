@@ -1,5 +1,12 @@
 # @lualtek/config
 
+## 18.0.1
+
+### Patch Changes
+
+- Updated dependencies [109b012]
+  - @lualtek/tokens@18.0.1
+
 ## 18.0.1-next.0
 
 ### Patch Changes
