@@ -10,6 +10,7 @@
   "exports": {
     "./web": "./platforms/web/index.js",
     "./web/tokens.json": "./platforms/web/tokens.json",
+    "./web/tokens-flat.json": "./platforms/web/tokens-flat.json",
     "./web/tokens.css": "./platforms/web/tokens.css",
     "./raw/tokens.json": "./platforms/raw/tokens.json"
   },
