@@ -16,12 +16,9 @@
   },
   "typesVersions": {
     "*": {
-      "web/*": [
-        "platforms/web/*"
-      ],
-      "raw/*": [
-        "platforms/raw/*"
-      ]
+      "web/*": ["platforms/web/*"],
+      "raw/*": ["platforms/raw/*"],
+      "platforms/*": ["platforms/*"]
     }
   },
   "files": [
