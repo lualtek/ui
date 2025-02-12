@@ -1,10 +1,11 @@
 'use client';
 
-import tkns from '@lualtek/tokens/platforms/web/tokens.json';
+import tkns from '@lualtek/tokens/web/tokens.json';
 import clsx from 'clsx';
 import { domMax, LazyMotion, m } from 'motion/react';
 import {
-  forwardRef, ReactNode, useId,
+  forwardRef, ReactNode,
+  useId,
   useMemo,
 } from 'react';
 import { AutoFocusInside, FocusOn } from 'react-focus-on';

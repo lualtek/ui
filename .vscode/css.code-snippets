@@ -26,7 +26,7 @@
   "Import Lualtek css design tokens": {
 		"prefix": "tokens",
 		"body": [
-			"@import '@lualtek/tokens/platforms/web/tokens.css';"
+			"@import '@lualtek/tokens/web/tokens.css';"
 		],
     "scope": "css, postcss",
 		"description": "Import Lualtek css media queries from inside a component"

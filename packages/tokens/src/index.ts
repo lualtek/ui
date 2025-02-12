@@ -46,6 +46,10 @@ const config: Config = {
           format: 'json/nested',
           destination: 'tokens.json',
         },
+        {
+          format: 'json/flat',
+          destination: 'tokens-flat.json',
+        },
       ],
       options: {
         showFileHeader: true,

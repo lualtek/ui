@@ -1,4 +1,4 @@
-import jsonTokens from '@lualtek/tokens/platforms/web/tokens.json';
+import jsonTokens from '@lualtek/tokens/web/tokens.json';
 import { flatten } from 'flat';
 
 import { postcssObjConfig } from './config-object.js';

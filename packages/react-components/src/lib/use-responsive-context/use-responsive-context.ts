@@ -1,5 +1,5 @@
-/* eslint-disable @typescript-eslint/prefer-reduce-type-parameter */
-import jsonTokens from '@lualtek/tokens/platforms/web/tokens.json';
+
+import jsonTokens from '@lualtek/tokens/web/tokens.json';
 import constate from 'constate';
 import { useCallback, useEffect, useState } from 'react';
 

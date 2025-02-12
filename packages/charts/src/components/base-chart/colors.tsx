@@ -1,4 +1,4 @@
-import tkns from '@lualtek/tokens/platforms/web/tokens.json';
+import tkns from '@lualtek/tokens/web/tokens.json';
 
 export const BASE_CHART_COLORS = [
   tkns.color.cyan[60],

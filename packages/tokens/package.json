@@ -8,21 +8,18 @@
   },
   "type": "module",
   "exports": {
-    "./platforms/web": "./platforms/web/index.js",
-    "./platforms/web/tokens.json": "./platforms/web/tokens.json",
-    "./platforms/web/tokens.css": "./platforms/web/tokens.css",
-    "./platforms/raw/tokens.json": "./platforms/raw/tokens.json"
+    "./web": "./platforms/web/index.js",
+    "./web/tokens.json": "./platforms/web/tokens.json",
+    "./web/tokens.css": "./platforms/web/tokens.css",
+    "./raw/tokens.json": "./platforms/raw/tokens.json"
   },
   "typesVersions": {
     "*": {
-      "platforms/*": [
-        "platforms/*"
-      ]
+      "web/*": ["platforms/web/*"],
+      "raw/*": ["platforms/raw/*"]
     }
   },
-  "files": [
-    "platforms/"
-  ],
+  "files": ["platforms/"],
   "scripts": {
     "prebuild": "rimraf platforms/",
     "build": "pnpm run build:tokens && pnpm run build:types",

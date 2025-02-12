@@ -27,7 +27,7 @@ Currently we ship tokens only for the `web` platform, others may be added in the
 If you want to import and use tokens inside your javascript-based project, you can import the `json` version and use it. Note that the color tokens are provided in HSL format, without the css `oklch()` notation, which you have to add each time.
 
 ```jsx
-import tkns from "@lualtek/tokens/platforms/web/tokens.json";
+import tkns from "@lualtek/tokens/web/tokens.json";
 
 <div style={{ color: tkns.color.blue["50"] }} />;
 // To add trasparency
@@ -39,7 +39,7 @@ import tkns from "@lualtek/tokens/platforms/web/tokens.json";
 If your codebase is based on typescript you can import the tokens types which provide types validation for tokens when you use them inside other components. Here an example:
 
 ```jsx
-import { TokensTypes } from "@lualtek/tokens/platforms/web/types";
+import { TokensTypes } from "@lualtek/tokens/web/types";
 import React from "react";
 
 type MyComponentProps = {
@@ -52,7 +52,7 @@ type MyComponentProps = {
 Inside css files the tokens are available as custom env variables (`token(--[TOKEN-NAME])`), they are then converted into the final value at build-time.
 
 ```css
-@import "@lualtek/tokens/platforms/web/tokens.css";
+@import "@lualtek/tokens/web/tokens.css";
 
 div {
   /* Colors are defined as HSL-4 but without the oklch() notation */

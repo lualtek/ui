@@ -1,10 +1,11 @@
 'use client';
 
 import { TokensTypes } from '@lualtek/tokens/platforms/web';
-import tkns from '@lualtek/tokens/platforms/web/tokens.json';
+import tkns from '@lualtek/tokens/web/tokens.json';
 import clsx from 'clsx';
 import {
-  Children, cloneElement, CSSProperties, FC, isValidElement, ReactElement, useMemo,
+  Children, cloneElement, CSSProperties,
+  FC, isValidElement, ReactElement, useMemo,
 } from 'react';
 import MasonryLayout from 'react-masonry-css';
 

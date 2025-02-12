@@ -1,14 +1,14 @@
 'use client';
 
 import { TokensTypes } from '@lualtek/tokens/platforms/web';
-import tkns from '@lualtek/tokens/platforms/web/tokens.json';
+import tkns from '@lualtek/tokens/web/tokens.json';
 import clsx from 'clsx';
 import { forwardRef, useMemo } from 'react';
 
 import {
   Glow,
-  GlowProps, PolyRefComponent,
-  useStyles, VibrancyBlur, VibrancyColor, VibrancySaturation,
+  GlowProps, PolyRefComponent, useStyles,
+  VibrancyBlur, VibrancyColor, VibrancySaturation,
 } from '@/components';
 
 import { ConditionalWrapper } from '../conditional-wrapper';
