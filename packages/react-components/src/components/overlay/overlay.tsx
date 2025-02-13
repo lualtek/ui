@@ -19,6 +19,7 @@ export type OverlayProps = React.ComponentPropsWithoutRef<'div'> & {
    * rendered outside the DOM hierarchy of the parent component.
    */
   children: ReactNode;
+  isVisible?: boolean;
   /**
    * Set the root element to render the overlay into.
    */
@@ -58,6 +59,7 @@ export type OverlayProps = React.ComponentPropsWithoutRef<'div'> & {
 export const Overlay: FC<OverlayProps> = ({
   children,
   root,
+  isVisible,
   theme = 'auto',
   index = 'auto',
   obfuscate = true,
@@ -78,7 +80,7 @@ export const Overlay: FC<OverlayProps> = ({
 
   useEffect(() => {
     if (typeof document !== 'undefined') {
-      if (children) {
+      if (isVisible) {
         document.body?.setAttribute('data-overlay-open', 'true');
         document.body?.style.setProperty('--overlay-z-index', String(index));
       } else {
@@ -86,35 +88,34 @@ export const Overlay: FC<OverlayProps> = ({
         document.body?.removeAttribute('data-overlay-open');
       }
     }
-  }, [children, defaultRoot, index]);
+  }, [isVisible, defaultRoot, index]);
 
   const content = (
     <OverlayProvider onClose={onClose}>
-      <AnimatePresence mode="wait">
-        {children && (
+      <LazyMotion features={domMax} strict>
+        {isVisible && (
           <div
             data-overlay
             data-overlay-obfuscate={obfuscate}
             className={styles.Overlay}
             style={{ zIndex: index }}
+            key="lualtek-overlay"
           >
-            <LazyMotion features={domMax}>
-              {obfuscate && (
-                <m.span
-                  key={`${uid}-modal-backdrop`}
-                  className={styles.Backdrop}
-                  data-overlay-color={theme}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: backdropOpacity }}
-                  transition={{ duration: 0.2 }}
-                  exit={{ opacity: 0 }}
-                />
-              )}
-              {children}
-            </LazyMotion>
+            {obfuscate && (
+              <m.span
+                key={`${uid}-modal-backdrop`}
+                className={styles.Backdrop}
+                data-overlay-color={theme}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: backdropOpacity }}
+                transition={{ duration: 0.2 }}
+                exit={{ opacity: 0 }}
+              />
+            )}
+            {children}
           </div>
         )}
-      </AnimatePresence>
+      </LazyMotion>
     </OverlayProvider>
   );
 

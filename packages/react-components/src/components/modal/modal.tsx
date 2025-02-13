@@ -2,11 +2,10 @@
 
 import tkns from '@lualtek/tokens/web/tokens.json';
 import clsx from 'clsx';
+import { m } from 'motion/react';
 import {
-  domMax, LazyMotion, m,
-  MotionProps,
-} from 'motion/react';
-import { forwardRef, useId, useMemo } from 'react';
+  forwardRef, useId, useMemo,
+} from 'react';
 import { FocusOn } from 'react-focus-on';
 
 import {
@@ -89,33 +88,30 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>(({
   }), [matches]);
 
   return (
-    <Overlay onClose={onClose} index={index}>
-      {isOpen
-      && (
-        <FocusOn
-          onClickOutside={closeOnClickOutside ? onClose : undefined}
-          onEscapeKey={onClose}
-          autoFocus={autoFocus}
+    <FocusOn
+      onClickOutside={closeOnClickOutside ? onClose : undefined}
+      onEscapeKey={onClose}
+      enabled={isOpen}
+      autoFocus={autoFocus}
+    >
+      <Overlay isVisible={isOpen} onClose={onClose} index={index}>
+
+        <m.div
+          variants={ModalAnimation}
+          initial="hidden"
+          animate="visible"
+          exit="hidden"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby={headingId}
+          className={clsx(styles.Modal, className)}
+          ref={forwardedRef}
+          {...otherProps}
         >
-          <LazyMotion features={domMax}>
-            <m.div
-              variants={ModalAnimation}
-              initial="hidden"
-              animate="visible"
-              exit="hidden"
-              role="dialog"
-              aria-modal="true"
-              aria-labelledby={headingId}
-              className={clsx(styles.Modal, className)}
-              ref={forwardedRef}
-              {...otherProps}
-            >
-              {children}
-            </m.div>
-          </LazyMotion>
-        </FocusOn>
-      )}
-    </Overlay>
+          {children}
+        </m.div>
+      </Overlay>
+    </FocusOn>
   );
 }) as ModalComponent;
 
