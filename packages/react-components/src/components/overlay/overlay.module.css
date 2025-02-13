@@ -1,8 +1,10 @@
 @layer components {
   .Overlay {
-    display: block;
-    position: fixed;
-    inset: 0;
+    &[data-overlay-visible='true'] {
+      display: block;
+      position: fixed;
+      inset: 0;
+    }
 
     &[data-overlay-obfuscate='false'] {
       pointer-events: none;

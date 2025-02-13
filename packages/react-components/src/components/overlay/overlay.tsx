@@ -94,12 +94,14 @@ export const Overlay: FC<OverlayProps> = ({
     <OverlayProvider onClose={onClose}>
       <div
         data-overlay
+        data-overlay-visible={isVisible}
         data-overlay-obfuscate={obfuscate}
         className={styles.Overlay}
         style={{ zIndex: index }}
         key="lualtek-overlay"
+
       >
-        {obfuscate && (
+        {isVisible && obfuscate && (
           <m.span
             key={`${uid}-modal-backdrop`}
             className={styles.Backdrop}

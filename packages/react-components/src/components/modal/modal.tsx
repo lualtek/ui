@@ -91,30 +91,33 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>(({
 
   return (
     <LazyMotion features={domMax} strict>
-      {isOpen && (
+      <Overlay isVisible={isOpen} onClose={onClose} index={index}>
         <FocusOn
           onClickOutside={closeOnClickOutside ? onClose : undefined}
           onEscapeKey={onClose}
+          enabled={isOpen}
           autoFocus={autoFocus}
         >
-          <Overlay onClose={onClose} index={index}>
-            <m.div
-              variants={ModalAnimation}
-              initial="hidden"
-              animate="visible"
-              exit="hidden"
-              role="dialog"
-              aria-modal="true"
-              aria-labelledby={headingId}
-              className={clsx(styles.Modal, className)}
-              ref={forwardedRef}
-              {...otherProps}
-            >
-              {children}
-            </m.div>
-          </Overlay>
+          <AnimatePresence mode="wait">
+            {isOpen && (
+              <m.div
+                variants={ModalAnimation}
+                initial="hidden"
+                animate="visible"
+                exit="hidden"
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby={headingId}
+                className={clsx(styles.Modal, className)}
+                ref={forwardedRef}
+                {...otherProps}
+              >
+                {children}
+              </m.div>
+            )}
+          </AnimatePresence>
         </FocusOn>
-      )}
+      </Overlay>
     </LazyMotion>
   );
 }) as ModalComponent;
