@@ -1,20 +1,8 @@
+import { useArgs } from '@storybook/preview-api';
 import type { Meta, StoryObj } from '@storybook/react';
-import { useState } from 'react';
 
 import { Button, Stack } from '../..';
 import { Overlay } from './overlay';
-
-const Template = ({ ...args }) => {
-  const [isVisible, setVisible] = useState(false);
-  return (
-    <>
-      <Button onClick={() => setVisible(true)}>Open Overlay</Button>
-      <Overlay onClose={() => setVisible(false)} {...args}>
-        {isVisible && args.children}
-      </Overlay>
-    </>
-  );
-};
 
 const meta = {
   title: 'Layouts/Overlay',
@@ -31,7 +19,24 @@ const meta = {
       </Stack>
     ),
   },
-  render: args => <Template {...args} />,
+  render: function Render({ ...args }) {
+    const [{ isVisible }, setIsVisible] = useArgs<{ isVisible: boolean }>();
+    const handleClose = (visibility: boolean) => setIsVisible({ isVisible: visibility });
+
+    return (
+      <>
+        <Button onClick={() => handleClose(true)}>Open Overlay</Button>
+        <Overlay onClose={() => handleClose(false)} {...args}>
+          {isVisible && (
+            <>
+              {args.children}
+              <Button onClick={() => handleClose(false)}>Close</Button>
+            </>
+          )}
+        </Overlay>
+      </>
+    );
+  },
 } satisfies Meta<typeof Overlay>;
 
 export default meta;
