@@ -92,30 +92,26 @@ export const Overlay: FC<OverlayProps> = ({
 
   const content = (
     <OverlayProvider onClose={onClose}>
-      <LazyMotion features={domMax} strict>
-        {isVisible && (
-          <div
-            data-overlay
-            data-overlay-obfuscate={obfuscate}
-            className={styles.Overlay}
-            style={{ zIndex: index }}
-            key="lualtek-overlay"
-          >
-            {obfuscate && (
-              <m.span
-                key={`${uid}-modal-backdrop`}
-                className={styles.Backdrop}
-                data-overlay-color={theme}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: backdropOpacity }}
-                transition={{ duration: 0.2 }}
-                exit={{ opacity: 0 }}
-              />
-            )}
-            {children}
-          </div>
+      <div
+        data-overlay
+        data-overlay-obfuscate={obfuscate}
+        className={styles.Overlay}
+        style={{ zIndex: index }}
+        key="lualtek-overlay"
+      >
+        {obfuscate && (
+          <m.span
+            key={`${uid}-modal-backdrop`}
+            className={styles.Backdrop}
+            data-overlay-color={theme}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: backdropOpacity }}
+            transition={{ duration: 0.2 }}
+            exit={{ opacity: 0 }}
+          />
         )}
-      </LazyMotion>
+        {children}
+      </div>
     </OverlayProvider>
   );
 
