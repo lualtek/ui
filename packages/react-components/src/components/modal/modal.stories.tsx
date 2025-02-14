@@ -264,9 +264,19 @@ export const WithTabInside = {
           onClose={() => handleClose(false)}
         >
           <Modal.Content heading="Modal title">
-            <Tabs defaultValue="1">
-              <Tabs.Panel value="1" label="Tab 1">ciao</Tabs.Panel>
-              <Tabs.Panel value="2" label="Tab mid long 2">ciao</Tabs.Panel>
+            <Tabs defaultValue="1" listGap={16}>
+              <Tabs.Panel value="1" label="Tab 1">
+                <Stack vPadding={24} hPadding={24}>
+                  ciao
+                  <button type="button">Test focus</button>
+                </Stack>
+              </Tabs.Panel>
+              <Tabs.Panel value="2" label="Tab mid long 2">
+                <Stack vPadding={24} hPadding={24}>
+                  ciao
+                  <button type="button">Test focus</button>
+                </Stack>
+              </Tabs.Panel>
             </Tabs>
           </Modal.Content>
         </Modal>

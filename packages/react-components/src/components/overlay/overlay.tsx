@@ -19,6 +19,10 @@ export type OverlayProps = React.ComponentPropsWithoutRef<'div'> & {
    * rendered outside the DOM hierarchy of the parent component.
    */
   children: ReactNode;
+  /**
+   * Set the visibility of the overlay. When set to true
+   * the overlay layer will be rendered.
+   */
   isVisible?: boolean;
   /**
    * Set the root element to render the overlay into.
