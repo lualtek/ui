@@ -4,7 +4,9 @@ import { TokensTypes } from '@lualtek/tokens/platforms/web';
 import tkns from '@lualtek/tokens/web/tokens.json';
 import * as TabsPrimitive from '@radix-ui/react-tabs';
 import clsx from 'clsx';
-import { domMax, LazyMotion, m } from 'motion/react';
+import {
+  AnimatePresence, domMax, LazyMotion, m,
+} from 'motion/react';
 import {
   Children, FC, isValidElement, useCallback, useId, useState,
 } from 'react';
@@ -118,9 +120,11 @@ export const Tabs: TabsComponent = ({
                     {child.props.label}
                     {child.props.decorator}
                   </Stack>
-                  {(child.props.value === activeItem) && (
-                    <m.span className={styles.Highlight} layoutId={`${uid}-tab-highlight-lazy`} />
-                  )}
+                  <AnimatePresence>
+                    {(child.props.value === activeItem) && (
+                      <m.span className={styles.Highlight} layoutId={`${uid}-tab-highlight-lazy`} />
+                    )}
+                  </AnimatePresence>
                 </Button>
               </TabsPrimitive.Trigger>
             ))}
