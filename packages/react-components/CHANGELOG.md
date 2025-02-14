@@ -1,5 +1,15 @@
 # @lualtek/react-components
 
+## 18.1.0
+
+### Minor Changes
+
+- 588d360: Add new isVisible prop to Overlay and fix modal/drawer interactions
+
+### Patch Changes
+
+- @lualtek/icons@18.1.0
+
 ## 18.0.1
 
 ### Patch Changes
