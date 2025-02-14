@@ -23,8 +23,7 @@ export const OverlayProvider = (props: PropsWithChildren<OverlayContextProps>) =
   const uid = useId();
   const {
     children,
-    headingId = `${uid}-overlay-title`,
-    onClose,
+    headingId = `${uid}-overlay-title`, onClose,
   } = props;
 
   return (

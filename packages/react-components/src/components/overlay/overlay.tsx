@@ -20,11 +20,6 @@ export type OverlayProps = React.ComponentPropsWithoutRef<'div'> & {
    */
   children: ReactNode;
   /**
-   * Set the visibility of the overlay. When set to true
-   * the overlay layer will be rendered.
-   */
-  isVisible?: boolean;
-  /**
    * Set the root element to render the overlay into.
    */
   root?: HTMLElement;
@@ -63,7 +58,6 @@ export type OverlayProps = React.ComponentPropsWithoutRef<'div'> & {
 export const Overlay: FC<OverlayProps> = ({
   children,
   root,
-  isVisible,
   theme = 'auto',
   index = 'auto',
   obfuscate = true,
@@ -84,7 +78,7 @@ export const Overlay: FC<OverlayProps> = ({
 
   useEffect(() => {
     if (typeof document !== 'undefined') {
-      if (isVisible) {
+      if (children) {
         document.body?.setAttribute('data-overlay-open', 'true');
         document.body?.style.setProperty('--overlay-z-index', String(index));
       } else {
@@ -92,24 +86,19 @@ export const Overlay: FC<OverlayProps> = ({
         document.body?.removeAttribute('data-overlay-open');
       }
     }
-  }, [isVisible, defaultRoot, index]);
-
-  useEffect(() => {
-    console.log('VISIBLE', isVisible);
-  }, [isVisible]);
+  }, [children, defaultRoot, index]);
 
   const content = (
-    <LazyMotion features={domMax} strict>
-      <OverlayProvider onClose={onClose}>
-        <AnimatePresence mode="wait">
-          {isVisible && (
-            <div
-              data-overlay
-              data-overlay-obfuscate={obfuscate}
-              className={styles.Overlay}
-              style={{ zIndex: index }}
-              key="lualtek-overlay"
-            >
+    <OverlayProvider onClose={onClose}>
+      <AnimatePresence mode="wait">
+        {children && (
+          <div
+            data-overlay
+            data-overlay-obfuscate={obfuscate}
+            className={styles.Overlay}
+            style={{ zIndex: index }}
+          >
+            <LazyMotion features={domMax}>
               {obfuscate && (
                 <m.span
                   key={`${uid}-modal-backdrop`}
@@ -122,11 +111,11 @@ export const Overlay: FC<OverlayProps> = ({
                 />
               )}
               {children}
-            </div>
-          )}
-        </AnimatePresence>
-      </OverlayProvider>
-    </LazyMotion>
+            </LazyMotion>
+          </div>
+        )}
+      </AnimatePresence>
+    </OverlayProvider>
   );
 
   return defaultRoot && createPortal(content, defaultRoot);

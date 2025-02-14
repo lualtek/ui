@@ -2,10 +2,11 @@
 
 import tkns from '@lualtek/tokens/web/tokens.json';
 import clsx from 'clsx';
-import { m } from 'motion/react';
 import {
-  forwardRef, useId, useMemo,
-} from 'react';
+  domMax, LazyMotion, m,
+  MotionProps,
+} from 'motion/react';
+import { forwardRef, useId, useMemo } from 'react';
 import { FocusOn } from 'react-focus-on';
 
 import {
@@ -82,37 +83,38 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>(({
       y: matches.small ? 0 : '100%',
       transition: {
         easing: tkns.easing.exit,
-        duration: parseFloat((matches.small ? tkns.duration[100] : tkns.duration[500]).replace('s', '')),
+        duration: parseFloat(tkns.duration[100].replace('s', '')),
       },
     },
   }), [matches]);
 
   return (
-    <Overlay
-      isVisible={isOpen}
-      onClose={onClose}
-      index={index}
-    >
-      <m.div
-        variants={ModalAnimation}
-        initial="hidden"
-        animate="visible"
-        exit="hidden"
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby={headingId}
-        className={clsx(styles.Modal, className)}
-        ref={forwardedRef}
-        {...otherProps}
-      >
+    <Overlay onClose={onClose} index={index}>
+      {isOpen
+      && (
         <FocusOn
           onClickOutside={closeOnClickOutside ? onClose : undefined}
           onEscapeKey={onClose}
           autoFocus={autoFocus}
         >
-          {children}
+          <LazyMotion features={domMax}>
+            <m.div
+              variants={ModalAnimation}
+              initial="hidden"
+              animate="visible"
+              exit="hidden"
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby={headingId}
+              className={clsx(styles.Modal, className)}
+              ref={forwardedRef}
+              {...otherProps}
+            >
+              {children}
+            </m.div>
+          </LazyMotion>
         </FocusOn>
-      </m.div>
+      )}
     </Overlay>
   );
 }) as ModalComponent;
