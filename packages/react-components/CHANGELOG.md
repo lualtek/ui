@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 18.1.1
+
+### Patch Changes
+
+- afd30b2: Revert overlay changes and fix modal interactions
+  - @lualtek/icons@18.1.1
+
 ## 18.1.0
 
 ### Minor Changes
