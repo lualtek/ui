@@ -94,31 +94,39 @@ export const Overlay: FC<OverlayProps> = ({
     }
   }, [isVisible, defaultRoot, index]);
 
-  const content = (
-    <OverlayProvider onClose={onClose}>
-      <div
-        data-overlay
-        data-overlay-visible={isVisible}
-        data-overlay-obfuscate={obfuscate}
-        className={styles.Overlay}
-        style={{ zIndex: index }}
-        key="lualtek-overlay"
+  useEffect(() => {
+    console.log('VISIBLE', isVisible);
+  }, [isVisible]);
 
-      >
-        {isVisible && obfuscate && (
-          <m.span
-            key={`${uid}-modal-backdrop`}
-            className={styles.Backdrop}
-            data-overlay-color={theme}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: backdropOpacity }}
-            transition={{ duration: 0.2 }}
-            exit={{ opacity: 0 }}
-          />
-        )}
-        {children}
-      </div>
-    </OverlayProvider>
+  const content = (
+    <LazyMotion features={domMax} strict>
+      <OverlayProvider onClose={onClose}>
+        <AnimatePresence mode="wait">
+          {isVisible && (
+            <div
+              data-overlay
+              data-overlay-obfuscate={obfuscate}
+              className={styles.Overlay}
+              style={{ zIndex: index }}
+              key="lualtek-overlay"
+            >
+              {obfuscate && (
+                <m.span
+                  key={`${uid}-modal-backdrop`}
+                  className={styles.Backdrop}
+                  data-overlay-color={theme}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: backdropOpacity }}
+                  transition={{ duration: 0.2 }}
+                  exit={{ opacity: 0 }}
+                />
+              )}
+              {children}
+            </div>
+          )}
+        </AnimatePresence>
+      </OverlayProvider>
+    </LazyMotion>
   );
 
   return defaultRoot && createPortal(content, defaultRoot);
