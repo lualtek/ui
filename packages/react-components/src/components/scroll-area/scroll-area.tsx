@@ -21,6 +21,11 @@ export type ScrollAreaProps = {
    */
   thumbColor?: string;
   /**
+   * Horizontal negative margin used to offset the list.
+   * Used to align list edges to the viewport or containers.
+   */
+  bleed?: TokensTypes['space'];
+  /**
    * The color of the scrollbar track.
    */
   trackColor?: string;
@@ -69,6 +74,7 @@ export const ScrollArea = forwardRef((
     canScroll = true,
     thumbColor,
     trackColor,
+    bleed,
     useSystemStyle = true,
     hideScrollbars = false,
     gutterBehavior = 'auto',
@@ -95,8 +101,9 @@ export const ScrollArea = forwardRef((
       '--gutter-behaviour': gutterBehavior,
       '--fade-size': computedFadeDirection,
       '--overscroll-behavior': overscrollBehavior,
+      '--bleed': bleed ? tkns.space[bleed] : 0,
     }
-  ), [thumbColor, trackColor, gutterBehavior, overscrollBehavior, computedFadeDirection]);
+  ), [thumbColor, trackColor, gutterBehavior, overscrollBehavior, bleed, computedFadeDirection]);
 
   return (
     <Component

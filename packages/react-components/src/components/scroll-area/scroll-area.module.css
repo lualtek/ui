@@ -5,17 +5,31 @@
     scrollbar-width: auto;
     -webkit-overflow-scrolling: touch;
     overscroll-behavior: var(--overscroll-behavior);
+    margin-left: calc(var(--bleed, 0) * -1);
+    margin-right: calc(var(--bleed, 0) * -1);
 
     &[data-scroll-area-scrolling='true'] {
       overflow: auto;
     }
 
     &[data-scroll-fade-direction='vertical'] {
-      mask-image: linear-gradient(to bottom, transparent, black var(--fade-size), black calc(100% - var(--fade-size)), transparent);
+      mask-image: linear-gradient(
+        to bottom,
+        transparent,
+        black var(--fade-size),
+        black calc(100% - var(--fade-size)),
+        transparent
+      );
     }
 
     &[data-scroll-fade-direction='horizontal'] {
-      mask-image: linear-gradient(to right, transparent, black var(--fade-size), black calc(100% - var(--fade-size)), transparent);
+      mask-image: linear-gradient(
+        to right,
+        transparent,
+        black var(--fade-size),
+        black calc(100% - var(--fade-size)),
+        transparent
+      );
     }
 
     &[data-scroll-use-system='false'] {
@@ -28,7 +42,7 @@
 
       &::-webkit-scrollbar-track {
         border-radius: 1e5px;
-        background:  var(--track-color, transparent);
+        background: var(--track-color, transparent);
       }
 
       &::-webkit-scrollbar-thumb {
