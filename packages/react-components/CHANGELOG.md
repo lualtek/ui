@@ -1,5 +1,15 @@
 # @lualtek/react-components
 
+## 18.2.0
+
+### Minor Changes
+
+- fb95aeb: Add `bleed` prop to SrcollArea
+
+### Patch Changes
+
+- @lualtek/icons@18.2.0
+
 ## 18.1.1
 
 ### Patch Changes
