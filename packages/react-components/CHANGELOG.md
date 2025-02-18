@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 18.3.1
+
+### Patch Changes
+
+- fd2a309: Fix tab indicator state on controlled tabs
+  - @lualtek/icons@18.3.1
+
 ## 18.3.0
 
 ### Minor Changes
