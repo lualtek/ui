@@ -59,3 +59,10 @@ export const LabelIcon = {
     label: <Icon dimension="12" source="wifi" />,
   },
 } satisfies Story;
+
+export const Direction = {
+  args: {
+    labelPosition: 'start',
+    direction: 'column',
+  },
+} satisfies Story;

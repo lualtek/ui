@@ -4,10 +4,11 @@ import {
   forwardRef,
   ReactNode,
   useId,
+  useMemo,
 } from 'react';
 import { Except } from 'type-fest';
 
-import { Stack, Text } from '@/components';
+import { Stack, StackProps, Text } from '@/components';
 
 import styles from './meter.module.css';
 
@@ -16,6 +17,10 @@ export type MeterProps = Except<React.ComponentPropsWithRef<'meter'>, 'min' | 'm
    * Set the dimension of the meter.
    */
   dimension?: 'small' | 'regular';
+  /**
+   * Set the direction of the meter.
+   */
+  direction?: StackProps['direction'];
   /**
    * Show the label next to the meter.
    *
@@ -41,16 +46,32 @@ export const Meter = forwardRef<HTMLMeterElement, MeterProps>(({
   label,
   showLabel = true,
   labelPosition = 'end',
+  direction = 'row',
   ...otherProps
 }, forwardedRef) => {
   const uid = useId();
 
+  const horizontalLabelDirection = useMemo(() => (
+    labelPosition === 'end' ? 'row' : 'row-reverse'),
+  [labelPosition]);
+
+  const verticalLabelDirection = useMemo(() => (
+    labelPosition === 'end' ? 'column' : 'column-reverse'),
+  [labelPosition]);
+
+  const stackDirection = useMemo(() => (direction === 'row'
+    ? horizontalLabelDirection
+    : verticalLabelDirection),
+  [direction, horizontalLabelDirection, verticalLabelDirection]);
+
   return (
     <Stack
       inline
-      direction={labelPosition === 'end' ? 'row' : 'row-reverse'}
+      direction={stackDirection}
       vAlign="center"
+      hAlign="center"
       columnGap={4}
+      rowGap={4}
       className={className}
     >
       <meter

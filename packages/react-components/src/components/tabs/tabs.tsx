@@ -76,12 +76,12 @@ export const Tabs: TabsComponent = ({
 
   return (
     <TabsPrimitive.Root
-      defaultValue={defaultValue}
-      onValueChange={handleOnVlaueChange}
+      {...otherProps}
       data-tabs-dimension={dimension}
       className={clsx(styles.Tabs, className)}
       style={{ ...style, ...dynamicStyle }}
-      {...otherProps}
+      defaultValue={defaultValue}
+      onValueChange={handleOnVlaueChange}
     >
       <LazyMotion features={domMax} strict>
         <Panel
