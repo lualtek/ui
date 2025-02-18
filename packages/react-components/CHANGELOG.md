@@ -1,5 +1,15 @@
 # @lualtek/react-components
 
+## 18.3.0
+
+### Minor Changes
+
+- 3060803: Add directio prop to Meter
+
+### Patch Changes
+
+- @lualtek/icons@18.3.0
+
 ## 18.2.0
 
 ### Minor Changes
