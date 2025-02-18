@@ -1,3 +1,4 @@
+import { useArgs } from '@storybook/preview-api';
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 
@@ -142,6 +143,33 @@ export const DisabledTabs: Story = {
       </Tabs.Panel>
     </Tabs>
   ),
+} satisfies Story;
+
+export const Controlled: Story = {
+  args: {
+    value: '1',
+  },
+  render: function Render({ ...args }) {
+    const [{ value }, setValue] = useArgs<{ value: string }>();
+    const handleValue = (value: string) => setValue({ value });
+
+    console.log('value:', value);
+
+    return (
+      <Tabs onValueChange={value => handleValue(value)} value={value} {...args}>
+        <Tabs.Panel value="1" label="Tab 1">
+          Panel 1
+        </Tabs.Panel>
+        <Tabs.Panel value="2" label="Tab mid long 2">
+          Panel 2
+        </Tabs.Panel>
+        <Tabs.Panel value="3" label="Tab short 3">
+          Panel 3
+          <Button onClick={() => handleValue('1')}>Back to tab 1</Button>
+        </Tabs.Panel>
+      </Tabs>
+    );
+  },
 } satisfies Story;
 
 export const WithIcons: Story = {

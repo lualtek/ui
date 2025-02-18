@@ -8,7 +8,7 @@ import {
   AnimatePresence, domMax, LazyMotion, m,
 } from 'motion/react';
 import {
-  Children, FC, isValidElement, useCallback, useId, useState,
+  Children, FC, isValidElement, useCallback, useEffect, useId, useState,
 } from 'react';
 
 import {
@@ -18,7 +18,10 @@ import {
 import styles from './tabs.module.css';
 import { TabPanel, TabPanelProps } from './tabs-panel';
 
-type RadiusType = Record<NonNullable<TabsProps['dimension']>, Exclude<TokensTypes['radius'], string>>
+type RadiusType = Record<
+  NonNullable<TabsProps['dimension']>,
+  Exclude<TokensTypes['radius'], string>
+>
 
 export type TabsProps = TabsPrimitive.TabsProps & {
   /**
@@ -46,14 +49,13 @@ export const Tabs: TabsComponent = ({
   className,
   children,
   onValueChange,
-  defaultValue,
   listGap,
   dimension = 'regular',
   inline,
   style,
   ...otherProps
 }) => {
-  const [activeItem, setActiveItem] = useState<string>(defaultValue ?? '');
+  const [activeItem, setActiveItem] = useState<string>(otherProps.defaultValue ?? otherProps.value ?? '');
   const uid = useId();
 
   const radius: RadiusType = {
@@ -64,11 +66,15 @@ export const Tabs: TabsComponent = ({
 
   const handleOnVlaueChange = useCallback(
     (value: string) => {
-      onValueChange?.(value);
       setActiveItem(value);
+      onValueChange?.(value);
     },
     [onValueChange],
   );
+
+  useEffect(() => {
+    setActiveItem(otherProps.value ?? '');
+  }, [handleOnVlaueChange, otherProps.value]);
 
   const dynamicStyle = {
     '--tabs-list-gap': listGap && tkns.space[listGap],
@@ -80,7 +86,6 @@ export const Tabs: TabsComponent = ({
       data-tabs-dimension={dimension}
       className={clsx(styles.Tabs, className)}
       style={{ ...style, ...dynamicStyle }}
-      defaultValue={defaultValue}
       onValueChange={handleOnVlaueChange}
     >
       <LazyMotion features={domMax} strict>
