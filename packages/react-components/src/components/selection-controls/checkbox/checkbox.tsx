@@ -7,6 +7,7 @@ import {
   ChangeEvent, forwardRef, ReactNode, useCallback, useEffect, useId, useRef,
   useState,
 } from 'react';
+import { mergeRefs } from 'react-merge-refs';
 
 import { Stack, Text, TextProps } from '@/components';
 
@@ -96,7 +97,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(({
   hint = 'Required input',
   ...otherProps
 }, forwardedRef) => {
-  const ref = useRef<any>(forwardedRef);
+  const ref = useRef<any>(null);
   const [isUserInvalid, setIsUserInvalid] = useState<boolean>(invalid ?? false);
   const uid = useId();
 
@@ -139,7 +140,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(({
               data-control-dimension={dimension}
               onChange={onChange}
               className={clsx(styles.CheckboxInput, className)}
-              ref={ref}
+              ref={mergeRefs([ref, forwardedRef])}
               onInvalid={handleInvalid}
               onInput={handleInvalid}
               id={label ? uid : undefined}
