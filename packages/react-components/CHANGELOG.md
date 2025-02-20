@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 18.3.2
+
+### Patch Changes
+
+- 92cd906: Merge refs in Checkbox
+  - @lualtek/icons@18.3.2
+
 ## 18.3.1
 
 ### Patch Changes
