@@ -97,7 +97,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(({
   hint = 'Required input',
   ...otherProps
 }, forwardedRef) => {
-  const ref = useRef<any>(forwardedRef);
+  const ref = useRef<any>(null);
   const [isUserInvalid, setIsUserInvalid] = useState<boolean>(invalid ?? false);
   const uid = useId();
 

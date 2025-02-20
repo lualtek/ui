@@ -1,5 +1,5 @@
 ---
-"@lualtek/react-components": major
+"@lualtek/react-components": patch
 ---
 
 Merge refs in Checkbox
