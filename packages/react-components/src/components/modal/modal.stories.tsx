@@ -75,8 +75,8 @@ const meta: Meta<typeof Modal> = {
     ),
   ],
   render: function Render({ ...args }) {
-    const [{ isVisible }, setIsVisible] = useArgs<{ isVisible: boolean }>();
-    const handleClose = (visibility: boolean) => setIsVisible({ isVisible: visibility });
+    const [{ isOpen }, setIsVisible] = useArgs<typeof args>();
+    const handleClose = (visibility: boolean) => setIsVisible({ isOpen: visibility });
 
     return (
       <>
@@ -84,7 +84,7 @@ const meta: Meta<typeof Modal> = {
         <Modal
           {...args}
           key="dynamic-modal"
-          isOpen={isVisible}
+          isOpen={isOpen}
           onClose={() => handleClose(false)}
         >
           <Modal.Content heading="Modal title">
@@ -127,7 +127,7 @@ export const CustomContent = {
 export const WithTitleComponent = {
   args: {},
   render: function Render({ ...args }) {
-    const [{ isOpen }, setIsVisible] = useArgs<{ isOpen: boolean }>();
+    const [{ isOpen }, setIsVisible] = useArgs<typeof args>();
     const handleClose = (visibility: boolean) => setIsVisible({ isOpen: visibility });
 
     return (
@@ -151,7 +151,7 @@ export const WithTitleComponent = {
 export const WithTabInside = {
   args: {},
   render: function Render({ ...args }) {
-    const [{ isOpen }, setIsVisible] = useArgs<{ isOpen: boolean }>();
+    const [{ isOpen }, setIsVisible] = useArgs<typeof args>();
     const handleClose = (visibility: boolean) => setIsVisible({ isOpen: visibility });
 
     return (

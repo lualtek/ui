@@ -35,13 +35,13 @@ const meta: Meta<typeof Drawer> = {
     ),
   ],
   render: function Render({ ...args }) {
-    const [{ isVisible }, updateArgs] = useArgs<{ isVisible: boolean }>();
-    const handleClose = () => updateArgs({ isVisible: false });
+    const [{ isOpen }, updateArgs] = useArgs<typeof args>();
+    const handleClose = () => updateArgs({ isOpen: false });
 
     return (
       <>
-        <Button onClick={() => updateArgs({ isVisible: true })}>Show Drawer</Button>
-        <Drawer {...args} onClose={handleClose} isOpen={isVisible}>
+        <Button onClick={() => updateArgs({ isOpen: true })}>Show Drawer</Button>
+        <Drawer {...args} onClose={handleClose} isOpen={isOpen}>
           <Stack
             vAlign="center"
             hPadding={24}
