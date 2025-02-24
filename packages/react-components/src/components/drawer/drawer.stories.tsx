@@ -27,6 +27,7 @@ const options = [
 const meta: Meta<typeof Drawer> = {
   title: 'Dialogs/Drawer',
   component: Drawer,
+  tags: ['deprecated'],
   decorators: [
     Story => (
       <ResponsiveProvider>
