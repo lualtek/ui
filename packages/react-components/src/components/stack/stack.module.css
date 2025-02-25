@@ -7,10 +7,10 @@
     justify-content: var(--v-align);
 
     :where(&[data-stack-has-padding='true']) {
-      padding: var(--v-padding, 0) var(--h-padding, 0);
+      padding: var(--v-padding-top, 0) var(--h-padding-right, 0) var(--v-padding-bottom, 0) var(--h-padding-left, 0);
     }
 
-    :where(&[data-stack-fill='true'] > *)  {
+    :where(&[data-stack-fill='true'] > *) {
       flex-grow: 1;
     }
 

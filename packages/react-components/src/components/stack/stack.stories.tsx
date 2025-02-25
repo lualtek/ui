@@ -53,3 +53,10 @@ export const Default = {
     vAlign: 'start',
   },
 } satisfies Story;
+
+export const WithPaddings = {
+  args: {
+    vPadding: [8, 88],
+    hPadding: 24,
+  },
+} satisfies Story;
