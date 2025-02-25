@@ -5,7 +5,7 @@ import { DialogProps, Drawer as Vaul } from 'vaul';
 
 import {
   ClampText,
-  Panel, ResponsiveProvider, Stack, Text, Title, useResponsiveContext,
+  Panel, ResponsiveProvider, ScrollArea, Stack, Text, Title,
 } from '@/components';
 
 import styles from './sheet.module.css';
@@ -25,34 +25,44 @@ export type SheetProps = DialogProps & {
    * An optional accessible description to be announced when the drawer is opened.
    */
   description?: React.ComponentProps<typeof Vaul.Description>['children'];
+  /**
+   * Enable or disable content scrolling. This is used when you want to create a scrollable element inside
+   * and prevend double scrolling.
+   *
+   * @defaultValue true
+   */
+  scrollInside?: boolean;
 }
 
 const SheetContent: FC<SheetProps> = ({
   trigger,
   heading,
   description,
+  scrollInside = true,
   children,
-  open,
   ...otherProps
-}) => {
-  const { matches } = useResponsiveContext();
-
-  return (
-    <Vaul.Root {...otherProps}>
-      <Vaul.Trigger asChild>
-        {trigger}
-      </Vaul.Trigger>
-      <Vaul.Portal>
-        <Vaul.Overlay className={styles.Overlay} />
-        <Vaul.Content className={styles.Content}>
-          <Panel
-            vibrant
-            vibrancyColor="soft"
-            bordered
-            showGlow={matches.small}
-            borderSide="top"
-          >
-            <Stack>
+}) => (
+  <Vaul.Root {...otherProps}>
+    <Vaul.Trigger asChild>
+      {trigger}
+    </Vaul.Trigger>
+    <Vaul.Portal>
+      <Vaul.Overlay className={styles.Overlay} />
+      <Vaul.Content className={styles.Content}>
+        <Panel
+          vibrant
+          vibrancyColor="soft"
+          bordered
+          showGlow
+          borderSide="top"
+        >
+          <Stack className={styles.Container}>
+            {/* Content */}
+            <ScrollArea
+              useSystemStyle={false}
+              canScroll={scrollInside}
+            >
+              {/* Header */}
               <Stack
                 rowGap={4}
                 hPadding={24}
@@ -71,17 +81,17 @@ const SheetContent: FC<SheetProps> = ({
                   </Vaul.Description>
                 )}
               </Stack>
-              <Stack hPadding={24} vPadding={24}>
-                {children}
-              </Stack>
-            </Stack>
-          </Panel>
-        </Vaul.Content>
-      </Vaul.Portal>
-    </Vaul.Root>
-  );
-};
 
+              <div className={styles.SafeGuard}>
+                {children}
+              </div>
+            </ScrollArea>
+          </Stack>
+        </Panel>
+      </Vaul.Content>
+    </Vaul.Portal>
+  </Vaul.Root>
+);
 export const Sheet: FC<SheetProps> = ({ ...otherProps }) => (
   <ResponsiveProvider>
     <SheetContent {...otherProps} />

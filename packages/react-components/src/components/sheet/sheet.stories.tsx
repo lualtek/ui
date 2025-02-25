@@ -1,10 +1,7 @@
 import { useArgs } from '@storybook/preview-api';
 import type { Meta, StoryObj } from '@storybook/react';
-import { useEffect } from 'react';
 
-import {
-  Button, Stack, Text,
-} from '@/components';
+import { Button, Stack, Text } from '@/components';
 
 import { Sheet } from './sheet';
 
@@ -17,11 +14,30 @@ const meta = {
     trigger: <Button>Open sheet</Button>,
     description: `This component can be used as a Dialog replacement on mobile and tablet devices.
 You can read about why and how it was built`,
-    children: (
-      <Text>
-        This one specifically is the most simplest setup you can have, just a simple drawer with a trigger.
-      </Text>
-    ),
+    children:
+      'This one specifically is the most simplest setup you can have, just a simple drawer with a trigger.',
+  },
+  render: function Render({ ...args }) {
+    const [, setOpen] = useArgs<typeof args>();
+
+    return (
+      <Sheet
+        {...args}
+        trigger={
+          <Button onClick={() => setOpen({ open: true })}>Open sheet</Button>
+        }
+      >
+        <Stack>
+          {args.children}
+          <Stack direction="row" vPadding={[16, 0]} columnGap={8}>
+            <Button onClick={() => setOpen({ open: false })}>Confirm</Button>
+            <Button kind="flat" onClick={() => setOpen({ open: false })}>
+              Cancel
+            </Button>
+          </Stack>
+        </Stack>
+      </Sheet>
+    );
   },
 } satisfies Meta<typeof Sheet>;
 
@@ -29,40 +45,30 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Default = {} satisfies Story;
+export const Default = {
+  args: {
+    open: false,
+  },
+} satisfies Story;
 
 export const NonDismissible = {
   args: {
-    open: true,
-  },
-  render: function Render({ ...args }) {
-    // eslint-disable-next-line @typescript-eslint/naming-convention
-    const [{ open }, setOpen] = useArgs<typeof args>();
-
-    useEffect(() => {
-      console.log('openEffect', open);
-    }, [open]);
-
-    return (
-      <Sheet
-        {...args}
-      >
-        <Stack hAlign="center">
-          <Text>
-            For cases when your drawer has to be always visible.
-            Nothing will close it unless you make it controlled and close it programmatically.
-          </Text>
-          <Button onClick={() => setOpen({ open: false })}>
-            Close sheet
-          </Button>
-        </Stack>
-      </Sheet>
-    );
+    open: false,
+    dismissible: false,
   },
 } satisfies Story;
 
 export const NonModal = {
   args: {
     modal: false,
+  },
+} satisfies Story;
+
+export const LongContent = {
+  args: {
+    children: Array.from(
+      { length: 100 },
+      () => 'This one specifically is the most simplest setup you can have, just a simple drawer with a trigger.',
+    ).join(''),
   },
 } satisfies Story;
