@@ -76,7 +76,7 @@ const meta: Meta<typeof Modal> = {
   ],
   render: function Render({ ...args }) {
     const [{ isOpen }, setIsVisible] = useArgs<typeof args>();
-    const handleClose = (visibility: boolean) => setIsVisible({ isOpen: visibility });
+    const handleClose = (isOpen: boolean) => setIsVisible({ isOpen });
 
     return (
       <>
@@ -128,7 +128,7 @@ export const WithTitleComponent = {
   args: {},
   render: function Render({ ...args }) {
     const [{ isOpen }, setIsVisible] = useArgs<typeof args>();
-    const handleClose = (visibility: boolean) => setIsVisible({ isOpen: visibility });
+    const handleClose = (isOpen: boolean) => setIsVisible({ isOpen });
 
     return (
       <>
@@ -152,7 +152,7 @@ export const WithTabInside = {
   args: {},
   render: function Render({ ...args }) {
     const [{ isOpen }, setIsVisible] = useArgs<typeof args>();
-    const handleClose = (visibility: boolean) => setIsVisible({ isOpen: visibility });
+    const handleClose = (isOpen: boolean) => setIsVisible({ isOpen });
 
     return (
       <>
