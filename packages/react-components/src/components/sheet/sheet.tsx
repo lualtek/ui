@@ -1,18 +1,38 @@
 'use client';
 
-import React, { FC } from 'react';
+import { FC, ReactNode } from 'react';
 import { DialogProps, Drawer as Vaul } from 'vaul';
 
-import { Panel, useResponsiveContext } from '@/components';
+import {
+  ClampText,
+  Panel, ResponsiveProvider, Stack, Text, Title, useResponsiveContext,
+} from '@/components';
 
 import styles from './sheet.module.css';
 
 export type SheetProps = DialogProps & {
-  trigger: React.ReactNode;
+  /**
+   * The interactive element that triggers the modal to open.
+   * Must be a single interactive element.
+   */
+  trigger: React.ComponentProps<typeof Vaul.Trigger>['children'];
+  /**
+   * Set the accessible title of the modal. This is used by screen readers to
+   * announce the title of the modal when opened.
+   */
+  heading: ReactNode;
+  /**
+   * An optional accessible description to be announced when the drawer is opened.
+   */
+  description?: React.ComponentProps<typeof Vaul.Description>['children'];
 }
 
-export const Sheet: FC<SheetProps> = ({
+const SheetContent: FC<SheetProps> = ({
   trigger,
+  heading,
+  description,
+  children,
+  open,
   ...otherProps
 }) => {
   const { matches } = useResponsiveContext();
@@ -30,13 +50,40 @@ export const Sheet: FC<SheetProps> = ({
             vibrancyColor="soft"
             bordered
             showGlow={matches.small}
-            radius={matches.small ? 24 : [24, 24, 0, 0]}
-            borderSide={matches.small ? 'all' : 'top'}
+            borderSide="top"
           >
-            ciao
+            <Stack>
+              <Stack
+                rowGap={4}
+                hPadding={24}
+                vPadding={24}
+                className={styles.Header}
+              >
+                <Vaul.Title asChild>
+                  <Title lineHeight="small" responsive={false} level="5">{heading}</Title>
+                </Vaul.Title>
+
+                {description && (
+                  <Vaul.Description asChild>
+                    <Text dimmed={5} weight="regular" size={16}>
+                      <ClampText rows={2}>{description}</ClampText>
+                    </Text>
+                  </Vaul.Description>
+                )}
+              </Stack>
+              <Stack hPadding={24} vPadding={24}>
+                {children}
+              </Stack>
+            </Stack>
           </Panel>
         </Vaul.Content>
       </Vaul.Portal>
     </Vaul.Root>
   );
 };
+
+export const Sheet: FC<SheetProps> = ({ ...otherProps }) => (
+  <ResponsiveProvider>
+    <SheetContent {...otherProps} />
+  </ResponsiveProvider>
+);
