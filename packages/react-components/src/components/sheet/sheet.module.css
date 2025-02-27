@@ -8,17 +8,15 @@
 
 .Content {
   block-size: fit-content;
-  max-block-size: 95dvh;
   bottom: 0;
   left: 0;
   right: 0;
   position: fixed;
-  display: flex;
-  flex-direction: column;
 }
 
 .Container {
   margin: 0 auto;
+  max-block-size: 95dvh;
 
   @media (--from-small) {
     max-inline-size: 600px;
@@ -30,9 +28,17 @@
 .SafeGuard {
   padding-inline-start: --token(--space-24);
   padding-inline-end: --token(--space-24);
-  padding-block-end: max(env(safe-area-inset-bottom), --token(--space-16));
+
+  &[data-modal-content-safe-padding='true'] {
+    padding-block-end: max(env(safe-area-inset-bottom), --token(--space-16));
+  }
+}
+
+.HandleWrapper {
+  background-color: var(--header-tint);
+  border-radius: --token(--radius-24) --token(--radius-24) 0 0;
 }
 
 .Header {
-  /* background: black; */
+  background-color: var(--header-tint);
 }

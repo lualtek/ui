@@ -1,6 +1,8 @@
 'use client';
 
-import { FC, ReactNode } from 'react';
+import {
+  FC, forwardRef, ReactNode, useMemo,
+} from 'react';
 import { DialogProps, Drawer as Vaul } from 'vaul';
 
 import {
@@ -22,6 +24,10 @@ export type SheetProps = DialogProps & {
    */
   heading: ReactNode;
   /**
+   * Set the background color for the content header
+   */
+  headerTint?: string;
+  /**
    * An optional accessible description to be announced when the drawer is opened.
    */
   description?: React.ComponentProps<typeof Vaul.Description>['children'];
@@ -32,68 +38,100 @@ export type SheetProps = DialogProps & {
    * @defaultValue true
    */
   scrollInside?: boolean;
+  /**
+   * Enable or disable safe padding. Prevents content from being hidden behind the safe area.
+   *
+   * @defaultValue true
+   */
+  safePadding?: boolean;
 }
 
-const SheetContent: FC<SheetProps> = ({
+const SheetContent = forwardRef<HTMLDivElement, SheetProps>(({
   trigger,
   heading,
   description,
   scrollInside = true,
+  safePadding = true,
+  headerTint,
   children,
   ...otherProps
-}) => (
-  <Vaul.Root {...otherProps}>
-    <Vaul.Trigger asChild>
-      {trigger}
-    </Vaul.Trigger>
-    <Vaul.Portal>
-      <Vaul.Overlay className={styles.Overlay} />
-      <Vaul.Content className={styles.Content}>
-        <Panel
-          vibrant
-          vibrancyColor="soft"
-          bordered
-          showGlow
-          borderSide="top"
-        >
-          <Vaul.Handle />
+}, forwardedRef) => {
+  const dynamicStyle = useMemo(() => (
+    {
+      '--header-tint': headerTint,
+    }
+  ), [headerTint]);
 
-          <Stack className={styles.Container}>
-            {/* Content */}
-            <ScrollArea
-              useSystemStyle={false}
-              canScroll={scrollInside}
+  return (
+    <Vaul.Root {...otherProps}>
+      <Vaul.Trigger asChild>
+        {trigger}
+      </Vaul.Trigger>
+      <Vaul.Portal>
+        <Vaul.Overlay className={styles.Overlay} />
+        <Vaul.Content asChild>
+          <Stack
+            style={{ ...dynamicStyle }}
+            className={styles.Content}
+            ref={forwardedRef}
+            hAlign="center"
+            hPadding={8}
+            vPadding={[0, 8]}
+          >
+            <Panel
+              vibrant
+              vibrancyColor="soft"
+              bordered
+              showGlow
+              radius={24}
+              glowFitContent
             >
-              {/* Header */}
-              <Stack
-                rowGap={4}
-                hPadding={24}
-                vPadding={24}
-                className={styles.Header}
-              >
-                <Vaul.Title asChild>
-                  <Title lineHeight="small" responsive={false} level="5">{heading}</Title>
-                </Vaul.Title>
-
-                {description && (
-                  <Vaul.Description asChild>
-                    <Text dimmed={5} weight="regular" size={16}>
-                      <ClampText rows={2}>{description}</ClampText>
-                    </Text>
-                  </Vaul.Description>
-                )}
+              <Stack vPadding={8} className={styles.HandleWrapper}>
+                <Vaul.Handle />
               </Stack>
 
-              <div className={styles.SafeGuard}>
-                {children}
-              </div>
-            </ScrollArea>
+              <Stack className={styles.Container}>
+                {/* Content */}
+                <ScrollArea
+                  useSystemStyle={false}
+                  canScroll={scrollInside}
+                >
+                  {/* Header */}
+                  <Stack
+                    rowGap={4}
+                    hPadding={24}
+                    vPadding={24}
+                    className={styles.Header}
+                  >
+                    <Vaul.Title asChild>
+                      <Title lineHeight="small" responsive={false} level="5">{heading}</Title>
+                    </Vaul.Title>
+
+                    {description && (
+                      <Vaul.Description asChild>
+                        <Text dimmed={5} weight="regular" size={16}>
+                          <ClampText rows={2}>{description}</ClampText>
+                        </Text>
+                      </Vaul.Description>
+                    )}
+                  </Stack>
+
+                  <div
+                    className={styles.SafeGuard}
+                    data-modal-content-safe-padding={safePadding}
+                  >
+                    {children}
+                  </div>
+                </ScrollArea>
+              </Stack>
+            </Panel>
           </Stack>
-        </Panel>
-      </Vaul.Content>
-    </Vaul.Portal>
-  </Vaul.Root>
-);
+        </Vaul.Content>
+      </Vaul.Portal>
+    </Vaul.Root>
+  );
+});
+
 export const Sheet: FC<SheetProps> = ({ ...otherProps }) => (
   <ResponsiveProvider>
     <SheetContent {...otherProps} />

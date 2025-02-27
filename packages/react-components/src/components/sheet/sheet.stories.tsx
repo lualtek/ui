@@ -1,7 +1,7 @@
 import { useArgs } from '@storybook/preview-api';
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Button, Stack, Text } from '@/components';
+import { Button, Stack } from '@/components';
 
 import { Sheet } from './sheet';
 
@@ -9,6 +9,7 @@ const meta = {
   title: 'Dialogs/Sheet',
   component: Sheet,
   args: {
+    open: false,
     dismissible: true,
     heading: 'Sheet title',
     trigger: <Button>Open sheet</Button>,
@@ -66,6 +67,16 @@ export const NonModal = {
 
 export const LongContent = {
   args: {
+    children: Array.from(
+      { length: 100 },
+      () => 'This one specifically is the most simplest setup you can have, just a simple drawer with a trigger.',
+    ).join(''),
+  },
+} satisfies Story;
+
+export const HeaderTint = {
+  args: {
+    headerTint: 'var(--dimmed-1)',
     children: Array.from(
       { length: 100 },
       () => 'This one specifically is the most simplest setup you can have, just a simple drawer with a trigger.',

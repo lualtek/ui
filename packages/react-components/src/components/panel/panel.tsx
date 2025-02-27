@@ -85,6 +85,10 @@ export type PanelProps = {
    */
   glowColor?: GlowProps['glowColor'];
   /**
+   * Set the glow effect to fit the content.
+   */
+  glowFitContent?: GlowProps['fitContent'];
+  /**
    * Set the rainbow colors of the glow effect.
    */
   rainbowColors?: GlowProps['rainbowColors'];
@@ -110,6 +114,7 @@ export const Panel = forwardRef((
     showGlow = false,
     glowSpread,
     glowColor,
+    glowFitContent = false,
     rainbowColors,
     ...otherProps
   },
@@ -174,6 +179,7 @@ export const Panel = forwardRef((
           borderOffset={-1}
           borderWidth={1}
           rainbowColors={rainbowColors}
+          fitContent={glowFitContent}
         >
           {children}
         </Glow>
