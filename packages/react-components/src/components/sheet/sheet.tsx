@@ -7,7 +7,7 @@ import { DialogProps, Drawer as Vaul } from 'vaul';
 
 import {
   ClampText,
-  Panel, ResponsiveProvider, ScrollArea, Stack, Text, Title,
+  Panel, ResponsiveProvider, Stack, Text, Title, useResponsiveContext,
 } from '@/components';
 
 import styles from './sheet.module.css';
@@ -32,13 +32,6 @@ export type SheetProps = DialogProps & {
    */
   description?: React.ComponentProps<typeof Vaul.Description>['children'];
   /**
-   * Enable or disable content scrolling. This is used when you want to create a scrollable element inside
-   * and prevend double scrolling.
-   *
-   * @defaultValue true
-   */
-  scrollInside?: boolean;
-  /**
    * Enable or disable safe padding. Prevents content from being hidden behind the safe area.
    *
    * @defaultValue true
@@ -49,13 +42,15 @@ export type SheetProps = DialogProps & {
 const SheetContent = forwardRef<HTMLDivElement, SheetProps>(({
   trigger,
   heading,
-  description,
-  scrollInside = true,
-  safePadding = true,
   headerTint,
+  description,
+  safePadding = true,
   children,
+  open,
   ...otherProps
 }, forwardedRef) => {
+  const { matches } = useResponsiveContext();
+
   const dynamicStyle = useMemo(() => (
     {
       '--header-tint': headerTint,
@@ -91,38 +86,33 @@ const SheetContent = forwardRef<HTMLDivElement, SheetProps>(({
               </Stack>
 
               <Stack className={styles.Container}>
-                {/* Content */}
-                <ScrollArea
-                  useSystemStyle={false}
-                  canScroll={scrollInside}
+                {/* Header */}
+                <Stack
+                  rowGap={4}
+                  hPadding={24}
+                  vPadding={[0, 24]}
+                  className={styles.Header}
                 >
-                  {/* Header */}
-                  <Stack
-                    rowGap={4}
-                    hPadding={24}
-                    vPadding={24}
-                    className={styles.Header}
-                  >
-                    <Vaul.Title asChild>
-                      <Title lineHeight="small" responsive={false} level="5">{heading}</Title>
-                    </Vaul.Title>
+                  <Vaul.Title asChild>
+                    <Title lineHeight="small" responsive={false} level="5">{heading}</Title>
+                  </Vaul.Title>
 
-                    {description && (
-                      <Vaul.Description asChild>
-                        <Text dimmed={5} weight="regular" size={16}>
-                          <ClampText rows={2}>{description}</ClampText>
-                        </Text>
-                      </Vaul.Description>
-                    )}
-                  </Stack>
-
-                  <div
-                    className={styles.SafeGuard}
-                    data-modal-content-safe-padding={safePadding}
-                  >
-                    {children}
-                  </div>
-                </ScrollArea>
+                  {description && (
+                    <Vaul.Description asChild>
+                      <Text dimmed={5} weight="regular" size={16}>
+                        <ClampText rows={2}>{description}</ClampText>
+                      </Text>
+                    </Vaul.Description>
+                  )}
+                </Stack>
+                {/* Sheet content */}
+                <Stack
+                  hPadding={24}
+                  className={styles.SafeGuard}
+                  data-modal-content-safe-padding={safePadding}
+                >
+                  {children}
+                </Stack>
               </Stack>
             </Panel>
           </Stack>

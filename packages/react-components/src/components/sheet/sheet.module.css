@@ -17,6 +17,7 @@
 .Container {
   margin: 0 auto;
   max-block-size: 95dvh;
+  overflow: auto;
 
   @media (--from-small) {
     max-inline-size: 600px;
@@ -26,9 +27,6 @@
 }
 
 .SafeGuard {
-  padding-inline-start: --token(--space-24);
-  padding-inline-end: --token(--space-24);
-
   &[data-modal-content-safe-padding='true'] {
     padding-block-end: max(env(safe-area-inset-bottom), --token(--space-16));
   }
@@ -37,6 +35,10 @@
 .HandleWrapper {
   background-color: var(--header-tint);
   border-radius: --token(--radius-24) --token(--radius-24) 0 0;
+
+  & [data-vaul-handle] {
+    background: var(--dimmed-3);
+  }
 }
 
 .Header {
