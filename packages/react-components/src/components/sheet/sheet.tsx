@@ -56,6 +56,8 @@ const SheetContent: FC<SheetProps> = ({
           showGlow
           borderSide="top"
         >
+          <Vaul.Handle />
+
           <Stack className={styles.Container}>
             {/* Content */}
             <ScrollArea
