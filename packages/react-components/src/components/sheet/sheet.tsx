@@ -58,7 +58,7 @@ const SheetContent = forwardRef<HTMLDivElement, SheetProps>(({
   ), [headerTint]);
 
   return (
-    <Vaul.Root {...otherProps}>
+    <Vaul.Root open={open} {...otherProps}>
       <Vaul.Trigger asChild>
         {trigger}
       </Vaul.Trigger>

@@ -24,8 +24,9 @@ You can read about why and how it was built`,
     return (
       <Sheet
         {...args}
+        onOpenChange={open => setOpen({ open })}
         trigger={
-          <Button onClick={() => setOpen({ open: true })}>Open sheet</Button>
+          <Button>Open sheet</Button>
         }
       >
         <Stack>
