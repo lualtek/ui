@@ -6,8 +6,9 @@ import {
 import { DialogProps, Drawer as Vaul } from 'vaul';
 
 import {
-  ClampText,
-  Panel, ResponsiveProvider, ScrollArea, Stack, Text, Title, useResponsiveContext,
+  ClampText, Panel, ResponsiveProvider, ScrollArea,
+  Stack, Text, Title,
+  useResponsiveContext,
 } from '@/components';
 
 import styles from './sheet.module.css';
@@ -46,11 +47,11 @@ const SheetContent = forwardRef<HTMLDivElement, SheetProps>(({
   description,
   safePadding = true,
   children,
+  dismissible,
   open,
   ...otherProps
 }, forwardedRef) => {
-  // const { matches } = useResponsiveContext();
-
+  const { matches } = useResponsiveContext();
   const dynamicStyle = useMemo(() => (
     {
       '--header-tint': headerTint,
@@ -58,7 +59,7 @@ const SheetContent = forwardRef<HTMLDivElement, SheetProps>(({
   ), [headerTint]);
 
   return (
-    <Vaul.Root open={open} {...otherProps}>
+    <Vaul.Root {...otherProps} open={open} dismissible={dismissible} handleOnly={matches.small}>
       <Vaul.Trigger asChild>
         {trigger}
       </Vaul.Trigger>
@@ -83,16 +84,27 @@ const SheetContent = forwardRef<HTMLDivElement, SheetProps>(({
             >
 
               <Stack className={styles.Container}>
-                <ScrollArea useSystemStyle={false} hideScrollbars>
-                  <Stack vPadding={8} className={styles.HandleWrapper}>
-                    <Vaul.Handle />
-                  </Stack>
+                <ScrollArea
+                  className={styles.Scroller}
+                  useSystemStyle={false}
+                  hideScrollbars
+                >
+                  {/* Drag Handle */}
+                  {!matches.small && (
+                    <>
+                      {dismissible && (
+                        <Stack vPadding={8} className={styles.HandleWrapper}>
+                          <Vaul.Handle />
+                        </Stack>
+                      )}
+                    </>
+                  )}
 
                   {/* Header */}
                   <Stack
                     rowGap={4}
                     hPadding={24}
-                    vPadding={[0, 24]}
+                    vPadding={[24, 24]}
                     className={styles.Header}
                   >
                     <Vaul.Title asChild>
@@ -118,6 +130,7 @@ const SheetContent = forwardRef<HTMLDivElement, SheetProps>(({
                   </Stack>
                 </ScrollArea>
               </Stack>
+
             </Panel>
           </Stack>
         </Vaul.Content>
