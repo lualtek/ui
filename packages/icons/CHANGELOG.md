@@ -1,5 +1,11 @@
 # @lualtek/icons
 
+## 18.4.0
+
+### Minor Changes
+
+- 4060aaa: Add new water-surface icon
+
 ## 18.3.2
 
 ## 18.3.1
