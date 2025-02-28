@@ -49,7 +49,7 @@ const SheetContent = forwardRef<HTMLDivElement, SheetProps>(({
   open,
   ...otherProps
 }, forwardedRef) => {
-  const { matches } = useResponsiveContext();
+  // const { matches } = useResponsiveContext();
 
   const dynamicStyle = useMemo(() => (
     {

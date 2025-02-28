@@ -31,6 +31,10 @@
   }
 }
 
+.Scroller {
+  border-radius: --token(--radius-24);
+}
+
 .SafeGuard {
   &[data-modal-content-safe-padding='true'] {
     padding-block-end: max(env(safe-area-inset-bottom), --token(--space-16));
