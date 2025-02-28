@@ -6,12 +6,18 @@
   background: oklch(from var(--global-background) l c h / 70%);
 }
 
-.Content {
+.Sheet {
   block-size: fit-content;
   bottom: 0;
   left: 0;
   right: 0;
   position: fixed;
+
+  @media (--from-small) {
+    &[data-vaul-drawer] {
+      user-select: unset;
+    }
+  }
 }
 
 .Container {

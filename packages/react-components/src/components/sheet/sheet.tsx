@@ -67,7 +67,7 @@ const SheetContent = forwardRef<HTMLDivElement, SheetProps>(({
         <Vaul.Content asChild>
           <Stack
             style={{ ...dynamicStyle }}
-            className={styles.Content}
+            className={styles.Sheet}
             ref={forwardedRef}
             hAlign="center"
             hPadding={8}
@@ -81,11 +81,13 @@ const SheetContent = forwardRef<HTMLDivElement, SheetProps>(({
               radius={24}
               glowFitContent
             >
-              <Stack vPadding={8} className={styles.HandleWrapper}>
-                <Vaul.Handle />
-              </Stack>
 
               <Stack className={styles.Container}>
+
+                <Stack vPadding={8} className={styles.HandleWrapper}>
+                  <Vaul.Handle />
+                </Stack>
+
                 {/* Header */}
                 <Stack
                   rowGap={4}
@@ -105,6 +107,7 @@ const SheetContent = forwardRef<HTMLDivElement, SheetProps>(({
                     </Vaul.Description>
                   )}
                 </Stack>
+
                 {/* Sheet content */}
                 <Stack
                   hPadding={24}
@@ -113,6 +116,7 @@ const SheetContent = forwardRef<HTMLDivElement, SheetProps>(({
                 >
                   {children}
                 </Stack>
+
               </Stack>
             </Panel>
           </Stack>
