@@ -4,8 +4,8 @@ declare const styles: {
   readonly "Header": string;
   readonly "Overlay": string;
   readonly "SafeGuard": string;
-  readonly "Sheet": string;
   readonly "Scroller": string;
+  readonly "Sheet": string;
 };
 export = styles;
 

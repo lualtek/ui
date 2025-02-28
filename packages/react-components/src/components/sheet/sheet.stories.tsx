@@ -22,23 +22,27 @@ You can read about why and how it was built`,
     const [, setOpen] = useArgs<typeof args>();
 
     return (
-      <Sheet
-        {...args}
-        onOpenChange={open => setOpen({ open })}
-        trigger={
-          <Button>Open sheet</Button>
+      <>
+        <Sheet
+          {...args}
+          onOpenChange={open => setOpen({ open })}
+          trigger={
+            <Button>Open sheet</Button>
         }
-      >
-        <Stack>
-          {args.children}
-          <Stack direction="row" vPadding={[16, 0]} columnGap={8}>
-            <Button onClick={() => setOpen({ open: false })}>Confirm</Button>
-            <Button kind="flat" onClick={() => setOpen({ open: false })}>
-              Cancel
-            </Button>
+        >
+          <Stack>
+            {args.children}
+            <Stack direction="row" vPadding={[16, 0]} columnGap={8}>
+              <Button onClick={() => setOpen({ open: false })}>Confirm</Button>
+              <Button kind="flat" onClick={() => setOpen({ open: false })}>
+                Cancel
+              </Button>
+            </Stack>
           </Stack>
-        </Stack>
-      </Sheet>
+        </Sheet>
+        {/* eslint-disable-next-line max-len */}
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ducimus, cumque? Totam reiciendis tempora illum aut, laboriosam provident molestiae doloribus in alias fugit nostrum distinctio accusantium cum repellat veritatis voluptatibus. Sunt.
+      </>
     );
   },
 } satisfies Meta<typeof Sheet>;
@@ -82,5 +86,11 @@ export const HeaderTint = {
       { length: 100 },
       () => 'This one specifically is the most simplest setup you can have, just a simple drawer with a trigger.',
     ).join(''),
+  },
+} satisfies Story;
+
+export const Side = {
+  args: {
+    direction: 'left',
   },
 } satisfies Story;

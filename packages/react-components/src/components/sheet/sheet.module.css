@@ -7,7 +7,6 @@
 }
 
 .Sheet {
-  block-size: fit-content;
   bottom: 0;
   left: 0;
   right: 0;
@@ -23,10 +22,11 @@
 .Container {
   margin: 0 auto;
   max-block-size: 95dvh;
+  block-size: fit-content;
 
   @media (--from-small) {
     max-inline-size: 600px;
-    max-block-size: 30dvh;
+    max-block-size: max(30dvh, 400px);
     place-self: center center;
   }
 }
