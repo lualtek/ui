@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 18.4.0
+
+### Patch Changes
+
+- Updated dependencies [4060aaa]
+  - @lualtek/icons@18.4.0
+
 ## 18.3.2
 
 ### Patch Changes

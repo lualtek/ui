@@ -1,5 +1,12 @@
 # @lualtek/charts
 
+## 18.4.0
+
+### Patch Changes
+
+- @lualtek/react-components@18.4.0
+- @lualtek/tokens@18.4.0
+
 ## 18.3.2
 
 ### Patch Changes
