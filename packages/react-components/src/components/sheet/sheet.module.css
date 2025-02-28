@@ -23,7 +23,6 @@
 .Container {
   margin: 0 auto;
   max-block-size: 95dvh;
-  overflow: auto;
 
   @media (--from-small) {
     max-inline-size: 600px;

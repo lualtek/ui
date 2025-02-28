@@ -7,7 +7,7 @@ import { DialogProps, Drawer as Vaul } from 'vaul';
 
 import {
   ClampText,
-  Panel, ResponsiveProvider, Stack, Text, Title, useResponsiveContext,
+  Panel, ResponsiveProvider, ScrollArea, Stack, Text, Title, useResponsiveContext,
 } from '@/components';
 
 import styles from './sheet.module.css';
@@ -83,40 +83,40 @@ const SheetContent = forwardRef<HTMLDivElement, SheetProps>(({
             >
 
               <Stack className={styles.Container}>
+                <ScrollArea useSystemStyle={false} hideScrollbars>
+                  <Stack vPadding={8} className={styles.HandleWrapper}>
+                    <Vaul.Handle />
+                  </Stack>
 
-                <Stack vPadding={8} className={styles.HandleWrapper}>
-                  <Vaul.Handle />
-                </Stack>
+                  {/* Header */}
+                  <Stack
+                    rowGap={4}
+                    hPadding={24}
+                    vPadding={[0, 24]}
+                    className={styles.Header}
+                  >
+                    <Vaul.Title asChild>
+                      <Title lineHeight="small" responsive={false} level="5">{heading}</Title>
+                    </Vaul.Title>
 
-                {/* Header */}
-                <Stack
-                  rowGap={4}
-                  hPadding={24}
-                  vPadding={[0, 24]}
-                  className={styles.Header}
-                >
-                  <Vaul.Title asChild>
-                    <Title lineHeight="small" responsive={false} level="5">{heading}</Title>
-                  </Vaul.Title>
+                    {description && (
+                      <Vaul.Description asChild>
+                        <Text dimmed={5} weight="regular" size={16}>
+                          <ClampText rows={2}>{description}</ClampText>
+                        </Text>
+                      </Vaul.Description>
+                    )}
+                  </Stack>
 
-                  {description && (
-                    <Vaul.Description asChild>
-                      <Text dimmed={5} weight="regular" size={16}>
-                        <ClampText rows={2}>{description}</ClampText>
-                      </Text>
-                    </Vaul.Description>
-                  )}
-                </Stack>
-
-                {/* Sheet content */}
-                <Stack
-                  hPadding={24}
-                  className={styles.SafeGuard}
-                  data-modal-content-safe-padding={safePadding}
-                >
-                  {children}
-                </Stack>
-
+                  {/* Sheet content */}
+                  <Stack
+                    hPadding={24}
+                    className={styles.SafeGuard}
+                    data-modal-content-safe-padding={safePadding}
+                  >
+                    {children}
+                  </Stack>
+                </ScrollArea>
               </Stack>
             </Panel>
           </Stack>
