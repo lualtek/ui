@@ -21,13 +21,23 @@
 
 .Container {
   margin: 0 auto;
-  max-block-size: 95dvh;
-  block-size: fit-content;
 
-  @media (--from-small) {
-    max-inline-size: 600px;
-    max-block-size: max(30dvh, 400px);
-    place-self: center center;
+  [data-vaul-drawer-direction='left'] &,
+  [data-vaul-drawer-direction='right'] & {
+    max-inline-size: var(--max-w, 400px);
+    block-size: calc(100dvh - --token(--space-16));
+  }
+
+  [data-vaul-drawer-direction='top'] &,
+  [data-vaul-drawer-direction='bottom'] & {
+    max-block-size: 95dvh;
+    block-size: fit-content;
+
+    @media (--from-small) {
+      max-inline-size: var(--max-w, 600px);
+      max-block-size: max(30dvh, 400px);
+      place-self: center center;
+    }
   }
 }
 

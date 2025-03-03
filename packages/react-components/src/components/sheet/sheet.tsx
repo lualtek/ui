@@ -38,6 +38,11 @@ export type SheetProps = DialogProps & {
    * @defaultValue true
    */
   safePadding?: boolean;
+  /**
+   * Set the maximum width of the drawer, on mobile the drawer will be
+   * automatically collapsed when the width is reached.
+   */
+  maxWidth?: string;
 }
 
 const SheetContent = forwardRef<HTMLDivElement, SheetProps>(({
@@ -48,18 +53,33 @@ const SheetContent = forwardRef<HTMLDivElement, SheetProps>(({
   safePadding = true,
   children,
   dismissible,
+  direction = 'bottom',
+  maxWidth = 600,
   open,
   ...otherProps
 }, forwardedRef) => {
   const { matches } = useResponsiveContext();
+  const align = useMemo(() => {
+    if (direction === 'left') return 'start';
+    if (direction === 'right') return 'end';
+    return 'center';
+  }, [direction]);
+
   const dynamicStyle = useMemo(() => (
     {
+      '--max-w': maxWidth ? `${maxWidth}px` : undefined,
       '--header-tint': headerTint,
     }
-  ), [headerTint]);
+  ), [headerTint, maxWidth]);
 
   return (
-    <Vaul.Root {...otherProps} open={open} dismissible={dismissible} handleOnly={matches.small}>
+    <Vaul.Root
+      {...otherProps}
+      direction={direction}
+      open={open}
+      dismissible={dismissible}
+      handleOnly={matches.small}
+    >
       <Vaul.Trigger asChild>
         {trigger}
       </Vaul.Trigger>
@@ -69,10 +89,11 @@ const SheetContent = forwardRef<HTMLDivElement, SheetProps>(({
           <Stack
             style={{ ...dynamicStyle }}
             className={styles.Sheet}
+            tabIndex={-1}
             ref={forwardedRef}
-            hAlign="center"
+            hAlign={align}
             hPadding={8}
-            vPadding={[0, 8]}
+            vPadding={8}
           >
             <Panel
               vibrant
