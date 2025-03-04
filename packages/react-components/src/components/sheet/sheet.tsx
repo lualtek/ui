@@ -13,7 +13,7 @@ import {
 
 import styles from './sheet.module.css';
 
-export type SheetProps = DialogProps & {
+type SheetContentProps = {
   /**
    * The interactive element that triggers the modal to open.
    * Must be a single interactive element.
@@ -45,7 +45,10 @@ export type SheetProps = DialogProps & {
   maxWidth?: string;
 }
 
-const SheetContent = forwardRef<HTMLDivElement, SheetProps>(({
+const SheetContent = forwardRef<
+HTMLDivElement,
+SheetContentProps & Pick<DialogProps, 'children' | 'dismissible' | 'direction'>
+>(({
   trigger,
   heading,
   headerTint,
@@ -55,8 +58,6 @@ const SheetContent = forwardRef<HTMLDivElement, SheetProps>(({
   dismissible,
   direction = 'bottom',
   maxWidth = 600,
-  open,
-  ...otherProps
 }, forwardedRef) => {
   const { matches } = useResponsiveContext();
   const align = useMemo(() => {
@@ -73,13 +74,7 @@ const SheetContent = forwardRef<HTMLDivElement, SheetProps>(({
   ), [headerTint, maxWidth]);
 
   return (
-    <Vaul.Root
-      {...otherProps}
-      direction={direction}
-      open={open}
-      dismissible={dismissible}
-      handleOnly={matches.small}
-    >
+    <>
       <Vaul.Trigger asChild>
         {trigger}
       </Vaul.Trigger>
@@ -92,6 +87,7 @@ const SheetContent = forwardRef<HTMLDivElement, SheetProps>(({
             tabIndex={-1}
             ref={forwardedRef}
             hAlign={align}
+            vAlign="start"
             hPadding={8}
             vPadding={8}
           >
@@ -156,12 +152,38 @@ const SheetContent = forwardRef<HTMLDivElement, SheetProps>(({
           </Stack>
         </Vaul.Content>
       </Vaul.Portal>
-    </Vaul.Root>
+    </>
   );
 });
 
-export const Sheet: FC<SheetProps> = ({ ...otherProps }) => (
+export const SheetWrapper: FC<SheetProps> = ({
+  nested,
+  ...otherProps
+}) => {
+  const { matches } = useResponsiveContext();
+
+  return nested ? (
+    <Vaul.NestedRoot
+      {...otherProps}
+      handleOnly={matches.small}
+    >
+      <SheetContent {...otherProps} />
+    </Vaul.NestedRoot>
+  ) : (
+    <Vaul.Root
+      {...otherProps}
+      handleOnly={matches.small}
+    >
+      <SheetContent {...otherProps} />
+    </Vaul.Root>
+  );
+};
+
+export type SheetProps = DialogProps & SheetContentProps & { nested?: boolean };
+
+export const Sheet: FC<SheetProps> = ({ nested, ...otherProps }) => (
   <ResponsiveProvider>
-    <SheetContent {...otherProps} />
+    <SheetWrapper nested={nested} {...otherProps} />
   </ResponsiveProvider>
 );
+

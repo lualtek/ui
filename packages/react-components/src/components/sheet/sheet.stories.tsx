@@ -27,9 +27,7 @@ You can read about why and how it was built`,
         <Sheet
           {...args}
           onOpenChange={open => setOpen({ open })}
-          trigger={
-            <Button>Open sheet</Button>
-        }
+          trigger={<Button>Open sheet</Button>}
         >
           <Stack>
             {args.children}
@@ -93,5 +91,39 @@ export const HeaderTint = {
 export const Side = {
   args: {
     direction: 'left',
+  },
+} satisfies Story;
+
+export const Nested = {
+  args: {},
+  render: function Render({ ...args }) {
+    const [, setOpen] = useArgs<typeof args>();
+
+    return (
+      <>
+        <Sheet
+          {...args}
+          onOpenChange={open => setOpen({ open })}
+          trigger={<Button>Open sheet</Button>}
+        >
+          <Stack rowGap={24}>
+            This is an example of nested sheet. You can click the button below to open another sheet.
+            <Sheet
+              nested
+              heading="Nested shit title"
+              direction={args.direction}
+              dismissible={args.dismissible}
+              trigger={<Button>Open nested sheet</Button>}
+            >
+              <Stack>
+                Nested sheet content example
+              </Stack>
+            </Sheet>
+          </Stack>
+        </Sheet>
+        {/* eslint-disable-next-line max-len */}
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ducimus, cumque? Totam reiciendis tempora illum aut, laboriosam provident molestiae doloribus in alias fugit nostrum distinctio accusantium cum repellat veritatis voluptatibus. Sunt.
+      </>
+    );
   },
 } satisfies Story;
