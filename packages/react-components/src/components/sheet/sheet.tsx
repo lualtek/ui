@@ -39,10 +39,28 @@ type SheetContentProps = {
    */
   safePadding?: boolean;
   /**
+   * Set the header of the drawer to be compact to save vertical space.
+   * This is useful when the drawer is used in a mobile context.
+   *
+   * !important: Make sure to pass a title that fits in the compact header.
+   *
+   * @defaultValue false
+   */
+  compactHeader?: boolean;
+  /**
+   * Set the sheet's header to be sticky when scrolling.
+   */
+  stickyHeader?: boolean;
+  /**
    * Set the maximum width of the drawer, on mobile the drawer will be
    * automatically collapsed when the width is reached.
    */
   maxWidth?: string;
+  /**
+   * Ref to the drawer content
+   *
+   */
+  scrollerRef?: React.RefObject<HTMLDivElement>;
 }
 
 const SheetContent = forwardRef<
@@ -58,8 +76,12 @@ SheetContentProps & Pick<DialogProps, 'children' | 'dismissible' | 'direction'>
   dismissible,
   direction = 'bottom',
   maxWidth = 600,
+  compactHeader,
+  stickyHeader = false,
+  scrollerRef,
 }, forwardedRef) => {
   const { matches } = useResponsiveContext();
+
   const align = useMemo(() => {
     if (direction === 'left') return 'start';
     if (direction === 'right') return 'end';
@@ -105,6 +127,7 @@ SheetContentProps & Pick<DialogProps, 'children' | 'dismissible' | 'direction'>
                   className={styles.Scroller}
                   useSystemStyle={false}
                   hideScrollbars={!matches.small}
+                  ref={scrollerRef}
                 >
                   {/* Drag Handle */}
                   {!matches.small && (
@@ -121,16 +144,17 @@ SheetContentProps & Pick<DialogProps, 'children' | 'dismissible' | 'direction'>
                   <Stack
                     rowGap={4}
                     hPadding={24}
-                    vPadding={[24, 24]}
+                    vPadding={compactHeader ? 8 : 24}
                     className={styles.Header}
+                    data-sheet-sticky-header={stickyHeader}
                   >
                     <Vaul.Title asChild>
-                      <Title lineHeight="small" responsive={false} level="5">{heading}</Title>
+                      <Title lineHeight="small" responsive={false} level={compactHeader ? '6' : '5'}>{heading}</Title>
                     </Vaul.Title>
 
                     {description && (
                       <Vaul.Description asChild>
-                        <Text dimmed={5} weight="regular" size={16}>
+                        <Text dimmed={5} weight="regular" size={compactHeader ? 14 : 16}>
                           <ClampText rows={2}>{description}</ClampText>
                         </Text>
                       </Vaul.Description>

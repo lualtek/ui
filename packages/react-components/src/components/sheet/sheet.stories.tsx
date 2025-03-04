@@ -11,6 +11,7 @@ const meta = {
   args: {
     open: false,
     dismissible: true,
+    compactHeader: false,
     direction: 'bottom',
     heading: 'Sheet title',
     trigger: <Button>Open sheet</Button>,

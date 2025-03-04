@@ -89,4 +89,10 @@
 
 .Header {
   background-color: var(--header-tint);
+
+  &[data-sheet-sticky-header='true'] {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
 }
