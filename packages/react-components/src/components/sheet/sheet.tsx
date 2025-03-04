@@ -104,7 +104,7 @@ SheetContentProps & Pick<DialogProps, 'children' | 'dismissible' | 'direction'>
                 <ScrollArea
                   className={styles.Scroller}
                   useSystemStyle={false}
-                  hideScrollbars
+                  hideScrollbars={!matches.small}
                 >
                   {/* Drag Handle */}
                   {!matches.small && (

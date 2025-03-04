@@ -9,6 +9,10 @@
 .Sheet {
   position: fixed;
   outline: none;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  max-width: var(--max-w, 400px);
 
   &[data-vaul-drawer-direction='left'] {
     top: 0;
@@ -26,12 +30,14 @@
     top: 0;
     left: 0;
     right: 0;
+    margin: 0 auto;
   }
 
   &[data-vaul-drawer-direction='bottom'] {
     bottom: 0;
     left: 0;
     right: 0;
+    margin: 0 auto;
   }
 
   @media (--from-small) {
