@@ -1,5 +1,16 @@
 # @lualtek/react-components
 
+## 18.5.0-next.2
+
+### Minor Changes
+
+- 1555737: Add showHeading prop
+
+### Patch Changes
+
+- Updated dependencies [46558e6]
+  - @lualtek/icons@18.5.0-next.2
+
 ## 18.5.0-next.1
 
 ### Patch Changes
