@@ -150,27 +150,26 @@ SheetContentProps & Pick<DialogProps, 'children' | 'dismissible' | 'direction'>
                   )}
 
                   {/* Header */}
-                  {(showHeading && heading) && (
-                    <Stack
-                      rowGap={4}
-                      hPadding={24}
-                      vPadding={compactHeader ? 8 : 24}
-                      className={styles.Header}
-                      data-sheet-sticky-header={stickyHeader}
-                    >
-                      <Vaul.Title asChild>
-                        <Title lineHeight="small" responsive={false} level={compactHeader ? '6' : '5'}>{heading}</Title>
-                      </Vaul.Title>
+                  <Stack
+                    rowGap={4}
+                    hPadding={24}
+                    vPadding={compactHeader ? 8 : 24}
+                    className={styles.Header}
+                    data-sheet-sticky-header={stickyHeader}
+                    data-visually-hidden={!showHeading}
+                  >
+                    <Vaul.Title asChild>
+                      <Title lineHeight="small" responsive={false} level={compactHeader ? '6' : '5'}>{heading}</Title>
+                    </Vaul.Title>
 
-                      {description && (
-                        <Vaul.Description asChild>
-                          <Text dimmed={5} weight="regular" size={compactHeader ? 14 : 16}>
-                            <ClampText rows={2}>{description}</ClampText>
-                          </Text>
-                        </Vaul.Description>
-                      )}
-                    </Stack>
-                  )}
+                    {description && (
+                      <Vaul.Description asChild>
+                        <Text dimmed={5} weight="regular" size={compactHeader ? 14 : 16}>
+                          <ClampText rows={2}>{description}</ClampText>
+                        </Text>
+                      </Vaul.Description>
+                    )}
+                  </Stack>
 
                   {/* Sheet content */}
                   <Stack
