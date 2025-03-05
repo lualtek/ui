@@ -1,5 +1,13 @@
 # @lualtek/charts
 
+## 18.5.0-next.3
+
+### Patch Changes
+
+- 8b96840: Minor fixes
+  - @lualtek/react-components@18.5.0-next.3
+  - @lualtek/tokens@18.5.0-next.3
+
 ## 18.5.0-next.2
 
 ### Patch Changes
