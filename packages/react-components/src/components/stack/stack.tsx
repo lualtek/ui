@@ -49,11 +49,11 @@ export type StackProps = {
   /**
    * Set the horizontal padding (left/right)
    */
-  hPadding?: TokensTypes['space'] | [TokensTypes['space'], TokensTypes['space']];
+  hPadding?: TokensTypes['space'] | [TokensTypes['space'] | 0, TokensTypes['space'] | 0];
   /**
    * Set the vertical padding (top/bottom)
    */
-  vPadding?: TokensTypes['space'] | [TokensTypes['space'], TokensTypes['space']];
+  vPadding?: TokensTypes['space'] | [TokensTypes['space'] | 0, TokensTypes['space'] | 0];
   /**
    * Renders children as rows or columns. The value can be one of the flex directions.
    * More info: https://developer.mozilla.org/en-US/docs/Web/CSS/flex-direction
@@ -94,13 +94,13 @@ export const Stack = forwardRef(
 
     const dynamicStyle = useMemo(() => {
       const getPaddingValue = (
-        padding: TokensTypes['space'] | [TokensTypes['space'], TokensTypes['space']],
+        padding: TokensTypes['space'] | [TokensTypes['space'] | 0, TokensTypes['space'] | 0],
         direction: 'horizontal' | 'vertical',
       ) => {
         const [start, end] = Array.isArray(padding) ? padding : [padding, padding];
         return direction === 'horizontal'
-          ? { left: tkns.space[start], right: tkns.space[end] }
-          : { top: tkns.space[start], bottom: tkns.space[end] };
+          ? { left: start ? tkns.space[start] : 0, right: end ? tkns.space[end] : 0 }
+          : { top: start ? tkns.space[start] : 0, bottom: end ? tkns.space[end] : 0 };
       };
 
       const vPaddingValues = vPadding ? getPaddingValue(vPadding, 'vertical') : { top: 0, bottom: 0 };

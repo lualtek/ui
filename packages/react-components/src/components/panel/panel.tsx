@@ -7,7 +7,7 @@ import { forwardRef, useMemo } from 'react';
 
 import {
   Glow,
-  GlowProps, PolyRefComponent, useStyles,
+  GlowProps, PolyRefComponent, StackProps, useStyles,
   VibrancyBlur, VibrancyColor, VibrancySaturation,
 } from '@/components';
 
@@ -65,11 +65,11 @@ export type PanelProps = {
   /**
    * Set the horizontal padding (left/right)
    */
-  hPadding?: TokensTypes['space'];
+  hPadding?: StackProps['hPadding'];
   /**
    * Set the vertical padding (top/bottom)
    */
-  vPadding?: TokensTypes['space'];
+  vPadding?: StackProps['vPadding'];
   /**
    * Disable the glow effect.
    *
@@ -84,6 +84,10 @@ export type PanelProps = {
    * Set the color of the glow effect.
    */
   glowColor?: GlowProps['glowColor'];
+  /**
+   * Set the glow effect to fit the content.
+   */
+  glowFitContent?: GlowProps['fitContent'];
   /**
    * Set the rainbow colors of the glow effect.
    */
@@ -110,6 +114,7 @@ export const Panel = forwardRef((
     showGlow = false,
     glowSpread,
     glowColor,
+    glowFitContent = false,
     rainbowColors,
     ...otherProps
   },
@@ -137,13 +142,30 @@ export const Panel = forwardRef((
     },
   });
 
-  const dynamicStyle = useMemo(() => ({
-    '--radius': radius && formatRadius,
-    '--v-padding': vPadding ? tkns.space[vPadding] : 0,
-    '--h-padding': hPadding ? tkns.space[hPadding] : 0,
-    '--background': vibrant ? undefined : computedBackground,
-    '--background-hover': vibrant ? undefined : computedBackgroundHover,
-  }), [radius, vPadding, hPadding, vibrant, computedBackground, computedBackgroundHover, formatRadius]);
+  const dynamicStyle = useMemo(() => {
+    const getPaddingValue = (
+      padding: TokensTypes['space'] | [TokensTypes['space'] | 0, TokensTypes['space'] | 0],
+      direction: 'horizontal' | 'vertical',
+    ) => {
+      const [start, end] = Array.isArray(padding) ? padding : [padding, padding];
+      return direction === 'horizontal'
+        ? { left: start ? tkns.space[start] : 0, right: end ? tkns.space[end] : 0 }
+        : { top: start ? tkns.space[start] : 0, bottom: end ? tkns.space[end] : 0 };
+    };
+
+    const vPaddingValues = vPadding ? getPaddingValue(vPadding, 'vertical') : { top: 0, bottom: 0 };
+    const hPaddingValues = hPadding ? getPaddingValue(hPadding, 'horizontal') : { left: 0, right: 0 };
+
+    return {
+      '--v-padding-top': vPaddingValues.top,
+      '--v-padding-bottom': vPaddingValues.bottom,
+      '--h-padding-left': hPaddingValues.left,
+      '--h-padding-right': hPaddingValues.right,
+      '--radius': radius && formatRadius,
+      '--background': vibrant ? undefined : computedBackground,
+      '--background-hover': vibrant ? undefined : computedBackgroundHover,
+    };
+  }, [computedBackground, computedBackgroundHover, formatRadius, hPadding, radius, vPadding, vibrant]);
 
   return (
     <ConditionalWrapper
@@ -157,6 +179,7 @@ export const Panel = forwardRef((
           borderOffset={-1}
           borderWidth={1}
           rainbowColors={rainbowColors}
+          fitContent={glowFitContent}
         >
           {children}
         </Glow>

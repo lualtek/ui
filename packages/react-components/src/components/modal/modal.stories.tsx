@@ -59,6 +59,7 @@ const DefaultChildren = () => (
 const meta: Meta<typeof Modal> = {
   title: 'Dialogs/Modal',
   component: Modal,
+  tags: ['deprecated'],
   args: {
     autoFocus: true,
     children: <DefaultChildren />,

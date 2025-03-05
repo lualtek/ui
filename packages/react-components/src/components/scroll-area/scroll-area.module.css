@@ -10,6 +10,7 @@
 
     &[data-scroll-area-scrolling='true'] {
       overflow: auto;
+      overscroll-behavior: contain;
     }
 
     &[data-scroll-fade-direction='vertical'] {
