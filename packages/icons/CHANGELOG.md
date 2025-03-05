@@ -1,5 +1,7 @@
 # @lualtek/icons
 
+## 18.5.0-next.3
+
 ## 18.5.0-next.2
 
 ### Patch Changes
