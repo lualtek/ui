@@ -25,6 +25,14 @@ type SheetContentProps = {
    */
   heading: ReactNode;
   /**
+   * Hide or show the sheet heading which includes the title and the description.
+   * If you hide the title, make sure to add yuor own title element in order
+   * to provide an accessible label to the drawer.
+   *
+   * @defaultValue true
+   */
+  showHeading?: boolean;
+  /**
    * Set the background color for the content header
    */
   headerTint?: string;
@@ -78,6 +86,7 @@ SheetContentProps & Pick<DialogProps, 'children' | 'dismissible' | 'direction'>
   maxWidth = 600,
   compactHeader,
   stickyHeader = false,
+  showHeading = true,
   scrollerRef,
 }, forwardedRef) => {
   const { matches } = useResponsiveContext();
@@ -141,29 +150,32 @@ SheetContentProps & Pick<DialogProps, 'children' | 'dismissible' | 'direction'>
                   )}
 
                   {/* Header */}
-                  <Stack
-                    rowGap={4}
-                    hPadding={24}
-                    vPadding={compactHeader ? 8 : 24}
-                    className={styles.Header}
-                    data-sheet-sticky-header={stickyHeader}
-                  >
-                    <Vaul.Title asChild>
-                      <Title lineHeight="small" responsive={false} level={compactHeader ? '6' : '5'}>{heading}</Title>
-                    </Vaul.Title>
+                  {(showHeading && heading) && (
+                    <Stack
+                      rowGap={4}
+                      hPadding={24}
+                      vPadding={compactHeader ? 8 : 24}
+                      className={styles.Header}
+                      data-sheet-sticky-header={stickyHeader}
+                    >
+                      <Vaul.Title asChild>
+                        <Title lineHeight="small" responsive={false} level={compactHeader ? '6' : '5'}>{heading}</Title>
+                      </Vaul.Title>
 
-                    {description && (
-                      <Vaul.Description asChild>
-                        <Text dimmed={5} weight="regular" size={compactHeader ? 14 : 16}>
-                          <ClampText rows={2}>{description}</ClampText>
-                        </Text>
-                      </Vaul.Description>
-                    )}
-                  </Stack>
+                      {description && (
+                        <Vaul.Description asChild>
+                          <Text dimmed={5} weight="regular" size={compactHeader ? 14 : 16}>
+                            <ClampText rows={2}>{description}</ClampText>
+                          </Text>
+                        </Vaul.Description>
+                      )}
+                    </Stack>
+                  )}
 
                   {/* Sheet content */}
                   <Stack
                     hPadding={24}
+                    vPadding={[showHeading ? 0 : 16, 0]}
                     className={styles.SafeGuard}
                     data-modal-content-safe-padding={safePadding}
                   >

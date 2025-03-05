@@ -95,6 +95,12 @@ export const Side = {
   },
 } satisfies Story;
 
+export const NoHeading = {
+  args: {
+    showHeading: false,
+  },
+} satisfies Story;
+
 export const Nested = {
   args: {},
   render: function Render({ ...args }) {
