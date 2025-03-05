@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 18.5.0-next.4
+
+### Patch Changes
+
+- ea30fe5: Fix Sheet size
+  - @lualtek/icons@18.5.0-next.4
+
 ## 18.5.0-next.3
 
 ### Patch Changes
