@@ -27,7 +27,10 @@ You can read about why and how it was built`,
       <>
         <Sheet
           {...args}
-          onOpenChange={open => setOpen({ open })}
+          onOpenChange={(open) => {
+            console.log('ciao', open);
+            setOpen({ open });
+          }}
           trigger={<Button>Open sheet</Button>}
         >
           <Stack>
