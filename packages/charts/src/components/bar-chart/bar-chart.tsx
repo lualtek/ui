@@ -195,6 +195,7 @@ export function BarChart<D extends ChartDataBaseType, B extends BarProps<D>>({
           return (
             <Bar
               {...barProps}
+              key={barProps.serieKeyId}
               isAnimationActive={isAnimationActive}
               fill={computedStrokeColor}
               yAxisId={side}
