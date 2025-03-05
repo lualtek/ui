@@ -1,5 +1,7 @@
 # @lualtek/tokens
 
+## 18.5.0-next.1
+
 ## 18.5.0-next.0
 
 ## 18.4.0
