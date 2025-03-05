@@ -1,5 +1,16 @@
 # @lualtek/react-components
 
+## 18.5.0-next.0
+
+### Minor Changes
+
+- 842beb1: Update vPadding/hPadding of Stack to accept array of 2 values for top/bottom and left/right
+- e4b4452: Add new Sheet component and deprecated Modal and Drawer
+
+### Patch Changes
+
+- @lualtek/icons@18.5.0-next.0
+
 ## 18.4.0
 
 ### Patch Changes
