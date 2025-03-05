@@ -1,5 +1,7 @@
 # @lualtek/icons
 
+## 18.5.0-next.0
+
 ## 18.4.0
 
 ### Minor Changes
