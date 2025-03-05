@@ -45,7 +45,6 @@ export const Default = {} satisfies Story;
 export const Inline = {
   args: {
     inline: true,
-    listGap: '96',
   },
 } satisfies Story;
 
