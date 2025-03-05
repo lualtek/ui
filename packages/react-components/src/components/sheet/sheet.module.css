@@ -11,8 +11,6 @@
   outline: none;
   margin-left: auto;
   margin-right: auto;
-  width: 100%;
-  max-width: var(--max-w, 400px);
 
   &[data-vaul-drawer-direction='left'] {
     top: 0;
@@ -49,10 +47,12 @@
 
 .Container {
   margin: 0 auto;
+  width: 100%;
+  max-width: var(--max-w, 600px);
 
   [data-vaul-drawer-direction='left'] &,
   [data-vaul-drawer-direction='right'] & {
-    max-inline-size: var(--max-w, 400px);
+    max-inline-size: var(--max-w, 600px);
     block-size: calc(100dvh - --token(--space-16));
   }
 
@@ -63,7 +63,7 @@
 
     @media (--from-small) {
       max-inline-size: var(--max-w, 600px);
-      max-block-size: max(30dvh, 400px);
+      max-block-size: max(30dvh, 600px);
     }
   }
 }

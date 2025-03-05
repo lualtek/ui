@@ -83,7 +83,7 @@ SheetContentProps & Pick<DialogProps, 'children' | 'dismissible' | 'direction'>
   children,
   dismissible,
   direction = 'bottom',
-  maxWidth = 600,
+  maxWidth = '600px',
   compactHeader,
   stickyHeader = false,
   showHeading = true,
@@ -99,7 +99,7 @@ SheetContentProps & Pick<DialogProps, 'children' | 'dismissible' | 'direction'>
 
   const dynamicStyle = useMemo(() => (
     {
-      '--max-w': maxWidth ? `${maxWidth}px` : undefined,
+      '--max-w': maxWidth ?? undefined,
       '--header-tint': headerTint,
     }
   ), [headerTint, maxWidth]);
