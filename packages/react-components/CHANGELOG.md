@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 18.5.0-next.1
+
+### Patch Changes
+
+- 4fb0e88: Add missing Sheet export
+  - @lualtek/icons@18.5.0-next.1
+
 ## 18.5.0-next.0
 
 ### Minor Changes
