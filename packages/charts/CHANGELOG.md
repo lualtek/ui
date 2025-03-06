@@ -1,5 +1,13 @@
 # @lualtek/charts
 
+## 18.5.0-next.5
+
+### Patch Changes
+
+- Updated dependencies [bfac287]
+  - @lualtek/react-components@18.5.0-next.5
+  - @lualtek/tokens@18.5.0-next.5
+
 ## 18.5.0-next.4
 
 ### Patch Changes
