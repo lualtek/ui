@@ -47,6 +47,10 @@ type SheetContentProps = {
    */
   safePadding?: boolean;
   /**
+   * Enable or disable padding for the content.
+   */
+  noPadding?: boolean;
+  /**
    * Set the header of the drawer to be compact to save vertical space.
    * This is useful when the drawer is used in a mobile context.
    *
@@ -80,6 +84,7 @@ SheetContentProps & Pick<DialogProps, 'children' | 'dismissible' | 'direction'>
   headerTint,
   description,
   safePadding = true,
+  noPadding = false,
   children,
   dismissible,
   direction = 'bottom',
@@ -173,10 +178,10 @@ SheetContentProps & Pick<DialogProps, 'children' | 'dismissible' | 'direction'>
 
                   {/* Sheet content */}
                   <Stack
-                    hPadding={24}
+                    hPadding={noPadding ? undefined : 24}
                     vPadding={[showHeading ? 0 : 16, 0]}
                     className={styles.SafeGuard}
-                    data-modal-content-safe-padding={safePadding}
+                    data-modal-content-safe-padding={noPadding ? false : safePadding}
                   >
                     {children}
                   </Stack>

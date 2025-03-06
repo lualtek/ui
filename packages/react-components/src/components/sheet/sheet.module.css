@@ -74,8 +74,13 @@
 }
 
 .SafeGuard {
+  min-height: 100%;
+
   &[data-modal-content-safe-padding='true'] {
-    padding-block-end: max(env(safe-area-inset-bottom), --token(--space-16));
+    padding-block-end: max(
+      min(calc(env(safe-area-inset-bottom) + --token(--space-16)), --token(--space-16)),
+      --token(--space-16)
+    );
   }
 }
 
