@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 18.5.0-next.5
+
+### Patch Changes
+
+- bfac287: Fix sheet sizing
+  - @lualtek/icons@18.5.0-next.5
+
 ## 18.5.0-next.4
 
 ### Patch Changes

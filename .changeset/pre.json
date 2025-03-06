@@ -11,6 +11,7 @@
     "tsconfig": "0.0.4"
   },
   "changesets": [
+    "curly-places-doubt",
     "empty-bears-reply",
     "forty-tools-flow",
     "fresh-trams-enter",
