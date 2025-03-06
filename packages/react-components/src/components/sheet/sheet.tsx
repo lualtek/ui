@@ -109,6 +109,11 @@ SheetContentProps & Pick<DialogProps, 'children' | 'dismissible' | 'direction'>
     }
   ), [headerTint, maxWidth]);
 
+  const getVPadding = useMemo(() => {
+    if (showHeading) return 0;
+    return noPadding ? 0 : 16;
+  }, [showHeading, noPadding]);
+
   return (
     <>
       <Vaul.Trigger asChild>
@@ -179,7 +184,7 @@ SheetContentProps & Pick<DialogProps, 'children' | 'dismissible' | 'direction'>
                   {/* Sheet content */}
                   <Stack
                     hPadding={noPadding ? undefined : 24}
-                    vPadding={[showHeading ? 0 : 16, 0]}
+                    vPadding={[getVPadding, 0]}
                     className={styles.SafeGuard}
                     data-modal-content-safe-padding={noPadding ? false : safePadding}
                   >

@@ -11,7 +11,7 @@
   outline: none;
   margin-left: auto;
   margin-right: auto;
-  max-width: var(--max-w, 600px);
+  max-width: calc(var(--max-w, 600px) + --token(--space-32));
 
   &[data-vaul-drawer-direction='left'] {
     top: 0;
