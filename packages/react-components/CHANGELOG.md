@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 18.5.0-next.6
+
+### Patch Changes
+
+- 258c097: Fix sheet safeguard paddin
+  - @lualtek/icons@18.5.0-next.6
+
 ## 18.5.0-next.5
 
 ### Patch Changes
