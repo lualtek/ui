@@ -1,0 +1,14 @@
+{
+  "mode": "pre",
+  "tag": "next",
+  "initialVersions": {
+    "@lualtek/charts": "18.5.0",
+    "@lualtek/config": "18.5.0",
+    "@lualtek/icons": "18.5.0",
+    "@lualtek/react-components": "18.5.0",
+    "@lualtek/themes": "18.5.0",
+    "@lualtek/tokens": "18.5.0",
+    "tsconfig": "0.0.4"
+  },
+  "changesets": []
+}
