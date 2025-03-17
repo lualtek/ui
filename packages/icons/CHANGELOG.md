@@ -1,5 +1,11 @@
 # @lualtek/icons
 
+## 18.5.0
+
+### Patch Changes
+
+- ae418d0: Fix icons
+
 ## 18.5.0-next.6
 
 ## 18.5.0-next.5
