@@ -1,5 +1,61 @@
 # @lualtek/react-components
 
+## 18.5.0-next.6
+
+### Patch Changes
+
+- 258c097: Fix sheet safeguard paddin
+  - @lualtek/icons@18.5.0-next.6
+
+## 18.5.0-next.5
+
+### Patch Changes
+
+- bfac287: Fix sheet sizing
+  - @lualtek/icons@18.5.0-next.5
+
+## 18.5.0-next.4
+
+### Patch Changes
+
+- ea30fe5: Fix Sheet size
+  - @lualtek/icons@18.5.0-next.4
+
+## 18.5.0-next.3
+
+### Patch Changes
+
+- @lualtek/icons@18.5.0-next.3
+
+## 18.5.0-next.2
+
+### Minor Changes
+
+- 1555737: Add showHeading prop
+
+### Patch Changes
+
+- Updated dependencies [46558e6]
+  - @lualtek/icons@18.5.0-next.2
+
+## 18.5.0-next.1
+
+### Patch Changes
+
+- 4fb0e88: Add missing Sheet export
+  - @lualtek/icons@18.5.0-next.1
+
+## 18.5.0-next.0
+
+### Minor Changes
+
+- 842beb1: Update vPadding/hPadding of Stack to accept array of 2 values for top/bottom and left/right
+- e4b4452: Add new Sheet component and deprecated Modal and Drawer
+
+### Patch Changes
+
+- @lualtek/icons@18.5.0-next.0
+
 ## 18.4.0
 
 ### Patch Changes

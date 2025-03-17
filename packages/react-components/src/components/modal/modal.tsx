@@ -4,7 +4,6 @@ import tkns from '@lualtek/tokens/web/tokens.json';
 import clsx from 'clsx';
 import {
   domMax, LazyMotion, m,
-  MotionProps,
 } from 'motion/react';
 import { forwardRef, useId, useMemo } from 'react';
 import { FocusOn } from 'react-focus-on';
@@ -50,6 +49,9 @@ type ModalComponent = React.ForwardRefExoticComponent<ModalProps> & {
   Content: typeof ModalContent;
 }
 
+/**
+ * @deprecated This component is outdated. Use `Sheet` instead.
+ */
 export const Modal = forwardRef<HTMLDivElement, ModalProps>(({
   children,
   className,

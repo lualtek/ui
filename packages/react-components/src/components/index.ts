@@ -43,6 +43,7 @@ export * from './select';
 export * from './selection-controls/checkbox';
 export * from './selection-controls/radio';
 export * from './separator';
+export * from './sheet';
 export * from './skeleton';
 export * from './slider';
 export * from './snaplist';

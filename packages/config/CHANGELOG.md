@@ -1,5 +1,47 @@
 # @lualtek/config
 
+## 18.5.0-next.6
+
+### Patch Changes
+
+- @lualtek/tokens@18.5.0-next.6
+
+## 18.5.0-next.5
+
+### Patch Changes
+
+- @lualtek/tokens@18.5.0-next.5
+
+## 18.5.0-next.4
+
+### Patch Changes
+
+- @lualtek/tokens@18.5.0-next.4
+
+## 18.5.0-next.3
+
+### Patch Changes
+
+- @lualtek/tokens@18.5.0-next.3
+
+## 18.5.0-next.2
+
+### Patch Changes
+
+- @lualtek/tokens@18.5.0-next.2
+
+## 18.5.0-next.1
+
+### Patch Changes
+
+- @lualtek/tokens@18.5.0-next.1
+
+## 18.5.0-next.0
+
+### Patch Changes
+
+- @lualtek/tokens@18.5.0-next.0
+
 ## 18.4.0
 
 ### Patch Changes

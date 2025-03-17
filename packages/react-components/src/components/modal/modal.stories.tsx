@@ -59,6 +59,7 @@ const DefaultChildren = () => (
 const meta: Meta<typeof Modal> = {
   title: 'Dialogs/Modal',
   component: Modal,
+  tags: ['deprecated'],
   args: {
     autoFocus: true,
     children: <DefaultChildren />,
@@ -75,8 +76,8 @@ const meta: Meta<typeof Modal> = {
     ),
   ],
   render: function Render({ ...args }) {
-    const [{ isVisible }, setIsVisible] = useArgs<{ isVisible: boolean }>();
-    const handleClose = (visibility: boolean) => setIsVisible({ isVisible: visibility });
+    const [{ isOpen }, setIsVisible] = useArgs<typeof args>();
+    const handleClose = (isOpen: boolean) => setIsVisible({ isOpen });
 
     return (
       <>
@@ -84,7 +85,7 @@ const meta: Meta<typeof Modal> = {
         <Modal
           {...args}
           key="dynamic-modal"
-          isOpen={isVisible}
+          isOpen={isOpen}
           onClose={() => handleClose(false)}
         >
           <Modal.Content heading="Modal title">
@@ -127,8 +128,8 @@ export const CustomContent = {
 export const WithTitleComponent = {
   args: {},
   render: function Render({ ...args }) {
-    const [{ isOpen }, setIsVisible] = useArgs<{ isOpen: boolean }>();
-    const handleClose = (visibility: boolean) => setIsVisible({ isOpen: visibility });
+    const [{ isOpen }, setIsVisible] = useArgs<typeof args>();
+    const handleClose = (isOpen: boolean) => setIsVisible({ isOpen });
 
     return (
       <>
@@ -151,8 +152,8 @@ export const WithTitleComponent = {
 export const WithTabInside = {
   args: {},
   render: function Render({ ...args }) {
-    const [{ isOpen }, setIsVisible] = useArgs<{ isOpen: boolean }>();
-    const handleClose = (visibility: boolean) => setIsVisible({ isOpen: visibility });
+    const [{ isOpen }, setIsVisible] = useArgs<typeof args>();
+    const handleClose = (isOpen: boolean) => setIsVisible({ isOpen });
 
     return (
       <>

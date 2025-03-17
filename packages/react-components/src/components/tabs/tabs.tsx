@@ -8,7 +8,7 @@ import {
   AnimatePresence, domMax, LazyMotion, m,
 } from 'motion/react';
 import {
-  Children, FC, isValidElement, useCallback, useEffect, useId, useState,
+  Children, FC, isValidElement, useCallback, useEffect, useId, useMemo, useState,
 } from 'react';
 
 import {
@@ -45,6 +45,12 @@ type TabsComponent = FC<TabsProps> & {
   Panel: typeof TabPanel;
 }
 
+const radius: RadiusType = {
+  small: 12,
+  regular: 16,
+  big: 24,
+};
+
 export const Tabs: TabsComponent = ({
   className,
   children,
@@ -55,14 +61,12 @@ export const Tabs: TabsComponent = ({
   style,
   ...otherProps
 }) => {
-  const [activeItem, setActiveItem] = useState<string>(otherProps.defaultValue ?? otherProps.value ?? '');
+  const [activeItem, setActiveItem] = useState<string | undefined>(otherProps.defaultValue);
   const uid = useId();
 
-  const radius: RadiusType = {
-    small: 12,
-    regular: 16,
-    big: 24,
-  };
+  const dynamicStyle = useMemo(() => ({
+    '--tabs-list-gap': listGap && tkns.space[listGap],
+  }), [listGap]);
 
   const handleOnVlaueChange = useCallback(
     (value: string) => {
@@ -73,12 +77,10 @@ export const Tabs: TabsComponent = ({
   );
 
   useEffect(() => {
-    setActiveItem(otherProps.value ?? '');
+    if (otherProps.value) {
+      setActiveItem(otherProps.value);
+    }
   }, [handleOnVlaueChange, otherProps.value]);
-
-  const dynamicStyle = {
-    '--tabs-list-gap': listGap && tkns.space[listGap],
-  };
 
   return (
     <TabsPrimitive.Root
@@ -87,6 +89,8 @@ export const Tabs: TabsComponent = ({
       className={clsx(styles.Tabs, className)}
       style={{ ...style, ...dynamicStyle }}
       onValueChange={handleOnVlaueChange}
+      defaultValue={activeItem}
+      value={activeItem}
     >
       <LazyMotion features={domMax} strict>
         <Panel
@@ -125,7 +129,7 @@ export const Tabs: TabsComponent = ({
                     {child.props.label}
                     {child.props.decorator}
                   </Stack>
-                  <AnimatePresence>
+                  <AnimatePresence key={activeItem}>
                     {(child.props.value === activeItem) && (
                       <m.span className={styles.Highlight} layoutId={`${uid}-tab-highlight-lazy`} />
                     )}

@@ -114,6 +114,9 @@ export type DrawerProps = React.ComponentPropsWithRef<'div'> & {
   scrollerRef?: React.RefObject<HTMLDivElement>;
 }
 
+/**
+ * @deprecated This component is outdated. Use `Sheet` instead.
+ */
 export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(({
   children,
   className,

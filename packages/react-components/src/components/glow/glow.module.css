@@ -1,7 +1,6 @@
 @import '../../core/utils/media.css';
 
 @layer components {
-
   @property --starting-angle {
     syntax: '<number>';
     inherits: true;
@@ -9,15 +8,17 @@
   }
 
   .Glow {
-    --gradient:
- var(--glow-color, conic-gradient(
-      from 180deg at 50% 70%,
-          --token(--color-cyan-50),
-          --token(--color-brand-50),
-          --token(--color-green-50),
-          --token(--color-purple-50),
-          --token(--color-cyan-50)
-        ));
+    --gradient: var(
+      --glow-color,
+      conic-gradient(
+        from 180deg at 50% 70%,
+        --token(--color-cyan-50),
+        --token(--color-brand-50),
+        --token(--color-green-50),
+        --token(--color-purple-50),
+        --token(--color-cyan-50)
+      )
+    );
 
     border-radius: var(--radius);
     position: relative;
@@ -27,22 +28,20 @@
       max-width: fit-content;
     }
 
-
     &[data-glow-rainbow='true'] {
-      --gradient:
-      conic-gradient(
-           from 180deg at 50% 50%,
-           --token(--color-cyan-50),
-           --token(--color-brand-50),
-           --token(--color-dipsy-50),
-           --token(--color-red-50),
-           --token(--color-indigo-50),
-           --token(--color-green-50),
-           --token(--color-yellow-50),
-           --token(--color-purple-50),
-           --token(--color-salmon-50),
-           --token(--color-cyan-50)
-         );
+      --gradient: conic-gradient(
+        from 180deg at 50% 50%,
+        --token(--color-cyan-50),
+        --token(--color-brand-50),
+        --token(--color-dipsy-50),
+        --token(--color-red-50),
+        --token(--color-indigo-50),
+        --token(--color-green-50),
+        --token(--color-yellow-50),
+        --token(--color-purple-50),
+        --token(--color-salmon-50),
+        --token(--color-cyan-50)
+      );
     }
   }
 
@@ -61,8 +60,7 @@
     background: var(--border-color);
 
     /* background-attachment: fixed; */
-    mask:
-      linear-gradient(transparent, transparent),
+    mask: linear-gradient(transparent, transparent),
       conic-gradient(
         from calc(((var(--starting-angle) + (var(--spread) * 0.25)) - (var(--spread) * 1.5)) * 1deg),
         oklch(100% 0 0deg / 15%) 0deg,
@@ -71,7 +69,7 @@
       );
     mask-clip: padding-box, border-box;
 
-        /* Remove negative sign by multiplying it with -1 */
+    /* Remove negative sign by multiplying it with -1 */
     border-radius: calc(var(--border-offset) + var(--radius));
     pointer-events: none;
     mask-composite: intersect;
@@ -83,24 +81,26 @@
 
   .Glow::after {
     background: var(--gradient);
-    mask:
-      linear-gradient(transparent, transparent),
+    mask: linear-gradient(transparent, transparent),
       conic-gradient(
-        from calc(((var(--starting-angle) + (var(--spread) * 0.25)) - (var(--spread) * 0.5)) * 1deg), transparent 0deg, white, transparent calc(var(--spread) * 0.5deg));
+        from calc(((var(--starting-angle) + (var(--spread) * 0.25)) - (var(--spread) * 0.5)) * 1deg),
+        transparent 0deg,
+        white,
+        transparent calc(var(--spread) * 0.5deg)
+      );
     filter: brightness(1.5);
     mask-clip: padding-box, border-box;
 
-        /* Remove negative sign by multiplying it with -1 */
+    /* Remove negative sign by multiplying it with -1 */
     border-radius: calc(var(--border-offset) + var(--radius));
     pointer-events: none;
     mask-composite: intersect;
-    inset:  calc(var(--border-offset) * -1);
+    inset: calc(var(--border-offset) * -1);
     opacity: var(--active-opacity);
     border: var(--border-width) solid transparent;
     transition: opacity 1s;
     background-size: calc(100% + var(--border-width) * 2) calc(100% + var(--border-width) * 2);
     background-position: calc(var(--border-width) * -1) calc(var(--border-width) * -1);
-
   }
 
   .Glow[data-glow-global='true']::after {
@@ -126,9 +126,13 @@
     inset: var(--border-offset);
     border: var(--glow-power) solid transparent;
     border-radius: calc((var(--border-offset) * -1) + var(--radius) + (var(--glow-power) / 2));
-    mask:
-      linear-gradient(transparent, transparent),
-      conic-gradient(from calc((var(--starting-angle) - (var(--spread) * 0.5)) * 1deg), black 0deg, white, transparent calc(var(--spread) * 1deg));
+    mask: linear-gradient(transparent, transparent),
+      conic-gradient(
+        from calc((var(--starting-angle) - (var(--spread) * 0.5)) * 1deg),
+        black 0deg,
+        white,
+        transparent calc(var(--spread) * 1deg)
+      );
     mask-composite: intersect;
     mask-clip: padding-box, border-box;
     opacity: var(--active-opacity);

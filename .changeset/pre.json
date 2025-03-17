@@ -1,0 +1,24 @@
+{
+  "mode": "pre",
+  "tag": "next",
+  "initialVersions": {
+    "@lualtek/charts": "18.0.1",
+    "@lualtek/config": "18.0.1",
+    "@lualtek/icons": "18.0.1",
+    "@lualtek/react-components": "18.0.1",
+    "@lualtek/themes": "18.0.1",
+    "@lualtek/tokens": "18.0.1",
+    "tsconfig": "0.0.4"
+  },
+  "changesets": [
+    "curly-places-doubt",
+    "empty-bears-reply",
+    "forty-tools-flow",
+    "fresh-trams-enter",
+    "new-masks-read",
+    "strong-llamas-work",
+    "tender-badgers-invite",
+    "vast-beds-punch",
+    "warm-phones-start"
+  ]
+}
