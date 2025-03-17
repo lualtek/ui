@@ -1,5 +1,22 @@
 # @lualtek/react-components
 
+## 18.5.0
+
+### Minor Changes
+
+- ae418d0: Update vPadding/hPadding of Stack to accept array of 2 values for top/bottom and left/right
+- ae418d0: Add new Sheet component and deprecated Modal and Drawer
+- ae418d0: Add showHeading prop
+
+### Patch Changes
+
+- ae418d0: Fix sheet sizing
+- ae418d0: Fix Sheet size
+- ae418d0: Add missing Sheet export
+- ae418d0: Fix sheet safeguard paddin
+- Updated dependencies [ae418d0]
+  - @lualtek/icons@18.5.0
+
 ## 18.5.0-next.6
 
 ### Patch Changes

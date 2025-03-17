@@ -1,5 +1,20 @@
 # @lualtek/charts
 
+## 18.5.0
+
+### Patch Changes
+
+- ae418d0: Minor fixes
+- Updated dependencies [ae418d0]
+- Updated dependencies [ae418d0]
+- Updated dependencies [ae418d0]
+- Updated dependencies [ae418d0]
+- Updated dependencies [ae418d0]
+- Updated dependencies [ae418d0]
+- Updated dependencies [ae418d0]
+  - @lualtek/react-components@18.5.0
+  - @lualtek/tokens@18.5.0
+
 ## 18.5.0-next.6
 
 ### Patch Changes
