@@ -86,7 +86,7 @@ SheetContentProps & Pick<DialogProps, 'children' | 'dismissible' | 'direction'>
   safePadding = true,
   noPadding = false,
   children,
-  dismissible,
+  dismissible = true,
   direction = 'bottom',
   maxWidth = '600px',
   compactHeader,
