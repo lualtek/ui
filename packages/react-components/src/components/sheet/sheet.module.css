@@ -72,18 +72,12 @@
 
 .Scroller {
   border-radius: --token(--radius-24);
+  display: flex;
+  flex-direction: column;
 }
 
 .SafeGuard {
-  min-height: 100%;
-
-  &[data-sheet-scroll-inside='true'] {
-    max-height: 100%;
-
-    .Sheet[data-sheet-has-handle='true'] & {
-      max-height: calc(100% - var(--handle-height, 22px));
-    }
-  }
+  flex-grow: 1;
 
   &[data-sheet-content-safe-padding='true'] {
     padding-block-end: max(

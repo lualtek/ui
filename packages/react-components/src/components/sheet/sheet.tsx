@@ -73,11 +73,6 @@ type SheetContentProps = {
    *
    */
   scrollerRef?: React.RefObject<HTMLDivElement>;
-  /**
-   * Disable drawer overflow to allow the content to scroll inside the drawer.
-   * This avoids the drawer to scroll when the content is scrollable and double scrollbars.
-   */
-  scrollInside?: boolean;
 }
 
 const SheetContent = forwardRef<
@@ -97,7 +92,6 @@ SheetContentProps & Pick<DialogProps, 'children' | 'dismissible' | 'direction'>
   compactHeader,
   stickyHeader = false,
   showHeading = true,
-  scrollInside = false,
   scrollerRef,
 }, forwardedRef) => {
   const { matches } = useResponsiveContext();
@@ -193,7 +187,6 @@ SheetContentProps & Pick<DialogProps, 'children' | 'dismissible' | 'direction'>
                     hPadding={noPadding ? undefined : 24}
                     vPadding={[getVPadding, 0]}
                     className={styles.SafeGuard}
-                    data-sheet-scroll-inside={scrollInside}
                     data-sheet-content-safe-padding={noPadding ? false : safePadding}
                   >
                     {children}

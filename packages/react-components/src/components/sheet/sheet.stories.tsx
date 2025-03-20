@@ -82,6 +82,40 @@ export const LongContent = {
   },
 } satisfies Story;
 
+export const ScrollInside = {
+  args: {
+    direction: 'left',
+    children: (
+      <div style={{ maxHeight: '50dvh', overflow: 'auto' }}>
+        {Array.from(
+          { length: 100 },
+          () => 'This one specifically is the most simplest setup you can have, just a simple drawer with a trigger.',
+        ).join('')}
+      </div>
+    ),
+  },
+  render: function Render({ ...args }) {
+    const [, setOpen] = useArgs<typeof args>();
+
+    return (
+      <>
+        <Sheet
+          {...args}
+          onOpenChange={(open) => {
+            console.log('ciao', open);
+            setOpen({ open });
+          }}
+          trigger={args.trigger}
+        >
+          {args.children}
+        </Sheet>
+        {/* eslint-disable-next-line max-len */}
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ducimus, cumque? Totam reiciendis tempora illum aut, laboriosam provident molestiae doloribus in alias fugit nostrum distinctio accusantium cum repellat veritatis voluptatibus. Sunt.
+      </>
+    );
+  },
+} satisfies Story;
+
 export const HeaderTint = {
   args: {
     headerTint: 'var(--dimmed-1)',
