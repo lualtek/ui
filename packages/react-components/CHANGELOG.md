@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 18.6.1
+
+### Patch Changes
+
+- e39e304: Try to fix sheet scroller
+  - @lualtek/icons@18.6.1
+
 ## 18.6.0
 
 ### Minor Changes
