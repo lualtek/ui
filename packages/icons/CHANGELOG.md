@@ -1,5 +1,7 @@
 # @lualtek/icons
 
+## 18.5.1
+
 ## 18.5.0
 
 ### Patch Changes
