@@ -18,7 +18,7 @@ type SheetContentProps = {
    * The interactive element that triggers the modal to open.
    * Must be a single interactive element.
    */
-  trigger: React.ComponentProps<typeof Vaul.Trigger>['children'];
+  trigger?: React.ComponentProps<typeof Vaul.Trigger>['children'];
   /**
    * Set the accessible title of the modal. This is used by screen readers to
    * announce the title of the modal when opened.
@@ -116,9 +116,11 @@ SheetContentProps & Pick<DialogProps, 'children' | 'dismissible' | 'direction'>
 
   return (
     <>
-      <Vaul.Trigger asChild>
-        {trigger}
-      </Vaul.Trigger>
+      {trigger && (
+        <Vaul.Trigger asChild>
+          {trigger}
+        </Vaul.Trigger>
+      )}
       <Vaul.Portal>
         <Vaul.Overlay className={styles.Overlay} />
         <Vaul.Content asChild>

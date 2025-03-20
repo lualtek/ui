@@ -31,7 +31,7 @@ You can read about why and how it was built`,
             console.log('ciao', open);
             setOpen({ open });
           }}
-          trigger={<Button>Open sheet</Button>}
+          trigger={args.trigger}
         >
           <Stack>
             {args.children}
@@ -95,6 +95,13 @@ export const HeaderTint = {
 export const Side = {
   args: {
     direction: 'left',
+  },
+} satisfies Story;
+
+export const NoTrigger = {
+  args: {
+    trigger: undefined,
+    open: true,
   },
 } satisfies Story;
 
