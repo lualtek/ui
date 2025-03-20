@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 18.5.2
+
+### Patch Changes
+
+- ae6fa63: Fix sheed handle size with scroll
+  - @lualtek/icons@18.5.2
+
 ## 18.5.1
 
 ### Patch Changes
