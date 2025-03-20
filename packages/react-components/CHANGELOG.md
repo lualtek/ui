@@ -1,5 +1,15 @@
 # @lualtek/react-components
 
+## 18.6.0-next.0
+
+### Minor Changes
+
+- bf953c8: fix typo
+
+### Patch Changes
+
+- @lualtek/icons@18.6.0-next.0
+
 ## 18.5.2
 
 ### Patch Changes
