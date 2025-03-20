@@ -73,6 +73,11 @@ type SheetContentProps = {
    *
    */
   scrollerRef?: React.RefObject<HTMLDivElement>;
+  /**
+   * Disable drawer overflow to allow the content to scroll inside the drawer.
+   * This avoids the drawer to scroll when the content is scrollable and double scrollbars.
+   */
+  scrollInside?: boolean;
 }
 
 const SheetContent = forwardRef<
@@ -92,6 +97,7 @@ SheetContentProps & Pick<DialogProps, 'children' | 'dismissible' | 'direction'>
   compactHeader,
   stickyHeader = false,
   showHeading = true,
+  scrollInside = false,
   scrollerRef,
 }, forwardedRef) => {
   const { matches } = useResponsiveContext();
@@ -114,6 +120,8 @@ SheetContentProps & Pick<DialogProps, 'children' | 'dismissible' | 'direction'>
     return noPadding ? 0 : 16;
   }, [showHeading, noPadding]);
 
+  const shouldShowHandle = useMemo(() => !matches.small && dismissible, [matches, dismissible]);
+
   return (
     <>
       {trigger && (
@@ -133,6 +141,7 @@ SheetContentProps & Pick<DialogProps, 'children' | 'dismissible' | 'direction'>
             vAlign="start"
             hPadding={8}
             vPadding={8}
+            data-sheet-has-handle={shouldShowHandle}
           >
             <Panel
               vibrant
@@ -151,14 +160,10 @@ SheetContentProps & Pick<DialogProps, 'children' | 'dismissible' | 'direction'>
                   ref={scrollerRef}
                 >
                   {/* Drag Handle */}
-                  {!matches.small && (
-                    <>
-                      {dismissible && (
-                        <Stack vPadding={8} className={styles.HandleWrapper}>
-                          <Vaul.Handle />
-                        </Stack>
-                      )}
-                    </>
+                  {shouldShowHandle && (
+                    <Stack vPadding={8} className={styles.HandleWrapper}>
+                      <Vaul.Handle />
+                    </Stack>
                   )}
 
                   {/* Header */}
@@ -188,7 +193,8 @@ SheetContentProps & Pick<DialogProps, 'children' | 'dismissible' | 'direction'>
                     hPadding={noPadding ? undefined : 24}
                     vPadding={[getVPadding, 0]}
                     className={styles.SafeGuard}
-                    data-modal-content-safe-padding={noPadding ? false : safePadding}
+                    data-sheet-scroll-inside={scrollInside}
+                    data-sheet-content-safe-padding={noPadding ? false : safePadding}
                   >
                     {children}
                   </Stack>

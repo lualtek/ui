@@ -7,6 +7,7 @@
 }
 
 .Sheet {
+  --handle-height: 22px;
   position: fixed;
   outline: none;
   margin-left: auto;
@@ -76,7 +77,15 @@
 .SafeGuard {
   min-height: 100%;
 
-  &[data-modal-content-safe-padding='true'] {
+  &[data-sheet-scroll-inside='true'] {
+    max-height: 100%;
+
+    .Sheed[data-sheet-has-handle='true'] & {
+      max-height: calc(100% - var(--handle-height, 22px));
+    }
+  }
+
+  &[data-sheet-content-safe-padding='true'] {
     padding-block-end: max(
       min(calc(env(safe-area-inset-bottom) + --token(--space-16)), --token(--space-16)),
       --token(--space-16)
@@ -85,6 +94,7 @@
 }
 
 .HandleWrapper {
+  height: var(--handle-height, 22px);
   background-color: var(--header-tint);
   border-radius: --token(--radius-24) --token(--radius-24) 0 0;
 
