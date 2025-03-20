@@ -80,7 +80,7 @@
   &[data-sheet-scroll-inside='true'] {
     max-height: 100%;
 
-    .Sheed[data-sheet-has-handle='true'] & {
+    .Sheet[data-sheet-has-handle='true'] & {
       max-height: calc(100% - var(--handle-height, 22px));
     }
   }
