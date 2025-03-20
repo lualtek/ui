@@ -1,5 +1,13 @@
 # @lualtek/react-components
 
+## 18.5.1-next.0
+
+### Patch Changes
+
+- cb5839e: Make sheet's trigger prop optional for controlled Sheets
+- 8a260e0: Fix textfield icon position
+  - @lualtek/icons@18.5.1-next.0
+
 ## 18.5.0
 
 ### Minor Changes

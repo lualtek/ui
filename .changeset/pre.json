@@ -10,5 +10,8 @@
     "@lualtek/tokens": "18.5.0",
     "tsconfig": "0.0.4"
   },
-  "changesets": []
+  "changesets": [
+    "chatty-rats-accept",
+    "plain-hands-chew"
+  ]
 }
