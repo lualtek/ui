@@ -1,5 +1,15 @@
 # @lualtek/react-components
 
+## 18.6.0
+
+### Minor Changes
+
+- 73e3213: fix typo
+
+### Patch Changes
+
+- @lualtek/icons@18.6.0
+
 ## 18.5.2
 
 ### Patch Changes
