@@ -105,7 +105,7 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(({
   const uid = useId();
   const isPassword = type === 'password';
   const inputRef = useRef<HTMLInputElement>(null);
-  const isNotDate = !['date', 'datetime-local'].includes(type);
+  const shouldHaveIcon = !['date', 'datetime-local', 'time', 'month', 'week'].includes(type);
   const fieldID = useMemo(() => id ?? `${uid}-field`, [id, uid]);
   const [isEmpty, setIsEmpty] = useState<boolean>(!(value ?? defaultValue));
 
@@ -157,7 +157,7 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(({
       as="fieldset"
       rowGap={4}
       className={clsx(styles.Textfield, className)}
-      data-textfield-has-icon={isPassword || (Boolean(icon) && isNotDate)}
+      data-textfield-has-icon={isPassword || (Boolean(icon) && shouldHaveIcon)}
       data-textfield-icon-position={showClearButton ? 'end' : iconPosition}
       data-textfield-fullwidth={fullWidth}
       aria-disabled={disabled}
@@ -200,7 +200,7 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(({
           />
         )}
 
-        { icon && (!isPassword && isNotDate && !showClearButton) && (
+        { icon && (!isPassword && shouldHaveIcon && !showClearButton) && (
           <Stack className={styles.Icon} hPadding={8} vPadding={8}>
             <Icon source={icon} dimension={22} />
           </Stack>

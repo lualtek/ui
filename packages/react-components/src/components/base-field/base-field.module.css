@@ -42,6 +42,7 @@
 
     &[type='time']::-webkit-calendar-picker-indicator {
       mask-image: var(--time-icon);
+      mask-size: 99%;
     }
 
     &:where([type='date'], [type='month'], [type='week'], [type='datetime-local'])::-webkit-calendar-picker-indicator {

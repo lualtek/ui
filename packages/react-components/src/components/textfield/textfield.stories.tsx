@@ -94,6 +94,25 @@ export const WithIcon = {
     iconPosition: 'start',
     icon: 'chat',
   },
+  render: args => (
+    <div style={{ padding: 32, background: 'var(--dimmed-2)' }}>
+      <Stack rowGap={24}>
+        <Textfield {...args} label="Filled" />
+        <Textfield {...args} label="Filled read only" readOnly />
+        <Textfield {...args} label="Empty disbled" placeholder="Placeholder" />
+        <Textfield {...args} label="Filled disabled" />
+        <Textfield {...args} type="email" required label="Type email" defaultValue="" />
+        <Textfield {...args} type="password" label="Type password" defaultValue="912435jh345" />
+        <Textfield {...args} type="number" label="Type number" defaultValue={100} />
+        <Textfield {...args} type="search" showClearButton label="Type search" />
+        <Textfield {...args} type="date" label="Type date" />
+        <Textfield {...args} type="time" label="Type time" />
+        <Textfield {...args} type="month" label="Type month" />
+        <Textfield {...args} type="week" label="Type week" />
+        <Textfield {...args} type="datetime-local" label="Type datetime-local" />
+      </Stack>
+    </div>
+  ),
 } satisfies Story;
 
 const SearchTemplate = forwardRef<HTMLInputElement, TextfieldProps>(({ value, ...props }) => {

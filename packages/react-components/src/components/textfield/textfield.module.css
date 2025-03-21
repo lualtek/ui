@@ -90,7 +90,7 @@
 }
 @layer overrides {
   .ActionButton {
-    --x: 25%;
+    --x: 18%;
 
     position: absolute;
     top: 50%;
