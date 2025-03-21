@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 18.6.2
+
+### Patch Changes
+
+- 25d851e: Disable icon some textfield types
+  - @lualtek/icons@18.6.2
+
 ## 18.6.1
 
 ### Patch Changes
