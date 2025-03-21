@@ -1,5 +1,11 @@
 # @lualtek/config
 
+## 18.6.2
+
+### Patch Changes
+
+- @lualtek/tokens@18.6.2
+
 ## 18.6.1
 
 ### Patch Changes
