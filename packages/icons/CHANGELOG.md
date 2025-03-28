@@ -1,5 +1,11 @@
 # @lualtek/icons
 
+## 18.7.0
+
+### Minor Changes
+
+- 8d3049f: Add new map icon
+
 ## 18.6.2
 
 ## 18.6.1
