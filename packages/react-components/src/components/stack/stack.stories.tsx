@@ -60,3 +60,20 @@ export const WithPaddings = {
     hPadding: 24,
   },
 } satisfies Story;
+
+export const WithMaxWidth = {
+  args: {
+    maxWidth: '800px',
+    style: { backgroundColor: 'lightblue' },
+  },
+} satisfies Story;
+
+export const WidthGrowChild = {
+  args: {},
+  render: args => (
+    <Stack rowGap={80} columnGap={24} {...args}>
+      <div style={{ background: 'slategray', padding: 8 }} data-grow={false}>01</div>
+      <div style={{ background: 'slategray', padding: 8 }}>02</div>
+    </Stack>
+  ),
+} satisfies Story;

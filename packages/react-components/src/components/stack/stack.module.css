@@ -5,6 +5,7 @@
     flex-direction: column;
     align-items: var(--h-align);
     justify-content: var(--v-align);
+    max-width: var(--max-width);
 
     :where(&[data-stack-has-padding='true']) {
       padding: var(--v-padding-top, 0) var(--h-padding-right, 0) var(--v-padding-bottom, 0) var(--h-padding-left, 0);

@@ -1,18 +1,18 @@
 @layer utilities {
-  [data-shrink='false'] {
-    flex-shrink: 0;
+  :is([data-shrink='false']) {
+    flex-shrink: 0 !important;
   }
 
-  [data-shrink='true'] {
-    flex-shrink: 1;
+  :is([data-shrink='true']) {
+    flex-shrink: 1 !important;
   }
 
-  [data-grow='false'] {
-    flex-grow: 0;
+  :is([data-grow='false']) {
+    flex-grow: 0 !important;
   }
 
-  [data-grow='true'] {
-    flex-grow: 1;
+  :is([data-grow='true']) {
+    flex-grow: 1 !important;
   }
 
   [data-visually-hidden='true'] {

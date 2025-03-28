@@ -60,6 +60,10 @@ export type StackProps = {
    * @defaultValue 'column'
    */
   direction?: 'row' | 'column' | 'row-reverse' | 'column-reverse';
+  /**
+   * Set the max width of the stack
+   */
+  maxWidth?: string;
 }
 
 export const Stack = forwardRef(
@@ -79,6 +83,7 @@ export const Stack = forwardRef(
       hPadding,
       vPadding,
       style,
+      maxWidth,
       ...otherProps
     },
     forwardedRef,
@@ -115,8 +120,9 @@ export const Stack = forwardRef(
         '--v-padding-bottom': vPaddingValues.bottom,
         '--h-padding-left': hPaddingValues.left,
         '--h-padding-right': hPaddingValues.right,
+        '--max-width': maxWidth,
       };
-    }, [columnGap, hAlign, hPadding, rowGap, vAlign, vPadding]);
+    }, [columnGap, hAlign, hPadding, rowGap, vAlign, vPadding, maxWidth]);
 
     return (
       <Component
