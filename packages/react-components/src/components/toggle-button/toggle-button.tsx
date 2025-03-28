@@ -60,6 +60,7 @@ export const ToggleButton = forwardRef<HTMLButtonElement, ToggleButtonProps>((
     disabled,
     pressed = false,
     onClick,
+    children,
     ...otherProps
   },
   forwardedRef?: React.ForwardedRef<HTMLButtonElement>,
