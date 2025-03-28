@@ -1,5 +1,16 @@
 # @lualtek/react-components
 
+## 18.8.0
+
+### Minor Changes
+
+- 99ece2e: Add maxWidth prop to Stack
+
+### Patch Changes
+
+- 99ece2e: Fix data-grow/shrink attribute specificity
+  - @lualtek/icons@18.8.0
+
 ## 18.7.0
 
 ### Patch Changes
