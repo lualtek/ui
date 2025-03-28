@@ -1,5 +1,13 @@
 # @lualtek/react-components
 
+## 18.7.0
+
+### Patch Changes
+
+- 006b8cc: Remove children from ToggleButton
+- Updated dependencies [8d3049f]
+  - @lualtek/icons@18.7.0
+
 ## 18.6.2
 
 ### Patch Changes
