@@ -1,5 +1,7 @@
 # @lualtek/icons
 
+## 18.8.0
+
 ## 18.7.0
 
 ### Minor Changes
