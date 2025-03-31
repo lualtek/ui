@@ -141,42 +141,35 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(({
           onEscapeKeyDown={() => setIsOpen(false)}
           align={align}
         >
-          <Panel
-            bordered
-            radius={24}
-            vibrant
-            vibrancyColor="background"
+          <Menu
+            role="listbox"
+            className={styles.OptionsList}
+            data-autocomplete-match-width={matchFieldWidth || loading}
+            maxHeight={maxHeight}
           >
-            <Menu
-              role="listbox"
-              className={styles.OptionsList}
-              data-autocomplete-match-width={matchFieldWidth || loading}
-              maxHeight={maxHeight}
-            >
-              {(filteredOptions?.length === 0 && !loading) && (
-                <Text
-                  as="div"
-                  align="center"
-                  dimmed={5}
+            {(filteredOptions?.length === 0 && !loading) && (
+              <Text
+                as="div"
+                align="center"
+                dimmed={5}
+              >
+                {emptyContent}
+              </Text>
+            )}
+            {loading
+              ? <Stack hPadding={16} vPadding={8} as="span"><Skeleton count={5} /></Stack>
+              : filteredOptions?.map(({ value, children, ...rest }) => (
+                <Autocomplete.Option
+                  key={value}
+                  value={value}
+                  onClick={handleClickOption}
+                  {...rest}
                 >
-                  {emptyContent}
-                </Text>
-              )}
-              {loading
-                ? <Stack hPadding={16} vPadding={8} as="span"><Skeleton count={5} /></Stack>
-                : filteredOptions?.map(({ value, children, ...rest }) => (
-                  <Autocomplete.Option
-                    key={value}
-                    value={value}
-                    onClick={handleClickOption}
-                    {...rest}
-                  >
-                    {children}
-                  </Autocomplete.Option>
-                ))
+                  {children}
+                </Autocomplete.Option>
+              ))
             }
-            </Menu>
-          </Panel>
+          </Menu>
         </Popover.Content>
       </Popover>
     </div>

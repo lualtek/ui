@@ -7,6 +7,7 @@ import {
 import { RovingTabIndexProvider } from 'react-roving-tabindex';
 
 import {
+  ConditionalWrapper,
   Panel, Stack,
 } from '@/components';
 
@@ -24,6 +25,13 @@ export type MenuProps = React.ComponentPropsWithRef<'ul'> & {
    * Set a maximum height of the menu after which it will scroll.
    */
   maxHeight?: string;
+  /**
+   * Render the menu inside a panel.
+   * This is useful when the menu is used as a dropdown.
+   *
+   * @defaultValue true
+   */
+  wrapWithPanel?: boolean;
 }
 
 type MenuComponent = React.ForwardRefExoticComponent<MenuProps> & {
@@ -37,6 +45,7 @@ export const Menu = forwardRef<HTMLUListElement, MenuProps>((
     className,
     children,
     maxHeight,
+    wrapWithPanel = true,
     style,
     ...otherProps
   },
@@ -49,12 +58,19 @@ export const Menu = forwardRef<HTMLUListElement, MenuProps>((
   ), [maxHeight]);
 
   return (
-    <Panel
-      bordered
-      vibrant
-      vibrancyColor="background"
-      showGlow
-      radius={24}
+    <ConditionalWrapper
+      condition={wrapWithPanel}
+      wrapper={children => (
+        <Panel
+          bordered
+          vibrant
+          vibrancyColor="background"
+          showGlow
+          radius={24}
+        >
+          {children}
+        </Panel>
+      )}
     >
       <Stack
         as="ul"
@@ -70,7 +86,7 @@ export const Menu = forwardRef<HTMLUListElement, MenuProps>((
           {children}
         </RovingTabIndexProvider>
       </Stack>
-    </Panel>
+    </ConditionalWrapper>
   );
 }) as MenuComponent;
 
