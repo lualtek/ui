@@ -54,3 +54,10 @@ export const WithCustomLabel = {
     label: <Chip color="green">Rich label</Chip>,
   },
 } satisfies Story;
+
+export const DisabledWithLabel = {
+  args: {
+    disabled: true,
+    label: 'Sample label',
+  },
+} satisfies Story;

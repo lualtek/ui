@@ -153,6 +153,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(({
               className={styles.Label}
               lineHeight={properties[dimension].text.lh}
               htmlFor={uid}
+              dimmed={disabled ? 4 : undefined}
               size={properties[dimension].text.size}
             >
               {label}

@@ -78,3 +78,11 @@ export const ForcedInvalid = {
     label: 'Required',
   },
 } satisfies Story;
+
+export const DisabledWithLabel = {
+  args: {
+    disabled: true,
+    defaultChecked: true,
+    label: 'Sample label',
+  },
+} satisfies Story;

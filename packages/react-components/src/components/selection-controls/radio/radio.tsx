@@ -103,6 +103,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(({
             className={styles.Label}
             lineHeight={properties[dimension].text.lh}
             htmlFor={uid}
+            dimmed={disabled ? 4 : undefined}
             size={properties[dimension].text.size}
           >
             {label}

@@ -99,6 +99,13 @@
       }
     }
 
+    &:disabled {
+      color: var(--global-disabled-foreground);
+      background-color: var(--global-disabled-background);
+      box-shadow: none;
+      cursor: not-allowed;
+    }
+
     &:indeterminate::after {
       border-left: 0;
       block-size: 2px;

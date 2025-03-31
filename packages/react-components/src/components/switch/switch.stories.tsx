@@ -40,6 +40,13 @@ export const WithLabel = {
   },
 } satisfies Story;
 
+export const DisabledWithLabel = {
+  args: {
+    label: 'Sample label',
+    disabled: true,
+  },
+} satisfies Story;
+
 const ControlledSwitch = ({ checked, ...args }: SwitchProps) => {
   const [isChecked, setIsChecked] = useState(checked);
 
@@ -69,7 +76,7 @@ export const WithDynamicLabel = {
   render: args => (
     <Stack direction="row" columnGap={8}>
       <Switch defaultChecked {...args} />
-      <Switch label="Sample default label" />
+      <Switch label="Sample default label" {...args} />
     </Stack>
   ),
 } satisfies Story;

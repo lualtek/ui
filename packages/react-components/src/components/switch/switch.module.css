@@ -65,5 +65,9 @@
 
   .Label {
     user-select: none;
+
+    .Switch[data-disabled] + & {
+      color: var(--global-disabled-foreground);
+    }
   }
 }
