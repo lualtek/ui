@@ -1,5 +1,17 @@
 # @lualtek/react-components
 
+## 18.9.0
+
+### Minor Changes
+
+- 5911029: Add v/h padding props to Text and Title
+- 68cc0c2: Add `balanced` prop to Text, Title and Prose
+
+### Patch Changes
+
+- c693ca1: Update label color for disabled checkbox, radio and switch
+  - @lualtek/icons@18.9.0
+
 ## 18.8.0
 
 ### Minor Changes
