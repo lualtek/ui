@@ -143,9 +143,10 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(({
         >
           <Panel
             bordered
-            radius={24}
             vibrant
             vibrancyColor="background"
+            showGlow
+            radius={24}
           >
             <Menu
               role="listbox"

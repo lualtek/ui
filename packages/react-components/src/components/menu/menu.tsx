@@ -49,28 +49,20 @@ export const Menu = forwardRef<HTMLUListElement, MenuProps>((
   ), [maxHeight]);
 
   return (
-    <Panel
-      bordered
-      vibrant
-      vibrancyColor="background"
-      showGlow
-      radius={24}
+    <Stack
+      as="ul"
+      ref={forwardedRef}
+      className={clsx(styles.Menu, className)}
+      style={{ ...dynamicStyle, ...style }}
+      data-menu-should-scroll={Boolean(maxHeight)}
+      vPadding={8}
+      role="menu"
+      {...otherProps}
     >
-      <Stack
-        as="ul"
-        ref={forwardedRef}
-        className={clsx(styles.Menu, className)}
-        style={{ ...dynamicStyle, ...style }}
-        data-menu-should-scroll={Boolean(maxHeight)}
-        vPadding={8}
-        role="menu"
-        {...otherProps}
-      >
-        <RovingTabIndexProvider options={{ direction: 'vertical', loopAround: true }}>
-          {children}
-        </RovingTabIndexProvider>
-      </Stack>
-    </Panel>
+      <RovingTabIndexProvider options={{ direction: 'vertical', loopAround: true }}>
+        {children}
+      </RovingTabIndexProvider>
+    </Stack>
   );
 }) as MenuComponent;
 
