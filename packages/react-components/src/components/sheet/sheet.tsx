@@ -109,12 +109,12 @@ SheetContentProps & Pick<DialogProps, 'children' | 'dismissible' | 'direction'>
     }
   ), [headerTint, maxWidth]);
 
-  const getVPadding = useMemo(() => {
-    if (showHeading) return 0;
-    return noPadding ? 0 : 16;
-  }, [showHeading, noPadding]);
-
   const shouldShowHandle = useMemo(() => !matches.small && dismissible, [matches, dismissible]);
+
+  const getVPadding = useMemo(() => {
+    if (showHeading || shouldShowHandle) return 0;
+    return noPadding ? 0 : 16;
+  }, [showHeading, noPadding, shouldShowHandle]);
 
   return (
     <>
@@ -143,9 +143,8 @@ SheetContentProps & Pick<DialogProps, 'children' | 'dismissible' | 'direction'>
               bordered
               showGlow
               radius={24}
-              glowFitContent
+              glowFitContent={matches.small}
             >
-
               <Stack className={styles.Container}>
                 <ScrollArea
                   className={styles.Scroller}

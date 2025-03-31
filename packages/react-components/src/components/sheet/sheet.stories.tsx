@@ -8,6 +8,7 @@ import { Sheet } from './sheet';
 const meta = {
   title: 'Dialogs/Sheet',
   component: Sheet,
+  tags: ['!autodocs'],
   args: {
     open: false,
     dismissible: true,
@@ -24,28 +25,21 @@ You can read about why and how it was built`,
     const [, setOpen] = useArgs<typeof args>();
 
     return (
-      <>
-        <Sheet
-          {...args}
-          onOpenChange={(open) => {
-            console.log('ciao', open);
-            setOpen({ open });
-          }}
-          trigger={args.trigger}
-        >
-          <Stack>
-            {args.children}
-            <Stack direction="row" vPadding={[16, 0]} columnGap={8}>
-              <Button onClick={() => setOpen({ open: false })}>Confirm</Button>
-              <Button kind="flat" onClick={() => setOpen({ open: false })}>
-                Cancel
-              </Button>
-            </Stack>
+      <Sheet
+        {...args}
+        onOpenChange={open => setOpen({ open })}
+        trigger={args.trigger}
+      >
+        <Stack>
+          {args.children}
+          <Stack direction="row" vPadding={[16, 0]} columnGap={8} hAlign="center" fill={false} wrap>
+            <Button onClick={() => setOpen({ open: false })}>Confirm</Button>
+            <Button kind="flat" onClick={() => setOpen({ open: false })}>
+              Cancel
+            </Button>
           </Stack>
-        </Sheet>
-        {/* eslint-disable-next-line max-len */}
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ducimus, cumque? Totam reiciendis tempora illum aut, laboriosam provident molestiae doloribus in alias fugit nostrum distinctio accusantium cum repellat veritatis voluptatibus. Sunt.
-      </>
+        </Stack>
+      </Sheet>
     );
   },
 } satisfies Meta<typeof Sheet>;
@@ -142,6 +136,14 @@ export const NoTrigger = {
 export const NoHeading = {
   args: {
     showHeading: false,
+  },
+} satisfies Story;
+
+export const ShortContent = {
+  args: {
+    showHeading: false,
+    maxWidth: '300px',
+    children: 'Ciao',
   },
 } satisfies Story;
 
