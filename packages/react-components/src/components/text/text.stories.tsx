@@ -73,3 +73,14 @@ export const Nested = {
     </Text>
   ),
 } satisfies Story;
+
+export const Balanced = {
+  args: {
+    balanced: true,
+  },
+  render: ({ as, ...args }) => (
+    <Text {...args} as="p">
+      {args.children}
+    </Text>
+  ),
+} satisfies Story;

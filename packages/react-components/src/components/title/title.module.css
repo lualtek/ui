@@ -5,6 +5,11 @@
     word-break: break-word;
     white-space: var(--white-space, normal);
 
+    &[data-title-balanced='true'] {
+      text-wrap: balance;
+      display: block;
+    }
+
     &:is(.H1, .H2, .H3, .H4, .H5, .H6, .Display) {
       --lh: --token(--font-lh-standard);
 

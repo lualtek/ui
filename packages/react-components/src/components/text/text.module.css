@@ -13,6 +13,11 @@
     color: var(--text-color);
     white-space: var(--white-space, normal);
 
+    &[data-text-balanced='true'] {
+      text-wrap: balance;
+      display: block;
+    }
+
     /* Colors */
 
     &[data-text-dimmed='4'] {

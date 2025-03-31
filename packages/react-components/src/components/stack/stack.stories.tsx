@@ -26,7 +26,6 @@ const meta = {
   args: {
     direction: 'row',
     wrap: true,
-    as: 'div',
   },
   render: args => (
     <Stack rowGap={80} columnGap={24} {...args}>

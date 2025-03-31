@@ -7,6 +7,11 @@
     --start-gap: 1.3em;
     --end-gap: 0.8em;
 
+    &[data-prose-balanced='true'] {
+      text-wrap: balance;
+      display: block;
+    }
+
     &[data-prose-gap='regular'] {
       --blocks-gap: 1.5em;
       --start-gap: 1em;

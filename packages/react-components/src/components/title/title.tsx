@@ -44,6 +44,12 @@ export type TitleProps = React.ComponentPropsWithRef<'span'> & {
    * Set the white-space property of the title.
    */
   whiteSpace?: 'normal' | 'nowrap' | 'pre' | 'pre-line' | 'pre-wrap' | 'break-spaces';
+  /**
+   * Set the text wrapping to be balanced. Works only with block elements.
+   *
+   * @defaultValue false
+   */
+  balanced?: boolean;
 }
 
 export const Title = forwardRef(
@@ -58,6 +64,7 @@ export const Title = forwardRef(
       whiteSpace = 'normal',
       maxWidth,
       responsive = true,
+      balanced = false,
       style,
       ...otherProps
     },
@@ -80,6 +87,7 @@ export const Title = forwardRef(
         ref={forwardedRef}
         data-title-line-height={lineHeight}
         data-title-responsive={responsive}
+        data-title-balanced={balanced}
         className={clsx(styles.Title, computedCSSClass, className)}
         style={{ ...dynamicStyle, ...style }}
         {...otherProps}

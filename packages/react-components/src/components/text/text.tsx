@@ -8,7 +8,7 @@ import { PolyRefComponent } from '@/components';
 
 import styles from './text.module.css';
 
-export type TextProps = {
+export type TextProps = React.ComponentPropsWithRef<'span'> & {
   /**
    * Set the dimension of the text from one of
    * the typography system values
@@ -61,6 +61,12 @@ export type TextProps = {
    * Set the white-space property of the text.
    */
   whiteSpace?: 'normal' | 'nowrap' | 'pre' | 'pre-line' | 'pre-wrap' | 'break-spaces';
+  /**
+   * Set the text wrapping to be balanced. Works only with block elements.
+   *
+   * @defaultValue false
+   */
+  balanced?: boolean;
 }
 
 export const Text = forwardRef(
@@ -79,6 +85,7 @@ export const Text = forwardRef(
       lineHeight = 'standard',
       textColor,
       whiteSpace = 'normal',
+      balanced = false,
       style,
       ...otherProps
     },
@@ -102,6 +109,7 @@ export const Text = forwardRef(
         data-text-dimmed={dimmed}
         data-text-line-height={lineHeight}
         data-text-responsive={size === 12 ? false : responsive}
+        data-text-balanced={balanced}
         className={clsx(styles.Text, className)}
         style={{ ...dynamicStyle, ...style }}
         {...otherProps}

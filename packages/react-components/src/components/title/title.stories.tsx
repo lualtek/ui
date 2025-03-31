@@ -60,3 +60,16 @@ export const Scale = {
     </Stack>
   ),
 } satisfies Story;
+
+export const Balanced = {
+  args: {
+    balanced: true,
+    children: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatibus.',
+    level: '5',
+  },
+  render: args => (
+    <Title {...args} as="h2">
+      {args.children}
+    </Title>
+  ),
+} satisfies Story;
