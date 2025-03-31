@@ -1,5 +1,13 @@
 # @lualtek/react-components
 
+## 18.9.2
+
+### Patch Changes
+
+- 3fa7bb0: Fix Sheet sizing
+- 355e3a7: Remove Panel from Menu
+  - @lualtek/icons@18.9.2
+
 ## 18.9.1
 
 ### Patch Changes
