@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 18.9.3
+
+### Patch Changes
+
+- 7d2097d: Add new `wrapWithPanel` prop to menu to render it without Panel
+  - @lualtek/icons@18.9.3
+
 ## 18.9.2
 
 ### Patch Changes
