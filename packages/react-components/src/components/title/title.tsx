@@ -1,5 +1,7 @@
 'use client';
 
+import { TokensTypes } from '@lualtek/tokens/platforms/web';
+import tkns from '@lualtek/tokens/web/tokens.json';
 import clsx from 'clsx';
 import {
   forwardRef, useMemo,
@@ -50,6 +52,14 @@ export type TitleProps = React.ComponentPropsWithRef<'span'> & {
    * @defaultValue false
    */
   balanced?: boolean;
+  /**
+   * Set the horizontal padding (left/right). Works better with block elements.
+   */
+  hPadding?: TokensTypes['space'] | [TokensTypes['space'] | 0, TokensTypes['space'] | 0];
+  /**
+   * Set the vertical padding (top/bottom). Works better with block elements.
+   */
+  vPadding?: TokensTypes['space'] | [TokensTypes['space'] | 0, TokensTypes['space'] | 0];
 }
 
 export const Title = forwardRef(
@@ -65,6 +75,8 @@ export const Title = forwardRef(
       maxWidth,
       responsive = true,
       balanced = false,
+      hPadding,
+      vPadding,
       style,
       ...otherProps
     },
@@ -74,13 +86,30 @@ export const Title = forwardRef(
     // @ts-expect-error: generated className is not pure in CSS
 
     const computedCSSClass = String(styles[computedLevel]);
-    const dynamicStyle = useMemo(() => (
-      {
+    const dynamicStyle = useMemo(() => {
+      const getPaddingValue = (
+        padding: TokensTypes['space'] | [TokensTypes['space'] | 0, TokensTypes['space'] | 0],
+        direction: 'horizontal' | 'vertical',
+      ) => {
+        const [start, end] = Array.isArray(padding) ? padding : [padding, padding];
+        return direction === 'horizontal'
+          ? { left: start ? tkns.space[start] : 0, right: end ? tkns.space[end] : 0 }
+          : { top: start ? tkns.space[start] : 0, bottom: end ? tkns.space[end] : 0 };
+      };
+
+      const vPaddingValues = vPadding ? getPaddingValue(vPadding, 'vertical') : { top: 0, bottom: 0 };
+      const hPaddingValues = hPadding ? getPaddingValue(hPadding, 'horizontal') : { left: 0, right: 0 };
+
+      return {
         '--max-w': maxWidth,
         '--t-align': align,
         '--white-space': whiteSpace,
-      }
-    ), [maxWidth, align, whiteSpace]);
+        '--v-padding-top': vPaddingValues.top,
+        '--v-padding-bottom': vPaddingValues.bottom,
+        '--h-padding-left': hPaddingValues.left,
+        '--h-padding-right': hPaddingValues.right,
+      };
+    }, [maxWidth, align, whiteSpace, vPadding, hPadding]);
 
     return (
       <Component
@@ -88,6 +117,7 @@ export const Title = forwardRef(
         data-title-line-height={lineHeight}
         data-title-responsive={responsive}
         data-title-balanced={balanced}
+        data-title-has-padding={Boolean(hPadding ?? vPadding)}
         className={clsx(styles.Title, computedCSSClass, className)}
         style={{ ...dynamicStyle, ...style }}
         {...otherProps}

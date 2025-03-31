@@ -54,6 +54,14 @@ export const Weight = {
   },
 } satisfies Story;
 
+export const WithPadding = {
+  args: {
+    hPadding: 104,
+    vPadding: [80, 32],
+  },
+  render: args => <Text {...args} as="p" />,
+} satisfies Story;
+
 export const CustomWrapper = {
   args: {
     // Storybook merda a causa del typeof su Meta

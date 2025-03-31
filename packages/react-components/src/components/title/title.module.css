@@ -10,6 +10,10 @@
       display: block;
     }
 
+    :where(&[data-title-has-padding='true']) {
+      padding: var(--v-padding-top, 0) var(--h-padding-right, 0) var(--v-padding-bottom, 0) var(--h-padding-left, 0);
+    }
+
     &:is(.H1, .H2, .H3, .H4, .H5, .H6, .Display) {
       --lh: --token(--font-lh-standard);
 

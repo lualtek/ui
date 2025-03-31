@@ -12,6 +12,7 @@ const meta = {
   args: {
     responsive: true,
     align: 'center',
+    children: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatibus.',
   },
   argTypes: {
     level: {
@@ -46,6 +47,15 @@ export const Default = {
   },
 } satisfies Story;
 
+export const WithPadding = {
+  args: {
+    level: '3',
+    hPadding: 104,
+    vPadding: [80, 32],
+  },
+  render: args => <Title {...args} as="h3" />,
+} satisfies Story;
+
 export const Scale = {
   args: {},
   render: () => (
@@ -64,12 +74,9 @@ export const Scale = {
 export const Balanced = {
   args: {
     balanced: true,
-    children: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatibus.',
     level: '5',
   },
   render: args => (
-    <Title {...args} as="h2">
-      {args.children}
-    </Title>
+    <Title {...args} as="h2" />
   ),
 } satisfies Story;

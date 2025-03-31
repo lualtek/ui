@@ -1,6 +1,7 @@
 'use client';
 
 import { TokensTypes } from '@lualtek/tokens/platforms/web';
+import tkns from '@lualtek/tokens/web/tokens.json';
 import clsx from 'clsx';
 import { forwardRef, useMemo } from 'react';
 
@@ -67,6 +68,14 @@ export type TextProps = React.ComponentPropsWithRef<'span'> & {
    * @defaultValue false
    */
   balanced?: boolean;
+  /**
+   * Set the horizontal padding (left/right). Works better with block elements.
+   */
+  hPadding?: TokensTypes['space'] | [TokensTypes['space'] | 0, TokensTypes['space'] | 0];
+  /**
+   * Set the vertical padding (top/bottom). Works better with block elements.
+   */
+  vPadding?: TokensTypes['space'] | [TokensTypes['space'] | 0, TokensTypes['space'] | 0];
 }
 
 export const Text = forwardRef(
@@ -86,19 +95,38 @@ export const Text = forwardRef(
       textColor,
       whiteSpace = 'normal',
       balanced = false,
+      hPadding,
+      vPadding,
       style,
       ...otherProps
     },
     forwardedRef,
   ) => {
-    const dynamicStyle = useMemo(() => (
-      {
+    const dynamicStyle = useMemo(() => {
+      const getPaddingValue = (
+        padding: TokensTypes['space'] | [TokensTypes['space'] | 0, TokensTypes['space'] | 0],
+        direction: 'horizontal' | 'vertical',
+      ) => {
+        const [start, end] = Array.isArray(padding) ? padding : [padding, padding];
+        return direction === 'horizontal'
+          ? { left: start ? tkns.space[start] : 0, right: end ? tkns.space[end] : 0 }
+          : { top: start ? tkns.space[start] : 0, bottom: end ? tkns.space[end] : 0 };
+      };
+
+      const vPaddingValues = vPadding ? getPaddingValue(vPadding, 'vertical') : { top: 0, bottom: 0 };
+      const hPaddingValues = hPadding ? getPaddingValue(hPadding, 'horizontal') : { left: 0, right: 0 };
+
+      return {
         '--max-w': maxWidth,
         '--t-align': align,
         '--text-color': textColor,
         '--white-space': whiteSpace,
-      }
-    ), [maxWidth, align, textColor, whiteSpace]);
+        '--v-padding-top': vPaddingValues.top,
+        '--v-padding-bottom': vPaddingValues.bottom,
+        '--h-padding-left': hPaddingValues.left,
+        '--h-padding-right': hPaddingValues.right,
+      };
+    }, [maxWidth, align, textColor, whiteSpace, hPadding, vPadding]);
 
     return (
       <Component
@@ -110,6 +138,7 @@ export const Text = forwardRef(
         data-text-line-height={lineHeight}
         data-text-responsive={size === 12 ? false : responsive}
         data-text-balanced={balanced}
+        data-text-has-padding={Boolean(hPadding ?? vPadding)}
         className={clsx(styles.Text, className)}
         style={{ ...dynamicStyle, ...style }}
         {...otherProps}
