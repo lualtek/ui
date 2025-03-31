@@ -1,5 +1,15 @@
 # @lualtek/charts
 
+## 18.9.0
+
+### Patch Changes
+
+- Updated dependencies [5911029]
+- Updated dependencies [68cc0c2]
+- Updated dependencies [c693ca1]
+  - @lualtek/react-components@18.9.0
+  - @lualtek/tokens@18.9.0
+
 ## 18.8.0
 
 ### Patch Changes
