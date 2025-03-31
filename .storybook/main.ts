@@ -25,9 +25,7 @@ const config: StorybookConfig = {
     name: getAbsolutePath('@storybook/react-vite'),
     options: {},
   },
-  docs: {
-    autodocs: true,
-  },
+  docs: {},
   typescript: {
     check: false,
     reactDocgen: 'react-docgen-typescript',

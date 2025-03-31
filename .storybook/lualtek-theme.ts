@@ -22,4 +22,5 @@ export default create({
   // Toolbar default and active colors
   barTextColor: '#CFCBE1',
   barSelectedColor: '#7D70FF',
+  inputBg: '#393355',
 });
