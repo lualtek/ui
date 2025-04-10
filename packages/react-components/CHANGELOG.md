@@ -1,5 +1,15 @@
 # @lualtek/react-components
 
+## 18.10.0
+
+### Minor Changes
+
+- 35e418b: Add scrollInside prop to Sheet
+
+### Patch Changes
+
+- @lualtek/icons@18.10.0
+
 ## 18.9.4
 
 ### Patch Changes
