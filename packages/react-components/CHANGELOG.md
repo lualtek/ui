@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 18.9.4
+
+### Patch Changes
+
+- 49db239: Disable fill for SafeGuard element inside Sheet
+  - @lualtek/icons@18.9.4
+
 ## 18.9.3
 
 ### Patch Changes
