@@ -3,11 +3,12 @@
 import {
   FC, forwardRef, ReactNode, useMemo,
 } from 'react';
+import { useMeasure } from 'react-use';
 import { DialogProps, Drawer as Vaul } from 'vaul';
 
 import {
   ClampText, Panel, ResponsiveProvider, ScrollArea,
-  Stack, Text, Title,
+  Stack, StackProps, Text, Title,
   useResponsiveContext,
 } from '@/components';
 
@@ -68,11 +69,20 @@ type SheetContentProps = {
    * automatically collapsed when the width is reached.
    */
   maxWidth?: string;
+
+  /**
+   * Allows content to scroll inside wihtout generating overflow or to expand
+   * behind the sheet height.
+   *
+   * @defaultValue false
+   */
+  scrollInside?: boolean;
   /**
    * Ref to the drawer content
    *
    */
   scrollerRef?: React.RefObject<HTMLDivElement>;
+
 }
 
 const SheetContent = forwardRef<
@@ -92,9 +102,11 @@ SheetContentProps & Pick<DialogProps, 'children' | 'dismissible' | 'direction'>
   compactHeader,
   stickyHeader = false,
   showHeading = true,
+  scrollInside = false,
   scrollerRef,
 }, forwardedRef) => {
   const { matches } = useResponsiveContext();
+  const [headerRef, { height: headerHeight }] = useMeasure();
 
   const align = useMemo(() => {
     if (direction === 'left') return 'start';
@@ -106,8 +118,10 @@ SheetContentProps & Pick<DialogProps, 'children' | 'dismissible' | 'direction'>
     {
       '--max-w': maxWidth ?? undefined,
       '--header-tint': headerTint,
+      // Compute the header height based on the compact header and the header height + paddings
+      '--content-height': headerHeight ? `${headerHeight + ((compactHeader ? 8 : 24) * 2) + 8}px` : undefined,
     }
-  ), [headerTint, maxWidth]);
+  ), [headerTint, maxWidth, headerHeight, compactHeader]);
 
   const shouldShowHandle = useMemo(() => !matches.small && dismissible, [matches, dismissible]);
 
@@ -136,6 +150,7 @@ SheetContentProps & Pick<DialogProps, 'children' | 'dismissible' | 'direction'>
             hPadding={8}
             vPadding={8}
             data-sheet-has-handle={shouldShowHandle}
+            data-sheet-has-header={showHeading}
           >
             <Panel
               vibrant
@@ -161,6 +176,7 @@ SheetContentProps & Pick<DialogProps, 'children' | 'dismissible' | 'direction'>
 
                   {/* Header */}
                   <Stack
+                    ref={headerRef as React.Ref<HTMLDivElement>}
                     rowGap={4}
                     hPadding={24}
                     vPadding={compactHeader ? 8 : 24}
@@ -186,6 +202,7 @@ SheetContentProps & Pick<DialogProps, 'children' | 'dismissible' | 'direction'>
                     hPadding={noPadding ? undefined : 24}
                     vPadding={[getVPadding, 0]}
                     className={styles.SafeGuard}
+                    data-sheet-scroll-inside={scrollInside}
                     fill={false}
                     data-sheet-content-safe-padding={noPadding ? false : safePadding}
                   >

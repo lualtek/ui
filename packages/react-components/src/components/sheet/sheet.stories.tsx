@@ -79,8 +79,9 @@ export const LongContent = {
 export const ScrollInside = {
   args: {
     direction: 'left',
+    scrollInside: true,
     children: (
-      <div style={{ maxHeight: '50dvh', overflow: 'auto' }}>
+      <div style={{ flexGrow: 1, background: 'red', overflow: 'auto' }}>
         {Array.from(
           { length: 100 },
           () => 'This one specifically is the most simplest setup you can have, just a simple drawer with a trigger.',

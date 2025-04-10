@@ -92,6 +92,18 @@
 .SafeGuard {
   flex-grow: 1;
 
+  &[data-sheet-scroll-inside='true'] {
+    max-height: 100%;
+
+    .Sheet[data-sheet-has-header='true'] & {
+      max-height: calc(100% - var(--content-height));
+    }
+
+    .Sheet[data-sheet-has-header='true'][data-sheet-has-handle='true'] & {
+      max-height: calc(100% - var(--content-height) - var(--handle-height));
+    }
+  }
+
   &[data-sheet-content-safe-padding='true'] {
     padding-block-end: max(
       min(calc(env(safe-area-inset-bottom) + --token(--space-16)), --token(--space-16)),
