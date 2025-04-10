@@ -186,6 +186,7 @@ SheetContentProps & Pick<DialogProps, 'children' | 'dismissible' | 'direction'>
                     hPadding={noPadding ? undefined : 24}
                     vPadding={[getVPadding, 0]}
                     className={styles.SafeGuard}
+                    fill={false}
                     data-sheet-content-safe-padding={noPadding ? false : safePadding}
                   >
                     {children}
