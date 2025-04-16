@@ -1,7 +1,7 @@
 'use client';
 
 import clsx from 'clsx';
-import { motion } from 'motion/react';
+import { domMax, LazyMotion, m } from 'motion/react';
 import {
   forwardRef, useCallback, useEffect, useState,
 } from 'react';
@@ -105,28 +105,30 @@ export const ToggleButton = forwardRef<HTMLButtonElement, ToggleButtonProps>((
       className={clsx(styles.ToggleButton, className)}
       {...otherProps}
     >
-      {isPressed && pressedIcon
-        ? (
-          <motion.span
-            key="pressedIcon"
-            variants={scaleAnimation}
-            initial={isFirstRender && isPressed ? false : 'scaleOut'}
-            animate="scaleIn"
-          >
-            {renderIcon(pressedIcon, dimension as IconProps['dimension'])}
-          </motion.span>
-        )
-        : restingIcon && (
-          <motion.span
-            key="restingIcon"
-            variants={scaleAnimation}
-            initial={isFirstRender && !isPressed ? false : 'scaleOut'}
-            animate="scaleIn"
-          >
-            {renderIcon(restingIcon, dimension as IconProps['dimension'])}
-          </motion.span>
-        )
+      <LazyMotion features={domMax}>
+        {isPressed && pressedIcon
+          ? (
+            <m.span
+              key="pressedIcon"
+              variants={scaleAnimation}
+              initial={isFirstRender && isPressed ? false : 'scaleOut'}
+              animate="scaleIn"
+            >
+              {renderIcon(pressedIcon, dimension as IconProps['dimension'])}
+            </m.span>
+          )
+          : restingIcon && (
+            <m.span
+              key="restingIcon"
+              variants={scaleAnimation}
+              initial={isFirstRender && !isPressed ? false : 'scaleOut'}
+              animate="scaleIn"
+            >
+              {renderIcon(restingIcon, dimension as IconProps['dimension'])}
+            </m.span>
+          )
       }
+      </LazyMotion>
     </IconButton>
   );
 });
