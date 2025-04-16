@@ -1,5 +1,13 @@
 # @lualtek/react-components
 
+## 18.10.1
+
+### Patch Changes
+
+- 6943631: Fix toggle-button motion
+- 6943631: Fix spinner motion
+  - @lualtek/icons@18.10.1
+
 ## 18.10.0
 
 ### Minor Changes
