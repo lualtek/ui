@@ -1,7 +1,7 @@
 'use client';
 
 import {
-  FC, forwardRef, ReactNode, useMemo,
+  FC, ReactNode, useMemo,
 } from 'react';
 import { useMeasure } from 'react-use';
 import { DialogProps, Drawer as Vaul } from 'vaul';
@@ -14,7 +14,7 @@ import {
 
 import styles from './sheet.module.css';
 
-type SheetContentProps = {
+type SheetContentProps = React.ComponentPropsWithRef<typeof Vaul.Content> & {
   /**
    * The interactive element that triggers the modal to open.
    * Must be a single interactive element.
@@ -82,13 +82,9 @@ type SheetContentProps = {
    *
    */
   scrollerRef?: React.RefObject<HTMLDivElement>;
-
 }
 
-const SheetContent = forwardRef<
-HTMLDivElement,
-SheetContentProps & Pick<DialogProps, 'children' | 'dismissible' | 'direction'>
->(({
+const SheetContent: FC<SheetContentProps & Pick<DialogProps, 'children' | 'dismissible' | 'direction'>> = ({
   trigger,
   heading,
   headerTint,
@@ -104,7 +100,8 @@ SheetContentProps & Pick<DialogProps, 'children' | 'dismissible' | 'direction'>
   showHeading = true,
   scrollInside = false,
   scrollerRef,
-}, forwardedRef) => {
+  ref: forwardedRef,
+}) => {
   const { matches } = useResponsiveContext();
   const [headerRef, { height: headerHeight }] = useMeasure();
 
@@ -217,7 +214,7 @@ SheetContentProps & Pick<DialogProps, 'children' | 'dismissible' | 'direction'>
       </Vaul.Portal>
     </>
   );
-});
+};
 
 export const SheetWrapper: FC<SheetProps> = ({
   nested,

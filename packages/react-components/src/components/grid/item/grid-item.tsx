@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import {
-  forwardRef, useMemo,
+  FC,
+  useMemo,
 } from 'react';
 
 import styles from './grid-item.module.css';
@@ -28,15 +29,16 @@ export type GridItemProps = React.ComponentPropsWithRef<'li'> & {
   row?: string;
 }
 
-export const GridItem = forwardRef<HTMLLIElement, GridItemProps>(({
+export const GridItem: FC<GridItemProps> = ({
   style,
   children,
   className,
   fullWidth = false,
   column,
   row,
+  ref: forwardedRef,
   ...otherProps
-}, forwardedRef) => {
+}) => {
   const dynamicStyle = useMemo(() => (
     {
       '--column': column,
@@ -55,4 +57,4 @@ export const GridItem = forwardRef<HTMLLIElement, GridItemProps>(({
       {children}
     </li>
   );
-});
+};

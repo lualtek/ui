@@ -2,7 +2,7 @@
 
 import clsx from 'clsx';
 import {
-  ChangeEvent, forwardRef, ReactNode, useCallback, useEffect, useId, useMemo, useRef, useState,
+  ChangeEvent, FC, ReactNode, useCallback, useEffect, useId, useMemo, useRef, useState,
 } from 'react';
 import { mergeRefs } from 'react-merge-refs';
 
@@ -79,7 +79,7 @@ export type TextfieldProps = BaseFieldProps & React.ComponentPropsWithRef<'input
   onClear?: () => void;
 }
 
-export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(({
+export const Textfield: FC<TextfieldProps> = ({
   children,
   className,
   disabled = false,
@@ -98,8 +98,9 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(({
   onInput,
   showClearButton = false,
   hint,
+  ref: forwardedRef,
   ...otherProps
-}, forwardedRef) => {
+}) => {
   const [isPasswordVisible, setPasswordVisible] = useState<boolean>(invalid ?? false);
   const [isUserInvalid, setIsUserInvalid] = useState<boolean>(invalid ?? false);
   const uid = useId();
@@ -227,5 +228,5 @@ export const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(({
       )}
     </Stack>
   );
-});
+};
 

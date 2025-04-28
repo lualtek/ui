@@ -1,7 +1,7 @@
 'use client';
 
 import {
-  forwardRef,
+  FC,
   ReactNode,
   useId,
   useMemo,
@@ -39,7 +39,7 @@ export type MeterProps = Except<React.ComponentPropsWithRef<'meter'>, 'min' | 'm
   label?: ReactNode;
 };
 
-export const Meter = forwardRef<HTMLMeterElement, MeterProps>(({
+export const Meter: FC<MeterProps> = ({
   className,
   dimension = 'regular',
   value,
@@ -47,8 +47,9 @@ export const Meter = forwardRef<HTMLMeterElement, MeterProps>(({
   showLabel = true,
   labelPosition = 'end',
   direction = 'row',
+  ref: forwardedRef,
   ...otherProps
-}, forwardedRef) => {
+}) => {
   const uid = useId();
 
   const horizontalLabelDirection = useMemo(() => (
@@ -91,4 +92,4 @@ export const Meter = forwardRef<HTMLMeterElement, MeterProps>(({
       )}
     </Stack>
   );
-});
+};

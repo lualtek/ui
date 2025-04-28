@@ -4,7 +4,7 @@ import { TokensTypes } from '@lualtek/tokens/platforms/web';
 import tkns from '@lualtek/tokens/web/tokens.json';
 import clsx from 'clsx';
 import {
-  forwardRef, useMemo,
+  FC, useMemo,
 } from 'react';
 import { Except } from 'type-fest';
 
@@ -34,7 +34,7 @@ export type BadgeProps = Except<React.ComponentPropsWithRef<'div'>, 'children'> 
   showBadge?: boolean;
 }
 
-export const Badge = forwardRef<HTMLDivElement, BadgeProps>(({
+export const Badge: FC<BadgeProps> = ({
   children,
   className,
   gap = 4,
@@ -42,8 +42,9 @@ export const Badge = forwardRef<HTMLDivElement, BadgeProps>(({
   color = 'yellow',
   style,
   showBadge = false,
+  ref: forwardRef,
   ...otherProps
-}, forwardRef) => {
+}) => {
   const dynamicStyle = useMemo(() => ({
     '--badge-size': `${badgeSize}px`,
     '--gap': `${gap}px`,
@@ -63,4 +64,4 @@ export const Badge = forwardRef<HTMLDivElement, BadgeProps>(({
       </div>
     </div>
   );
-});
+};

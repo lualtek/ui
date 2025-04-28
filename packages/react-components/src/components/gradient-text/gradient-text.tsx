@@ -2,7 +2,8 @@
 
 import clsx from 'clsx';
 import {
-  forwardRef, useMemo,
+  FC,
+  useMemo,
 } from 'react';
 
 import styles from './gradient-text.module.css';
@@ -23,15 +24,16 @@ export type GradientTextProps = React.ComponentPropsWithRef<'span'> & {
   colorEnd?: string;
 }
 
-export const GradientText = forwardRef<HTMLSpanElement, GradientTextProps>(({
+export const GradientText: FC<GradientTextProps> = ({
   children,
   className,
   gradient = 'rainbow',
   colorStart,
   colorEnd,
   style,
+  ref: forwardedRef,
   ...otherProps
-}, forwardedRef) => {
+}) => {
   const dynamicStyle = useMemo(() => ({
     '--gradient-color-start': colorStart,
     '--gradient-color-end': colorEnd,
@@ -48,5 +50,5 @@ export const GradientText = forwardRef<HTMLSpanElement, GradientTextProps>(({
       {children}
     </span>
   );
-});
+};
 

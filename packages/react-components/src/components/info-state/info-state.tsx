@@ -3,7 +3,8 @@
 import { TokensTypes } from '@lualtek/tokens/platforms/web';
 import { domMax, LazyMotion, m } from 'motion/react';
 import {
-  forwardRef, ReactNode, useMemo,
+  FC,
+  ReactNode, useMemo,
 } from 'react';
 
 import {
@@ -66,7 +67,7 @@ export type InfoStateProps = React.ComponentPropsWithRef<'div'> & {
   titleSize?: TitleProps['level'];
 }
 
-export const InfoState = forwardRef<HTMLDivElement, InfoStateProps>(({
+export const InfoState: FC<InfoStateProps> = ({
   className,
   style,
   children,
@@ -79,8 +80,9 @@ export const InfoState = forwardRef<HTMLDivElement, InfoStateProps>(({
   iconColor = 'blue',
   actions,
   titleSize = '4',
+  ref: forwardedRef,
   ...otherProps
-}, forwardedRef) => {
+}) => {
   const isHorizontal = direction === 'row';
 
   const dynamicStyle = useMemo(() => ({
@@ -152,4 +154,4 @@ export const InfoState = forwardRef<HTMLDivElement, InfoStateProps>(({
       </LazyMotion>
     </Stack>
   );
-});
+};

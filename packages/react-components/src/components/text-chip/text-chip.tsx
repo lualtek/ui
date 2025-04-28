@@ -3,7 +3,7 @@
 import { TokensTypes } from '@lualtek/tokens/platforms/web';
 import clsx from 'clsx';
 import { EmojiClickData } from 'emoji-picker-react';
-import { forwardRef, useMemo } from 'react';
+import { FC, useMemo } from 'react';
 
 import {
   Emoji,
@@ -64,7 +64,7 @@ const sizes: Sizes = {
 
 const emojiRegex = /\p{Extended_Pictographic}/ug;
 
-export const TextChip = forwardRef<HTMLSpanElement, TextChipProps>(({
+export const TextChip: FC<TextChipProps> = ({
   text,
   style,
   className,
@@ -72,9 +72,9 @@ export const TextChip = forwardRef<HTMLSpanElement, TextChipProps>(({
   color = 'primary',
   tinted = true,
   emoji,
+  ref: forwardedRef,
   ...otherProps
-},
-forwardedRef) => {
+}) => {
   const isEmoji = useMemo(() => text && emojiRegex.test(text), [text]);
   const dynamicStyle = useMemo(() => ({
     '--background': `var(--highlight-${color}-background)`,
@@ -113,4 +113,4 @@ forwardedRef) => {
       </Text>
     </Stack>
   );
-});
+};

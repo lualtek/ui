@@ -6,7 +6,7 @@ import clsx from 'clsx';
 import React, {
   Children,
   CSSProperties,
-  forwardRef,
+  FC,
   Fragment,
   RefObject,
   useCallback,
@@ -89,7 +89,7 @@ export type MarqueeProps = React.ComponentPropsWithRef<'div'> & {
   onMount?: () => void;
 };
 
-export const Marquee = forwardRef<HTMLDivElement, MarqueeProps>((
+export const Marquee: FC<MarqueeProps> = (
   {
     autoFill = true,
     play = true,
@@ -107,9 +107,9 @@ export const Marquee = forwardRef<HTMLDivElement, MarqueeProps>((
     children,
     style,
     className,
+    ref: forwardedRef,
     ...otherProps
   },
-  forwardedRef,
 ) => {
   const [containerWidth, setContainerWidth] = useState(0);
   const [marqueeWidth, setMarqueeWidth] = useState(0);
@@ -277,4 +277,4 @@ export const Marquee = forwardRef<HTMLDivElement, MarqueeProps>((
       </div>
     </div>
   );
-});
+};

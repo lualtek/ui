@@ -3,7 +3,9 @@
 import { TokensTypes } from '@lualtek/tokens/platforms/web';
 import tkns from '@lualtek/tokens/web/tokens.json';
 import clsx from 'clsx';
-import { forwardRef, ReactNode, useMemo } from 'react';
+import {
+  FC, ReactNode, useMemo,
+} from 'react';
 
 import styles from './interpolator.module.css';
 
@@ -62,7 +64,7 @@ export type InterpolatorProps = React.ComponentPropsWithRef<'div'> & {
   exitingDelay?: string;
 }
 
-export const Interpolator = forwardRef<HTMLDivElement, InterpolatorProps>(({
+export const Interpolator: FC<InterpolatorProps> = ({
   className,
   style,
   exitComponent,
@@ -75,8 +77,9 @@ export const Interpolator = forwardRef<HTMLDivElement, InterpolatorProps>(({
   exitRotation = '0deg',
   exitScale = [3.5, 0.5],
   duration = 200,
+  ref: forwardedRef,
   ...otherProps
-}, forwardedRef) => {
+}) => {
   const dynamicStyle = useMemo(() => ({
     '--enter-scale': `${enterScale[0]} ${enterScale[1]}`,
     '--exit-scale': `${exitScale[0]} ${exitScale[1]}`,
@@ -99,5 +102,5 @@ export const Interpolator = forwardRef<HTMLDivElement, InterpolatorProps>(({
       <div className={styles.Exiting}>{exitComponent}</div>
     </div>
   );
-});
+};
 

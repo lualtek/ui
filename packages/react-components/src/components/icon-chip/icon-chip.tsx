@@ -2,7 +2,7 @@
 
 import { TokensTypes } from '@lualtek/tokens/platforms/web';
 import clsx from 'clsx';
-import { forwardRef, useMemo } from 'react';
+import { FC, useMemo } from 'react';
 
 import {
   Icon, IconProps, Stack,
@@ -45,15 +45,15 @@ const sizes: Sizes = {
   },
 };
 
-export const IconChip = forwardRef<HTMLSpanElement, IconChipProps>(({
+export const IconChip: FC<IconChipProps> = ({
   style,
   className,
   dimension = 'regular',
   color = 'primary',
   icon,
+  ref: forwardedRef,
   ...otherProps
-},
-forwardedRef) => {
+}) => {
   const dynamicStyle = useMemo(() => ({
     '--background': `var(--highlight-${color}-background)`,
     '--foreground': `var(--highlight-${color}-foreground)`,
@@ -80,4 +80,4 @@ forwardedRef) => {
       />
     </Stack>
   );
-});
+};

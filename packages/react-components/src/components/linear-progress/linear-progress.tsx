@@ -2,7 +2,8 @@
 
 import clsx from 'clsx';
 import {
-  forwardRef,
+  FC,
+  RefObject,
   useCallback, useMemo,
 } from 'react';
 
@@ -36,15 +37,16 @@ export type LinearProgressProps = React.ComponentPropsWithRef<'progress'> & {
   showProgress?: boolean;
 }
 
-export const LinearProgress = forwardRef<HTMLProgressElement, LinearProgressProps>(({
+export const LinearProgress: FC<LinearProgressProps> = ({
   className,
   style,
   value,
   max = 100,
   dimension = 'regular',
   showProgress,
+  ref: forwardedRef,
   ...otherProps
-}, forwardedRef) => {
+}) => {
   const getPercentage = useCallback(
     () => (value ? Math.round((100 * value) / max) : 0),
     [max, value],
@@ -85,4 +87,4 @@ export const LinearProgress = forwardRef<HTMLProgressElement, LinearProgressProp
       )}
     </div>
   );
-});
+};

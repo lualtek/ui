@@ -3,7 +3,7 @@
 import { TokensTypes } from '@lualtek/tokens/platforms/web';
 import tkns from '@lualtek/tokens/web/tokens.json';
 import clsx from 'clsx';
-import { forwardRef, useState } from 'react';
+import { FC, useState } from 'react';
 
 import { Skeleton } from '@/components';
 
@@ -32,12 +32,13 @@ const SkeletonSize: SkeletonSizeType = {
   big: 56,
 };
 
-export const Avatar = forwardRef<HTMLImageElement, AvatarProps>(({
+export const Avatar: FC<AvatarProps> = ({
   className,
   src,
   dimension = 'regular',
+  ref: forwardedRef,
   ...otherProps
-}, forwardedRef) => {
+}) => {
   const [isLoading, setIsLoading] = useState(true);
 
   return (
@@ -90,5 +91,5 @@ export const Avatar = forwardRef<HTMLImageElement, AvatarProps>(({
       )}
     </picture>
   );
-});
+};
 
