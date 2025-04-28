@@ -62,68 +62,68 @@ export type TitleProps = React.ComponentPropsWithRef<'span'> & {
   vPadding?: TokensTypes['space'] | [TokensTypes['space'] | 0, TokensTypes['space'] | 0];
 }
 
-export const Title = forwardRef(
-  (
-    {
-      as: Component = 'span',
-      children,
-      className,
-      lineHeight = 'standard',
-      level = '1',
-      align = 'start',
-      whiteSpace = 'normal',
-      maxWidth,
-      responsive = true,
-      balanced = false,
-      hPadding,
-      vPadding,
-      style,
-      ...otherProps
-    },
-    forwardedRef,
-  ) => {
-    const computedLevel = level.match(/\d/g) ? `H${level}` : level.charAt(0).toUpperCase() + level.slice(1);
-    // @ts-expect-error: generated className is not pure in CSS
+type TitleComponent = PolyRefComponent<'span', TitleProps>;
 
-    const computedCSSClass = String(styles[computedLevel]);
-    const dynamicStyle = useMemo(() => {
-      const getPaddingValue = (
-        padding: TokensTypes['space'] | [TokensTypes['space'] | 0, TokensTypes['space'] | 0],
-        direction: 'horizontal' | 'vertical',
-      ) => {
-        const [start, end] = Array.isArray(padding) ? padding : [padding, padding];
-        return direction === 'horizontal'
-          ? { left: start ? tkns.space[start] : 0, right: end ? tkns.space[end] : 0 }
-          : { top: start ? tkns.space[start] : 0, bottom: end ? tkns.space[end] : 0 };
-      };
-
-      const vPaddingValues = vPadding ? getPaddingValue(vPadding, 'vertical') : { top: 0, bottom: 0 };
-      const hPaddingValues = hPadding ? getPaddingValue(hPadding, 'horizontal') : { left: 0, right: 0 };
-
-      return {
-        '--max-w': maxWidth,
-        '--t-align': align,
-        '--white-space': whiteSpace,
-        '--v-padding-top': vPaddingValues.top,
-        '--v-padding-bottom': vPaddingValues.bottom,
-        '--h-padding-left': hPaddingValues.left,
-        '--h-padding-right': hPaddingValues.right,
-      };
-    }, [maxWidth, align, whiteSpace, vPadding, hPadding]);
-
-    return (
-      <Component
-        ref={forwardedRef}
-        data-title-line-height={lineHeight}
-        data-title-responsive={responsive}
-        data-title-balanced={balanced}
-        data-title-has-padding={Boolean(hPadding ?? vPadding)}
-        className={clsx(styles.Title, computedCSSClass, className)}
-        style={{ ...dynamicStyle, ...style }}
-        {...otherProps}
-      >
-        {children}
-      </Component>
-    );
+export const Title: TitleComponent = (
+  {
+    as: Component = 'span',
+    children,
+    className,
+    lineHeight = 'standard',
+    level = '1',
+    align = 'start',
+    whiteSpace = 'normal',
+    maxWidth,
+    responsive = true,
+    balanced = false,
+    hPadding,
+    vPadding,
+    style,
+    ref: forwardedRef,
+    ...otherProps
   },
-) as PolyRefComponent<'span', TitleProps>;
+) => {
+  const computedLevel = level.match(/\d/g) ? `H${level}` : level.charAt(0).toUpperCase() + level.slice(1);
+  // @ts-expect-error: generated className is not pure in CSS
+
+  const computedCSSClass = String(styles[computedLevel]);
+  const dynamicStyle = useMemo(() => {
+    const getPaddingValue = (
+      padding: TokensTypes['space'] | [TokensTypes['space'] | 0, TokensTypes['space'] | 0],
+      direction: 'horizontal' | 'vertical',
+    ) => {
+      const [start, end] = Array.isArray(padding) ? padding : [padding, padding];
+      return direction === 'horizontal'
+        ? { left: start ? tkns.space[start] : 0, right: end ? tkns.space[end] : 0 }
+        : { top: start ? tkns.space[start] : 0, bottom: end ? tkns.space[end] : 0 };
+    };
+
+    const vPaddingValues = vPadding ? getPaddingValue(vPadding, 'vertical') : { top: 0, bottom: 0 };
+    const hPaddingValues = hPadding ? getPaddingValue(hPadding, 'horizontal') : { left: 0, right: 0 };
+
+    return {
+      '--max-w': maxWidth,
+      '--t-align': align,
+      '--white-space': whiteSpace,
+      '--v-padding-top': vPaddingValues.top,
+      '--v-padding-bottom': vPaddingValues.bottom,
+      '--h-padding-left': hPaddingValues.left,
+      '--h-padding-right': hPaddingValues.right,
+    };
+  }, [maxWidth, align, whiteSpace, vPadding, hPadding]);
+
+  return (
+    <Component
+      ref={forwardedRef}
+      data-title-line-height={lineHeight}
+      data-title-responsive={responsive}
+      data-title-balanced={balanced}
+      data-title-has-padding={Boolean(hPadding ?? vPadding)}
+      className={clsx(styles.Title, computedCSSClass, className)}
+      style={{ ...dynamicStyle, ...style }}
+      {...otherProps}
+    >
+      {children}
+    </Component>
+  );
+};

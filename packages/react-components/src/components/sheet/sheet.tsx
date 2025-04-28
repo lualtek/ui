@@ -81,7 +81,8 @@ type SheetContentProps = React.ComponentPropsWithRef<typeof Vaul.Content> & {
    * Ref to the drawer content
    *
    */
-  scrollerRef?: React.RefObject<HTMLDivElement>;
+  scrollerRef?: React.RefObject<HTMLDivElement | null>;
+
 }
 
 const SheetContent: FC<SheetContentProps & Pick<DialogProps, 'children' | 'dismissible' | 'direction'>> = ({

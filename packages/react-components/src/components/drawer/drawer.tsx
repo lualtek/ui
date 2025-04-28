@@ -111,7 +111,7 @@ export type DrawerProps = React.ComponentPropsWithRef<'div'> & {
    * Ref to the drawer content
    *
    */
-  scrollerRef?: React.RefObject<HTMLDivElement>;
+  scrollerRef?: React.RefObject<HTMLDivElement | null>;
 }
 
 /**

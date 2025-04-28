@@ -11,7 +11,7 @@ import { ClampText, Menu, MenuItemProps } from '@/components';
 export type AutocompleteOptionProps = Except<
   MenuItemProps,
   'padding' | 'autoFocus' | 'onClick'
-> & React.ComponentPropsWithRef<'button'> & {
+> & Except<React.ComponentPropsWithRef<'button'>, 'onClick'> & {
   /**
    * Callback called when the option is clicked.
    * It passes the value and the inner text of the option as arguments.

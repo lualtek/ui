@@ -4,7 +4,7 @@ import { TokensTypes } from '@lualtek/tokens/platforms/web';
 import tkns from '@lualtek/tokens/web/tokens.json';
 import clsx from 'clsx';
 import {
-  Children, forwardRef, Fragment, isValidElement, useMemo,
+  Children, forwardRef, Fragment, isValidElement, type JSX, useMemo,
 } from 'react';
 import { Except } from 'type-fest';
 
@@ -45,8 +45,10 @@ export type SnaplistProps = {
   snapItemWidth?: string;
 }
 
-export const Snaplist = forwardRef(({
-  as,
+type SnaplistComponent = PolyRefComponent<typeof Stack, Except<StackProps, 'wrap' | 'fill'> & SnaplistProps>
+
+export const Snaplist: SnaplistComponent = ({
+  as = 'div' as React.ElementType,
   children,
   className,
   rowGap = 32,
@@ -57,8 +59,9 @@ export const Snaplist = forwardRef(({
   scrollPadding,
   snapItemWidth,
   style,
+  ref: forwardedRef,
   ...otherProps
-}, forwardedRef) => {
+}) => {
   const dynamicStyle = useMemo(() => ({
     '--snap-align': snapAlign,
     '--snap-type': snapType,
@@ -79,16 +82,16 @@ export const Snaplist = forwardRef(({
       style={{ ...dynamicStyle, ...style }}
     >
       {Children.toArray(children).map((child) => {
-        if (isValidElement(child)) {
+        if (isValidElement<{ children: React.ReactNode }>(child)) {
           if (child.type === Fragment) {
             return Children.map(
-              child.props.children as React.ReactNode,
+              child.props.children,
               (fragmentChild: React.ReactNode) => isValidElement(fragmentChild) && (
                 <SnaplistItem key={fragmentChild.key}>
                   {fragmentChild}
                 </SnaplistItem>
               ),
-            ) as JSX.Element[];
+            )!;
           }
 
           return <SnaplistItem key={child.key}>{child}</SnaplistItem>;
@@ -98,4 +101,4 @@ export const Snaplist = forwardRef(({
       })}
     </Stack>
   );
-}) as PolyRefComponent<typeof Stack, Except<StackProps, 'wrap' | 'fill'> & SnaplistProps>;
+};

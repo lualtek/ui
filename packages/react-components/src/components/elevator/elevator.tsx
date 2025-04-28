@@ -1,5 +1,5 @@
 import {
-  Children, cloneElement, CSSProperties, FC, isValidElement, ReactElement,
+  Children, cloneElement, ComponentProps, CSSProperties, FC, isValidElement, PropsWithChildren, ReactElement,
 } from 'react';
 
 import {
@@ -52,16 +52,21 @@ export const Elevator: FC<ElevatorProps> = ({
       shadowColor: shadowColor || undefined,
     },
   });
-  return Children.map(children, child => isValidElement(child) && cloneElement(
-    child as ReactElement,
-    {
-      ...elevation.attributes,
-      style: {
-        ...child.props.style as CSSProperties,
-        ...elevation.style,
-        '--extra-shadow': extraShadow,
-      },
-    },
-  ));
+
+  return Children.map(children, (child) => {
+    if (isValidElement<{ style?: CSSProperties }>(child)) {
+      return cloneElement(child,
+        {
+          ...elevation.attributes,
+          style: {
+            ...((child.props.style ?? {})),
+            ...elevation.style,
+            '--extra-shadow': extraShadow,
+          },
+        });
+    }
+
+    return undefined;
+  });
 };
 

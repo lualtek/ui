@@ -116,7 +116,7 @@ export const Marquee: FC<MarqueeProps> = (
   const [multiplier, setMultiplier] = useState(1);
   const [isMounted, setIsMounted] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
-  const containerRef = (forwardedRef as RefObject<HTMLDivElement>) || rootRef;
+  const containerRef = (forwardedRef as RefObject<HTMLDivElement | null>) || rootRef;
   const marqueeRef = useRef<HTMLDivElement>(null);
   const uid = useId();
 

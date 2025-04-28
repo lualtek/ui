@@ -94,7 +94,9 @@ export type PanelProps = {
   rainbowColors?: GlowProps['rainbowColors'];
 }
 
-export const Panel = forwardRef((
+type PanelComponent = PolyRefComponent<'div', PanelProps>
+
+export const Panel: PanelComponent = (
   {
     as: Component = 'div',
     className,
@@ -116,9 +118,9 @@ export const Panel = forwardRef((
     glowColor,
     glowFitContent = false,
     rainbowColors,
+    ref: forwardedRef,
     ...otherProps
   },
-  forwardedRef,
 ) => {
   const computedBackground = typeof backgroundColor === 'number' ? `var(--dimmed-${backgroundColor})` : backgroundColor;
   const computedBackgroundHover = typeof backgroundColorHover === 'number' ? `var(--dimmed-${backgroundColorHover})` : backgroundColorHover;
@@ -200,4 +202,4 @@ export const Panel = forwardRef((
       </Component>
     </ConditionalWrapper>
   );
-}) as PolyRefComponent<'div', PanelProps>;
+};

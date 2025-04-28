@@ -7,7 +7,7 @@ import {
 } from 'motion/react';
 import {
   Children, cloneElement, FC,
-  isValidElement, ReactNode, useMemo, useRef,
+  isValidElement, ReactNode, Ref, useMemo, useRef,
 } from 'react';
 
 import { ConditionalWrapper } from '@/components';
@@ -44,7 +44,7 @@ export const Tooltip: FC<TooltipProps> = ({
   usePortal = false,
   ...otherProps
 }) => {
-  const triggerRef = useRef<HTMLHtmlElement>();
+  const triggerRef = useRef<HTMLHtmlElement>(null);
 
   const computeOrigin = useMemo(() => {
     if (side === 'left') {
@@ -80,7 +80,10 @@ export const Tooltip: FC<TooltipProps> = ({
       {...otherProps}
     >
 
-      {Children.map(trigger, child => isValidElement<any>(child) && (
+      {Children.map(trigger, child => isValidElement<{
+        ref: Ref<HTMLHtmlElement>;
+        tabIndex: number;
+      }>(child) && (
         <TooltipPrimitive.Trigger asChild>
           {cloneElement(
             child,

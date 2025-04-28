@@ -1,48 +1,39 @@
-/* eslint-disable @typescript-eslint/naming-convention */
-import {
-  ComponentPropsWithRef, ElementType, ForwardRefExoticComponent, ReactElement,
-} from 'react';
+/**
+ * Defines the 'as' prop and potentially other props specific to the polymorphic component itself,
+ * independent of the underlying element it renders.
+ * @template C The element type.
+ */
+type PolymorphicOwnProps<C extends React.ElementType> = {
+  as?: C;
+  // Example: Add component-specific props here
+  // color?: 'primary' | 'secondary';
+};
 
 /**
- * Utility type to merge two types, with properties from the second type overriding those from the first type.
- * @template P1 - The first type.
- * @template P2 - The second type.
+ * The core type for polymorphic component props.
+ * Merges OwnProps with the props of the underlying element (including ref),
+ * ensuring OwnProps take precedence in case of naming conflicts.
+ * @template C The target element type (e.g., 'button', 'a', typeof CustomComponent).
+ * @template OwnProps Additional props specific to the polymorphic component.
  */
-type Merge<P1 = Record<string, unknown>, P2 = Record<string, unknown>> = Omit<P1, keyof P2> & P2;
+export type PolymorphicProps<
+  C extends React.ElementType,
+  OwnProps = Record<string, unknown>, // Allows passing component-specific props externally if needed
+> = OwnProps & // Include the component's own specific props
+  PolymorphicOwnProps<C> & // Include the 'as' prop definition
+  Omit<
+    React.ComponentPropsWithRef<C>, // Get all props of the underlying element C, including 'ref'
+    keyof (OwnProps & PolymorphicOwnProps<C>) // Omit any props from element C that conflict with OwnProps or 'as'
+  >;
 
 /**
- * Utility type to merge props of a given element type with additional props.
- * @template E - The element type.
- * @template P - Additional props.
+ * Defines the signature for a polymorphic functional component.
+ * @template DefaultElement The default HTML element tag to render if 'as' is not provided.
+ * @template OwnProps The type of the component's own specific props.
  */
-type MergeProps<E, P = Record<string, unknown>> = P
-  & Merge<E extends ElementType ? ComponentPropsWithRef<E> : never, P>;
-
-/**
- * Interface for a polymorphic component with a ref.
- * @template IntrinsicElementString - The intrinsic element type as a string.
- * @template OwnProps - Additional props for the component.
- */
-export interface PolyRefComponent<IntrinsicElementString, OwnProps = Record<string, unknown>>
-  extends ForwardRefExoticComponent<
-    MergeProps<IntrinsicElementString, OwnProps & { as?: IntrinsicElementString }>
-  > {
-  /**
-   * Polymorphic component that can render as any intrinsic element.
-   * @template As - The intrinsic element type.
-   * @param props - The props for the component.
-   * @returns A React element or null.
-   */
-  <As extends keyof JSX.IntrinsicElements>(props: MergeProps<As, OwnProps & { as: As }>): ReactElement | null;
-
-  /**
-   * Polymorphic component that can render as any custom element type.
-   * @template As - The custom element type.
-   * @template _AsWithProps - The inferred props for the custom element type.
-   * @param props - The props for the component.
-   * @returns A React element or null.
-   */
-  <As extends ElementType<unknown>, _AsWithProps = As extends ElementType<infer P> ? ElementType<P> : never>(
-    props: MergeProps<_AsWithProps, OwnProps & { as: _AsWithProps }>,
-  ): ReactElement | null;
-}
+export type PolyRefComponent<
+  DefaultElement extends React.ElementType,
+  OwnProps = Record<string, unknown>,
+> = <C extends React.ElementType = DefaultElement>( // The component function is generic
+  props: PolymorphicProps<C, OwnProps> // Props are typed using the core PolymorphicProps type
+) => React.ReactElement | null; // Standard React component return type

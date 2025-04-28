@@ -105,7 +105,7 @@ export const Masonry: FC<MasonryProps> = ({
       {...otherProps}
     >
       {Children.map(children, child => isValidElement(child) && cloneElement(
-        child as ReactElement,
+        child as ReactElement<any>,
         {
           role: 'listitem',
         },

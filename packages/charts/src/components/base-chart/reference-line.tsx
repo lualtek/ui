@@ -1,3 +1,5 @@
+'use client';
+
 import { FC } from 'react';
 import type { ReferenceLineProps as RechartReferenceLineProps } from 'recharts';
 import { ReferenceLine as RechartReferenceLine } from 'recharts';
@@ -27,4 +29,4 @@ export const ReferenceLine: FC<ReferenceLineProps> = ({
   />
 );
 
-ReferenceLine.displayName = 'ReferenceLine';
+// ReferenceLine.displayName = 'ReferenceLine';

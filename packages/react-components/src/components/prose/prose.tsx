@@ -20,16 +20,18 @@ export type ProseProps = {
   balanced?: boolean;
 };
 
-export const Prose = forwardRef((
+type ProseComponent = PolyRefComponent<'div', ProseProps>;
+
+export const Prose: ProseComponent = (
   {
     as: Component = 'div',
     children,
     className,
     gap = 'big',
     balanced = false,
+    ref: forwardedRef,
     ...otherProps
   },
-  forwardedRef,
 ) => (
   <Component
     ref={forwardedRef}
@@ -40,5 +42,5 @@ export const Prose = forwardRef((
   >
     {children}
   </Component>
-)) as PolyRefComponent<'div', ProseProps>;
+);
 
