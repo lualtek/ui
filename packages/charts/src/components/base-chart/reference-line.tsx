@@ -28,5 +28,3 @@ export const ReferenceLine: FC<ReferenceLineProps> = ({
     strokeDasharray={dashed ? '4 4' : 'none'}
   />
 );
-
-// ReferenceLine.displayName = 'ReferenceLine';
