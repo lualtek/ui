@@ -1,5 +1,7 @@
 # @lualtek/themes
 
+## 19.0.0-next.1
+
 ## 19.0.0-next.0
 
 ### Major Changes

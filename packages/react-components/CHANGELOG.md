@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 19.0.0-next.1
+
+### Patch Changes
+
+- 8f3240b: Fix motion version
+  - @lualtek/icons@19.0.0-next.1
+
 ## 19.0.0-next.0
 
 ### Major Changes
