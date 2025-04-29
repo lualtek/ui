@@ -54,7 +54,7 @@ export const Elevator: FC<ElevatorProps> = ({
   });
 
   return Children.map(children, (child) => {
-    if (isValidElement<{ style?: CSSProperties }>(child)) {
+    if (isValidElement<React.HTMLAttributes<HTMLElement>>(child)) {
       return cloneElement(child,
         {
           ...elevation.attributes,

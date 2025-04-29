@@ -104,12 +104,18 @@ export const Masonry: FC<MasonryProps> = ({
       style={{ ...dynamicStyle, ...style } as CSSProperties}
       {...otherProps}
     >
-      {Children.map(children, child => isValidElement(child) && cloneElement(
-        child as ReactElement<any>,
-        {
-          role: 'listitem',
-        },
-      ))}
+      {Children.map(children, (child) => {
+        if (isValidElement<React.HTMLAttributes<HTMLElement>>(child)) {
+          return cloneElement(
+            child,
+            {
+              role: 'listitem',
+            },
+          );
+        }
+
+        return undefined;
+      })}
     </MasonryLayout>
   );
 };

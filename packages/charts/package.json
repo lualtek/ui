@@ -1,7 +1,9 @@
 {
   "name": "@lualtek/charts",
   "version": "18.10.1",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "type": "module",
   "types": "dist/index.d.ts",
   "module": "dist/index.js",
@@ -66,7 +68,7 @@
     "@lualtek/react-components": "workspace:*",
     "@lualtek/tokens": "workspace:*",
     "clsx": "2.1.1",
-    "recharts": "alpha",
+    "recharts": "3.0.0-alpha.9",
     "type-fest": "4.40.1"
   }
 }

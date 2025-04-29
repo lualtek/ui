@@ -22,7 +22,7 @@ export const AspectRatio: FC<AspectRatioProps> = ({
   ratio,
 
 }) => Children.map(children, (child) => {
-  if (isValidElement<{ style?: CSSProperties }>(child)) {
+  if (isValidElement<React.HTMLAttributes<HTMLElement>>(child)) {
     return cloneElement(child, {
       style: {
         ...(child.props.style ?? {}),

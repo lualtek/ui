@@ -82,11 +82,11 @@ export const Snaplist: SnaplistComponent = ({
       style={{ ...dynamicStyle, ...style }}
     >
       {Children.toArray(children).map((child) => {
-        if (isValidElement<{ children: React.ReactNode }>(child)) {
+        if (isValidElement<React.HTMLAttributes<HTMLElement>>(child)) {
           if (child.type === Fragment) {
             return Children.map(
               child.props.children,
-              (fragmentChild: React.ReactNode) => isValidElement(fragmentChild) && (
+              (fragmentChild: React.ReactNode) => isValidElement<React.HTMLAttributes<HTMLElement>>(fragmentChild) && (
                 <SnaplistItem key={fragmentChild.key}>
                   {fragmentChild}
                 </SnaplistItem>

@@ -162,7 +162,7 @@ importers:
         specifier: 2.1.1
         version: 2.1.1
       recharts:
-        specifier: alpha
+        specifier: 3.0.0-alpha.9
         version: 3.0.0-alpha.9(@types/react@19.1.2)(redux@5.0.1)
       type-fest:
         specifier: 4.40.1
