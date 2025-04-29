@@ -1,6 +1,9 @@
+'use client';
+
 import { Stack, Text } from '@lualtek/react-components';
 import {
-  forwardRef, ReactElement, ReactNode, useMemo,
+  FC,
+  type JSX, ReactElement, ReactNode, useMemo,
 } from 'react';
 import {
   CartesianGrid,
@@ -171,8 +174,10 @@ export type BaseChartProps = Except<ResponsiveContainerProps, 'className'> & {
    * @param children ReactNode
    * @returns ReactElement
    */
-  renderChart: (children: ReactNode) => ReactElement;
+  renderChart: (children: ReactNode) => ReactElement<any>;
 };
+
+type BaseChartComponent = FC<BaseChartProps & Pick<React.ComponentPropsWithRef<'div'>, 'ref'>>
 
 export const DENSITIES: Record<NonNullable<BaseChartProps['density']>, number> = {
   low: 3,
@@ -180,7 +185,7 @@ export const DENSITIES: Record<NonNullable<BaseChartProps['density']>, number> =
   high: 9,
 };
 
-export const BaseChart = forwardRef<HTMLDivElement, BaseChartProps>(({
+export const BaseChart: BaseChartComponent = ({
   className,
   children,
   showGrid = true,
@@ -205,8 +210,9 @@ export const BaseChart = forwardRef<HTMLDivElement, BaseChartProps>(({
   referenceComponent,
   cursorStyle,
   renderChart,
+  ref: forwardedRef,
   ...otherProps
-}, forwardedRef) => {
+}) => {
   const cursor = useMemo(() => ({
     stroke: 'var(--dimmed-3)',
     strokeWidth: 2,
@@ -285,5 +291,5 @@ export const BaseChart = forwardRef<HTMLDivElement, BaseChartProps>(({
       </ResponsiveContainer>
     </div>
   );
-});
+};
 

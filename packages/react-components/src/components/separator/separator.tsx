@@ -4,7 +4,8 @@ import { TokensTypes } from '@lualtek/tokens/platforms/web';
 import tkns from '@lualtek/tokens/web/tokens.json';
 import clsx from 'clsx';
 import {
-  forwardRef, useMemo,
+  FC,
+  useMemo,
 } from 'react';
 
 import styles from './separator.module.css';
@@ -30,15 +31,16 @@ export type SeparatorProps = React.ComponentPropsWithRef<'hr'> & {
   vertical?: boolean;
 }
 
-export const Separator = forwardRef<HTMLHRElement, SeparatorProps>(({
+export const Separator: FC<SeparatorProps> = ({
   className,
   vPadding,
   hPadding,
   dimmed = 2,
   vertical = false,
   style,
+  ref: forwardedRef,
   ...otherProps
-}, forwardedRef) => {
+}) => {
   const dynamicStyle = useMemo(() => (
     {
       '--v-padding': vPadding ? tkns.space[vPadding] : 0,
@@ -56,4 +58,4 @@ export const Separator = forwardRef<HTMLHRElement, SeparatorProps>(({
       {...otherProps}
     />
   );
-});
+};

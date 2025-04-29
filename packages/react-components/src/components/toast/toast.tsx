@@ -3,7 +3,7 @@
 import * as ToastPrimitive from '@radix-ui/react-toast';
 import clsx from 'clsx';
 import {
-  ElementRef, forwardRef, useId,
+  FC, useId,
 } from 'react';
 
 import { Elevator } from '@/components';
@@ -11,12 +11,10 @@ import { Elevator } from '@/components';
 import { InlineToast, InlineToastProps } from './inline-toast';
 import styles from './toast.module.css';
 
-export type ToastProps = ToastPrimitive.ToastProps & InlineToastProps
+export type ToastProps = ToastPrimitive.ToastProps & InlineToastProps & React.ComponentPropsWithRef<'li'>
 
-export const Toast = forwardRef<
-ElementRef<typeof ToastPrimitive.Root>,
-ToastProps
->(({
+// ElementRef<typeof ToastPrimitive.Root>,
+export const Toast: FC<ToastProps> = ({
   children,
   open,
   defaultOpen,
@@ -24,8 +22,9 @@ ToastProps
   duration,
   forceMount,
   onOpenChange,
+  ref: forwardedRef,
   ...otherProps
-}, forwardedRef) => {
+}) => {
   const uid = useId();
 
   return (
@@ -48,7 +47,7 @@ ToastProps
       </li>
     </ToastPrimitive.Root>
   );
-});
+};
 
 export const ToastViewport = ({ className, ...otherProps }: React.ComponentPropsWithRef<'ol'>) => (
   <ToastPrimitive.Viewport className={clsx(styles.Viewport, className)} {...otherProps} />

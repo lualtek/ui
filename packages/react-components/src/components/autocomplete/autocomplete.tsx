@@ -3,7 +3,8 @@
 import clsx from 'clsx';
 import {
   Children,
-  forwardRef, ForwardRefExoticComponent,
+  ComponentPropsWithRef,
+  FC,
   ReactNode,
   useCallback,
   useMemo,
@@ -56,11 +57,11 @@ export type AutocompleteProps = TextfieldProps & {
   onClickOption?: (value: AutocompleteOptionProps['value'], text?: string | null) => void;
 };
 
-type AutocompleteComponent = ForwardRefExoticComponent<AutocompleteProps> & {
-  Option: ForwardRefExoticComponent<AutocompleteOptionProps>;
+type AutocompleteComponent = FC<AutocompleteProps> & {
+  Option: FC<AutocompleteOptionProps>;
 }
 
-export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(({
+export const Autocomplete: AutocompleteComponent = ({
   className,
   children,
   disabled,
@@ -73,8 +74,9 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(({
   emptyContent = 'No items to show',
   matchFieldWidth = false,
   align = 'center',
+  ref: forwardedRef,
   ...otherProps
-}, forwardedRef) => {
+}) => {
   const [currentValue, setCurrentValue] = useState(value);
   const [debouncedValue, setDebouncedValue] = useState<typeof currentValue>();
   const [isOpen, setIsOpen] = useState(false);
@@ -174,7 +176,7 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(({
       </Popover>
     </div>
   );
-}) as AutocompleteComponent;
+};
 
 Autocomplete.Option = AutocompleteOption;
 

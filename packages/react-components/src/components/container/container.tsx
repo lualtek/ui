@@ -18,26 +18,26 @@ export type ContainerProps = {
   padding?: boolean;
 }
 
-export const Container = forwardRef(
-  (
-    {
-      as: Component = 'div',
-      children,
-      className,
-      dimension = 'full',
-      padding = true,
-      ...otherProps
-    },
-    forwardedRef,
-  ) => (
-    <Component
-      ref={forwardedRef}
-      className={clsx(styles.Container, className)}
-      data-container-dimension={dimension}
-      data-container-padding={padding}
-      {...otherProps}
-    >
-      {children}
-    </Component>
-  ),
-) as PolyRefComponent<'div', ContainerProps>;
+type ContainerComponent = PolyRefComponent<'div', ContainerProps>;
+
+export const Container: ContainerComponent = (
+  {
+    as: Component = 'div',
+    children,
+    className,
+    dimension = 'full',
+    padding = true,
+    ref: forwardedRef,
+    ...otherProps
+  },
+) => (
+  <Component
+    ref={forwardedRef}
+    className={clsx(styles.Container, className)}
+    data-container-dimension={dimension}
+    data-container-padding={padding}
+    {...otherProps}
+  >
+    {children}
+  </Component>
+);

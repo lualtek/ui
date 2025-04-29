@@ -21,33 +21,33 @@ export type ClampTextProps = {
   inline?: boolean;
 }
 
-export const ClampText = forwardRef(
-  (
-    {
-      as: Component = 'span',
-      className,
-      children,
-      rows = 1,
-      style,
-      inline,
-      ...otherProps
-    },
-    forwardedRef,
-  ) => {
-    const dynamicStyle = useMemo(() => ({
-      '--r': rows,
-    }), [rows]);
+type ClampTextComponent = PolyRefComponent<'span', ClampTextProps>;
 
-    return (
-      <Component
-        ref={forwardedRef}
-        style={{ ...dynamicStyle, ...style }}
-        className={clsx(styles.ClampText, className)}
-        data-clamp-text-inline={inline}
-        {...otherProps}
-      >
-        {children}
-      </Component>
-    );
+export const ClampText: ClampTextComponent = (
+  {
+    as: Component = 'span',
+    className,
+    children,
+    rows = 1,
+    style,
+    inline,
+    ref: forwardedRef,
+    ...otherProps
   },
-) as PolyRefComponent<'span', ClampTextProps>;
+) => {
+  const dynamicStyle = useMemo(() => ({
+    '--r': rows,
+  }), [rows]);
+
+  return (
+    <Component
+      ref={forwardedRef}
+      style={{ ...dynamicStyle, ...style }}
+      className={clsx(styles.ClampText, className)}
+      data-clamp-text-inline={inline}
+      {...otherProps}
+    >
+      {children}
+    </Component>
+  );
+};

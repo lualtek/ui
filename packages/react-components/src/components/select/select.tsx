@@ -2,7 +2,8 @@
 
 import clsx from 'clsx';
 import {
-  ChangeEvent, forwardRef, ReactNode, SelectHTMLAttributes, useCallback, useId,
+  ChangeEvent, FC,
+  ReactNode, useCallback, useId,
   useState,
 } from 'react';
 
@@ -55,7 +56,7 @@ export type SelectProps = React.ComponentPropsWithRef<'select'> & {
   hint?: ReactNode;
 }
 
-export const Select = forwardRef<HTMLSelectElement, SelectProps>(({
+export const Select: FC<SelectProps> = ({
   children,
   className,
   disabled = false,
@@ -66,8 +67,9 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(({
   fullWidth = false,
   invalid,
   hint = 'Invalid input',
+  ref: forwardedRef,
   ...otherProps
-}, forwardedRef) => {
+}) => {
   const uid = useId();
   const [isUserInvalid, setIsUserInvalid] = useState<boolean>(invalid ?? false);
 
@@ -137,4 +139,4 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(({
       )}
     </Stack>
   );
-});
+};

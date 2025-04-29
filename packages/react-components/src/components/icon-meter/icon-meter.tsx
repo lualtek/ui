@@ -2,7 +2,8 @@
 
 import clsx from 'clsx';
 import {
-  forwardRef, ReactNode, useCallback, useId, useMemo,
+  FC,
+  ReactNode, useCallback, useId, useMemo,
 } from 'react';
 
 import {
@@ -63,123 +64,119 @@ export type IconMeterProps = React.ComponentPropsWithRef<'div'> & {
   iconColor?: string;
 }
 
-export const IconMeter = forwardRef<HTMLDivElement, IconMeterProps>(
-  (
-    {
-      className,
-      value = 0,
-      iconCount = 5,
-      label,
-      dimension = 'regular',
-      hideLabel = false,
-      icon = 'star',
-      iconColor = 'var(--highlight-green-foreground)',
-      ...otherProps
+export const IconMeter: FC<IconMeterProps> = ({
+  className,
+  value = 0,
+  iconCount = 5,
+  label,
+  dimension = 'regular',
+  hideLabel = false,
+  icon = 'star',
+  iconColor = 'var(--highlight-green-foreground)',
+  ref: forwardedRef,
+  ...otherProps
+}) => {
+  const uid = useId();
+
+  const properties = {
+    small: {
+      labelSize: 14,
     },
-    forwardedRef?: React.ForwardedRef<HTMLDivElement>,
-  ) => {
-    const uid = useId();
+    regular: {
+      labelSize: 16,
+    },
+    big: {
+      labelSize: 18,
+    },
+  };
 
-    const properties = {
-      small: {
-        labelSize: 14,
-      },
-      regular: {
-        labelSize: 16,
-      },
-      big: {
-        labelSize: 18,
-      },
-    };
+  const clamp = useMemo(() => (num: number, min: number, max: number) => Math.min(Math.max(num, min), max), []);
 
-    const clamp = useMemo(() => (num: number, min: number, max: number) => Math.min(Math.max(num, min), max), []);
+  const roundValue = useCallback((value: number) => {
+    const integer = parseInt(String(value), 10);
+    const fraction = value - integer;
 
-    const roundValue = useCallback((value: number) => {
-      const integer = parseInt(String(value), 10);
-      const fraction = value - integer;
+    if (fraction >= 0.75) {
+      return Math.ceil(value);
+    }
 
-      if (fraction >= 0.75) {
-        return Math.ceil(value);
+    if (fraction < 0.25) {
+      return Math.floor(value);
+    }
+
+    if (fraction >= 0.25 && fraction < 0.75) {
+      return integer + 0.5;
+    }
+
+    return 0;
+  }, []);
+
+  const iconType = useCallback((maxIcons: number, value: number) => {
+    const roundedValue = roundValue(value);
+    return new Array(maxIcons).fill(0).map((_, index) => {
+      const iconIndex = index + 1;
+      let fillType = 'var(--icon-dimmed-color)';
+
+      if (roundedValue >= iconIndex) {
+        fillType = iconColor;
       }
 
-      if (fraction < 0.25) {
-        return Math.floor(value);
+      if (roundedValue < iconIndex && roundedValue > iconIndex - 1) {
+        fillType = 'url(#HalfIcon)';
       }
 
-      if (fraction >= 0.25 && fraction < 0.75) {
-        return integer + 0.5;
-      }
+      return (
+        <Icon
+          source={icon}
+          className={styles.Icon}
+          dimension={dimension === 'big' ? 18 : 12}
+          fill={fillType}
+          key={iconIndex}
+        />
+      );
+    });
+  }, [icon, iconColor, dimension, roundValue]);
 
-      return 0;
-    }, []);
-
-    const iconType = useCallback((maxIcons: number, value: number) => {
-      const roundedValue = roundValue(value);
-      return new Array(maxIcons).fill(0).map((_, index) => {
-        const iconIndex = index + 1;
-        let fillType = 'var(--icon-dimmed-color)';
-
-        if (roundedValue >= iconIndex) {
-          fillType = iconColor;
-        }
-
-        if (roundedValue < iconIndex && roundedValue > iconIndex - 1) {
-          fillType = 'url(#HalfIcon)';
-        }
-
-        return (
-          <Icon
-            source={icon}
-            className={styles.Icon}
-            dimension={dimension === 'big' ? 18 : 12}
-            fill={fillType}
-            key={iconIndex}
-          />
-        );
-      });
-    }, [icon, iconColor, dimension, roundValue]);
-
-    return (
-      <Stack
-        inline
-        direction="row"
-        vAlign="center"
-        columnGap={8}
-        className={clsx(styles.IconMeter, className)}
-        role="meter"
-        fill={false}
-        aria-valuenow={clamp(value, 0, iconCount)}
-        aria-valuemin={0}
-        aria-valuemax={iconCount}
-        aria-labelledby={`${uid}-icon-meter`}
-        data-icon-meter-dimension={dimension}
-        ref={forwardedRef}
-        {...otherProps}
-      >
-        <svg aria-hidden="true" className={styles.Gradient} width="100" height="50" version="1.1" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="HalfIcon">
-              <stop offset="0" style={{ stopColor: iconColor }} />
-              <stop offset="50%" style={{ stopColor: iconColor }} />
-              <stop offset="50.1%" style={{ stopColor: 'var(--icon-dimmed-color)' }} />
-              <stop offset="100%" style={{ stopColor: 'var(--icon-dimmed-color)' }} />
-            </linearGradient>
-          </defs>
-        </svg>
-        <Stack direction="row" columnGap={dimension === 'small' ? 2 : 4}>
-          {iconType(iconCount, value)}
-        </Stack>
-        <Text
-          as="span"
-          dimmed={6}
-          id={`${uid}-icon-meter`}
-          size={properties[dimension].labelSize as TextProps['size']}
-          lineHeight="extra-small"
-          weight="bold"
-        >
-          {!hideLabel && <>{label ?? (value > iconCount ? iconCount : value.toString())}</>}
-        </Text>
+  return (
+    <Stack
+      inline
+      direction="row"
+      vAlign="center"
+      columnGap={8}
+      className={clsx(styles.IconMeter, className)}
+      role="meter"
+      fill={false}
+      aria-valuenow={clamp(value, 0, iconCount)}
+      aria-valuemin={0}
+      aria-valuemax={iconCount}
+      aria-labelledby={`${uid}-icon-meter`}
+      data-icon-meter-dimension={dimension}
+      ref={forwardedRef}
+      {...otherProps}
+    >
+      <svg aria-hidden="true" className={styles.Gradient} width="100" height="50" version="1.1" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="HalfIcon">
+            <stop offset="0" style={{ stopColor: iconColor }} />
+            <stop offset="50%" style={{ stopColor: iconColor }} />
+            <stop offset="50.1%" style={{ stopColor: 'var(--icon-dimmed-color)' }} />
+            <stop offset="100%" style={{ stopColor: 'var(--icon-dimmed-color)' }} />
+          </linearGradient>
+        </defs>
+      </svg>
+      <Stack direction="row" columnGap={dimension === 'small' ? 2 : 4}>
+        {iconType(iconCount, value)}
       </Stack>
-    );
-  },
-);
+      <Text
+        as="span"
+        dimmed={6}
+        id={`${uid}-icon-meter`}
+        size={properties[dimension].labelSize as TextProps['size']}
+        lineHeight="extra-small"
+        weight="bold"
+      >
+        {!hideLabel && <>{label ?? (value > iconCount ? iconCount : value.toString())}</>}
+      </Text>
+    </Stack>
+  );
+};

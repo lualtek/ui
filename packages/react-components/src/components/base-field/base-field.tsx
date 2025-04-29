@@ -12,14 +12,14 @@ export type BaseFieldProps = {
   invalid?: boolean;
 }
 
-export const BaseField = forwardRef((
+export const BaseField: PolyRefComponent<'input', BaseFieldProps> = (
   {
     as: Component = 'input',
     invalid,
     className,
+    ref: forwardedRef,
     ...otherProps
   },
-  forwardedRef,
 ) => (
   <Component
     ref={forwardedRef}
@@ -27,4 +27,4 @@ export const BaseField = forwardRef((
     className={clsx(styles.BaseField, className)}
     {...otherProps}
   />
-)) as PolyRefComponent<'input', BaseFieldProps>;
+);

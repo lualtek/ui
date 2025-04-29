@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import { domMax, LazyMotion, m } from 'motion/react';
-import { forwardRef } from 'react';
+import { FC } from 'react';
 
 export type SpinnerProps = React.ComponentPropsWithRef<'svg'> & {
   /**
@@ -31,12 +31,13 @@ const attributes: AttributesType = {
   },
 };
 
-export const Spinner = forwardRef<SVGSVGElement, SpinnerProps>(({
+export const Spinner: FC<SpinnerProps> = ({
   className,
   style,
   color,
   dimension = 'big',
-}, forwardedRef) => (
+  ref: forwardedRef,
+}) => (
   <LazyMotion features={domMax}>
     <m.svg
       ref={forwardedRef}
@@ -75,4 +76,4 @@ export const Spinner = forwardRef<SVGSVGElement, SpinnerProps>(({
       </g>
     </m.svg>
   </LazyMotion>
-));
+);

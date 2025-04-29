@@ -21,63 +21,63 @@ export type SplitButtonProps = Pick<PopoverContentProps, 'side' | 'offset' | 'al
   children?: React.ReactNode;
 }
 
-export const SplitButton = forwardRef(
-  (
-    {
-      as,
-      className,
-      label,
-      icon = 'ctrl-down',
-      kind,
-      dimension,
-      fullWidth,
-      disabled,
-      busy,
-      children,
-      side,
-      align,
-      offset,
-      sentiment,
-      onClick,
-      ...otherProps
-    },
-    forwardedRef,
-  ) => {
-    const commonProps = {
-      kind,
-      dimension,
-      disabled,
-      sentiment,
-    };
-
-    return (
-      <Stack
-        className={clsx(styles.SplitButton, className)}
-        direction="row"
-        inline={!fullWidth}
-      >
-        <Button
-          as={as}
-          busy={busy}
-          fullWidth={fullWidth}
-          onClick={onClick}
-          ref={forwardedRef}
-          {...commonProps}
-          {...otherProps}
-        >
-          {label}
-        </Button>
-        <Popover>
-          <Popover.Trigger><Button icon={icon} {...commonProps} /></Popover.Trigger>
-          <Popover.Content side={side} align={align} offset={offset}>
-            <Elevator resting={2}>
-              {children}
-            </Elevator>
-          </Popover.Content>
-        </Popover>
-      </Stack>
-    );
-  },
-) as PolyRefComponent<typeof Button,
-  SplitButtonProps & Except<ButtonProps, 'iconPosition' | 'iconColor'>
+type SplitButtonComponent = PolyRefComponent<typeof Button,
+SplitButtonProps & Except<ButtonProps, 'iconPosition' | 'iconColor'>
 >;
+
+export const SplitButton: SplitButtonComponent = (
+  {
+    as = 'button' as React.ElementType,
+    className,
+    label,
+    icon = 'ctrl-down',
+    kind,
+    dimension,
+    fullWidth,
+    disabled,
+    busy,
+    children,
+    side,
+    align,
+    offset,
+    sentiment,
+    onClick,
+    ref: forwardedRef,
+    ...otherProps
+  },
+) => {
+  const commonProps = {
+    kind,
+    dimension,
+    disabled,
+    sentiment,
+  };
+
+  return (
+    <Stack
+      className={clsx(styles.SplitButton, className)}
+      direction="row"
+      inline={!fullWidth}
+    >
+      <Button
+        as={as}
+        busy={busy}
+        fullWidth={fullWidth}
+        onClick={onClick}
+        ref={forwardedRef}
+        {...commonProps}
+        {...otherProps}
+      >
+        {label}
+      </Button>
+      <Popover>
+        <Popover.Trigger><Button icon={icon} {...commonProps} /></Popover.Trigger>
+        <Popover.Content side={side} align={align} offset={offset}>
+          <Elevator resting={2}>
+            {children}
+          </Elevator>
+        </Popover.Content>
+      </Popover>
+    </Stack>
+  );
+};

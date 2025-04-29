@@ -66,7 +66,9 @@ export type ScrollAreaProps = {
   overscrollBehavior?: 'auto' | 'contain' | 'none';
 }
 
-export const ScrollArea = forwardRef((
+type ScrollAreaComponent = PolyRefComponent<'div', ScrollAreaProps>;
+
+export const ScrollArea: ScrollAreaComponent = (
   {
     as: Component = 'div',
     children,
@@ -82,9 +84,9 @@ export const ScrollArea = forwardRef((
     overscrollBehavior = 'contain',
     fadeSize = 16,
     style,
+    ref: forwardedRef,
     ...otherProps
   },
-  forwardedRef,
 ) => {
   const computedFadeDirection = useMemo(() => {
     if (fadeSize) {
@@ -119,4 +121,4 @@ export const ScrollArea = forwardRef((
       {children}
     </Component>
   );
-}) as PolyRefComponent<'div', ScrollAreaProps>;
+};

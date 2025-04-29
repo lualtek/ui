@@ -1,7 +1,8 @@
 'use client';
 
 import {
-  forwardRef, useCallback, useRef,
+  FC,
+  useCallback, useRef,
 } from 'react';
 import { Except } from 'type-fest';
 
@@ -10,7 +11,7 @@ import { ClampText, Menu, MenuItemProps } from '@/components';
 export type AutocompleteOptionProps = Except<
   MenuItemProps,
   'padding' | 'autoFocus' | 'onClick'
-> & {
+> & Except<React.ComponentPropsWithRef<'button'>, 'onClick'> & {
   /**
    * Callback called when the option is clicked.
    * It passes the value and the inner text of the option as arguments.
@@ -23,12 +24,13 @@ export type AutocompleteOptionProps = Except<
   children: string | string[];
 }
 
-export const AutocompleteOption = forwardRef<HTMLButtonElement, AutocompleteOptionProps>(({
+export const AutocompleteOption: FC<AutocompleteOptionProps> = ({
   children,
   value,
   onClick,
+  ref: forwardedRef,
   ...otherProps
-}, forwardedRef) => {
+}) => {
   const contentRef = useRef<HTMLSpanElement>(null);
   const handleClick = useCallback(
     () => {
@@ -53,5 +55,5 @@ export const AutocompleteOption = forwardRef<HTMLButtonElement, AutocompleteOpti
       </span>
     </Menu.Item>
   );
-});
+};
 

@@ -3,7 +3,8 @@
 import clsx from 'clsx';
 import { domMax, LazyMotion, m } from 'motion/react';
 import {
-  forwardRef, useCallback, useEffect, useState,
+  FC,
+  useCallback, useEffect, useState,
 } from 'react';
 import { Except } from 'type-fest';
 
@@ -50,7 +51,7 @@ const scaleAnimation = {
   },
 };
 
-export const ToggleButton = forwardRef<HTMLButtonElement, ToggleButtonProps>((
+export const ToggleButton: FC<ToggleButtonProps> = (
   {
     className,
     restingIcon,
@@ -61,9 +62,9 @@ export const ToggleButton = forwardRef<HTMLButtonElement, ToggleButtonProps>((
     pressed = false,
     onClick,
     children,
+    ref: forwardedRef,
     ...otherProps
   },
-  forwardedRef?: React.ForwardedRef<HTMLButtonElement>,
 ) => {
   const [isPressed, setIsPressed] = useState<boolean>(pressed);
   const [isFirstRender, setFirstRender] = useState(true);
@@ -131,4 +132,4 @@ export const ToggleButton = forwardRef<HTMLButtonElement, ToggleButtonProps>((
       </LazyMotion>
     </IconButton>
   );
-});
+};

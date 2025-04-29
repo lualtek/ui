@@ -37,7 +37,9 @@ type TableHeadcellProps = CustomColumnMeta & {
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-export const TableHeadCell = forwardRef((
+type TableHeadcellComponent = PolyRefComponent<'th', TableHeadcellProps>;
+
+export const TableHeadCell: TableHeadcellComponent = (
   {
     as: Component = 'th',
     children,
@@ -50,9 +52,9 @@ export const TableHeadCell = forwardRef((
     padding = true,
     width,
     onClick,
+    ref: forwardedRef,
     ...otherProps
   },
-  forwardedRef,
 ) => {
   const computedWidth = useMemo(() => {
     if (!width) return undefined;
@@ -104,5 +106,5 @@ export const TableHeadCell = forwardRef((
       ) : content}
     </Component>
   );
-}) as PolyRefComponent<'th', TableHeadcellProps>;
+};
 

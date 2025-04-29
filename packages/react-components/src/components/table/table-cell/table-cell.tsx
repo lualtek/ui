@@ -39,45 +39,45 @@ type TableCellProps = CustomColumnMeta & {
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-export const TableCell = forwardRef(
-  (
-    {
-      as: Component = 'td',
-      children,
-      className,
-      collapsed,
-      align = 'start',
-      style,
-      padding = true,
-      width,
-      minWidth,
-      onClick,
-      ...otherProps
-    },
-    forwardedRef,
-  ) => {
-    const dynamicStyle = useMemo(() => ({
-      '--width': width ? `${width}px` : undefined,
-      '--min-width': minWidth ? `${minWidth}px` : undefined,
-      '--text-align': align,
-    }), [align, width, minWidth]);
+type TableCellComponent = PolyRefComponent<'td', TableCellProps>;
 
-    return (
-      <Component
-        ref={forwardedRef}
-        className={clsx(styles.TableCell, className)}
-        data-table-cell-collapsed={collapsed}
-        data-table-cell-padding={padding}
-        data-table-cell-fixed={Boolean(width)}
-        style={{
-          ...dynamicStyle,
-          ...style,
-          userSelect: Component === 'td' ? undefined : 'none',
-        }}
-        {...otherProps}
-      >
-        {children}
-      </Component>
-    );
+export const TableCell: TableCellComponent = (
+  {
+    as: Component = 'td',
+    children,
+    className,
+    collapsed,
+    align = 'start',
+    style,
+    padding = true,
+    width,
+    minWidth,
+    onClick,
+    ref: forwardedRef,
+    ...otherProps
   },
-) as PolyRefComponent<'td', TableCellProps>;
+) => {
+  const dynamicStyle = useMemo(() => ({
+    '--width': width ? `${width}px` : undefined,
+    '--min-width': minWidth ? `${minWidth}px` : undefined,
+    '--text-align': align,
+  }), [align, width, minWidth]);
+
+  return (
+    <Component
+      ref={forwardedRef}
+      className={clsx(styles.TableCell, className)}
+      data-table-cell-collapsed={collapsed}
+      data-table-cell-padding={padding}
+      data-table-cell-fixed={Boolean(width)}
+      style={{
+        ...dynamicStyle,
+        ...style,
+        userSelect: Component === 'td' ? undefined : 'none',
+      }}
+      {...otherProps}
+    >
+      {children}
+    </Component>
+  );
+};
