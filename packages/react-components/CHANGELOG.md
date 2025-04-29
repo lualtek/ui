@@ -1,5 +1,16 @@
 # @lualtek/react-components
 
+## 19.0.0-next.0
+
+### Major Changes
+
+- 8b39240: Add support for React 19
+
+### Patch Changes
+
+- Updated dependencies [8b39240]
+  - @lualtek/icons@19.0.0-next.0
+
 ## 18.10.1
 
 ### Patch Changes
