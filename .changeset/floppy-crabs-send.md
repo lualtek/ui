@@ -2,4 +2,4 @@
 "@lualtek/react-components": patch
 ---
 
-Update motion on react components
+Revert motion upgrade
