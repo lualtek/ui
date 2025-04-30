@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 19.0.0-next.2
+
+### Patch Changes
+
+- 24369a3: Update motion on react components
+  - @lualtek/icons@19.0.0-next.2
+
 ## 19.0.0-next.1
 
 ### Patch Changes
