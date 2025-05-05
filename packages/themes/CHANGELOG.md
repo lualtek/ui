@@ -1,5 +1,11 @@
 # @lualtek/themes
 
+## 19.0.0
+
+### Major Changes
+
+- 9404769: Add support for React 19
+
 ## 19.0.0-next.3
 
 ## 19.0.0-next.2

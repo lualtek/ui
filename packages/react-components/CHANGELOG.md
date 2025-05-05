@@ -1,5 +1,18 @@
 # @lualtek/react-components
 
+## 19.0.0
+
+### Major Changes
+
+- 9404769: Add support for React 19
+
+### Patch Changes
+
+- 9404769: Revert motion upgrade
+- 9404769: Fix motion version
+- Updated dependencies [9404769]
+  - @lualtek/icons@19.0.0
+
 ## 19.0.0-next.3
 
 ### Patch Changes
