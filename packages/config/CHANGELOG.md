@@ -1,5 +1,16 @@
 # @lualtek/config
 
+## 19.0.0
+
+### Major Changes
+
+- 9404769: Add support for React 19
+
+### Patch Changes
+
+- Updated dependencies [9404769]
+  - @lualtek/tokens@19.0.0
+
 ## 19.0.0-next.3
 
 ### Patch Changes
