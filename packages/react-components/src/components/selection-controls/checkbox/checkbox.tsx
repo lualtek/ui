@@ -4,7 +4,8 @@ import { TokensTypes } from '@lualtek/tokens/platforms/web';
 import clsx from 'clsx';
 import { domAnimation, LazyMotion, m } from 'motion/react';
 import {
-  ChangeEvent, forwardRef, ReactNode, useCallback, useEffect, useId, useRef,
+  ChangeEvent, FC,
+  ReactNode, useCallback, useEffect, useId, useRef,
   useState,
 } from 'react';
 import { mergeRefs } from 'react-merge-refs';
@@ -84,7 +85,7 @@ const properties: Properties = {
   },
 };
 
-export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(({
+export const Checkbox: FC<CheckboxProps> = ({
   className,
   disabled,
   dimension = 'regular',
@@ -95,8 +96,9 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(({
   onInput,
   invalid,
   hint = 'Required input',
+  ref: forwardedRef,
   ...otherProps
-}, forwardedRef) => {
+}) => {
   const ref = useRef<any>(null);
   const [isUserInvalid, setIsUserInvalid] = useState<boolean>(invalid ?? false);
   const uid = useId();
@@ -176,5 +178,5 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(({
       </Stack>
     </LazyMotion>
   );
-});
+};
 

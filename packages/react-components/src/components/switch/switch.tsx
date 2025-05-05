@@ -6,7 +6,7 @@ import {
   AnimatePresence, domMax, LazyMotion, m,
 } from 'motion/react';
 import {
-  ElementRef, forwardRef,
+  FC,
   ReactNode, useCallback,
   useEffect,
   useId, useRef, useState,
@@ -16,28 +16,29 @@ import { Stack, Text, TextProps } from '@/components';
 
 import styles from './switch.module.css';
 
-export type SwitchProps = Exclude<SwitchPrimitive.SwitchProps, 'asChild'> & {
-  /**
+export type SwitchProps = Exclude<SwitchPrimitive.SwitchProps, 'asChild'>
+ & React.ComponentPropsWithRef<typeof SwitchPrimitive.Root> & {
+   /**
    * Set the size of the switch.
    *
    * @defaultValue "regular"
    */
-  dimension?: 'small' | 'regular' | 'big';
-  /**
+   dimension?: 'small' | 'regular' | 'big';
+   /**
    * Assign a label to the input.
    */
-  label?: ReactNode;
-  /**
+   label?: ReactNode;
+   /**
    * Assign a label to the input when is checked.
    */
-  checkedLabel?: ReactNode;
-  /**
+   checkedLabel?: ReactNode;
+   /**
    * Set the position of the label relative to the switch.
    *
    * @defaultValue "end"
    */
-  labelPosition?: 'start' | 'end';
-};
+   labelPosition?: 'start' | 'end';
+ };
 
 type Properties = Record<NonNullable<SwitchProps['dimension']>, {
   text: {
@@ -65,7 +66,7 @@ const properties: Properties = {
   },
 };
 
-export const Switch = forwardRef<ElementRef<typeof SwitchPrimitive.Root>, SwitchProps>(({
+export const Switch: FC<SwitchProps> = ({
   dimension = 'regular',
   labelPosition = 'end',
   className,
@@ -74,8 +75,9 @@ export const Switch = forwardRef<ElementRef<typeof SwitchPrimitive.Root>, Switch
   checked,
   onCheckedChange,
   defaultChecked,
+  ref: forwardedRef,
   ...otherProps
-}, forwardedRef) => {
+}) => {
   const uid = useId();
   const labelRef = useRef<HTMLLabelElement>(null);
   const [isChecked, setIsChecked] = useState(checked ?? defaultChecked);
@@ -179,4 +181,4 @@ export const Switch = forwardRef<ElementRef<typeof SwitchPrimitive.Root>, Switch
       </Stack>
     </LazyMotion>
   );
-});
+};

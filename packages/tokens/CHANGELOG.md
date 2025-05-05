@@ -1,5 +1,17 @@
 # @lualtek/tokens
 
+## 19.0.0-next.3
+
+## 19.0.0-next.2
+
+## 19.0.0-next.1
+
+## 19.0.0-next.0
+
+### Major Changes
+
+- 8b39240: Add support for React 19
+
 ## 18.10.1
 
 ## 18.10.0

@@ -1,5 +1,37 @@
 # @lualtek/react-components
 
+## 19.0.0-next.3
+
+### Patch Changes
+
+- 04d8f04: Revert motion upgrade
+  - @lualtek/icons@19.0.0-next.3
+
+## 19.0.0-next.2
+
+### Patch Changes
+
+- 24369a3: Update motion on react components
+  - @lualtek/icons@19.0.0-next.2
+
+## 19.0.0-next.1
+
+### Patch Changes
+
+- 8f3240b: Fix motion version
+  - @lualtek/icons@19.0.0-next.1
+
+## 19.0.0-next.0
+
+### Major Changes
+
+- 8b39240: Add support for React 19
+
+### Patch Changes
+
+- Updated dependencies [8b39240]
+  - @lualtek/icons@19.0.0-next.0
+
 ## 18.10.1
 
 ### Patch Changes

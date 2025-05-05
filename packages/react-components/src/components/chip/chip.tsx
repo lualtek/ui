@@ -3,7 +3,8 @@
 import type { TokensTypes } from '@lualtek/tokens/platforms/web';
 import clsx from 'clsx';
 import {
-  forwardRef, Ref, SyntheticEvent, useMemo,
+  FC,
+  Ref, SyntheticEvent, useMemo,
 } from 'react';
 
 import {
@@ -65,7 +66,7 @@ const sizes: Sizes = {
   },
 };
 
-export const Chip = forwardRef<ForwardedElementType<NonNullable<ChipProps['interactive']>>, ChipProps>(({
+export const Chip: FC<ChipProps> = ({
   style,
   children,
   className,
@@ -76,8 +77,9 @@ export const Chip = forwardRef<ForwardedElementType<NonNullable<ChipProps['inter
   dismissable,
   onDismissClick,
   onClick,
+  ref: forwardedRef,
   ...otherProps
-}, forwardedRef) => {
+}) => {
   const commonProps: StackProps & Record<string, unknown> = useMemo(() => ({
     direction: 'row',
     columnGap: 8,
@@ -137,4 +139,4 @@ export const Chip = forwardRef<ForwardedElementType<NonNullable<ChipProps['inter
       {Content}
     </Stack>
   );
-});
+};

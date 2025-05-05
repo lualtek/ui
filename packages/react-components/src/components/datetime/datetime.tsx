@@ -1,7 +1,7 @@
 'use client';
 
 import {
-  forwardRef,
+  FC,
   useMemo,
 } from 'react';
 
@@ -30,13 +30,13 @@ const defaultOptions: Partial<Intl.DateTimeFormatOptions> = {
   day: 'numeric',
 };
 
-export const Datetime = forwardRef<HTMLTimeElement, DatetimeProps>(({
+export const Datetime: FC<DatetimeProps> = ({
   date,
   locale = 'en-US',
   options,
+  ref: forwardedRef,
   ...otherProps
-},
-forwardedRef) => {
+}) => {
   const hasDateTimeStyle = useMemo(() => options?.timeStyle ?? options?.dateStyle, [options]);
   const humanDate = useMemo(() => {
     const timeDate: Date = new Date(date);
@@ -50,4 +50,4 @@ forwardedRef) => {
       {humanDate}
     </time>
   );
-});
+};

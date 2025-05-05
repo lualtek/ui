@@ -1,3 +1,5 @@
+'use client';
+
 import { FC } from 'react';
 import type { ReferenceLineProps as RechartReferenceLineProps } from 'recharts';
 import { ReferenceLine as RechartReferenceLine } from 'recharts';
@@ -26,5 +28,3 @@ export const ReferenceLine: FC<ReferenceLineProps> = ({
     strokeDasharray={dashed ? '4 4' : 'none'}
   />
 );
-
-ReferenceLine.displayName = 'ReferenceLine';

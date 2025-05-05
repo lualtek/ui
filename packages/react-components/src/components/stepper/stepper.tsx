@@ -2,7 +2,7 @@
 
 import clsx from 'clsx';
 import {
-  ComponentPropsWithoutRef, forwardRef, useMemo,
+  FC, useMemo,
 } from 'react';
 
 import {
@@ -12,7 +12,7 @@ import {
 
 import styles from './stepper.module.css';
 
-export type StepperProps = ComponentPropsWithoutRef<'div'> & {
+export type StepperProps = React.ComponentPropsWithRef<'div'> & {
   /**
    * The title of the step.
    */
@@ -38,7 +38,7 @@ export type StepperProps = ComponentPropsWithoutRef<'div'> & {
   fullWidth?: boolean;
 }
 
-export const Stepper = forwardRef<HTMLDivElement, StepperProps>(({
+export const Stepper: FC<StepperProps> = ({
   className,
   children,
   heading,
@@ -46,8 +46,9 @@ export const Stepper = forwardRef<HTMLDivElement, StepperProps>(({
   contentGap = 16,
   fillContent = false,
   fullWidth = false,
+  ref: forwardedRef,
   ...otherProps
-}, forwardedRef) => {
+}) => {
   const padStep = useMemo(() => String(step).padStart(2, '0'), [step]);
   const { matches } = useResponsiveContext();
 
@@ -75,4 +76,4 @@ export const Stepper = forwardRef<HTMLDivElement, StepperProps>(({
       </Stack>
     </Stack>
   );
-});
+};

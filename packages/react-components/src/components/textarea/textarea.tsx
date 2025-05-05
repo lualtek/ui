@@ -2,7 +2,7 @@
 
 import clsx from 'clsx';
 import {
-  ChangeEvent, forwardRef, ReactNode, useCallback, useId, useMemo,
+  ChangeEvent, FC, forwardRef, ReactNode, useCallback, useId, useMemo,
   useState,
 } from 'react';
 
@@ -49,7 +49,7 @@ export type TextareaProps = BaseFieldProps & React.ComponentPropsWithRef<'textar
   onChange?: (event: ChangeEvent<HTMLTextAreaElement>) => void;
 }
 
-export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(({
+export const Textarea: FC<TextareaProps> = ({
   children,
   className,
   disabled = false,
@@ -62,8 +62,9 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(({
   onInput,
   fullWidth,
   hint = 'Invalid input',
+  ref: forwardedRef,
   ...otherProps
-}, forwardedRef) => {
+}) => {
   const uid = useId();
   const fieldID = useMemo(() => id ?? `${uid}-textarea`, [id, uid]);
   const [isUserInvalid, setIsUserInvalid] = useState<boolean>(invalid ?? false);
@@ -120,4 +121,4 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(({
       )}
     </Stack>
   );
-});
+};

@@ -5,8 +5,9 @@ import {
   domMax, LazyMotion, m,
 } from 'motion/react';
 import {
-  forwardRef,
-  ReactNode, useCallback, useEffect, useId, useImperativeHandle,
+  FC,
+  ReactNode,
+  useCallback, useEffect, useId, useImperativeHandle,
   useMemo, useRef, useState,
 } from 'react';
 
@@ -97,7 +98,7 @@ const sizes: SizesType = {
   },
 };
 
-export const Disclosure = forwardRef<HTMLDetailsElement, DisclosureProps>(({
+export const Disclosure: FC<DisclosureProps> = ({
   children,
   open = false,
   padding = true,
@@ -111,8 +112,9 @@ export const Disclosure = forwardRef<HTMLDetailsElement, DisclosureProps>(({
   expandable = true,
   style,
   onToggle,
+  ref: forwardedRef,
   ...otherProps
-}, forwardedRef) => {
+}) => {
   const ref = useRef<HTMLDetailsElement>(null);
 
   useImperativeHandle(forwardedRef, () => ref.current!);
@@ -212,5 +214,5 @@ export const Disclosure = forwardRef<HTMLDetailsElement, DisclosureProps>(({
       </LazyMotion>
     </details>
   );
-});
+};
 

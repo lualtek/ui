@@ -2,7 +2,8 @@
 
 import clsx from 'clsx';
 import {
-  forwardRef, useCallback, useMemo,
+  FC,
+  useCallback, useMemo,
 } from 'react';
 
 import styles from './circular-progress.module.css';
@@ -40,7 +41,7 @@ export type CircularProgressProps = React.ComponentPropsWithRef<'div'> & {
   color?: string;
 }
 
-export const CircularProgress = forwardRef<HTMLDivElement, CircularProgressProps>(({
+export const CircularProgress: FC<CircularProgressProps> = ({
   className,
   value,
   max = 100,
@@ -49,8 +50,9 @@ export const CircularProgress = forwardRef<HTMLDivElement, CircularProgressProps
   progressLabel = val => val,
   color,
   style,
+  ref: forwardedRef,
   ...otherProps
-}, forwardedRef) => {
+}) => {
   const getPercentage = useCallback(
     () => (value ? Math.round((100 * value) / max) : 0),
     [max, value],
@@ -84,4 +86,4 @@ export const CircularProgress = forwardRef<HTMLDivElement, CircularProgressProps
       <span className={styles.End} />
     </div>
   );
-});
+};

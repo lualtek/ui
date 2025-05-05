@@ -3,7 +3,8 @@
 import clsx from 'clsx';
 import { domAnimation, LazyMotion, m } from 'motion/react';
 import {
-  ChangeEvent, forwardRef, ReactNode, useId,
+  ChangeEvent, FC,
+  ReactNode, useId,
 } from 'react';
 
 import { Stack, Text, TextProps } from '@/components';
@@ -45,15 +46,16 @@ type Properties = Record<NonNullable<RadioProps['dimension']>, {
   };
 }>
 
-export const Radio = forwardRef<HTMLInputElement, RadioProps>(({
+export const Radio: FC<RadioProps> = ({
   className,
   disabled,
   dimension = 'regular',
   labelPosition = 'end',
   onChange,
   label,
+  ref: forwardedRef,
   ...otherProps
-}, forwardedRef) => {
+}) => {
   const uid = useId();
 
   const properties: Properties = {
@@ -114,4 +116,4 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(({
       </Stack>
     </LazyMotion>
   );
-});
+};

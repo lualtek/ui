@@ -1,5 +1,41 @@
 # @lualtek/charts
 
+## 19.0.0-next.3
+
+### Patch Changes
+
+- Updated dependencies [04d8f04]
+  - @lualtek/react-components@19.0.0-next.3
+  - @lualtek/tokens@19.0.0-next.3
+
+## 19.0.0-next.2
+
+### Patch Changes
+
+- Updated dependencies [24369a3]
+  - @lualtek/react-components@19.0.0-next.2
+  - @lualtek/tokens@19.0.0-next.2
+
+## 19.0.0-next.1
+
+### Patch Changes
+
+- Updated dependencies [8f3240b]
+  - @lualtek/react-components@19.0.0-next.1
+  - @lualtek/tokens@19.0.0-next.1
+
+## 19.0.0-next.0
+
+### Major Changes
+
+- 8b39240: Add support for React 19
+
+### Patch Changes
+
+- Updated dependencies [8b39240]
+  - @lualtek/react-components@19.0.0-next.0
+  - @lualtek/tokens@19.0.0-next.0
+
 ## 18.10.1
 
 ### Patch Changes

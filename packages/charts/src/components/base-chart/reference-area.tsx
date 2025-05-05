@@ -18,15 +18,15 @@ export const ReferenceArea: FC<ReferenceAreaProps> = ({
 }) => (
   <RechartReferenceArea
     // @ts-expect-error this is somehow broken on th type of ref
-    ref={ref as React.RefObject<ReferenceAreaType>}
+    ref={ref as React.RefObject<ReferenceAreaType | null>}
     {...otherProps}
     fill={color}
     fillOpacity={opacity}
   />
 );
 
-// Esclude default props, see https://github.com/recharts/recharts/issues/544#issuecomment-2008058998
-const { fill, fillOpacity, ...defaultProps } = RechartReferenceArea.defaultProps;
-// @ts-expect-error https://github.com/recharts/recharts/issues/544#issuecomment-2008058998
-ReferenceArea.defaultProps = defaultProps;
-ReferenceArea.displayName = 'ReferenceArea';
+// // Esclude default props, see https://github.com/recharts/recharts/issues/544#issuecomment-2008058998
+// const { fill, fillOpacity, ...defaultProps } = RechartReferenceArea.defaultProps;
+// // @ts-expect-error https://github.com/recharts/recharts/issues/544#issuecomment-2008058998
+// ReferenceArea.defaultProps = defaultProps;
+// ReferenceArea.displayName = 'ReferenceArea';

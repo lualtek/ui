@@ -2,7 +2,8 @@
 
 import clsx from 'clsx';
 import {
-  forwardRef, ReactNode, useMemo,
+  FC,
+  ReactNode, useMemo,
 } from 'react';
 import { AutoFocusInside } from 'react-focus-on';
 
@@ -44,7 +45,7 @@ export type ModalContentProps = React.ComponentPropsWithRef<'div'> & {
   safePadding?: boolean;
 }
 
-export const ModalContent = forwardRef<HTMLDivElement, ModalContentProps>(({
+export const ModalContent: FC<ModalContentProps> = ({
   children,
   className,
   heading,
@@ -53,8 +54,9 @@ export const ModalContent = forwardRef<HTMLDivElement, ModalContentProps>(({
   headerTint,
   safePadding = true,
   style,
+  ref: forwardedRef,
   ...otherProps
-}, forwardedRef) => {
+}) => {
   const { onClose, headingId } = useOverlayContext();
   const { matches } = useResponsiveContext();
 
@@ -96,4 +98,4 @@ export const ModalContent = forwardRef<HTMLDivElement, ModalContentProps>(({
       </Panel>
     </Elevator>
   );
-});
+};

@@ -12,18 +12,20 @@ export type IconButtonProps = Pick<
   'kind' | 'dimension' | 'icon' | 'disabled' | 'onClick' | 'busy' | 'sentiment' | 'type'
 >
 
-export const IconButton = forwardRef((
+type IconButtonComponent = PolyRefComponent<typeof Button, IconButtonProps>;
+
+export const IconButton: IconButtonComponent = (
   {
-    as,
+    as = 'button' as React.ElementType,
     className,
     icon,
     dimension,
     kind,
     disabled,
     busy,
+    ref: forwardedRef,
     ...otherProps
   },
-  forwardedRef,
 ) => (
   <Button
     ref={forwardedRef}
@@ -39,4 +41,4 @@ export const IconButton = forwardRef((
     }}
     {...otherProps}
   />
-)) as PolyRefComponent<typeof Button, IconButtonProps>;
+);

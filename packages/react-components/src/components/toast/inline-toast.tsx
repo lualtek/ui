@@ -3,7 +3,7 @@
 import * as ToastPrimitive from '@radix-ui/react-toast';
 import clsx from 'clsx';
 import {
-  forwardRef, ReactNode, useMemo,
+  FC, ReactNode, useMemo,
 } from 'react';
 
 import {
@@ -79,7 +79,7 @@ const defaultIcons: Record<string, IconProps['source']> = {
   danger: 'c-remove',
 };
 
-export const InlineToast = forwardRef<HTMLOutputElement, InlineToastProps>(({
+export const InlineToast: FC<InlineToastProps> = ({
   children,
   className,
   title,
@@ -91,8 +91,9 @@ export const InlineToast = forwardRef<HTMLOutputElement, InlineToastProps>(({
   onDismiss,
   actions,
   isPrimitive,
+  ref: forwardedRef,
   ...otherProps
-}, forwardedRef) => {
+}) => {
   const ActionWrapper = useMemo(() => (isPrimitive ? ToastPrimitive.Close : PrimitiveNoopComponent), [isPrimitive]);
 
   return (
@@ -156,4 +157,4 @@ export const InlineToast = forwardRef<HTMLOutputElement, InlineToastProps>(({
       </Stack>
     </Panel>
   );
-});
+};

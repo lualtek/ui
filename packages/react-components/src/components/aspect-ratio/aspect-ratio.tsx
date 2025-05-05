@@ -1,7 +1,7 @@
 'use client';
 
 import {
-  Children, cloneElement, CSSProperties, FC, isValidElement, ReactElement,
+  Children, cloneElement, CSSProperties, FC, isValidElement,
 } from 'react';
 
 export type AspectRatioProps = {
@@ -20,13 +20,17 @@ export type AspectRatioProps = {
 export const AspectRatio: FC<AspectRatioProps> = ({
   children,
   ratio,
-}) => Children.map(children, child => isValidElement(child) && cloneElement(
-  child as ReactElement,
-  {
-    style: {
-      ...child.props.style as CSSProperties,
-      aspectRatio: ratio,
-    },
-  },
-));
+
+}) => Children.map(children, (child) => {
+  if (isValidElement<React.HTMLAttributes<HTMLElement>>(child)) {
+    return cloneElement(child, {
+      style: {
+        ...(child.props.style ?? {}),
+        aspectRatio: ratio,
+      },
+    });
+  }
+
+  return undefined;
+});
 

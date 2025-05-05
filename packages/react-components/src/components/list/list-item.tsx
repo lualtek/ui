@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { forwardRef } from 'react';
+import { FC } from 'react';
 
 import {
   Icon, IconProps, Stack,
@@ -46,15 +46,16 @@ const sizes: SizesType = {
   },
 };
 
-export const Li = forwardRef<HTMLLIElement, ListItemProps>(({
+export const Li: FC<ListItemProps> = ({
   className,
   hideMarker,
   marker = 'circle',
   markerColor,
   children,
   dimension = 'regular',
+  ref: forwardedRef,
   ...otherProps
-}, forwardedRef) => (
+}) => (
   <Stack
     className={clsx(styles.ListItem, className)}
     as="li"
@@ -77,5 +78,5 @@ export const Li = forwardRef<HTMLLIElement, ListItemProps>(({
     )}
     {children}
   </Stack>
-));
+);
 

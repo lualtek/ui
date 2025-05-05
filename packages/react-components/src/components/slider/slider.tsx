@@ -3,7 +3,8 @@
 import * as SliderPrimitive from '@radix-ui/react-slider';
 import clsx from 'clsx';
 import {
-  ElementRef, forwardRef, ReactNode, useCallback, useEffect, useId, useMemo, useState,
+  FC,
+  ReactNode, useCallback, useEffect, useId, useMemo, useState,
 } from 'react';
 
 import {
@@ -12,7 +13,7 @@ import {
 
 import styles from './slider.module.css';
 
-export type SliderProps = SliderPrimitive.SliderProps & {
+export type SliderProps = SliderPrimitive.SliderProps & React.ComponentPropsWithRef<typeof SliderPrimitive.Root> & {
   /**
    * Show values beside the thumbs
    */
@@ -29,10 +30,7 @@ export type SliderProps = SliderPrimitive.SliderProps & {
   label?: ReactNode;
 };
 
-export const Slider = forwardRef<
-ElementRef<typeof SliderPrimitive.Root>,
-SliderProps
->(({
+export const Slider: FC<SliderProps> = ({
   className,
   value,
   defaultValue,
@@ -42,8 +40,9 @@ SliderProps
   onValueChange,
   max = 100,
   label,
+  ref: forwardedRef,
   ...otherProps
-}, forwardedRef) => {
+}) => {
   const { vibrancy } = useStyles({
     vibrancy: {
       color: 'mid',
@@ -105,4 +104,4 @@ SliderProps
       </SliderPrimitive.Root>
     </Stack>
   );
-});
+};

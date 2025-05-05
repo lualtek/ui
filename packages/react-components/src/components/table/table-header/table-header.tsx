@@ -1,5 +1,5 @@
 import {
-  cloneElement, forwardRef, isValidElement, ReactNode,
+  cloneElement, FC, isValidElement, ReactNode,
 } from 'react';
 
 import { Stack, Title } from '@/components';
@@ -13,13 +13,13 @@ export type TableHeaderProps = React.ComponentPropsWithRef<'div'> & {
   heading?: ReactNode;
 }
 
-export const TableHeader = forwardRef<HTMLDivElement, TableHeaderProps>(({
+export const TableHeader: FC<TableHeaderProps> = ({
   children,
   heading,
   id,
+  ref: forwardRef,
   ...otherProps
-},
-forwardRef) => (
+}) => (
   <Stack
     direction="row"
     columnGap={32}
@@ -47,4 +47,4 @@ forwardRef) => (
       {children}
     </Stack>
   </Stack>
-));
+);

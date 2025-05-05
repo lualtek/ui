@@ -1,3 +1,5 @@
+'use client';
+
 import {
   Elevator,
   Panel, Stack, Text, Title,

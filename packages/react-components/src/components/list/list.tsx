@@ -4,8 +4,7 @@ import { TokensTypes } from '@lualtek/tokens/platforms/web';
 import tkns from '@lualtek/tokens/web/tokens.json';
 import clsx from 'clsx';
 import {
-  Children, cloneElement,
-  forwardRef, isValidElement, useMemo,
+  Children, cloneElement, isValidElement, useMemo,
 } from 'react';
 
 import { PolyRefComponent } from '@/components';
@@ -34,50 +33,53 @@ export type ListProps = {
   gap?: TokensTypes['space'];
 }
 
-export const List = forwardRef(
-  (
-    {
-      as: Component = 'ul',
-      children,
-      dimension = 'regular',
-      className,
-      hideMarker = false,
-      gap,
-      style,
-      ...otherProps
-    },
-    forwardedRef,
-  ) => {
-    const isUnordered = useMemo(() => Component === 'ul', [Component]);
-
-    const dynamicStyle = useMemo(() => (
-      {
-        '--gap': gap ? tkns.space[gap] : 0,
-      }
-    ), [gap]);
-
-    return (
-      <Component
-        ref={forwardedRef}
-        className={clsx(styles.List, className)}
-        data-list-size={dimension}
-        data-list-ordered={!isUnordered}
-        data-list-no-marker={hideMarker}
-        style={{ ...dynamicStyle, ...style }}
-        {...otherProps}
-      >
-        {Children.map(children, child => isValidElement<ListItemProps>(child) && cloneElement(
-          child,
-          {
-            hideMarker: !isUnordered || hideMarker,
-            dimension,
-          },
-        ))}
-      </Component>
-    );
-  },
-) as PolyRefComponent<'ul', ListProps> & {
+type ListComponent = PolyRefComponent<'ul', ListProps> & {
+  /**
+   * List item component.
+   */
   Li: typeof Li;
+}
+
+export const List: ListComponent = (
+  {
+    as: Component = 'ul',
+    children,
+    dimension = 'regular',
+    className,
+    hideMarker = false,
+    gap,
+    style,
+    ref: forwardedRef,
+    ...otherProps
+  },
+) => {
+  const isUnordered = useMemo(() => Component === 'ul', [Component]);
+
+  const dynamicStyle = useMemo(() => (
+    {
+      '--gap': gap ? tkns.space[gap] : 0,
+    }
+  ), [gap]);
+
+  return (
+    <Component
+      ref={forwardedRef}
+      className={clsx(styles.List, className)}
+      data-list-size={dimension}
+      data-list-ordered={!isUnordered}
+      data-list-no-marker={hideMarker}
+      style={{ ...dynamicStyle, ...style }}
+      {...otherProps}
+    >
+      {Children.map(children, child => isValidElement<ListItemProps>(child) && cloneElement(
+        child,
+        {
+          hideMarker: !isUnordered || hideMarker,
+          dimension,
+        },
+      ))}
+    </Component>
+  );
 };
 
 List.Li = Li;

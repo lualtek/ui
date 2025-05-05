@@ -4,13 +4,12 @@ import { TokensTypes } from '@lualtek/tokens/platforms/web';
 import tkns from '@lualtek/tokens/web/tokens.json';
 import clsx from 'clsx';
 import {
-  forwardRef, HTMLAttributes,
-  useMemo,
+  FC, useMemo,
 } from 'react';
 
 import styles from './bleed.module.css';
 
-export type BleedProps = HTMLAttributes<HTMLDivElement> & {
+export type BleedProps = React.ComponentPropsWithRef<'div'> & {
   /**
    * Sets the amount of bleed on each inline side.
    */
@@ -23,14 +22,15 @@ export type BleedProps = HTMLAttributes<HTMLDivElement> & {
   full?: boolean;
 }
 
-export const Bleed = forwardRef<HTMLDivElement, BleedProps>(({
+export const Bleed: FC<BleedProps> = ({
   className,
   children,
   style,
   full = false,
   amount,
+  ref: forwardedRef,
   ...otherProps
-}, forwardedRef) => {
+}) => {
   const amountType = (typeof amount === 'string') ? amount : tkns.space[amount as TokensTypes['space']];
   const dynamicStyle = useMemo(() => (
     {
@@ -49,5 +49,5 @@ export const Bleed = forwardRef<HTMLDivElement, BleedProps>(({
       {children}
     </div>
   );
-});
+};
 

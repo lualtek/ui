@@ -7,7 +7,7 @@ import clsx from 'clsx';
 import {
   Children,
   cloneElement,
-  forwardRef,
+  FC,
   ReactElement,
   useMemo,
 } from 'react';
@@ -29,13 +29,14 @@ export type IconProps = React.ComponentPropsWithRef<'svg'> & {
   dimension?: TokensTypes['icon']['size'];
 }
 
-export const Icon = forwardRef<SVGSVGElement, IconProps>(({
+export const Icon: FC<IconProps> = ({
   className,
   source,
   dimension = 18,
   fill,
+  ref: forwardedRef,
   ...otherProps
-}, forwardedRef) => {
+}) => {
   const dynamicStyle = useMemo(() => (Number(dimension) < 18 ? 'solid' : 'duotone'), [dimension]);
 
   return (typeof source === 'string')
@@ -54,16 +55,13 @@ export const Icon = forwardRef<SVGSVGElement, IconProps>(({
     )
     : (
       <>
-        {Children.map(source, (child: ReactElement) => cloneElement(
-          child,
-          {
-            className,
-            'aria-hidden': 'true',
-            width: dimension,
-            height: dimension,
-          },
-        ))}
+        {Children.map(source, child => cloneElement(child as ReactElement<React.SVGProps<SVGSVGElement>>, {
+          className,
+          'aria-hidden': 'true',
+          width: dimension,
+          height: dimension,
+        }))}
       </>
     );
-});
+};
 
