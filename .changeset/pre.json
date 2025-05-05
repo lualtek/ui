@@ -11,8 +11,8 @@
     "tsconfig": "0.0.4"
   },
   "changesets": [
+    "floppy-crabs-send",
     "honest-hairs-crash",
-    "strong-papers-switch",
     "young-birds-stare"
   ]
 }

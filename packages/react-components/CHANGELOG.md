@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 19.0.0-next.3
+
+### Patch Changes
+
+- 04d8f04: Revert motion upgrade
+  - @lualtek/icons@19.0.0-next.3
+
 ## 19.0.0-next.2
 
 ### Patch Changes
