@@ -76,6 +76,12 @@ export const LongContent = {
   },
 } satisfies Story;
 
+export const WithZIndex = {
+  args: {
+    zIndex: 1000,
+  },
+} satisfies Story;
+
 export const ScrollInside = {
   args: {
     direction: 'left',

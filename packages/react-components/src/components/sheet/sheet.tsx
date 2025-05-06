@@ -69,7 +69,12 @@ type SheetContentProps = React.ComponentPropsWithRef<typeof Vaul.Content> & {
    * automatically collapsed when the width is reached.
    */
   maxWidth?: string;
-
+  /**
+   * Set the elevation of the Sheet.
+   *
+   * @defaultValue auto
+   */
+  zIndex?: number;
   /**
    * Allows content to scroll inside wihtout generating overflow or to expand
    * behind the sheet height.
@@ -82,7 +87,6 @@ type SheetContentProps = React.ComponentPropsWithRef<typeof Vaul.Content> & {
    *
    */
   scrollerRef?: React.RefObject<HTMLDivElement | null>;
-
 }
 
 const SheetContent: FC<SheetContentProps & Pick<DialogProps, 'children' | 'dismissible' | 'direction'>> = ({
@@ -101,6 +105,7 @@ const SheetContent: FC<SheetContentProps & Pick<DialogProps, 'children' | 'dismi
   showHeading = true,
   scrollInside = false,
   scrollerRef,
+  zIndex,
   ref: forwardedRef,
 }) => {
   const { matches } = useResponsiveContext();
@@ -116,10 +121,11 @@ const SheetContent: FC<SheetContentProps & Pick<DialogProps, 'children' | 'dismi
     {
       '--max-w': maxWidth ?? undefined,
       '--header-tint': headerTint,
+      '--z-index': zIndex,
       // Compute the header height based on the compact header and the header height + paddings
       '--content-height': headerHeight ? `${headerHeight + ((compactHeader ? 8 : 24) * 2) + 8}px` : undefined,
     }
-  ), [headerTint, maxWidth, headerHeight, compactHeader]);
+  ), [zIndex, headerTint, maxWidth, headerHeight, compactHeader]);
 
   const shouldShowHandle = useMemo(() => !matches.small && dismissible, [matches, dismissible]);
 
