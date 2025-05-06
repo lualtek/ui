@@ -1,5 +1,15 @@
 # @lualtek/react-components
 
+## 19.1.0
+
+### Minor Changes
+
+- ee152e1: Add zIndex prop to Sheet
+
+### Patch Changes
+
+- @lualtek/icons@19.1.0
+
 ## 19.0.0
 
 ### Major Changes
