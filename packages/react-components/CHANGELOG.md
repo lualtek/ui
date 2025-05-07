@@ -1,5 +1,15 @@
 # @lualtek/react-components
 
+## 19.2.0
+
+### Minor Changes
+
+- 02400e9: Add Sheet.Close component
+
+### Patch Changes
+
+- @lualtek/icons@19.2.0
+
 ## 19.1.0
 
 ### Minor Changes
