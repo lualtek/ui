@@ -2,6 +2,7 @@
 
 import clsx from 'clsx';
 import {
+  FC,
   forwardRef, ReactNode, useMemo,
 } from 'react';
 import { RovingTabIndexProvider } from 'react-roving-tabindex';
@@ -34,22 +35,22 @@ export type MenuProps = React.ComponentPropsWithRef<'ul'> & {
   wrapWithPanel?: boolean;
 }
 
-type MenuComponent = React.ForwardRefExoticComponent<MenuProps> & {
+type MenuComponent = FC<MenuProps> & {
   Item: typeof MenuItem;
   ItemCheckbox: typeof MenuItemCheckbox;
   Separator: typeof MenuSeparator;
 }
 
-export const Menu = forwardRef<HTMLUListElement, MenuProps>((
+export const Menu: MenuComponent = (
   {
     className,
     children,
     maxHeight,
     wrapWithPanel = true,
     style,
+    ref: forwardedRef,
     ...otherProps
   },
-  forwardedRef,
 ) => {
   const dynamicStyle = useMemo(() => (
     {
@@ -88,7 +89,7 @@ export const Menu = forwardRef<HTMLUListElement, MenuProps>((
       </Stack>
     </ConditionalWrapper>
   );
-}) as MenuComponent;
+};
 
 Menu.Item = MenuItem;
 Menu.ItemCheckbox = MenuItemCheckbox;

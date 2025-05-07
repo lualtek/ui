@@ -246,11 +246,17 @@ export const SheetWrapper: FC<SheetProps> = ({
   );
 };
 
-export type SheetProps = DialogProps & SheetContentProps & { nested?: boolean };
+export type SheetProps = DialogProps & SheetContentProps & { nested?: boolean }
 
-export const Sheet: FC<SheetProps> = ({ nested, ...otherProps }) => (
+export type SheetComponent = FC<SheetProps> & {
+  Close: typeof Vaul.Close;
+};
+
+export const Sheet: SheetComponent = ({ nested, ...otherProps }) => (
   <ResponsiveProvider>
     <SheetWrapper nested={nested} {...otherProps} />
   </ResponsiveProvider>
 );
+
+Sheet.Close = Vaul.Close;
 
