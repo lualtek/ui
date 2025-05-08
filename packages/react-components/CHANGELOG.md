@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 19.2.2
+
+### Patch Changes
+
+- 493d3c1: fix popover content z-index
+  - @lualtek/icons@19.2.2
+
 ## 19.2.1
 
 ### Patch Changes
