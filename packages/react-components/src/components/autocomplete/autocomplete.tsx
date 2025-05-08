@@ -52,6 +52,12 @@ export type AutocompleteProps = TextfieldProps & {
    */
   matchFieldWidth?: boolean;
   /**
+   * Whether to use a portal for the options list. Set to false when
+   * autocomplete is inside a sheet.
+   * @defaultValue true
+   */
+  usePortal?: PopoverContentProps['usePortal'];
+  /**
    * Callback called when an option is selected.
    */
   onClickOption?: (value: AutocompleteOptionProps['value'], text?: string | null) => void;
@@ -74,6 +80,7 @@ export const Autocomplete: AutocompleteComponent = ({
   emptyContent = 'No items to show',
   matchFieldWidth = false,
   align = 'center',
+  usePortal = true,
   ref: forwardedRef,
   ...otherProps
 }) => {
@@ -137,7 +144,7 @@ export const Autocomplete: AutocompleteComponent = ({
           />
         </Popover.Anchor>
         <Popover.Content
-          usePortal
+          usePortal={usePortal}
           onOpenAutoFocus={event => event.preventDefault()}
           onInteractOutside={({ currentTarget }) => onInteractOutside(currentTarget)}
           onEscapeKeyDown={() => setIsOpen(false)}
