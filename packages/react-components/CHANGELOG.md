@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 19.2.1
+
+### Patch Changes
+
+- 0e84bbe: Add usePortal prop to autocomplete
+  - @lualtek/icons@19.2.1
+
 ## 19.2.0
 
 ### Minor Changes
