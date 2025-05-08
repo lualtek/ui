@@ -121,7 +121,7 @@ const SheetContent: FC<SheetContentProps & Pick<DialogProps, 'children' | 'dismi
     {
       '--max-w': maxWidth ?? undefined,
       '--header-tint': headerTint,
-      '--z-index': zIndex,
+      '--sheet-z-index': zIndex,
       // Compute the header height based on the compact header and the header height + paddings
       '--content-height': headerHeight ? `${headerHeight + ((compactHeader ? 8 : 24) * 2) + 8}px` : undefined,
     }

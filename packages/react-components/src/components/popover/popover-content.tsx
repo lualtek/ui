@@ -76,7 +76,7 @@ export const PopoverContent: FC<PopoverContentProps> = ({
       asChild
       sideOffset={Number(offset)}
       side={side}
-      style={{ zIndex: 'var(--overlay-z-index)' }}
+      style={{ zIndex: 'var(--sheet-z-index)' }}
       {...otherProps}
     >
       <m.div
