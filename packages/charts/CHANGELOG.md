@@ -1,5 +1,13 @@
 # @lualtek/charts
 
+## 19.2.3
+
+### Patch Changes
+
+- 5657426: Exporting charts Tooltip
+  - @lualtek/react-components@19.2.3
+  - @lualtek/tokens@19.2.3
+
 ## 19.2.2
 
 ### Patch Changes
