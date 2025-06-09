@@ -195,9 +195,9 @@ export const Panel: PanelComponent = (
         data-panel-radius={Boolean(radius)}
         data-panel-hover={Boolean(backgroundColorHover)}
         style={{ ...dynamicStyle, ...style }}
-        {...vibrant && vibrancy.attributes}
         {...otherProps}
       >
+        {vibrant && <span className={styles.Backdrop} {...vibrancy.attributes} />}
         {children}
       </Component>
     </ConditionalWrapper>
