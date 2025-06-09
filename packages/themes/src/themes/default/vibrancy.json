@@ -1,14 +1,14 @@
 {
   "vibrancy": {
     "foreground": {
-      "value": {
+      "$value": {
         "light": "{color.primary.100}",
         "dark": "{color.primary.30}"
       },
       "$type": "color"
     },
     "background": {
-      "value": {
+      "$value": {
         "light": "{color.support.white}",
         "dark": "{color.primary.100}"
       },
@@ -19,7 +19,7 @@
       "$type": "color"
     },
     "background-soft": {
-      "value": {
+      "$value": {
         "light": "{color.primary.0}",
         "dark": "{color.primary.90}"
       },
@@ -30,7 +30,7 @@
       "$type": "color"
     },
     "background-mid": {
-      "value": {
+      "$value": {
         "light": "{color.primary.10}",
         "dark": "{color.primary.80}"
       },
@@ -41,7 +41,7 @@
       "$type": "color"
     },
     "background-hard": {
-      "value": {
+      "$value": {
         "light": "{color.primary.30}",
         "dark": "{color.primary.70}"
       },
@@ -52,7 +52,7 @@
       "$type": "color"
     },
     "background-red": {
-      "value": {
+      "$value": {
         "light": "{color.red.50}",
         "dark": "{color.red.50}"
       },
@@ -63,7 +63,7 @@
       "$type": "color"
     },
     "background-green": {
-      "value": {
+      "$value": {
         "light": "{color.green.40}",
         "dark": "{color.green.40}"
       },
@@ -74,7 +74,7 @@
       "$type": "color"
     },
     "background-yellow": {
-      "value": {
+      "$value": {
         "light": "{color.yellow.50}",
         "dark": "{color.yellow.50}"
       },
@@ -85,7 +85,7 @@
       "$type": "color"
     },
     "background-brand": {
-      "value": {
+      "$value": {
         "light": "{color.brand.60}",
         "dark": "{color.brand.60}"
       },
