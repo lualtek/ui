@@ -2,14 +2,14 @@
   "gradient": {
     "brand": {
       "start": {
-        "value": {
+        "$value": {
           "light": "{color.brand.60}",
           "dark": "{color.brand.60}"
         },
         "$type": "color"
       },
       "end": {
-        "value": {
+        "$value": {
           "light": "{color.brand.70}",
           "dark": "{color.brand.70}"
         },
@@ -18,14 +18,14 @@
     },
     "primary": {
       "start": {
-        "value": {
+        "$value": {
           "light": "{color.primary.80}",
           "dark": "{color.primary.80}"
         },
         "$type": "color"
       },
       "end": {
-        "value": {
+        "$value": {
           "light": "{color.primary.90}",
           "dark": "{color.primary.90}"
         },
@@ -34,14 +34,14 @@
     },
     "cyan": {
       "start": {
-        "value": {
+        "$value": {
           "light": "{color.cyan.30}",
           "dark": "{color.cyan.30}"
         },
         "$type": "color"
       },
       "end": {
-        "value": {
+        "$value": {
           "light": "{color.cyan.60}",
           "dark": "{color.cyan.60}"
         },
@@ -50,14 +50,14 @@
     },
     "dawn": {
       "start": {
-        "value": {
+        "$value": {
           "light": "{color.cyan.50}",
           "dark": "{color.cyan.50}"
         },
         "$type": "color"
       },
       "end": {
-        "value": {
+        "$value": {
           "light": "{color.purple.40}",
           "dark": "{color.purple.40}"
         },
@@ -66,14 +66,14 @@
     },
     "mono": {
       "start": {
-        "value": {
+        "$value": {
           "light": "{color.gray.60}",
           "dark": "{color.gray.30}"
         },
         "$type": "color"
       },
       "end": {
-        "value": {
+        "$value": {
           "light": "{color.gray.90}",
           "dark": "{color.gray.70}"
         },
