@@ -1,12 +1,12 @@
 {
   "shadow": {
     "opacity-factor": {
-      "value": "10%"
+      "$value": "10%"
     }
   },
   "vibrancy": {
     "brightness": {
-      "value": {
+      "$value": {
         "light": 0.95,
         "dark": 0.85
       }

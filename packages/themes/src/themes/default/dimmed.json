@@ -2,63 +2,63 @@
   "dimmed": {
     "0": {
       "$type": "color",
-      "value": {
+      "$value": {
         "light": "{color.primary.0}",
         "dark": "{color.primary.90}"
       }
     },
     "1": {
       "$type": "color",
-      "value": {
+      "$value": {
         "light": "{color.primary.10}",
         "dark": "{color.primary.80}"
       }
     },
     "2": {
       "$type": "color",
-      "value": {
+      "$value": {
         "light": "{color.primary.20}",
         "dark": "{color.primary.70}"
       }
     },
     "3": {
       "$type": "color",
-      "value": {
+      "$value": {
         "light": "{color.primary.30}",
         "dark": "{color.primary.60}"
       }
     },
     "4": {
       "$type": "color",
-      "value": {
+      "$value": {
         "light": "{color.primary.40}",
         "dark": "{color.primary.50}"
       }
     },
     "5": {
       "$type": "color",
-      "value": {
+      "$value": {
         "light": "{color.primary.50}",
         "dark": "{color.primary.40}"
       }
     },
     "6": {
       "$type": "color",
-      "value": {
+      "$value": {
         "light": "{color.primary.60}",
         "dark": "{color.primary.30}"
       }
     },
     "7": {
       "$type": "color",
-      "value": {
+      "$value": {
         "light": "{color.primary.70}",
         "dark": "{color.primary.20}"
       }
     },
     "8": {
       "$type": "color",
-      "value": {
+      "$value": {
         "light": "{color.primary.80}",
         "dark": "{color.primary.0}"
       }
