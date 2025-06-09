@@ -10,5 +10,7 @@
     "@lualtek/tokens": "19.0.0",
     "tsconfig": "0.0.4"
   },
-  "changesets": []
+  "changesets": [
+    "spicy-comics-switch"
+  ]
 }

@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 19.2.4-next.0
+
+### Patch Changes
+
+- 9a6d3af: Fix Panel vibrancy on chrome
+  - @lualtek/icons@19.2.4-next.0
+
 ## 19.2.3
 
 ### Patch Changes
