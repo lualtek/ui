@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 19.2.5
+
+### Patch Changes
+
+- 5048212: Restore motion 12.3.1
+  - @lualtek/icons@19.2.5
+
 ## 19.2.4
 
 ### Patch Changes
