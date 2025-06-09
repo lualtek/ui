@@ -30,11 +30,11 @@
   },
   "dependencies": {
     "@lualtek/tokens": "workspace:*",
-    "cssnano": "7.0.6",
-    "cssnano-preset-default": "7.0.6",
+    "cssnano": "7.0.7",
+    "cssnano-preset-default": "7.0.7",
     "flat": "5.0.2",
-    "postcss-custom-media": "11.0.5",
-    "postcss-custom-selectors": "8.0.4",
+    "postcss-custom-media": "11.0.6",
+    "postcss-custom-selectors": "8.0.5",
     "postcss-functions": "4.0.2",
     "postcss-import": "16.1.0"
   },
