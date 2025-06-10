@@ -117,15 +117,22 @@ const SheetContent: FC<SheetContentProps & Pick<DialogProps, 'children' | 'dismi
     return 'center';
   }, [direction]);
 
+  const commonDynamicStyle = useMemo(() => (
+    {
+      '--sheet-z-index': zIndex,
+    }
+  ), [zIndex]);
+
   const dynamicStyle = useMemo(() => (
     {
+      ...commonDynamicStyle,
       '--max-w': maxWidth ?? undefined,
       '--header-tint': headerTint,
       '--sheet-z-index': zIndex,
       // Compute the header height based on the compact header and the header height + paddings
       '--content-height': headerHeight ? `${headerHeight + ((compactHeader ? 8 : 24) * 2) + 8}px` : undefined,
     }
-  ), [zIndex, headerTint, maxWidth, headerHeight, compactHeader]);
+  ), [zIndex, headerTint, maxWidth, headerHeight, commonDynamicStyle, compactHeader]);
 
   const shouldShowHandle = useMemo(() => !matches.small && dismissible, [matches, dismissible]);
 
@@ -142,7 +149,7 @@ const SheetContent: FC<SheetContentProps & Pick<DialogProps, 'children' | 'dismi
         </Vaul.Trigger>
       )}
       <Vaul.Portal>
-        <Vaul.Overlay className={styles.Overlay} />
+        <Vaul.Overlay style={{ ...commonDynamicStyle, ...dynamicStyle }} className={styles.Overlay} />
         <Vaul.Content asChild>
           <Stack
             style={{ ...dynamicStyle }}

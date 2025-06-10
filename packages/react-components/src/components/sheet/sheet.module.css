@@ -4,6 +4,7 @@
   position: fixed;
   inset: 0;
   background: oklch(from var(--global-background) l c h / 70%);
+  z-index: var(--sheet-z-index, auto);
 }
 
 .Sheet {
