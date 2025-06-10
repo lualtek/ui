@@ -371,9 +371,6 @@ importers:
 
   packages/themes:
     devDependencies:
-      '@lualtek/tokens':
-        specifier: workspace:*
-        version: link:../tokens
       '@types/fs-extra':
         specifier: 11.0.4
         version: 11.0.4
@@ -387,8 +384,8 @@ importers:
         specifier: 11.3.0
         version: 11.3.0
       style-dictionary:
-        specifier: 4.4.0
-        version: 4.4.0
+        specifier: 5.0.0
+        version: 5.0.0
       tsconfig:
         specifier: workspace:*
         version: link:../tsconfig
@@ -411,8 +408,8 @@ importers:
         specifier: 11.3.0
         version: 11.3.0
       style-dictionary:
-        specifier: 4.4.0
-        version: 4.4.0
+        specifier: 5.0.0
+        version: 5.0.0
       tsconfig:
         specifier: workspace:*
         version: link:../tsconfig
@@ -5004,9 +5001,9 @@ packages:
     resolution: {integrity: sha512-6fPc+R4ihwqP6N/aIv2f1gMH8lOVtWQHoqC4yK6oSDVVocumAsfCqjkXnqiYMhmMwS/mEHLp7Vehlt3ql6lEig==}
     engines: {node: '>=8'}
 
-  style-dictionary@4.4.0:
-    resolution: {integrity: sha512-+xU0IA1StzqAqFs/QtXkK+XJa7wpS4X5H+JQccRKsRCElgeLGocFU1U/UMvMUylKFw6vwGV+Y/a2wb2pm5rFFQ==}
-    engines: {node: '>=18.0.0'}
+  style-dictionary@5.0.0:
+    resolution: {integrity: sha512-ORuqKamQe4nL2B9ASmmz5LxKBDuiqHvP8jj4lQ+5kE1XJyagJVvgSz5VpTAG3dRheqlqN5++vtVmK1S6ZZyy/A==}
+    engines: {node: '>=22.0.0'}
     hasBin: true
 
   stylehacks@7.0.5:
@@ -9428,7 +9425,7 @@ snapshots:
       semver: 7.7.1
       slash: 2.0.0
       tmp: 0.0.33
-      yaml: 2.7.0
+      yaml: 2.8.0
 
   path-exists@4.0.0: {}
 
@@ -10438,11 +10435,12 @@ snapshots:
 
   strip-json-comments@3.1.1: {}
 
-  style-dictionary@4.4.0:
+  style-dictionary@5.0.0:
     dependencies:
       '@bundled-es-modules/deepmerge': 4.3.1
       '@bundled-es-modules/glob': 10.4.2
       '@bundled-es-modules/memfs': 4.9.4
+      '@types/node': 22.15.30
       '@zip.js/zip.js': 2.7.48
       chalk: 5.4.1
       change-case: 5.4.4

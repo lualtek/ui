@@ -9,9 +9,7 @@
     "access": "restricted"
   },
   "type": "module",
-  "files": [
-    "platforms/"
-  ],
+  "files": ["platforms/"],
   "exports": {
     "./web": "./platforms/web/default.css",
     "./web/pro": "./platforms/web/pro.css",
@@ -33,12 +31,11 @@
     "url": "https://github.com/lualtek/ui/issues"
   },
   "devDependencies": {
-    "@lualtek/tokens": "workspace:*",
     "@types/fs-extra": "11.0.4",
     "@types/node": "22.15.30",
     "colorjs.io": "0.5.2",
     "fs-extra": "11.3.0",
-    "style-dictionary": "4.4.0",
+    "style-dictionary": "5.0.0",
     "tsconfig": "workspace:*",
     "yargs": "17.7.2"
   }

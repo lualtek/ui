@@ -1,16 +1,9 @@
-import Color, { ColorTypes } from 'colorjs.io';
-import type { Transform } from 'style-dictionary/types';
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+import Color from 'colorjs.io';
+import type { ValueTransform } from 'style-dictionary/types';
+import { usesReferences } from 'style-dictionary/utils';
 
-type ThemeToken = {
-  name: string;
-  value: ColorTypes;
-  $value: ColorTypes;
-  $type: string;
-  saturation: number;
-  tranparency: { light: string; dark: string };
-}
-
-const OkLCH: Transform = {
+const OkLCH: ValueTransform = {
   name: 'color/oklch',
   type: 'value',
   transitive: true,
@@ -20,10 +13,16 @@ const OkLCH: Transform = {
       throw new Error(`Color token "${token.name}" has an empty value.`);
     }
 
-    const { light, dark } = token.value as { light: string; dark: string };
+    const { light, dark } = token.$value as { light: string; dark: string };
+
+    if (usesReferences(light) || usesReferences(dark)) {
+      // defer this transform, because our darken value is a reference
+      return undefined;
+    }
 
     const lightColor = new Color(light).to('oklch');
     const darkColor = new Color(dark).to('oklch');
+
     const transparency = token.original.transparency as { light: string; dark: string } | undefined;
     const normalizedColor = (color: Color) => color.toString().replace('none', '0');
     const colorSaturation = (color: Color) => color.set('c', Number(token.saturation));
@@ -39,6 +38,7 @@ const OkLCH: Transform = {
     );
 
     return `light-dark(${okLCHFormatter(lightColor, transparency?.light)}, ${okLCHFormatter(darkColor, transparency?.dark)})`;
+    // return `light-dark(${light}, ${dark})`;
   },
 };
 

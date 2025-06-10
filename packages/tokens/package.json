@@ -11,25 +11,15 @@
     "./web": "./platforms/web/index.js",
     "./web/tokens.json": "./platforms/web/tokens.json",
     "./web/tokens-flat.json": "./platforms/web/tokens-flat.json",
-    "./web/tokens.css": "./platforms/web/tokens.css",
-    "./raw/tokens.json": "./platforms/raw/tokens.json"
+    "./web/tokens.css": "./platforms/web/tokens.css"
   },
   "typesVersions": {
     "*": {
-      "web/*": [
-        "platforms/web/*"
-      ],
-      "raw/*": [
-        "platforms/raw/*"
-      ],
-      "platforms/*": [
-        "platforms/*"
-      ]
+      "web/*": ["platforms/web/*"],
+      "platforms/*": ["platforms/*"]
     }
   },
-  "files": [
-    "platforms/"
-  ],
+  "files": ["platforms/"],
   "scripts": {
     "prebuild": "rimraf platforms/",
     "build": "pnpm run build:tokens && pnpm run build:types",
@@ -51,7 +41,7 @@
     "@types/tinycolor2": "1.4.6",
     "colorjs.io": "0.5.2",
     "fs-extra": "11.3.0",
-    "style-dictionary": "4.4.0",
+    "style-dictionary": "5.0.0",
     "tsconfig": "workspace:*"
   }
 }
