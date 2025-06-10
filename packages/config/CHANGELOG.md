@@ -1,5 +1,13 @@
 # @lualtek/config
 
+## 19.2.6
+
+### Patch Changes
+
+- 8e19ea9: Update deps
+- Updated dependencies [8e19ea9]
+  - @lualtek/tokens@19.2.6
+
 ## 19.2.5
 
 ### Patch Changes
