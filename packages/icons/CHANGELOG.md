@@ -1,5 +1,11 @@
 # @lualtek/icons
 
+## 19.2.6
+
+### Patch Changes
+
+- 8e19ea9: Update deps
+
 ## 19.2.5
 
 ## 19.2.4

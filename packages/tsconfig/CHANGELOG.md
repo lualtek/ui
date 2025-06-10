@@ -1,5 +1,11 @@
 # tsconfig
 
+## 0.0.5
+
+### Patch Changes
+
+- 8e19ea9: Update deps
+
 ## 0.0.4
 
 ### Patch Changes
