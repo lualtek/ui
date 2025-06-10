@@ -10,8 +10,6 @@ import StyleDictionary from 'style-dictionary';
 import type { Config, TransformedToken } from 'style-dictionary/types';
 
 import LightDark from './transforms/light-dark.ts';
-// import cssLightDark from './transformers/light-dark.ts';
-import OkLCH from './transforms/oklch.ts';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -24,7 +22,8 @@ const __dirname = path.dirname(__filename);
  * and each variant name (eg: light/dark)
  * */
 const getConfig = (name: string): Config => ({
-  source: ['../tokens/src/configs/**/*.json', `src/themes/${name}/*.json`],
+  source: [`src/themes/${name}/*.json`],
+  include: ['../tokens/src/configs/**/*.json'],
   log: {
     verbosity: 'verbose', // Set to 'debug' for more verbose output
   },
@@ -35,11 +34,6 @@ const getConfig = (name: string): Config => ({
       buildPath: 'platforms/web/',
       transformGroup: 'css',
       transforms: [
-        /**
-         * Custom transformer
-         * @see ./transformers/oklch.ts
-         */
-        'color/oklch',
         /**
          * Custom transformer
          * @see ./transformers/light-dark.ts
@@ -92,7 +86,6 @@ availableThemes.forEach(async (theme) => {
    * Register custom transformers to process token values for
    * the web platform
    */
-  SDWithConfig.registerTransform(OkLCH);
   SDWithConfig.registerTransform(LightDark);
 
   /**
