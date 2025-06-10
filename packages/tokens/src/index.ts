@@ -4,9 +4,9 @@
 import StyleDictionary from 'style-dictionary';
 import type { Config } from 'style-dictionary/types';
 
-import HexToOkLch from './transformers/hex-oklch.ts';
-import SizePxToRem from './transformers/px-rem.ts';
-import SizePxToRootEm from './transformers/px-rootem.ts';
+import HexToOkLch from './transforms/hex-oklch.ts';
+import SizePxToRem from './transforms/px-rem.ts';
+import SizePxToRootEm from './transforms/px-rootem.ts';
 
 const config: Config = {
   source: ['src/configs/**/*.json'],
@@ -56,23 +56,6 @@ const config: Config = {
         fileHeader: (defaultMessage: string[] = []) => [
           ...defaultMessage,
           '© Lualtek Srl. All rights reserved.',
-        ],
-      },
-    },
-    raw: {
-      basePxFontSize: 18,
-      buildPath: 'platforms/raw/',
-      files: [
-        {
-          format: 'json/nested',
-          destination: 'tokens.json',
-        },
-      ],
-      options: {
-        showFileHeader: true,
-        fileHeader: (defaultMessage: string[] = []) => [
-          ...defaultMessage,
-          '© Lualtek Srl. All rights reserved. Developed by Mattia Astorino.',
         ],
       },
     },

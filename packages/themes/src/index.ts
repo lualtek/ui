@@ -7,11 +7,11 @@ import { fileURLToPath } from 'node:url';
 
 import fs from 'fs-extra';
 import StyleDictionary from 'style-dictionary';
-import type { Config } from 'style-dictionary/types';
+import type { Config, TransformedToken } from 'style-dictionary/types';
 
-import LightDark from './transformers/light-dark.ts';
+import LightDark from './transforms/light-dark.ts';
 // import cssLightDark from './transformers/light-dark.ts';
-import OkLCH from './transformers/oklch.ts';
+import OkLCH from './transforms/oklch.ts';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -24,11 +24,10 @@ const __dirname = path.dirname(__filename);
  * and each variant name (eg: light/dark)
  * */
 const getConfig = (name: string): Config => ({
-  source: [`./src/themes/${name}/*.json`],
-  include: [
-    // Inject raw tokens to be used in the transformation/references
-    '../tokens/platforms/raw/tokens.json',
-  ],
+  source: ['../tokens/src/configs/**/*.json', `src/themes/${name}/*.json`],
+  log: {
+    verbosity: 'verbose', // Set to 'debug' for more verbose output
+  },
   platforms: {
     // Build configuration for the web platform
     web: {
@@ -51,10 +50,14 @@ const getConfig = (name: string): Config => ({
         {
           format: 'css/variables',
           destination: `${name}.css`,
+          // Exclude referenced tokens from the themes files
+          filter: (token: TransformedToken) => token.filePath.includes(`src/themes/${name}`),
         },
         {
           format: 'json/flat',
           destination: `${name}.json`,
+          // Exclude referenced tokens from the themes files
+          filter: (token: TransformedToken) => token.filePath.includes(`src/themes/${name}`),
         },
       ],
       options: {
@@ -71,9 +74,11 @@ const getConfig = (name: string): Config => ({
 /**
  * Get all the folders inside the foldeer `themes` (eg, default, pro etc)
  */
-const availableThemes = fs.readdirSync(path.join(__dirname, 'themes')).filter(
-  file => fs.statSync(path.join(__dirname, 'themes', file)).isDirectory(),
-);
+const themesDir = path.join(__dirname, 'themes');
+const availableThemes = fs.readdirSync(themesDir).filter((item) => {
+  const itemPath = path.join(themesDir, item);
+  return fs.existsSync(itemPath) && fs.statSync(itemPath).isDirectory();
+});
 
 /**
  * For each folder inside themes and for each variant (dark, light) just create
