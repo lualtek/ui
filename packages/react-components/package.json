@@ -1,9 +1,7 @@
 {
   "name": "@lualtek/react-components",
   "version": "19.2.5",
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "type": "module",
   "types": "dist/index.d.ts",
   "module": "dist/index.js",
@@ -53,20 +51,20 @@
   ],
   "peerDependencies": {
     "constate": "^3.3.3",
-    "react": "^18.2",
-    "react-dom": "^18.2"
+    "react": "^19.1",
+    "react-dom": "^19.1"
   },
   "devDependencies": {
     "@lualtek/config": "workspace:*",
     "@lualtek/themes": "workspace:*",
     "@lualtek/tokens": "workspace:*",
-    "@types/node": "22.15.30",
-    "@types/react": "19.1.6",
+    "@types/node": "24.0.0",
+    "@types/react": "19.1.7",
     "@types/react-dom": "19.1.6",
     "postcss": "8.5.4",
     "postcss-cli": "11.0.1",
-    "react": "^19.1",
-    "react-dom": "^19.1",
+    "react": "19.1",
+    "react-dom": "19.1",
     "tsconfig": "workspace:*",
     "typed-css-modules": "0.9.1",
     "typescript": "5.8.3"
