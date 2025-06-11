@@ -1,5 +1,11 @@
 # @lualtek/icons
 
+## 19.3.0
+
+### Minor Changes
+
+- 271a72e: Add new megaphone icon
+
 ## 19.2.6
 
 ### Patch Changes
