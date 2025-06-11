@@ -1,5 +1,13 @@
 # @lualtek/react-components
 
+## 19.3.0
+
+### Patch Changes
+
+- 3b03c55: Fix sheet overlay index
+- Updated dependencies [271a72e]
+  - @lualtek/icons@19.3.0
+
 ## 19.2.6
 
 ### Patch Changes

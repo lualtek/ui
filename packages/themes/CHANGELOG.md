@@ -1,5 +1,7 @@
 # @lualtek/themes
 
+## 19.3.0
+
 ## 19.2.6
 
 ### Patch Changes
