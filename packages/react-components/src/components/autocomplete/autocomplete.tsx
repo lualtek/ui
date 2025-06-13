@@ -14,7 +14,7 @@ import { Except } from 'type-fest';
 
 import {
   Menu,
-  MenuProps, Panel, Popover, PopoverContentProps, Sheet, Skeleton, Stack, Text, Textfield, TextfieldProps,
+  MenuProps, Panel, Popover, PopoverContentProps, Sheet, SheetProps, Skeleton, Stack, Text, Textfield, TextfieldProps,
   useResponsiveContext,
 } from '@/components';
 
@@ -59,6 +59,11 @@ export type AutocompleteProps = TextfieldProps & {
    */
   usePortal?: PopoverContentProps['usePortal'];
   /**
+   * Set the index of the nested sheet on mobile devices.
+   * @defaultValue 2
+   */
+  zIndex?: SheetProps['zIndex'];
+  /**
    * Callback called when an option is selected.
    */
   onClickOption?: (value: AutocompleteOptionProps['value'], text?: string | null) => void;
@@ -83,6 +88,7 @@ export const Autocomplete: AutocompleteComponent = ({
   align = 'center',
   usePortal = true,
   ref: forwardedRef,
+  zIndex = 2,
   style,
   ...otherProps
 }) => {
@@ -208,6 +214,7 @@ export const Autocomplete: AutocompleteComponent = ({
             noPadding
             nested
             open={isOpen}
+            zIndex={zIndex}
             onOpenChange={open => setIsOpen(open)}
             trigger={(
               <Textfield
