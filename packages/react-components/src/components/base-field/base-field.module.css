@@ -25,6 +25,7 @@
     border: 0;
     box-shadow: 0 0 0 1px var(--global-outer-contrast-border), inset 0 0 0 1px var(--inner-border-color);
     border-radius: --token(--radius-16);
+    text-align: start;
 
     &::-webkit-calendar-picker-indicator {
       background-image: none;

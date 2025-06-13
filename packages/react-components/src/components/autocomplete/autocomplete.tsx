@@ -3,7 +3,6 @@
 import clsx from 'clsx';
 import {
   Children,
-  ComponentPropsWithRef,
   FC,
   ReactNode,
   useCallback,
@@ -13,11 +12,12 @@ import {
 import { useDebounce } from 'react-use';
 
 import {
-  Menu,
-  MenuProps, Panel, Popover, PopoverContentProps, Skeleton, Stack, Text, Textfield, TextfieldProps,
+  MenuProps, Popover, PopoverContentProps, Sheet, SheetProps, Skeleton, Stack, Text, Textfield, TextfieldProps,
+  useResponsiveContext,
 } from '@/components';
 
 import styles from './autocomplete.module.css';
+import { AutocompleteList } from './autocomplete-list';
 import { AutocompleteOption, AutocompleteOptionProps } from './autocomplete-option';
 
 export type AutocompleteProps = TextfieldProps & {
@@ -58,16 +58,17 @@ export type AutocompleteProps = TextfieldProps & {
    */
   usePortal?: PopoverContentProps['usePortal'];
   /**
+   * Set the index of the nested sheet on mobile devices.
+   * @defaultValue 2
+   */
+  zIndex?: SheetProps['zIndex'];
+  /**
    * Callback called when an option is selected.
    */
   onClickOption?: (value: AutocompleteOptionProps['value'], text?: string | null) => void;
 };
 
-type AutocompleteComponent = FC<AutocompleteProps> & {
-  Option: FC<AutocompleteOptionProps>;
-}
-
-export const Autocomplete: AutocompleteComponent = ({
+export const Autocomplete: FC<AutocompleteProps> = ({
   className,
   children,
   disabled,
@@ -82,11 +83,16 @@ export const Autocomplete: AutocompleteComponent = ({
   align = 'center',
   usePortal = true,
   ref: forwardedRef,
+  zIndex = 2,
+  style,
   ...otherProps
 }) => {
   const [currentValue, setCurrentValue] = useState(value);
   const [debouncedValue, setDebouncedValue] = useState<typeof currentValue>();
   const [isOpen, setIsOpen] = useState(false);
+  const { matches } = useResponsiveContext();
+  const isDesktop = useMemo(() => matches.small, [matches]);
+
   const [, cancel] = useDebounce(
     () => {
       setDebouncedValue(currentValue);
@@ -129,61 +135,93 @@ export const Autocomplete: AutocompleteComponent = ({
 
   return (
     <div className={clsx(styles.Autocomplete, className)}>
-      <Popover open={isOpen}>
-        <Popover.Anchor>
-          <Textfield
-            ref={forwardedRef}
-            autoComplete="off"
-            disabled={disabled}
-            readOnly={readOnly}
-            value={currentValue}
-            onChange={event => setCurrentValue(event.target.value)}
-            onFocus={() => setIsOpen(true)}
-            id="autocompleteInput"
-            {...otherProps}
-          />
-        </Popover.Anchor>
-        <Popover.Content
-          usePortal={usePortal}
-          onOpenAutoFocus={event => event.preventDefault()}
-          onInteractOutside={({ currentTarget }) => onInteractOutside(currentTarget)}
-          onEscapeKeyDown={() => setIsOpen(false)}
-          align={align}
-        >
-          <Menu
-            role="listbox"
-            className={styles.OptionsList}
-            data-autocomplete-match-width={matchFieldWidth || loading}
-            maxHeight={maxHeight}
+      {isDesktop ? (
+        <Popover open={isOpen}>
+          <Popover.Anchor>
+            <Textfield
+              ref={forwardedRef}
+              autoComplete="off"
+              disabled={disabled}
+              readOnly={readOnly}
+              value={currentValue}
+              type="search"
+              onChange={event => setCurrentValue(event.target.value)}
+              onFocus={() => setIsOpen(true)}
+              id="autocompleteInput"
+              style={style}
+              {...otherProps}
+            />
+          </Popover.Anchor>
+          <Popover.Content
+            usePortal={usePortal}
+            onOpenAutoFocus={event => event.preventDefault()}
+            onInteractOutside={({ currentTarget }) => onInteractOutside(currentTarget)}
+            onEscapeKeyDown={() => setIsOpen(false)}
+            align={align}
           >
-            {(filteredOptions?.length === 0 && !loading) && (
-              <Text
-                as="div"
-                align="center"
-                dimmed={5}
-              >
-                {emptyContent}
-              </Text>
+            <AutocompleteList
+              emptyContent={emptyContent}
+              matchFieldWidth={matchFieldWidth}
+              loading={loading}
+              maxHeight={maxHeight}
+              options={filteredOptions}
+              onClickOption={handleClickOption}
+            />
+          </Popover.Content>
+        </Popover>
+      )
+      /**
+       * Fallback to Sheet for mobile devices with UI adapted to touch interactions
+       */
+        : (
+          <Sheet
+            heading="Search options"
+            showHeading={false}
+            noPadding
+            nested
+            open={isOpen}
+            zIndex={zIndex}
+            onOpenChange={open => setIsOpen(open)}
+            trigger={(
+              <Textfield
+                ref={forwardedRef}
+                autoComplete="off"
+                disabled={disabled}
+                readOnly={readOnly}
+                value={currentValue}
+                id="autocompleteInput"
+                style={style}
+                {...otherProps}
+              />
             )}
-            {loading
-              ? <Stack hPadding={16} vPadding={8} as="span"><Skeleton count={5} /></Stack>
-              : filteredOptions?.map(({ value, children, ...rest }) => (
-                <Autocomplete.Option
-                  key={value}
-                  value={value}
-                  onClick={handleClickOption}
-                  {...rest}
-                >
-                  {children}
-                </Autocomplete.Option>
-              ))
-            }
-          </Menu>
-        </Popover.Content>
-      </Popover>
+          >
+            <Stack hPadding={24} vPadding={[8, 8]}>
+              <Textfield
+                {...otherProps}
+                icon="zoom"
+                showClearButton
+                onClear={() => {
+                  setCurrentValue('');
+                }}
+                fullWidth
+                ref={forwardedRef}
+                autoComplete="off"
+                label=""
+                value={currentValue}
+                type="search"
+                onChange={event => setCurrentValue(event.target.value)}
+                id="autocompleteInput"
+              />
+            </Stack>
+            <AutocompleteList
+              emptyContent={emptyContent}
+              loading={loading}
+              options={filteredOptions}
+              onClickOption={handleClickOption}
+            />
+          </Sheet>
+        )
+      }
     </div>
   );
 };
-
-Autocomplete.Option = AutocompleteOption;
-

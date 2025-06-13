@@ -1,5 +1,36 @@
 # @lualtek/react-components
 
+## 19.4.0-next.3
+
+### Patch Changes
+
+- eaa0a7f: Minor css tweaks
+  - @lualtek/icons@19.4.0-next.3
+
+## 19.4.0-next.2
+
+### Patch Changes
+
+- 31518dc: Minor tweaks
+  - @lualtek/icons@19.4.0-next.2
+
+## 19.4.0-next.1
+
+### Patch Changes
+
+- e56afaa: Add zIndex to nested sheet
+  - @lualtek/icons@19.4.0-next.1
+
+## 19.4.0-next.0
+
+### Minor Changes
+
+- 0060eff: Improve autocomplete on mobile/small screens
+
+### Patch Changes
+
+- @lualtek/icons@19.4.0-next.0
+
 ## 19.3.0
 
 ### Patch Changes
