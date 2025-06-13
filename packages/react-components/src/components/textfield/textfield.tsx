@@ -207,16 +207,18 @@ export const Textfield: FC<TextfieldProps> = ({
           </Stack>
         )}
 
-        <Text
-          as="label"
-          responsive={false}
-          dimmed={5}
-          className={styles.Label}
-          size={14}
-          htmlFor={fieldID}
-        >
-          {label}
-        </Text>
+        {label !== '' && (
+          <Text
+            as="label"
+            responsive={false}
+            dimmed={5}
+            className={styles.Label}
+            size={14}
+            htmlFor={fieldID}
+          >
+            {label}
+          </Text>
+        )}
       </div>
       {(isUserInvalid && hint) && (
         <Stack

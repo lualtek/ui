@@ -1,7 +1,7 @@
 /* eslint-disable no-alert */
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Chip } from '../..';
+import { Chip, ResponsiveProvider } from '../..';
 import { Autocomplete } from './autocomplete';
 
 const options = [
@@ -20,7 +20,7 @@ const options = [
   },
 ];
 
-const meta = {
+const meta: Meta<typeof Autocomplete> = {
   title: 'Inputs/Autocomplete',
   component: Autocomplete,
   args: {
@@ -31,7 +31,14 @@ const meta = {
     matchFieldWidth: false,
     style: { maxWidth: '300px' },
   },
-} satisfies Meta<typeof Autocomplete>;
+  decorators: [
+    Story => (
+      <ResponsiveProvider>
+        <Story />
+      </ResponsiveProvider>
+    ),
+  ],
+};
 
 export default meta;
 
@@ -47,6 +54,6 @@ export const Loading = {
 
 export const CustomEvent = {
   args: {
-    onClickOption: value => alert(value),
+    onClickOption: (value: string) => alert(value),
   },
 } satisfies Story;
