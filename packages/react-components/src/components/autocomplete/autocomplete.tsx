@@ -10,15 +10,14 @@ import {
   useState,
 } from 'react';
 import { useDebounce } from 'react-use';
-import { Except } from 'type-fest';
 
 import {
-  Menu,
-  MenuProps, Panel, Popover, PopoverContentProps, Sheet, SheetProps, Skeleton, Stack, Text, Textfield, TextfieldProps,
+  MenuProps, Popover, PopoverContentProps, Sheet, SheetProps, Skeleton, Stack, Text, Textfield, TextfieldProps,
   useResponsiveContext,
 } from '@/components';
 
 import styles from './autocomplete.module.css';
+import { AutocompleteList } from './autocomplete-list';
 import { AutocompleteOption, AutocompleteOptionProps } from './autocomplete-option';
 
 export type AutocompleteProps = TextfieldProps & {
@@ -69,11 +68,7 @@ export type AutocompleteProps = TextfieldProps & {
   onClickOption?: (value: AutocompleteOptionProps['value'], text?: string | null) => void;
 };
 
-type AutocompleteComponent = FC<AutocompleteProps> & {
-  Option: FC<AutocompleteOptionProps>;
-}
-
-export const Autocomplete: AutocompleteComponent = ({
+export const Autocomplete: FC<AutocompleteProps> = ({
   className,
   children,
   disabled,
@@ -94,8 +89,8 @@ export const Autocomplete: AutocompleteComponent = ({
 }) => {
   const [currentValue, setCurrentValue] = useState(value);
   const [debouncedValue, setDebouncedValue] = useState<typeof currentValue>();
-  const { matches } = useResponsiveContext();
   const [isOpen, setIsOpen] = useState(false);
+  const { matches } = useResponsiveContext();
   const isDesktop = useMemo(() => matches.small, [matches]);
 
   const [, cancel] = useDebounce(
@@ -138,43 +133,6 @@ export const Autocomplete: AutocompleteComponent = ({
     setCurrentValue(text ?? value);
   }, [onClickOption]);
 
-  const List = useCallback(
-    () => (
-      <Menu
-        role="listbox"
-        wrapWithPanel={isDesktop}
-        className={styles.OptionsList}
-        data-autocomplete-match-width={matchFieldWidth || loading}
-        maxHeight={maxHeight}
-      >
-        {(filteredOptions?.length === 0 && !loading) && (
-          <Text
-            as="div"
-            align="center"
-            dimmed={5}
-          >
-            {emptyContent}
-          </Text>
-        )}
-        {loading
-          ? <Stack hPadding={16} vPadding={8} as="span"><Skeleton count={5} /></Stack>
-          : (matches.small ? filteredOptions : options)?.map(({ value, children, ...rest }) => (
-            <Autocomplete.Option
-              key={value}
-              value={value}
-              onClick={handleClickOption}
-              {...rest}
-            >
-              {children}
-            </Autocomplete.Option>
-          ))
-        }
-      </Menu>
-    ),
-    [isDesktop, matchFieldWidth, loading, maxHeight, filteredOptions,
-      emptyContent, matches.small, options, handleClickOption],
-  );
-
   return (
     <div className={clsx(styles.Autocomplete, className)}>
       {isDesktop ? (
@@ -200,7 +158,14 @@ export const Autocomplete: AutocompleteComponent = ({
             onEscapeKeyDown={() => setIsOpen(false)}
             align={align}
           >
-            <List />
+            <AutocompleteList
+              emptyContent={emptyContent}
+              matchFieldWidth={matchFieldWidth}
+              loading={loading}
+              maxHeight={maxHeight}
+              options={filteredOptions}
+              onClickOption={handleClickOption}
+            />
           </Popover.Content>
         </Popover>
       )
@@ -240,13 +205,17 @@ export const Autocomplete: AutocompleteComponent = ({
                 id="autocompleteInput"
               />
             </Stack>
-            <List />
+            <AutocompleteList
+              emptyContent={emptyContent}
+              matchFieldWidth={matchFieldWidth}
+              loading={loading}
+              maxHeight={maxHeight}
+              options={filteredOptions}
+              onClickOption={handleClickOption}
+            />
           </Sheet>
         )
       }
     </div>
   );
 };
-
-Autocomplete.Option = AutocompleteOption;
-
