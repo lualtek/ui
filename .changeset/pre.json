@@ -10,5 +10,7 @@
     "@lualtek/tokens": "19.3.0",
     "tsconfig": "0.0.5"
   },
-  "changesets": []
+  "changesets": [
+    "clean-llamas-thank"
+  ]
 }
