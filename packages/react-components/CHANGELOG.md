@@ -1,5 +1,15 @@
 # @lualtek/react-components
 
+## 19.4.0-next.0
+
+### Minor Changes
+
+- 0060eff: Improve autocomplete on mobile/small screens
+
+### Patch Changes
+
+- @lualtek/icons@19.4.0-next.0
+
 ## 19.3.0
 
 ### Patch Changes
