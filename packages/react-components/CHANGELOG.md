@@ -1,5 +1,18 @@
 # @lualtek/react-components
 
+## 19.4.0
+
+### Minor Changes
+
+- be2dd46: Improve autocomplete on mobile/small screens
+
+### Patch Changes
+
+- be2dd46: Minor css tweaks
+- be2dd46: Minor tweaks
+- be2dd46: Add zIndex to nested sheet
+  - @lualtek/icons@19.4.0
+
 ## 19.4.0-next.3
 
 ### Patch Changes
