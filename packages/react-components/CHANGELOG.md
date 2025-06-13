@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 19.4.0-next.1
+
+### Patch Changes
+
+- e56afaa: Add zIndex to nested sheet
+  - @lualtek/icons@19.4.0-next.1
+
 ## 19.4.0-next.0
 
 ### Minor Changes
