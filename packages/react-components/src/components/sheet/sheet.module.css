@@ -9,7 +9,7 @@
 
 .Sheet {
   --handle-height: 22px;
-  --safe-padding-bottom: max(
+  --sheet-safe-padding-bottom: max(
     min(calc(env(safe-area-inset-bottom) + --token(--space-16)), --token(--space-16)),
     --token(--space-16)
   );
@@ -112,7 +112,7 @@
   }
 
   &[data-sheet-content-safe-padding='true'] {
-    padding-block-end: var(--safe-padding-bottom);
+    padding-block-end: var(--sheet-safe-padding-bottom);
   }
 }
 

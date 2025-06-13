@@ -198,6 +198,9 @@ export const Autocomplete: AutocompleteComponent = ({
           </Popover.Content>
         </Popover>
       )
+      /**
+       * Fallback to Sheet for mobile devices with UI adapted to touch interactions
+       */
         : (
           <Sheet
             heading="Search options"

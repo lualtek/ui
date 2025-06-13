@@ -9,7 +9,7 @@
     -webkit-overflow-scrolling: touch;
     overscroll-behavior: contain;
     min-inline-size: var(--radix-popover-trigger-width);
-    padding-block-end: var(--safe-padding-bottom);
+    padding-block-end: var(--sheet-safe-padding-bottom);
 
     &[data-autocomplete-match-width='true'] {
       inline-size: var(--radix-popover-trigger-width);
