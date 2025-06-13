@@ -1,3 +1,5 @@
+@import '../../core/utils/media.css';
+
 @layer components {
   .Autocomplete {
     display: unset;
@@ -9,7 +11,10 @@
     -webkit-overflow-scrolling: touch;
     overscroll-behavior: contain;
     min-inline-size: var(--radix-popover-trigger-width);
-    padding-block-end: max(var(--sheet-safe-padding-bottom, 0px), --token(--space-8));
+
+    @media (--from-small) {
+      padding-block-end: var(--sheet-safe-padding-bottom, 8px);
+    }
 
     &[data-autocomplete-match-width='true'] {
       inline-size: var(--radix-popover-trigger-width);

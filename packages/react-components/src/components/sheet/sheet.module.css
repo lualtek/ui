@@ -10,7 +10,7 @@
 .Sheet {
   --handle-height: 22px;
   --sheet-safe-padding-bottom: max(
-    min(calc(env(safe-area-inset-bottom) + --token(--space-16)), --token(--space-16)),
+    min(calc(env(safe-area-inset-bottom, 0px) + --token(--space-16)), --token(--space-16)),
     --token(--space-16)
   );
 
