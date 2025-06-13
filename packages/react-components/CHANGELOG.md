@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 19.4.0-next.2
+
+### Patch Changes
+
+- 31518dc: Minor tweaks
+  - @lualtek/icons@19.4.0-next.2
+
 ## 19.4.0-next.1
 
 ### Patch Changes
