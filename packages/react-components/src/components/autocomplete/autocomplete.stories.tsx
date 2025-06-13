@@ -26,7 +26,7 @@ const meta: Meta<typeof Autocomplete> = {
   args: {
     label: 'Autocomplete',
     invalid: false,
-    icon: 'zoom',
+    icon: 'position-marker',
     options,
     matchFieldWidth: false,
     style: { maxWidth: '300px' },

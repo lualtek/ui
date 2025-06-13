@@ -144,6 +144,7 @@ export const Autocomplete: FC<AutocompleteProps> = ({
               disabled={disabled}
               readOnly={readOnly}
               value={currentValue}
+              type="search"
               onChange={event => setCurrentValue(event.target.value)}
               onFocus={() => setIsOpen(true)}
               id="autocompleteInput"
@@ -197,19 +198,24 @@ export const Autocomplete: FC<AutocompleteProps> = ({
             <Stack hPadding={24} vPadding={[8, 8]}>
               <Textfield
                 {...otherProps}
+                icon="zoom"
+                showClearButton
+                onClear={() => {
+                  setCurrentValue('');
+                }}
                 fullWidth
                 ref={forwardedRef}
                 autoComplete="off"
                 label=""
+                value={currentValue}
+                type="search"
                 onChange={event => setCurrentValue(event.target.value)}
                 id="autocompleteInput"
               />
             </Stack>
             <AutocompleteList
               emptyContent={emptyContent}
-              matchFieldWidth={matchFieldWidth}
               loading={loading}
-              maxHeight={maxHeight}
               options={filteredOptions}
               onClickOption={handleClickOption}
             />
