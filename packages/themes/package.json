@@ -34,7 +34,7 @@
   },
   "devDependencies": {
     "@types/fs-extra": "11.0.4",
-    "@types/node": "24.0.0",
+    "@types/node": "24.0.2",
     "colorjs.io": "0.5.2",
     "fs-extra": "11.3.0",
     "style-dictionary": "5.0.0",
