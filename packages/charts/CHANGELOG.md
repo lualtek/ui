@@ -1,5 +1,12 @@
 # @lualtek/charts
 
+## 19.5.0
+
+### Patch Changes
+
+- @lualtek/react-components@19.5.0
+- @lualtek/tokens@19.5.0
+
 ## 19.4.0
 
 ### Patch Changes

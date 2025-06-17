@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 19.5.0
+
+### Patch Changes
+
+- Updated dependencies [2e89659]
+  - @lualtek/icons@19.5.0
+
 ## 19.4.0
 
 ### Minor Changes

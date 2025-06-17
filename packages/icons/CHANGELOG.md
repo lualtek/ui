@@ -1,5 +1,11 @@
 # @lualtek/icons
 
+## 19.5.0
+
+### Minor Changes
+
+- 2e89659: Add new solid-drop icons
+
 ## 19.4.0
 
 ## 19.4.0-next.3
