@@ -2,10 +2,8 @@
   "name": "@lualtek/ui",
   "version": "0.0.0",
   "private": true,
-  "packageManager": "pnpm@10.12.1",
-  "workspaces": [
-    "packages/*"
-  ],
+  "packageManager": "pnpm@9.9.0",
+  "workspaces": ["packages/*"],
   "scripts": {
     "build": "turbo run build",
     "build:nocache": "turbo run build --force",
