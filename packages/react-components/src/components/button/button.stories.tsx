@@ -82,3 +82,11 @@ export const WithCustomIcon = {
     icon: <CustomReactIcon />,
   },
 } satisfies Story;
+
+export const OpticalIconSize = {
+  args: {
+    iconOpticalSize: {
+      big: 24,
+    },
+  },
+} satisfies Story;

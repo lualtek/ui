@@ -38,4 +38,11 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default = {} satisfies Story;
+export const WithIconOpticalSize = {
+  args: {
+    iconOpticalSize: {
+      regular: 12,
+    },
+  },
+} satisfies Story;
 
