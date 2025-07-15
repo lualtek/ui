@@ -25,7 +25,7 @@ export type TooltipProps = {
   /**
    * The label of the tooltip for the X-axis.
    */
-  label?: TooltipContentProps<string | number, string>['label']; // Aggiornato il tipo qui
+  label?: TooltipContentProps<any, any>['label'];
   /**
    * The payload of the tooltip.
    */
@@ -41,7 +41,7 @@ export type TooltipProps = {
    * @param value TooltipEntry
    * @returns string
    */
-  formatLabel?: (label: string | number) => string; // Aggiornato il tipo qui
+  formatLabel?: (label: string) => string;
   /**
    * custom function to format the payload labels
    * @param value TooltipEntry
