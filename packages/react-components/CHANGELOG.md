@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 19.5.4
+
+### Patch Changes
+
+- f67e2bc: Update emoji-picker
+  - @lualtek/icons@19.5.4
+
 ## 19.5.3
 
 ### Patch Changes
