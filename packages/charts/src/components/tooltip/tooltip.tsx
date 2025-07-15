@@ -5,6 +5,7 @@ import {
   Panel, Stack, Text, Title,
 } from '@lualtek/react-components';
 import { FC, Fragment, ReactNode } from 'react';
+import { TooltipContentProps } from 'recharts';
 import { SetRequired } from 'type-fest';
 
 export type TooltipEntry = {
@@ -24,7 +25,7 @@ export type TooltipProps = {
   /**
    * The label of the tooltip for the X-axis.
    */
-  label?: string;
+  label?: TooltipContentProps<any, any>['label']; // Aggiornato il tipo qui
   /**
    * The payload of the tooltip.
    */
@@ -40,7 +41,7 @@ export type TooltipProps = {
    * @param value TooltipEntry
    * @returns string
    */
-  formatLabel?: (label: string) => string;
+  formatLabel?: (label: string | number) => string; // Aggiornato il tipo qui
   /**
    * custom function to format the payload labels
    * @param value TooltipEntry
@@ -111,4 +112,3 @@ export const Tooltip: FC<TooltipProps> = ({
     </Panel>
   </Elevator>
 );
-

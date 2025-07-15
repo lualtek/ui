@@ -141,10 +141,10 @@ export type BaseChartProps = Except<ResponsiveContainerProps, 'className'> & {
   /**
    * Render a custom tooltip instead of the default one.
    *
-   * @param props { active?: boolean; label?: string; payload?: TooltipEntry[]; }
+   * @param props { active?: boolean; label?: string | number; payload?: TooltipEntry[]; }
    * @returns JSX.Element
    */
-  customTooltip?: (props: TooltipProps) => JSX.Element;
+  customTooltip?: (props: TooltipProps) => JSX.Element; // Aggiornato il tipo qui
   /**
    * custom function to format the tooltip label/title
    * @param value TooltipEntry
@@ -292,4 +292,3 @@ export const BaseChart: BaseChartComponent = ({
     </div>
   );
 };
-
