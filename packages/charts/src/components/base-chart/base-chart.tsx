@@ -239,6 +239,7 @@ export const BaseChart: BaseChartComponent = ({
             {showTooltip && (
               <ReTooltip
                 cursor={cursor}
+                isAnimationActive={false}
                 content={customTooltip ?? (
                   <Tooltip
                     formatLabel={formatTooltipLabel}
