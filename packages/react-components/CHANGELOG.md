@@ -1,5 +1,15 @@
 # @lualtek/react-components
 
+## 19.6.0
+
+### Minor Changes
+
+- 4c895df: Add showCloseButton prop to Sheet
+
+### Patch Changes
+
+- @lualtek/icons@19.6.0
+
 ## 19.5.4
 
 ### Patch Changes
