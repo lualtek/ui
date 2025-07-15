@@ -1,5 +1,13 @@
 # @lualtek/charts
 
+## 19.5.2
+
+### Patch Changes
+
+- f595ee6: Try to fix tooltip
+  - @lualtek/react-components@19.5.2
+  - @lualtek/tokens@19.5.2
+
 ## 19.5.1
 
 ### Patch Changes
