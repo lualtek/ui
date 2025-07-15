@@ -144,7 +144,7 @@ export type BaseChartProps = Except<ResponsiveContainerProps, 'className'> & {
    * @param props { active?: boolean; label?: string | number; payload?: TooltipEntry[]; }
    * @returns JSX.Element
    */
-  customTooltip?: (props: TooltipProps) => JSX.Element; // Aggiornato il tipo qui
+  customTooltip?: (props: TooltipProps) => JSX.Element;
   /**
    * custom function to format the tooltip label/title
    * @param value TooltipEntry

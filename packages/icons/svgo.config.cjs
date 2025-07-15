@@ -21,7 +21,6 @@ module.exports = {
             names2hex: true,
             rgb2hex: true,
           },
-          removeViewBox: false,
           removeMetadata: false,
         },
       },
