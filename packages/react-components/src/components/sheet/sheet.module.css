@@ -135,3 +135,10 @@
     z-index: 1;
   }
 }
+
+
+.ClosingButton {
+  position: absolute;
+  top: --token(--space-16);
+  right: --token(--space-16);
+}

@@ -7,8 +7,8 @@ import { useMeasure } from 'react-use';
 import { DialogProps, Drawer as Vaul } from 'vaul';
 
 import {
-  ClampText, Panel, ResponsiveProvider, ScrollArea,
-  Stack, StackProps, Text, Title,
+  ClampText, IconButton, Panel, ResponsiveProvider, ScrollArea,
+  Stack, Text, Title,
   useResponsiveContext,
 } from '@/components';
 
@@ -87,6 +87,10 @@ type SheetContentProps = React.ComponentPropsWithRef<typeof Vaul.Content> & {
    *
    */
   scrollerRef?: React.RefObject<HTMLDivElement | null>;
+  /**
+   * Show the close button in the header.
+   */
+  showCloseButton?: boolean;
 }
 
 const SheetContent: FC<SheetContentProps & Pick<DialogProps, 'children' | 'dismissible' | 'direction'>> = ({
@@ -105,6 +109,7 @@ const SheetContent: FC<SheetContentProps & Pick<DialogProps, 'children' | 'dismi
   showHeading = true,
   scrollInside = false,
   scrollerRef,
+  showCloseButton = false,
   zIndex,
   ref: forwardedRef,
 }) => {
@@ -171,6 +176,15 @@ const SheetContent: FC<SheetContentProps & Pick<DialogProps, 'children' | 'dismi
               radius={24}
               glowFitContent={matches.small}
             >
+              {showCloseButton && (
+                <Vaul.Close asChild>
+                  <IconButton
+                    icon="remove"
+                    kind="secondary"
+                    className={styles.ClosingButton}
+                  />
+                </Vaul.Close>
+              )}
               <Stack className={styles.Container}>
                 <ScrollArea
                   className={styles.Scroller}
@@ -201,9 +215,11 @@ const SheetContent: FC<SheetContentProps & Pick<DialogProps, 'children' | 'dismi
 
                     {description && (
                       <Vaul.Description asChild>
-                        <Text dimmed={5} weight="regular" size={compactHeader ? 14 : 16}>
-                          <ClampText rows={2}>{description}</ClampText>
-                        </Text>
+                        <Stack hPadding={[0, showCloseButton ? 48 : 0]}>
+                          <Text dimmed={5} weight="regular" size={compactHeader ? 14 : 16}>
+                            <ClampText rows={2}>{description}</ClampText>
+                          </Text>
+                        </Stack>
                       </Vaul.Description>
                     )}
                   </Stack>

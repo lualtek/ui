@@ -16,6 +16,7 @@ const meta = {
     direction: 'bottom',
     heading: 'Sheet title',
     trigger: <Button>Open sheet</Button>,
+    showCloseButton: false,
     description: `This component can be used as a Dialog replacement on mobile and tablet devices.
 You can read about why and how it was built`,
     children:

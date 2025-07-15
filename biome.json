@@ -8,7 +8,8 @@
     "includes": ["**", "!**/types/**", "!**/*.{js,ts,tsx,mjs,cjs}"],
     "rules": {
       "correctness": {
-        "noUnknownFunction": "error"
+        "noUnknownFunction": "error",
+        "noUnknownMediaFeatureName": "off"
       }
     }
   },

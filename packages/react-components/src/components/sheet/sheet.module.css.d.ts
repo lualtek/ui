@@ -3,6 +3,7 @@ declare const styles: {
   readonly "HandleWrapper": string;
   readonly "Header": string;
   readonly "Overlay": string;
+  readonly "ClosingButton": string;
   readonly "SafeGuard": string;
   readonly "Scroller": string;
   readonly "Sheet": string;
