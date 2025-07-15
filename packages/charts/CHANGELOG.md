@@ -1,5 +1,14 @@
 # @lualtek/charts
 
+## 19.5.3
+
+### Patch Changes
+
+- 4309835: Add some any
+- d309e30: Try to fix tooltip
+  - @lualtek/react-components@19.5.3
+  - @lualtek/tokens@19.5.3
+
 ## 19.5.2
 
 ### Patch Changes
