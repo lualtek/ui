@@ -41,7 +41,7 @@ export type TooltipProps = {
    * @param value TooltipEntry
    * @returns string
    */
-  formatLabel?: (label: string) => string;
+  formatLabel?: (label: any) => string;
   /**
    * custom function to format the payload labels
    * @param value TooltipEntry
