@@ -2,10 +2,10 @@
   "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
   "extends": ["@lualtek/biome-config/core"],
   "formatter": {
-    "ignore": ["**/*.{js,ts,tsx,mjs,cjs}"]
+    "includes": ["**", "!**/*.{js,ts,tsx,mjs,cjs}"]
   },
   "linter": {
-    "ignore": ["types/**", "**/*.{js,ts,tsx,mjs,cjs}"],
+    "includes": ["**", "!**/types/**", "!**/*.{js,ts,tsx,mjs,cjs}"],
     "rules": {
       "correctness": {
         "noUnknownFunction": "error"

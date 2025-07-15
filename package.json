@@ -33,7 +33,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "@biomejs/biome": "1.9.4",
+    "@biomejs/biome": "2.1.1",
     "@changesets/cli": "2.29.5",
     "@commitlint/cli": "19.8.1",
     "@commitlint/config-conventional": "19.8.1",
@@ -41,7 +41,7 @@
     "@eslint/eslintrc": "3.3.1",
     "@eslint/js": "9.31.0",
     "@lasalefamine/eslint-config": "5.0.0",
-    "@lualtek/biome-config": "1.0.2",
+    "@lualtek/biome-config": "1.1.0",
     "@lualtek/config": "workspace:*",
     "@lualtek/themes": "workspace:*",
     "@lualtek/tokens": "workspace:*",
