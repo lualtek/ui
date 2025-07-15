@@ -25,7 +25,7 @@ export type TooltipProps = {
   /**
    * The label of the tooltip for the X-axis.
    */
-  label?: TooltipContentProps<string | number, string>['label']; // Aggiornato il tipo qui
+  label?: TooltipContentProps<any, any>['label']; // Aggiornato il tipo qui
   /**
    * The payload of the tooltip.
    */
