@@ -1,6 +1,6 @@
 {
   "name": "@lualtek/tokens",
-  "version": "19.5.0",
+  "version": "19.5.1",
   "description": "Design tokens from Lualtek design language",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com",

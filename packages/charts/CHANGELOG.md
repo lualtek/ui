@@ -1,5 +1,13 @@
 # @lualtek/charts
 
+## 19.5.1
+
+### Patch Changes
+
+- c67c0e8: Disable da fucking animation on tooltip
+  - @lualtek/react-components@19.5.1
+  - @lualtek/tokens@19.5.1
+
 ## 19.5.0
 
 ### Patch Changes
