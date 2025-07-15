@@ -1,5 +1,11 @@
 # @lualtek/react-components
 
+## 19.5.2
+
+### Patch Changes
+
+- @lualtek/icons@19.5.2
+
 ## 19.5.1
 
 ### Patch Changes
