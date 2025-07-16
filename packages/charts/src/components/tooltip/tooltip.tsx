@@ -17,6 +17,8 @@ export type TooltipEntry = {
   payload?: Record<string, number>;
 }
 
+type LabelType = string | number;
+
 export type TooltipProps = {
   /**
    * Whether the tooltip is active.
@@ -25,7 +27,7 @@ export type TooltipProps = {
   /**
    * The label of the tooltip for the X-axis.
    */
-  label?: TooltipContentProps<any, any>['label'];
+  label?: TooltipContentProps<LabelType, string>['label'];
   /**
    * The payload of the tooltip.
    */
@@ -41,7 +43,7 @@ export type TooltipProps = {
    * @param value TooltipEntry
    * @returns string
    */
-  formatLabel?: (label: any) => string;
+  formatLabel?: (label: LabelType) => string;
   /**
    * custom function to format the payload labels
    * @param value TooltipEntry
