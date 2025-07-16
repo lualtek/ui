@@ -65,10 +65,15 @@ type SheetContentProps = React.ComponentPropsWithRef<typeof Vaul.Content> & {
    */
   stickyHeader?: boolean;
   /**
-   * Set the maximum width of the drawer, on mobile the drawer will be
+   * Set the maximum width of the sheet, on mobile the sheet will be
    * automatically collapsed when the width is reached.
    */
   maxWidth?: string;
+  /**
+   * Set the minimum width of the sheet, on mobile the sheet will be
+   * automatically collapsed when the width is reached.
+   */
+  minWidth?: string;
   /**
    * Set the elevation of the Sheet.
    *
@@ -76,14 +81,14 @@ type SheetContentProps = React.ComponentPropsWithRef<typeof Vaul.Content> & {
    */
   zIndex?: number;
   /**
-   * Allows content to scroll inside wihtout generating overflow or to expand
+   * Allows content to scroll inside without generating overflow or to expand
    * behind the sheet height.
    *
    * @defaultValue false
    */
   scrollInside?: boolean;
   /**
-   * Ref to the drawer content
+   * Ref to the sheet content
    *
    */
   scrollerRef?: React.RefObject<HTMLDivElement | null>;
@@ -104,6 +109,7 @@ const SheetContent: FC<SheetContentProps & Pick<DialogProps, 'children' | 'dismi
   dismissible = true,
   direction = 'bottom',
   maxWidth = '600px',
+  minWidth,
   compactHeader,
   stickyHeader = false,
   showHeading = true,
@@ -132,12 +138,13 @@ const SheetContent: FC<SheetContentProps & Pick<DialogProps, 'children' | 'dismi
     {
       ...commonDynamicStyle,
       '--max-w': maxWidth ?? undefined,
+      '--min-w': minWidth ?? undefined,
       '--header-tint': headerTint,
       '--sheet-z-index': zIndex,
       // Compute the header height based on the compact header and the header height + paddings
       '--content-height': headerHeight ? `${headerHeight + ((compactHeader ? 8 : 24) * 2) + 8}px` : undefined,
     }
-  ), [zIndex, headerTint, maxWidth, headerHeight, commonDynamicStyle, compactHeader]);
+  ), [zIndex, headerTint, maxWidth, minWidth, headerHeight, commonDynamicStyle, compactHeader]);
 
   const shouldShowHandle = useMemo(() => !matches.small && dismissible, [matches, dismissible]);
 

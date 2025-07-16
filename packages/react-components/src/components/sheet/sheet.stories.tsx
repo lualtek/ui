@@ -155,6 +155,15 @@ export const ShortContent = {
   },
 } satisfies Story;
 
+export const MinWidth = {
+  args: {
+    showHeading: false,
+    minWidth: 'calc(100vw - 32px)',
+    description: undefined,
+    children: 'Ciao',
+  },
+} satisfies Story;
+
 export const Nested = {
   args: {},
   render: function Render({ ...args }) {
