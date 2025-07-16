@@ -1,5 +1,13 @@
 # @lualtek/charts
 
+## 19.6.1
+
+### Patch Changes
+
+- 4479aa4: Fix types for tooltip label
+  - @lualtek/react-components@19.6.1
+  - @lualtek/tokens@19.6.1
+
 ## 19.6.0
 
 ### Patch Changes
