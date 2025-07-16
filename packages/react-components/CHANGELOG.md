@@ -1,5 +1,15 @@
 # @lualtek/react-components
 
+## 19.7.0
+
+### Minor Changes
+
+- 4bb5521: Add minWidth to Sheet
+
+### Patch Changes
+
+- @lualtek/icons@19.7.0
+
 ## 19.6.1
 
 ### Patch Changes
