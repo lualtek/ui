@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 19.7.2
+
+### Patch Changes
+
+- cf951ac: Export Sheet.Title component
+  - @lualtek/icons@19.7.2
+
 ## 19.7.1
 
 ### Patch Changes
