@@ -27,7 +27,7 @@ type SheetContentProps = React.ComponentPropsWithRef<typeof Vaul.Content> & {
   heading: ReactNode;
   /**
    * Hide or show the sheet heading which includes the title and the description.
-   * If you hide the title, make sure to add yuor own title element in order
+   * If you hide the title, make sure to add your own title by using `Sheet.Title`  element in order
    * to provide an accessible label to the drawer.
    *
    * @defaultValue true
@@ -211,29 +211,30 @@ const SheetContent: FC<SheetContentProps & Pick<DialogProps, 'children' | 'dismi
                   )}
 
                   {/* Header */}
-                  <Stack
-                    ref={headerRef as React.Ref<HTMLDivElement>}
-                    rowGap={4}
-                    hPadding={24}
-                    vPadding={compactHeader ? 8 : 24}
-                    className={styles.Header}
-                    data-sheet-sticky-header={stickyHeader}
-                    data-visually-hidden={!showHeading}
-                  >
-                    <Vaul.Title asChild>
-                      <Title lineHeight="small" responsive={false} level={compactHeader ? '6' : '5'}>{heading}</Title>
-                    </Vaul.Title>
+                  {showHeading && (
+                    <Stack
+                      ref={headerRef as React.Ref<HTMLDivElement>}
+                      rowGap={4}
+                      hPadding={24}
+                      vPadding={compactHeader ? 8 : 24}
+                      className={styles.Header}
+                      data-sheet-sticky-header={stickyHeader}
+                    >
+                      <Vaul.Title asChild>
+                        <Title lineHeight="small" responsive={false} level={compactHeader ? '6' : '5'}>{heading}</Title>
+                      </Vaul.Title>
 
-                    {description && (
-                      <Vaul.Description asChild>
-                        <Stack hPadding={[0, showCloseButton ? 48 : 0]}>
-                          <Text dimmed={5} weight="regular" size={compactHeader ? 14 : 16}>
-                            <ClampText rows={2}>{description}</ClampText>
-                          </Text>
-                        </Stack>
-                      </Vaul.Description>
-                    )}
-                  </Stack>
+                      {description && (
+                        <Vaul.Description asChild>
+                          <Stack hPadding={[0, showCloseButton ? 48 : 0]}>
+                            <Text dimmed={5} weight="regular" size={compactHeader ? 14 : 16}>
+                              <ClampText rows={2}>{description}</ClampText>
+                            </Text>
+                          </Stack>
+                        </Vaul.Description>
+                      )}
+                    </Stack>
+                  )}
 
                   {/* Sheet content */}
                   <Stack
@@ -284,6 +285,7 @@ export type SheetProps = DialogProps & SheetContentProps & { nested?: boolean }
 
 export type SheetComponent = FC<SheetProps> & {
   Close: typeof Vaul.Close;
+  Title: typeof Vaul.Title;
 };
 
 export const Sheet: SheetComponent = ({ nested, ...otherProps }) => (
@@ -293,4 +295,5 @@ export const Sheet: SheetComponent = ({ nested, ...otherProps }) => (
 );
 
 Sheet.Close = Vaul.Close;
+Sheet.Title = Vaul.Title;
 

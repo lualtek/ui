@@ -164,6 +164,18 @@ export const MinWidth = {
   },
 } satisfies Story;
 
+export const InnerTitle = {
+  args: {
+    showHeading: false,
+    children: (
+      <>
+        <Sheet.Title>Custom title</Sheet.Title>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+      </>
+    ),
+  },
+} satisfies Story;
+
 export const Nested = {
   args: {},
   render: function Render({ ...args }) {
