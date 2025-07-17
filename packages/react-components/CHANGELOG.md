@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 19.7.1
+
+### Patch Changes
+
+- 58fe5ee: Add default minWidth to desktop top/bottom sheet
+  - @lualtek/icons@19.7.1
+
 ## 19.7.0
 
 ### Minor Changes

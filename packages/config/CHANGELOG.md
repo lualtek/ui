@@ -1,5 +1,11 @@
 # @lualtek/config
 
+## 19.7.1
+
+### Patch Changes
+
+- @lualtek/tokens@19.7.1
+
 ## 19.7.0
 
 ### Patch Changes
