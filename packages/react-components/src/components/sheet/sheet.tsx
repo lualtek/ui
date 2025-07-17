@@ -67,11 +67,15 @@ type SheetContentProps = React.ComponentPropsWithRef<typeof Vaul.Content> & {
   /**
    * Set the maximum width of the sheet, on mobile the sheet will be
    * automatically collapsed when the width is reached.
+   *
+   * @defaultValue '600px'
    */
   maxWidth?: string;
   /**
    * Set the minimum width of the sheet, on mobile the sheet will be
    * automatically collapsed when the width is reached.
+   *
+   * @defaultValue '600px'
    */
   minWidth?: string;
   /**
@@ -109,7 +113,7 @@ const SheetContent: FC<SheetContentProps & Pick<DialogProps, 'children' | 'dismi
   dismissible = true,
   direction = 'bottom',
   maxWidth = '600px',
-  minWidth,
+  minWidth = '600px',
   compactHeader,
   stickyHeader = false,
   showHeading = true,

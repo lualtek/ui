@@ -67,13 +67,14 @@
 }
 
 .Container {
+  --default-min-max-width: 600px;
   margin: 0 auto;
   width: 100%;
-  max-width: var(--max-w, 600px);
+  max-width: var(--max-w, var(--default-min-max-width));
 
   [data-vaul-drawer-direction='left'] &,
   [data-vaul-drawer-direction='right'] & {
-    max-inline-size: var(--max-w, 600px);
+    max-inline-size: var(--max-w, var(--default-min-max-width));
     width: calc(100vw - --token(--space-16) - --token(--space-4));
     block-size: calc(100dvh - --token(--space-16));
   }
@@ -84,8 +85,8 @@
     block-size: fit-content;
 
     @media (--from-small) {
-      max-inline-size: var(--max-w, 600px);
-      min-inline-size: var(--min-w);
+      max-inline-size: var(--max-w, var(--default-min-max-width));
+      min-inline-size: var(--min-w, var(--default-min-max-width));
       max-block-size: max(30dvh, 600px);
     }
   }
