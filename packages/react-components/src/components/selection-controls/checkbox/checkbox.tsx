@@ -60,8 +60,8 @@ export type CheckboxProps = React.ComponentPropsWithRef<'input'> & {
 
 type Properties = Record<NonNullable<CheckboxProps['dimension']>, {
   text: {
-    size: TextProps['size'];
-    labelSize?: TextProps['size'];
+    labelSize: TextProps['size'];
+    hintSize?: TextProps['size'];
     lh?: TextProps['lineHeight'];
     padding?: TokensTypes['space'];
   };
@@ -70,16 +70,16 @@ type Properties = Record<NonNullable<CheckboxProps['dimension']>, {
 const properties: Properties = {
   small: {
     text: {
-      size: 16,
-      labelSize: 12,
+      labelSize: 16,
+      hintSize: 12,
       lh: 'extra-small',
       padding: 24,
     },
   },
   regular: {
     text: {
-      size: 18,
-      labelSize: 14,
+      labelSize: 18,
+      hintSize: 14,
       padding: 32,
     },
   },
@@ -156,7 +156,7 @@ export const Checkbox: FC<CheckboxProps> = ({
               lineHeight={properties[dimension].text.lh}
               htmlFor={uid}
               dimmed={disabled ? 4 : undefined}
-              size={properties[dimension].text.size}
+              size={properties[dimension].text.labelSize}
             >
               {label}
             </Text>
@@ -166,7 +166,7 @@ export const Checkbox: FC<CheckboxProps> = ({
           <Stack hPadding={properties[dimension].text.padding}>
             <Text
               as="div"
-              size={properties[dimension].text.labelSize}
+              size={properties[dimension].text.hintSize}
               weight="bold"
               textColor="var(--invalid-foreground)"
             >

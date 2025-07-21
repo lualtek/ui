@@ -26,6 +26,7 @@
 
   body {
     color: var(--global-foreground);
+    /* biome-ignore lint/a11y/useGenericFontNames: token */
     font-family: --token(--font-family-body);
     font-weight: --token(--font-weight-semi-bold);
     font-feature-settings: 'calt' off;

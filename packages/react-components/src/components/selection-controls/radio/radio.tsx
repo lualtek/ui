@@ -41,10 +41,24 @@ export type RadioProps = React.ComponentPropsWithRef<'input'> & {
 
 type Properties = Record<NonNullable<RadioProps['dimension']>, {
   text: {
-    size: TextProps['size'];
+    labelSize: TextProps['size'];
     lh?: TextProps['lineHeight'];
   };
 }>
+
+const properties: Properties = {
+  small: {
+    text: {
+      labelSize: 16,
+      lh: 'extra-small',
+    },
+  },
+  regular: {
+    text: {
+      labelSize: 18,
+    },
+  },
+};
 
 export const Radio: FC<RadioProps> = ({
   className,
@@ -57,20 +71,6 @@ export const Radio: FC<RadioProps> = ({
   ...otherProps
 }) => {
   const uid = useId();
-
-  const properties: Properties = {
-    small: {
-      text: {
-        size: 16,
-        lh: 'extra-small',
-      },
-    },
-    regular: {
-      text: {
-        size: 18,
-      },
-    },
-  };
 
   return (
     <LazyMotion features={domAnimation} strict>
@@ -106,7 +106,7 @@ export const Radio: FC<RadioProps> = ({
             lineHeight={properties[dimension].text.lh}
             htmlFor={uid}
             dimmed={disabled ? 4 : undefined}
-            size={properties[dimension].text.size}
+            size={properties[dimension].text.labelSize}
           >
             {label}
           </Text>
