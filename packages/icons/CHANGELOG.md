@@ -1,5 +1,11 @@
 # @lualtek/icons
 
+## 19.7.3
+
+### Patch Changes
+
+- 722f2f1: Add new icons
+
 ## 19.7.2
 
 ## 19.7.1
