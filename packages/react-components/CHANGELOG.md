@@ -1,5 +1,13 @@
 # @lualtek/react-components
 
+## 19.7.3
+
+### Patch Changes
+
+- 6b0eee1: Fix selection controls label
+- Updated dependencies [722f2f1]
+  - @lualtek/icons@19.7.3
+
 ## 19.7.2
 
 ### Patch Changes
