@@ -10,6 +10,8 @@
     overflow-x: auto;
     scrollbar-width: none;
     margin: var(--tabs-list-gap) var(--tabs-list-gap) 0 var(--tabs-list-gap);
+    border: 1px solid var(--global-inner-contrast-border);
+    box-shadow: 0 0 0 1px var(--global-outer-contrast-border);
 
     &[data-tabs-inline='true'] {
       display: inline-flex;

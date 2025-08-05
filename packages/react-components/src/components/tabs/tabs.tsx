@@ -39,6 +39,10 @@ export type TabsProps = TabsPrimitive.TabsProps & {
    * Useful for short tabs.
    */
   inline?: boolean;
+  /**
+   * Makes items expand to fill the available space
+   */
+  segmented?: boolean;
 };
 
 type TabsComponent = FC<TabsProps> & {
@@ -59,6 +63,7 @@ export const Tabs: TabsComponent = ({
   dimension = 'regular',
   inline,
   style,
+  segmented = false,
   ...otherProps
 }) => {
   const [activeItem, setActiveItem] = useState<string | undefined>(otherProps.defaultValue);
@@ -94,12 +99,10 @@ export const Tabs: TabsComponent = ({
     >
       <LazyMotion features={domMax} strict>
         <Panel
-          bordered
           radius={radius[dimension]}
           vPadding={4}
           hPadding={4}
-          vibrant
-          vibrancyColor="soft"
+          backgroundColor={0}
           className={styles.List}
           data-tabs-inline={inline}
         >
@@ -116,7 +119,7 @@ export const Tabs: TabsComponent = ({
                 className={styles.Trigger}
                 asChild
               >
-                <Button kind="flat" dimension={dimension} icon={child.props.icon}>
+                <Button kind="flat" fullWidth={segmented} dimension={dimension} icon={child.props.icon}>
                   <Stack
                     as="span"
                     className={styles.Label}

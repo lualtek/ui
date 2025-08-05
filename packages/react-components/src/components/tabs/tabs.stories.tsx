@@ -144,6 +144,34 @@ export const DisabledTabs: Story = {
   ),
 } satisfies Story;
 
+export const Segmented: Story = {
+  args: {
+    segmented: true,
+  },
+  render: args => (
+    <Tabs defaultValue="1" {...args}>
+      <Tabs.Panel value="1" label="Tab 1">
+        Panel 1
+      </Tabs.Panel>
+      <Tabs.Panel value="2" label="Tab mid long 2">
+        Panel 2
+      </Tabs.Panel>
+      <Tabs.Panel value="3" label="Tab short 3">
+        Panel 3
+      </Tabs.Panel>
+      <Tabs.Panel value="4" label="Tab veryy long 4">
+        Panel 4
+      </Tabs.Panel>
+      <Tabs.Panel value="5" label="Tab 5">
+        Panel 5
+      </Tabs.Panel>
+      <Tabs.Panel value="6" label="Tab 6">
+        Panel 6
+      </Tabs.Panel>
+    </Tabs>
+  ),
+} satisfies Story;
+
 export const Controlled: Story = {
   args: {
     value: '1',
