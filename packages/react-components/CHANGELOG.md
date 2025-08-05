@@ -1,5 +1,19 @@
 # @lualtek/react-components
 
+## 20.0.0
+
+### Major Changes
+
+- a67a6b4: Sheet: showCloseButton only if dismissible and on desktop
+
+### Minor Changes
+
+- 8961528: Add new segmented prop to Tabs
+
+### Patch Changes
+
+- @lualtek/icons@20.0.0
+
 ## 19.7.3
 
 ### Patch Changes
