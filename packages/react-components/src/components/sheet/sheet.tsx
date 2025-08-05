@@ -97,7 +97,7 @@ type SheetContentProps = React.ComponentPropsWithRef<typeof Vaul.Content> & {
    */
   scrollerRef?: React.RefObject<HTMLDivElement | null>;
   /**
-   * Show the close button in the header.
+   * Show the close button in the header if dismissible and on desktop only
    */
   showCloseButton?: boolean;
 }
@@ -187,7 +187,7 @@ const SheetContent: FC<SheetContentProps & Pick<DialogProps, 'children' | 'dismi
               radius={24}
               glowFitContent={matches.small}
             >
-              {showCloseButton && (
+              {(showCloseButton && dismissible && matches.small) && (
                 <Vaul.Close asChild>
                   <IconButton
                     icon="remove"

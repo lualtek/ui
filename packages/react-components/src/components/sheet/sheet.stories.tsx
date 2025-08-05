@@ -177,7 +177,9 @@ export const InnerTitle = {
 } satisfies Story;
 
 export const Nested = {
-  args: {},
+  args: {
+    showCloseButton: true,
+  },
   render: function Render({ ...args }) {
     const [, setOpen] = useArgs<typeof args>();
 
