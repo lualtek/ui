@@ -1,5 +1,7 @@
 # @lualtek/icons
 
+## 20.0.0
+
 ## 19.7.3
 
 ### Patch Changes
