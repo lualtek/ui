@@ -43,6 +43,7 @@ export * from './selection-controls/radio';
 export * from './separator';
 export * from './sheet';
 export * from './skeleton';
+export * from './slide-actions';
 export * from './slider';
 export * from './snaplist';
 export * from './spinner';
