@@ -34,9 +34,9 @@
   },
   "devDependencies": {
     "@types/fs-extra": "11.0.4",
-    "@types/node": "24.0.14",
+    "@types/node": "24.3.0",
     "colorjs.io": "0.5.2",
-    "fs-extra": "11.3.0",
+    "fs-extra": "11.3.1",
     "style-dictionary": "5.0.1",
     "tsconfig": "workspace:*",
     "yargs": "18.0.0"
