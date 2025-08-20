@@ -1,5 +1,5 @@
 import { Chip } from '@lualtek/react-components';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import SimpleData from '../../../fixtures/data';
 import { MultiDataSeries } from '../../../fixtures/multi-data-axes';

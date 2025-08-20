@@ -1,5 +1,5 @@
-import { useState } from '@storybook/preview-api';
-import { Meta, StoryObj } from '@storybook/react';
+import { useState } from 'storybook/preview-api';
+import { Meta, StoryObj } from '@storybook/react-vite';
 import { ReactNode, useRef } from 'react';
 
 import {

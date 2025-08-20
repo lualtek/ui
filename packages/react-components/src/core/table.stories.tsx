@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 import { ElementType, ReactElement } from 'react';
 
 import { Container } from '../components/container';

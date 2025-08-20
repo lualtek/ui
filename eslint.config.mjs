@@ -1,3 +1,6 @@
+// For more info, see https://github.com/storybookjs/eslint-plugin-storybook#configuration-flat-config-format
+import storybook from "eslint-plugin-storybook";
+
 import path from "node:path";
 import { fileURLToPath } from 'node:url';
 import { mainConfig as lasalefamineConfig } from '@lasalefamine/eslint-config';
@@ -22,16 +25,11 @@ const languageOptions = {
 
 const jsFiles = ['**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx'];
 
-export default [
-  {
-    ignores: ['**/dist', '**/*.module.css.d.ts', '**/*.json'],
+export default [{
+  ignores: ['**/dist', '**/*.module.css.d.ts', '**/*.json'],
+}, ...lasalefamineConfig.map((config) => ({ ...config, files: jsFiles, languageOptions })), ...reactHooksConfig, {
+  rules: {
+    'import/no-extraneous-dependencies': 'off',
+    'react/require-default-props': 'off',
   },
-  ...lasalefamineConfig.map((config) => ({ ...config, files: jsFiles, languageOptions })),
-  ...reactHooksConfig,
-  {
-    rules: {
-      'import/no-extraneous-dependencies': 'off',
-      'react/require-default-props': 'off',
-    },
-  },
-];
+}, ...storybook.configs["flat/recommended"]];

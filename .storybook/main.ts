@@ -16,9 +16,8 @@ const config: StorybookConfig = {
   addons: [
     getAbsolutePath('storybook-addon-tag-badges'),
     getAbsolutePath('@storybook/addon-links'),
-    getAbsolutePath('@storybook/addon-essentials'),
-    getAbsolutePath('@storybook/addon-interactions'),
     getAbsolutePath('@storybook/addon-themes'),
+    getAbsolutePath("@storybook/addon-docs")
   ],
   staticDirs: [{ from: '../packages/react-components/src/fonts', to: '/fonts' }],
   framework: {
