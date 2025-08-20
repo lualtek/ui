@@ -1,7 +1,10 @@
-/* eslint-disable no-param-reassign */
-import { dirname, join, resolve } from 'node:path';
+
+import { dirname, join } from 'node:path';
 
 import type { StorybookConfig } from '@storybook/react-vite';
+import { mergeConfig } from 'vite';
+// tsconfigPaths resolve paths aliases in tsconfig for vite
+import tsconfigPaths from 'vite-tsconfig-paths';
 
 /**
  * This function is used to resolve the absolute path of a package.
@@ -17,7 +20,7 @@ const config: StorybookConfig = {
     getAbsolutePath('storybook-addon-tag-badges'),
     getAbsolutePath('@storybook/addon-links'),
     getAbsolutePath('@storybook/addon-themes'),
-    getAbsolutePath("@storybook/addon-docs")
+    getAbsolutePath('@storybook/addon-docs'),
   ],
   staticDirs: [{ from: '../packages/react-components/src/fonts', to: '/fonts' }],
   framework: {
@@ -33,14 +36,11 @@ const config: StorybookConfig = {
       propFilter: prop => (prop.parent ? !prop.parent.fileName.includes('node_modules') : true),
     },
   },
-  viteFinal: async (config) => {
-    if (config && config.resolve && config.resolve.alias) {
-      config.resolve.alias['@/components'] = resolve(__dirname, '../packages/react-components/src');
-      config.resolve.alias['@/charts'] = resolve(__dirname, '../packages/charts/src');
-      return config;
-    }
-
-    return config;
+  async viteFinal(config) {
+    return mergeConfig(config, {
+      plugins: [tsconfigPaths()],
+    });
   },
 };
+
 export default config;
