@@ -1,0 +1,46 @@
+.SwipeActions {
+  position: relative;
+  overflow: hidden; /* Nasconde le azioni che escono dal contenitore */
+  width: 100%;
+}
+
+.TriggerContainer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  display: flex;
+}
+
+.Trigger {
+  position: relative;
+  z-index: 1; /* Assicura che il trigger sia sopra le azioni */
+  width: 100%;
+  cursor: grab;
+  background-color: white; /* Obbligatorio per nascondere le azioni sottostanti */
+}
+
+.Trigger:active {
+  cursor: grabbing;
+}
+
+.Action {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1; /* Permette alle azioni di riempire lo spazio disponibile */
+  padding: 0 1rem;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 0.75rem;
+  white-space: nowrap; /* Evita che il testo vada a capo */
+}
+
+.ActionIcon {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
