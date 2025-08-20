@@ -1,6 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import React from 'react';
 
+import { Panel } from '@/components';
+
 import { SwipeActions } from './swipe-actions';
 
 const meta: Meta<typeof SwipeActions> = {
@@ -12,10 +14,10 @@ const meta: Meta<typeof SwipeActions> = {
   render: args => (
     <SwipeActions {...args}>
       <SwipeActions.Trigger>
-        <div style={{ padding: '1rem', border: '1px solid #ccc', background: '#f9f9f9' }}>
+        <Panel vibrant radius={24} vibrancyColor="soft" hPadding={24} vPadding={24} bordered>
           <p style={{ margin: 0, fontWeight: 'bold' }}>Python Scripts</p>
           <p style={{ margin: '4px 0 0', fontSize: '0.9rem', color: '#555' }}>Updated yesterday</p>
-        </div>
+        </Panel>
       </SwipeActions.Trigger>
       <SwipeActions.Action
         color="#8b5cf6"

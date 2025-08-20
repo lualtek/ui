@@ -1,5 +1,7 @@
 import { animate, useMotionValue } from 'motion/react';
-import React, { FC, PropsWithChildren } from 'react';
+import React, {
+  FC, PropsWithChildren, useId, useMemo,
+} from 'react';
 
 import { useMeasure } from './hooks/useMeasure';
 import styles from './swipe-actions.module.css';
@@ -15,22 +17,41 @@ export type SwipeActionsProps = {
 const SwipeActionsRoot: FC<PropsWithChildren<SwipeActionsProps>> = ({ children }) => {
   const [actionsRef, actionsWidth] = useMeasure<HTMLDivElement>();
   const x = useMotionValue(0);
+  const actionId = useId();
+  const memoChildren = useMemo(() => React.Children.toArray(children), [children]);
 
-  const actions = React.Children
-    .toArray(children)
+  const actionElements = memoChildren
     .filter(
       (child): child is React.ReactElement<ActionProps> => React.isValidElement(child)
         && (child.type as any).displayName === 'Action',
     );
 
-  const trigger = React.Children.toArray(children).find(
+  const actionCount = actionElements.length;
+
+  const actions = memoChildren
+    .filter(
+      (child): child is React.ReactElement<ActionProps> => React.isValidElement(child)
+        && (child.type as any).displayName === 'Action',
+    );
+
+  const trigger = memoChildren.find(
     child => React.isValidElement(child) && (child.type as any).displayName === 'Trigger',
   );
 
+  /**
+   * Closes an action by animating a transition for the target `x` value to 0.
+   * The animation uses a spring configuration with specified stiffness and damping.
+   */
   const closeActions = () => {
     animate(x, 0, { type: 'spring', stiffness: 500, damping: 40 });
   };
 
+  /**
+   * Represents the context value for swipe actions.
+   *
+   * Contains relevant properties and methods required for managing
+   * swipe actions within the context.
+   */
   const contextValue: SwipeActionsContextType = {
     x,
     actionsWidth,
@@ -46,7 +67,10 @@ const SwipeActionsRoot: FC<PropsWithChildren<SwipeActionsProps>> = ({ children }
           className={styles.TriggerContainer}
           aria-hidden="true"
         >
-          {actions}
+          {actionElements.map((action, i) => React.cloneElement(action, {
+            key: actionId,
+            index: actionCount - 1 - i,
+          }))}
         </div>
         {trigger}
       </div>

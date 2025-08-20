@@ -1,6 +1,6 @@
 .SwipeActions {
   position: relative;
-  overflow: hidden; /* Nasconde le azioni che escono dal contenitore */
+  /*overflow: hidden;*/
   width: 100%;
 }
 
@@ -17,7 +17,6 @@
   z-index: 1; /* Assicura che il trigger sia sopra le azioni */
   width: 100%;
   cursor: grab;
-  background-color: white; /* Obbligatorio per nascondere le azioni sottostanti */
 }
 
 .Trigger:active {

@@ -9,17 +9,37 @@ export interface ActionProps {
   icon: ReactNode;
   label: string;
   onClick?: () => void;
+  index?: number;
 }
 
+/**
+ * Represents a functional component for an interactive action button in a swipe-enabled UI.
+ *
+ * This component is built to be used within swipeable actions. It renders a button with optional
+ * icon, label, and hover effects while also managing click events and swipe actions.
+ *
+ */
 export const Action: FC<ActionProps> = ({
-  color, icon, label, onClick,
+  color,
+  icon,
+  label,
+  onClick,
+  index = 0,
 }) => {
-  const { x, actionsWidth, closeActions } = useSwipeActions();
+  const {
+    x, actionsWidth, actionCount, closeActions,
+  } = useSwipeActions();
+
+  const actionWidth = actionCount > 0 ? actionsWidth / actionCount : 0;
+
+  const startAnimate = -(index * actionWidth);
+  const endAnimate = -((index + 1) * actionWidth);
 
   const scale = useTransform(
     x,
-    [0, -actionsWidth],
-    [0.5, 1],
+    [startAnimate, endAnimate],
+    [0, 1],
+    { clamp: true },
   );
 
   const handleClick = () => {
@@ -34,11 +54,10 @@ export const Action: FC<ActionProps> = ({
     <motion.button
       onClick={handleClick}
       className={styles.Action}
+      aria-label={label}
       style={{
-        // backgroundColor: color,
         scale,
       }}
-      aria-label={label}
     >
       <span className={styles.ActionIcon}>{icon}</span>
       <span>{label}</span>
