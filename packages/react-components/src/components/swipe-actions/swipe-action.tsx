@@ -27,6 +27,7 @@ export interface ActionProps {
   icon: IconNames;
   /**
    * Show the action label
+   * @defaultValue false
    */
   showLabel?: boolean;
   /**
@@ -57,7 +58,7 @@ export interface ActionProps {
 export const SwipeAction: FC<ActionProps> = ({
   color,
   icon = 'c-info',
-  showLabel = true,
+  showLabel = false,
   label = 'My Action',
   onClick,
   index = 0,
@@ -99,9 +100,24 @@ export const SwipeAction: FC<ActionProps> = ({
         vAlign="center"
         fill={false}
         rowGap={4}
-        hPadding={8}
         onClick={handleClick}
       >
+        {/* <Panel */}
+        {/*  bordered */}
+        {/*  vibrant */}
+        {/*  vibrancyColor="red" */}
+        {/*  radius={16} */}
+        {/* > */}
+        {/*  <Stack */}
+        {/*    vPadding={16} */}
+        {/*    hPadding={16} */}
+        {/*    vAlign="center" */}
+        {/*    hAlign="center" */}
+        {/*    fill={false} */}
+        {/*  > */}
+        {/*    <Icon fill={color ? `var(--highlight-${color}-foreground` : undefined} source={icon} /> */}
+        {/*  </Stack> */}
+        {/* </Panel> */}
         <IconChip icon={icon} color={color} />
         {showLabel && <Text dimmed={4} size={14}>{label}</Text>}
       </Stack>

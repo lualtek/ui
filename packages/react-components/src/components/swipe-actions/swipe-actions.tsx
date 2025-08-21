@@ -3,6 +3,7 @@ import React, {
   FC, PropsWithChildren, useId, useMemo,
 } from 'react';
 
+import { Stack, StackProps } from '../stack';
 import { useMeasure } from './hooks/useMeasure';
 import { SwipeAction } from './swipe-action';
 import { ActionProps } from './swipe-action';
@@ -17,9 +18,22 @@ export type SwipeActionsProps = {
    * One Trigger only and 4 Actions maximum
    */
   children: React.ReactNode;
+  /**
+   * Set the gap between the actions. This is useful for actions
+   * with long labels.
+   *
+   * @defaultValue 16
+   */
+  actionsGap?: StackProps['columnGap'];
 };
 
-const SwipeActionsRoot: FC<PropsWithChildren<SwipeActionsProps>> = ({ children }) => {
+const ACTIONS_LEFT_PADDING = 16;
+const ACTIONS_RIGHT_PADDING = 8;
+
+const SwipeActionsRoot: FC<PropsWithChildren<SwipeActionsProps>> = ({
+  children,
+  actionsGap = 16,
+}) => {
   const [actionsRef, actionsWidth] = useMeasure<HTMLDivElement>();
   const x = useMotionValue(0);
   const actionId = useId();
@@ -68,7 +82,7 @@ const SwipeActionsRoot: FC<PropsWithChildren<SwipeActionsProps>> = ({ children }
    */
   const contextValue: SwipeActionsContextType = {
     x,
-    actionsWidth,
+    actionsWidth: actionsWidth + ACTIONS_LEFT_PADDING + ACTIONS_RIGHT_PADDING,
     actionCount,
     closeActions,
   };
@@ -76,17 +90,21 @@ const SwipeActionsRoot: FC<PropsWithChildren<SwipeActionsProps>> = ({ children }
   return (
     <SwipeActionsContext.Provider value={contextValue}>
       <div className={styles.SwipeActions}>
-        <div
+        <Stack
           ref={actionsRef}
           className={styles.ActionsContainer}
           aria-hidden="true"
+          direction="row"
+          hPadding={[16, 8]}
+          columnGap={actionsGap}
+          fill={false}
         >
           {actionElements.map((action, i) => React.cloneElement(action, {
             key: actionId,
             // inject the index property based on position
             index: actionCount - 1 - i,
           }))}
-        </div>
+        </Stack>
         {trigger}
       </div>
     </SwipeActionsContext.Provider>

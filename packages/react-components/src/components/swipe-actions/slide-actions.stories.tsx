@@ -53,4 +53,36 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default = {} satisfies Story;
-export const NoLabels = {} satisfies Story;
+export const WithLabels = {
+  render: args => (
+    <SwipeActions {...args}>
+      <SwipeActions.Trigger>
+        <Panel vibrant radius={24} vibrancyColor="soft" hPadding={24} vPadding={24} bordered>
+          <p style={{ margin: 0, fontWeight: 'bold' }}>Python Scripts</p>
+          <p style={{ margin: '4px 0 0', fontSize: '0.9rem', color: '#555' }}>Updated yesterday</p>
+        </Panel>
+      </SwipeActions.Trigger>
+
+      <SwipeActions.Action
+        icon="trash"
+        showLabel
+        label="Edit"
+        onClick={() => console.log('Edit clicked')}
+      />
+      <SwipeActions.Action
+        color="green"
+        showLabel
+        icon="ai-chat"
+        label="Action 2"
+        onClick={() => console.log('Delete clicked')}
+      />
+      <SwipeActions.Action
+        color="cyan"
+        showLabel
+        icon="zoom"
+        label="Action 3"
+        onClick={() => console.log('Delete clicked')}
+      />
+    </SwipeActions>
+  ),
+} satisfies Story;
