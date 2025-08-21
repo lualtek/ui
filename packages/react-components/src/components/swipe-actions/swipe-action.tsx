@@ -118,7 +118,7 @@ export const SwipeAction: FC<ActionProps> = ({
         {/*    <Icon fill={color ? `var(--highlight-${color}-foreground` : undefined} source={icon} /> */}
         {/*  </Stack> */}
         {/* </Panel> */}
-        <IconChip icon={icon} color={color} />
+        <IconChip icon={icon} dimension={showLabel ? 'regular' : 'big'} color={color} />
         {showLabel && <Text dimmed={4} size={14}>{label}</Text>}
       </Stack>
     </Stack>
