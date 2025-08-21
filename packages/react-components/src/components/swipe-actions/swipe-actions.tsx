@@ -31,41 +31,6 @@ export type SwipeActionsProps = {
 const ACTIONS_LEFT_PADDING = 16;
 const ACTIONS_RIGHT_PADDING = 8;
 
-const findChildrenRecursively = (children: React.ReactNode): {
-  actions: Array<React.ReactElement<ActionProps>>;
-} => {
-  const actions: Array<React.ReactElement<ActionProps>> = [];
-
-  /**
-   * Loop through the children and find the SwipeAction and SwipeTrigger components even
-   * if they are nested within fragments
-   */
-  React.Children.forEach(children, (child) => {
-    if (!React.isValidElement(child)) {
-      return;
-    }
-
-    // Check if the child is a fragment
-    if (child.type === React.Fragment) {
-      // Recursively find the SwipeAction and SwipeTrigger components within the fragment's children
-      const nestedChildren = findChildrenRecursively((child.props as { children?: React.ReactNode }).children);
-
-      // Extract the actions and trigger from the nested children
-      const { actions: nestedActions } = nestedChildren;
-
-      // Push the nested actions and trigger to the main actions and trigger array
-      actions.push(...nestedActions);
-    }
-
-    // Else push the child if it's a SwipeAction or SwipeTrigger' to the main actions and trigger array
-    else if (child.type === SwipeAction) {
-      actions.push(child as React.ReactElement<ActionProps>);
-    }
-  });
-
-  return { actions };
-};
-
 const SwipeActionsRoot: FC<PropsWithChildren<SwipeActionsProps>> = ({
   children,
   trigger,
@@ -74,9 +39,30 @@ const SwipeActionsRoot: FC<PropsWithChildren<SwipeActionsProps>> = ({
   const [actionsRef, actionsWidth] = useMeasure<HTMLDivElement>();
   const x = useMotionValue(0);
   const actionId = useId();
-  const memoChildren = useMemo(() => React.Children.toArray(children), [children]);
 
-  const { actions: actionElements } = useMemo(() => findChildrenRecursively(memoChildren), [memoChildren]);
+  const { actions: actionElements } = useMemo(() => {
+    const flattenChildren = (nodes: React.ReactNode): React.ReactElement[] => {
+      const flattened: React.ReactElement[] = [];
+      React.Children.forEach(nodes, (node) => {
+        if (!React.isValidElement(node)) return;
+        if (node.type === React.Fragment) {
+          flattened.push(...flattenChildren((node.props as { children?: React.ReactNode }).children));
+        } else {
+          flattened.push(node);
+        }
+      });
+      return flattened;
+    };
+
+    const flatChildren = flattenChildren(children);
+
+    const actions = flatChildren.filter(
+      (child): child is React.ReactElement<ActionProps> => child.type === SwipeAction,
+    );
+
+    return { actions };
+  }, [children]);
+
   const actionCount = actionElements.length;
 
   /**
