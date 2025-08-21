@@ -17,7 +17,7 @@ export type SwipeActionsProps = {
    * Only `Action` and `Trigger` components are rendered
    * One Trigger only and 4 Actions maximum
    */
-  children: React.ReactNode;
+  children: React.ReactElement<ActionProps> | Array<React.ReactElement<ActionProps>>;
   trigger: React.ReactNode;
   /**
    * Set the gap between the actions. This is useful for actions
@@ -41,23 +41,21 @@ const SwipeActionsRoot: FC<PropsWithChildren<SwipeActionsProps>> = ({
   const actionId = useId();
 
   const { actions: actionElements } = useMemo(() => {
-    const flattenChildren = (nodes: React.ReactNode): React.ReactElement[] => {
-      const flattened: React.ReactElement[] = [];
-      React.Children.forEach(nodes, (node) => {
-        if (!React.isValidElement(node)) return;
-        if (node.type === React.Fragment) {
-          flattened.push(...flattenChildren((node.props as { children?: React.ReactNode }).children));
-        } else {
-          flattened.push(node);
-        }
-      });
-      return flattened;
-    };
+    const directChildren = React.Children.toArray(children);
+    let source = directChildren;
 
-    const flatChildren = flattenChildren(children);
+    // If there is a Fragment as a direct child, extract its children
+    if (
+      directChildren.length === 1
+      && React.isValidElement(directChildren[0])
+      && directChildren[0].type === React.Fragment
+    ) {
+      source = React.Children.toArray((directChildren[0].props as { children?: React.ReactNode }).children);
+    }
 
-    const actions = flatChildren.filter(
-      (child): child is React.ReactElement<ActionProps> => child.type === SwipeAction,
+    // Filter out non-SwipeAction children
+    const actions = source.filter(
+      (child): child is React.ReactElement<ActionProps> => React.isValidElement(child) && child.type === SwipeAction,
     );
 
     return { actions };
