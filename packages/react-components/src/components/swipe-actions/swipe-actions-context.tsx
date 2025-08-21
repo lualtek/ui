@@ -15,7 +15,9 @@ export type SwipeActionsContextType = {
  *
  * @type {React.Context<SwipeActionsContextType | null>}
  */
-export const SwipeActionsContext = createContext<SwipeActionsContextType | null>(null);
+export const SwipeActionsContext: React.Context<SwipeActionsContextType | null> = createContext<
+  SwipeActionsContextType | null
+>(null);
 
 /**
  * Custom hook to access the SwipeActions context.

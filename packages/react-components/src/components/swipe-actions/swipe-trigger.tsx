@@ -9,9 +9,8 @@ export type TriggerProps = {
   children: React.ReactNode;
 };
 
-export const Trigger: FC<PropsWithChildren<TriggerProps>> = ({ children }) => {
+export const SwipeTrigger: FC<PropsWithChildren<TriggerProps>> = ({ children }) => {
   const { x, actionsWidth } = useSwipeActions();
-  const DRAG_BUFFER = 30;
 
   const handleDragEnd = (event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
     const { offset, velocity } = info;
@@ -30,7 +29,7 @@ export const Trigger: FC<PropsWithChildren<TriggerProps>> = ({ children }) => {
       className={styles.Trigger}
       style={{ x }}
       drag="x"
-      dragConstraints={{ left: -actionsWidth - DRAG_BUFFER, right: 0 }}
+      dragConstraints={{ left: -actionsWidth, right: 0 }}
       onDragEnd={handleDragEnd}
       whileTap={{ cursor: 'grabbing' }}
     >

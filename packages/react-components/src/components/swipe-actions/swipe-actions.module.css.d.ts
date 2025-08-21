@@ -3,7 +3,7 @@ declare const styles: {
   readonly "ActionIcon": string;
   readonly "SwipeActions": string;
   readonly "Trigger": string;
-  readonly "TriggerContainer": string;
+  readonly "ActionsContainer": string;
 };
 export = styles;
 

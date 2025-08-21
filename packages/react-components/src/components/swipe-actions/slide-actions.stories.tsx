@@ -8,6 +8,7 @@ import { SwipeActions } from './swipe-actions';
 const meta: Meta<typeof SwipeActions> = {
   title: 'Actions/Swipe Actions',
   component: SwipeActions,
+  tags: ['mobile'],
   args: {
   },
   argTypes: {},
@@ -19,16 +20,28 @@ const meta: Meta<typeof SwipeActions> = {
           <p style={{ margin: '4px 0 0', fontSize: '0.9rem', color: '#555' }}>Updated yesterday</p>
         </Panel>
       </SwipeActions.Trigger>
+
       <SwipeActions.Action
-        color="#8b5cf6"
-        icon={<span>E</span>}
+        icon="trash"
         label="Edit"
         onClick={() => console.log('Edit clicked')}
       />
       <SwipeActions.Action
-        color="#ef4444"
-        icon={<span>D</span>}
-        label="Delete"
+        color="green"
+        icon="ai-chat"
+        label="Action 2"
+        onClick={() => console.log('Delete clicked')}
+      />
+      <SwipeActions.Action
+        color="cyan"
+        icon="zoom"
+        label="Action 3"
+        onClick={() => console.log('Delete clicked')}
+      />
+      <SwipeActions.Action
+        color="red"
+        icon="remove"
+        label="My Action"
         onClick={() => console.log('Delete clicked')}
       />
     </SwipeActions>
@@ -40,3 +53,4 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default = {} satisfies Story;
+export const NoLabels = {} satisfies Story;
