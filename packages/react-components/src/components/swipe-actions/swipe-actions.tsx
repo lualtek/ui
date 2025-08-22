@@ -103,7 +103,8 @@ const SwipeActionsRoot: FC<PropsWithChildren<SwipeActionsProps>> = ({
           fill={false}
         >
           {actionElements.map((action, i) => React.cloneElement(action, {
-            key: actionId,
+            // eslint-disable-next-line react/no-array-index-key
+            key: `${actionId}-${i}`,
             // inject the index property based on position
             index: actionCount - 1 - i,
           }))}
