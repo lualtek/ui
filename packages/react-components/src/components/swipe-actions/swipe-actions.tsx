@@ -6,10 +6,10 @@ import React, {
 import { Stack, StackProps } from '../stack';
 import { useMeasure } from './hooks/useMeasure';
 import { SwipeAction } from './swipe-action';
-import { ActionProps } from './swipe-action';
+import { SwipeActionProps } from './swipe-action';
 import styles from './swipe-actions.module.css';
 import { SwipeActionsContext, SwipeActionsContextType } from './swipe-actions-context';
-import { SwipeTrigger, TriggerProps } from './swipe-trigger';
+import { SwipeTrigger } from './swipe-trigger';
 
 export type SwipeActionsProps = {
   /**
@@ -17,7 +17,7 @@ export type SwipeActionsProps = {
    * Only `Action` and `Trigger` components are rendered
    * One Trigger only and 4 Actions maximum
    */
-  children: React.ReactElement<ActionProps> | Array<React.ReactElement<ActionProps>>;
+  children: React.ReactElement<SwipeActionProps> | Array<React.ReactElement<SwipeActionProps>>;
   trigger: React.ReactNode;
   /**
    * Set the gap between the actions. This is useful for actions
@@ -55,7 +55,8 @@ const SwipeActionsRoot: FC<PropsWithChildren<SwipeActionsProps>> = ({
 
     // Filter out non-SwipeAction children
     const actions = source.filter(
-      (child): child is React.ReactElement<ActionProps> => React.isValidElement(child) && child.type === SwipeAction,
+      (child): child is React.ReactElement<SwipeActionProps> => React.isValidElement(child)
+        && child.type === SwipeAction,
     );
 
     return { actions };
