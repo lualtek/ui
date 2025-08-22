@@ -73,11 +73,15 @@ export const SwipeAction: FC<SwipeActionProps> = ({
     x, actionsWidth, actionCount, closeActions,
   } = useSwipeActions();
 
+  /**
+   * Scale in the action once the trigger passed it,
+   * and scale out when the trigger is released and reach the end of the beginning
+   * of the action
+   */
   const actionWidth = actionCount > 0 ? actionsWidth / actionCount : 0;
 
   const startAnimate = -(index * actionWidth);
   const endAnimate = -((index + 1) * actionWidth);
-
   const scale = useTransform(
     x,
     [startAnimate, endAnimate],
@@ -90,6 +94,10 @@ export const SwipeAction: FC<SwipeActionProps> = ({
       onClick();
     }
 
+    /**
+     * Call closeActions when an action is clicked.
+     * This restore the trigger to its original position
+     */
     closeActions();
   };
 

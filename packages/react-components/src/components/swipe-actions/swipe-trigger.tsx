@@ -31,7 +31,7 @@ export const SwipeTrigger: FC<PropsWithChildren<SwipeTriggerProps>> = ({ childre
       drag="x"
       dragConstraints={{ left: -actionsWidth, right: 0 }}
       onDragEnd={handleDragEnd}
-      whileTap={{ cursor: 'grabbing' }}
+      whileDrag={{ cursor: 'grabbing' }}
     >
       {children}
     </motion.div>
