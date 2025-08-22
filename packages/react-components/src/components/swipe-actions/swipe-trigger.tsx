@@ -5,11 +5,11 @@ import React, { FC, PropsWithChildren } from 'react';
 import styles from './swipe-actions.module.css';
 import { useSwipeActions } from './swipe-actions-context';
 
-export type TriggerProps = {
+export type SwipeTriggerProps = {
   children: React.ReactNode;
 };
 
-export const SwipeTrigger: FC<PropsWithChildren<TriggerProps>> = ({ children }) => {
+export const SwipeTrigger: FC<PropsWithChildren<SwipeTriggerProps>> = ({ children }) => {
   const { x, actionsWidth } = useSwipeActions();
 
   const handleDragEnd = (event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {

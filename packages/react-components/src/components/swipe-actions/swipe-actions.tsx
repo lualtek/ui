@@ -61,6 +61,7 @@ const SwipeActionsRoot: FC<PropsWithChildren<SwipeActionsProps>> = ({
     return { actions };
   }, [children]);
 
+  // Count how many actions are present
   const actionCount = actionElements.length;
 
   /**

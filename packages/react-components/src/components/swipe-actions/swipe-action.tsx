@@ -1,24 +1,23 @@
 import { IconNames } from '@lualtek/icons';
-import { TokensTypes } from '@lualtek/tokens/platforms/web';
 import { motion, useTransform } from 'motion/react';
-import React, { FC, ReactNode } from 'react';
+import { FC } from 'react';
 
-import { BlankButton } from '../blank-button';
-import { Icon } from '../icon';
-import { IconChip } from '../icon-chip';
-import { Panel } from '../panel';
-import { Stack } from '../stack';
-import { Text } from '../text';
+import { BlankButton, PanelProps } from '@/components';
+import { Icon } from '@/components';
+import { Panel } from '@/components';
+import { Stack } from '@/components';
+import { Text, TextProps } from '@/components';
+
 import styles from './swipe-actions.module.css';
 import { useSwipeActions } from './swipe-actions-context';
 
-export interface ActionProps {
+export interface SwipeActionProps {
   /**
    * Set the action color
    *
    * @defaultValue undefined
    */
-  color?: TokensTypes['colors'];
+  sentiment?: TextProps['sentiment'];
   /**
    * Set the action icon
    *
@@ -48,6 +47,13 @@ export interface ActionProps {
   index?: number;
 }
 
+const sentimentPanelColors: Record<NonNullable<TextProps['sentiment']>, PanelProps['vibrancyColor']> = {
+  positive: 'green',
+  informative: 'brand',
+  danger: 'red',
+  warning: 'yellow',
+};
+
 /**
  * Represents a functional component for an interactive action button in a swipe-enabled UI.
  *
@@ -55,8 +61,8 @@ export interface ActionProps {
  * icon, label, and hover effects while also managing click events and swipe actions.
  *
  */
-export const SwipeAction: FC<ActionProps> = ({
-  color,
+export const SwipeAction: FC<SwipeActionProps> = ({
+  sentiment,
   icon = 'c-info',
   showLabel = false,
   label = 'My Action',
@@ -102,23 +108,20 @@ export const SwipeAction: FC<ActionProps> = ({
         rowGap={4}
         onClick={handleClick}
       >
-        {/* <Panel */}
-        {/*  bordered */}
-        {/*  vibrant */}
-        {/*  vibrancyColor="red" */}
-        {/*  radius={16} */}
-        {/* > */}
-        {/*  <Stack */}
-        {/*    vPadding={16} */}
-        {/*    hPadding={16} */}
-        {/*    vAlign="center" */}
-        {/*    hAlign="center" */}
-        {/*    fill={false} */}
-        {/*  > */}
-        {/*    <Icon fill={color ? `var(--highlight-${color}-foreground` : undefined} source={icon} /> */}
-        {/*  </Stack> */}
-        {/* </Panel> */}
-        <IconChip icon={icon} dimension={showLabel ? 'regular' : 'big'} color={color} />
+        <Panel
+          as={Stack}
+          bordered
+          vibrant
+          vibrancyColor={sentiment ? sentimentPanelColors[sentiment] : 'background'}
+          radius={16}
+          vPadding={16}
+          hPadding={16}
+          vAlign="center"
+          hAlign="center"
+          fill={false}
+        >
+          <Icon fill={sentiment ? `var(--highlight-${sentimentPanelColors[sentiment]}-foreground` : undefined} source={icon} />
+        </Panel>
         {showLabel && <Text dimmed={4} size={14}>{label}</Text>}
       </Stack>
     </Stack>
