@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import React, { FC } from 'react';
 
-import { Panel, SwipeActionProps } from '@/components';
+import { BlankButton, Panel, SwipeActionProps } from '@/components';
 
 import { SwipeActions } from './swipe-actions';
 
@@ -63,6 +63,23 @@ export const WithLabels = {
   args: {
     trigger: (
       <Panel vibrant radius={24} vibrancyColor="soft" hPadding={24} vPadding={24} bordered>
+        <p style={{ margin: 0, fontWeight: 'bold' }}>Python Scripts</p>
+        <p style={{ margin: '4px 0 0', fontSize: '0.9rem', color: '#555' }}>Updated yesterday</p>
+      </Panel>
+    ),
+    children: <>
+      {renderActions({
+        showLabel: true,
+      })}
+    </>,
+  },
+} satisfies Story;
+
+
+export const WithClickableTrigger = {
+  args: {
+    trigger: (
+      <Panel as={BlankButton} onClick={() => console.log('Trigger clicked!')} vibrant radius={24} vibrancyColor="soft" hPadding={24} vPadding={24} bordered>
         <p style={{ margin: 0, fontWeight: 'bold' }}>Python Scripts</p>
         <p style={{ margin: '4px 0 0', fontSize: '0.9rem', color: '#555' }}>Updated yesterday</p>
       </Panel>
