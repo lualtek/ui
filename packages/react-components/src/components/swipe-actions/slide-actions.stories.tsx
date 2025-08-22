@@ -1,14 +1,45 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import React from 'react';
+import React, { FC } from 'react';
 
-import { Panel } from '@/components';
+import { Panel, SwipeActionProps } from '@/components';
 
 import { SwipeActions } from './swipe-actions';
+
+const renderActions = (props: Omit<SwipeActionProps, 'icon' | 'label'>) => [
+  <SwipeActions.Action
+    {...props}
+    icon="trash"
+    label="Edit"
+    onClick={() => console.log('Edit clicked')}
+  />,
+  <SwipeActions.Action
+    {...props}
+    sentiment="positive"
+    icon="ai-chat"
+    label="Action 2"
+    onClick={() => console.log('Delete clicked')}
+  />,
+  <SwipeActions.Action
+    {...props}
+    sentiment="informative"
+    icon="zoom"
+    label="Action 3"
+    onClick={() => console.log('Delete clicked')}
+  />,
+  <SwipeActions.Action
+    {...props}
+    sentiment="danger"
+    icon="remove"
+    label="My Action"
+    onClick={() => console.log('Delete clicked')}
+  />,
+];
 
 const meta: Meta<typeof SwipeActions> = {
   title: 'Actions/Swipe Actions',
   component: SwipeActions,
-  tags: ['mobile'],
+  tags: ['mobile', 'code-only'],
+  argTypes: {},
   args: {
     trigger: (
       <Panel vibrant radius={24} vibrancyColor="soft" hPadding={24} vPadding={24} bordered>
@@ -16,35 +47,10 @@ const meta: Meta<typeof SwipeActions> = {
         <p style={{ margin: '4px 0 0', fontSize: '0.9rem', color: '#555' }}>Updated yesterday</p>
       </Panel>
     ),
-    children: (
-      <>
-        <SwipeActions.Action
-          icon="trash"
-          label="Edit"
-          onClick={() => console.log('Edit clicked')}
-        />
-        <SwipeActions.Action
-          color="green"
-          icon="ai-chat"
-          label="Action 2"
-          onClick={() => console.log('Delete clicked')}
-        />
-        <SwipeActions.Action
-          color="cyan"
-          icon="zoom"
-          label="Action 3"
-          onClick={() => console.log('Delete clicked')}
-        />
-        <SwipeActions.Action
-          color="red"
-          icon="remove"
-          label="My Action"
-          onClick={() => console.log('Delete clicked')}
-        />
-      </>
-    )
+    children: <>
+      {renderActions({})}
+    </>,
   },
-  argTypes: {},
 } satisfies Meta<typeof SwipeActions>;
 
 export default meta;
@@ -61,29 +67,10 @@ export const WithLabels = {
         <p style={{ margin: '4px 0 0', fontSize: '0.9rem', color: '#555' }}>Updated yesterday</p>
       </Panel>
     ),
-    children: (
-      <>
-        <SwipeActions.Action
-          icon="trash"
-          showLabel
-          label="Edit"
-          onClick={() => console.log('Edit clicked')}
-        />
-        <SwipeActions.Action
-          color="green"
-          showLabel
-          icon="ai-chat"
-          label="Action 2"
-          onClick={() => console.log('Delete clicked')}
-        />
-        <SwipeActions.Action
-          color="cyan"
-          showLabel
-          icon="zoom"
-          label="Action 3"
-          onClick={() => console.log('Delete clicked')}
-        />
-      </>
-    )
-  }
+    children: <>
+      {renderActions({
+        showLabel: true,
+      })}
+    </>,
+  },
 } satisfies Story;
