@@ -1,5 +1,17 @@
 # @lualtek/react-components
 
+## 20.1.0
+
+### Minor Changes
+
+- 0ca093e: Add new SwipeRow component
+
+### Patch Changes
+
+- Updated dependencies [76b953c]
+- Updated dependencies [0ca093e]
+  - @lualtek/icons@20.1.0
+
 ## 20.0.0
 
 ### Major Changes

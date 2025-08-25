@@ -1,5 +1,17 @@
 # @lualtek/charts
 
+## 20.1.0
+
+### Minor Changes
+
+- 0ca093e: Add new SwipeRow component
+
+### Patch Changes
+
+- Updated dependencies [0ca093e]
+  - @lualtek/react-components@20.1.0
+  - @lualtek/tokens@20.1.0
+
 ## 20.0.0
 
 ### Patch Changes

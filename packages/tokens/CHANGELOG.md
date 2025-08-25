@@ -1,5 +1,11 @@
 # @lualtek/tokens
 
+## 20.1.0
+
+### Minor Changes
+
+- 0ca093e: Add new SwipeRow component
+
 ## 20.0.0
 
 ## 19.7.3
