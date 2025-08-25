@@ -1,6 +1,6 @@
 import { animate, useMotionValue } from 'motion/react';
 import React, {
-  FC, PropsWithChildren, useId, useMemo,
+  FC, PropsWithChildren, useCallback, useId, useMemo,
 } from 'react';
 
 import { Stack, StackProps } from '../stack';
@@ -25,7 +25,7 @@ export type SwipeActionsProps = {
    *
    * @defaultValue 16
    */
-  actionsGap?: StackProps['columnGap'];
+  actionsGap?: Exclude<StackProps['columnGap'], string>;
 };
 
 const ACTIONS_LEFT_PADDING = 16;
@@ -74,9 +74,9 @@ const SwipeActionsRoot: FC<PropsWithChildren<SwipeActionsProps>> = ({
    * @function
    * @returns {void} Does not return a value.
    */
-  const closeActions = (): void => {
+  const closeActions = useCallback(() => {
     animate(x, 0, { type: 'spring', stiffness: 500, damping: 40 });
-  };
+  }, [x]);
 
   /**
    * Represents the context value for swipe actions.
@@ -84,16 +84,17 @@ const SwipeActionsRoot: FC<PropsWithChildren<SwipeActionsProps>> = ({
    * Contains relevant properties and methods required for managing
    * swipe actions within the context.
    */
-  const contextValue: SwipeActionsContextType = {
+  const contextValue: SwipeActionsContextType = useMemo(() => ({
     x,
     actionsWidth: actionsWidth + ACTIONS_LEFT_PADDING + ACTIONS_RIGHT_PADDING,
     actionCount,
     closeActions,
-  };
+  }),
+  [actionCount, actionsWidth, closeActions, x]);
 
   return (
     <SwipeActionsContext.Provider value={contextValue}>
-      <div className={styles.SwipeActions}>
+      <Stack className={styles.SwipeActions} vAlign="center">
         <Stack
           ref={actionsRef}
           className={styles.ActionsContainer}
@@ -113,7 +114,7 @@ const SwipeActionsRoot: FC<PropsWithChildren<SwipeActionsProps>> = ({
         <SwipeTrigger>
           {trigger}
         </SwipeTrigger>
-      </div>
+      </Stack>
     </SwipeActionsContext.Provider>
   );
 };

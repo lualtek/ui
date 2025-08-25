@@ -2,11 +2,10 @@ import { IconNames } from '@lualtek/icons';
 import { motion, useTransform } from 'motion/react';
 import { FC } from 'react';
 
-import { BlankButton, PanelProps } from '@/components';
-import { Icon } from '@/components';
-import { Panel } from '@/components';
-import { Stack } from '@/components';
-import { Text, TextProps } from '@/components';
+import type { IconProps, TextProps } from '@/components';
+import {
+  BlankButton, Icon, Panel, PanelProps, Stack, Text,
+} from '@/components';
 
 import styles from './swipe-actions.module.css';
 import { useSwipeActions } from './swipe-actions-context';
@@ -18,6 +17,10 @@ export interface SwipeActionProps {
    * @defaultValue undefined
    */
   sentiment?: TextProps['sentiment'];
+  /**
+   * Set the size of the action icon
+   */
+  dimension?: 'small' | 'regular' | 'big';
   /**
    * Set the action icon
    *
@@ -47,11 +50,39 @@ export interface SwipeActionProps {
   index?: number;
 }
 
-const sentimentPanelColors: Record<NonNullable<TextProps['sentiment']>, PanelProps['vibrancyColor']> = {
-  positive: 'green',
-  informative: 'brand',
-  danger: 'red',
-  warning: 'yellow',
+type VisualPropsType = {
+  dimension: Record<NonNullable<SwipeActionProps['dimension']>, {
+    icon: IconProps['dimension'];
+    padding: PanelProps['vPadding'];
+    radius: PanelProps['radius'];
+  }>;
+  sentiment: Record<NonNullable<TextProps['sentiment']>, PanelProps['vibrancyColor']>;
+};
+
+const actionVisualProps: VisualPropsType = {
+  dimension: {
+    small: {
+      icon: 14,
+      padding: 8,
+      radius: 12,
+    },
+    regular: {
+      icon: 18,
+      padding: 16,
+      radius: 16,
+    },
+    big: {
+      icon: 22,
+      padding: 16,
+      radius: 24,
+    },
+  },
+  sentiment: {
+    positive: 'green',
+    informative: 'brand',
+    danger: 'red',
+    warning: 'yellow',
+  },
 };
 
 /**
@@ -63,6 +94,7 @@ const sentimentPanelColors: Record<NonNullable<TextProps['sentiment']>, PanelPro
  */
 export const SwipeAction: FC<SwipeActionProps> = ({
   sentiment,
+  dimension = 'regular',
   icon = 'c-info',
   showLabel = false,
   label = 'My Action',
@@ -82,6 +114,7 @@ export const SwipeAction: FC<SwipeActionProps> = ({
 
   const startAnimate = -(index * actionWidth);
   const endAnimate = -((index + 1) * actionWidth);
+
   const scale = useTransform(
     x,
     [startAnimate, endAnimate],
@@ -113,22 +146,26 @@ export const SwipeAction: FC<SwipeActionProps> = ({
         hAlign="center"
         vAlign="center"
         fill={false}
-        rowGap={4}
+        rowGap={2}
         onClick={handleClick}
       >
         <Panel
           as={Stack}
           bordered
           vibrant
-          vibrancyColor={sentiment ? sentimentPanelColors[sentiment] : 'background'}
-          radius={16}
-          vPadding={16}
-          hPadding={16}
+          vibrancyColor={sentiment ? actionVisualProps.sentiment[sentiment] : 'background'}
+          radius={actionVisualProps.dimension[dimension].radius}
+          vPadding={actionVisualProps.dimension[dimension].padding}
+          hPadding={actionVisualProps.dimension[dimension].padding}
           vAlign="center"
           hAlign="center"
           fill={false}
         >
-          <Icon fill={sentiment ? `var(--highlight-${sentimentPanelColors[sentiment]}-foreground` : undefined} source={icon} />
+          <Icon
+            fill={sentiment ? `var(--highlight-${actionVisualProps.sentiment[sentiment]}-foreground` : undefined}
+            source={icon}
+            dimension={actionVisualProps.dimension[dimension].icon}
+          />
         </Panel>
         {showLabel && <Text dimmed={4} size={14}>{label}</Text>}
       </Stack>

@@ -25,5 +25,5 @@
   height: 100%;
   display: flex;
   flex-grow: 1;
-  cursor: pointer;
+  transform-origin: center center;
 }
