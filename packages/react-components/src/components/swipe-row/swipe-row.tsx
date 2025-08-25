@@ -19,6 +19,9 @@ export type SwipeRowProps = {
    * One Trigger only and 4 Actions maximum
    */
   children: React.ReactElement<SwipeRowActionProps> | Array<React.ReactElement<SwipeRowActionProps>>;
+  /**
+   * The content to swipe to reveal the actions.
+   */
   trigger: React.ReactNode;
   /**
    * Set the gap between the actions. This is useful for actions
@@ -41,6 +44,12 @@ const SwipeActionsRoot: FC<PropsWithChildren<SwipeRowProps>> = ({
   const x = useMotionValue(0);
   const actionId = useId();
 
+  /**
+   * Get the actions from the children:
+   * - Extract the direct children
+   * - If there is a Fragment as a direct child, extract its children
+   * - Filter out non-SwipeRowAction children
+   */
   const { actions: actionElements } = useMemo(() => {
     const directChildren = React.Children.toArray(children);
     let source = directChildren;
@@ -67,13 +76,10 @@ const SwipeActionsRoot: FC<PropsWithChildren<SwipeRowProps>> = ({
   const actionCount = actionElements.length;
 
   /**
-   * Closes or dismisses an element or component with an animated transition.
-   * This function animates the horizontal position of an element, represented by `x`,
+   * Closes the trigger with an animated transition.
+   * This function animates the horizontal position of the trigger, represented by `x`,
    * back to 0. The animation uses a spring-based motion with a specified stiffness
    * and damping configuration.
-   *
-   * @function
-   * @returns {void} Does not return a value.
    */
   const closeActions = useCallback(() => {
     animate(x, 0, { type: 'spring', stiffness: 500, damping: 40 });
@@ -120,4 +126,5 @@ const SwipeActionsRoot: FC<PropsWithChildren<SwipeRowProps>> = ({
   );
 };
 
+// Assign SwipeRowAction to the SwipeRow.Action component
 export const SwipeRow = Object.assign(SwipeActionsRoot, { Action: SwipeRowAction });

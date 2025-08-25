@@ -85,10 +85,10 @@ const actionVisualProps: VisualPropsType = {
 };
 
 /**
- * Represents a functional component for an interactive action button in a swipe-enabled UI.
+ * Represents the action component of the swipe row.
  *
- * This component is built to be used within swipeable actions. It renders a button with optional
- * icon, label, and hover effects while also managing click events and swipe actions.
+ * This component is built to be used within `SwipeRow`. It renders a customizable button
+ * while also managing click events and swipe actions.
  *
  */
 export const SwipeRowAction: FC<SwipeRowActionProps> = ({
@@ -114,6 +114,10 @@ export const SwipeRowAction: FC<SwipeRowActionProps> = ({
   const startAnimate = -(index * actionWidth);
   const endAnimate = -((index + 1) * actionWidth);
 
+  /**
+   * Map/transform the range start/endAnimate to 0 and 1 using the `x` value, then apply it to scale animation
+   *
+   */
   const scale = useTransform(
     x,
     [startAnimate, endAnimate],
@@ -122,12 +126,10 @@ export const SwipeRowAction: FC<SwipeRowActionProps> = ({
   );
 
   const handleClick = () => {
-    if (onClick) {
-      onClick();
-    }
+    onClick?.();
 
     /**
-     * Call closeActions when an action is clicked.
+     * Call closeActions from context when an action is clicked.
      * This restore the trigger to its original position
      */
     closeActions();

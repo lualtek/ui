@@ -5,7 +5,12 @@ import React, { FC, PropsWithChildren, useRef } from 'react';
 import styles from '../swipe-row.module.css';
 import { useSwipeActions } from './swipe-row-context';
 
-export type SwipeRowTriggerProps = {
+type SwipeRowTriggerProps = {
+  /**
+   * The content of the trigger element
+   * @internal
+   * @private
+   */
   children: React.ReactNode;
 };
 
@@ -16,13 +21,17 @@ export const SwipeRowTrigger: FC<PropsWithChildren<SwipeRowTriggerProps>> = ({ c
    */
   const wasDraggedRef = useRef(false);
 
+  /**
+   * The onDragStart event is triggered only when a drag is initiated by motion `onDragStart` prop
+   * This is the right time to set our flag.
+   */
   const handleDragStart = () => {
-    /**
-     * The onDragStart event is triggered only when a drag is initiated. This is the right time to set our flag.
-     */
     wasDraggedRef.current = true;
   };
 
+  /**
+   * Handles the end of a drag gesture and determines the resulting animation based on the drag offset and velocity.
+   */
   const handleDragEnd = (event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
     const { offset, velocity } = info;
 
@@ -46,7 +55,7 @@ export const SwipeRowTrigger: FC<PropsWithChildren<SwipeRowTriggerProps>> = ({ c
     const isFullyOpen = Math.abs(x.get() + actionsWidth) < 1;
 
     /**
-     * If the trigger is fully open, the first click closes them.
+     * If the trigger is fully open, the first click closes it.
      */
     if (isFullyOpen) {
       event.stopPropagation();
