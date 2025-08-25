@@ -1,5 +1,12 @@
 # @lualtek/icons
 
+## 20.1.0
+
+### Minor Changes
+
+- 76b953c: Add new icons
+- 0ca093e: Add new SwipeRow component
+
 ## 20.0.0
 
 ## 19.7.3
