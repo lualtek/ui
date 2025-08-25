@@ -1,31 +1,31 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import { BlankButton, Panel, SwipeActionProps } from '@/components';
+import { BlankButton, Panel, SwipeRowActionProps } from '@/components';
 
-import { SwipeActions } from './swipe-actions';
+import { SwipeRow } from './swipe-row';
 
-const renderActions = (props: Omit<SwipeActionProps, 'icon' | 'label'>) => [
-  <SwipeActions.Action
+const renderActions = (props: Omit<SwipeRowActionProps, 'icon' | 'label'>) => [
+  <SwipeRow.Action
     {...props}
     icon="trash"
     label="Edit"
     onClick={() => console.log('Edit clicked')}
   />,
-  <SwipeActions.Action
+  <SwipeRow.Action
     {...props}
     sentiment="positive"
     icon="ai-chat"
     label="Action 2"
     onClick={() => console.log('Delete clicked')}
   />,
-  <SwipeActions.Action
+  <SwipeRow.Action
     {...props}
     sentiment="informative"
     icon="zoom"
     label="Action 3"
     onClick={() => console.log('Delete clicked')}
   />,
-  <SwipeActions.Action
+  <SwipeRow.Action
     {...props}
     sentiment="danger"
     icon="remove"
@@ -34,9 +34,9 @@ const renderActions = (props: Omit<SwipeActionProps, 'icon' | 'label'>) => [
   />,
 ];
 
-const meta: Meta<typeof SwipeActions> = {
-  title: 'Actions/Swipe Actions',
-  component: SwipeActions,
+const meta: Meta<typeof SwipeRow> = {
+  title: 'Actions/Swipe Row',
+  component: SwipeRow,
   tags: ['mobile', 'code-only'],
   argTypes: {},
   args: {
@@ -50,7 +50,7 @@ const meta: Meta<typeof SwipeActions> = {
       {renderActions({})}
     </>,
   },
-} satisfies Meta<typeof SwipeActions>;
+} satisfies Meta<typeof SwipeRow>;
 
 export default meta;
 

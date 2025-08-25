@@ -6,19 +6,19 @@ import React, {
 import { useMeasure } from 'react-use';
 
 import { Stack, StackProps } from '../stack';
-import { SwipeAction } from './parts/swipe-action';
-import { SwipeActionProps } from './parts/swipe-action';
-import { SwipeActionsContext, SwipeActionsContextType } from './parts/swipe-actions-context';
-import { SwipeTrigger } from './parts/swipe-trigger';
-import styles from './swipe-actions.module.css';
+import { SwipeRowAction } from './parts/swipe-row-action';
+import { SwipeRowActionProps } from './parts/swipe-row-action';
+import { SwipeActionsContextType, SwipeRowContext } from './parts/swipe-row-context';
+import { SwipeRowTrigger } from './parts/swipe-row-trigger';
+import styles from './swipe-row.module.css';
 
-export type SwipeActionsProps = {
+export type SwipeRowProps = {
   /**
    * The content to display within the swipe actions.
-   * Only `Action` and `Trigger` components are rendered
+   * Only `SwipeRowAction` and `Trigger` components are rendered
    * One Trigger only and 4 Actions maximum
    */
-  children: React.ReactElement<SwipeActionProps> | Array<React.ReactElement<SwipeActionProps>>;
+  children: React.ReactElement<SwipeRowActionProps> | Array<React.ReactElement<SwipeRowActionProps>>;
   trigger: React.ReactNode;
   /**
    * Set the gap between the actions. This is useful for actions
@@ -32,7 +32,7 @@ export type SwipeActionsProps = {
 const ACTIONS_LEFT_PADDING = 16;
 const ACTIONS_RIGHT_PADDING = 8;
 
-const SwipeActionsRoot: FC<PropsWithChildren<SwipeActionsProps>> = ({
+const SwipeActionsRoot: FC<PropsWithChildren<SwipeRowProps>> = ({
   children,
   trigger,
   actionsGap = 16,
@@ -54,10 +54,10 @@ const SwipeActionsRoot: FC<PropsWithChildren<SwipeActionsProps>> = ({
       source = React.Children.toArray((directChildren[0].props as { children?: React.ReactNode }).children);
     }
 
-    // Filter out non-SwipeAction children
+    // Filter out non-SwipeRowAction children
     const actions = source.filter(
-      (child): child is React.ReactElement<SwipeActionProps> => React.isValidElement(child)
-        && child.type === SwipeAction,
+      (child): child is React.ReactElement<SwipeRowActionProps> => React.isValidElement(child)
+        && child.type === SwipeRowAction,
     );
 
     return { actions };
@@ -94,8 +94,8 @@ const SwipeActionsRoot: FC<PropsWithChildren<SwipeActionsProps>> = ({
   [actionCount, actionsWidth, closeActions, x]);
 
   return (
-    <SwipeActionsContext.Provider value={contextValue}>
-      <Stack className={styles.SwipeActions} vAlign="center">
+    <SwipeRowContext.Provider value={contextValue}>
+      <Stack className={styles.SwipeRow} vAlign="center">
         <Stack
           ref={actionsRef}
           className={styles.ActionsContainer}
@@ -112,12 +112,12 @@ const SwipeActionsRoot: FC<PropsWithChildren<SwipeActionsProps>> = ({
             index: actionCount - 1 - i,
           }))}
         </Stack>
-        <SwipeTrigger>
+        <SwipeRowTrigger>
           {trigger}
-        </SwipeTrigger>
+        </SwipeRowTrigger>
       </Stack>
-    </SwipeActionsContext.Provider>
+    </SwipeRowContext.Provider>
   );
 };
 
-export const SwipeActions = Object.assign(SwipeActionsRoot, { Action: SwipeAction });
+export const SwipeRow = Object.assign(SwipeActionsRoot, { Action: SwipeRowAction });

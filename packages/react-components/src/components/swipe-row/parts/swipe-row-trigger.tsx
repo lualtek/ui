@@ -2,14 +2,14 @@ import type { PanInfo } from 'motion/react';
 import { animate, motion } from 'motion/react';
 import React, { FC, PropsWithChildren, useRef } from 'react';
 
-import styles from '../swipe-actions.module.css';
-import { useSwipeActions } from './swipe-actions-context';
+import styles from '../swipe-row.module.css';
+import { useSwipeActions } from './swipe-row-context';
 
-export type SwipeTriggerProps = {
+export type SwipeRowTriggerProps = {
   children: React.ReactNode;
 };
 
-export const SwipeTrigger: FC<PropsWithChildren<SwipeTriggerProps>> = ({ children }) => {
+export const SwipeRowTrigger: FC<PropsWithChildren<SwipeRowTriggerProps>> = ({ children }) => {
   const { x, actionsWidth } = useSwipeActions();
   /**
    * Ref to determine if the action is a drag

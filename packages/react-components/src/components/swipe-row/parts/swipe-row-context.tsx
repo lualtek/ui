@@ -17,22 +17,22 @@ export type SwipeActionsContextType = {
  *
  * @type {React.Context<SwipeActionsContextType | null>}
  */
-export const SwipeActionsContext: React.Context<SwipeActionsContextType | null> = createContext<
+export const SwipeRowContext: React.Context<SwipeActionsContextType | null> = createContext<
   SwipeActionsContextType | null
 >(null);
 
 /**
- * Custom hook to access the SwipeActions context.
+ * Custom hook to access the SwipeRow context.
  *
- * This hook provides an interface to consume the SwipeActions context. It ensures that the
+ * This hook provides an interface to consume the SwipeRow context. It ensures that the
  * component using the hook is wrapped within a `SwipeActionsProvider`. If the context is
  * not available, it throws an error.
  *
  * @throws {Error} Throws an error if the hook is used outside a `SwipeActionsProvider`.
- * @returns {Object} The current context value of SwipeActions.
+ * @returns {Object} The current context value of SwipeRow.
  */
 export const useSwipeActions = () => {
-  const context = useContext(SwipeActionsContext);
+  const context = useContext(SwipeRowContext);
   if (!context) {
     throw new Error('useSwipeActions must be used within a SwipeActionsProvider');
   }

@@ -6,10 +6,10 @@ import type { IconProps, TextProps } from '../../../index';
 import {
   BlankButton, Icon, Panel, PanelProps, Stack, Text,
 } from '../../../index';
-import styles from '../swipe-actions.module.css';
-import { useSwipeActions } from './swipe-actions-context';
+import styles from '../swipe-row.module.css';
+import { useSwipeActions } from './swipe-row-context';
 
-export interface SwipeActionProps {
+export interface SwipeRowActionProps {
   /**
    * Set the action color
    *
@@ -50,7 +50,7 @@ export interface SwipeActionProps {
 }
 
 type VisualPropsType = {
-  dimension: Record<NonNullable<SwipeActionProps['dimension']>, {
+  dimension: Record<NonNullable<SwipeRowActionProps['dimension']>, {
     icon: IconProps['dimension'];
     padding: PanelProps['vPadding'];
     radius: PanelProps['radius'];
@@ -91,12 +91,12 @@ const actionVisualProps: VisualPropsType = {
  * icon, label, and hover effects while also managing click events and swipe actions.
  *
  */
-export const SwipeAction: FC<SwipeActionProps> = ({
+export const SwipeRowAction: FC<SwipeRowActionProps> = ({
   sentiment,
   dimension = 'regular',
   icon = 'c-info',
   showLabel = false,
-  label = 'My Action',
+  label = 'My SwipeRowAction',
   onClick,
   index = 0,
 }) => {

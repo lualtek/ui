@@ -50,7 +50,7 @@ export * from './split-button';
 export * from './stack';
 export * from './stepper';
 export * from './sticky-spy';
-export * from './swipe-actions';
+export * from './swipe-row';
 export * from './switch';
 export * from './table';
 export * from './tabs';
