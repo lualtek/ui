@@ -1,39 +1,21 @@
+import constate from 'constate';
 import type { MotionValue } from 'motion/react';
-import { createContext, useContext } from 'react';
 
-export type SwipeActionsContextType = {
+export type SwipeRowContextType = {
   x: MotionValue<number>;
   actionsWidth: number;
   actionCount: number;
   closeActions: () => void;
+};
+
+/**
+ * Custom hook to manage the state of a SwipeRow component.
+ */
+function useSwipeRowState(props: SwipeRowContextType) {
+  return props;
 }
 
 /**
- * A React context used to provide and consume swipe actions functionality within a component tree.
- * It holds the state and behavior necessary for managing swipe actions.
- * The default context value is null.
- *
- * @type {React.Context<SwipeActionsContextType | null>}
+ * Export the SwipeRowProvider and useSwipeRow hooks using constate.
  */
-export const SwipeRowContext: React.Context<SwipeActionsContextType | null> = createContext<
-  SwipeActionsContextType | null
->(null);
-
-/**
- * Custom hook to access the SwipeRow context.
- *
- * This hook provides an interface to consume the SwipeRow context. It ensures that the
- * component using the hook is wrapped within a `SwipeActionsProvider`. If the context is
- * not available, it throws an error.
- *
- * @throws {Error} Throws an error if the hook is used outside a `SwipeActionsProvider`.
- * @returns {Object} The current context value of SwipeRow.
- */
-export const useSwipeActions = () => {
-  const context = useContext(SwipeRowContext);
-  if (!context) {
-    throw new Error('useSwipeActions must be used within a SwipeActionsProvider');
-  }
-
-  return context;
-};
+export const [SwipeRowProvider, useSwipeRow] = constate(useSwipeRowState);

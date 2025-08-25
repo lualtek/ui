@@ -2,13 +2,12 @@ import { animate, useMotionValue } from 'motion/react';
 import React, {
   FC, PropsWithChildren, useCallback, useId, useMemo,
 } from 'react';
-// import { useMeasure } from './hooks/useMeasure';
 import { useMeasure } from 'react-use';
 
 import { Stack, StackProps } from '../stack';
 import { SwipeRowAction } from './parts/swipe-row-action';
 import { SwipeRowActionProps } from './parts/swipe-row-action';
-import { SwipeActionsContextType, SwipeRowContext } from './parts/swipe-row-context';
+import { SwipeRowContextType, SwipeRowProvider } from './parts/swipe-row-context';
 import { SwipeRowTrigger } from './parts/swipe-row-trigger';
 import styles from './swipe-row.module.css';
 
@@ -91,7 +90,7 @@ const SwipeActionsRoot: FC<PropsWithChildren<SwipeRowProps>> = ({
    * Contains relevant properties and methods required for managing
    * swipe actions within the context.
    */
-  const contextValue: SwipeActionsContextType = useMemo(() => ({
+  const contextValue: SwipeRowContextType = useMemo(() => ({
     x,
     actionsWidth: actionsWidth + ACTIONS_LEFT_PADDING + ACTIONS_RIGHT_PADDING,
     actionCount,
@@ -100,7 +99,7 @@ const SwipeActionsRoot: FC<PropsWithChildren<SwipeRowProps>> = ({
   [actionCount, actionsWidth, closeActions, x]);
 
   return (
-    <SwipeRowContext.Provider value={contextValue}>
+    <SwipeRowProvider {...contextValue}>
       <Stack className={styles.SwipeRow} vAlign="center">
         <Stack
           ref={actionsRef}
@@ -122,7 +121,7 @@ const SwipeActionsRoot: FC<PropsWithChildren<SwipeRowProps>> = ({
           {trigger}
         </SwipeRowTrigger>
       </Stack>
-    </SwipeRowContext.Provider>
+    </SwipeRowProvider>
   );
 };
 

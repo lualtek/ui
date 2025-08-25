@@ -7,7 +7,7 @@ import {
   BlankButton, Icon, Panel, PanelProps, Stack, Text,
 } from '../../../index';
 import styles from '../swipe-row.module.css';
-import { useSwipeActions } from './swipe-row-context';
+import { useSwipeRow } from './swipe-row-context';
 
 export interface SwipeRowActionProps {
   /**
@@ -102,7 +102,7 @@ export const SwipeRowAction: FC<SwipeRowActionProps> = ({
 }) => {
   const {
     x, actionsWidth, actionCount, closeActions,
-  } = useSwipeActions();
+  } = useSwipeRow();
 
   /**
    * Scale in the action once the trigger passed it,

@@ -1,5 +1,4 @@
-export type { SwipeRowActionProps } from './parts/swipe-row-action';
-export { SwipeRowAction } from './parts/swipe-row-action';
+export { SwipeRowAction, type SwipeRowActionProps } from './parts/swipe-row-action';
+export type { SwipeRowContextType } from './parts/swipe-row-context';
 export { SwipeRowTrigger } from './parts/swipe-row-trigger';
-export type { SwipeRowProps } from './swipe-row';
-export { SwipeRow } from './swipe-row';
+export { SwipeRow, type SwipeRowProps } from './swipe-row';

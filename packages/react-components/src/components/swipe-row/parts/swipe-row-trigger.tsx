@@ -3,7 +3,7 @@ import { animate, motion } from 'motion/react';
 import React, { FC, PropsWithChildren, useRef } from 'react';
 
 import styles from '../swipe-row.module.css';
-import { useSwipeActions } from './swipe-row-context';
+import { useSwipeRow } from './swipe-row-context';
 
 type SwipeRowTriggerProps = {
   /**
@@ -15,7 +15,7 @@ type SwipeRowTriggerProps = {
 };
 
 export const SwipeRowTrigger: FC<PropsWithChildren<SwipeRowTriggerProps>> = ({ children }) => {
-  const { x, actionsWidth } = useSwipeActions();
+  const { x, actionsWidth } = useSwipeRow();
   /**
    * Ref to determine if the action is a drag
    */
