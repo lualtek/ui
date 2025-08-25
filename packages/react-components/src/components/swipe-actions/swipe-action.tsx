@@ -167,7 +167,7 @@ export const SwipeAction: FC<SwipeActionProps> = ({
             dimension={actionVisualProps.dimension[dimension].icon}
           />
         </Panel>
-        {showLabel && <Text dimmed={4} size={14}>{label}</Text>}
+        {showLabel && <Text responsive={false} dimmed={4} size={14}>{label}</Text>}
       </Stack>
     </Stack>
   );

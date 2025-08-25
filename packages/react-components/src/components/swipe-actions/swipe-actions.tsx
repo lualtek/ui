@@ -2,9 +2,10 @@ import { animate, useMotionValue } from 'motion/react';
 import React, {
   FC, PropsWithChildren, useCallback, useId, useMemo,
 } from 'react';
+// import { useMeasure } from './hooks/useMeasure';
+import { useMeasure } from 'react-use';
 
 import { Stack, StackProps } from '../stack';
-import { useMeasure } from './hooks/useMeasure';
 import { SwipeAction } from './swipe-action';
 import { SwipeActionProps } from './swipe-action';
 import styles from './swipe-actions.module.css';
@@ -36,7 +37,7 @@ const SwipeActionsRoot: FC<PropsWithChildren<SwipeActionsProps>> = ({
   trigger,
   actionsGap = 16,
 }) => {
-  const [actionsRef, actionsWidth] = useMeasure<HTMLDivElement>();
+  const [actionsRef, { width: actionsWidth }] = useMeasure<HTMLDivElement>();
   const x = useMotionValue(0);
   const actionId = useId();
 
