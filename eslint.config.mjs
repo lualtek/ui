@@ -26,7 +26,7 @@ const languageOptions = {
 const jsFiles = ['**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx'];
 
 export default [{
-  ignores: ['**/dist', '**/*.module.css.d.ts', '**/*.json'],
+  ignores: ['**/dist', '**/*.module.css.d.ts', '**/*.json', '**/slide-actions.stories.tsx'],
 }, ...lasalefamineConfig.map((config) => ({ ...config, files: jsFiles, languageOptions })), ...reactHooksConfig, {
   rules: {
     'import/no-extraneous-dependencies': 'off',
