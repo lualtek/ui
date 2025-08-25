@@ -1,7 +1,7 @@
 import type { MotionValue } from 'motion/react';
 import { createContext, useContext } from 'react';
 
-import { StackProps } from '../stack';
+import { StackProps } from '../../stack';
 
 export type SwipeActionsContextType = {
   x: MotionValue<number>;

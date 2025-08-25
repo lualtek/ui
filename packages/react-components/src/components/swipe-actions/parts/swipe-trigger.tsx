@@ -2,7 +2,7 @@ import type { PanInfo } from 'motion/react';
 import { animate, motion } from 'motion/react';
 import React, { FC, PropsWithChildren, useRef } from 'react';
 
-import styles from './swipe-actions.module.css';
+import styles from '../swipe-actions.module.css';
 import { useSwipeActions } from './swipe-actions-context';
 
 export type SwipeTriggerProps = {

@@ -6,11 +6,11 @@ import React, {
 import { useMeasure } from 'react-use';
 
 import { Stack, StackProps } from '../stack';
-import { SwipeAction } from './swipe-action';
-import { SwipeActionProps } from './swipe-action';
+import { SwipeAction } from './parts/swipe-action';
+import { SwipeActionProps } from './parts/swipe-action';
+import { SwipeActionsContext, SwipeActionsContextType } from './parts/swipe-actions-context';
+import { SwipeTrigger } from './parts/swipe-trigger';
 import styles from './swipe-actions.module.css';
-import { SwipeActionsContext, SwipeActionsContextType } from './swipe-actions-context';
-import { SwipeTrigger } from './swipe-trigger';
 
 export type SwipeActionsProps = {
   /**

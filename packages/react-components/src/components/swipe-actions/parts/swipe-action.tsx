@@ -2,12 +2,11 @@ import { IconNames } from '@lualtek/icons';
 import { motion, useTransform } from 'motion/react';
 import { FC } from 'react';
 
-import type { IconProps, TextProps } from '@/components';
+import type { IconProps, TextProps } from '../../../index';
 import {
   BlankButton, Icon, Panel, PanelProps, Stack, Text,
-} from '@/components';
-
-import styles from './swipe-actions.module.css';
+} from '../../../index';
+import styles from '../swipe-actions.module.css';
 import { useSwipeActions } from './swipe-actions-context';
 
 export interface SwipeActionProps {
