@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import { IconButton } from './icon-button';
 
-const meta = {
+const meta: Meta<typeof IconButton> = {
   title: 'Actions/Icon Button',
   component: IconButton,
   args: {
@@ -31,7 +31,7 @@ const meta = {
       control: { type: 'radio' },
     },
   },
-} satisfies Meta<typeof IconButton>;
+};
 
 export default meta;
 

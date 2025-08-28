@@ -50,7 +50,7 @@ const meta: Meta<typeof SwipeRow> = {
       {renderActions({})}
     </>,
   },
-} satisfies Meta<typeof SwipeRow>;
+};
 
 export default meta;
 

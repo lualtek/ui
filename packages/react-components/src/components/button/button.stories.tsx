@@ -1,10 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { SVGAttributes } from 'react';
 
-import { Stack, ToggleButton } from '..';
+import { Stack, ToggleButton } from '@/components';
+
 import { Button } from '.';
 
-const meta = {
+const meta: Meta<typeof Button> = {
   title: 'Actions/Button',
   component: Button,
   render: args => (
@@ -48,7 +49,7 @@ const meta = {
       control: { type: 'inline-radio' },
     },
   },
-} satisfies Meta<typeof Button>;
+};
 
 export default meta;
 
