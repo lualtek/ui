@@ -9,12 +9,9 @@ import styles from './icon-button.module.css';
 export type IconButtonProps = Pick<
   ButtonProps,
   'kind' | 'dimension' | 'icon' | 'disabled' | 'onClick' | 'busy' | 'sentiment' | 'type' | 'iconOpticalSize'
-
 >
 
-type IconButtonComponent = PolyRefComponent<typeof Button, IconButtonProps & {
-  children?: never;
-}>;
+type IconButtonComponent = PolyRefComponent<typeof Button, IconButtonProps>;
 
 export const IconButton: IconButtonComponent = (
   {
