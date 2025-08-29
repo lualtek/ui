@@ -1,4 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { map } from 'recharts/types/util/scale/util/utils';
+
+import { ReferenceLine } from '@/charts/components';
 
 import SimpleData from '../../../fixtures/data';
 import MultiAxisData from '../../../fixtures/multi-y-data';
@@ -17,15 +20,17 @@ const meta = {
   component: BarChart,
   args: {
     data,
-    series: [{
-      dataKey: 'y',
-      serieKeyId: 'y',
-      side: 'left',
-    }, {
-      dataKey: 'z',
-      serieKeyId: 'z',
-      side: 'left',
-    },
+    series: [
+      {
+        dataKey: 'y',
+        serieKeyId: 'y',
+        side: 'left',
+      },
+      {
+        dataKey: 'z',
+        serieKeyId: 'z',
+        side: 'left',
+      },
     ],
     showGrid: true,
     showYAxis: true,
@@ -57,6 +62,21 @@ export const Default = {} satisfies Story;
 export const CustomBarSize = {
   args: {
     barSize: 2,
+  },
+} satisfies Story;
+
+export const WithReferenceLines = {
+  args: {
+    showXAxis: true,
+    referenceComponent: data.map(d => (
+      <ReferenceLine
+        key="linea-1"
+        x={d.x}
+        color="red"
+        label="Evento 1"
+        yAxisId="left"
+      />
+    )),
   },
 } satisfies Story;
 
