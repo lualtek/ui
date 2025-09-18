@@ -79,5 +79,10 @@
   "engines": {
     "pnpm": ">=8.0.0",
     "node": ">=18.0.0"
+  },
+  "pnpm": {
+    "overrides": {
+      "@stylistic/eslint-plugin": "5.2.3"
+    }
   }
 }

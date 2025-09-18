@@ -4,6 +4,9 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+overrides:
+  '@stylistic/eslint-plugin': 5.2.3
+
 importers:
 
   .:
@@ -1010,7 +1013,7 @@ packages:
     resolution: {integrity: sha512-yktKrXOVoPzlv2lSxeAProaSnYxW2MpWqZjfEnBsVbN9xoJIxPTZfdpHRIKwpXF6Tu+IH80Rb6VIRDC8ushQUA==}
     engines: {node: '>=20'}
     peerDependencies:
-      '@stylistic/eslint-plugin': ^2.7.1
+      '@stylistic/eslint-plugin': 5.2.3
       '@typescript-eslint/eslint-plugin': '>=6.7.4'
       '@typescript-eslint/parser': '>=6.7.4'
       eslint: '>=8.50.0'
@@ -6611,7 +6614,7 @@ snapshots:
 
   '@stylistic/eslint-plugin@2.13.0(eslint@9.35.0(jiti@2.4.2))(typescript@5.9.2)':
     dependencies:
-      '@typescript-eslint/utils': 8.40.0(eslint@9.35.0(jiti@2.4.2))(typescript@5.9.2)
+      '@typescript-eslint/utils': 8.44.0(eslint@9.35.0(jiti@2.4.2))(typescript@5.9.2)
       eslint: 9.35.0(jiti@2.4.2)
       eslint-visitor-keys: 4.2.1
       espree: 10.4.0
