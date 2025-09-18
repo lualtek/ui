@@ -46,8 +46,8 @@
     "@types/fs-extra": "11.0.4",
     "@types/tinycolor2": "1.4.6",
     "colorjs.io": "0.5.2",
-    "fs-extra": "11.3.1",
-    "style-dictionary": "5.0.1",
+    "fs-extra": "11.3.2",
+    "style-dictionary": "5.0.4",
     "tsconfig": "workspace:*"
   }
 }
