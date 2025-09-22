@@ -1,7 +1,7 @@
 {
   "name": "@lualtek/config",
   "description": "Lualtek UI shared configurations",
-  "version": "20.1.0",
+  "version": "20.2.0",
   "author": "Lualtek",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com",

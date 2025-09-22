@@ -1,5 +1,17 @@
 # @lualtek/charts
 
+## 20.2.0
+
+### Minor Changes
+
+- a2bf30c: Add `includeHiddenPoints` prop to charts
+
+### Patch Changes
+
+- Updated dependencies [5eaa425]
+  - @lualtek/react-components@20.2.0
+  - @lualtek/tokens@20.2.0
+
 ## 20.1.0
 
 ### Minor Changes

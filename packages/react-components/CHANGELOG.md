@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 20.2.0
+
+### Patch Changes
+
+- 5eaa425: Fix meter rendering
+  - @lualtek/icons@20.2.0
+
 ## 20.1.0
 
 ### Minor Changes
