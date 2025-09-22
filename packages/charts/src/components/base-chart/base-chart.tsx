@@ -41,6 +41,14 @@ export type BaseChartProps = Except<ResponsiveContainerProps, 'className'> & {
    */
   showXAxis?: boolean;
   /**
+   * Ensures that all datapoints within a chart contribute to its domain calculation, even when they are hidden.
+   * Show points with no data on the X axis.
+   *
+   * @defaultValue false
+   * @see https://recharts.org/en-US/examples/HidePointsWithNoDataOnXAxis
+   */
+  includeHiddenPoints?: boolean;
+  /**
    * Whether to show the tooltip.
    *
    * @defaultValue true
@@ -191,6 +199,7 @@ export const BaseChart: BaseChartComponent = ({
   showGrid = true,
   height = 300,
   showXAxis = false,
+  includeHiddenPoints = false,
   showTooltip = true,
   showLegend = false,
   legendAlign = 'right',
@@ -254,6 +263,7 @@ export const BaseChart: BaseChartComponent = ({
             <XAxis
               dataKey={dataKeyX}
               tickCount={DENSITIES[density]}
+              includeHidden={includeHiddenPoints}
               hide={!showXAxis}
               type={xType}
               minTickGap={32}
