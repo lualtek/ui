@@ -202,6 +202,7 @@ const SheetContent: FC<SheetContentProps & Pick<DialogProps, 'children' | 'dismi
                   useSystemStyle={false}
                   hideScrollbars={!matches.small}
                   ref={scrollerRef}
+                  canScroll={!scrollInside}
                 >
                   {/* Drag Handle */}
                   {shouldShowHandle && (
