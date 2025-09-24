@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 20.2.1
+
+### Patch Changes
+
+- 1f0f3d6: Disable scroll for Sheet with scrollInside prop true
+  - @lualtek/icons@20.2.1
+
 ## 20.2.0
 
 ### Patch Changes

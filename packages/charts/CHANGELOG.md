@@ -1,5 +1,13 @@
 # @lualtek/charts
 
+## 20.2.1
+
+### Patch Changes
+
+- Updated dependencies [1f0f3d6]
+  - @lualtek/react-components@20.2.1
+  - @lualtek/tokens@20.2.1
+
 ## 20.2.0
 
 ### Minor Changes
