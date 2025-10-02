@@ -184,7 +184,7 @@ const SheetContent: FC<SheetContentProps & Pick<DialogProps, 'children' | 'dismi
               vibrancyColor="soft"
               bordered
               showGlow
-              radius={24}
+              radius={matches.small ? 24 : 48}
               glowFitContent={matches.small}
             >
               {(showCloseButton && dismissible && matches.small) && (
