@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 20.2.4
+
+### Patch Changes
+
+- b7e8c33: Fix Sheet scroller radius
+  - @lualtek/icons@20.2.4
+
 ## 20.2.3
 
 ### Patch Changes
