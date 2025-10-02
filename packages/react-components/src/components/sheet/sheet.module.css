@@ -81,7 +81,7 @@
 
   [data-vaul-drawer-direction='top'] &,
   [data-vaul-drawer-direction='bottom'] & {
-    max-block-size: 95dvh;
+    max-block-size: calc(95dvh - env(safe-area-inset-top) - env(safe-area-inset-bottom));
     block-size: fit-content;
 
     @media (--from-small) {
