@@ -1,5 +1,13 @@
 # @lualtek/react-components
 
+## 20.2.2
+
+### Patch Changes
+
+- 269f726: Fix sheed max height with safe areas
+- e5bff60: Fix chip text alignment
+  - @lualtek/icons@20.2.2
+
 ## 20.2.1
 
 ### Patch Changes
