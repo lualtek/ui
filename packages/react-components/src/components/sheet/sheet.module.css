@@ -94,13 +94,14 @@
 }
 
 .Scroller {
-  border-radius: --token(--radius-48);
+  --scroller-margin: 2px;
+  border-radius: calc(--token(--radius-48) - var(--scroller-margin));
   display: flex;
   flex-direction: column;
-  margin: 2px;
+  margin: var(--scroller-margin);
 
   @media (--from-small) {
-    border-radius: --token(--radius-24);
+    border-radius: calc(--token(--radius-24) - var(--scroller-margin));
   }
 }
 
