@@ -8,7 +8,7 @@ import {
 } from 'react';
 
 import {
-  Icon, IconProps, Stack, StackProps,
+  Icon, IconProps, Stack, StackProps, Text,
 } from '@/components';
 
 import styles from './chip.module.css';
@@ -105,7 +105,12 @@ export const Chip: FC<ChipProps> = ({
         />
       )}
 
-      <b>{children}</b>
+      <Text
+        weight="bold"
+        lineHeight={dimension === 'small' ? 'extra-small' : undefined}
+      >
+        {children}
+      </Text>
       {(!interactive && dismissable) && (
         <button onClick={onDismissClick} className={styles.Action} type="button">
           <Icon
