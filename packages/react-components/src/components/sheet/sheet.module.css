@@ -94,9 +94,14 @@
 }
 
 .Scroller {
-  border-radius: --token(--radius-24);
+  border-radius: --token(--radius-48);
   display: flex;
   flex-direction: column;
+  margin: 2px;
+
+  @media (--from-small) {
+    border-radius: --token(--radius-24);
+  }
 }
 
 .SafeGuard {
