@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 20.2.3
+
+### Patch Changes
+
+- 9faf7de: reduce brightness with sheet overlay
+  - @lualtek/icons@20.2.3
+
 ## 20.2.2
 
 ### Patch Changes
