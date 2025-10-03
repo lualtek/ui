@@ -1,4 +1,13 @@
 
-import { Separator, Stack } from '@/components';
+import { FC } from 'react';
 
-export const MenuSeparator = () => <Stack as="li" role="none" vPadding={8} hPadding={16}><Separator /></Stack>;
+import { Separator, SeparatorProps, Stack } from '@/components';
+
+export const MenuSeparator: FC<SeparatorProps> = ({
+  hPadding = 16,
+  ...props
+}) => (
+  <Stack as="li" role="none" vPadding={8}>
+    <Separator hPadding={hPadding} {...props} />
+  </Stack>
+);
