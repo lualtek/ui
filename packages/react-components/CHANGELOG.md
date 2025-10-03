@@ -1,5 +1,13 @@
 # @lualtek/react-components
 
+## 20.2.5
+
+### Patch Changes
+
+- 92d192d: Add separator props to Menu.Separator
+- e5017dd: Minor sheet fixes
+  - @lualtek/icons@20.2.5
+
 ## 20.2.4
 
 ### Patch Changes
