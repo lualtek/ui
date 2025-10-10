@@ -4,7 +4,7 @@
     --field-padding: --token(--space-16);
     --font-size: --token(--font-size-16);
     --invalid-foreground: var(--highlight-yellow-foreground);
-    --invalid-background: var(--vibrancy-background-yellow);
+    --invalid-background: linear-gradient(to bottom, transparent, var(--vibrancy-background-yellow));
 
     border-radius: --token(--radius-16);
     appearance: none;
