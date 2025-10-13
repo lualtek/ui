@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 20.2.6
+
+### Patch Changes
+
+- a7fb41e: Change aspect of invalid textfield and textarea
+  - @lualtek/icons@20.2.6
+
 ## 20.2.5
 
 ### Patch Changes
