@@ -1,5 +1,15 @@
 # @lualtek/react-components
 
+## 20.3.0
+
+### Minor Changes
+
+- 23a5fe6: Update hint prop on textfield and textearea to accept both invalid and resting hints
+
+### Patch Changes
+
+- @lualtek/icons@20.3.0
+
 ## 20.2.6
 
 ### Patch Changes
