@@ -46,11 +46,18 @@ export const Invalid = {
   args: {
     rows: 10,
     required: true,
+    hint: {
+      resting: 'Resting hint',
+      invalid: 'Invalid hint',
+    },
   },
 } satisfies Story;
 
 export const ForcedInvalid = {
   args: {
     invalid: true,
+    hint: {
+      invalid: 'Invalid hint',
+    },
   },
 } satisfies Story;

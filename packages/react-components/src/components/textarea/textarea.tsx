@@ -37,12 +37,12 @@ export type TextareaProps = BaseFieldProps & React.ComponentPropsWithRef<'textar
   */
   fullWidth?: boolean;
   /**
- * Set the hint message to show when the field is invalid.
- *
- * @defaultValue 'Invalid input'
- * This prop is not visible when the field is not invalid, is disabled, or readnly
- */
-  hint?: ReactNode;
+   * Set the hint message to show when the field is resting or invalid.
+   */
+  hint?: {
+    resting?: ReactNode;
+    invalid?: ReactNode;
+  };
   /**
   * The callback function that is called when the textarea value changes.
   */
@@ -61,7 +61,7 @@ export const Textarea: FC<TextareaProps> = ({
   onChange,
   onInput,
   fullWidth,
-  hint = 'Invalid input',
+  hint,
   ref: forwardedRef,
   ...otherProps
 }) => {
@@ -111,12 +111,19 @@ export const Textarea: FC<TextareaProps> = ({
           <ClampText rows={1}>{label}</ClampText>
         </Text>
       </div>
-      {(invalid ?? isUserInvalid) && (
+      {(hint?.resting ?? hint?.invalid) && (
         <Stack
           className={styles.Hint}
           hPadding={16}
         >
-          <Text as="div" size={14} weight="bold" textColor="var(--invalid-foreground)">{hint}</Text>
+          <Text
+            size={14}
+            weight={(invalid || isUserInvalid) ? 'bold' : undefined}
+            dimmed={(invalid || isUserInvalid) ? undefined : 5}
+            textColor={(invalid || isUserInvalid) ? 'var(--invalid-foreground)' : undefined}
+          >
+            {invalid || isUserInvalid ? hint.invalid : hint.resting}
+          </Text>
         </Stack>
       )}
     </Stack>

@@ -36,8 +36,6 @@
   }
 
   .Hint {
-    display: none;
-
     /* Black magic */
     .Textarea[data-textfield-invalid='true'] &,
     .Textarea:has(.InputField:user-invalid) & {

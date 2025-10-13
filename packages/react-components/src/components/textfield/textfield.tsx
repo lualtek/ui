@@ -65,12 +65,12 @@ export type TextfieldProps = BaseFieldProps & React.ComponentPropsWithRef<'input
    */
   showClearButton?: boolean;
   /**
-   * Set the hint message to show when the field is invalid.
-   *
-   * @defaultValue 'Invalid input'
-   * This prop is not visible when the field is not invalid, is disabled, or readnly
+   * Set the hint message to show when the field is resting or invalid.
    */
-  hint?: ReactNode;
+  hint?: {
+    resting?: ReactNode;
+    invalid?: ReactNode;
+  };
   /**
    * Event handler for the clear button.
    *
@@ -220,12 +220,19 @@ export const Textfield: FC<TextfieldProps> = ({
           </Text>
         )}
       </div>
-      {(isUserInvalid && hint) && (
+      {(hint?.resting ?? hint?.invalid) && (
         <Stack
           className={styles.Hint}
           hPadding={16}
         >
-          <Text as="div" size={14} weight="bold" textColor="var(--invalid-foreground)">{hint}</Text>
+          <Text
+            size={14}
+            weight={(invalid || isUserInvalid) ? 'bold' : undefined}
+            dimmed={(invalid || isUserInvalid) ? undefined : 5}
+            textColor={(invalid || isUserInvalid) ? 'var(--invalid-foreground)' : undefined}
+          >
+            {invalid || isUserInvalid ? hint.invalid : hint.resting}
+          </Text>
         </Stack>
       )}
     </Stack>

@@ -150,6 +150,9 @@ export const Invalid = {
   args: {
     label: 'Sample label',
     iconPosition: 'start',
+    hint: {
+      invalid: 'Invalid hint',
+    },
     icon: 'chat',
   },
   render: args => (
@@ -161,6 +164,7 @@ export const Invalid = {
         pattern={new RegExp(pattern).toString().slice(1, -1)}
         label="Type text with pattern"
         defaultValue=""
+        invalid
       />
       <Button type="submit">Submit</Button>
     </Stack>
