@@ -6,7 +6,7 @@ import {
   type JSX, ReactElement, ReactNode, useMemo,
 } from 'react';
 import {
-  CartesianGrid,
+  CartesianGrid, CartesianGridProps,
   Legend,
   LegendProps,
   ResponsiveContainer,
@@ -16,6 +16,7 @@ import {
   XAxisProps,
   YAxisProps,
 } from 'recharts';
+import { CartesianChartProps } from 'recharts/types/util/types';
 import { Except } from 'type-fest';
 
 import { Tooltip, TooltipProps } from '../tooltip';
@@ -183,6 +184,13 @@ export type BaseChartProps = Except<ResponsiveContainerProps, 'className'> & {
    * @returns ReactElement
    */
   renderChart: (children: ReactNode) => ReactElement<any>;
+  /**
+   * Specifies the external margin around a cartesian chart layout.
+   * Allows controlling the spacing outside the chart area.
+   * The value is optional and can be used to adjust the chart's position or spacing within a container.
+   * Typically defined as an object with properties for top, right, bottom, and left margins.
+   */
+  margin?: CartesianChartProps['margin'];
 };
 
 type BaseChartComponent = FC<BaseChartProps & Pick<React.ComponentPropsWithRef<'div'>, 'ref'>>

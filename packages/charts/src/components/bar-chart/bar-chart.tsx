@@ -94,6 +94,7 @@ export function BarChart<D extends ChartDataBaseType, B extends BarProps<D>>({
   allowYDecimals = false,
   disableAnimation = false,
   focusable = false,
+  margin,
   syncId,
   ...otherProps
 }: BarChartProps<D, B>) {
@@ -147,6 +148,7 @@ export function BarChart<D extends ChartDataBaseType, B extends BarProps<D>>({
           barCategoryGap={barCategoryGap}
           barSize={barSize}
           syncId={syncId}
+          margin={margin}
         >
           {children}
         </ReBarChart>

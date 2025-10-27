@@ -62,28 +62,28 @@ export type LineProps<D> = {
 };
 
 export type LineChartAccessoryProps<T = Record<string, unknown>> = Except<
-BaseChartProps, 'renderChart' | 'children'> & {
+  BaseChartProps, 'renderChart' | 'children'> & {
   /**
    * Whether to show the dots on the series.
    *
    * @defaultValue false
    */
-  showDots?: boolean;
-  /**
+    showDots?: boolean;
+    /**
    * Set the radius of the dots.
    */
-  dotsSize?: number;
-  /**
+    dotsSize?: number;
+    /**
    * Whether to show the Y axis.
    *
    * @defaultValue true
    */
-  showYAxis?: boolean;
-  /**
+    showYAxis?: boolean;
+    /**
    * Render areas for the series.
    */
-  showAreas?: boolean;
-} & T
+    showAreas?: boolean;
+  } & T
 
 export type LineChartProps<D extends ChartDataBaseType, L extends LineProps<D>> = LineChartAccessoryProps<{
   /**
@@ -111,6 +111,7 @@ export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
   disableAnimation = false,
   focusable = false,
   dotsSize = 3,
+  margin,
   syncId,
   ...otherProps
 }: LineChartProps<D, L>) {
@@ -161,6 +162,7 @@ export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
           data={data}
           accessibilityLayer={focusable}
           syncId={syncId}
+          margin={margin}
         >
           {children}
         </ReAreaChart>
@@ -169,6 +171,7 @@ export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
           data={data}
           accessibilityLayer={focusable}
           syncId={syncId}
+          margin={margin}
         >
           {children}
         </ReLineChart>
