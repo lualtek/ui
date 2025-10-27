@@ -1,5 +1,16 @@
 # @lualtek/charts
 
+## 20.4.0
+
+### Minor Changes
+
+- c86de12: Add margin props to cartesian charts
+
+### Patch Changes
+
+- @lualtek/react-components@20.4.0
+- @lualtek/tokens@20.4.0
+
 ## 20.3.0
 
 ### Patch Changes
