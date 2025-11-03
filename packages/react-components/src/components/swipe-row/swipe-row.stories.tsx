@@ -46,9 +46,10 @@ const meta: Meta<typeof SwipeRow> = {
         <p style={{ margin: '4px 0 0', fontSize: '0.9rem', color: '#555' }}>Updated yesterday</p>
       </Panel>
     ),
-    children: <>
-      {renderActions({})}
-    </>,
+    children: (
+      <>
+        {renderActions({})}
+      </>),
   },
 };
 
@@ -66,14 +67,14 @@ export const WithLabels = {
         <p style={{ margin: '4px 0 0', fontSize: '0.9rem', color: '#555' }}>Updated yesterday</p>
       </Panel>
     ),
-    children: <>
-      {renderActions({
-        showLabel: true,
-      })}
-    </>,
+    children: (
+      <>
+        {renderActions({
+          showLabel: true,
+        })}
+      </>),
   },
 } satisfies Story;
-
 
 export const WithClickableTrigger = {
   args: {
@@ -82,17 +83,22 @@ export const WithClickableTrigger = {
         as={BlankButton}
         onClick={() => console.log('Trigger clicked!')}
         vibrant
-        radius={24} vibrancyColor="soft" hPadding={24} vPadding={24}
+        radius={24}
+        vibrancyColor="soft"
+        hPadding={24}
+        vPadding={24}
         bordered
       >
         <p style={{ margin: 0, fontWeight: 'bold' }}>Python Scripts</p>
       </Panel>
     ),
-    children: <>
-      {renderActions({
-        showLabel: true,
-      })}
-    </>,
+    children: (
+      <>
+        {renderActions({
+          showLabel: true,
+        })}
+      </>
+    ),
   },
 } satisfies Story;
 
@@ -103,17 +109,22 @@ export const ActionSize = {
         as={BlankButton}
         onClick={() => console.log('Trigger clicked!')}
         vibrant
-        radius={24} vibrancyColor="soft" hPadding={24} vPadding={24}
+        radius={24}
+        vibrancyColor="soft"
+        hPadding={24}
+        vPadding={24}
         bordered
       >
         <p style={{ margin: 0, fontWeight: 'bold' }}>Python Scripts</p>
       </Panel>
     ),
-    children: <>
-      {renderActions({
-        showLabel: true,
-        dimension: "small"
-      })}
-    </>,
+    children: (
+      <>
+        {renderActions({
+          showLabel: true,
+          dimension: 'small',
+        })}
+      </>
+    ),
   },
 } satisfies Story;
