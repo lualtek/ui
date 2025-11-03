@@ -1,6 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import React from 'react';
 
-import { BlankButton, Panel, SwipeRowActionProps } from '@/components';
+import {
+  BlankButton, Bleed, Container, Panel, Stack, SwipeRowActionProps,
+} from '@/components';
 
 import { SwipeRow } from './swipe-row';
 
@@ -117,6 +120,36 @@ export const ActionSize = {
       >
         <p style={{ margin: 0, fontWeight: 'bold' }}>Python Scripts</p>
       </Panel>
+    ),
+    children: (
+      <>
+        {renderActions({
+          showLabel: true,
+          dimension: 'small',
+        })}
+      </>
+    ),
+  },
+} satisfies Story;
+
+export const WithBleed = {
+  args: {
+    bleed: 16,
+    trigger: (
+      <Stack hPadding={16}>
+        <Panel
+          as={BlankButton}
+          onClick={() => console.log('Trigger clicked!')}
+          vibrant
+          radius={24}
+          vibrancyColor="soft"
+          hPadding={24}
+          vPadding={24}
+          bordered
+        >
+          <p style={{ margin: 0, fontWeight: 'bold' }}>Python Scripts</p>
+        </Panel>
+      </Stack>
     ),
     children: (
       <>

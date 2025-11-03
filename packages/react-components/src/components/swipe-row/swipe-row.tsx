@@ -4,9 +4,10 @@ import React, {
 } from 'react';
 import { useMeasure } from 'react-use';
 
+import { Bleed, BleedProps } from '../bleed';
+import { ConditionalWrapper } from '../conditional-wrapper';
 import { Stack, StackProps } from '../stack';
-import { SwipeRowAction } from './parts/swipe-row-action';
-import { SwipeRowActionProps } from './parts/swipe-row-action';
+import { SwipeRowAction, SwipeRowActionProps } from './parts/swipe-row-action';
 import { SwipeRowContextType, SwipeRowProvider } from './parts/swipe-row-context';
 import { SwipeRowTrigger } from './parts/swipe-row-trigger';
 import styles from './swipe-row.module.css';
@@ -29,8 +30,16 @@ export type SwipeRowProps = {
    * @defaultValue 16
    */
   actionsGap?: Exclude<StackProps['columnGap'], string>;
+
+  /**
+   * Set the bleed amount for the swipe actions.
+   */
+  bleed?: Exclude<BleedProps['amount'], string>;
 };
 
+/**
+ * Default values for the horizontal padding of the actions.
+ */
 const ACTIONS_LEFT_PADDING = 16;
 const ACTIONS_RIGHT_PADDING = 8;
 
@@ -38,10 +47,16 @@ const SwipeActionsRoot: FC<PropsWithChildren<SwipeRowProps>> = ({
   children,
   trigger,
   actionsGap = 16,
+  bleed,
 }) => {
   const [actionsRef, { width: actionsWidth }] = useMeasure<HTMLDivElement>();
   const x = useMotionValue(0);
   const actionId = useId();
+
+  const actionsPadding = useMemo(() => ({
+    left: bleed ?? ACTIONS_LEFT_PADDING,
+    right: bleed ? (bleed + ACTIONS_RIGHT_PADDING) : ACTIONS_RIGHT_PADDING,
+  }), [bleed]);
 
   /**
    * Get the actions from the children:
@@ -92,35 +107,40 @@ const SwipeActionsRoot: FC<PropsWithChildren<SwipeRowProps>> = ({
    */
   const contextValue: SwipeRowContextType = useMemo(() => ({
     x,
-    actionsWidth: actionsWidth + ACTIONS_LEFT_PADDING + ACTIONS_RIGHT_PADDING,
+    actionsWidth: actionsWidth + actionsPadding.left + actionsPadding.right,
     actionCount,
     closeActions,
   }),
-  [actionCount, actionsWidth, closeActions, x]);
+  [actionCount, actionsPadding.left, actionsPadding.right, actionsWidth, closeActions, x]);
 
   return (
     <SwipeRowProvider {...contextValue}>
-      <Stack className={styles.SwipeRow} vAlign="center">
-        <Stack
-          ref={actionsRef}
-          className={styles.ActionsContainer}
-          aria-hidden="true"
-          direction="row"
-          hPadding={[16, 8]}
-          columnGap={actionsGap}
-          fill={false}
-        >
-          {actionElements.map((action, i) => React.cloneElement(action, {
-            // eslint-disable-next-line react/no-array-index-key
-            key: `${actionId}-${i}`,
-            // inject the index property based on position
-            index: actionCount - 1 - i,
-          }))}
+      <ConditionalWrapper
+        condition={Boolean(bleed)}
+        wrapper={children => <Bleed amount={bleed}>{children}</Bleed>}
+      >
+        <Stack className={styles.SwipeRow} vAlign="center">
+          <Stack
+            ref={actionsRef}
+            className={styles.ActionsContainer}
+            aria-hidden="true"
+            direction="row"
+            hPadding={[16, actionsPadding.right] as StackProps['hPadding']}
+            columnGap={actionsGap}
+            fill={false}
+          >
+            {actionElements.map((action, i) => React.cloneElement(action, {
+              // eslint-disable-next-line react/no-array-index-key
+              key: `${actionId}-${i}`,
+              // inject the index property based on position
+              index: actionCount - 1 - i,
+            }))}
+          </Stack>
+          <SwipeRowTrigger>
+            {trigger}
+          </SwipeRowTrigger>
         </Stack>
-        <SwipeRowTrigger>
-          {trigger}
-        </SwipeRowTrigger>
-      </Stack>
+      </ConditionalWrapper>
     </SwipeRowProvider>
   );
 };
