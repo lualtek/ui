@@ -1,5 +1,16 @@
 # @lualtek/react-components
 
+## 20.5.0
+
+### Minor Changes
+
+- c722208: Add hub icon
+
+### Patch Changes
+
+- Updated dependencies [c722208]
+  - @lualtek/icons@20.5.0
+
 ## 20.4.0
 
 ### Patch Changes

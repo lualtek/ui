@@ -1,5 +1,11 @@
 # @lualtek/icons
 
+## 20.5.0
+
+### Minor Changes
+
+- c722208: Add hub icon
+
 ## 20.4.0
 
 ## 20.3.0
