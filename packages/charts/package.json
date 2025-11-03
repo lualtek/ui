@@ -69,6 +69,6 @@
     "@lualtek/tokens": "workspace:*",
     "clsx": "2.1.1",
     "recharts": "3.3.0",
-    "type-fest": "4.41.0"
+    "type-fest": "5.2.0"
   }
 }
