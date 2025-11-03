@@ -1,30 +1,18 @@
-
-import { dirname, join } from 'node:path';
-
 import type { StorybookConfig } from '@storybook/react-vite';
 import { mergeConfig } from 'vite';
-// tsconfigPaths resolve paths aliases in tsconfig for vite
 import tsconfigPaths from 'vite-tsconfig-paths';
-
-/**
- * This function is used to resolve the absolute path of a package.
- * It is needed in projects that use Yarn PnP or are set up within a monorepo.
- */
-function getAbsolutePath(value: string): string {
-  return dirname(require.resolve(join(value, 'package.json')));
-}
 
 const config: StorybookConfig = {
   stories: ['../packages/**/src/**/*.stories.@(js|jsx|ts|tsx)'],
   addons: [
-    getAbsolutePath('storybook-addon-tag-badges'),
-    getAbsolutePath('@storybook/addon-links'),
-    getAbsolutePath('@storybook/addon-themes'),
-    getAbsolutePath('@storybook/addon-docs'),
+    'storybook-addon-tag-badges',
+    '@storybook/addon-links',
+    '@storybook/addon-themes',
+    '@storybook/addon-docs',
   ],
   staticDirs: [{ from: '../packages/react-components/src/fonts', to: '/fonts' }],
   framework: {
-    name: getAbsolutePath('@storybook/react-vite'),
+    name: '@storybook/react-vite',
     options: {},
   },
   docs: {},
