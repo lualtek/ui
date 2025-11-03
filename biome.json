@@ -5,7 +5,7 @@
     "includes": ["**", "!**/*.{js,ts,tsx,mjs,cjs}"]
   },
   "linter": {
-    "includes": ["**", "!**/types/**", "!**/*.{js,ts,tsx,mjs,cjs}"],
+    "includes": ["**", "!**/types/**", "!**/*.{js,ts,tsx,mjs,cjs}", "!*.{js,ts,tsx,mjs,cjs}"],
     "rules": {
       "correctness": {
         "noUnknownFunction": "error",
