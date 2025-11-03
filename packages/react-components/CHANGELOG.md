@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 20.5.1
+
+### Patch Changes
+
+- 8242873: Add bleed prop to SwipeRow
+  - @lualtek/icons@20.5.1
+
 ## 20.5.0
 
 ### Minor Changes
