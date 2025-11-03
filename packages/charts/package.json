@@ -55,14 +55,14 @@
     "react-dom": "^19.1"
   },
   "devDependencies": {
-    "@types/node": "24.10.0",
-    "@types/react": "19.2.2",
-    "@types/react-dom": "19.2.2",
-    "react": "^19.2",
-    "react-dom": "^19.2",
+    "@types/node": "24.5.2",
+    "@types/react": "19.1.13",
+    "@types/react-dom": "19.1.9",
+    "react": "19.1",
+    "react-dom": "19.1",
     "tsconfig": "workspace:*",
     "typed-css-modules": "0.9.1",
-    "typescript": "5.9.3"
+    "typescript": "5.9.2"
   },
   "dependencies": {
     "@lualtek/react-components": "workspace:*",
