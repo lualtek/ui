@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 20.5.2
+
+### Patch Changes
+
+- f7bac9d: Add nowrap to chip text content
+  - @lualtek/icons@20.5.2
+
 ## 20.5.1
 
 ### Patch Changes
