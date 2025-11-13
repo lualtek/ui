@@ -12,6 +12,8 @@ export const FilterControl: FC<FilterControlProps> = ({
   <Textfield
     type="search"
     icon="zoom"
+    iconPosition="start"
+    showClearButton
     {...otherProps}
   />
 );
