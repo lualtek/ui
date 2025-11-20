@@ -1,5 +1,13 @@
 # @lualtek/react-components
 
+## 20.5.3
+
+### Patch Changes
+
+- 276222f: Update table search appearance
+- ca1b2b1: Add blur to buttons
+  - @lualtek/icons@20.5.3
+
 ## 20.5.2
 
 ### Patch Changes
