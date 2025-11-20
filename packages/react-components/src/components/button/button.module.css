@@ -63,13 +63,13 @@
 
       transition: all --token(--duration-200) ease-out;
       background: linear-gradient(to top, var(--background), var(--global-background));
+      backdrop-filter: blur(var(--vibrancy-blur-strong));
 
       &::before,
       &::after {
         position: absolute;
         content: '';
         height: 1px;
-        background: var(--border-color);
         background: radial-gradient(circle at center, var(--shine-color), transparent);
         right: 45%;
         transition: right, bottom, opacity, 0.3s ease-out;
@@ -136,6 +136,7 @@
       --background: transparent;
       --border-opacity: 40%;
       --foreground: var(--dimmed-6);
+      backdrop-filter: blur(var(--vibrancy-blur-strong));
 
       &:not([aria-disabled='true'])[data-button-sentiment='positive'] {
         --border-color: var(--highlight-green-foreground);
