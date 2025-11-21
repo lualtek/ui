@@ -1,0 +1,28 @@
+.PulseLight {
+  display: block;
+  width: var(--dimension);
+  height: var(--dimension);
+  aspect-ratio: 1/1;
+  border-radius: 1e5px;
+  background: var(--color);
+  position: relative;
+  font-size: var(--dimension);
+
+  &::after {
+    content: '';
+    inset: -0.5em;
+    position: absolute;
+    background: inherit;
+    border-radius: inherit;
+    opacity: 40%;
+    box-shadow: 0 0 5em 1em var(--light-color);
+    animation: pulse 3s both infinite;
+  }
+}
+
+@keyframes pulse {
+  50% {
+    background: var(--color);
+    box-shadow: 0 0 0 0 var(--light-color);
+  }
+}

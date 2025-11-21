@@ -36,6 +36,7 @@ export * from './pagination';
 export * from './panel';
 export * from './popover';
 export * from './prose';
+export * from './pulse-light';
 export * from './scroll-area';
 export * from './select';
 export * from './selection-controls/checkbox';
