@@ -1,5 +1,13 @@
 # @lualtek/react-components
 
+## 20.6.1
+
+### Patch Changes
+
+- 890066f: Fix button blur background
+- f4a6018: Fix size for Badge children
+  - @lualtek/icons@20.6.1
+
 ## 20.6.0
 
 ### Minor Changes
