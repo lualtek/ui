@@ -3,6 +3,7 @@
 
   position: relative;
   max-width: fit-content;
+  display: inline-flex;
 
   &[data-badge-show='true'] {
     &::after {
@@ -21,6 +22,7 @@
 
 .Mask {
   --mask-size: calc(var(--badge-size) / 2 + var(--gap));
+  display: inline-flex;
 
   .Badge[data-badge-show='true'] & {
     mask-image: radial-gradient(
