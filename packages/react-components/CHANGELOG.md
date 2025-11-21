@@ -1,5 +1,15 @@
 # @lualtek/react-components
 
+## 20.6.0
+
+### Minor Changes
+
+- a2eb3e9: Add PulseLight component
+
+### Patch Changes
+
+- @lualtek/icons@20.6.0
+
 ## 20.5.3
 
 ### Patch Changes
