@@ -107,6 +107,7 @@ export const Chip: FC<ChipProps> = ({
 
       <Text
         weight="bold"
+        as="b"
         whiteSpace="nowrap"
         lineHeight={dimension === 'small' ? 'extra-small' : undefined}
       >
