@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 20.6.2
+
+### Patch Changes
+
+- 0621d59: Workaround for strange things season 5
+  - @lualtek/icons@20.6.2
+
 ## 20.6.1
 
 ### Patch Changes
