@@ -1,5 +1,17 @@
 # @lualtek/react-components
 
+## 2025.7.0
+
+### Minor Changes
+
+- f56122c: Update deps
+- 298cbe8: Add TextLoading component
+
+### Patch Changes
+
+- Updated dependencies [f56122c]
+  - @lualtek/icons@2025.7.0
+
 ## 20.6.2
 
 ### Patch Changes
