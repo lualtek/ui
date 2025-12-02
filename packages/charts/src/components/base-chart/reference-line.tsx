@@ -6,7 +6,7 @@ import { ReferenceLine as RechartReferenceLine } from 'recharts';
 import { Except } from 'type-fest';
 
 export type ReferenceLineProps = Except<
-RechartReferenceLineProps,
+  RechartReferenceLineProps,
 'fill' | 'stroke' | 'strokeDasharray'
 > & {
   dashed?: boolean;
@@ -21,7 +21,6 @@ export const ReferenceLine: FC<ReferenceLineProps> = ({
   ...otherProps
 }) => (
   <RechartReferenceLine
-    // @ts-expect-error this is somehow broken on th type of ref
     ref={ref}
     {...otherProps}
     stroke={color}

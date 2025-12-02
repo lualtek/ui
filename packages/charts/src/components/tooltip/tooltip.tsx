@@ -31,7 +31,7 @@ export type TooltipProps = {
   /**
    * The payload of the tooltip.
    */
-  payload?: TooltipEntry[];
+  payload?: TooltipEntry[] | readonly TooltipEntry[];
   /**
    * Whether to show the payload colors inside tooltip.
    *

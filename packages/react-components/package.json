@@ -60,16 +60,16 @@
     "@lualtek/config": "workspace:*",
     "@lualtek/themes": "workspace:*",
     "@lualtek/tokens": "workspace:*",
-    "@types/node": "24.5.2",
-    "@types/react": "19.1.13",
-    "@types/react-dom": "19.1.9",
+    "@types/node": "24.10.1",
+    "@types/react": "19.2.7",
+    "@types/react-dom": "19.2.3",
     "postcss": "8.5.6",
     "postcss-cli": "11.0.1",
-    "react": "19.1",
-    "react-dom": "19.1",
+    "react": "^19.2",
+    "react-dom": "^19.2",
     "tsconfig": "workspace:*",
     "typed-css-modules": "0.9.1",
-    "typescript": "5.9.2"
+    "typescript": "5.9.3"
   },
   "dependencies": {
     "@lualtek/icons": "workspace:*",
@@ -81,15 +81,15 @@
     "@radix-ui/react-tooltip": "1.2.8",
     "@tanstack/react-table": "8.21.3",
     "clsx": "2.1.1",
-    "emoji-picker-react": "4.13.3",
+    "emoji-picker-react": "4.16.1",
     "motion": "12.3.1",
-    "react-focus-on": "3.10.0",
+    "react-focus-on": "3.10.1",
     "react-masonry-css": "1.0.16",
     "react-merge-refs": "3.0.2",
     "react-paginate": "8.3.0",
     "react-roving-tabindex": "3.2.0",
     "react-use": "17.6.0",
-    "type-fest": "5.2.0",
+    "type-fest": "5.3.0",
     "vaul": "1.1.2"
   }
 }
