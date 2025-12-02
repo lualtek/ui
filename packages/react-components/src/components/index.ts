@@ -57,6 +57,7 @@ export * from './table';
 export * from './tabs';
 export * from './text';
 export * from './text-chip';
+export * from './text-loading';
 export * from './textarea';
 export * from './textfield';
 export * from './title';
