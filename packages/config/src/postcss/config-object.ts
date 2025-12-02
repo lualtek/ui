@@ -24,6 +24,9 @@ export const postcssObjConfig = (tokens: Record<string, unknown>) => {
               removeAll: true,
             },
           },
+          {
+            calc: false,
+          },
         ],
       },
     },
