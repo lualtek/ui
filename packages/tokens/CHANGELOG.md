@@ -1,5 +1,11 @@
 # @lualtek/tokens
 
+## 2025.7.0
+
+### Minor Changes
+
+- f56122c: Update deps
+
 ## 20.6.2
 
 ## 20.6.1
