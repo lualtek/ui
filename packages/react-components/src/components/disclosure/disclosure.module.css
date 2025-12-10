@@ -39,6 +39,7 @@
     outline-offset: -2px;
     user-select: none;
     color: var(--dimmed-9);
+    list-style: none;
 
     .Disclosure[data-disclosure-expandable='true'] & {
       cursor: pointer;
@@ -52,18 +53,18 @@
       padding-inline-start: var(--padding);
     }
 
-
     &::marker {
       content: '';
+      display: none;
     }
 
-    &::-webkit-details-marker {
+    &:is(::-webkit-details-marker) {
       display: none;
+      content: '';
     }
   }
 
   .ExpandIcon {
-
     /* content: ''; */
     transform-box: fill-box;
     position: absolute;
@@ -79,7 +80,7 @@
       right: auto;
     }
 
-/*
+    /*
     .Disclosure[open] > .Summary > & {
       transform: rotate(90deg);
     } */
