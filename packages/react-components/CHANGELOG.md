@@ -1,5 +1,16 @@
 # @lualtek/react-components
 
+## 2025.8.0
+
+### Minor Changes
+
+- 32cf798: Add new Expander component
+
+### Patch Changes
+
+- 8fb6a21: Add missing components layer
+  - @lualtek/icons@2025.8.0
+
 ## 2025.7.1
 
 ### Patch Changes
