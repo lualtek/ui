@@ -1,27 +1,29 @@
-.Picker.Picker {
-  --epr-bg-color: transparent;
-  --epr-category-label-bg-color: var(--vibrancy-background);
-  --epr-picker-border-color: transparent;
-  --epr-text-color: var(--global-foreground);
-  --epr-hover-bg-color: var(--dimmed-2);
-  --epr-emoji-hover-color: var(--dimmed-2);
-  --epr-focus-bg-color: var(--dimmed-2);
-  --epr-search-input-bg-color: var(--vibrancy-background-mid);
-  --epr-search-input-bg-color-active: var(--vibrancy-background-mid);
-  --epr-search-border-color: var(--dimmed-2);
-}
+@layer components {
+  .Picker.Picker {
+    --epr-bg-color: transparent;
+    --epr-category-label-bg-color: var(--vibrancy-background);
+    --epr-picker-border-color: transparent;
+    --epr-text-color: var(--global-foreground);
+    --epr-hover-bg-color: var(--dimmed-2);
+    --epr-emoji-hover-color: var(--dimmed-2);
+    --epr-focus-bg-color: var(--dimmed-2);
+    --epr-search-input-bg-color: var(--vibrancy-background-mid);
+    --epr-search-input-bg-color-active: var(--vibrancy-background-mid);
+    --epr-search-border-color: var(--dimmed-2);
+  }
 
-.EmojiRender span {
-  vertical-align: middle;
-}
+  .EmojiRender span {
+    vertical-align: middle;
+  }
 
-@layer overrides {
-  .ColorSwatch {
-    border-radius: 1e5px;
-    background: var(--swatch-background);
-    border: 1px solid var(--global-inner-contrast-border);
-    box-shadow: 0 0 0 1px var(--global-outer-contrast-border);
-    width: 24px;
-    height: 24px;
+  @layer overrides {
+    .ColorSwatch {
+      border-radius: 1e5px;
+      background: var(--swatch-background);
+      border: 1px solid var(--global-inner-contrast-border);
+      box-shadow: 0 0 0 1px var(--global-outer-contrast-border);
+      width: 24px;
+      height: 24px;
+    }
   }
 }

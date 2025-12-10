@@ -1,28 +1,32 @@
-.PulseLight {
-  display: block;
-  width: var(--dimension);
-  height: var(--dimension);
-  aspect-ratio: 1/1;
-  border-radius: 1e5px;
-  background: var(--color);
-  position: relative;
-  font-size: var(--dimension);
+@layer components {
+  .PulseLight {
+    display: block;
+    width: var(--dimension);
+    height: var(--dimension);
+    aspect-ratio: 1 / 1;
+    border-radius: 1e5px;
+    /*background: var(--color);*/
+    position: relative;
+    font-size: var(--dimension);
+    /*box-shadow: inset 0 0 0 0.1em oklch(from --token(--color-support-white) l c h / 80%);*/
+    background: radial-gradient(circle at center center, white 30%, var(--color) 50%);
 
-  &::after {
-    content: '';
-    inset: -0.5em;
-    position: absolute;
-    background: inherit;
-    border-radius: inherit;
-    opacity: 40%;
-    box-shadow: 0 0 5em 1em var(--light-color);
-    animation: pulse 3s both infinite;
+    &::after {
+      content: '';
+      inset: -0.5em;
+      position: absolute;
+      background: inherit;
+      border-radius: inherit;
+      opacity: 40%;
+      box-shadow: 0 0 5em 1em var(--light-color);
+      animation: pulse 3s both infinite;
+    }
   }
 }
 
 @keyframes pulse {
   50% {
-    background: var(--color);
+    /*background: var(--color);*/
     box-shadow: 0 0 0 0 var(--light-color);
   }
 }

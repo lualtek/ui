@@ -1,38 +1,40 @@
-.Badge {
-  --badge-position-x: 100%;
+@layer components {
+  .Badge {
+    --badge-position-x: 100%;
 
-  position: relative;
-  max-width: fit-content;
-  display: inline-flex;
+    position: relative;
+    max-width: fit-content;
+    display: inline-flex;
 
-  &[data-badge-show='true'] {
-    &::after {
-      content: '';
-      width: var(--badge-size);
-      aspect-ratio: 1;
-      display: block;
-      border-radius: 1e5px;
-      background: var(--badge-color);
-      position: absolute;
-      left: calc(var(--badge-position-x) - min(var(--badge-position-x), var(--badge-size)));
-      top: 0%;
+    &[data-badge-show='true'] {
+      &::after {
+        content: '';
+        width: var(--badge-size);
+        aspect-ratio: 1;
+        display: block;
+        border-radius: 1e5px;
+        background: var(--badge-color);
+        position: absolute;
+        left: calc(var(--badge-position-x) - min(var(--badge-position-x), var(--badge-size)));
+        top: 0%;
+      }
     }
   }
-}
 
-.Mask {
-  --mask-size: calc(var(--badge-size) / 2 + var(--gap));
-  display: inline-flex;
+  .Mask {
+    --mask-size: calc(var(--badge-size) / 2 + var(--gap));
+    display: inline-flex;
 
-  .Badge[data-badge-show='true'] & {
-    mask-image: radial-gradient(
-      circle at calc(var(--badge-position-x) - (var(--badge-size) / 2)) calc(0% + (var(--badge-size) / 2)),
-      transparent 0 var(--mask-size),
-      red calc(var(--mask-size) + 1px)
-    );
-  }
+    .Badge[data-badge-show='true'] & {
+      mask-image: radial-gradient(
+        circle at calc(var(--badge-position-x) - (var(--badge-size) / 2)) calc(0% + (var(--badge-size) / 2)),
+        transparent 0 var(--mask-size),
+        red calc(var(--mask-size) + 1px)
+      );
+    }
 
-  & > * {
-    outline-offset: -4px;
+    & > * {
+      outline-offset: -4px;
+    }
   }
 }
