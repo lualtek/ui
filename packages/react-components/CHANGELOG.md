@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 2025.7.1
+
+### Patch Changes
+
+- e30a4a2: Hide summary marker on safari
+  - @lualtek/icons@2025.7.1
+
 ## 2025.7.0
 
 ### Minor Changes
