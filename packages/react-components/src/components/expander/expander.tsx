@@ -7,7 +7,7 @@ import {
 } from 'react';
 
 import {
-  Button, Elevator, Stack, StackProps,
+  Button, ButtonProps, Elevator, Stack, StackProps,
 } from '@/components';
 
 import styles from './expander.module.css';
@@ -25,6 +25,10 @@ export type ExpanderProps = ComponentPropsWithRef<'div'> & {
    * @defaultValue 'Show less'
    */
   collapseLabel?: string;
+  /**
+   * Specifies the size dimension of the expand button.
+   */
+  expandButtonSize?: ButtonProps['dimension'];
   /**
    * Set the size area for the visible content
    *
@@ -51,6 +55,7 @@ export const Expander: FC<ExpanderProps> = ({
   visibleArea = '100px',
   expandAlignment = 'center',
   expanded = false,
+  expandButtonSize,
   style,
   className,
   children,
@@ -96,6 +101,7 @@ export const Expander: FC<ExpanderProps> = ({
             iconPosition="end"
             aria-expanded={!isCollapsed}
             aria-controls={uid}
+            dimension={expandButtonSize}
             onClick={handleCollapse}
           >
             {isCollapsed ? expandLabel : collapseLabel}
