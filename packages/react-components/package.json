@@ -60,7 +60,7 @@
     "@lualtek/config": "workspace:*",
     "@lualtek/themes": "workspace:*",
     "@lualtek/tokens": "workspace:*",
-    "@types/node": "24.10.1",
+    "@types/node": "25.0.2",
     "@types/react": "19.2.7",
     "@types/react-dom": "19.2.3",
     "postcss": "8.5.6",
@@ -89,7 +89,7 @@
     "react-paginate": "8.3.0",
     "react-roving-tabindex": "3.2.0",
     "react-use": "17.6.0",
-    "type-fest": "5.3.0",
+    "type-fest": "5.3.1",
     "vaul": "1.1.2"
   }
 }
