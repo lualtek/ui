@@ -8,21 +8,24 @@
     &[data-badge-fullwidth='false'] {
       max-width: fit-content;
     }
-  }
 
-  .Light {
-    width: var(--badge-size);
-    aspect-ratio: 1;
-    display: block;
-    border-radius: 1e5px;
-    background: var(--badge-color);
-    position: absolute;
-    left: calc(var(--badge-position-x) - min(var(--badge-position-x), var(--badge-size)));
-    top: 0%;
+    &[data-badge-show='true'] {
+      &::after {
+        content: '';
+        width: var(--badge-size);
+        aspect-ratio: 1;
+        display: block;
+        border-radius: 1e5px;
+        background: var(--badge-color);
+        position: absolute;
+        left: calc(var(--badge-position-x) - min(var(--badge-position-x), var(--badge-size)));
+        top: 0%;
+      }
+    }
   }
 
   .Mask {
-    --mask-size: calc(var(--badge-size) + var(--gap));
+    --mask-size: calc(var(--badge-size) / 2 + var(--gap));
     display: inline-flex;
     width: 100%;
 

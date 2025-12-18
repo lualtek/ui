@@ -8,7 +8,6 @@ import {
 } from 'react';
 import { Except } from 'type-fest';
 
-import { PulseLight, PulseLightProps } from '../pulse-light';
 import styles from './badge.module.css';
 
 export type BadgeProps = Except<React.ComponentPropsWithRef<'div'>, 'children'> & {
@@ -22,12 +21,12 @@ export type BadgeProps = Except<React.ComponentPropsWithRef<'div'>, 'children'> 
    * The size of the badge.
    * @defaultValue 12
    */
-  badgeSize?: PulseLightProps['dimension'];
+  badgeSize?: number;
   /**
    * The color of the badge.
    * @defaultValue 'yellow' (`color-yellow-50`)
    */
-  color?: PulseLightProps['color'];
+  color?: TokensTypes['colors'];
   /**
    * Whether to show the badge.
    * @defaultValue false
@@ -44,7 +43,7 @@ export const Badge: FC<BadgeProps> = ({
   children,
   className,
   gap = 4,
-  badgeSize = 8,
+  badgeSize = 12,
   color = 'yellow',
   style,
   showBadge = false,
@@ -70,7 +69,6 @@ export const Badge: FC<BadgeProps> = ({
       <div className={styles.Mask}>
         {children}
       </div>
-      {showBadge && <PulseLight className={styles.Light} dimension={badgeSize} color={color} />}
     </div>
   );
 };
