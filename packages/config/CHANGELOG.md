@@ -1,5 +1,13 @@
 # @lualtek/config
 
+## 2025.9.4
+
+### Patch Changes
+
+- 3fb0e40: test 3
+- Updated dependencies [3fb0e40]
+  - @lualtek/tokens@2025.9.4
+
 ## 2025.9.3
 
 ### Patch Changes
