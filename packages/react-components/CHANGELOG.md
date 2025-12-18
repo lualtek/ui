@@ -1,5 +1,13 @@
 # @lualtek/react-components
 
+## 2025.9.3
+
+### Patch Changes
+
+- 3e1712f: Test release 2
+- Updated dependencies [3e1712f]
+  - @lualtek/icons@2025.9.3
+
 ## 2025.9.2
 
 ### Patch Changes

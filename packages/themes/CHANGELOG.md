@@ -1,5 +1,11 @@
 # @lualtek/themes
 
+## 2025.9.3
+
+### Patch Changes
+
+- 3e1712f: Test release 2
+
 ## 2025.9.2
 
 ### Patch Changes
