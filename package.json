@@ -14,7 +14,7 @@
     "build-storybook": "storybook build",
     "lint": "turbo run lint",
     "test": "echo \"Add some test\"",
-    "release": "changeset publish --no-git-tag",
+    "release": "changeset publish",
     "prepare": "husky",
     "change": "changeset",
     "change:enter-next": "./scripts/changeset-next-enter.sh && changeset pre enter next",
