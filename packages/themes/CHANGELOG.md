@@ -1,5 +1,7 @@
 # @lualtek/themes
 
+## 2025.9.1
+
 ## 2025.9.0
 
 ### Minor Changes

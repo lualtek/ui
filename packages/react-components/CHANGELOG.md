@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 2025.9.1
+
+### Patch Changes
+
+- e47c414: Revert pulselight in badge
+  - @lualtek/icons@2025.9.1
+
 ## 2025.9.0
 
 ### Minor Changes
