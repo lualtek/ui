@@ -3,8 +3,11 @@
     --badge-position-x: 100%;
 
     position: relative;
-    max-width: fit-content;
     display: inline-flex;
+
+    &[data-badge-fullwidth='false'] {
+      max-width: fit-content;
+    }
 
     &[data-badge-show='true'] {
       &::after {

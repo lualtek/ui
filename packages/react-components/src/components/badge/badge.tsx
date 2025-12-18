@@ -32,6 +32,11 @@ export type BadgeProps = Except<React.ComponentPropsWithRef<'div'>, 'children'> 
    * @defaultValue false
    */
   showBadge?: boolean;
+  /**
+   * Whether the badge should take full width of its container.
+   * @defaultValue false
+   */
+  fullWidth?: boolean;
 }
 
 export const Badge: FC<BadgeProps> = ({
@@ -42,6 +47,7 @@ export const Badge: FC<BadgeProps> = ({
   color = 'yellow',
   style,
   showBadge = false,
+  fullWidth,
   ref: forwardRef,
   ...otherProps
 }) => {
@@ -56,6 +62,7 @@ export const Badge: FC<BadgeProps> = ({
       ref={forwardRef}
       className={clsx(styles.Badge, className)}
       data-badge-show={showBadge}
+      data-badge-fullwidth={fullWidth}
       style={{ ...dynamicStyle, ...style }}
       {...otherProps}
     >
