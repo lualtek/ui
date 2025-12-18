@@ -1,5 +1,16 @@
 # @lualtek/config
 
+## 2025.9.0
+
+### Minor Changes
+
+- 25fb698: Update deps
+
+### Patch Changes
+
+- Updated dependencies [25fb698]
+  - @lualtek/tokens@2025.9.0
+
 ## 2025.8.0
 
 ### Patch Changes

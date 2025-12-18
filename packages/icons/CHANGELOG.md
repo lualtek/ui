@@ -1,5 +1,11 @@
 # @lualtek/icons
 
+## 2025.9.0
+
+### Minor Changes
+
+- 25fb698: Update deps
+
 ## 2025.8.0
 
 ## 2025.7.1

@@ -1,5 +1,19 @@
 # @lualtek/react-components
 
+## 2025.9.0
+
+### Minor Changes
+
+- c585dd6: Add new fullWidth prop to badge
+- 6330d99: Add pulselight to badge
+- 25fb698: Update deps
+
+### Patch Changes
+
+- f38cad2: Fix badge mask size
+- Updated dependencies [25fb698]
+  - @lualtek/icons@2025.9.0
+
 ## 2025.8.0
 
 ### Minor Changes
