@@ -24,6 +24,7 @@
   .Mask {
     --mask-size: calc(var(--badge-size) / 2 + var(--gap));
     display: inline-flex;
+    width: 100%;
 
     .Badge[data-badge-show='true'] & {
       mask-image: radial-gradient(
