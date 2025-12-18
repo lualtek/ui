@@ -1,10 +1,10 @@
 ---
-"@lualtek/react-components": major
-"@lualtek/charts": major
-"@lualtek/themes": major
-"@lualtek/icons": major
-"@lualtek/config": major
-"@lualtek/tokens": major
+"@lualtek/react-components": minor
+"@lualtek/charts": minor
+"@lualtek/themes": minor
+"@lualtek/icons": minor
+"@lualtek/config": minor
+"@lualtek/tokens": minor
 ---
 
 Update deps
