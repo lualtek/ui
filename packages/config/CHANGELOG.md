@@ -1,5 +1,13 @@
 # @lualtek/config
 
+## 2025.9.2
+
+### Patch Changes
+
+- e3f5abf: Test release
+- Updated dependencies [e3f5abf]
+  - @lualtek/tokens@2025.9.2
+
 ## 2025.9.1
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @lualtek/tokens
 
+## 2025.9.2
+
+### Patch Changes
+
+- e3f5abf: Test release
+
 ## 2025.9.1
 
 ## 2025.9.0
