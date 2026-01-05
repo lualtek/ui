@@ -1,3 +1,15 @@
+/*
+ * Copyright © 2026 Lualtek Srl
+ * All rights reserved.
+ *
+ * This source code is proprietary and confidential.
+ * Unauthorized copying, modification, distribution, or use
+ * of this code, via any medium, is strictly prohibited.
+ *
+ * Developed by Mattia Astorino for Lualtek Srl
+ * https://lualtek.io
+ */
+
 'use client';
 
 import { TokensTypes } from '@lualtek/tokens/platforms/web';
@@ -22,8 +34,8 @@ export type AvatarProps = React.ComponentPropsWithRef<'img'> & {
 }
 
 type SkeletonSizeType = Record<
-NonNullable<AvatarProps['dimension']>,
-Exclude<TokensTypes['space'], string>
+  NonNullable<AvatarProps['dimension']>,
+  Exclude<TokensTypes['space'], string>
 >;
 
 const SkeletonSize: SkeletonSizeType = {

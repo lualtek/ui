@@ -1,3 +1,15 @@
+/*
+ * Copyright © 2026 Lualtek Srl
+ * All rights reserved.
+ *
+ * This source code is proprietary and confidential.
+ * Unauthorized copying, modification, distribution, or use
+ * of this code, via any medium, is strictly prohibited.
+ *
+ * Developed by Mattia Astorino for Lualtek Srl
+ * https://lualtek.io
+ */
+
 /**
  * Defines the 'as' prop and potentially other props specific to the polymorphic component itself,
  * independent of the underlying element it renders.
@@ -35,5 +47,5 @@ export type PolyRefComponent<
   DefaultElement extends React.ElementType,
   OwnProps = Record<string, unknown>,
 > = <C extends React.ElementType = DefaultElement>( // The component function is generic
-  props: PolymorphicProps<C, OwnProps> // Props are typed using the core PolymorphicProps type
+  props: PolymorphicProps<C, OwnProps>, // Props are typed using the core PolymorphicProps type
 ) => React.ReactElement | null; // Standard React component return type
