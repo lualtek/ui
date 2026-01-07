@@ -19,7 +19,7 @@ import MultiAxisData from '../../../fixtures/multi-y-data';
 import { ReferenceArea, ReferenceLine } from '../base-chart';
 import { ChartDataBaseType } from '../base-chart/base-chart';
 import {
-  LineChart,
+  LineChart, LineChartProps,
   LineProps,
 } from './line-chart';
 
@@ -46,6 +46,10 @@ const meta = {
     xType: undefined,
     yTypeLeft: undefined,
     yTypeRight: undefined,
+    showTooltip: false,
+  },
+  parameters: {
+    react: { rsc: true },
   },
   argTypes: {
     data: { table: { disable: true } },
@@ -57,7 +61,7 @@ const meta = {
       },
     },
   },
-  render: args => (
+  render: (args: LineChartProps<any, any>) => (
     <LineChart {...args} />
   ),
 } satisfies Meta<typeof LineChart>;
