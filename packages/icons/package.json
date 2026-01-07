@@ -1,7 +1,7 @@
 {
   "name": "@lualtek/icons",
   "description": "Lualtek's iconography",
-  "version": "2026.0.0",
+  "version": "2025.9.4",
   "author": "Lualtek",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com",

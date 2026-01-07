@@ -1,7 +1,7 @@
 {
   "name": "@lualtek/themes",
   "description": "Lualtek design system themes",
-  "version": "2026.0.0",
+  "version": "2025.9.4",
   "author": "Lualtek",
   "style": "platforms/web/themes.css",
   "publishConfig": {
