@@ -4,7 +4,8 @@
 import StyleDictionary from 'style-dictionary';
 import type { Config } from 'style-dictionary/types';
 
-import HexToOkLch from './transforms/hex-oklch.ts';
+// import HexToOkLch from './transforms/hex-oklch.ts';
+import HexToOkLab from './transforms/hex-oklab.ts';
 import SizePxToRem from './transforms/px-rem.ts';
 import SizePxToRootEm from './transforms/px-rootem.ts';
 
@@ -35,7 +36,8 @@ const config: Config = {
          * Custom transformer
          * @see ./transformers/hex-oklch.ts
          */
-        'color/hex-to-oklch',
+        // 'color/hex-to-oklch',
+        'color/hex-to-oklab',
       ],
       files: [
         {
@@ -71,7 +73,8 @@ const SDWithConfig = new StyleDictionary(config);
  */
 SDWithConfig.registerTransform(SizePxToRem);
 SDWithConfig.registerTransform(SizePxToRootEm);
-SDWithConfig.registerTransform(HexToOkLch);
+// SDWithConfig.registerTransform(HexToOkLch);
+SDWithConfig.registerTransform(HexToOkLab);
 
 /**
  * Manually run StyleDictionary for all the configured platforms
