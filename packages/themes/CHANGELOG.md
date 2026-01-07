@@ -1,5 +1,15 @@
 # @lualtek/themes
 
+## 2026.0.0
+
+### Major Changes
+
+- 2fe4b6f: Update deps
+
+### Minor Changes
+
+- 45a6062: Migrate to oklab colors
+
 ## 2025.9.4
 
 ### Patch Changes
