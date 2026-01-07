@@ -1,5 +1,16 @@
 # @lualtek/react-components
 
+## 2026.0.0
+
+### Major Changes
+
+- 2fe4b6f: Update deps
+
+### Patch Changes
+
+- Updated dependencies [2fe4b6f]
+  - @lualtek/icons@2026.0.0
+
 ## 2025.9.4
 
 ### Patch Changes
