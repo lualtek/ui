@@ -11,7 +11,6 @@
  */
 
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { map } from 'recharts/types/util/scale/util/utils';
 
 import { ReferenceLine } from '@/charts/components';
 
