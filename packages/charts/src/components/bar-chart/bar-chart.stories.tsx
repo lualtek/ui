@@ -49,7 +49,6 @@ const meta = {
     showXAxis: false,
     density: 'high',
     barCategoryGap: '20%',
-    showTooltip: false,
   },
   argTypes: {
     data: { table: { disable: true } },
@@ -60,9 +59,6 @@ const meta = {
         options: ['low', 'mid', 'high'],
       },
     },
-  },
-  parameters: {
-    react: { rsc: true },
   },
   render: args => (
     <BarChart {...args} />
