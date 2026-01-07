@@ -45,7 +45,7 @@
   "devDependencies": {
     "@types/fs-extra": "11.0.4",
     "@types/tinycolor2": "1.4.6",
-    "colorjs.io": "0.5.2",
+    "colorjs.io": "0.6.0",
     "fs-extra": "11.3.3",
     "style-dictionary": "5.1.1",
     "tsconfig": "workspace:*"
