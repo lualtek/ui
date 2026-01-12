@@ -215,7 +215,9 @@ export const Autocomplete: FC<AutocompleteProps> = ({
             </Stack>
             <AutocompleteList
               emptyContent={emptyContent}
+              matchFieldWidth={matchFieldWidth}
               loading={loading}
+              maxHeight={maxHeight}
               options={filteredOptions}
               onClickOption={handleClickOption}
             />
