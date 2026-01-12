@@ -1,5 +1,7 @@
 # @lualtek/themes
 
+## 2026.0.1
+
 ## 2026.0.0
 
 ### Major Changes

@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 2026.0.1
+
+### Patch Changes
+
+- f6added: Fix mobile autocomplete props inheritance
+  - @lualtek/icons@2026.0.1
+
 ## 2026.0.0
 
 ### Major Changes
