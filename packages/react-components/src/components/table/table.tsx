@@ -155,63 +155,63 @@ export type TableProps<T> = React.ComponentPropsWithRef<'table'> & {
 
 export type TableConditionalProps<T> =
   | {
-      /**
+    /**
        * Enable the global filter function
        */
-      enableFilterControl: boolean;
-      /**
+    enableFilterControl: boolean;
+    /**
        * Custom function used to filters table data.
        */
-      filterFn: FilterFnOption<T>;
-      /**
+    filterFn: FilterFnOption<T>;
+    /**
        * Set the label for the filter textfield control
        *
        * @defaultValue "Search across data"
        */
-      filterControlLabel: string;
-      /**
+    filterControlLabel: string;
+    /**
        * Set the label default value filter textfield control
        *
        */
-      filterControlDefaultValue?: string;
-      /**
+    filterControlDefaultValue?: string;
+    /**
        * Set debounce time for filter search
        * @defaultValue 230
        */
-      filterDebounce?: number;
-      /**
+    filterDebounce?: number;
+    /**
        * Triggers when the text search of the table changes
        */
-      onFilterTextChange?: (value: string) => void;
-    }
+    onFilterTextChange?: (value: string) => void;
+  }
   | {
-      /**
+    /**
        * Enable the global filter function
        */
-      enableFilterControl?: never;
-      /**
+    enableFilterControl?: never;
+    /**
        * Custom function used to filters table data.
        */
-      filterFn?: never;
-      /**
+    filterFn?: never;
+    /**
        * Set the label for the filter textfield control
        */
-      filterControlLabel?: never;
-      /**
+    filterControlLabel?: never;
+    /**
        * Set the label default value filter textfield control
        *
        */
-      filterControlDefaultValue?: never;
-      /**
+    filterControlDefaultValue?: never;
+    /**
        * Set debounce time for filter search
        * @defaultValue 230
        */
-      filterDebounce?: never;
-      /**
+    filterDebounce?: never;
+    /**
        * Triggers when the text search of the table changes
        */
-      onFilterTextChange?: never;
-    };
+    onFilterTextChange?: never;
+  };
 
 /**
  * {@link TableProps}
@@ -454,6 +454,7 @@ export const Table = <T extends Record<string, unknown>>({
                   <FilterControl
                     label={filterControlLabel}
                     onChange={event => setGlobalFilter(event.target.value)}
+                    onClear={() => setGlobalFilter('')}
                     defaultValue={filterControlDefaultValue}
                   />
                 ) : null}
