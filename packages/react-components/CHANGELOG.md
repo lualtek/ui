@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 2026.0.2
+
+### Patch Changes
+
+- f9d4005: Add onClear function in table control
+  - @lualtek/icons@2026.0.2
+
 ## 2026.0.1
 
 ### Patch Changes
