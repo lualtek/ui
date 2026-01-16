@@ -1,5 +1,13 @@
 # @lualtek/react-components
 
+## 2026.0.3
+
+### Patch Changes
+
+- ea3dc1d: Remove hover effect from Panel on touch inputs
+- Updated dependencies [64639f6]
+  - @lualtek/icons@2026.0.3
+
 ## 2026.0.2
 
 ### Patch Changes
