@@ -1,5 +1,11 @@
 # @lualtek/icons
 
+## 2026.0.3
+
+### Patch Changes
+
+- 64639f6: Add new flow and flow-reverse icons
+
 ## 2026.0.2
 
 ## 2026.0.1
