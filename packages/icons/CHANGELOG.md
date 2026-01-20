@@ -1,5 +1,7 @@
 # @lualtek/icons
 
+## 2026.1.0
+
 ## 2026.0.3
 
 ### Patch Changes
