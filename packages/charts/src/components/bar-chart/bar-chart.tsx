@@ -96,6 +96,7 @@ export function BarChart<D extends ChartDataBaseType, B extends BarProps<D>>({
   focusable = false,
   margin,
   syncId,
+  handleChartUpdate,
   ...otherProps
 }: BarChartProps<D, B>) {
   const chartRef = useRef<HTMLDivElement>(null);
@@ -149,6 +150,9 @@ export function BarChart<D extends ChartDataBaseType, B extends BarProps<D>>({
           barSize={barSize}
           syncId={syncId}
           margin={margin}
+          onTouchStart={handleChartUpdate}
+          onTouchMove={handleChartUpdate}
+          onMouseMove={handleChartUpdate}
         >
           {children}
         </ReBarChart>

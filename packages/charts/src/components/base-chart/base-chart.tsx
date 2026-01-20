@@ -191,6 +191,10 @@ export type BaseChartProps = Except<ResponsiveContainerProps, 'className'> & {
    * Typically defined as an object with properties for top, right, bottom, and left margins.
    */
   margin?: CartesianChartProps['margin'];
+  /**
+   * Call custom function when the on chart is navigated
+   */
+  handleChartUpdate?: CartesianChartProps['onTouchStart'];
 };
 
 type BaseChartComponent = FC<BaseChartProps & Pick<React.ComponentPropsWithRef<'div'>, 'ref'>>

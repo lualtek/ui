@@ -113,6 +113,7 @@ export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
   dotsSize = 3,
   margin,
   syncId,
+  handleChartUpdate,
   ...otherProps
 }: LineChartProps<D, L>) {
   const chartRef = useRef<HTMLDivElement>(null);
@@ -163,6 +164,9 @@ export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
           accessibilityLayer={focusable}
           syncId={syncId}
           margin={margin}
+          onTouchStart={handleChartUpdate}
+          onTouchMove={handleChartUpdate}
+          onMouseMove={handleChartUpdate}
         >
           {children}
         </ReAreaChart>
@@ -172,6 +176,9 @@ export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
           accessibilityLayer={focusable}
           syncId={syncId}
           margin={margin}
+          onTouchStart={handleChartUpdate}
+          onTouchMove={handleChartUpdate}
+          onMouseMove={handleChartUpdate}
         >
           {children}
         </ReLineChart>
