@@ -1,5 +1,16 @@
 # @lualtek/charts
 
+## 2026.1.0
+
+### Minor Changes
+
+- 4988d4f: Add new handleChartUpdate prop to cartesian charts
+
+### Patch Changes
+
+- @lualtek/react-components@2026.1.0
+- @lualtek/tokens@2026.1.0
+
 ## 2026.0.3
 
 ### Patch Changes
