@@ -178,7 +178,7 @@ export const WithExternalTooltip = {
                     }}
                   />
                   <Text>{item.dataKey}:</Text>
-                  <Text weight="bold" style={{ minWidth: 100 }}>{tooltip[item.dataKey as keyof Data].toFixed(2)}</Text>
+                  <Text weight="bold" style={{ minWidth: 100 }}>{Number(tooltip[item.dataKey as keyof Data]).toFixed(2)}</Text>
                 </Stack>
               ))}
               </Stack>

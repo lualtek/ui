@@ -1,7 +1,6 @@
-import { Chip, Stack, Text, Title } from '@lualtek/react-components';
-import { useArgs, useCallback, useEffect } from 'storybook/preview-api';
 import type { Meta, StoryObj } from '@storybook/react-vite';
-
+import { useArgs, useCallback, useEffect } from 'storybook/preview-api';
+import { Chip, Stack, Text, Title } from '@lualtek/react-components';
 import SimpleData from '../../../fixtures/data';
 import { MultiDataSeries } from '../../../fixtures/multi-data-axes';
 import MultiAxisData from '../../../fixtures/multi-y-data';
@@ -303,7 +302,7 @@ export const WithExternalTooltip = {
                       }}
                     />
                     <Text>{item.dataKey}:</Text>
-                    <Text weight="bold" style={{ minWidth: 100 }}>{tooltip[item.dataKey as keyof Data].toFixed(2)}</Text>
+                    <Text weight="bold" style={{ minWidth: 100 }}>{Number(tooltip[item.dataKey as keyof Data]).toFixed(2)}</Text>
                   </Stack>
                 ))}
               </Stack>
