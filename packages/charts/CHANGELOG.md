@@ -1,5 +1,13 @@
 # @lualtek/charts
 
+## 2026.1.1
+
+### Patch Changes
+
+- Fix missing tooltip when external one is used
+  - @lualtek/react-components@2026.1.1
+  - @lualtek/tokens@2026.1.1
+
 ## 2026.1.0
 
 ### Minor Changes
