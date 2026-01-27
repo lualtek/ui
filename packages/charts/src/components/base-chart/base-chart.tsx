@@ -257,21 +257,23 @@ export const BaseChart: BaseChartComponent = ({
                 stroke="color-mix(in oklch, var(--global-foreground), transparent 80%)"
               />
             )}
-            {showTooltip && (
-              <ReTooltip
-                cursor={cursor}
-                isAnimationActive={false}
-                content={customTooltip ?? (
-                  <Tooltip
-                    formatLabel={formatTooltipLabel}
-                    formatName={formatTooltipName}
-                    formatValue={formatTooltipValue}
-                    tooltipDecorator={tooltipDecorator}
-                    tooltipColors={tooltipColors}
-                  />
-                )}
-              />
-            )}
+            <ReTooltip
+              cursor={cursor}
+              isAnimationActive={false}
+              content={
+                !showTooltip
+                  ? () => null
+                  : (customTooltip ?? (
+                    <Tooltip
+                      formatLabel={formatTooltipLabel}
+                      formatName={formatTooltipName}
+                      formatValue={formatTooltipValue}
+                      tooltipDecorator={tooltipDecorator}
+                      tooltipColors={tooltipColors}
+                    />
+                  ))
+              }
+            />
             <XAxis
               dataKey={dataKeyX}
               tickCount={DENSITIES[density]}
