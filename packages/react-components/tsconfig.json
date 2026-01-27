@@ -3,7 +3,6 @@
   "compilerOptions": {
     "outDir": "dist",
     "baseUrl": ".",
-    "moduleResolution": "bundler",
     "paths": {
       "@/components": ["src"],
       "@/components/types": ["src/types"],
