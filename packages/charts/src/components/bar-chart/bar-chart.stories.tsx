@@ -141,31 +141,34 @@ export const WithExternalTooltip = {
 
       if (state.activePayload && state.activePayload.length > 0) {
         const payload = state.activePayload[0].payload as Data;
-        setArgs({
-          tooltip: payload,
-        });
+        if (tooltip?.x !== payload.x) {
+          setArgs({
+            tooltip: payload,
+          });
+        }
       } else if (
         state.activeTooltipIndex !== undefined &&
         state.activeTooltipIndex !== null
       ) {
         const index = Number(state.activeTooltipIndex);
         const point = args.data[index];
-        if (point) {
+        if (point && tooltip?.x !== point.x) {
           setArgs({
             tooltip: point,
           });
         }
       }
-    }, []);
+    }, [tooltip, args.data, setArgs]);
 
     return (
       <Stack direction="column">
-        <Stack direction="row" columnGap={8} style={{ height: 100 }}>
+        <Stack rowGap={8}>
           {tooltip && (
             <>
-              <Title level="3">{tooltip.x}</Title>
+              <Title level="4">{tooltip.x}</Title>
+              <Stack direction="row" fill={false} columnGap={16}>
               {args.series.map((item: any, index: number) => (
-                <Stack key={item.dataKey} direction="row" columnGap={8} vAlign="center">
+                <Stack fill={false} key={item.dataKey} direction="row" columnGap={8} vAlign="center">
                   <div
                     style={{
                       width: 12,
@@ -175,9 +178,10 @@ export const WithExternalTooltip = {
                     }}
                   />
                   <Text>{item.dataKey}:</Text>
-                  <Text weight="bold">{tooltip[item.dataKey as keyof Data]}</Text>
+                  <Text weight="bold" style={{ minWidth: 100 }}>{tooltip[item.dataKey as keyof Data].toFixed(2)}</Text>
                 </Stack>
               ))}
+              </Stack>
             </>
           )}
         </Stack>
