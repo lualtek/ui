@@ -28,6 +28,7 @@ You can read about why and how it was built`,
     return (
       <Sheet
         {...args}
+        heading={args.heading}
         onOpenChange={open => setOpen({ open })}
         trigger={args.trigger}
       >
