@@ -1,5 +1,5 @@
 import { Chip, Stack, Text, Title } from '@lualtek/react-components';
-import { useArgs } from 'storybook/preview-api';
+import { useArgs, useCallback, useEffect } from 'storybook/preview-api';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import SimpleData from '../../../fixtures/data';
@@ -7,6 +7,7 @@ import { MultiDataSeries } from '../../../fixtures/multi-data-axes';
 import MultiAxisData from '../../../fixtures/multi-y-data';
 import { ReferenceArea, ReferenceLine } from '../base-chart';
 import { ChartDataBaseType } from '../base-chart/base-chart';
+import { getChartDefaultColor } from '../base-chart/colors';
 import {
   LineChart, LineChartProps,
   LineProps,
@@ -50,7 +51,7 @@ const meta = {
       },
     },
   },
-  render: (args: LineChartProps<any, any>) => (
+  render: (args: LineChartProps<Data, LineProps<Data>>) => (
     <LineChart {...args} />
   ),
 } satisfies Meta<typeof LineChart>;
@@ -82,7 +83,7 @@ export const WithMinWidth = {
 
 export const WithCustomTooltip = {
   args: {
-    customTooltip: ({ label }) => (
+    customTooltip: ({ label }: any) => (
       <div style={{ color: 'red' }}>
         {label}
       </div>
@@ -119,8 +120,8 @@ export const WithFormattedTooltip = {
   args: {
     data: MultiAxisData.data,
     series: MultiAxisData.series as Array<LineProps<Data>>,
-    formatTooltipName: ({ name }) => `Formatted ${name}`,
-    formatTooltipValue: ({ value }) => `${value}.00`,
+    formatTooltipName: ({ name }: any) => `Formatted ${name}`,
+    formatTooltipValue: ({ value }: any) => `${value}.00`,
   },
 
 } satisfies Story;
@@ -138,7 +139,7 @@ export const WithTooltipDecorator = {
   args: {
     data: MultiAxisData.data,
     series: MultiAxisData.series as Array<LineProps<Data>>,
-    tooltipDecorator: entry => (
+    tooltipDecorator: (entry: any) => (
       <Chip>{Number(entry.value).toFixed(0)}</Chip>
     ),
   },
@@ -228,7 +229,7 @@ export const WithCustomYDomain = {
 
 export const WithFormattedXLabels = {
   args: {
-    xFormatter: value => `${value} Formatted`,
+    xFormatter: (value: any) => `${value} Formatted`,
   },
 } satisfies Story;
 
@@ -246,56 +247,72 @@ export const WithMultiDataAxes = {
 
 export const WithExternalTooltip = {
   args: {
-    // @ts-expect-error: this is a story arg, not a prop
-    tooltip: null,
     showTooltip: false,
   },
   render: (args: LineChartProps<any, any>) => {
     // eslint-disable-next-line
-    const [{ tooltip }, setArgs] = useArgs<typeof args & { tooltip: any }>();
+    const [{ tooltip }, setArgs] = useArgs<typeof args & { tooltip: Data }>();
+
+    useEffect(() => {
+      if (args.data && args.data.length > 0) {
+        setArgs({
+          tooltip: args.data[args.data.length - 1],
+        });
+      }
+    }, []);
+
+    const handleChartUpdate = useCallback((state: any) => {
+      if (!state) return;
+
+      if (state.activePayload && state.activePayload.length > 0) {
+        const payload = state.activePayload[0].payload as Data;
+        if (tooltip?.x !== payload.x) {
+          setArgs({
+            tooltip: payload,
+          });
+        }
+      } else if (
+        state.activeTooltipIndex !== undefined &&
+        state.activeTooltipIndex !== null
+      ) {
+        const index = Number(state.activeTooltipIndex);
+        const point = args.data?.[index];
+        if (point && tooltip?.x !== point.x) {
+          setArgs({
+            tooltip: point,
+          });
+        }
+      }
+    }, [tooltip, args.data, setArgs]);
 
     return (
       <Stack direction="column">
-        <Stack direction="column" rowGap={8} style={{ height: 100 }}>
+        <Stack rowGap={8} style={{ height: 100 }}>
           {tooltip && (
             <>
-              <Title level="3">{tooltip.label}</Title>
-              {tooltip.payload.map((item: any) => (
-                <Stack key={item.name} direction="row" columnGap={8} vAlign="center">
-                  <div
-                    style={{
-                      width: 12,
-                      height: 12,
-                      backgroundColor: item.color,
-                      borderRadius: 2,
-                    }}
-                  />
-                  <Text>{item.name}:</Text>
-                  <Text weight="bold">{item.value}</Text>
-                </Stack>
-              ))}
+              <Title level="4">{tooltip.x}</Title>
+              <Stack direction="row" fill={false} columnGap={16}>
+                {args.series.map((item: any, index: number) => (
+                  <Stack fill={false} key={item.dataKey} direction="row" columnGap={8} vAlign="center">
+                    <div
+                      style={{
+                        width: 12,
+                        height: 12,
+                        backgroundColor: item.color ?? getChartDefaultColor(index),
+                        borderRadius: 2,
+                      }}
+                    />
+                    <Text>{item.dataKey}:</Text>
+                    <Text weight="bold" style={{ minWidth: 100 }}>{tooltip[item.dataKey as keyof Data].toFixed(2)}</Text>
+                  </Stack>
+                ))}
+              </Stack>
             </>
           )}
         </Stack>
         <LineChart
           {...args}
-          handleChartUpdate={(data: any) => {
-            if (data?.activePayload) {
-              const sanitizedPayload = data.activePayload.map((item: any) => ({
-                name: item.name,
-                value: item.value,
-                color: item.color,
-              }));
-              setArgs({
-                tooltip: {
-                  label: data.activeLabel,
-                  payload: sanitizedPayload,
-                },
-              });
-            } else {
-              setArgs({ tooltip: null });
-            }
-          }}
+          handleChartUpdate={handleChartUpdate}
         />
       </Stack>
     );
