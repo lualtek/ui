@@ -19,6 +19,7 @@ import MultiAxisData from '../../../fixtures/multi-y-data';
 import { ChartDataBaseType } from '../base-chart/base-chart';
 import {
   BarChart,
+  BarChartProps,
   BarProps,
 } from './bar-chart';
 
@@ -59,7 +60,7 @@ const meta = {
       },
     },
   },
-  render: args => (
+  render: (args: BarChartProps<Data, BarProps<Data>>) => (
     <BarChart {...args} />
   ),
 } satisfies Meta<typeof BarChart>;
