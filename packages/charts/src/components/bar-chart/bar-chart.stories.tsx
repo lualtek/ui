@@ -10,9 +10,12 @@
  * https://lualtek.io
  */
 
+import { Stack, Text, Title } from '@lualtek/react-components';
+import { useArgs, useCallback, useEffect } from 'storybook/preview-api';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import { ReferenceLine } from '@/charts/components';
+import { getChartDefaultColor } from '../base-chart/colors';
 
 import SimpleData from '../../../fixtures/data';
 import MultiAxisData from '../../../fixtures/multi-y-data';
@@ -22,6 +25,7 @@ import {
   BarChartProps,
   BarProps,
 } from './bar-chart';
+import { ReactNode } from 'react';
 
 type Data = ChartDataBaseType;
 
@@ -113,5 +117,75 @@ export const WithCustomDataset = {
   args: {
     data: MultiAxisData.data,
     series: MultiAxisData.series as Array<BarProps<Data>>,
+  },
+} satisfies Story;
+
+export const WithExternalTooltip = {
+  args: {
+    showTooltip: false,
+  },
+  render: (args: BarChartProps<Data, BarProps<Data>>) => {
+    // eslint-disable-next-line
+    const [{ tooltip }, setArgs] = useArgs<typeof args & { tooltip: Data }>();
+
+    useEffect(() => {
+      if (args.data.length > 0) {
+        setArgs({
+          tooltip: args.data[args.data.length - 1],
+        });
+      }
+    }, []);
+
+    const handleChartUpdate = useCallback((state: any) => {
+      if (!state) return;
+
+      if (state.activePayload && state.activePayload.length > 0) {
+        const payload = state.activePayload[0].payload as Data;
+        setArgs({
+          tooltip: payload,
+        });
+      } else if (
+        state.activeTooltipIndex !== undefined &&
+        state.activeTooltipIndex !== null
+      ) {
+        const index = Number(state.activeTooltipIndex);
+        const point = args.data[index];
+        if (point) {
+          setArgs({
+            tooltip: point,
+          });
+        }
+      }
+    }, []);
+
+    return (
+      <Stack direction="column">
+        <Stack direction="row" columnGap={8} style={{ height: 100 }}>
+          {tooltip && (
+            <>
+              <Title level="3">{tooltip.x}</Title>
+              {args.series.map((item: any, index: number) => (
+                <Stack key={item.dataKey} direction="row" columnGap={8} vAlign="center">
+                  <div
+                    style={{
+                      width: 12,
+                      height: 12,
+                      backgroundColor: item.color ?? getChartDefaultColor(index),
+                      borderRadius: 2,
+                    }}
+                  />
+                  <Text>{item.dataKey}:</Text>
+                  <Text weight="bold">{tooltip[item.dataKey as keyof Data]}</Text>
+                </Stack>
+              ))}
+            </>
+          )}
+        </Stack>
+        <BarChart
+          {...args}
+          handleChartUpdate={handleChartUpdate}
+        />
+      </Stack>
+    );
   },
 } satisfies Story;

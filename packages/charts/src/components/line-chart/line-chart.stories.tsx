@@ -1,4 +1,5 @@
-import { Chip } from '@lualtek/react-components';
+import { Chip, Stack, Text, Title } from '@lualtek/react-components';
+import { useArgs } from 'storybook/preview-api';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import SimpleData from '../../../fixtures/data';
@@ -231,6 +232,7 @@ export const WithFormattedXLabels = {
   },
 } satisfies Story;
 
+
 export const WithMultiDataAxes = {
   args: {
     data: undefined,
@@ -239,5 +241,63 @@ export const WithMultiDataAxes = {
     xType: 'category',
     xAllowDuplicatedCategory: false,
     yDomainLeft: [0, 1],
+  },
+} satisfies Story;
+
+export const WithExternalTooltip = {
+  args: {
+    // @ts-expect-error: this is a story arg, not a prop
+    tooltip: null,
+    showTooltip: false,
+  },
+  render: (args: LineChartProps<any, any>) => {
+    // eslint-disable-next-line
+    const [{ tooltip }, setArgs] = useArgs<typeof args & { tooltip: any }>();
+
+    return (
+      <Stack direction="column">
+        <Stack direction="column" rowGap={8} style={{ height: 100 }}>
+          {tooltip && (
+            <>
+              <Title level="3">{tooltip.label}</Title>
+              {tooltip.payload.map((item: any) => (
+                <Stack key={item.name} direction="row" columnGap={8} vAlign="center">
+                  <div
+                    style={{
+                      width: 12,
+                      height: 12,
+                      backgroundColor: item.color,
+                      borderRadius: 2,
+                    }}
+                  />
+                  <Text>{item.name}:</Text>
+                  <Text weight="bold">{item.value}</Text>
+                </Stack>
+              ))}
+            </>
+          )}
+        </Stack>
+        <LineChart
+          {...args}
+          handleChartUpdate={(data: any) => {
+            if (data?.activePayload) {
+              const sanitizedPayload = data.activePayload.map((item: any) => ({
+                name: item.name,
+                value: item.value,
+                color: item.color,
+              }));
+              setArgs({
+                tooltip: {
+                  label: data.activeLabel,
+                  payload: sanitizedPayload,
+                },
+              });
+            } else {
+              setArgs({ tooltip: null });
+            }
+          }}
+        />
+      </Stack>
+    );
   },
 } satisfies Story;
