@@ -10,19 +10,24 @@
  * https://lualtek.io
  */
 
+import clsx from 'clsx';
 import React, { FC } from 'react';
 import { Brush as ReBrush } from 'recharts';
+
+import styles from './brush.module.css';
 
 export type BrushProps = React.ComponentProps<typeof ReBrush>;
 
 export const Brush: FC<BrushProps> = ({
+  className,
   ...otherProps
 }) => (
   <ReBrush
     {...otherProps}
-    height={30}
-    stroke="#8884d8"
-    travellerWidth={50}
+    className={clsx(className, styles.Brush)}
+    height={24}
+    stroke="var(--cta-default)"
+    travellerWidth={16}
   />
 );
 

@@ -114,7 +114,7 @@ export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
   yTypeLeft,
   yTypeRight,
   allowYDecimals = false,
-  disableAnimation = true,
+  disableAnimation = false,
   focusable = false,
   dotsSize = 3,
   margin,
@@ -263,7 +263,7 @@ export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
           const computedStrokeColor = color ?? getChartDefaultColor(index);
           const commonProps = {
             yAxisId: side,
-            isAnimationActive,
+            isAnimationActive: children ? false : isAnimationActive,
             type: type ?? 'monotone',
             stroke: computedStrokeColor,
             data: serieData,
