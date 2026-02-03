@@ -15,6 +15,7 @@ import { useChartAxis } from '@/charts/hooks/use-chart-axis';
 import { BaseChart, BaseChartProps, DENSITIES } from '../base-chart';
 import { ChartDataBaseType } from '../base-chart/base-chart';
 import { getChartDefaultColor } from '../base-chart/colors';
+import { BrushProps } from '../brush';
 
 export type BarProps<D> = {
   /**
@@ -66,6 +67,7 @@ export type BarChartAccessoryProps<T = Record<string, unknown>> = Except<
    * Set the size of the bars
    */
   barSize?: number | string;
+  children?: BrushProps;
 } & T
 
 export type BarChartProps<D extends ChartDataBaseType, B extends BarProps<D>> = BarChartAccessoryProps<{
@@ -97,6 +99,7 @@ export function BarChart<D extends ChartDataBaseType, B extends BarProps<D>>({
   margin,
   syncId,
   handleChartUpdate,
+  children,
   ...otherProps
 }: BarChartProps<D, B>) {
   const chartRef = useRef<HTMLDivElement>(null);
@@ -142,7 +145,7 @@ export function BarChart<D extends ChartDataBaseType, B extends BarProps<D>>({
       onResize={handleResize}
       density={density}
       cursorStyle={{ strokeWidth: 0 }}
-      renderChart={children => (
+      renderChart={chartChildren => (
         <ReBarChart
           data={data}
           accessibilityLayer={focusable}
@@ -154,11 +157,13 @@ export function BarChart<D extends ChartDataBaseType, B extends BarProps<D>>({
           onTouchMove={handleChartUpdate}
           onMouseMove={handleChartUpdate}
         >
-          {children}
+          {chartChildren}
         </ReBarChart>
       )}
     >
       <>
+        {children}
+
         {hasRightY && (
           <YAxis
             yAxisId="right"

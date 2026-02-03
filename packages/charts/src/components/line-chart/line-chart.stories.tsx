@@ -1,12 +1,13 @@
+import { Chip, Stack, Text, Title } from '@lualtek/react-components';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useArgs, useCallback, useEffect } from 'storybook/preview-api';
-import { Chip, Stack, Text, Title } from '@lualtek/react-components';
+import {ChartDataBaseType} from "@/charts/components/base-chart/base-chart";
 import SimpleData from '../../../fixtures/data';
 import { MultiDataSeries } from '../../../fixtures/multi-data-axes';
 import MultiAxisData from '../../../fixtures/multi-y-data';
 import { ReferenceArea, ReferenceLine } from '../base-chart';
-import { ChartDataBaseType } from '../base-chart/base-chart';
 import { getChartDefaultColor } from '../base-chart/colors';
+import { Brush } from '../brush';
 import {
   LineChart, LineChartProps,
   LineProps,
@@ -316,4 +317,15 @@ export const WithExternalTooltip = {
       </Stack>
     );
   },
+} satisfies Story;
+
+export const WithBrush = {
+  args: {
+    showXAxis: true,
+  },
+  render: (args: LineChartProps<Data, LineProps<Data>>) => (
+    <LineChart {...args}>
+      <Brush dataKey="x" />
+    </LineChart>
+  ),
 } satisfies Story;
