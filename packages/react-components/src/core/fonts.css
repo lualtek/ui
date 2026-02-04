@@ -8,7 +8,7 @@
     font-style: normal;
     font-weight: 400;
     font-display: swap;
-    src: url('./fonts/AdobeTextPro-Regular.woff2') format('woff2');
+    src: url('/fonts/AdobeTextPro-Regular.woff2') format('woff2');
 
     /* Lating subset */
     unicode-range:
@@ -19,7 +19,7 @@
     font-style: italic;
     font-weight: 400;
     font-display: swap;
-    src: url('./fonts/AdobeTextPro-RegularIt.woff2') format('woff2');
+    src: url('/fonts/AdobeTextPro-RegularIt.woff2') format('woff2');
 
     /* Lating subset */
     unicode-range:
@@ -33,7 +33,7 @@
     font-style: normal;
     font-weight: 600;
     font-display: swap;
-    src: url('./fonts/AdobeTextPro-Semibold.woff2') format('woff2');
+    src: url('/fonts/AdobeTextPro-Semibold.woff2') format('woff2');
 
     /* Lating subset */
     unicode-range:
@@ -44,7 +44,7 @@
     font-style: italic;
     font-weight: 600;
     font-display: swap;
-    src: url('./fonts/AdobeTextPro-SemiboldIt.woff2') format('woff2');
+    src: url('/fonts/AdobeTextPro-SemiboldIt.woff2') format('woff2');
 
     /* Lating subset */
     unicode-range:
@@ -58,7 +58,7 @@
     font-style: normal;
     font-weight: 700;
     font-display: swap;
-    src: url('./fonts/AdobeTextPro-Bold.woff2') format('woff2');
+    src: url('/fonts/AdobeTextPro-Bold.woff2') format('woff2');
 
     /* Lating subset */
     unicode-range:
@@ -69,7 +69,7 @@
     font-style: italic;
     font-weight: 700;
     font-display: swap;
-    src: url('./fonts/AdobeTextPro-BoldIt.woff2') format('woff2');
+    src: url('/fonts/AdobeTextPro-BoldIt.woff2') format('woff2');
 
     /* Lating subset */
     unicode-range:
