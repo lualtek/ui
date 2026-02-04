@@ -1,5 +1,12 @@
 # @lualtek/charts
 
+## 2026.1.2
+
+### Patch Changes
+
+- @lualtek/react-components@2026.1.2
+- @lualtek/tokens@2026.1.2
+
 ## 2026.1.1
 
 ### Patch Changes

@@ -1,5 +1,12 @@
 # @lualtek/config
 
+## 2026.1.2
+
+### Patch Changes
+
+- 26a3938: Update postcss plugins and import resolve paths
+  - @lualtek/tokens@2026.1.2
+
 ## 2026.1.1
 
 ### Patch Changes
