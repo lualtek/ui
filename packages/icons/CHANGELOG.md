@@ -1,5 +1,11 @@
 # @lualtek/icons
 
+## 2026.1.3
+
+### Patch Changes
+
+- 6da19ff: Update postcss configs
+
 ## 2026.1.2
 
 ## 2026.1.1
