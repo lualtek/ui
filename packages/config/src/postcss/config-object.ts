@@ -31,6 +31,7 @@ export const postcssObjConfig = (tokens: Record<string, unknown>) => {
 
   return {
     plugins: {
+      'postcss-import': {},
       'postcss-functions': {
         functions: {
           '--token': tokenFunction,
@@ -57,6 +58,8 @@ export const postcssObjConfig = (tokens: Record<string, unknown>) => {
 
 export const postcssObjBundlerConfig = (tokens: Record<string, unknown>) => {
   const baseConfig = postcssObjConfig(tokens);
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  const { 'postcss-import': _, ...rest } = baseConfig.plugins;
 
   return {
     plugins: {
@@ -66,7 +69,7 @@ export const postcssObjBundlerConfig = (tokens: Record<string, unknown>) => {
       'postcss-url': {
         url: 'rebase',
       },
-      ...baseConfig.plugins,
+      ...rest,
     },
   };
 };
