@@ -1,5 +1,12 @@
 # @lualtek/config
 
+## 2026.1.4
+
+### Patch Changes
+
+- a33a242: restore postcss-import to base config
+  - @lualtek/tokens@2026.1.4
+
 ## 2026.1.3
 
 ### Patch Changes
