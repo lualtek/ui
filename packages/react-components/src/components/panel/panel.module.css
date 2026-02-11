@@ -6,7 +6,7 @@
     position: relative;
     padding: var(--v-padding-top, 0) var(--h-padding-right, 0) var(--v-padding-bottom, 0) var(--h-padding-left, 0);
 
-    @media (--touch) {
+    @media not (--touch) {
       &[data-panel-hover='true']:where(:hover, :focus-visible, :focus-within) {
         background: var(--background-hover, var(--background));
       }
