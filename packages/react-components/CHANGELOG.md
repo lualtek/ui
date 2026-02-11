@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 2026.1.5
+
+### Patch Changes
+
+- 0bb54ee: Fix panel hover status and circular progress
+  - @lualtek/icons@2026.1.5
+
 ## 2026.1.4
 
 ### Patch Changes
