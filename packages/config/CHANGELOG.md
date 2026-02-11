@@ -1,5 +1,11 @@
 # @lualtek/config
 
+## 2026.1.5
+
+### Patch Changes
+
+- @lualtek/tokens@2026.1.5
+
 ## 2026.1.4
 
 ### Patch Changes
