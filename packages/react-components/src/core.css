@@ -1,5 +1,6 @@
 @layer core, utilities, plain-components, components, overrides, themes;
 
+@import './core/global-overrides.css';
 @import './core/fonts.css';
 @import './core/basic.css';
 @import './core/typography.css';
