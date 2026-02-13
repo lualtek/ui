@@ -9,7 +9,7 @@ import { PolyRefComponent } from '@/components';
 
 import styles from './text.module.css';
 
-export type TextProps = React.ComponentPropsWithRef<'span'> & {
+export type TextProps = React.ComponentPropsWithRef<'span' | 'p'> & {
   /**
    * Set the dimension of the text from one of
    * the typography system values

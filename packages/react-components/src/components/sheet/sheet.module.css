@@ -63,7 +63,7 @@
 
     @media (--from-small) {
       &[data-vaul-drawer] {
-        user-select: unset;
+        user-select: unset !important;
       }
     }
   }

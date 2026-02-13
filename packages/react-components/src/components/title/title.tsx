@@ -11,7 +11,7 @@ import { PolyRefComponent } from '@/components';
 
 import styles from './title.module.css';
 
-export type TitleProps = React.ComponentPropsWithRef<'span'> & {
+export type TitleProps = React.ComponentPropsWithRef<'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'span'> & {
   /**
    * Set the level of the title. This property only
    * affects the visual appearance of the title and not the
@@ -97,7 +97,6 @@ export const Title: TitleComponent = (
 ) => {
   const computedLevel = level.match(/\d/g) ? `H${level}` : level.charAt(0).toUpperCase() + level.slice(1);
   // @ts-expect-error: generated className is not pure in CSS
-
   const computedCSSClass = String(styles[computedLevel]);
   const dynamicStyle = useMemo(() => {
     const getPaddingValue = (
