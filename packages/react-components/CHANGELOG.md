@@ -1,5 +1,19 @@
 # @lualtek/react-components
 
+## 2026.2.0
+
+### Minor Changes
+
+- f839349: Add new trim and trimType to Text, Title and Prose
+
+### Patch Changes
+
+- f839349: Update event type for invalid handler in textfield, textarea and checkbox
+- f839349: Fix selection in Sheet
+- Updated dependencies [f839349]
+- Updated dependencies [f839349]
+  - @lualtek/icons@2026.2.0
+
 ## 2026.1.5
 
 ### Patch Changes

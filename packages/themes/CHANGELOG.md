@@ -1,5 +1,15 @@
 # @lualtek/themes
 
+## 2026.2.0
+
+### Minor Changes
+
+- f839349: Add new trim and trimType to Text, Title and Prose
+
+### Patch Changes
+
+- f839349: Fix selection in Sheet
+
 ## 2026.1.5
 
 ## 2026.1.4
