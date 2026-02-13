@@ -10,14 +10,6 @@
       "correctness": {
         "noUnknownFunction": "error",
         "noUnknownMediaFeatureName": "off"
-      },
-      "suspicious": {
-        "noUnknownAtRules": {
-          "level": "error",
-          "options": {
-            "ignore": ["custom-selector"]
-          }
-        }
       }
     }
   },
