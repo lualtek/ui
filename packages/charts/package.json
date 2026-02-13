@@ -55,8 +55,8 @@
     "react-dom": "^19.1"
   },
   "devDependencies": {
-    "@types/node": "25.0.3",
-    "@types/react": "19.2.7",
+    "@types/node": "25.2.3",
+    "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
     "react": "^19.2",
     "react-dom": "^19.2",
@@ -68,7 +68,7 @@
     "@lualtek/react-components": "workspace:*",
     "@lualtek/tokens": "workspace:*",
     "clsx": "2.1.1",
-    "recharts": "3.6.0",
-    "type-fest": "5.3.1"
+    "recharts": "3.7.0",
+    "type-fest": "5.4.4"
   }
 }
