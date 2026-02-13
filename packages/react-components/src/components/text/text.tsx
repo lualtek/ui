@@ -76,6 +76,16 @@ export type TextProps = React.ComponentPropsWithRef<'span'> & {
    * Set the vertical padding (top/bottom). Works better with block elements.
    */
   vPadding?: TokensTypes['space'] | [TokensTypes['space'] | 0, TokensTypes['space'] | 0];
+  /**
+   * Trim leading (pronounced "ledding") whitespace from the text.
+   */
+  trim?: 'start' | 'end' | 'both';
+  /**
+   * Set the trim behaviour for the text.
+   *
+   * @defaultValue "text alphabetic"
+   */
+  trimType?: string;
 }
 
 export type TextComponent = PolyRefComponent<'span', TextProps>;
@@ -98,6 +108,8 @@ export const Text: TextComponent = (
     balanced = false,
     hPadding,
     vPadding,
+    trim,
+    trimType = 'text alphabetic',
     style,
     ref: forwardedRef,
     ...otherProps
@@ -126,8 +138,10 @@ export const Text: TextComponent = (
       '--v-padding-bottom': vPaddingValues.bottom,
       '--h-padding-left': hPaddingValues.left,
       '--h-padding-right': hPaddingValues.right,
+      '--trim': trim ? `trim-${trim}` : undefined,
+      '--trim-type': trimType,
     };
-  }, [maxWidth, align, textColor, whiteSpace, hPadding, vPadding]);
+  }, [maxWidth, align, textColor, whiteSpace, hPadding, vPadding, trimType, trim]);
 
   return (
     <Component

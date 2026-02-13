@@ -12,6 +12,7 @@
     word-break: break-word;
     color: var(--text-color);
     white-space: var(--white-space, normal);
+    text-box: var(--trim) var(--trim-type);
 
     &[data-text-balanced='true'] {
       text-wrap: balance;

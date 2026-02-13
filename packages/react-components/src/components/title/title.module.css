@@ -4,6 +4,7 @@
   .Title {
     word-break: break-word;
     white-space: var(--white-space, normal);
+    text-box: var(--trim) var(--trim-type);
 
     &[data-title-balanced='true'] {
       text-wrap: balance;
@@ -46,21 +47,21 @@
         --lh: --token(--font-lh-large);
       }
 
-      &::before {
-        content: '';
-        display: block;
-        height: 0;
-        width: 0;
-        margin-top: calc((1 - var(--lh)) * 0.6em);
-      }
+      /*&::before {*/
+      /*  content: '';*/
+      /*  display: block;*/
+      /*  height: 0;*/
+      /*  width: 0;*/
+      /*  margin-top: calc((1 - var(--lh)) * 0.6em);*/
+      /*}*/
 
-      &::after {
-        content: '';
-        display: block;
-        height: 0;
-        width: 0;
-        margin-bottom: calc((1 - var(--lh)) * 0.6em);
-      }
+      /*&::after {*/
+      /*  content: '';*/
+      /*  display: block;*/
+      /*  height: 0;*/
+      /*  width: 0;*/
+      /*  margin-bottom: calc((1 - var(--lh)) * 0.6em);*/
+      /*}*/
     }
 
     &:is(.H6) {

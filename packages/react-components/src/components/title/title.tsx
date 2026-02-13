@@ -60,6 +60,16 @@ export type TitleProps = React.ComponentPropsWithRef<'span'> & {
    * Set the vertical padding (top/bottom). Works better with block elements.
    */
   vPadding?: TokensTypes['space'] | [TokensTypes['space'] | 0, TokensTypes['space'] | 0];
+  /**
+   * Trim leading (pronounced "ledding") whitespace from the text.
+   */
+  trim?: 'start' | 'end' | 'both';
+  /**
+   * Set the trim behaviour for the text.
+   *
+   * @defaultValue "text alphabetic"
+   */
+  trimType?: string;
 }
 
 type TitleComponent = PolyRefComponent<'span', TitleProps>;
@@ -78,6 +88,8 @@ export const Title: TitleComponent = (
     balanced = false,
     hPadding,
     vPadding,
+    trim = 'both',
+    trimType = 'cap alphabetic',
     style,
     ref: forwardedRef,
     ...otherProps
@@ -109,8 +121,10 @@ export const Title: TitleComponent = (
       '--v-padding-bottom': vPaddingValues.bottom,
       '--h-padding-left': hPaddingValues.left,
       '--h-padding-right': hPaddingValues.right,
+      '--trim': trim ? `trim-${trim}` : undefined,
+      '--trim-type': trimType,
     };
-  }, [maxWidth, align, whiteSpace, vPadding, hPadding]);
+  }, [maxWidth, align, whiteSpace, vPadding, hPadding, trimType, trim]);
 
   return (
     <Component

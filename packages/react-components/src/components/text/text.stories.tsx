@@ -92,3 +92,16 @@ export const Balanced = {
     </Text>
   ),
 } satisfies Story;
+
+
+export const Trimmed = {
+  args: {
+    balanced: true,
+    trim: 'end',
+  },
+  render: ({ as, ...args }) => (
+    <Text {...args} as="p">
+      {args.children}
+    </Text>
+  ),
+} satisfies Story;
