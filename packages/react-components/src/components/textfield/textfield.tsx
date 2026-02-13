@@ -2,7 +2,7 @@
 
 import clsx from 'clsx';
 import {
-  ChangeEvent, FC, ReactNode, useCallback, useEffect, useId, useMemo, useRef, useState,
+  ChangeEvent, FC, InputEvent, ReactNode, useCallback, useEffect, useId, useMemo, useRef, useState,
 } from 'react';
 import { mergeRefs } from 'react-merge-refs';
 
@@ -145,7 +145,7 @@ export const Textfield: FC<TextfieldProps> = ({
   [invalid]);
 
   const handleInvalid = useCallback(
-    (event: ChangeEvent<HTMLInputElement>) => {
+    (event: InputEvent<HTMLInputElement>) => {
       event.preventDefault();
       onInput?.(event);
       setIsUserInvalid(!event.currentTarget.validity.valid);

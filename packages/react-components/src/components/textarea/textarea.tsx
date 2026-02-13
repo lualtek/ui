@@ -2,7 +2,7 @@
 
 import clsx from 'clsx';
 import {
-  ChangeEvent, FC, forwardRef, ReactNode, useCallback, useId, useMemo,
+  ChangeEvent, FC, forwardRef, InputEvent, ReactNode, useCallback, useId, useMemo,
   useState,
 } from 'react';
 
@@ -70,7 +70,7 @@ export const Textarea: FC<TextareaProps> = ({
   const [isUserInvalid, setIsUserInvalid] = useState<boolean>(invalid ?? false);
 
   const handleInvalid = useCallback(
-    (event: ChangeEvent<HTMLTextAreaElement>) => {
+    (event: InputEvent<HTMLTextAreaElement>) => {
       event.preventDefault();
       onInput?.(event);
       setIsUserInvalid(!event.currentTarget.validity.valid);
