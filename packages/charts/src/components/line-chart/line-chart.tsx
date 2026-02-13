@@ -3,6 +3,7 @@
 import {
   useEffect, useRef, useState, useTransition,
 } from 'react';
+import React, { Children, isValidElement } from 'react';
 import {
   Area,
   AreaChart as ReAreaChart,
@@ -19,6 +20,7 @@ import { useChartAxis } from '@/charts/hooks/use-chart-axis';
 import { BaseChart, BaseChartProps, DENSITIES } from '../base-chart';
 import { ChartDataBaseType } from '../base-chart/base-chart';
 import { getChartDefaultColor } from '../base-chart/colors';
+import { Brush, BrushProps } from '../brush';
 
 export type LineProps<D> = {
   /**
@@ -83,6 +85,10 @@ export type LineChartAccessoryProps<T = Record<string, unknown>> = Except<
    * Render areas for the series.
    */
     showAreas?: boolean;
+    /**
+     * A brush component to render.
+     */
+    children?: React.ReactElement<BrushProps>;
   } & T
 
 export type LineChartProps<D extends ChartDataBaseType, L extends LineProps<D>> = LineChartAccessoryProps<{
@@ -114,6 +120,7 @@ export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
   margin,
   syncId,
   handleChartUpdate,
+  children,
   ...otherProps
 }: LineChartProps<D, L>) {
   const chartRef = useRef<HTMLDivElement>(null);
@@ -132,6 +139,15 @@ export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
     series,
     yDomainLeft,
     yDomainRight,
+  });
+
+  // Validate children
+  Children.forEach(children, (child) => {
+    if (!isValidElement(child)) return;
+    // @ts-expect-error - we need to check the type
+    if (child.type?.displayName !== Brush.displayName && child.type !== Brush) {
+      throw new Error('LineChart only accepts Brush as children.');
+    }
   });
 
   useEffect(() => {
@@ -185,6 +201,9 @@ export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
       ))}
     >
       <>
+        {/* Any extra children like Brush */}
+        {children}
+
         {hasRightY && (
           <YAxis
             yAxisId="right"
@@ -244,7 +263,7 @@ export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
           const computedStrokeColor = color ?? getChartDefaultColor(index);
           const commonProps = {
             yAxisId: side,
-            isAnimationActive,
+            isAnimationActive: children ? false : isAnimationActive,
             type: type ?? 'monotone',
             stroke: computedStrokeColor,
             data: serieData,

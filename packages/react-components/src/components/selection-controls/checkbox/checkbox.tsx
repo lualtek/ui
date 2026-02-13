@@ -5,6 +5,7 @@ import clsx from 'clsx';
 import { domAnimation, LazyMotion, m } from 'motion/react';
 import {
   ChangeEvent, FC,
+  InputEvent,
   ReactNode, useCallback, useEffect, useId, useRef,
   useState,
 } from 'react';
@@ -110,7 +111,7 @@ export const Checkbox: FC<CheckboxProps> = ({
   }, [indeterminate]);
 
   const handleInvalid = useCallback(
-    (event: ChangeEvent<HTMLInputElement>) => {
+    (event: InputEvent<HTMLInputElement>) => {
       event.preventDefault();
       onInput?.(event);
       setIsUserInvalid(!event.currentTarget.validity.valid);

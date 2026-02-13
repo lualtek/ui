@@ -1,0 +1,27 @@
+/*
+ * Copyright © 2026 Lualtek Srl
+ * All rights reserved.
+ *
+ * This source code is proprietary and confidential.
+ * Unauthorized copying, modification, distribution, or use
+ * of this code, via any medium, is strictly prohibited.
+ *
+ * Developed by Mattia Astorino for Lualtek Srl
+ * https://lualtek.io
+ */
+
+/**
+  Overrides for the EmojiPickerReact component.
+ */
+aside.EmojiPickerReact {
+  --epr-bg-color: transparent;
+  --epr-category-label-bg-color: var(--vibrancy-background);
+  --epr-picker-border-color: transparent;
+  --epr-text-color: var(--global-foreground);
+  --epr-hover-bg-color: var(--dimmed-2);
+  --epr-emoji-hover-color: var(--dimmed-2);
+  --epr-focus-bg-color: var(--dimmed-2);
+  --epr-search-input-bg-color: var(--vibrancy-background-mid);
+  --epr-search-input-bg-color-active: var(--vibrancy-background-mid);
+  --epr-search-border-color: var(--dimmed-2);
+}

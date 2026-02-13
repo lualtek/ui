@@ -6,7 +6,7 @@ import {
   type JSX, ReactElement, ReactNode, useMemo,
 } from 'react';
 import {
-  CartesianGrid, CartesianGridProps,
+  CartesianGrid,
   Legend,
   LegendProps,
   ResponsiveContainer,
@@ -257,6 +257,7 @@ export const BaseChart: BaseChartComponent = ({
                 stroke="color-mix(in oklch, var(--global-foreground), transparent 80%)"
               />
             )}
+
             <ReTooltip
               cursor={cursor}
               isAnimationActive={false}

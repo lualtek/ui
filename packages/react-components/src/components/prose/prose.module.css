@@ -33,6 +33,7 @@
     }
 
     & > :where(:--headings) {
+      text-box: trim-both cap alphabetic;
       margin-block-end: var(--end-gap);
     }
   }

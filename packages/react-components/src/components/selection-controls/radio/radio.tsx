@@ -111,8 +111,6 @@ export const Radio: FC<RadioProps> = ({
             {label}
           </Text>
         )}
-        {' '}
-
       </Stack>
     </LazyMotion>
   );

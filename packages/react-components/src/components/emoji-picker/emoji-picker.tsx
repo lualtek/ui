@@ -59,7 +59,6 @@ export const EmojiPicker: FC<EmojiPickerProps> = ({
       lazyLoadEmojis
       theme={theme ?? Theme.AUTO}
       skinTonePickerLocation={SkinTonePickerLocation.PREVIEW}
-      className={styles.Picker}
       emojiStyle={EmojiStyle.NATIVE}
       emojiVersion="15.0"
       autoFocusSearch={false}

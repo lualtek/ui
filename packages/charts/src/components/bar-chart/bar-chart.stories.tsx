@@ -11,21 +11,20 @@
  */
 
 import { Stack, Text, Title } from '@lualtek/react-components';
-import { useArgs, useCallback, useEffect } from 'storybook/preview-api';
 import type { Meta, StoryObj } from '@storybook/react-vite';
-
-import { ReferenceLine } from '@/charts/components';
-import { getChartDefaultColor } from '../base-chart/colors';
+import { ReactNode } from 'react';
+import { useArgs, useCallback, useEffect } from 'storybook/preview-api';
+import { Brush, ReferenceLine } from '@/charts/components';
 
 import SimpleData from '../../../fixtures/data';
 import MultiAxisData from '../../../fixtures/multi-y-data';
 import { ChartDataBaseType } from '../base-chart/base-chart';
+import { getChartDefaultColor } from '../base-chart/colors';
 import {
   BarChart,
   BarChartProps,
   BarProps,
 } from './bar-chart';
-import { ReactNode } from 'react';
 
 type Data = ChartDataBaseType;
 
@@ -192,4 +191,15 @@ export const WithExternalTooltip = {
       </Stack>
     );
   },
+} satisfies Story;
+
+export const WithBrush = {
+  args: {
+    showXAxis: true,
+  },
+  render: (args: BarChartProps<Data, BarProps<Data>>) => (
+    <BarChart {...args}>
+      <Brush />
+    </BarChart>
+  ),
 } satisfies Story;

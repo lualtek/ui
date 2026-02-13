@@ -11,7 +11,7 @@ import { PolyRefComponent } from '@/components';
 
 import styles from './title.module.css';
 
-export type TitleProps = React.ComponentPropsWithRef<'span'> & {
+export type TitleProps = React.ComponentPropsWithRef<'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'span'> & {
   /**
    * Set the level of the title. This property only
    * affects the visual appearance of the title and not the
@@ -60,6 +60,16 @@ export type TitleProps = React.ComponentPropsWithRef<'span'> & {
    * Set the vertical padding (top/bottom). Works better with block elements.
    */
   vPadding?: TokensTypes['space'] | [TokensTypes['space'] | 0, TokensTypes['space'] | 0];
+  /**
+   * Trim leading (pronounced "ledding") whitespace from the text.
+   */
+  trim?: 'start' | 'end' | 'both';
+  /**
+   * Set the trim behaviour for the text.
+   *
+   * @defaultValue "text alphabetic"
+   */
+  trimType?: string;
 }
 
 type TitleComponent = PolyRefComponent<'span', TitleProps>;
@@ -78,6 +88,8 @@ export const Title: TitleComponent = (
     balanced = false,
     hPadding,
     vPadding,
+    trim = 'both',
+    trimType = 'cap alphabetic',
     style,
     ref: forwardedRef,
     ...otherProps
@@ -85,7 +97,6 @@ export const Title: TitleComponent = (
 ) => {
   const computedLevel = level.match(/\d/g) ? `H${level}` : level.charAt(0).toUpperCase() + level.slice(1);
   // @ts-expect-error: generated className is not pure in CSS
-
   const computedCSSClass = String(styles[computedLevel]);
   const dynamicStyle = useMemo(() => {
     const getPaddingValue = (
@@ -109,8 +120,10 @@ export const Title: TitleComponent = (
       '--v-padding-bottom': vPaddingValues.bottom,
       '--h-padding-left': hPaddingValues.left,
       '--h-padding-right': hPaddingValues.right,
+      '--trim': trim ? `trim-${trim}` : undefined,
+      '--trim-type': trimType,
     };
-  }, [maxWidth, align, whiteSpace, vPadding, hPadding]);
+  }, [maxWidth, align, whiteSpace, vPadding, hPadding, trimType, trim]);
 
   return (
     <Component
