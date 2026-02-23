@@ -1,5 +1,11 @@
 # @lualtek/tokens
 
+## 2026.2.4
+
+### Patch Changes
+
+- 9c7eaa1: Fix slate shades
+
 ## 2026.2.3
 
 ### Patch Changes
