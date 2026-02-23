@@ -26,12 +26,15 @@
 
   body {
     color: var(--global-foreground);
-    /* biome-ignore lint/a11y/useGenericFontNames: token */
+    margin: 0;
+    font-size: 1rem;
     font-family: --token(--font-family-body);
     font-weight: --token(--font-weight-semi-bold);
-    font-feature-settings: 'calt' off;
-    font-size: 1rem;
-    margin: 0;
+    font-optical-sizing: auto;
+    font-feature-settings:
+      'calt' off,
+      'wdth' 100,
+      'YTLC' 500;
   }
 
   ::selection {
