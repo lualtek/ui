@@ -1,5 +1,11 @@
 # @lualtek/tokens
 
+## 2026.2.1
+
+### Patch Changes
+
+- 9d0fa8e: Fix Magenta/40 shade
+
 ## 2026.2.0
 
 ### Minor Changes

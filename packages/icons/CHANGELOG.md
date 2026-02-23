@@ -1,5 +1,7 @@
 # @lualtek/icons
 
+## 2026.2.1
+
 ## 2026.2.0
 
 ### Minor Changes
