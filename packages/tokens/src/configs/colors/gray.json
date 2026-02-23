@@ -6,13 +6,13 @@
         "$value": "#FCFCFC"
       },
       "5": {
-        "$value": "#FAFAFA"
-      },
-      "10": {
         "$value": "#F5F5F5"
       },
+      "10": {
+        "$value": "#EBEBEB"
+      },
       "20": {
-        "$value": "#E8E8E8"
+        "$value": "#E0E0E0"
       },
       "30": {
         "$value": "#CFCFCF"
