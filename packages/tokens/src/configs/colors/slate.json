@@ -6,10 +6,10 @@
         "$value": "#f8fafc"
       },
       "5": {
-        "$value": "#F1F5F9a"
+        "$value": "#F1F5F9"
       },
       "10": {
-        "$value": "#E6EDF47"
+        "$value": "#E6EDF4"
       },
       "20": {
         "$value": "#DDE4EE"
@@ -33,10 +33,10 @@
         "$value": "#1e293b"
       },
       "90": {
-        "$value": "#0f172a"
+        "$value": "#161D2C"
       },
       "100": {
-        "$value": "#0c1322"
+        "$value": "#0E1420"
       }
     }
   }
