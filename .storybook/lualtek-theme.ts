@@ -1,6 +1,7 @@
 
 import { create } from 'storybook/theming';
 
+// eslint-disable-next-line @typescript-eslint/no-unsafe-call
 export default create({
   base: 'dark',
   brandTitle: 'Lualtek Design System',
@@ -17,7 +18,6 @@ export default create({
   barBg: '#231e3b',
 
   // Typography
-  fontBase: '"Open Sans", sans-serif',
 
   // Toolbar default and active colors
   barTextColor: '#CFCBE1',

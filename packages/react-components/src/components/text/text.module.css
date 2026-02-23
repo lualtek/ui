@@ -130,19 +130,19 @@
     /* Weights */
 
     &[data-text-weight='light'] {
-      font-weight: --token(--font-weight-light);
+      font-variation-settings: "wght" --token(--font-weight-light);
     }
 
     &[data-text-weight='regular'] {
-      font-weight: --token(--font-weight-regular);
+      font-variation-settings: "wght" --token(--font-weight-regular);
     }
 
     &[data-text-weight='semibold'] {
-      font-weight: --token(--font-weight-semi-bold);
+      font-variation-settings: "wght" --token(--font-weight-semi-bold);
     }
 
     &[data-text-weight='bold'] {
-      font-weight: --token(--font-weight-bold);
+      font-variation-settings: "wght" --token(--font-weight-bold);
     }
 
     /* Responsiveness */

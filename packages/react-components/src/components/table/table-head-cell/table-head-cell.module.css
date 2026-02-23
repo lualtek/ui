@@ -13,7 +13,7 @@
     padding: 0;
     word-wrap: break-word;
     color: var(--global-foreground);
-    font-weight: --token(--font-weight-bold);
+    font-variation-settings: "wght" --token(--font-weight-bold);
 
     &:not(:only-child) {
       text-align: var(--text-align, start);
@@ -46,7 +46,7 @@
     align-items: center;
     justify-content: flex-start;
     text-align: var(--text-align, start);
-    font-weight: --token(--font-weight-bold);
+    font-variation-settings: "wght" --token(--font-weight-bold);
     white-space: nowrap;
   }
 

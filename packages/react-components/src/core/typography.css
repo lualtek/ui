@@ -11,7 +11,7 @@
 
   strong,
   b {
-    font-weight: --token(--font-weight-bold);
+    font-variation-settings: "wght" --token(--font-weight-bold);
   }
 
   :where(a:any-link):not([data-no-link-style]) {
@@ -55,7 +55,7 @@
   }
 
   dt {
-    font-weight: 600;
+    font-variation-settings: "wght" 600;
   }
 
   dd {
@@ -71,7 +71,7 @@
     & li::marker {
       font-size: inherit;
       text-align: right;
-      font-weight: 600;
+      font-variation-settings: "wght" 600;
       min-inline-size: --token(--space-32);
     }
   }
@@ -81,7 +81,7 @@
 
     & li::marker {
       font-size: inherit;
-      font-weight: 600;
+      font-variation-settings: "wght" 600;
       min-inline-size: --token(--space-32);
       font-variant-numeric: tabular-nums;
       white-space: nowrap;
@@ -91,7 +91,7 @@
   kbd {
     padding: 2px 4px;
     border-radius: --token(--radius-8);
-    font-weight: 600;
+    font-variation-settings: "wght" 600;
     box-shadow: 0 0 0 1px var(--global-outer-contrast-border), inset 0 0 0 1px var(--global-inner-contrast-border);
     background: var(--vibrancy-background-mid);
   }

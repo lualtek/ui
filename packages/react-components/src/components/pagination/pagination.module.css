@@ -11,7 +11,7 @@
       line-height: 1;
       padding: 0 --token(--space-8);
       cursor: pointer;
-      font-weight: 700;
+      font-variation-settings: "wght" 700;
       overflow: hidden;
       user-select: none;
       color: var(--dimmed-5);

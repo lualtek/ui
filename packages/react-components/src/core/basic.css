@@ -29,7 +29,8 @@
     margin: 0;
     font-size: 1rem;
     font-family: --token(--font-family-body);
-    font-weight: --token(--font-weight-semi-bold);
+    font-weight: 100;
+    font-variation-settings: 'wght' --token(--font-weight-semi-bold);
     font-optical-sizing: auto;
     font-feature-settings:
       'calt' off,
@@ -94,7 +95,7 @@
 
     th {
       white-space: nowrap;
-      font-weight: --token(--font-weight-bold);
+      font-variation-settings: 'wght' --token(--font-weight-bold);
 
       table[data-layout-fixed] & {
         white-space: unset;
