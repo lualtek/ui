@@ -30,6 +30,16 @@ export type TextProps = React.ComponentPropsWithRef<'span' | 'p'> & {
    */
   weight?: 'light' | 'regular' | 'semibold' | 'bold' | number;
   /**
+   * Set the font width (wdth) for variable fonts.
+   * Typically ranges from 75 to 125.
+   */
+  fontWidth?: number;
+  /**
+   * Set the optical size (opsz) for variable fonts.
+   * For Nunito Sans, ranges from 6 to 12.
+   */
+  opticalSize?: number;
+  /**
    * Set the maximum width of the text after which it will wrap.
    */
   maxWidth?: string;
@@ -110,6 +120,8 @@ export const Text: TextComponent = (
     vPadding,
     trim,
     trimType = 'text alphabetic',
+    fontWidth,
+    opticalSize,
     style,
     ref: forwardedRef,
     ...otherProps
@@ -141,8 +153,10 @@ export const Text: TextComponent = (
       '--trim': trim ? `trim-${trim}` : undefined,
       '--trim-type': trimType,
       '--custom-weight': typeof weight === 'number' ? weight : undefined,
+      '--custom-width': fontWidth,
+      '--custom-opsz': opticalSize,
     };
-  }, [maxWidth, align, textColor, whiteSpace, hPadding, vPadding, trimType, trim, weight]);
+  }, [maxWidth, align, textColor, whiteSpace, hPadding, vPadding, trimType, trim, weight, fontWidth, opticalSize]);
 
   return (
     <Component

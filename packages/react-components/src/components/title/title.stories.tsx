@@ -27,6 +27,15 @@ const meta = {
       options: ['start', 'center', 'end'],
       control: { type: 'inline-radio' },
     },
+    weight: {
+      control: { type: 'range', min: 200, max: 1000, step: 10 },
+    },
+    fontWidth: {
+      control: { type: 'range', min: 75, max: 125, step: 5 },
+    },
+    opticalSize: {
+      control: { type: 'range', min: 6, max: 12, step: 0.5 },
+    },
   },
   render: args => (
     <Title {...args}>Sample title</Title>
@@ -45,23 +54,8 @@ export const Default = {
     maxWidth: 'auto',
     align: 'center',
     weight: 300,
-  },
-  argTypes: {
-    dimension: {
-      options: ['small', 'regular', 'big'],
-      control: { type: 'radio' },
-    },
-    color: {
-      options: [
-        'brand', 'gray', 'cyan', 'green',
-        'purple', 'yellow', 'red', 'blue', 'slate',
-        'indigo', 'salmon', 'dipsy', 'magenta', 'primary',
-      ],
-      control: { type: 'select' },
-    },
-    weight: {
-      control: { type: 'range', min: 200, max: 1000, step: 10 },
-    }
+    fontWidth: 100,
+    opticalSize: 12,
   },
 } satisfies Story;
 

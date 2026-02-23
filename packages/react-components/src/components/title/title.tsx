@@ -75,6 +75,16 @@ export type TitleProps = React.ComponentPropsWithRef<'h1' | 'h2' | 'h3' | 'h4' |
    * or you can rely on the default weight for each level.
    */
   weight?: number;
+  /**
+   * Set the font width (wdth) for variable fonts.
+   * Typically ranges from 75 to 125.
+   */
+  fontWidth?: number;
+  /**
+   * Set the optical size (opsz) for variable fonts.
+   * For Nunito Sans, ranges from 6 to 12.
+   */
+  opticalSize?: number;
 }
 
 type TitleComponent = PolyRefComponent<'span', TitleProps>;
@@ -96,6 +106,8 @@ export const Title: TitleComponent = (
     trim = 'both',
     trimType = 'cap alphabetic',
     weight,
+    fontWidth,
+    opticalSize,
     style,
     ref: forwardedRef,
     ...otherProps
@@ -129,8 +141,10 @@ export const Title: TitleComponent = (
       '--trim': trim ? `trim-${trim}` : undefined,
       '--trim-type': trimType,
       '--custom-weight': weight,
+      '--custom-width': fontWidth,
+      '--custom-opsz': opticalSize,
     };
-  }, [maxWidth, align, whiteSpace, vPadding, hPadding, trimType, trim, weight]);
+  }, [maxWidth, align, whiteSpace, vPadding, hPadding, trimType, trim, weight, fontWidth, opticalSize]);
 
   return (
     <Component

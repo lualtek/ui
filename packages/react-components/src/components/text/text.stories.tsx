@@ -30,6 +30,10 @@ const meta = {
       options: [4, 5, 6, 7, 8],
       control: { type: 'select' },
     },
+    weight: {
+      control: { type: 'select' },
+      options: ['light', 'regular', 'semibold', 'bold', 200, 300, 400, 500, 600, 700, 800, 900],
+    },
     align: {
       options: ['start', 'center', 'end'],
       control: { type: 'inline-radio' },
@@ -37,6 +41,12 @@ const meta = {
     lineHeight: {
       options: ['none', 'extra-small', 'small', 'standard', 'large'],
       control: { type: 'inline-radio' },
+    },
+    fontWidth: {
+      control: { type: 'range', min: 75, max: 125, step: 5 },
+    },
+    opticalSize: {
+      control: { type: 'range', min: 6, max: 12, step: 0.5 },
     },
   },
   render: args => <Text {...args} />,
@@ -51,6 +61,14 @@ export const Default = {} satisfies Story;
 export const Weight = {
   args: {
     weight: 'bold',
+  },
+} satisfies Story;
+
+export const VariableWeight = {
+  args: {
+    weight: 350,
+    fontWidth: 90,
+    opticalSize: 10,
   },
 } satisfies Story;
 
