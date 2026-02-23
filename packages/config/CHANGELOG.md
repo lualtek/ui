@@ -1,5 +1,12 @@
 # @lualtek/config
 
+## 2026.2.1
+
+### Patch Changes
+
+- Updated dependencies [9d0fa8e]
+  - @lualtek/tokens@2026.2.1
+
 ## 2026.2.0
 
 ### Minor Changes
