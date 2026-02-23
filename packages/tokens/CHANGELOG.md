@@ -1,5 +1,11 @@
 # @lualtek/tokens
 
+## 2026.2.5
+
+### Patch Changes
+
+- 57e4e4a: Fix yellow palette
+
 ## 2026.2.4
 
 ### Patch Changes
