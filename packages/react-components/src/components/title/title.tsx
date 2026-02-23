@@ -70,6 +70,11 @@ export type TitleProps = React.ComponentPropsWithRef<'h1' | 'h2' | 'h3' | 'h4' |
    * @defaultValue "text alphabetic"
    */
   trimType?: string;
+  /**
+   * Set the font weight of the title. Can be a number (e.g., 200-1000)
+   * or you can rely on the default weight for each level.
+   */
+  weight?: number;
 }
 
 type TitleComponent = PolyRefComponent<'span', TitleProps>;
@@ -90,6 +95,7 @@ export const Title: TitleComponent = (
     vPadding,
     trim = 'both',
     trimType = 'cap alphabetic',
+    weight,
     style,
     ref: forwardedRef,
     ...otherProps
@@ -122,8 +128,9 @@ export const Title: TitleComponent = (
       '--h-padding-right': hPaddingValues.right,
       '--trim': trim ? `trim-${trim}` : undefined,
       '--trim-type': trimType,
+      '--custom-weight': weight,
     };
-  }, [maxWidth, align, whiteSpace, vPadding, hPadding, trimType, trim]);
+  }, [maxWidth, align, whiteSpace, vPadding, hPadding, trimType, trim, weight]);
 
   return (
     <Component

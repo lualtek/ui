@@ -44,6 +44,24 @@ export const Default = {
     level: '1',
     maxWidth: 'auto',
     align: 'center',
+    weight: 300,
+  },
+  argTypes: {
+    dimension: {
+      options: ['small', 'regular', 'big'],
+      control: { type: 'radio' },
+    },
+    color: {
+      options: [
+        'brand', 'gray', 'cyan', 'green',
+        'purple', 'yellow', 'red', 'blue', 'slate',
+        'indigo', 'salmon', 'dipsy', 'magenta', 'primary',
+      ],
+      control: { type: 'select' },
+    },
+    weight: {
+      control: { type: 'range', min: 200, max: 1000, step: 10 },
+    }
   },
 } satisfies Story;
 

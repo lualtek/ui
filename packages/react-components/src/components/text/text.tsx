@@ -25,10 +25,10 @@ export type TextProps = React.ComponentPropsWithRef<'span' | 'p'> & {
    */
   dimmed?: 4 | 5 | 6 | 7 | 8;
   /**
-   * Set the font weight of the text. The values are
-   * consistent with the typography system.
+   * Set the font weight of the text. Can be a keyword ('light', 'regular', 'semibold', 'bold')
+   * that uses the typography system tokens, or a number (e.g., 200-1000) for custom weight.
    */
-  weight?: 'light' | 'regular' | 'semibold' | 'bold' ;
+  weight?: 'light' | 'regular' | 'semibold' | 'bold' | number;
   /**
    * Set the maximum width of the text after which it will wrap.
    */
@@ -140,14 +140,15 @@ export const Text: TextComponent = (
       '--h-padding-right': hPaddingValues.right,
       '--trim': trim ? `trim-${trim}` : undefined,
       '--trim-type': trimType,
+      '--custom-weight': typeof weight === 'number' ? weight : undefined,
     };
-  }, [maxWidth, align, textColor, whiteSpace, hPadding, vPadding, trimType, trim]);
+  }, [maxWidth, align, textColor, whiteSpace, hPadding, vPadding, trimType, trim, weight]);
 
   return (
     <Component
       ref={forwardedRef}
       data-text-size={size}
-      data-text-weight={weight}
+      data-text-weight={typeof weight === 'string' ? weight : undefined}
       data-text-sentiment={sentiment}
       data-text-dimmed={dimmed}
       data-text-line-height={lineHeight}

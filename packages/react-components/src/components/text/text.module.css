@@ -130,19 +130,31 @@
     /* Weights */
 
     &[data-text-weight='light'] {
-      font-variation-settings: "wght" --token(--font-weight-light);
+      --default-weight: --token(--font-weight-light);
+
+      font-variation-settings: "wght" var(--custom-weight, var(--default-weight));
     }
 
     &[data-text-weight='regular'] {
-      font-variation-settings: "wght" --token(--font-weight-regular);
+      --default-weight: --token(--font-weight-regular);
+
+      font-variation-settings: "wght" var(--custom-weight, var(--default-weight));
     }
 
     &[data-text-weight='semibold'] {
-      font-variation-settings: "wght" --token(--font-weight-semi-bold);
+      --default-weight: --token(--font-weight-semi-bold);
+
+      font-variation-settings: "wght" var(--custom-weight, var(--default-weight));
     }
 
     &[data-text-weight='bold'] {
-      font-variation-settings: "wght" --token(--font-weight-bold);
+      --default-weight: --token(--font-weight-bold);
+
+      font-variation-settings: "wght" var(--custom-weight, var(--default-weight));
+    }
+
+    &:not([data-text-weight]) {
+      font-variation-settings: "wght" var(--custom-weight);
     }
 
     /* Responsiveness */
