@@ -1,5 +1,11 @@
 # @lualtek/tokens
 
+## 2026.2.2
+
+### Patch Changes
+
+- 2a41f4a: Tweak color tokens
+
 ## 2026.2.1
 
 ### Patch Changes
