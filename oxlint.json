@@ -348,7 +348,7 @@
     "no-await-in-loop": "off",
     "no-compare-neg-zero": "error",
     "no-cond-assign": ["error", "always"],
-    "no-console": "warn",
+    "no-console": "off",
     "no-control-regex": "error",
     "no-debugger": "error",
     "no-dupe-keys": "error",

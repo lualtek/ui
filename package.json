@@ -11,7 +11,7 @@
     "start": "turbo run dev --parallel",
     "dev": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "lint": "oxlint --type-aware --config oxlint.json .",
+    "lint": "oxlint --type-aware --type-check --config oxlint.json .",
     "fmt": "oxfmt",
     "fmt:check": "oxfmt --check",
     "test": "echo \"Add some test\"",
@@ -55,7 +55,7 @@
     "vite-tsconfig-paths": "6.1.1"
   },
   "lint-staged": {
-    "*.{ts,tsx,js,jsx,mjs}": "oxlint --type-aware --config oxlint.json --fix .",
+    "*.{ts,tsx,js,jsx,mjs}": "oxlint --type-aware --type-check --config oxlint.json --fix .",
     "*": "oxfmt --no-error-on-unmatched-pattern"
   },
   "browserslist": [
