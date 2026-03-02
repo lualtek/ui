@@ -70,9 +70,9 @@
       --default-weight: --token(--font-weight-bold);
 
       font-variation-settings:
-        "wght" var(--custom-weight, var(--default-weight)),
-        "wdth" var(--custom-width, 100),
-        "opsz" var(--custom-opsz, 12);
+        'wght' var(--custom-weight, var(--default-weight)),
+        'wdth' var(--custom-width, 100),
+        'opsz' var(--custom-opsz, 12);
     }
 
     &:is(.H5) {
@@ -81,9 +81,9 @@
       --default-weight: --token(--font-weight-bold);
 
       font-variation-settings:
-        "wght" var(--custom-weight, var(--default-weight)),
-        "wdth" var(--custom-width, 100),
-        "opsz" var(--custom-opsz, 12);
+        'wght' var(--custom-weight, var(--default-weight)),
+        'wdth' var(--custom-width, 100),
+        'opsz' var(--custom-opsz, 12);
     }
 
     &:is(.H4) {
@@ -92,9 +92,9 @@
       --default-weight: --token(--font-weight-bold);
 
       font-variation-settings:
-        "wght" var(--custom-weight, var(--default-weight)),
-        "wdth" var(--custom-width, 100),
-        "opsz" var(--custom-opsz, 12);
+        'wght' var(--custom-weight, var(--default-weight)),
+        'wdth' var(--custom-width, 100),
+        'opsz' var(--custom-opsz, 12);
     }
 
     &:is(.H3) {
@@ -103,9 +103,9 @@
       --default-weight: --token(--font-weight-light);
 
       font-variation-settings:
-        "wght" var(--custom-weight, var(--default-weight)),
-        "wdth" var(--custom-width, 100),
-        "opsz" var(--custom-opsz, 12);
+        'wght' var(--custom-weight, var(--default-weight)),
+        'wdth' var(--custom-width, 100),
+        'opsz' var(--custom-opsz, 12);
     }
 
     &:is(.H2) {
@@ -114,9 +114,9 @@
       --default-weight: --token(--font-weight-light);
 
       font-variation-settings:
-        "wght" var(--custom-weight, var(--default-weight)),
-        "wdth" var(--custom-width, 100),
-        "opsz" var(--custom-opsz, 12);
+        'wght' var(--custom-weight, var(--default-weight)),
+        'wdth' var(--custom-width, 100),
+        'opsz' var(--custom-opsz, 12);
     }
 
     &:is(.H1) {
@@ -125,21 +125,21 @@
       --default-weight: --token(--font-weight-light);
 
       font-variation-settings:
-        "wght" var(--custom-weight, var(--default-weight)),
-        "wdth" var(--custom-width, 100),
-        "opsz" var(--custom-opsz, 12);
+        'wght' var(--custom-weight, var(--default-weight)),
+        'wdth' var(--custom-width, 100),
+        'opsz' var(--custom-opsz, 12);
     }
 
     &.Display {
       --fs-min: 4.2rem;
       --fs-max: 5.6rem;
-      --default-weight: --token(--font-weight-regular);
+      --default-weight: --token(--font-weight-bold);
 
-      font-family: --token(--font-family-heading);
+      /*font-family: --token(--font-family-heading);*/
       font-variation-settings:
-        "wght" var(--custom-weight, var(--default-weight)),
-        "wdth" var(--custom-width, 100),
-        "opsz" var(--custom-opsz, 12);
+        'wght' var(--custom-weight, var(--default-weight)),
+        'wdth' var(--custom-width, 90),
+        'opsz' var(--custom-opsz, 5);
       letter-spacing: -0.03em;
     }
 

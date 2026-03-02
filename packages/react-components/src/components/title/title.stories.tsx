@@ -69,7 +69,9 @@ export const WithPadding = {
 } satisfies Story;
 
 export const Scale = {
-  args: {},
+  args: {
+    align: "start",
+  },
   render: () => (
     <Stack rowGap={32}>
       <Title level="display">Display Title</Title>
