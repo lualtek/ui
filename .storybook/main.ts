@@ -36,7 +36,6 @@ const config: StorybookConfig = {
     reactDocgen: 'react-docgen-typescript',
     reactDocgenTypescriptOptions: {
       shouldExtractLiteralValuesFromEnum: true,
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-call
       propFilter: (prop) => (prop.parent ? !prop.parent.fileName.includes('node_modules') : true),
     },
   },

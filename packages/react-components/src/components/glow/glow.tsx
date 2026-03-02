@@ -1,6 +1,6 @@
 'use client';
 
-import type { TokensTypes } from '@lualtek/tokens/platforms/web';
+import type { TokensTypes } from '@lualtek/tokens/web';
 import tkns from '@lualtek/tokens/web/tokens.json';
 import type { FC } from 'react';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';

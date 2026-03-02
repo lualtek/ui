@@ -1,6 +1,6 @@
 'use client';
 
-import type { TokensTypes } from '@lualtek/tokens/platforms/web';
+import type { TokensTypes } from '@lualtek/tokens/web';
 import clsx from 'clsx';
 import type { EmojiClickData } from 'emoji-picker-react';
 import type { FC } from 'react';

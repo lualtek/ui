@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import React from 'react';
 import type { ExpanderProps } from './expander';
 import { Expander } from './expander';
 
@@ -34,9 +33,7 @@ type Story = StoryObj<typeof meta>;
 export const Default = {} satisfies Story;
 
 export const WithExtraWhitespace = {
-  args: {
-    whiteSpace: '10rem',
-  },
+  args: {},
 } satisfies Story;
 
 export const Open = {

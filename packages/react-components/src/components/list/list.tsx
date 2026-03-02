@@ -1,15 +1,15 @@
 'use client';
 
-import type { TokensTypes } from '@lualtek/tokens/platforms/web';
+import type { TokensTypes } from '@lualtek/tokens/web';
 import tkns from '@lualtek/tokens/web/tokens.json';
 import clsx from 'clsx';
 import { Children, cloneElement, isValidElement, useMemo } from 'react';
 
 import type { PolyRefComponent } from '@/components';
 
-import styles from './list.module.css';
 import type { ListItemProps } from './list-item';
 import { Li } from './list-item';
+import styles from './list.module.css';
 
 export type ListProps = {
   children: React.ReactNode[] | React.ReactNode;

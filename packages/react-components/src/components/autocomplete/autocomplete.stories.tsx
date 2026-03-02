@@ -8,7 +8,11 @@ const options = [
   {
     value: 'apple',
     children: '🍎 Apple',
-    decoration: <Chip dimension="small" color="green">110 Cal</Chip>,
+    decoration: (
+      <Chip dimension="small" color="green">
+        110 Cal
+      </Chip>
+    ),
   },
   {
     value: 'banana',
@@ -32,7 +36,7 @@ const meta: Meta<typeof Autocomplete> = {
     style: { maxWidth: '300px' },
   },
   decorators: [
-    Story => (
+    (Story) => (
       <ResponsiveProvider>
         <Story />
       </ResponsiveProvider>
@@ -54,6 +58,6 @@ export const Loading = {
 
 export const CustomEvent = {
   args: {
-    onClickOption: (value: string) => alert(value),
+    onClickOption: (value, text) => alert(`${value}: ${text}`),
   },
 } satisfies Story;

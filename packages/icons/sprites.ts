@@ -7,8 +7,8 @@ import colors from 'picocolors';
 import svgstore from 'svgstore';
 
 const generateTypes = (jsonStructure: { iconNames: string[]; iconStyles: string[] }) => `
-export type IconNames = '${jsonStructure.iconNames.join('\' |\n\'')}';
-export type IconStyles = '${jsonStructure.iconStyles.join('\' |\n\'')}';
+export type IconNames = '${jsonStructure.iconNames.join("' |\n'")}';
+export type IconStyles = '${jsonStructure.iconStyles.join("' |\n'")}';
 `;
 
 const run = () => {
@@ -26,7 +26,6 @@ const run = () => {
     iconStyles: [],
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const sprite = svgstore();
 
   directories.children

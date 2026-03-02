@@ -1,16 +1,11 @@
-import { type TagBadgeParameters } from 'storybook-addon-tag-badges';
 import { addons } from 'storybook/manager-api';
 import { themes } from 'storybook/theming';
 
 import lualtekTheme from './lualtek-theme';
 
-// eslint-disable-next-line @typescript-eslint/no-unsafe-call
 addons.setConfig({
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   theme: { ...themes.dark, ...lualtekTheme },
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   sidebar: {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
     ...addons.getConfig().sidebar,
     showRoots: true,
   },
@@ -36,5 +31,5 @@ addons.setConfig({
         mdx: true,
       },
     },
-  ] satisfies TagBadgeParameters[],
+  ],
 });

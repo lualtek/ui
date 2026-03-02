@@ -1,6 +1,6 @@
 'use client';
 
-import type { TokensTypes } from '@lualtek/tokens/platforms/web';
+import type { TokensTypes } from '@lualtek/tokens/web';
 import tkns from '@lualtek/tokens/web/tokens.json';
 import * as TabsPrimitive from '@radix-ui/react-tabs';
 import clsx from 'clsx';
@@ -10,9 +10,9 @@ import { Children, isValidElement, useCallback, useEffect, useId, useMemo, useSt
 
 import { Button, Panel, Stack } from '@/components';
 
-import styles from './tabs.module.css';
 import type { TabPanelProps } from './tabs-panel';
 import { TabPanel } from './tabs-panel';
+import styles from './tabs.module.css';
 
 type RadiusType = Record<NonNullable<TabsProps['dimension']>, Exclude<TokensTypes['radius'], string>>;
 

@@ -10,7 +10,6 @@ import lualtekTheme from './lualtek-theme';
 
 const preview: Preview = {
   decorators: [
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
     withThemeByDataAttribute({
       themes: {
         auto: 'auto',
@@ -24,7 +23,6 @@ const preview: Preview = {
   parameters: {
     backgrounds: { disable: true },
     docs: {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       theme: { ...themes.dark, ...lualtekTheme },
     },
     controls: {

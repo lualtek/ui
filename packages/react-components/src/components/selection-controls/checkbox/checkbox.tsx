@@ -1,6 +1,6 @@
 'use client';
 
-import type { TokensTypes } from '@lualtek/tokens/platforms/web';
+import type { TokensTypes } from '@lualtek/tokens/web';
 import clsx from 'clsx';
 import { domAnimation, LazyMotion, m } from 'motion/react';
 import type { ChangeEvent, FC, InputEvent, ReactNode } from 'react';

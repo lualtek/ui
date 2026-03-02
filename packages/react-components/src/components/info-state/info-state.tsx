@@ -1,6 +1,6 @@
 'use client';
 
-import type { TokensTypes } from '@lualtek/tokens/platforms/web';
+import type { TokensTypes } from '@lualtek/tokens/web';
 import { domMax, LazyMotion, m } from 'motion/react';
 import type { FC, ReactNode } from 'react';
 import { useMemo } from 'react';

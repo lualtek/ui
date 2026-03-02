@@ -2,7 +2,7 @@
 
 import type { IconNames } from '@lualtek/icons';
 import sprite from '@lualtek/icons/sprite';
-import type { TokensTypes } from '@lualtek/tokens/platforms/web';
+import type { TokensTypes } from '@lualtek/tokens/web';
 import clsx from 'clsx';
 import type { FC, ReactElement } from 'react';
 import { Children, cloneElement, useMemo } from 'react';

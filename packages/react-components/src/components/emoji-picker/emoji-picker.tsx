@@ -1,6 +1,6 @@
 'use client';
 
-import type { TokensTypes } from '@lualtek/tokens/platforms/web';
+import type { TokensTypes } from '@lualtek/tokens/web';
 import tkns from '@lualtek/tokens/web/tokens.json';
 import type { PickerProps } from 'emoji-picker-react';
 import ReactEmojiPicker, { EmojiStyle, SkinTonePickerLocation, Theme } from 'emoji-picker-react';

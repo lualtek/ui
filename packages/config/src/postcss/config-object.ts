@@ -23,7 +23,7 @@ function resolveId(id: string, basedir: string) {
 }
 
 export const postcssObjConfig = (tokens: Record<string, unknown>) => {
-  type TokenType = keyof typeof tokens
+  type TokenType = keyof typeof tokens;
   const tokenFunction = (token: `--${TokenType}`) => {
     const tokenName: TokenType = token.replace('--', '');
     return tokens[tokenName];
@@ -58,7 +58,6 @@ export const postcssObjConfig = (tokens: Record<string, unknown>) => {
 
 export const postcssObjBundlerConfig = (tokens: Record<string, unknown>) => {
   const baseConfig = postcssObjConfig(tokens);
-  // eslint-disable-next-line @typescript-eslint/naming-convention
   const { 'postcss-import': _, ...rest } = baseConfig.plugins;
 
   return {

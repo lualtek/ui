@@ -133,8 +133,8 @@ const SwipeActionsRoot: FC<PropsWithChildren<SwipeRowProps>> = ({ children, trig
             fill={false}
           >
             {actionElements.map((action, i) =>
+              // oxlint-disable-next-line react/no-array-index-key
               React.cloneElement(action, {
-                // eslint-disable-next-line react/no-array-index-key
                 key: `${actionId}-${i}`,
                 // inject the index property based on position
                 index: actionCount - 1 - i,

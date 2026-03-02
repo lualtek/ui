@@ -1,4 +1,4 @@
-import type { TokensTypes } from '@lualtek/tokens/platforms/web';
+import type { TokensTypes } from '@lualtek/tokens/web';
 import { Emoji as EmojiRender, EmojiStyle } from 'emoji-picker-react';
 import type { GetEmojiUrl } from 'emoji-picker-react/dist/components/emoji/BaseEmojiProps';
 import { useMemo } from 'react';

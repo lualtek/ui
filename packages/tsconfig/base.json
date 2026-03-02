@@ -30,7 +30,10 @@
     "paths": {
       "@/components": ["../react-components/src"],
       "@/components/types": ["../react-components/src/types"],
-      "@/charts": ["../charts/src"]
+      "@/charts": ["../charts/src"],
+      "@lualtek/icons/sprite": ["../icons/dist/sprite"],
+      "@lualtek/tokens": ["../tokens/platforms/web"],
+      "@lualtek/tokens/*": ["../tokens/*"]
     }
   },
   "exclude": ["node_modules"]
