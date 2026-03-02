@@ -1,12 +1,8 @@
 'use client';
 
-import {
-  AnimatePresence, domMax, LazyMotion, m,
-} from 'motion/react';
-import {
-  FC,
-  ReactNode, useEffect, useId, useMemo,
-} from 'react';
+import { AnimatePresence, domMax, LazyMotion, m } from 'motion/react';
+import type { FC, ReactNode } from 'react';
+import { useEffect, useId, useMemo } from 'react';
 import { createPortal } from 'react-dom';
 
 import styles from './overlay.module.css';
@@ -53,7 +49,7 @@ export type OverlayProps = React.ComponentPropsWithoutRef<'div'> & {
    * @defaultValue 0.7
    */
   backdropOpacity?: number;
-}
+};
 
 export const Overlay: FC<OverlayProps> = ({
   children,
@@ -65,7 +61,7 @@ export const Overlay: FC<OverlayProps> = ({
   onClose,
 }) => {
   const uid = useId();
-  const defaultRoot = useMemo(() => (root ?? (typeof document !== 'undefined' ? document.body : null)), [root]);
+  const defaultRoot = useMemo(() => root ?? (typeof document !== 'undefined' ? document.body : null), [root]);
 
   useEffect(() => {
     if (defaultRoot?.closest('[data-overlay]')) {
@@ -92,12 +88,7 @@ export const Overlay: FC<OverlayProps> = ({
     <OverlayProvider onClose={onClose}>
       <AnimatePresence mode="wait">
         {children && (
-          <div
-            data-overlay
-            data-overlay-obfuscate={obfuscate}
-            className={styles.Overlay}
-            style={{ zIndex: index }}
-          >
+          <div data-overlay data-overlay-obfuscate={obfuscate} className={styles.Overlay} style={{ zIndex: index }}>
             <LazyMotion features={domMax}>
               {obfuscate && (
                 <m.span

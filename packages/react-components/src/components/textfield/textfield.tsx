@@ -1,23 +1,15 @@
 'use client';
 
 import clsx from 'clsx';
-import {
-  ChangeEvent,
-  FC,
-  InputEvent,
-  ReactNode,
-  useCallback,
-  useEffect,
-  useId,
-  useMemo,
-  useRef,
-  useState,
-} from 'react';
+import type { ChangeEvent, FC, InputEvent, ReactNode } from 'react';
+import { useCallback, useEffect, useId, useMemo, useRef, useState } from 'react';
 import { mergeRefs } from 'react-merge-refs';
 
-import { Icon, IconButton, IconProps, Stack, Text } from '@/components';
+import type { IconProps } from '@/components';
+import { Icon, IconButton, Stack, Text } from '@/components';
 
-import { BaseField, BaseFieldProps } from '../base-field';
+import type { BaseFieldProps } from '../base-field';
+import { BaseField } from '../base-field';
 import styles from './textfield.module.css';
 
 export type TextfieldProps = BaseFieldProps &
@@ -211,14 +203,7 @@ export const Textfield: FC<TextfieldProps> = ({
         )}
 
         {label !== '' && (
-          <Text
-            as="label"
-            responsive={false}
-            dimmed={5}
-            className={styles.Label}
-            size={14}
-            htmlFor={fieldID}
-          >
+          <Text as="label" responsive={false} dimmed={5} className={styles.Label} size={14} htmlFor={fieldID}>
             {label}
           </Text>
         )}

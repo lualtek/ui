@@ -1,6 +1,8 @@
-import { Children, cloneElement, FC, isValidElement } from 'react';
+import type { FC } from 'react';
+import { Children, cloneElement, isValidElement } from 'react';
 
-import { ElevationDirection, ElevationLevel, ElevationShadowColor, useStyles } from '@/components';
+import type { ElevationDirection, ElevationLevel, ElevationShadowColor } from '@/components';
+import { useStyles } from '@/components';
 
 export type ElevatorProps = {
   /**

@@ -1,7 +1,8 @@
 'use client';
 
 import clsx from 'clsx';
-import { FC, ReactNode, useMemo } from 'react';
+import type { FC, ReactNode } from 'react';
+import { useMemo } from 'react';
 import { RovingTabIndexProvider } from 'react-roving-tabindex';
 
 import { ConditionalWrapper, Panel, Stack } from '@/components';
@@ -54,9 +55,9 @@ export const Menu: MenuComponent = ({
   return (
     <ConditionalWrapper
       condition={wrapWithPanel}
-      wrapper={(children) => (
+      wrapper={(menuContent) => (
         <Panel bordered vibrant vibrancyColor="background" showGlow radius={24}>
-          {children}
+          {menuContent}
         </Panel>
       )}
     >

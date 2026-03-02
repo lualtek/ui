@@ -1,20 +1,13 @@
 'use client';
 
 import clsx from 'clsx';
-import {
-  ChangeEvent,
-  FC,
-  InputEvent,
-  ReactNode,
-  useCallback,
-  useId,
-  useMemo,
-  useState,
-} from 'react';
+import type { ChangeEvent, FC, InputEvent, ReactNode } from 'react';
+import { useCallback, useId, useMemo, useState } from 'react';
 
 import { ClampText, Stack, Text } from '@/components';
 
-import { BaseField, BaseFieldProps } from '../base-field';
+import type { BaseFieldProps } from '../base-field';
+import { BaseField } from '../base-field';
 import styles from './textarea.module.css';
 
 export type TextareaProps = BaseFieldProps &
@@ -111,14 +104,7 @@ export const Textarea: FC<TextareaProps> = ({
           {...otherProps}
         />
 
-        <Text
-          as="label"
-          responsive={false}
-          dimmed={5}
-          className={styles.Label}
-          size={14}
-          htmlFor={fieldID}
-        >
+        <Text as="label" responsive={false} dimmed={5} className={styles.Label} size={14} htmlFor={fieldID}>
           <ClampText rows={1}>{label}</ClampText>
         </Text>
       </div>

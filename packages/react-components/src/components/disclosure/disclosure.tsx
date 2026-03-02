@@ -1,19 +1,12 @@
 'use client';
 
 import clsx from 'clsx';
-import {
-  domMax, LazyMotion, m,
-} from 'motion/react';
-import {
-  FC,
-  ReactNode,
-  useCallback, useEffect, useId, useImperativeHandle,
-  useMemo, useRef, useState,
-} from 'react';
+import { domMax, LazyMotion, m } from 'motion/react';
+import type { FC, ReactNode } from 'react';
+import { useCallback, useEffect, useId, useImperativeHandle, useMemo, useRef, useState } from 'react';
 
-import {
-  Icon, IconProps, Interpolator, Text, TextProps,
-} from '@/components';
+import type { IconProps, TextProps } from '@/components';
+import { Icon, Interpolator, Text } from '@/components';
 
 import styles from './disclosure.module.css';
 
@@ -76,12 +69,15 @@ export type DisclosureProps = React.ComponentPropsWithRef<'details'> & {
    * @returns void
    */
   onToggle?: (open: boolean) => void;
-}
+};
 
-type SizesType = Record<NonNullable<DisclosureProps['dimension']>, {
-  summary: TextProps['size'];
-  icon: IconProps['dimension'];
-}>
+type SizesType = Record<
+  NonNullable<DisclosureProps['dimension']>,
+  {
+    summary: TextProps['size'];
+    icon: IconProps['dimension'];
+  }
+>;
 
 const sizes: SizesType = {
   small: {
@@ -117,7 +113,7 @@ export const Disclosure: FC<DisclosureProps> = ({
 }) => {
   const ref = useRef<HTMLDetailsElement>(null);
 
-  useImperativeHandle(forwardedRef, () => ref.current!);
+  useImperativeHandle(forwardedRef, () => ref.current as HTMLDetailsElement);
 
   const [isOpen, setIsOpen] = useState<boolean>(open);
   const uid = useId();
@@ -139,11 +135,12 @@ export const Disclosure: FC<DisclosureProps> = ({
     [expandable, onToggle],
   );
 
-  const dynamicStyle = useMemo(() => (
-    {
+  const dynamicStyle = useMemo(
+    () => ({
       '--max-height': contentMaxHeight,
-    }
-  ), [contentMaxHeight]);
+    }),
+    [contentMaxHeight],
+  );
 
   return (
     <details
@@ -171,20 +168,10 @@ export const Disclosure: FC<DisclosureProps> = ({
             <Interpolator
               duration={100}
               interpolating={isOpen}
-              enterComponent={(
-                <Icon
-                  source={openIcon}
-                  dimension={sizes[dimension].icon}
-                />
-              )}
+              enterComponent={<Icon source={openIcon} dimension={sizes[dimension].icon} />}
               enterRotation="-45deg"
               enterScale={[1, 1]}
-              exitComponent={(
-                <Icon
-                  source={closedIcon}
-                  dimension={sizes[dimension].icon}
-                />
-              )}
+              exitComponent={<Icon source={closedIcon} dimension={sizes[dimension].icon} />}
               exitScale={[1, 1]}
               exitRotation="45deg"
             />
@@ -201,9 +188,16 @@ export const Disclosure: FC<DisclosureProps> = ({
           className={styles.Content}
           data-disclosure-padding={padding}
           data-disclosure-height={Boolean(contentMaxHeight)}
-          animate={isOpen ? { y: 5, opacity: 1, height: 'auto' } : {
-            y: 0, opacity: 0, height: 0, overflow: 'hidden',
-          }}
+          animate={
+            isOpen
+              ? { y: 5, opacity: 1, height: 'auto' }
+              : {
+                  y: 0,
+                  opacity: 0,
+                  height: 0,
+                  overflow: 'hidden',
+                }
+          }
           transition={{ ease: 'easeOut', duration: 0.1, delay: 0 }}
           initial={false}
           role="region"
@@ -215,4 +209,3 @@ export const Disclosure: FC<DisclosureProps> = ({
     </details>
   );
 };
-

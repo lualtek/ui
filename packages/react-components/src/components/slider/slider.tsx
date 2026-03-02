@@ -2,33 +2,30 @@
 
 import * as SliderPrimitive from '@radix-ui/react-slider';
 import clsx from 'clsx';
-import {
-  FC,
-  ReactNode, useCallback, useEffect, useId, useMemo, useState,
-} from 'react';
+import type { FC, ReactNode } from 'react';
+import { useCallback, useEffect, useId, useMemo, useState } from 'react';
 
-import {
-  Elevator, Stack, Text, useStyles,
-} from '@/components';
+import { Elevator, Stack, Text, useStyles } from '@/components';
 
 import styles from './slider.module.css';
 
-export type SliderProps = SliderPrimitive.SliderProps & React.ComponentPropsWithRef<typeof SliderPrimitive.Root> & {
-  /**
-   * Show values beside the thumbs
-   */
-  showValues?: boolean;
-  /**
-   * Show custom value label instead of raw value
-   *
-   * @defaultValue `val => val`
-   */
-  valueLabel?: (value: number) => string;
-  /**
-   * Assign a label to the input.
-   */
-  label?: ReactNode;
-};
+export type SliderProps = SliderPrimitive.SliderProps &
+  React.ComponentPropsWithRef<typeof SliderPrimitive.Root> & {
+    /**
+     * Show values beside the thumbs
+     */
+    showValues?: boolean;
+    /**
+     * Show custom value label instead of raw value
+     *
+     * @defaultValue `val => val`
+     */
+    valueLabel?: (value: number) => string;
+    /**
+     * Assign a label to the input.
+     */
+    label?: ReactNode;
+  };
 
 export const Slider: FC<SliderProps> = ({
   className,
@@ -36,7 +33,7 @@ export const Slider: FC<SliderProps> = ({
   defaultValue,
   orientation = 'horizontal',
   showValues,
-  valueLabel = val => val,
+  valueLabel = (val) => val,
   onValueChange,
   max = 100,
   label,
@@ -53,9 +50,9 @@ export const Slider: FC<SliderProps> = ({
   const [changedValue, setChangedValue] = useState<number[] | undefined>(val);
 
   const handleChange = useCallback(
-    (value: number[]) => {
-      setChangedValue(value);
-      onValueChange?.(value);
+    (newValue: number[]) => {
+      setChangedValue(newValue);
+      onValueChange?.(newValue);
     },
     [onValueChange],
   );
@@ -67,12 +64,7 @@ export const Slider: FC<SliderProps> = ({
   return (
     <Stack rowGap={4} inline className={clsx(styles.Slider, className)}>
       {label && (
-        <Text
-          as="span"
-          lineHeight="extra-small"
-          dimmed={5}
-          size={14}
-        >
+        <Text as="span" lineHeight="extra-small" dimmed={5} size={14}>
           {label}
         </Text>
       )}
@@ -93,8 +85,8 @@ export const Slider: FC<SliderProps> = ({
           <SliderPrimitive.Range className={styles.ValueTrack} />
         </SliderPrimitive.Track>
 
-        {val?.map((value, index) => (
-          <Elevator resting={1} key={`${uid}-${value}`}>
+        {val?.map((sliderValue, index) => (
+          <Elevator resting={1} key={`${uid}-${sliderValue}`}>
             <SliderPrimitive.Thumb
               className={styles.Thumb}
               data-slider-value-label={valueLabel?.(changedValue?.[index] ?? 0)}

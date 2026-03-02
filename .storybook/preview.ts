@@ -3,7 +3,7 @@ import '../packages/react-components/src/core.css';
 import './overrides.css';
 
 import { withThemeByDataAttribute } from '@storybook/addon-themes';
-import { Preview } from '@storybook/react-vite';
+import type { Preview } from '@storybook/react-vite';
 import { themes } from 'storybook/theming';
 
 import lualtekTheme from './lualtek-theme';

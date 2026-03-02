@@ -2,14 +2,15 @@
 
 import { useEffect, useRef, useState, useTransition } from 'react';
 import { Bar, BarChart as ReBarChart, YAxis } from 'recharts';
-import { Except } from 'type-fest';
+import type { Except } from 'type-fest';
 
 import { useChartAxis } from '@/charts/hooks/use-chart-axis';
 
-import { BaseChart, BaseChartProps, DENSITIES } from '../base-chart';
-import { ChartDataBaseType } from '../base-chart/base-chart';
+import type { BaseChartProps } from '../base-chart';
+import { BaseChart, DENSITIES } from '../base-chart';
+import type { ChartDataBaseType } from '../base-chart/base-chart';
 import { getChartDefaultColor } from '../base-chart/colors';
-import { BrushProps } from '../brush';
+import type { BrushProps } from '../brush';
 
 export type BarProps<D> = {
   /**
@@ -42,10 +43,7 @@ export type BarProps<D> = {
   name?: string;
 };
 
-export type BarChartAccessoryProps<T = Record<string, unknown>> = Except<
-  BaseChartProps,
-  'renderChart' | 'children'
-> & {
+export type BarChartAccessoryProps<T = Record<string, unknown>> = Except<BaseChartProps, 'renderChart' | 'children'> & {
   /**
    * Whether to show the Y axis.
    *
@@ -65,10 +63,7 @@ export type BarChartAccessoryProps<T = Record<string, unknown>> = Except<
   children?: BrushProps;
 } & T;
 
-export type BarChartProps<
-  D extends ChartDataBaseType,
-  B extends BarProps<D>,
-> = BarChartAccessoryProps<{
+export type BarChartProps<D extends ChartDataBaseType, B extends BarProps<D>> = BarChartAccessoryProps<{
   /**
    * The data to render.
    */

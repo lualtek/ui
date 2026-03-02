@@ -1,21 +1,10 @@
 'use client';
 
-import { TokensTypes } from '@lualtek/tokens/platforms/web';
+import type { TokensTypes } from '@lualtek/tokens/platforms/web';
 import tkns from '@lualtek/tokens/web/tokens.json';
 import clsx from 'clsx';
-import React, {
-  Children,
-  CSSProperties,
-  FC,
-  Fragment,
-  RefObject,
-  useCallback,
-  useEffect,
-  useId,
-  useMemo,
-  useRef,
-  useState,
-} from 'react';
+import type { CSSProperties, FC, RefObject } from 'react';
+import React, { Children, Fragment, useCallback, useEffect, useId, useMemo, useRef, useState } from 'react';
 
 import styles from './marquee.module.css';
 
@@ -89,28 +78,26 @@ export type MarqueeProps = React.ComponentPropsWithRef<'div'> & {
   onMount?: () => void;
 };
 
-export const Marquee: FC<MarqueeProps> = (
-  {
-    autoFill = true,
-    play = true,
-    pauseOnHover = false,
-    pauseOnClick = false,
-    direction = 'left',
-    speed = 50,
-    delay = 0,
-    loop = 0,
-    fade,
-    fadeSize = '88px',
-    gap,
-    onFinish,
-    onCycleComplete,
-    children,
-    style,
-    className,
-    ref: forwardedRef,
-    ...otherProps
-  },
-) => {
+export const Marquee: FC<MarqueeProps> = ({
+  autoFill = true,
+  play = true,
+  pauseOnHover = false,
+  pauseOnClick = false,
+  direction = 'left',
+  speed = 50,
+  delay = 0,
+  loop = 0,
+  fade,
+  fadeSize = '88px',
+  gap,
+  onFinish,
+  onCycleComplete,
+  children,
+  style,
+  className,
+  ref: forwardedRef,
+  ...otherProps
+}) => {
   const [containerWidth, setContainerWidth] = useState(0);
   const [marqueeWidth, setMarqueeWidth] = useState(0);
   const [multiplier, setMultiplier] = useState(1);
@@ -125,27 +112,23 @@ export const Marquee: FC<MarqueeProps> = (
     if (marqueeRef.current && containerRef.current) {
       const containerRect = containerRef.current.getBoundingClientRect();
       const marqueeRect = marqueeRef.current.getBoundingClientRect();
-      let containerWidth = containerRect.width;
-      let marqueeWidth = marqueeRect.width;
+      let newContainerWidth = containerRect.width;
+      let newMarqueeWidth = marqueeRect.width;
 
       // Swap width and height if direction is up or down
       if (direction === 'up' || direction === 'down') {
-        containerWidth = containerRect.height;
-        marqueeWidth = marqueeRect.height;
+        newContainerWidth = containerRect.height;
+        newMarqueeWidth = marqueeRect.height;
       }
 
-      if (autoFill && containerWidth && marqueeWidth) {
-        setMultiplier(
-          marqueeWidth < containerWidth
-            ? Math.ceil(containerWidth / marqueeWidth)
-            : 1,
-        );
+      if (autoFill && newContainerWidth && newMarqueeWidth) {
+        setMultiplier(newMarqueeWidth < newContainerWidth ? Math.ceil(newContainerWidth / newMarqueeWidth) : 1);
       } else {
         setMultiplier(1);
       }
 
-      setContainerWidth(containerWidth);
-      setMarqueeWidth(marqueeWidth);
+      setContainerWidth(newContainerWidth);
+      setMarqueeWidth(newMarqueeWidth);
     }
   }, [autoFill, containerRef, direction]);
 
@@ -181,30 +164,25 @@ export const Marquee: FC<MarqueeProps> = (
       return (marqueeWidth * multiplier) / speed;
     }
 
-    return marqueeWidth < containerWidth
-      ? containerWidth / speed
-      : marqueeWidth / speed;
+    return marqueeWidth < containerWidth ? containerWidth / speed : marqueeWidth / speed;
   }, [autoFill, containerWidth, marqueeWidth, multiplier, speed]);
 
-  const dynamicStyle: CSSProperties = useMemo(
-    () => {
-      const computedContainerTransform = () => {
-        if (direction === 'up') return 'rotate(-90deg)';
-        if (direction === 'down') return 'rotate(90deg)';
-        return 'none';
-      };
+  const dynamicStyle: CSSProperties = useMemo(() => {
+    const computedContainerTransform = () => {
+      if (direction === 'up') return 'rotate(-90deg)';
+      if (direction === 'down') return 'rotate(90deg)';
+      return 'none';
+    };
 
-      return {
-        '--pause-on-hover': (!play || pauseOnHover) ? 'paused' : 'running',
-        '--pause-on-click': (!play || (pauseOnHover && !pauseOnClick) || pauseOnClick) ? 'paused' : 'running',
-        '--width': direction === 'up' || direction === 'down' ? '100vh' : '100%',
-        '--transform': computedContainerTransform(),
-        '--gap': gap ? tkns.space[gap] : 0,
-        '--fade-size': fadeSize,
-      };
-    },
-    [play, pauseOnHover, pauseOnClick, direction, gap, fadeSize],
-  );
+    return {
+      '--pause-on-hover': !play || pauseOnHover ? 'paused' : 'running',
+      '--pause-on-click': !play || (pauseOnHover && !pauseOnClick) || pauseOnClick ? 'paused' : 'running',
+      '--width': direction === 'up' || direction === 'down' ? '100vh' : '100%',
+      '--transform': computedContainerTransform(),
+      '--gap': gap ? tkns.space[gap] : 0,
+      '--fade-size': fadeSize,
+    };
+  }, [play, pauseOnHover, pauseOnClick, direction, gap, fadeSize]);
 
   const sliderStyle: CSSProperties = useMemo(
     () => ({
@@ -218,34 +196,30 @@ export const Marquee: FC<MarqueeProps> = (
     [play, direction, duration, delay, loop, autoFill],
   );
 
-  const slideStyle = useMemo(
-    () => {
-      const computedSlideTransform = () => {
-        if (direction === 'up') return 'rotate(90deg)';
-        if (direction === 'down') return 'rotate(-90deg)';
-        return 'none';
-      };
+  const slideStyle = useMemo(() => {
+    const computedSlideTransform = () => {
+      if (direction === 'up') return 'rotate(90deg)';
+      if (direction === 'down') return 'rotate(-90deg)';
+      return 'none';
+    };
 
-      return {
-        '--transform': computedSlideTransform(),
-      };
-    },
-    [direction],
-  );
+    return {
+      '--transform': computedSlideTransform(),
+    };
+  }, [direction]);
 
   // Render {multiplier} number of children
   const multiplyChildren = useCallback(
-    (multiplier: number) => [
-      ...Array<number>(Number.isFinite(multiplier) && multiplier >= 0 ? multiplier : 0),
-    ].map(_ => (
-      <Fragment key={uid}>
-        {Children.map(children, child => (
-          <div style={slideStyle} className={styles.Slide}>
-            {child}
-          </div>
-        ))}
-      </Fragment>
-    )),
+    (count: number) =>
+      [...Array<number>(Number.isFinite(count) && count >= 0 ? count : 0)].map((_) => (
+        <Fragment key={uid}>
+          {Children.map(children, (child) => (
+            <div style={slideStyle} className={styles.Slide}>
+              {child}
+            </div>
+          ))}
+        </Fragment>
+      )),
     [uid, children, slideStyle],
   );
 
@@ -264,7 +238,7 @@ export const Marquee: FC<MarqueeProps> = (
         onAnimationEnd={onFinish}
       >
         <div className={styles.ChildContainer} ref={marqueeRef}>
-          {Children.map(children, child => (
+          {Children.map(children, (child) => (
             <div style={slideStyle} className={styles.Slide}>
               {child}
             </div>

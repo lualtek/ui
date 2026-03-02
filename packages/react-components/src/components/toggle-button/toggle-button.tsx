@@ -2,10 +2,12 @@
 
 import clsx from 'clsx';
 import { domMax, LazyMotion, m } from 'motion/react';
-import { FC, useCallback, useEffect, useState } from 'react';
-import { Except } from 'type-fest';
+import type { FC } from 'react';
+import { useCallback, useEffect, useState } from 'react';
+import type { Except } from 'type-fest';
 
-import { Icon, IconButton, IconButtonProps, IconProps } from '@/components';
+import type { IconButtonProps, IconProps } from '@/components';
+import { Icon, IconButton } from '@/components';
 
 import styles from './toggle-button.module.css';
 
@@ -74,18 +76,15 @@ export const ToggleButton: FC<ToggleButtonProps> = ({
     [onClick, isPressed],
   );
 
-  const renderIcon = useCallback(
-    (icon: IconProps['source'], dimension?: IconProps['dimension']) => {
-      const iconSize: Record<string, IconProps['dimension']> = {
-        big: 24,
-        regular: 18,
-        small: 12,
-      };
+  const renderIcon = useCallback((icon: IconProps['source'], iconDimension?: IconProps['dimension']) => {
+    const iconSize: Record<string, IconProps['dimension']> = {
+      big: 24,
+      regular: 18,
+      small: 12,
+    };
 
-      return <Icon source={icon} dimension={iconSize[dimension ?? 'regular']} />;
-    },
-    [],
-  );
+    return <Icon source={icon} dimension={iconSize[iconDimension ?? 'regular']} />;
+  }, []);
 
   return (
     <IconButton

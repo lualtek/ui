@@ -1,10 +1,11 @@
-import { SortDirection } from '@tanstack/react-table';
+import type { SortDirection } from '@tanstack/react-table';
 import clsx from 'clsx';
 import { useMemo } from 'react';
 
-import { BlankButton, Icon, PolyRefComponent } from '@/components';
+import type { PolyRefComponent } from '@/components';
+import { BlankButton, Icon } from '@/components';
 
-import { CustomColumnMeta } from '../types';
+import type { CustomColumnMeta } from '../types';
 import styles from './table-head-cell.module.css';
 
 type TableHeadcellProps = CustomColumnMeta & {

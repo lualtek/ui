@@ -1,17 +1,15 @@
 'use client';
 
-import { TokensTypes } from '@lualtek/tokens/platforms/web';
+import type { TokensTypes } from '@lualtek/tokens/platforms/web';
 import tkns from '@lualtek/tokens/web/tokens.json';
 import clsx from 'clsx';
 import { useMemo } from 'react';
 
-import { PolyRefComponent } from '@/components';
+import type { PolyRefComponent } from '@/components';
 
 import styles from './title.module.css';
 
-export type TitleProps = React.ComponentPropsWithRef<
-  'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'span'
-> & {
+export type TitleProps = React.ComponentPropsWithRef<'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'span'> & {
   /**
    * Set the level of the title. This property only
    * affects the visual appearance of the title and not the
@@ -111,9 +109,7 @@ export const Title: TitleComponent = ({
   ref: forwardedRef,
   ...otherProps
 }) => {
-  const computedLevel = level.match(/\d/g)
-    ? `H${level}`
-    : level.charAt(0).toUpperCase() + level.slice(1);
+  const computedLevel = level.match(/\d/g) ? `H${level}` : level.charAt(0).toUpperCase() + level.slice(1);
   // @ts-expect-error: generated className is not pure in CSS
   const computedCSSClass = String(styles[computedLevel]);
   const dynamicStyle = useMemo(() => {
@@ -128,9 +124,7 @@ export const Title: TitleComponent = ({
     };
 
     const vPaddingValues = vPadding ? getPaddingValue(vPadding, 'vertical') : { top: 0, bottom: 0 };
-    const hPaddingValues = hPadding
-      ? getPaddingValue(hPadding, 'horizontal')
-      : { left: 0, right: 0 };
+    const hPaddingValues = hPadding ? getPaddingValue(hPadding, 'horizontal') : { left: 0, right: 0 };
 
     return {
       '--max-w': maxWidth,
@@ -146,18 +140,7 @@ export const Title: TitleComponent = ({
       '--custom-width': fontWidth,
       '--custom-opsz': opticalSize,
     };
-  }, [
-    maxWidth,
-    align,
-    whiteSpace,
-    vPadding,
-    hPadding,
-    trimType,
-    trim,
-    weight,
-    fontWidth,
-    opticalSize,
-  ]);
+  }, [maxWidth, align, whiteSpace, vPadding, hPadding, trimType, trim, weight, fontWidth, opticalSize]);
 
   return (
     <Component

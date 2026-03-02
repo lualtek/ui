@@ -2,12 +2,11 @@
 
 import clsx from 'clsx';
 import { domAnimation, LazyMotion, m } from 'motion/react';
-import {
-  ChangeEvent, FC,
-  ReactNode, useId,
-} from 'react';
+import type { ChangeEvent, FC, ReactNode } from 'react';
+import { useId } from 'react';
 
-import { Stack, Text, TextProps } from '@/components';
+import type { TextProps } from '@/components';
+import { Stack, Text } from '@/components';
 
 import styles from '../selection-controls.module.css';
 
@@ -37,14 +36,17 @@ export type RadioProps = React.ComponentPropsWithRef<'input'> & {
    * @defaultValue "end"
    */
   labelPosition?: 'start' | 'end';
-}
+};
 
-type Properties = Record<NonNullable<RadioProps['dimension']>, {
-  text: {
-    labelSize: TextProps['size'];
-    lh?: TextProps['lineHeight'];
-  };
-}>
+type Properties = Record<
+  NonNullable<RadioProps['dimension']>,
+  {
+    text: {
+      labelSize: TextProps['size'];
+      lh?: TextProps['lineHeight'];
+    };
+  }
+>;
 
 const properties: Properties = {
   small: {

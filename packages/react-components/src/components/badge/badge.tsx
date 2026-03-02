@@ -1,12 +1,11 @@
 'use client';
 
-import { TokensTypes } from '@lualtek/tokens/platforms/web';
+import type { TokensTypes } from '@lualtek/tokens/platforms/web';
 import tkns from '@lualtek/tokens/web/tokens.json';
 import clsx from 'clsx';
-import {
-  FC, useMemo,
-} from 'react';
-import { Except } from 'type-fest';
+import type { FC } from 'react';
+import { useMemo } from 'react';
+import type { Except } from 'type-fest';
 
 import styles from './badge.module.css';
 
@@ -37,7 +36,7 @@ export type BadgeProps = Except<React.ComponentPropsWithRef<'div'>, 'children'> 
    * @defaultValue false
    */
   fullWidth?: boolean;
-}
+};
 
 export const Badge: FC<BadgeProps> = ({
   children,
@@ -51,11 +50,14 @@ export const Badge: FC<BadgeProps> = ({
   ref: forwardRef,
   ...otherProps
 }) => {
-  const dynamicStyle = useMemo(() => ({
-    '--badge-size': `${badgeSize}px`,
-    '--gap': `${gap}px`,
-    '--badge-color': tkns.color[color]['50'],
-  }), [badgeSize, gap, color]);
+  const dynamicStyle = useMemo(
+    () => ({
+      '--badge-size': `${badgeSize}px`,
+      '--gap': `${gap}px`,
+      '--badge-color': tkns.color[color]['50'],
+    }),
+    [badgeSize, gap, color],
+  );
 
   return (
     <div
@@ -66,9 +68,7 @@ export const Badge: FC<BadgeProps> = ({
       style={{ ...dynamicStyle, ...style }}
       {...otherProps}
     >
-      <div className={styles.Mask}>
-        {children}
-      </div>
+      <div className={styles.Mask}>{children}</div>
     </div>
   );
 };

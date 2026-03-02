@@ -16,53 +16,11 @@
     "package.json": "sentry.*.config.js, oxlint.json, .oxfmtrc.json, .npmrc, .graphqlrc, pnpm-workspace.yaml, next.config.js, *.config.mjs, .npmrc, *.config.js, *.config.ts, *.config.cjs, package-lock.json, pnpm-lock.yaml, jest.config.json"
   },
   "oxc.fmt.configPath": ".oxfmtrc.json",
+  "oxc.configPath": "oxlint.json",
   "editor.defaultFormatter": "oxc.oxc-vscode",
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
-    "source.fixAll.oxc": "explicit"
-  },
-  "[typescript]": {
-    "editor.defaultFormatter": "oxc.oxc-vscode",
-    "editor.formatOnSave": true,
-    "editor.codeActionsOnSave": {
-      "source.fixAll.oxc": "explicit",
-      "source.organizeImports": "explicit"
-    }
-  },
-  "[typescriptreact]": {
-    "editor.defaultFormatter": "oxc.oxc-vscode",
-    "editor.formatOnSave": true,
-    "editor.codeActionsOnSave": {
-      "source.fixAll.oxc": "explicit",
-      "source.organizeImports": "explicit"
-    }
-  },
-  "[javascript]": {
-    "editor.defaultFormatter": "oxc.oxc-vscode",
-    "editor.formatOnSave": true,
-    "editor.codeActionsOnSave": {
-      "source.fixAll.oxc": "explicit",
-      "source.organizeImports": "explicit"
-    }
-  },
-  "[javascriptreact]": {
-    "editor.defaultFormatter": "oxc.oxc-vscode",
-    "editor.formatOnSave": true,
-    "editor.codeActionsOnSave": {
-      "source.fixAll.oxc": "explicit",
-      "source.organizeImports": "explicit"
-    }
-  },
-  "[css]": {
-    "editor.defaultFormatter": "oxc.oxc-vscode",
-    "editor.formatOnSave": true
-  },
-  "[json]": {
-    "editor.defaultFormatter": "oxc.oxc-vscode",
-    "editor.formatOnSave": true
-  },
-  "[jsonc]": {
-    "editor.defaultFormatter": "oxc.oxc-vscode",
-    "editor.formatOnSave": true
+    "source.fixAll.oxc": "explicit",
+    "source.organizeImports": "explicit"
   }
 }

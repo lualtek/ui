@@ -1,20 +1,19 @@
 'use client';
 
-import { TokensTypes } from '@lualtek/tokens/platforms/web';
+import type { TokensTypes } from '@lualtek/tokens/platforms/web';
 import tkns from '@lualtek/tokens/web/tokens.json';
 import clsx from 'clsx';
 import { useMemo } from 'react';
 
-import {
-  Glow,
+import type {
   GlowProps,
   PolyRefComponent,
   StackProps,
-  useStyles,
   VibrancyBlur,
   VibrancyColor,
   VibrancySaturation,
 } from '@/components';
+import { Glow, useStyles } from '@/components';
 
 import { ConditionalWrapper } from '../conditional-wrapper';
 import styles from './panel.module.css';
@@ -125,12 +124,9 @@ export const Panel: PanelComponent = ({
   ref: forwardedRef,
   ...otherProps
 }) => {
-  const computedBackground =
-    typeof backgroundColor === 'number' ? `var(--dimmed-${backgroundColor})` : backgroundColor;
+  const computedBackground = typeof backgroundColor === 'number' ? `var(--dimmed-${backgroundColor})` : backgroundColor;
   const computedBackgroundHover =
-    typeof backgroundColorHover === 'number'
-      ? `var(--dimmed-${backgroundColorHover})`
-      : backgroundColorHover;
+    typeof backgroundColorHover === 'number' ? `var(--dimmed-${backgroundColorHover})` : backgroundColorHover;
   const formatRadius = useMemo(() => {
     if (!radius) {
       return undefined;
@@ -140,7 +136,7 @@ export const Panel: PanelComponent = ({
       return tkns.radius[radius];
     }
 
-    return radius.map((r) => (r !== 0 ? tkns.radius[r!] : 0)).join(' ');
+    return radius.map((r) => (r !== undefined && r !== 0 ? tkns.radius[r] : 0)).join(' ');
   }, [radius]);
 
   const { vibrancy } = useStyles({
@@ -154,18 +150,16 @@ export const Panel: PanelComponent = ({
   const dynamicStyle = useMemo(() => {
     const getPaddingValue = (
       padding: TokensTypes['space'] | [TokensTypes['space'] | 0, TokensTypes['space'] | 0],
-      direction: 'horizontal' | 'vertical',
+      paddingDirection: 'horizontal' | 'vertical',
     ) => {
       const [start, end] = Array.isArray(padding) ? padding : [padding, padding];
-      return direction === 'horizontal'
+      return paddingDirection === 'horizontal'
         ? { left: start ? tkns.space[start] : 0, right: end ? tkns.space[end] : 0 }
         : { top: start ? tkns.space[start] : 0, bottom: end ? tkns.space[end] : 0 };
     };
 
     const vPaddingValues = vPadding ? getPaddingValue(vPadding, 'vertical') : { top: 0, bottom: 0 };
-    const hPaddingValues = hPadding
-      ? getPaddingValue(hPadding, 'horizontal')
-      : { left: 0, right: 0 };
+    const hPaddingValues = hPadding ? getPaddingValue(hPadding, 'horizontal') : { left: 0, right: 0 };
 
     return {
       '--v-padding-top': vPaddingValues.top,
@@ -176,20 +170,12 @@ export const Panel: PanelComponent = ({
       '--background': vibrant ? undefined : computedBackground,
       '--background-hover': vibrant ? undefined : computedBackgroundHover,
     };
-  }, [
-    computedBackground,
-    computedBackgroundHover,
-    formatRadius,
-    hPadding,
-    radius,
-    vPadding,
-    vibrant,
-  ]);
+  }, [computedBackground, computedBackgroundHover, formatRadius, hPadding, radius, vPadding, vibrant]);
 
   return (
     <ConditionalWrapper
       condition={showGlow}
-      wrapper={(children) => (
+      wrapper={(glowContent) => (
         <Glow
           innerRadius={radius}
           glowColor={glowColor ?? 'var(--dimmed-2)'}
@@ -200,7 +186,7 @@ export const Panel: PanelComponent = ({
           rainbowColors={rainbowColors}
           fitContent={glowFitContent}
         >
-          {children}
+          {glowContent}
         </Glow>
       )}
     >

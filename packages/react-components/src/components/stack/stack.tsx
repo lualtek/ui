@@ -1,11 +1,11 @@
 'use client';
 
-import { TokensTypes } from '@lualtek/tokens/platforms/web';
+import type { TokensTypes } from '@lualtek/tokens/platforms/web';
 import tkns from '@lualtek/tokens/web/tokens.json';
 import clsx from 'clsx';
 import { useMemo } from 'react';
 
-import { PolyRefComponent } from '@/components';
+import type { PolyRefComponent } from '@/components';
 
 import styles from './stack.module.css';
 
@@ -99,18 +99,16 @@ export const Stack: StackComponent = ({
   const dynamicStyle = useMemo(() => {
     const getPaddingValue = (
       padding: TokensTypes['space'] | [TokensTypes['space'] | 0, TokensTypes['space'] | 0],
-      direction: 'horizontal' | 'vertical',
+      paddingDirection: 'horizontal' | 'vertical',
     ) => {
       const [start, end] = Array.isArray(padding) ? padding : [padding, padding];
-      return direction === 'horizontal'
+      return paddingDirection === 'horizontal'
         ? { left: start ? tkns.space[start] : 0, right: end ? tkns.space[end] : 0 }
         : { top: start ? tkns.space[start] : 0, bottom: end ? tkns.space[end] : 0 };
     };
 
     const vPaddingValues = vPadding ? getPaddingValue(vPadding, 'vertical') : { top: 0, bottom: 0 };
-    const hPaddingValues = hPadding
-      ? getPaddingValue(hPadding, 'horizontal')
-      : { left: 0, right: 0 };
+    const hPaddingValues = hPadding ? getPaddingValue(hPadding, 'horizontal') : { left: 0, right: 0 };
 
     return {
       '--r-gap': rowGap ? tkns.space[rowGap] : 0,

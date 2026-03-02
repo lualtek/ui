@@ -1,14 +1,13 @@
 'use client';
 
-import { TokensTypes } from '@lualtek/tokens/platforms/web';
+import type { TokensTypes } from '@lualtek/tokens/platforms/web';
 import clsx from 'clsx';
-import { EmojiClickData } from 'emoji-picker-react';
-import { FC, useMemo } from 'react';
+import type { EmojiClickData } from 'emoji-picker-react';
+import type { FC } from 'react';
+import { useMemo } from 'react';
 
-import {
-  Emoji,
-  Stack, Text, TextProps,
-} from '@/components';
+import type { TextProps } from '@/components';
+import { Emoji, Stack, Text } from '@/components';
 
 import styles from './text-chip.module.css';
 
@@ -36,13 +35,16 @@ export type TextChipProps = React.ComponentPropsWithRef<'span'> & {
    * The emoji unified code to display.
    */
   emoji?: EmojiClickData['unified'];
-}
+};
 
-type Sizes = Record<string, {
-  text: Exclude<NonNullable<TextProps['size']>, string>;
-  emojiText: Exclude<NonNullable<TextProps['size']>, string>;
-  emoji: Exclude<NonNullable<TokensTypes['icon']['size']>, string>;
-}>
+type Sizes = Record<
+  string,
+  {
+    text: Exclude<NonNullable<TextProps['size']>, string>;
+    emojiText: Exclude<NonNullable<TextProps['size']>, string>;
+    emoji: Exclude<NonNullable<TokensTypes['icon']['size']>, string>;
+  }
+>;
 
 const sizes: Sizes = {
   small: {
@@ -62,7 +64,7 @@ const sizes: Sizes = {
   },
 };
 
-const emojiRegex = /\p{Extended_Pictographic}/ug;
+const emojiRegex = /\p{Extended_Pictographic}/gu;
 
 export const TextChip: FC<TextChipProps> = ({
   text,
@@ -76,10 +78,13 @@ export const TextChip: FC<TextChipProps> = ({
   ...otherProps
 }) => {
   const isEmoji = useMemo(() => text && emojiRegex.test(text), [text]);
-  const dynamicStyle = useMemo(() => ({
-    '--background': `var(--highlight-${color}-background)`,
-    '--foreground': `var(--highlight-${color}-foreground)`,
-  }), [color]);
+  const dynamicStyle = useMemo(
+    () => ({
+      '--background': `var(--highlight-${color}-background)`,
+      '--foreground': `var(--highlight-${color}-foreground)`,
+    }),
+    [color],
+  );
 
   return (
     <Stack
@@ -103,13 +108,8 @@ export const TextChip: FC<TextChipProps> = ({
         weight="bold"
         as="span"
       >
-        {(text && !emoji) && text.slice(0, 2)}
-        {(emoji) && (
-          <Emoji
-            unified={emoji}
-            size={sizes[dimension]?.emoji}
-          />
-        ) }
+        {text && !emoji && text.slice(0, 2)}
+        {emoji && <Emoji unified={emoji} size={sizes[dimension]?.emoji} />}
       </Text>
     </Stack>
   );

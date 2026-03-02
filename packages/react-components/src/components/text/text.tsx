@@ -1,11 +1,11 @@
 'use client';
 
-import { TokensTypes } from '@lualtek/tokens/platforms/web';
+import type { TokensTypes } from '@lualtek/tokens/platforms/web';
 import tkns from '@lualtek/tokens/web/tokens.json';
 import clsx from 'clsx';
 import { useMemo } from 'react';
 
-import { PolyRefComponent } from '@/components';
+import type { PolyRefComponent } from '@/components';
 
 import styles from './text.module.css';
 
@@ -137,9 +137,7 @@ export const Text: TextComponent = ({
     };
 
     const vPaddingValues = vPadding ? getPaddingValue(vPadding, 'vertical') : { top: 0, bottom: 0 };
-    const hPaddingValues = hPadding
-      ? getPaddingValue(hPadding, 'horizontal')
-      : { left: 0, right: 0 };
+    const hPaddingValues = hPadding ? getPaddingValue(hPadding, 'horizontal') : { left: 0, right: 0 };
 
     return {
       '--max-w': maxWidth,
@@ -156,19 +154,7 @@ export const Text: TextComponent = ({
       '--custom-width': fontWidth,
       '--custom-opsz': opticalSize,
     };
-  }, [
-    maxWidth,
-    align,
-    textColor,
-    whiteSpace,
-    hPadding,
-    vPadding,
-    trimType,
-    trim,
-    weight,
-    fontWidth,
-    opticalSize,
-  ]);
+  }, [maxWidth, align, textColor, whiteSpace, hPadding, vPadding, trimType, trim, weight, fontWidth, opticalSize]);
 
   return (
     <Component

@@ -1,10 +1,10 @@
-import { SortDirection } from '@tanstack/react-table';
+import type { SortDirection } from '@tanstack/react-table';
 import clsx from 'clsx';
 import { useMemo } from 'react';
 
-import { PolyRefComponent } from '@/components';
+import type { PolyRefComponent } from '@/components';
 
-import { CustomColumnMeta } from '../types';
+import type { CustomColumnMeta } from '../types';
 import styles from './table-cell.module.css';
 
 type TableCellProps = CustomColumnMeta & {

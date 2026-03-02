@@ -1,9 +1,11 @@
 'use client';
 
 import clsx from 'clsx';
-import { MouseEvent, useCallback, useMemo } from 'react';
+import type { MouseEvent } from 'react';
+import { useCallback, useMemo } from 'react';
 
-import { Icon, IconProps, PolyRefComponent, Spinner, useStyles } from '@/components';
+import type { IconProps, PolyRefComponent } from '@/components';
+import { Icon, Spinner, useStyles } from '@/components';
 
 import styles from './button.module.css';
 
@@ -108,13 +110,7 @@ export const Button: ButtonComponent = ({
 
   const renderIcon = useMemo(
     () =>
-      icon && (
-        <Icon
-          source={icon}
-          fill={iconColor}
-          dimension={iconOpticalSize?.[dimension] ?? iconSize[dimension]}
-        />
-      ),
+      icon && <Icon source={icon} fill={iconColor} dimension={iconOpticalSize?.[dimension] ?? iconSize[dimension]} />,
     [icon, dimension, iconColor, iconOpticalSize],
   );
 

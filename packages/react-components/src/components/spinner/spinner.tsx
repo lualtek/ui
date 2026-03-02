@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import { domMax, LazyMotion, m } from 'motion/react';
-import { FC } from 'react';
+import type { FC } from 'react';
 
 export type SpinnerProps = React.ComponentPropsWithRef<'svg'> & {
   /**
@@ -13,11 +13,14 @@ export type SpinnerProps = React.ComponentPropsWithRef<'svg'> & {
    * Override the color of the spinner
    */
   color?: string;
-}
+};
 
-type AttributesType = Record<NonNullable<SpinnerProps['dimension']>, {
-  size: number;
-}>
+type AttributesType = Record<
+  NonNullable<SpinnerProps['dimension']>,
+  {
+    size: number;
+  }
+>;
 
 const attributes: AttributesType = {
   small: {
@@ -31,13 +34,7 @@ const attributes: AttributesType = {
   },
 };
 
-export const Spinner: FC<SpinnerProps> = ({
-  className,
-  style,
-  color,
-  dimension = 'big',
-  ref: forwardedRef,
-}) => (
+export const Spinner: FC<SpinnerProps> = ({ className, style, color, dimension = 'big', ref: forwardedRef }) => (
   <LazyMotion features={domMax}>
     <m.svg
       ref={forwardedRef}
@@ -56,12 +53,7 @@ export const Spinner: FC<SpinnerProps> = ({
       xmlns="http://www.w3.org/2000/svg"
       strokeLinecap="round"
     >
-      <g
-        transform="translate(1 1)"
-        strokeWidth={2}
-        fill="none"
-        fillRule="evenodd"
-      >
+      <g transform="translate(1 1)" strokeWidth={2} fill="none" fillRule="evenodd">
         <circle strokeOpacity={0.5} cx={18} cy={18} r={18} />
         <path d="M36 18c0-9.94-8.06-18-18-18">
           <animateTransform

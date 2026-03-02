@@ -1,6 +1,7 @@
 import type { PanInfo } from 'motion/react';
 import { animate, motion } from 'motion/react';
-import React, { FC, PropsWithChildren, useRef } from 'react';
+import type { FC, PropsWithChildren } from 'react';
+import React, { useRef } from 'react';
 
 import styles from '../swipe-row.module.css';
 import { useSwipeRow } from './swipe-row-context';

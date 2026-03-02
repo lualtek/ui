@@ -1,16 +1,11 @@
 'use client';
 
-import { IconNames } from '@lualtek/icons';
+import type { IconNames } from '@lualtek/icons';
 import sprite from '@lualtek/icons/sprite';
-import { TokensTypes } from '@lualtek/tokens/platforms/web';
+import type { TokensTypes } from '@lualtek/tokens/platforms/web';
 import clsx from 'clsx';
-import {
-  Children,
-  cloneElement,
-  FC,
-  ReactElement,
-  useMemo,
-} from 'react';
+import type { FC, ReactElement } from 'react';
+import { Children, cloneElement, useMemo } from 'react';
 
 import styles from './icon.module.css';
 
@@ -27,41 +22,33 @@ export type IconProps = React.ComponentPropsWithRef<'svg'> & {
    * @defaultValue 18
    */
   dimension?: TokensTypes['icon']['size'];
-}
+};
 
-export const Icon: FC<IconProps> = ({
-  className,
-  source,
-  dimension = 18,
-  fill,
-  ref: forwardedRef,
-  ...otherProps
-}) => {
+export const Icon: FC<IconProps> = ({ className, source, dimension = 18, fill, ref: forwardedRef, ...otherProps }) => {
   const dynamicStyle = useMemo(() => (Number(dimension) < 18 ? 'solid' : 'duotone'), [dimension]);
 
-  return (typeof source === 'string')
-    ? (
-      <svg
-        aria-hidden="true"
-        width={dimension}
-        height={dimension}
-        fill={fill}
-        className={clsx(styles.Icon, className)}
-        ref={forwardedRef}
-        {...otherProps}
-      >
-        <use href={`${sprite}#${dynamicStyle}/${source}`} />
-      </svg>
-    )
-    : (
-      <>
-        {Children.map(source, child => cloneElement(child as ReactElement<React.SVGProps<SVGSVGElement>>, {
+  return typeof source === 'string' ? (
+    <svg
+      aria-hidden="true"
+      width={dimension}
+      height={dimension}
+      fill={fill}
+      className={clsx(styles.Icon, className)}
+      ref={forwardedRef}
+      {...otherProps}
+    >
+      <use href={`${sprite}#${dynamicStyle}/${source}`} />
+    </svg>
+  ) : (
+    <>
+      {Children.map(source, (child) =>
+        cloneElement(child as ReactElement<React.SVGProps<SVGSVGElement>>, {
           className,
           'aria-hidden': 'true',
           width: dimension,
           height: dimension,
-        }))}
-      </>
-    );
+        }),
+      )}
+    </>
+  );
 };
-

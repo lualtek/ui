@@ -1,4 +1,4 @@
-import { Row } from '@tanstack/react-table';
+import type { Row } from '@tanstack/react-table';
 import clsx from 'clsx';
 
 import styles from './table-row.module.css';

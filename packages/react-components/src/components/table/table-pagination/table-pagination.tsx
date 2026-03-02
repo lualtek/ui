@@ -1,4 +1,5 @@
-import { FC, useId, useMemo } from 'react';
+import type { FC } from 'react';
+import { useId, useMemo } from 'react';
 
 import { Pagination, Select, Stack, Text } from '@/components';
 
@@ -58,21 +59,10 @@ export const TablePagination: FC<TablePaginationProps> = ({
     () => currentPage && itemsPerPage && currentPage * itemsPerPage,
     [currentPage, itemsPerPage],
   );
-  const computedItemsInPageEnd = useMemo(
-    () => currentPage * itemsPerPage + itemsPerPage,
-    [currentPage, itemsPerPage],
-  );
+  const computedItemsInPageEnd = useMemo(() => currentPage * itemsPerPage + itemsPerPage, [currentPage, itemsPerPage]);
 
   return (
-    <Stack
-      fill={false}
-      direction="row"
-      columnGap={16}
-      vAlign="center"
-      hAlign="end"
-      vPadding={16}
-      {...otherProps}
-    >
+    <Stack fill={false} direction="row" columnGap={16} vAlign="center" hAlign="end" vPadding={16} {...otherProps}>
       <Stack direction="row" columnGap={4}>
         <Select
           value={itemsPerPage}

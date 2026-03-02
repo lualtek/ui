@@ -1,12 +1,13 @@
 'use client';
 
-import { TokensTypes } from '@lualtek/tokens/platforms/web';
+import type { TokensTypes } from '@lualtek/tokens/platforms/web';
 import tkns from '@lualtek/tokens/web/tokens.json';
 import clsx from 'clsx';
 import { Children, Fragment, isValidElement, useMemo } from 'react';
-import { Except } from 'type-fest';
+import type { Except } from 'type-fest';
 
-import { PolyRefComponent, Stack, StackProps } from '@/components';
+import type { PolyRefComponent, StackProps } from '@/components';
+import { Stack } from '@/components';
 
 import { SnaplistItem } from './snaplist-item';
 import styles from './snaplist.module.css';
@@ -40,10 +41,7 @@ export type SnaplistProps = {
   snapItemWidth?: string;
 };
 
-type SnaplistComponent = PolyRefComponent<
-  typeof Stack,
-  Except<StackProps, 'wrap' | 'fill'> & SnaplistProps
->;
+type SnaplistComponent = PolyRefComponent<typeof Stack, Except<StackProps, 'wrap' | 'fill'> & SnaplistProps>;
 
 export const Snaplist: SnaplistComponent = ({
   as = 'div' as React.ElementType,
@@ -85,13 +83,15 @@ export const Snaplist: SnaplistComponent = ({
       {Children.toArray(children).map((child) => {
         if (isValidElement<React.HTMLAttributes<HTMLElement>>(child)) {
           if (child.type === Fragment) {
-            return Children.map(
-              child.props.children,
-              (fragmentChild: React.ReactNode) =>
-                isValidElement<React.HTMLAttributes<HTMLElement>>(fragmentChild) && (
-                  <SnaplistItem key={fragmentChild.key}>{fragmentChild}</SnaplistItem>
-                ),
-            )!;
+            return (
+              Children.map(
+                child.props.children,
+                (fragmentChild: React.ReactNode) =>
+                  isValidElement<React.HTMLAttributes<HTMLElement>>(fragmentChild) && (
+                    <SnaplistItem key={fragmentChild.key}>{fragmentChild}</SnaplistItem>
+                  ),
+              ) ?? []
+            );
           }
 
           return <SnaplistItem key={child.key}>{child}</SnaplistItem>;

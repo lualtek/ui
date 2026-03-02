@@ -1,9 +1,9 @@
 'use client';
 
+import type { FC } from 'react';
 import React, {
   Children,
   cloneElement,
-  FC,
   Fragment,
   isValidElement,
   useEffect,
@@ -27,7 +27,7 @@ export type StickySpyProps = React.ComponentPropsWithRef<'div'> & {
    * Set the root element to observe. Must be a sticky element's ancestor.
    */
   root?: HTMLElement;
-}
+};
 
 export const StickySpy: FC<StickySpyProps> = ({
   children,
@@ -35,19 +35,22 @@ export const StickySpy: FC<StickySpyProps> = ({
   attribute = 'data-react-is-sticky',
   root,
 }) => {
-  const defaultRoot = useMemo(() => (root ?? (typeof document !== 'undefined' ? document : null)), [root]);
+  const defaultRoot = useMemo(() => root ?? (typeof document !== 'undefined' ? document : null), [root]);
   const spyRef = useRef<HTMLDivElement>(null);
   const [isSticky, setIsSticky] = useState(false);
   const uid = useId();
 
   useEffect(() => {
     const spy = spyRef.current;
-    const observer = new IntersectionObserver(([entry]) => {
-      setIsSticky(!entry.isIntersecting);
-      onStickyChange?.(!entry.isIntersecting);
-    }, {
-      root: defaultRoot,
-    });
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsSticky(!entry.isIntersecting);
+        onStickyChange?.(!entry.isIntersecting);
+      },
+      {
+        root: defaultRoot,
+      },
+    );
 
     if (spy) {
       observer.observe(spy);
@@ -59,9 +62,8 @@ export const StickySpy: FC<StickySpyProps> = ({
   return (
     <Fragment key={uid}>
       <div ref={spyRef} data-react-sticky-spy style={{ height: 0, width: 1 }} />
-      {Children.map(
-        children,
-        child => (isValidElement(child) ? cloneElement(child, { [attribute]: isSticky }) : child),
+      {Children.map(children, (child) =>
+        isValidElement(child) ? cloneElement(child, { [attribute]: isSticky }) : child,
       )}
     </Fragment>
   );

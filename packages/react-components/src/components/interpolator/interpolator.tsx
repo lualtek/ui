@@ -1,11 +1,10 @@
 'use client';
 
-import { TokensTypes } from '@lualtek/tokens/platforms/web';
+import type { TokensTypes } from '@lualtek/tokens/platforms/web';
 import tkns from '@lualtek/tokens/web/tokens.json';
 import clsx from 'clsx';
-import {
-  FC, ReactNode, useMemo,
-} from 'react';
+import type { FC, ReactNode } from 'react';
+import { useMemo } from 'react';
 
 import styles from './interpolator.module.css';
 
@@ -62,7 +61,7 @@ export type InterpolatorProps = React.ComponentPropsWithRef<'div'> & {
    * Set the delay for the exiting element.
    */
   exitingDelay?: string;
-}
+};
 
 export const Interpolator: FC<InterpolatorProps> = ({
   className,
@@ -80,15 +79,18 @@ export const Interpolator: FC<InterpolatorProps> = ({
   ref: forwardedRef,
   ...otherProps
 }) => {
-  const dynamicStyle = useMemo(() => ({
-    '--enter-scale': `${enterScale[0]} ${enterScale[1]}`,
-    '--exit-scale': `${exitScale[0]} ${exitScale[1]}`,
-    '--duration': tkns.duration[duration],
-    '--entering-delay': enteringDelay,
-    '--exiting-delay': exitingDelay,
-    '--enter-rotation': enterRotation,
-    '--exit-rotation': exitRotation,
-  }), [enterScale, exitScale, duration, enterRotation, exitRotation, enteringDelay, exitingDelay]);
+  const dynamicStyle = useMemo(
+    () => ({
+      '--enter-scale': `${enterScale[0]} ${enterScale[1]}`,
+      '--exit-scale': `${exitScale[0]} ${exitScale[1]}`,
+      '--duration': tkns.duration[duration],
+      '--entering-delay': enteringDelay,
+      '--exiting-delay': exitingDelay,
+      '--enter-rotation': enterRotation,
+      '--exit-rotation': exitRotation,
+    }),
+    [enterScale, exitScale, duration, enterRotation, exitRotation, enteringDelay, exitingDelay],
+  );
 
   return (
     <div
@@ -103,4 +105,3 @@ export const Interpolator: FC<InterpolatorProps> = ({
     </div>
   );
 };
-

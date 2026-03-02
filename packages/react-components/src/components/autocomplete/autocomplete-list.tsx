@@ -1,6 +1,8 @@
-import { FC, useMemo } from 'react';
+import type { FC } from 'react';
+import { useMemo } from 'react';
 
-import { AutocompleteProps, Menu, Skeleton, Stack, Text, useResponsiveContext } from '@/components';
+import type { AutocompleteProps } from '@/components';
+import { Menu, Skeleton, Stack, Text, useResponsiveContext } from '@/components';
 
 import { AutocompleteOption } from './autocomplete-option';
 import styles from './autocomplete.module.css';

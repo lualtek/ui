@@ -1,17 +1,14 @@
 'use client';
 
-import { TokensTypes } from '@lualtek/tokens/platforms/web';
+import type { TokensTypes } from '@lualtek/tokens/platforms/web';
 import clsx from 'clsx';
 import { domAnimation, LazyMotion, m } from 'motion/react';
-import {
-  ChangeEvent, FC,
-  InputEvent,
-  ReactNode, useCallback, useEffect, useId, useRef,
-  useState,
-} from 'react';
+import type { ChangeEvent, FC, InputEvent, ReactNode } from 'react';
+import { useCallback, useEffect, useId, useRef, useState } from 'react';
 import { mergeRefs } from 'react-merge-refs';
 
-import { Stack, Text, TextProps } from '@/components';
+import type { TextProps } from '@/components';
+import { Stack, Text } from '@/components';
 
 import styles from '../selection-controls.module.css';
 
@@ -57,16 +54,19 @@ export type CheckboxProps = React.ComponentPropsWithRef<'input'> & {
    * This prop is not visible when the field is not invalid, is disabled, or readnly
    */
   hint?: ReactNode;
-}
+};
 
-type Properties = Record<NonNullable<CheckboxProps['dimension']>, {
-  text: {
-    labelSize: TextProps['size'];
-    hintSize?: TextProps['size'];
-    lh?: TextProps['lineHeight'];
-    padding?: TokensTypes['space'];
-  };
-}>
+type Properties = Record<
+  NonNullable<CheckboxProps['dimension']>,
+  {
+    text: {
+      labelSize: TextProps['size'];
+      hintSize?: TextProps['size'];
+      lh?: TextProps['lineHeight'];
+      padding?: TokensTypes['space'];
+    };
+  }
+>;
 
 const properties: Properties = {
   small: {
@@ -180,4 +180,3 @@ export const Checkbox: FC<CheckboxProps> = ({
     </LazyMotion>
   );
 };
-

@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 
-import { PolyRefComponent } from '@/components';
+import type { PolyRefComponent } from '@/components';
 
 import styles from './base-field.module.css';
 
@@ -18,10 +18,5 @@ export const BaseField: PolyRefComponent<'input', BaseFieldProps> = ({
   ref: forwardedRef,
   ...otherProps
 }) => (
-  <Component
-    ref={forwardedRef}
-    aria-invalid={invalid}
-    className={clsx(styles.BaseField, className)}
-    {...otherProps}
-  />
+  <Component ref={forwardedRef} aria-invalid={invalid} className={clsx(styles.BaseField, className)} {...otherProps} />
 );

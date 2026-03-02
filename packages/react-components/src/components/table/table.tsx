@@ -1,22 +1,18 @@
 'use client';
 
+import type { ColumnDef, FilterFnOption, Row, RowData, SortingState, Table as TableType } from '@tanstack/react-table';
 import {
-  ColumnDef,
-  FilterFnOption,
   flexRender,
   getCoreRowModel,
   getFilteredRowModel,
   getPaginationRowModel,
   getSortedRowModel,
-  Row,
-  RowData,
-  SortingState,
-  Table as TableType,
   useReactTable,
 } from '@tanstack/react-table';
 import clsx from 'clsx';
 import { AnimatePresence, domMax, LazyMotion, m } from 'motion/react';
-import { ReactNode, useCallback, useEffect, useId, useMemo, useState } from 'react';
+import type { ReactNode } from 'react';
+import { useCallback, useEffect, useId, useMemo, useState } from 'react';
 import { useDebounce } from 'react-use';
 
 import { Panel, Skeleton, Stack, Text } from '@/components';
@@ -25,14 +21,16 @@ import { TableCell } from './table-cell';
 import { TableCheckbox } from './table-checkbox';
 import { FilterControl, ToggleColumnsControl } from './table-controls';
 import { TableHeadCell } from './table-head-cell';
-import { TableHeader, TableHeaderProps } from './table-header';
-import { TablePagination, TablePaginationProps } from './table-pagination';
+import type { TableHeaderProps } from './table-header';
+import { TableHeader } from './table-header';
+import type { TablePaginationProps } from './table-pagination';
+import { TablePagination } from './table-pagination';
 import { TableRow } from './table-row';
 import styles from './table.module.css';
-import { CustomColumnMeta } from './types';
+import type { CustomColumnMeta } from './types';
 
 declare module '@tanstack/react-table' {
-  // oxlint-disable-next-line no-unused-vars
+  // oxlint-disable-next-line no-unused-vars, typescript/no-empty-interface
   interface ColumnMeta<TData extends RowData, TValue> extends CustomColumnMeta {}
 }
 
@@ -351,7 +349,7 @@ export const Table = <T extends Record<string, unknown>>({
   const renderThead = useCallback(
     (rowsLength: number) =>
       rowsLength > 0 ? (
-        <thead role="rowgroup" className={styles.THead}>
+        <thead className={styles.THead}>
           {table.getHeaderGroups().map((headerGroup) => (
             <TableRow key={headerGroup.id}>
               {headerGroup.headers.map((header) => (
@@ -365,8 +363,7 @@ export const Table = <T extends Record<string, unknown>>({
                   align={header.column.columnDef.meta?.align}
                   onClick={header.column.getToggleSortingHandler()}
                 >
-                  {!header.isPlaceholder &&
-                    flexRender(header.column.columnDef.header, header.getContext())}
+                  {!header.isPlaceholder && flexRender(header.column.columnDef.header, header.getContext())}
                 </TableHeadCell>
               ))}
             </TableRow>
@@ -467,10 +464,7 @@ export const Table = <T extends Record<string, unknown>>({
                 {actions}
 
                 {enableToggleColumns && data.length ? (
-                  <ToggleColumnsControl
-                    columns={table.getAllLeafColumns()}
-                    label={toggleColumnsLabel}
-                  />
+                  <ToggleColumnsControl columns={table.getAllLeafColumns()} label={toggleColumnsLabel} />
                 ) : null}
               </TableHeader>
             </m.div>
@@ -489,7 +483,7 @@ export const Table = <T extends Record<string, unknown>>({
             {...otherProps}
           >
             {renderThead(table.getRowModel().rows.length)}
-            <tbody role="rowgroup">
+            <tbody>
               {loading ? (
                 <TableRow>
                   <TableCell colSpan={100}>

@@ -1,6 +1,5 @@
-import React, {
-  ComponentPropsWithRef, FC, useEffect, useState,
-} from 'react';
+import type { ComponentPropsWithRef, FC } from 'react';
+import React, { useEffect, useState } from 'react';
 
 export type TextLoadingProps = ComponentPropsWithRef<'div'> & {
   /**
@@ -20,15 +19,12 @@ export type TextLoadingProps = ComponentPropsWithRef<'div'> & {
   interval?: number;
 };
 
-export const TextLoading: FC<TextLoadingProps> = ({
-  char = '…',
-  interval = 400,
-}) => {
+export const TextLoading: FC<TextLoadingProps> = ({ char = '…', interval = 400 }) => {
   const [count, setCount] = useState(1);
 
   useEffect(() => {
     const id = setInterval(() => {
-      setCount(c => (c % 3) + 1);
+      setCount((c) => (c % 3) + 1);
     }, interval);
     return () => clearInterval(id);
   }, [interval]);

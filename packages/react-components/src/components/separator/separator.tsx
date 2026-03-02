@@ -1,12 +1,10 @@
 'use client';
 
-import { TokensTypes } from '@lualtek/tokens/platforms/web';
+import type { TokensTypes } from '@lualtek/tokens/platforms/web';
 import tkns from '@lualtek/tokens/web/tokens.json';
 import clsx from 'clsx';
-import {
-  FC,
-  useMemo,
-} from 'react';
+import type { FC } from 'react';
+import { useMemo } from 'react';
 
 import styles from './separator.module.css';
 
@@ -29,7 +27,7 @@ export type SeparatorProps = React.ComponentPropsWithRef<'hr'> & {
    * @defaultValue false
    */
   vertical?: boolean;
-}
+};
 
 export const Separator: FC<SeparatorProps> = ({
   className,
@@ -41,13 +39,14 @@ export const Separator: FC<SeparatorProps> = ({
   ref: forwardedRef,
   ...otherProps
 }) => {
-  const dynamicStyle = useMemo(() => (
-    {
+  const dynamicStyle = useMemo(
+    () => ({
       '--v-padding': vPadding ? tkns.space[vPadding] : 0,
       '--h-padding': hPadding ? tkns.space[hPadding] : 0,
       '--color': `var(--dimmed-${dimmed})`,
-    }
-  ), [vPadding, hPadding, dimmed]);
+    }),
+    [vPadding, hPadding, dimmed],
+  );
 
   return (
     <hr

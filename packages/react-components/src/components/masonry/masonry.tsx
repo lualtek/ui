@@ -1,9 +1,10 @@
 'use client';
 
-import { TokensTypes } from '@lualtek/tokens/platforms/web';
+import type { TokensTypes } from '@lualtek/tokens/platforms/web';
 import tkns from '@lualtek/tokens/web/tokens.json';
 import clsx from 'clsx';
-import { Children, cloneElement, CSSProperties, FC, isValidElement, useMemo } from 'react';
+import type { CSSProperties, FC } from 'react';
+import { Children, cloneElement, isValidElement, useMemo } from 'react';
 import MasonryLayout from 'react-masonry-css';
 
 import styles from './masonry.module.css';
@@ -58,14 +59,7 @@ const breakpoints: Record<string, number> = {
   wide: 2100,
 };
 
-export const Masonry: FC<MasonryProps> = ({
-  className,
-  children,
-  columns = 3,
-  gap,
-  style,
-  ...otherProps
-}) => {
+export const Masonry: FC<MasonryProps> = ({ className, children, columns = 3, gap, style, ...otherProps }) => {
   const dynamicStyle = useMemo(
     () => ({
       '--gap': gap ? tkns.space[gap as keyof typeof tkns.space] : 0,

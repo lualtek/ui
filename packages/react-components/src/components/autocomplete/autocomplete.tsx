@@ -1,23 +1,15 @@
 'use client';
 
 import clsx from 'clsx';
-import { Children, FC, ReactNode, useCallback, useMemo, useState } from 'react';
+import type { FC, ReactNode } from 'react';
+import { Children, useCallback, useMemo, useState } from 'react';
 import { useDebounce } from 'react-use';
 
-import {
-  MenuProps,
-  Popover,
-  PopoverContentProps,
-  Sheet,
-  SheetProps,
-  Stack,
-  Textfield,
-  TextfieldProps,
-  useResponsiveContext,
-} from '@/components';
+import type { MenuProps, PopoverContentProps, SheetProps, TextfieldProps } from '@/components';
+import { Popover, Sheet, Stack, Textfield, useResponsiveContext } from '@/components';
 
 import { AutocompleteList } from './autocomplete-list';
-import { AutocompleteOptionProps } from './autocomplete-option';
+import type { AutocompleteOptionProps } from './autocomplete-option';
 import styles from './autocomplete.module.css';
 
 export type AutocompleteProps = TextfieldProps & {
@@ -122,15 +114,15 @@ export const Autocomplete: FC<AutocompleteProps> = ({
   );
 
   const handleClickOption = useCallback(
-    (value: string | number, text?: string) => {
+    (selectedValue: string | number, text?: string) => {
       setIsOpen(false);
 
       if (onClickOption) {
-        onClickOption?.(value, text);
+        onClickOption?.(selectedValue, text);
         return;
       }
 
-      setCurrentValue(text ?? value);
+      setCurrentValue(text ?? selectedValue);
     },
     [onClickOption],
   );

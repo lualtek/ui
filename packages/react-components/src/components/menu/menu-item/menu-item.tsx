@@ -1,17 +1,12 @@
 'use client';
 
 import clsx from 'clsx';
-import {
-  ReactNode,
-  useCallback,
-  useMemo,
-  useRef,
-} from 'react';
+import type { ReactNode } from 'react';
+import { useCallback, useMemo, useRef } from 'react';
 import { useFocusEffect, useRovingTabIndex } from 'react-roving-tabindex';
 
-import {
-  Icon, IconProps, PolyRefComponent, Stack,
-} from '@/components';
+import type { IconProps, PolyRefComponent } from '@/components';
+import { Icon, Stack } from '@/components';
 
 import styles from './menu-item.module.css';
 
@@ -73,36 +68,29 @@ export type MenuItemProps = {
    * Set the sentiment color for the item
    */
   sentiment?: 'positive' | 'warning' | 'danger';
-}
+};
 
-type MenuItemComponent = PolyRefComponent<'button', MenuItemProps>
+type MenuItemComponent = PolyRefComponent<'button', MenuItemProps>;
 
-export const MenuItem: MenuItemComponent = (
-  {
-    as: Component = 'button',
-    className,
-    children,
-    onClick,
-    icon,
-    dimension = 'regular',
-    iconPosition = 'start',
-    padding = true,
-    disabled = false,
-    autoFocus,
-    decoration,
-    value,
-    sentiment,
-    ref: forwardedRef,
-    ...otherProps
-  },
-) => {
+export const MenuItem: MenuItemComponent = ({
+  as: Component = 'button',
+  className,
+  children,
+  onClick,
+  icon,
+  dimension = 'regular',
+  iconPosition = 'start',
+  padding = true,
+  disabled = false,
+  autoFocus,
+  decoration,
+  value,
+  sentiment,
+  ref: forwardedRef,
+  ...otherProps
+}) => {
   const itemRef = useRef(forwardedRef);
-  const [
-    tabIndex,
-    isFocused,
-    handleKeyDown,
-    handleClick,
-  ] = useRovingTabIndex(itemRef, disabled);
+  const [tabIndex, isFocused, handleKeyDown, handleClick] = useRovingTabIndex(itemRef, disabled);
   const isIconAtEnd = useMemo(() => iconPosition === 'end', [iconPosition]);
 
   useFocusEffect(isFocused, itemRef);
@@ -117,45 +105,43 @@ export const MenuItem: MenuItemComponent = (
     [handleClick, onClick, value],
   );
 
-  const InnerContent = useMemo(() => (
-    <Stack
-      direction={isIconAtEnd ? 'row-reverse' : 'row'}
-      fill={false}
-      className={styles.ItemContent}
-      hAlign={isIconAtEnd ? 'space-between' : 'start'}
-      vAlign="center"
-      columnGap={8}
-      hPadding={24}
-      vPadding={8}
-      data-menu-item-icon-right={isIconAtEnd}
-      data-menu-item-has-icon={Boolean(icon)}
-      data-menu-item-padding={padding}
-      style={{ inlineSize: '100%' }}
-    >
-      {icon && (
-        <Icon
-          className={styles.Icon}
-          source={icon}
-          dimension={dimension === 'small' ? 12 : 18}
-        />
-      )}
+  const InnerContent = useMemo(
+    () => (
       <Stack
-        className={styles.DecorationContent}
-        columnGap={16}
+        direction={isIconAtEnd ? 'row-reverse' : 'row'}
         fill={false}
-        direction="row"
-        hAlign="space-between"
+        className={styles.ItemContent}
+        hAlign={isIconAtEnd ? 'space-between' : 'start'}
         vAlign="center"
+        columnGap={8}
+        hPadding={24}
+        vPadding={8}
+        data-menu-item-icon-right={isIconAtEnd}
+        data-menu-item-has-icon={Boolean(icon)}
+        data-menu-item-padding={padding}
+        style={{ inlineSize: '100%' }}
       >
-        {children}
-        {decoration}
+        {icon && <Icon className={styles.Icon} source={icon} dimension={dimension === 'small' ? 12 : 18} />}
+        <Stack
+          className={styles.DecorationContent}
+          columnGap={16}
+          fill={false}
+          direction="row"
+          hAlign="space-between"
+          vAlign="center"
+        >
+          {children}
+          {decoration}
+        </Stack>
       </Stack>
-    </Stack>
-  ), [children, dimension, icon, isIconAtEnd, decoration, padding]);
+    ),
+    [children, dimension, icon, isIconAtEnd, decoration, padding],
+  );
 
   return (
     <Stack as="li" role="none">
       <Component
+        // oxlint-disable-next-line jsx-a11y/no-autofocus
         autoFocus={autoFocus}
         ref={itemRef}
         role="menuitem"

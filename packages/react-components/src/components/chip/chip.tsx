@@ -2,9 +2,11 @@
 
 import type { TokensTypes } from '@lualtek/tokens/platforms/web';
 import clsx from 'clsx';
-import { FC, Ref, SyntheticEvent, useMemo } from 'react';
+import type { FC, Ref, SyntheticEvent } from 'react';
+import { useMemo } from 'react';
 
-import { Icon, IconProps, Stack, StackProps, Text } from '@/components';
+import type { IconProps, StackProps } from '@/components';
+import { Icon, Stack, Text } from '@/components';
 
 import styles from './chip.module.css';
 
@@ -100,16 +102,9 @@ export const Chip: FC<ChipProps> = ({
   const Content = useMemo(
     () => (
       <>
-        {icon && !dismissable && (
-          <Icon source={icon} dimension={sizes[dimension].icon} className={styles.Icon} />
-        )}
+        {icon && !dismissable && <Icon source={icon} dimension={sizes[dimension].icon} className={styles.Icon} />}
 
-        <Text
-          weight="bold"
-          as="b"
-          whiteSpace="nowrap"
-          lineHeight={dimension === 'small' ? 'extra-small' : undefined}
-        >
+        <Text weight="bold" as="b" whiteSpace="nowrap" lineHeight={dimension === 'small' ? 'extra-small' : undefined}>
           {children}
         </Text>
         {!interactive && dismissable && (

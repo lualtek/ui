@@ -1,26 +1,19 @@
 'use client';
 
-import {
-  useEffect, useRef, useState, useTransition,
-} from 'react';
-import React, { Children, isValidElement } from 'react';
-import {
-  Area,
-  AreaChart as ReAreaChart,
-  Line,
-  LineChart as ReLineChart,
-  LineProps as ReLineProps,
-  YAxis,
-} from 'recharts';
-import { DataKey } from 'recharts/types/util/types';
-import { Except } from 'type-fest';
+import React, { Children, isValidElement, useEffect, useRef, useState, useTransition } from 'react';
+import type { LineProps as ReLineProps } from 'recharts';
+import { Area, AreaChart as ReAreaChart, Line, LineChart as ReLineChart, YAxis } from 'recharts';
+import type { DataKey } from 'recharts/types/util/types';
+import type { Except } from 'type-fest';
 
 import { useChartAxis } from '@/charts/hooks/use-chart-axis';
 
-import { BaseChart, BaseChartProps, DENSITIES } from '../base-chart';
-import { ChartDataBaseType } from '../base-chart/base-chart';
+import type { BaseChartProps } from '../base-chart';
+import { BaseChart, DENSITIES } from '../base-chart';
+import type { ChartDataBaseType } from '../base-chart/base-chart';
 import { getChartDefaultColor } from '../base-chart/colors';
-import { Brush, BrushProps } from '../brush';
+import type { BrushProps } from '../brush';
+import { Brush } from '../brush';
 
 export type LineProps<D> = {
   /**
@@ -64,32 +57,34 @@ export type LineProps<D> = {
 };
 
 export type LineChartAccessoryProps<T = Record<string, unknown>> = Except<
-  BaseChartProps, 'renderChart' | 'children'> & {
+  BaseChartProps,
+  'renderChart' | 'children'
+> & {
   /**
    * Whether to show the dots on the series.
    *
    * @defaultValue false
    */
-    showDots?: boolean;
-    /**
+  showDots?: boolean;
+  /**
    * Set the radius of the dots.
    */
-    dotsSize?: number;
-    /**
+  dotsSize?: number;
+  /**
    * Whether to show the Y axis.
    *
    * @defaultValue true
    */
-    showYAxis?: boolean;
-    /**
+  showYAxis?: boolean;
+  /**
    * Render areas for the series.
    */
-    showAreas?: boolean;
-    /**
-     * A brush component to render.
-     */
-    children?: React.ReactElement<BrushProps>;
-  } & T
+  showAreas?: boolean;
+  /**
+   * A brush component to render.
+   */
+  children?: React.ReactElement<BrushProps>;
+} & T;
 
 export type LineChartProps<D extends ChartDataBaseType, L extends LineProps<D>> = LineChartAccessoryProps<{
   /**
@@ -133,9 +128,9 @@ export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
     yAxisWidthNotBiaxial,
     hasLeftY,
     hasRightY,
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
   } = useChartAxis({
-    data: data ?? series.flatMap(serie => serie.data ?? []),
+    data: data ?? series.flatMap((serie) => serie.data ?? []),
     series,
     yDomainLeft,
     yDomainRight,
@@ -174,31 +169,33 @@ export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
       ref={chartRef}
       onResize={handleResize}
       density={density}
-      renderChart={children => (showAreas ? (
-        <ReAreaChart
-          data={data}
-          accessibilityLayer={focusable}
-          syncId={syncId}
-          margin={margin}
-          onTouchStart={handleChartUpdate}
-          onTouchMove={handleChartUpdate}
-          onMouseMove={handleChartUpdate}
-        >
-          {children}
-        </ReAreaChart>
-      ) : (
-        <ReLineChart
-          data={data}
-          accessibilityLayer={focusable}
-          syncId={syncId}
-          margin={margin}
-          onTouchStart={handleChartUpdate}
-          onTouchMove={handleChartUpdate}
-          onMouseMove={handleChartUpdate}
-        >
-          {children}
-        </ReLineChart>
-      ))}
+      renderChart={(chartContent) =>
+        showAreas ? (
+          <ReAreaChart
+            data={data}
+            accessibilityLayer={focusable}
+            syncId={syncId}
+            margin={margin}
+            onTouchStart={handleChartUpdate}
+            onTouchMove={handleChartUpdate}
+            onMouseMove={handleChartUpdate}
+          >
+            {chartContent}
+          </ReAreaChart>
+        ) : (
+          <ReLineChart
+            data={data}
+            accessibilityLayer={focusable}
+            syncId={syncId}
+            margin={margin}
+            onTouchStart={handleChartUpdate}
+            onTouchMove={handleChartUpdate}
+            onMouseMove={handleChartUpdate}
+          >
+            {chartContent}
+          </ReLineChart>
+        )
+      }
     >
       <>
         {/* Any extra children like Brush */}
@@ -240,10 +237,7 @@ export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
 
         {showAreas && (
           <defs>
-            {series.map(({
-              serieKeyId,
-              color,
-            }, index) => (
+            {series.map(({ serieKeyId, color }, index) => (
               <linearGradient key={serieKeyId} id={serieKeyId} x1="0" y1="0" x2="0" y2="1">
                 <stop offset="5%" stopColor={color ?? getChartDefaultColor(index)} stopOpacity={0.4} />
                 <stop offset="95%" stopColor={color ?? getChartDefaultColor(index)} stopOpacity={0} />
@@ -252,14 +246,7 @@ export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
           </defs>
         )}
 
-        {series.map(({
-          serieKeyId,
-          side,
-          color,
-          type,
-          data: serieData,
-          ...otherSerieProps
-        }, index) => {
+        {series.map(({ serieKeyId, side, color, type, data: serieData, ...otherSerieProps }, index) => {
           const computedStrokeColor = color ?? getChartDefaultColor(index);
           const commonProps = {
             yAxisId: side,
@@ -267,11 +254,13 @@ export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
             type: type ?? 'monotone',
             stroke: computedStrokeColor,
             data: serieData,
-            dot: showDots ? {
-              r: dotsSize,
-              stroke: computedStrokeColor,
-              fill: computedStrokeColor,
-            } : false,
+            dot: showDots
+              ? {
+                  r: dotsSize,
+                  stroke: computedStrokeColor,
+                  fill: computedStrokeColor,
+                }
+              : false,
             activeDot: {
               fill: showDots ? 'var(--global-foreground)' : computedStrokeColor,
               stroke: 'var(--global-background)',
@@ -281,23 +270,12 @@ export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
           };
 
           return showAreas ? (
-            <Area
-              {...otherSerieProps}
-              {...commonProps}
-              key={serieKeyId}
-              fillOpacity={1}
-              fill={`url(#${serieKeyId})`}
-            />
+            <Area {...otherSerieProps} {...commonProps} key={serieKeyId} fillOpacity={1} fill={`url(#${serieKeyId})`} />
           ) : (
-            <Line
-              {...otherSerieProps}
-              {...commonProps}
-              key={serieKeyId}
-            />
+            <Line {...otherSerieProps} {...commonProps} key={serieKeyId} />
           );
         })}
       </>
     </BaseChart>
   );
 }
-

@@ -1,8 +1,9 @@
 'use client';
 
-import { TokensTypes } from '@lualtek/tokens/platforms/web';
+import type { TokensTypes } from '@lualtek/tokens/platforms/web';
 import tkns from '@lualtek/tokens/web/tokens.json';
-import { FC, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import type { FC } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import styles from './glow.module.css';
 
@@ -105,7 +106,7 @@ export const Glow: FC<GlowProps> = ({
       return tkns.radius[innerRadius];
     }
 
-    return innerRadius.map((r) => (r !== 0 ? tkns.radius[r!] : 0)).join(' ');
+    return innerRadius.map((r) => (r !== undefined && r !== 0 ? tkns.radius[r] : 0)).join(' ');
   }, [innerRadius]);
 
   const paint = useCallback(
@@ -128,13 +129,9 @@ export const Glow: FC<GlowProps> = ({
         setActiveOpacity(opacity);
       }
 
-      const CARD_CENTER = [
-        CARD_BOUNDS.left + CARD_BOUNDS.width * 0.5,
-        CARD_BOUNDS.top + CARD_BOUNDS.height * 0.5,
-      ];
+      const CARD_CENTER = [CARD_BOUNDS.left + CARD_BOUNDS.width * 0.5, CARD_BOUNDS.top + CARD_BOUNDS.height * 0.5];
 
-      let ANGLE =
-        (Math.atan2(event?.y - CARD_CENTER[1], event?.x - CARD_CENTER[0]) * 180) / Math.PI;
+      let ANGLE = (Math.atan2(event?.y - CARD_CENTER[1], event?.x - CARD_CENTER[0]) * 180) / Math.PI;
       ANGLE = ANGLE < 0 ? ANGLE + 360 : ANGLE;
       setStartingAngle(String(ANGLE + 90));
     },

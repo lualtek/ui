@@ -37,11 +37,11 @@ const config: StorybookConfig = {
     reactDocgenTypescriptOptions: {
       shouldExtractLiteralValuesFromEnum: true,
       // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-      propFilter: prop => (prop.parent ? !prop.parent.fileName.includes('node_modules') : true),
+      propFilter: (prop) => (prop.parent ? !prop.parent.fileName.includes('node_modules') : true),
     },
   },
-  async viteFinal(config) {
-    return mergeConfig(config, {
+  async viteFinal(viteConfig) {
+    return mergeConfig(viteConfig, {
       plugins: [tsconfigPaths()],
     });
   },

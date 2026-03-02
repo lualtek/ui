@@ -1,14 +1,11 @@
 'use client';
 
-import { FC } from 'react';
+import type { FC } from 'react';
 import type { ReferenceLineProps as RechartReferenceLineProps } from 'recharts';
 import { ReferenceLine as RechartReferenceLine } from 'recharts';
-import { Except } from 'type-fest';
+import type { Except } from 'type-fest';
 
-export type ReferenceLineProps = Except<
-  RechartReferenceLineProps,
-  'fill' | 'stroke' | 'strokeDasharray'
-> & {
+export type ReferenceLineProps = Except<RechartReferenceLineProps, 'fill' | 'stroke' | 'strokeDasharray'> & {
   dashed?: boolean;
   color?: string;
 };
@@ -18,11 +15,4 @@ export const ReferenceLine: FC<ReferenceLineProps> = ({
   color = 'var(--dimmed-4)',
   ref,
   ...otherProps
-}) => (
-  <RechartReferenceLine
-    ref={ref}
-    {...otherProps}
-    stroke={color}
-    strokeDasharray={dashed ? '4 4' : 'none'}
-  />
-);
+}) => <RechartReferenceLine ref={ref} {...otherProps} stroke={color} strokeDasharray={dashed ? '4 4' : 'none'} />;

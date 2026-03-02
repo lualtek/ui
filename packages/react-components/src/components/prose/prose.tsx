@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 
-import { PolyRefComponent } from '@/components';
+import type { PolyRefComponent } from '@/components';
 
 import styles from './prose.module.css';
 

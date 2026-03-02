@@ -2,16 +2,16 @@
 
 import * as ToastPrimitive from '@radix-ui/react-toast';
 import clsx from 'clsx';
-import {
-  FC, useId,
-} from 'react';
+import type { FC } from 'react';
+import { useId } from 'react';
 
 import { Elevator } from '@/components';
 
-import { InlineToast, InlineToastProps } from './inline-toast';
+import type { InlineToastProps } from './inline-toast';
+import { InlineToast } from './inline-toast';
 import styles from './toast.module.css';
 
-export type ToastProps = ToastPrimitive.ToastProps & InlineToastProps & React.ComponentPropsWithRef<'li'>
+export type ToastProps = ToastPrimitive.ToastProps & InlineToastProps & React.ComponentPropsWithRef<'li'>;
 
 // ElementRef<typeof ToastPrimitive.Root>,
 export const Toast: FC<ToastProps> = ({

@@ -1,6 +1,7 @@
 'use client';
 
-import { Children, cloneElement, FC, isValidElement } from 'react';
+import type { FC } from 'react';
+import { Children, cloneElement, isValidElement } from 'react';
 
 export type AspectRatioProps = {
   /**

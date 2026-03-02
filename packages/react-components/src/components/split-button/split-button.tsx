@@ -1,14 +1,8 @@
 import clsx from 'clsx';
-import { Except } from 'type-fest';
+import type { Except } from 'type-fest';
 
-import {
-  Button,
-  ButtonProps,
-  PolyRefComponent,
-  Popover,
-  PopoverContentProps,
-  Stack,
-} from '@/components';
+import type { ButtonProps, PolyRefComponent, PopoverContentProps } from '@/components';
+import { Button, Popover, Stack } from '@/components';
 
 import { Elevator } from '../elevator';
 import styles from './split-button.module.css';

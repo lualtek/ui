@@ -1,9 +1,11 @@
 'use client';
 
 import clsx from 'clsx';
-import { FC, ReactNode, useCallback, useId, useMemo } from 'react';
+import type { FC, ReactNode } from 'react';
+import { useCallback, useId, useMemo } from 'react';
 
-import { Icon, IconProps, Stack, Text, TextProps } from '@/components';
+import type { IconProps, TextProps } from '@/components';
+import { Icon, Stack, Text } from '@/components';
 
 import styles from './icon-meter.module.css';
 
@@ -84,21 +86,18 @@ export const IconMeter: FC<IconMeterProps> = ({
     },
   };
 
-  const clamp = useMemo(
-    () => (num: number, min: number, max: number) => Math.min(Math.max(num, min), max),
-    [],
-  );
+  const clamp = useMemo(() => (num: number, min: number, maxNum: number) => Math.min(Math.max(num, min), maxNum), []);
 
-  const roundValue = useCallback((value: number) => {
-    const integer = parseInt(String(value), 10);
-    const fraction = value - integer;
+  const roundValue = useCallback((rawValue: number) => {
+    const integer = Number.parseInt(String(rawValue), 10);
+    const fraction = rawValue - integer;
 
     if (fraction >= 0.75) {
-      return Math.ceil(value);
+      return Math.ceil(rawValue);
     }
 
     if (fraction < 0.25) {
-      return Math.floor(value);
+      return Math.floor(rawValue);
     }
 
     if (fraction >= 0.25 && fraction < 0.75) {
@@ -109,8 +108,8 @@ export const IconMeter: FC<IconMeterProps> = ({
   }, []);
 
   const iconType = useCallback(
-    (maxIcons: number, value: number) => {
-      const roundedValue = roundValue(value);
+    (maxIcons: number, rawValue: number) => {
+      const roundedValue = roundValue(rawValue);
       return Array.from({ length: maxIcons })
         .fill(0)
         .map((_, index) => {
