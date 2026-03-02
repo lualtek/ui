@@ -1,10 +1,8 @@
 import { SortDirection } from '@tanstack/react-table';
 import clsx from 'clsx';
-import { forwardRef, useMemo } from 'react';
+import { useMemo } from 'react';
 
-import {
-  BlankButton, Icon, PolyRefComponent,
-} from '@/components';
+import { BlankButton, Icon, PolyRefComponent } from '@/components';
 
 import { CustomColumnMeta } from '../types';
 import styles from './table-head-cell.module.css';
@@ -14,7 +12,7 @@ type TableHeadcellProps = CustomColumnMeta & {
    * Set the default sorting direction of the column.
    *
    * @defaultValue false
-  */
+   */
   sorting?: false | SortDirection;
   /**
    * Enable sorting change on the column.
@@ -35,51 +33,55 @@ type TableHeadcellProps = CustomColumnMeta & {
    * Used only when `canSort` is `true`.
    */
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
-}
+};
 
 type TableHeadcellComponent = PolyRefComponent<'th', TableHeadcellProps>;
 
-export const TableHeadCell: TableHeadcellComponent = (
-  {
-    as: Component = 'th',
-    children,
-    className,
-    collapsed,
-    align = 'start',
-    style,
-    sorting = false,
-    canSort,
-    padding = true,
-    width,
-    onClick,
-    ref: forwardedRef,
-    ...otherProps
-  },
-) => {
+export const TableHeadCell: TableHeadcellComponent = ({
+  as: Component = 'th',
+  children,
+  className,
+  collapsed,
+  align = 'start',
+  style,
+  sorting = false,
+  canSort,
+  padding = true,
+  width,
+  onClick,
+  ref: forwardedRef,
+  ...otherProps
+}) => {
   const computedWidth = useMemo(() => {
     if (!width) return undefined;
 
     return typeof width === 'string' ? width : `${width}px`;
   }, [width]);
 
-  const dynamicStyle = useMemo(() => ({
-    '--width': computedWidth,
-    '--text-align': align,
-  }), [align, computedWidth]);
+  const dynamicStyle = useMemo(
+    () => ({
+      '--width': computedWidth,
+      '--text-align': align,
+    }),
+    [align, computedWidth],
+  );
 
-  const content = useMemo(() => (
-    <>
-      {children}
-      {Boolean(sorting) && (
-        <Icon
-          dimension={12}
-          className={styles.Icon}
-          fill="var(--highlight-red-foreground)"
-          source={sorting === 'desc' ? 'bars-sort-down' : 'bars-sort-up'}
-        />
-      )}
-    </>
-  ), [children, sorting]);
+  const content = useMemo(
+    () => (
+      <>
+        {children}
+        {Boolean(sorting) && (
+          <Icon
+            dimension={12}
+            className={styles.Icon}
+            fill="var(--highlight-red-foreground)"
+            source={sorting === 'desc' ? 'bars-sort-down' : 'bars-sort-up'}
+          />
+        )}
+      </>
+    ),
+    [children, sorting],
+  );
 
   return (
     <Component
@@ -96,15 +98,12 @@ export const TableHeadCell: TableHeadcellComponent = (
       {...otherProps}
     >
       {canSort ? (
-        <BlankButton
-          className={styles.BlankButton}
-          type="button"
-          onClick={onClick}
-        >
+        <BlankButton className={styles.BlankButton} type="button" onClick={onClick}>
           {content}
         </BlankButton>
-      ) : content}
+      ) : (
+        content
+      )}
     </Component>
   );
 };
-

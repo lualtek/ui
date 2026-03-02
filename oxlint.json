@@ -1,0 +1,17 @@
+{
+  "$schema": "https://raw.githubusercontent.com/oxc-project/oxc/refs/heads/main/npm/oxlint/configuration_schema.json",
+  "plugins": ["react", "jsx-a11y", "typescript", "import", "unicorn"],
+  "env": {
+    "browser": true,
+    "es2022": true
+  },
+  "globals": {
+    "React": "readonly"
+  },
+  "rules": {
+    "react/react-in-jsx-scope": "off",
+    "react/require-default-props": "off",
+    "import/no-extraneous-dependencies": "off"
+  },
+  "ignorePatterns": ["dist/", "node_modules/", "**/*.module.css.d.ts", "**/*.stories.tsx"]
+}

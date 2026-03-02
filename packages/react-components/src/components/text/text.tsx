@@ -3,7 +3,7 @@
 import { TokensTypes } from '@lualtek/tokens/platforms/web';
 import tkns from '@lualtek/tokens/web/tokens.json';
 import clsx from 'clsx';
-import { forwardRef, useMemo } from 'react';
+import { useMemo } from 'react';
 
 import { PolyRefComponent } from '@/components';
 
@@ -96,37 +96,35 @@ export type TextProps = React.ComponentPropsWithRef<'span' | 'p'> & {
    * @defaultValue "text alphabetic"
    */
   trimType?: string;
-}
+};
 
 export type TextComponent = PolyRefComponent<'span', TextProps>;
 
-export const Text: TextComponent = (
-  {
-    as: Component = 'span',
-    children,
-    className,
-    size,
-    sentiment,
-    dimmed,
-    weight,
-    maxWidth,
-    align = 'start',
-    responsive = true,
-    lineHeight = 'standard',
-    textColor,
-    whiteSpace = 'normal',
-    balanced = false,
-    hPadding,
-    vPadding,
-    trim,
-    trimType = 'text alphabetic',
-    fontWidth,
-    opticalSize,
-    style,
-    ref: forwardedRef,
-    ...otherProps
-  },
-) => {
+export const Text: TextComponent = ({
+  as: Component = 'span',
+  children,
+  className,
+  size,
+  sentiment,
+  dimmed,
+  weight,
+  maxWidth,
+  align = 'start',
+  responsive = true,
+  lineHeight = 'standard',
+  textColor,
+  whiteSpace = 'normal',
+  balanced = false,
+  hPadding,
+  vPadding,
+  trim,
+  trimType = 'text alphabetic',
+  fontWidth,
+  opticalSize,
+  style,
+  ref: forwardedRef,
+  ...otherProps
+}) => {
   const dynamicStyle = useMemo(() => {
     const getPaddingValue = (
       padding: TokensTypes['space'] | [TokensTypes['space'] | 0, TokensTypes['space'] | 0],
@@ -139,7 +137,9 @@ export const Text: TextComponent = (
     };
 
     const vPaddingValues = vPadding ? getPaddingValue(vPadding, 'vertical') : { top: 0, bottom: 0 };
-    const hPaddingValues = hPadding ? getPaddingValue(hPadding, 'horizontal') : { left: 0, right: 0 };
+    const hPaddingValues = hPadding
+      ? getPaddingValue(hPadding, 'horizontal')
+      : { left: 0, right: 0 };
 
     return {
       '--max-w': maxWidth,
@@ -156,7 +156,19 @@ export const Text: TextComponent = (
       '--custom-width': fontWidth,
       '--custom-opsz': opticalSize,
     };
-  }, [maxWidth, align, textColor, whiteSpace, hPadding, vPadding, trimType, trim, weight, fontWidth, opticalSize]);
+  }, [
+    maxWidth,
+    align,
+    textColor,
+    whiteSpace,
+    hPadding,
+    vPadding,
+    trimType,
+    trim,
+    weight,
+    fontWidth,
+    opticalSize,
+  ]);
 
   return (
     <Component

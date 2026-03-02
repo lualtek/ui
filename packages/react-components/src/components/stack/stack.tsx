@@ -3,7 +3,7 @@
 import { TokensTypes } from '@lualtek/tokens/platforms/web';
 import tkns from '@lualtek/tokens/web/tokens.json';
 import clsx from 'clsx';
-import { forwardRef, useMemo } from 'react';
+import { useMemo } from 'react';
 
 import { PolyRefComponent } from '@/components';
 
@@ -64,31 +64,29 @@ export type StackProps = {
    * Set the max width of the stack
    */
   maxWidth?: string;
-}
+};
 
 export type StackComponent = PolyRefComponent<'div', StackProps>;
 
-export const Stack: StackComponent = (
-  {
-    as,
-    children,
-    className,
-    rowGap,
-    columnGap,
-    inline = false,
-    direction = 'column',
-    wrap = false,
-    fill = true,
-    vAlign = 'initial',
-    hAlign = 'initial',
-    hPadding,
-    vPadding,
-    style,
-    maxWidth,
-    ref: forwardedRef,
-    ...otherProps
-  },
-) => {
+export const Stack: StackComponent = ({
+  as,
+  children,
+  className,
+  rowGap,
+  columnGap,
+  inline = false,
+  direction = 'column',
+  wrap = false,
+  fill = true,
+  vAlign = 'initial',
+  hAlign = 'initial',
+  hPadding,
+  vPadding,
+  style,
+  maxWidth,
+  ref: forwardedRef,
+  ...otherProps
+}) => {
   const Component = as ?? 'div';
   const alignmentTemplate = (prop: string) => {
     if (prop.includes('start') || prop.includes('end')) {
@@ -110,7 +108,9 @@ export const Stack: StackComponent = (
     };
 
     const vPaddingValues = vPadding ? getPaddingValue(vPadding, 'vertical') : { top: 0, bottom: 0 };
-    const hPaddingValues = hPadding ? getPaddingValue(hPadding, 'horizontal') : { left: 0, right: 0 };
+    const hPaddingValues = hPadding
+      ? getPaddingValue(hPadding, 'horizontal')
+      : { left: 0, right: 0 };
 
     return {
       '--r-gap': rowGap ? tkns.space[rowGap] : 0,

@@ -1,15 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import { IconButton } from '@/components';
-
 import { PulseLight } from './pulse-light';
 
 const meta = {
   title: 'Badges/Pulse Light',
   component: PulseLight,
   args: {
-    color: "yellow",
-    dimension: 8
+    color: 'yellow',
+    dimension: 8,
   },
   tags: ['code-only'],
 } satisfies Meta<typeof PulseLight>;

@@ -1,15 +1,9 @@
 'use client';
 
 import clsx from 'clsx';
-import {
-  FC,
-  ReactNode, useCallback, useId, useMemo,
-} from 'react';
+import { FC, ReactNode, useCallback, useId, useMemo } from 'react';
 
-import {
-  Icon, IconProps,
-  Stack, Text, TextProps,
-} from '@/components';
+import { Icon, IconProps, Stack, Text, TextProps } from '@/components';
 
 import styles from './icon-meter.module.css';
 
@@ -62,7 +56,7 @@ export type IconMeterProps = React.ComponentPropsWithRef<'div'> & {
    * @defaultValue "var(--highlight-green-foreground)"
    */
   iconColor?: string;
-}
+};
 
 export const IconMeter: FC<IconMeterProps> = ({
   className,
@@ -90,7 +84,10 @@ export const IconMeter: FC<IconMeterProps> = ({
     },
   };
 
-  const clamp = useMemo(() => (num: number, min: number, max: number) => Math.min(Math.max(num, min), max), []);
+  const clamp = useMemo(
+    () => (num: number, min: number, max: number) => Math.min(Math.max(num, min), max),
+    [],
+  );
 
   const roundValue = useCallback((value: number) => {
     const integer = parseInt(String(value), 10);
@@ -111,31 +108,36 @@ export const IconMeter: FC<IconMeterProps> = ({
     return 0;
   }, []);
 
-  const iconType = useCallback((maxIcons: number, value: number) => {
-    const roundedValue = roundValue(value);
-    return new Array(maxIcons).fill(0).map((_, index) => {
-      const iconIndex = index + 1;
-      let fillType = 'var(--icon-dimmed-color)';
+  const iconType = useCallback(
+    (maxIcons: number, value: number) => {
+      const roundedValue = roundValue(value);
+      return Array.from({ length: maxIcons })
+        .fill(0)
+        .map((_, index) => {
+          const iconIndex = index + 1;
+          let fillType = 'var(--icon-dimmed-color)';
 
-      if (roundedValue >= iconIndex) {
-        fillType = iconColor;
-      }
+          if (roundedValue >= iconIndex) {
+            fillType = iconColor;
+          }
 
-      if (roundedValue < iconIndex && roundedValue > iconIndex - 1) {
-        fillType = 'url(#HalfIcon)';
-      }
+          if (roundedValue < iconIndex && roundedValue > iconIndex - 1) {
+            fillType = 'url(#HalfIcon)';
+          }
 
-      return (
-        <Icon
-          source={icon}
-          className={styles.Icon}
-          dimension={dimension === 'big' ? 18 : 12}
-          fill={fillType}
-          key={iconIndex}
-        />
-      );
-    });
-  }, [icon, iconColor, dimension, roundValue]);
+          return (
+            <Icon
+              source={icon}
+              className={styles.Icon}
+              dimension={dimension === 'big' ? 18 : 12}
+              fill={fillType}
+              key={iconIndex}
+            />
+          );
+        });
+    },
+    [icon, iconColor, dimension, roundValue],
+  );
 
   return (
     <Stack
@@ -154,7 +156,14 @@ export const IconMeter: FC<IconMeterProps> = ({
       ref={forwardedRef}
       {...otherProps}
     >
-      <svg aria-hidden="true" className={styles.Gradient} width="100" height="50" version="1.1" xmlns="http://www.w3.org/2000/svg">
+      <svg
+        aria-hidden="true"
+        className={styles.Gradient}
+        width="100"
+        height="50"
+        version="1.1"
+        xmlns="http://www.w3.org/2000/svg"
+      >
         <defs>
           <linearGradient id="HalfIcon">
             <stop offset="0" style={{ stopColor: iconColor }} />

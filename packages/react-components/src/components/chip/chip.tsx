@@ -2,18 +2,11 @@
 
 import type { TokensTypes } from '@lualtek/tokens/platforms/web';
 import clsx from 'clsx';
-import {
-  FC,
-  Ref, SyntheticEvent, useMemo,
-} from 'react';
+import { FC, Ref, SyntheticEvent, useMemo } from 'react';
 
-import {
-  Icon, IconProps, Stack, StackProps, Text,
-} from '@/components';
+import { Icon, IconProps, Stack, StackProps, Text } from '@/components';
 
 import styles from './chip.module.css';
-
-type ForwardedElementType<T extends boolean> = T extends true ? HTMLButtonElement : HTMLSpanElement;
 
 export type ChipProps = React.ComponentPropsWithRef<'button'> & {
   /**
@@ -48,11 +41,14 @@ export type ChipProps = React.ComponentPropsWithRef<'button'> & {
    * Only applicable if `interactive` is `true`.
    */
   onClick?: (event: SyntheticEvent<HTMLButtonElement, MouseEvent>) => void;
-}
+};
 
-type Sizes = Record<NonNullable<ChipProps['dimension']>, {
-  icon: IconProps['dimension'];
-}>
+type Sizes = Record<
+  NonNullable<ChipProps['dimension']>,
+  {
+    icon: IconProps['dimension'];
+  }
+>;
 
 const sizes: Sizes = {
   small: {
@@ -80,49 +76,51 @@ export const Chip: FC<ChipProps> = ({
   ref: forwardedRef,
   ...otherProps
 }) => {
-  const commonProps: StackProps & Record<string, unknown> = useMemo(() => ({
-    direction: 'row',
-    columnGap: 8,
-    inline: true,
-    fill: false,
-    'data-chip-dimension': dimension,
-    className: clsx(styles.Chip, className),
-    vAlign: 'center',
-  }), [className, dimension]);
+  const commonProps: StackProps & Record<string, unknown> = useMemo(
+    () => ({
+      direction: 'row',
+      columnGap: 8,
+      inline: true,
+      fill: false,
+      'data-chip-dimension': dimension,
+      className: clsx(styles.Chip, className),
+      vAlign: 'center',
+    }),
+    [className, dimension],
+  );
 
-  const dynamicStyle = useMemo(() => ({
-    '--background': `var(--highlight-${color}-background)`,
-    '--foreground': `var(--highlight-${color}-foreground)`,
-  }), [color]);
+  const dynamicStyle = useMemo(
+    () => ({
+      '--background': `var(--highlight-${color}-background)`,
+      '--foreground': `var(--highlight-${color}-foreground)`,
+    }),
+    [color],
+  );
 
-  const Content = useMemo(() => (
-    <>
-      {(icon && !dismissable) && (
-        <Icon
-          source={icon}
-          dimension={sizes[dimension].icon}
-          className={styles.Icon}
-        />
-      )}
+  const Content = useMemo(
+    () => (
+      <>
+        {icon && !dismissable && (
+          <Icon source={icon} dimension={sizes[dimension].icon} className={styles.Icon} />
+        )}
 
-      <Text
-        weight="bold"
-        as="b"
-        whiteSpace="nowrap"
-        lineHeight={dimension === 'small' ? 'extra-small' : undefined}
-      >
-        {children}
-      </Text>
-      {(!interactive && dismissable) && (
-        <button onClick={onDismissClick} className={styles.Action} type="button">
-          <Icon
-            source="remove"
-            dimension={sizes[dimension].icon}
-          />
-        </button>
-      )}
-    </>
-  ), [children, dimension, dismissable, icon, interactive, onDismissClick]);
+        <Text
+          weight="bold"
+          as="b"
+          whiteSpace="nowrap"
+          lineHeight={dimension === 'small' ? 'extra-small' : undefined}
+        >
+          {children}
+        </Text>
+        {!interactive && dismissable && (
+          <button onClick={onDismissClick} className={styles.Action} type="button">
+            <Icon source="remove" dimension={sizes[dimension].icon} />
+          </button>
+        )}
+      </>
+    ),
+    [children, dimension, dismissable, icon, interactive, onDismissClick],
+  );
 
   return interactive ? (
     <Stack

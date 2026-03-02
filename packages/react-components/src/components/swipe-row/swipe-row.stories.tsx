@@ -1,9 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import React from 'react';
 
-import {
-  BlankButton, Bleed, Container, Panel, Stack, SwipeRowActionProps,
-} from '@/components';
+import { BlankButton, Panel, Stack, SwipeRowActionProps } from '@/components';
 
 import { SwipeRow } from './swipe-row';
 
@@ -49,10 +46,7 @@ const meta: Meta<typeof SwipeRow> = {
         <p style={{ margin: '4px 0 0', fontSize: '0.9rem', color: '#555' }}>Updated yesterday</p>
       </Panel>
     ),
-    children: (
-      <>
-        {renderActions({})}
-      </>),
+    children: <>{renderActions({})}</>,
   },
 };
 
@@ -75,7 +69,8 @@ export const WithLabels = {
         {renderActions({
           showLabel: true,
         })}
-      </>),
+      </>
+    ),
   },
 } satisfies Story;
 

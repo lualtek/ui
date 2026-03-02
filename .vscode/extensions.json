@@ -1,15 +1,14 @@
 {
-	// See https://go.microsoft.com/fwlink/?LinkId=827846 to learn about workspace recommendations.
-	// Extension identifier format: ${publisher}.${name}. Example: vscode.csharp
+  // See https://go.microsoft.com/fwlink/?LinkId=827846 to learn about workspace recommendations.
+  // Extension identifier format: ${publisher}.${name}. Example: vscode.csharp
 
   // List of extensions which should be recommended for users of this workspace.
   "recommendations": [
     "vunguyentuan.vscode-postcss",
-    "biomejs.biome",
+    "oxc.oxc-vscode",
     "kamikillerto.vscode-colorize",
     "editorconfig.editorconfig",
     "vunguyentuan.vscode-css-variables",
-    "aaron-bond.better-comments",
-    "dbaeumer.vscode-eslint"
-	]
+    "aaron-bond.better-comments"
+  ]
 }

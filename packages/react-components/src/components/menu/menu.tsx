@@ -1,21 +1,15 @@
 'use client';
 
 import clsx from 'clsx';
-import {
-  FC,
-  forwardRef, ReactNode, useMemo,
-} from 'react';
+import { FC, ReactNode, useMemo } from 'react';
 import { RovingTabIndexProvider } from 'react-roving-tabindex';
 
-import {
-  ConditionalWrapper,
-  Panel, Stack,
-} from '@/components';
+import { ConditionalWrapper, Panel, Stack } from '@/components';
 
-import styles from './menu.module.css';
 import { MenuItem } from './menu-item/menu-item';
 import { MenuItemCheckbox } from './menu-item/menu-item-checkbox';
 import { MenuSeparator } from './menu-separator/menu-separator';
+import styles from './menu.module.css';
 
 export type MenuProps = React.ComponentPropsWithRef<'ul'> & {
   /**
@@ -33,42 +27,35 @@ export type MenuProps = React.ComponentPropsWithRef<'ul'> & {
    * @defaultValue true
    */
   wrapWithPanel?: boolean;
-}
+};
 
 type MenuComponent = FC<MenuProps> & {
   Item: typeof MenuItem;
   ItemCheckbox: typeof MenuItemCheckbox;
   Separator: typeof MenuSeparator;
-}
+};
 
-export const Menu: MenuComponent = (
-  {
-    className,
-    children,
-    maxHeight,
-    wrapWithPanel = true,
-    style,
-    ref: forwardedRef,
-    ...otherProps
-  },
-) => {
-  const dynamicStyle = useMemo(() => (
-    {
+export const Menu: MenuComponent = ({
+  className,
+  children,
+  maxHeight,
+  wrapWithPanel = true,
+  style,
+  ref: forwardedRef,
+  ...otherProps
+}) => {
+  const dynamicStyle = useMemo(
+    () => ({
       '--max-height': maxHeight,
-    }
-  ), [maxHeight]);
+    }),
+    [maxHeight],
+  );
 
   return (
     <ConditionalWrapper
       condition={wrapWithPanel}
-      wrapper={children => (
-        <Panel
-          bordered
-          vibrant
-          vibrancyColor="background"
-          showGlow
-          radius={24}
-        >
+      wrapper={(children) => (
+        <Panel bordered vibrant vibrancyColor="background" showGlow radius={24}>
           {children}
         </Panel>
       )}

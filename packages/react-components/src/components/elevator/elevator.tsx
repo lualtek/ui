@@ -1,10 +1,6 @@
-import {
-  Children, cloneElement, ComponentProps, CSSProperties, FC, isValidElement, PropsWithChildren, ReactElement,
-} from 'react';
+import { Children, cloneElement, FC, isValidElement } from 'react';
 
-import {
-  ElevationDirection, ElevationLevel, ElevationShadowColor, useStyles,
-} from '@/components';
+import { ElevationDirection, ElevationLevel, ElevationShadowColor, useStyles } from '@/components';
 
 export type ElevatorProps = {
   /**
@@ -13,7 +9,7 @@ export type ElevatorProps = {
   children: React.ReactNode;
   /**
    * Set the elevation of the component when is resting.
-  */
+   */
   resting: ElevationLevel;
   /**
    * Set the elevation of the component when is hovered.
@@ -22,7 +18,7 @@ export type ElevatorProps = {
   /**
    * Set the direction of shadow casting
    * @defaultValue "bottom"
-  */
+   */
   direction?: ElevationDirection;
   /**
    * Set the color of the shadow
@@ -34,7 +30,7 @@ export type ElevatorProps = {
    * Whis shadow is added to the elevation shadow.
    */
   extraShadow?: string;
-}
+};
 
 export const Elevator: FC<ElevatorProps> = ({
   children,
@@ -55,18 +51,16 @@ export const Elevator: FC<ElevatorProps> = ({
 
   return Children.map(children, (child) => {
     if (isValidElement<React.HTMLAttributes<HTMLElement>>(child)) {
-      return cloneElement(child,
-        {
-          ...elevation.attributes,
-          style: {
-            ...((child.props.style ?? {})),
-            ...elevation.style,
-            '--extra-shadow': extraShadow,
-          },
-        });
+      return cloneElement(child, {
+        ...elevation.attributes,
+        style: {
+          ...child.props.style,
+          ...elevation.style,
+          '--extra-shadow': extraShadow,
+        },
+      });
     }
 
     return undefined;
   });
 };
-

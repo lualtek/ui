@@ -2,35 +2,31 @@
 
 import clsx from 'clsx';
 import { domMax, LazyMotion, m } from 'motion/react';
-import {
-  FC,
-  useCallback, useEffect, useState,
-} from 'react';
+import { FC, useCallback, useEffect, useState } from 'react';
 import { Except } from 'type-fest';
 
-import {
-  Icon, IconButton, IconButtonProps, IconProps,
-} from '@/components';
+import { Icon, IconButton, IconButtonProps, IconProps } from '@/components';
 
 import styles from './toggle-button.module.css';
 
-export type ToggleButtonProps = React.ComponentPropsWithRef<'button'> & Except<IconButtonProps, 'icon'> & {
-  /**
-   * Set the icon to show when the button is resting.
-   */
-  restingIcon: IconProps['source'];
-  /**
-   * Set the icon to show when the button is pressed/active.
-   */
-  pressedIcon?: IconProps['source'];
-  /**
-   * Set the pressed state of the button. If `pressedIcon` is set,
-   * the icon will be shown instead of the resting icon.
-   *
-   * @defaultValue false
-   */
-  pressed?: boolean;
-}
+export type ToggleButtonProps = React.ComponentPropsWithRef<'button'> &
+  Except<IconButtonProps, 'icon'> & {
+    /**
+     * Set the icon to show when the button is resting.
+     */
+    restingIcon: IconProps['source'];
+    /**
+     * Set the icon to show when the button is pressed/active.
+     */
+    pressedIcon?: IconProps['source'];
+    /**
+     * Set the pressed state of the button. If `pressedIcon` is set,
+     * the icon will be shown instead of the resting icon.
+     *
+     * @defaultValue false
+     */
+    pressed?: boolean;
+  };
 
 const scaleAnimation = {
   scaleIn: {
@@ -51,21 +47,18 @@ const scaleAnimation = {
   },
 };
 
-export const ToggleButton: FC<ToggleButtonProps> = (
-  {
-    className,
-    restingIcon,
-    pressedIcon,
-    dimension,
-    kind,
-    disabled,
-    pressed = false,
-    onClick,
-    children,
-    ref: forwardedRef,
-    ...otherProps
-  },
-) => {
+export const ToggleButton: FC<ToggleButtonProps> = ({
+  className,
+  restingIcon,
+  pressedIcon,
+  dimension,
+  kind,
+  disabled,
+  pressed = false,
+  onClick,
+  ref: forwardedRef,
+  ...otherProps
+}) => {
   const [isPressed, setIsPressed] = useState<boolean>(pressed);
   const [isFirstRender, setFirstRender] = useState(true);
 
@@ -89,7 +82,7 @@ export const ToggleButton: FC<ToggleButtonProps> = (
         small: 12,
       };
 
-      return (<Icon source={icon} dimension={iconSize[dimension ?? 'regular']} />);
+      return <Icon source={icon} dimension={iconSize[dimension ?? 'regular']} />;
     },
     [],
   );
@@ -107,18 +100,17 @@ export const ToggleButton: FC<ToggleButtonProps> = (
       {...otherProps}
     >
       <LazyMotion features={domMax}>
-        {isPressed && pressedIcon
-          ? (
-            <m.span
-              key="pressedIcon"
-              variants={scaleAnimation}
-              initial={isFirstRender && isPressed ? false : 'scaleOut'}
-              animate="scaleIn"
-            >
-              {renderIcon(pressedIcon, dimension as IconProps['dimension'])}
-            </m.span>
-          )
-          : restingIcon && (
+        {isPressed && pressedIcon ? (
+          <m.span
+            key="pressedIcon"
+            variants={scaleAnimation}
+            initial={isFirstRender && isPressed ? false : 'scaleOut'}
+            animate="scaleIn"
+          >
+            {renderIcon(pressedIcon, dimension as IconProps['dimension'])}
+          </m.span>
+        ) : (
+          restingIcon && (
             <m.span
               key="restingIcon"
               variants={scaleAnimation}
@@ -128,7 +120,7 @@ export const ToggleButton: FC<ToggleButtonProps> = (
               {renderIcon(restingIcon, dimension as IconProps['dimension'])}
             </m.span>
           )
-      }
+        )}
       </LazyMotion>
     </IconButton>
   );

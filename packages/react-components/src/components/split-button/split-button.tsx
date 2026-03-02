@@ -1,10 +1,13 @@
 import clsx from 'clsx';
-import { forwardRef } from 'react';
 import { Except } from 'type-fest';
 
 import {
-  Button, ButtonProps, PolyRefComponent, Popover,
-  PopoverContentProps, Stack,
+  Button,
+  ButtonProps,
+  PolyRefComponent,
+  Popover,
+  PopoverContentProps,
+  Stack,
 } from '@/components';
 
 import { Elevator } from '../elevator';
@@ -19,33 +22,32 @@ export type SplitButtonProps = Pick<PopoverContentProps, 'side' | 'offset' | 'al
    * Pass the content for the popover.
    */
   children?: React.ReactNode;
-}
+};
 
-type SplitButtonComponent = PolyRefComponent<typeof Button,
-SplitButtonProps & Except<ButtonProps, 'iconPosition' | 'iconColor'>
+type SplitButtonComponent = PolyRefComponent<
+  typeof Button,
+  SplitButtonProps & Except<ButtonProps, 'iconPosition' | 'iconColor'>
 >;
 
-export const SplitButton: SplitButtonComponent = (
-  {
-    as = 'button' as React.ElementType,
-    className,
-    label,
-    icon = 'ctrl-down',
-    kind,
-    dimension,
-    fullWidth,
-    disabled,
-    busy,
-    children,
-    side,
-    align,
-    offset,
-    sentiment,
-    onClick,
-    ref: forwardedRef,
-    ...otherProps
-  },
-) => {
+export const SplitButton: SplitButtonComponent = ({
+  as = 'button' as React.ElementType,
+  className,
+  label,
+  icon = 'ctrl-down',
+  kind,
+  dimension,
+  fullWidth,
+  disabled,
+  busy,
+  children,
+  side,
+  align,
+  offset,
+  sentiment,
+  onClick,
+  ref: forwardedRef,
+  ...otherProps
+}) => {
   const commonProps = {
     kind,
     dimension,
@@ -54,11 +56,7 @@ export const SplitButton: SplitButtonComponent = (
   };
 
   return (
-    <Stack
-      className={clsx(styles.SplitButton, className)}
-      direction="row"
-      inline={!fullWidth}
-    >
+    <Stack className={clsx(styles.SplitButton, className)} direction="row" inline={!fullWidth}>
       <Button
         as={as}
         busy={busy}
@@ -71,11 +69,11 @@ export const SplitButton: SplitButtonComponent = (
         {label}
       </Button>
       <Popover>
-        <Popover.Trigger><Button icon={icon} {...commonProps} /></Popover.Trigger>
+        <Popover.Trigger>
+          <Button icon={icon} {...commonProps} />
+        </Popover.Trigger>
         <Popover.Content side={side} align={align} offset={offset}>
-          <Elevator resting={2}>
-            {children}
-          </Elevator>
+          <Elevator resting={2}>{children}</Elevator>
         </Popover.Content>
       </Popover>
     </Stack>

@@ -13,58 +13,56 @@
     "*.jsx": "${capture}.js",
     "*.tsx": "${capture}.ts, ${capture}.module.css, ${capture}-*.tsx, ${capture}.module.css.d.ts, ${capture}.stories.tsx",
     "tsconfig.json": "tsconfig.*.json",
-    "package.json": "sentry.*.config.js, biome.json, .npmrc, .graphqlrc, pnpm-workspace.yaml, next.config.js, *.config.mjs, .npmrc, *.config.js, *.config.ts, *.config.cjs, package-lock.json, pnpm-lock.yaml, jest.config.json"
+    "package.json": "sentry.*.config.js, oxlint.json, .oxfmtrc.json, .npmrc, .graphqlrc, pnpm-workspace.yaml, next.config.js, *.config.mjs, .npmrc, *.config.js, *.config.ts, *.config.cjs, package-lock.json, pnpm-lock.yaml, jest.config.json"
   },
+  "oxc.fmt.configPath": ".oxfmtrc.json",
+  "editor.defaultFormatter": "oxc.oxc-vscode",
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
-    "source.fixAll.biome": "explicit",
-    "source.organizeImports.biome": "explicit",
-    "source.fixAll.eslint": "never"
+    "source.fixAll.oxc": "explicit"
   },
-
-  "eslint.enable": true,
-  "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
-  "eslint.probe": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
   "[typescript]": {
-    "editor.formatOnSave": false,
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+    "editor.defaultFormatter": "oxc.oxc-vscode",
+    "editor.formatOnSave": true,
     "editor.codeActionsOnSave": {
-      "source.fixAll.biome": "never",
-      "source.organizeImports.biome": "never",
-      "source.fixAll.eslint": "explicit"
+      "source.fixAll.oxc": "explicit",
+      "source.organizeImports": "explicit"
     }
   },
   "[typescriptreact]": {
-    "editor.formatOnSave": false,
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+    "editor.defaultFormatter": "oxc.oxc-vscode",
+    "editor.formatOnSave": true,
     "editor.codeActionsOnSave": {
-      "source.fixAll.biome": "never",
-      "source.organizeImports.biome": "never",
-      "source.fixAll.eslint": "explicit"
+      "source.fixAll.oxc": "explicit",
+      "source.organizeImports": "explicit"
     }
   },
   "[javascript]": {
-    "editor.formatOnSave": false,
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+    "editor.defaultFormatter": "oxc.oxc-vscode",
+    "editor.formatOnSave": true,
     "editor.codeActionsOnSave": {
-      "source.fixAll.biome": "never",
-      "source.organizeImports.biome": "never",
-      "source.fixAll.eslint": "explicit"
+      "source.fixAll.oxc": "explicit",
+      "source.organizeImports": "explicit"
     }
   },
   "[javascriptreact]": {
-    "editor.formatOnSave": false,
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+    "editor.defaultFormatter": "oxc.oxc-vscode",
+    "editor.formatOnSave": true,
     "editor.codeActionsOnSave": {
-      "source.fixAll.biome": "never",
-      "source.organizeImports.biome": "never",
-      "source.fixAll.eslint": "explicit"
+      "source.fixAll.oxc": "explicit",
+      "source.organizeImports": "explicit"
     }
   },
   "[css]": {
-    "editor.defaultFormatter": "biomejs.biome"
+    "editor.defaultFormatter": "oxc.oxc-vscode",
+    "editor.formatOnSave": true
   },
   "[json]": {
-    "editor.defaultFormatter": "biomejs.biome"
+    "editor.defaultFormatter": "oxc.oxc-vscode",
+    "editor.formatOnSave": true
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode",
+    "editor.formatOnSave": true
   }
 }

@@ -1,5 +1,5 @@
-import { Meta, StoryObj } from '@storybook/react-vite';
-import { ElementType, ReactElement } from 'react';
+import { Meta } from '@storybook/react-vite';
+import { ElementType } from 'react';
 
 import { Container } from '../components/container';
 

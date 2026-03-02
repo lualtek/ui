@@ -1,11 +1,7 @@
 'use client';
 
 import clsx from 'clsx';
-import {
-  FC,
-  RefObject,
-  useCallback, useMemo,
-} from 'react';
+import { FC, useCallback, useMemo } from 'react';
 
 import { Text } from '@/components';
 
@@ -35,7 +31,7 @@ export type LinearProgressProps = React.ComponentPropsWithRef<'progress'> & {
    * Show or hide the progress value.
    */
   showProgress?: boolean;
-}
+};
 
 export const LinearProgress: FC<LinearProgressProps> = ({
   className,
@@ -52,14 +48,18 @@ export const LinearProgress: FC<LinearProgressProps> = ({
     [max, value],
   );
 
-  const clamp = useMemo(() => (num: number, min: number, max: number) => Math.min(Math.max(num, min), max), []);
+  const clamp = useMemo(
+    () => (num: number, min: number, max: number) => Math.min(Math.max(num, min), max),
+    [],
+  );
 
-  const dynamicStyle = useMemo(() => (
-    {
+  const dynamicStyle = useMemo(
+    () => ({
       '--percentage-offset': `${getPercentage()}%`,
       '--percentage-translation': value !== 0 ? '-100%' : '-50%',
-    }
-  ), [getPercentage, value]);
+    }),
+    [getPercentage, value],
+  );
 
   return (
     <div className={clsx(styles.LinearProgress, className)} style={{ ...dynamicStyle, ...style }}>
@@ -75,7 +75,7 @@ export const LinearProgress: FC<LinearProgressProps> = ({
         max={max}
         {...otherProps}
       />
-      {(showProgress) && (
+      {showProgress && (
         <Text
           as="span"
           className={styles.Percentage}

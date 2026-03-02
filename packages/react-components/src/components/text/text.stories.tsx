@@ -49,7 +49,7 @@ const meta = {
       control: { type: 'range', min: 6, max: 12, step: 0.5 },
     },
   },
-  render: args => <Text {...args} />,
+  render: (args) => <Text {...args} />,
 } satisfies Meta<typeof Text>;
 
 export default meta;
@@ -77,7 +77,7 @@ export const WithPadding = {
     hPadding: 104,
     vPadding: [80, 32],
   },
-  render: args => <Text {...args} as="p" />,
+  render: (args) => <Text {...args} as="p" />,
 } satisfies Story;
 
 export const CustomWrapper = {
@@ -91,11 +91,9 @@ export const Nested = {
   args: {
     size: 22,
   },
-  render: args => (
+  render: (args) => (
     <Text {...args}>
-      Lorem, ipsum dolor sit
-      {' '}
-      <Text size={14}>amet consectetur adipisicing elit.</Text>
+      Lorem, ipsum dolor sit <Text size={14}>amet consectetur adipisicing elit.</Text>
     </Text>
   ),
 } satisfies Story;
@@ -104,20 +102,19 @@ export const Balanced = {
   args: {
     balanced: true,
   },
-  render: ({ as, ...args }) => (
+  render: ({ ...args }) => (
     <Text {...args} as="p">
       {args.children}
     </Text>
   ),
 } satisfies Story;
 
-
 export const Trimmed = {
   args: {
     balanced: true,
     trim: 'end',
   },
-  render: ({ as, ...args }) => (
+  render: ({ ...args }) => (
     <Text {...args} as="p">
       {args.children}
     </Text>

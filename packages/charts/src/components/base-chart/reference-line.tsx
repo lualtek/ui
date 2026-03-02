@@ -7,14 +7,13 @@ import { Except } from 'type-fest';
 
 export type ReferenceLineProps = Except<
   RechartReferenceLineProps,
-'fill' | 'stroke' | 'strokeDasharray'
+  'fill' | 'stroke' | 'strokeDasharray'
 > & {
   dashed?: boolean;
   color?: string;
-}
+};
 
 export const ReferenceLine: FC<ReferenceLineProps> = ({
-  className,
   dashed = false,
   color = 'var(--dimmed-4)',
   ref,

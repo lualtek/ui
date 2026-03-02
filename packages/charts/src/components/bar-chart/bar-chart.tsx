@@ -1,13 +1,7 @@
 'use client';
 
-import {
-  useEffect, useRef, useState, useTransition,
-} from 'react';
-import {
-  Bar,
-  BarChart as ReBarChart,
-  YAxis,
-} from 'recharts';
+import { useEffect, useRef, useState, useTransition } from 'react';
+import { Bar, BarChart as ReBarChart, YAxis } from 'recharts';
 import { Except } from 'type-fest';
 
 import { useChartAxis } from '@/charts/hooks/use-chart-axis';
@@ -49,13 +43,14 @@ export type BarProps<D> = {
 };
 
 export type BarChartAccessoryProps<T = Record<string, unknown>> = Except<
-  BaseChartProps, 'renderChart' | 'children'
+  BaseChartProps,
+  'renderChart' | 'children'
 > & {
   /**
- * Whether to show the Y axis.
- *
- * @defaultValue true
- */
+   * Whether to show the Y axis.
+   *
+   * @defaultValue true
+   */
   showYAxis?: boolean;
   /**
    * The gap between bar groups
@@ -68,9 +63,12 @@ export type BarChartAccessoryProps<T = Record<string, unknown>> = Except<
    */
   barSize?: number | string;
   children?: BrushProps;
-} & T
+} & T;
 
-export type BarChartProps<D extends ChartDataBaseType, B extends BarProps<D>> = BarChartAccessoryProps<{
+export type BarChartProps<
+  D extends ChartDataBaseType,
+  B extends BarProps<D>,
+> = BarChartAccessoryProps<{
   /**
    * The data to render.
    */
@@ -79,10 +77,9 @@ export type BarChartProps<D extends ChartDataBaseType, B extends BarProps<D>> = 
    * The chart series/series to render.
    */
   series: B[];
-}>
+}>;
 
 export function BarChart<D extends ChartDataBaseType, B extends BarProps<D>>({
-  className,
   data,
   series,
   showYAxis = true,
@@ -112,7 +109,7 @@ export function BarChart<D extends ChartDataBaseType, B extends BarProps<D>>({
     yAxisWidthNotBiaxial,
     hasLeftY,
     hasRightY,
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
   } = useChartAxis({
     data,
     series,
@@ -145,7 +142,7 @@ export function BarChart<D extends ChartDataBaseType, B extends BarProps<D>>({
       onResize={handleResize}
       density={density}
       cursorStyle={{ strokeWidth: 0 }}
-      renderChart={chartChildren => (
+      renderChart={(chartChildren) => (
         <ReBarChart
           data={data}
           accessibilityLayer={focusable}
@@ -198,11 +195,7 @@ export function BarChart<D extends ChartDataBaseType, B extends BarProps<D>>({
           />
         )}
 
-        {series.map(({
-          side,
-          color,
-          ...barProps
-        }, index) => {
+        {series.map(({ side, color, ...barProps }, index) => {
           const computedStrokeColor = color ?? getChartDefaultColor(index);
 
           return (
@@ -219,4 +212,3 @@ export function BarChart<D extends ChartDataBaseType, B extends BarProps<D>>({
     </BaseChart>
   );
 }
-
