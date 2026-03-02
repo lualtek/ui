@@ -6,10 +6,9 @@ const meta: Meta<typeof TextLoading> = {
   title: 'Loading/Text Loading',
   component: TextLoading,
   args: {
-    char: '…'
+    char: '…',
   },
-  argTypes: {
-  },
+  argTypes: {},
 };
 
 export default meta;
@@ -21,13 +20,11 @@ export const Default = {} satisfies Story;
 export const WithCustomChar = {
   args: {
     char: '．',
-  }
+  },
 } satisfies Story;
 
 export const WithEmoji = {
   args: {
     char: '🚀',
-  }
+  },
 } satisfies Story;
-
-

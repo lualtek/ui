@@ -37,9 +37,7 @@ const meta = {
       control: { type: 'range', min: 6, max: 12, step: 0.5 },
     },
   },
-  render: args => (
-    <Title {...args}>Sample title</Title>
-  ),
+  render: (args) => <Title {...args}>Sample title</Title>,
 } satisfies Meta<typeof Title>;
 
 export default meta;
@@ -65,12 +63,12 @@ export const WithPadding = {
     hPadding: 104,
     vPadding: [80, 32],
   },
-  render: args => <Title {...args} as="h3" />,
+  render: (args) => <Title {...args} as="h3" />,
 } satisfies Story;
 
 export const Scale = {
   args: {
-    align: "start",
+    align: 'start',
   },
   render: () => (
     <Stack rowGap={32}>
@@ -90,7 +88,5 @@ export const Balanced = {
     balanced: true,
     level: '5',
   },
-  render: args => (
-    <Title {...args} as="h2" />
-  ),
+  render: (args) => <Title {...args} as="h2" />,
 } satisfies Story;
