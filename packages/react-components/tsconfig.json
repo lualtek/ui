@@ -2,13 +2,12 @@
   "extends": "tsconfig/react-library.json",
   "compilerOptions": {
     "outDir": "dist",
-    "baseUrl": ".",
     "moduleResolution": "bundler",
     "paths": {
-      "@/components": ["src"],
-      "@/components/types": ["src/types"],
-      "@/components/utils": ["src/utils"],
-      "@/components/lib": ["src/lib"]
+      "@/components": ["./src"],
+      "@/components/types": ["./src/types"],
+      "@/components/utils": ["./src/utils"],
+      "@/components/lib": ["./src/lib"]
     }
   },
   "include": ["src", "types", "generate-api-doc.ts"],

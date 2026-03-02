@@ -27,11 +27,10 @@
     "strictNullChecks": true,
     "strict": true,
     "preserveConstEnums": true,
-    "baseUrl": "../..",
     "paths": {
-      "@/components": ["packages/react-components/src"],
-      "@/components/types": ["packages/react-components/src/types"],
-      "@/charts": ["packages/charts/src"]
+      "@/components": ["../react-components/src"],
+      "@/components/types": ["../react-components/src/types"],
+      "@/charts": ["../charts/src"]
     }
   },
   "exclude": ["node_modules"]
