@@ -2,7 +2,7 @@
 
 import React, { Children, isValidElement, useEffect, useRef, useState, useTransition } from 'react';
 import type { LineProps as ReLineProps } from 'recharts';
-import { Area, AreaChart as ReAreaChart, Line, LineChart as ReLineChart, YAxis } from 'recharts';
+import { Area, Line, AreaChart as ReAreaChart, LineChart as ReLineChart, YAxis } from 'recharts';
 import type { DataKey } from 'recharts/types/util/types';
 import type { Except } from 'type-fest';
 
@@ -122,14 +122,7 @@ export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
   const [isAnimationActive, setIsAnimationActive] = useState(!disableAnimation);
   const [currentChartWidth, setCurrentChartWidth] = useState<number>();
   const [, startTransition] = useTransition();
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-  const {
-    yAxisWidthBiaxial,
-    yAxisWidthNotBiaxial,
-    hasLeftY,
-    hasRightY,
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-  } = useChartAxis({
+  const { yAxisWidthBiaxial, yAxisWidthNotBiaxial, hasLeftY, hasRightY } = useChartAxis({
     data: data ?? series.flatMap((serie) => serie.data ?? []),
     series,
     yDomainLeft,
@@ -209,7 +202,6 @@ export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
             type={yTypeRight}
             tickCount={DENSITIES[density]}
             hide={!showYAxis}
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
             width={yAxisWidthBiaxial}
             tick={{ fill: 'var(--dimmed-4)', fontSize: '0.8em' }}
             tickLine={{ stroke: 'var(--dimmed-2)' }}
@@ -226,7 +218,6 @@ export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
             type={yTypeLeft}
             tickCount={DENSITIES[density]}
             hide={!showYAxis}
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
             width={yAxisWidthNotBiaxial}
             tick={{ fill: 'var(--dimmed-4)', fontSize: '0.8em' }}
             tickLine={{ stroke: 'var(--dimmed-2)' }}

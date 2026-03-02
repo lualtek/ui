@@ -98,14 +98,7 @@ export function BarChart<D extends ChartDataBaseType, B extends BarProps<D>>({
   const [isAnimationActive, setIsAnimationActive] = useState(disableAnimation);
   const [currentChartWidth, setCurrentChartWidth] = useState<number>();
   const [, startTransition] = useTransition();
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-  const {
-    yAxisWidthBiaxial,
-    yAxisWidthNotBiaxial,
-    hasLeftY,
-    hasRightY,
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-  } = useChartAxis({
+  const { yAxisWidthBiaxial, yAxisWidthNotBiaxial, hasLeftY, hasRightY } = useChartAxis({
     data,
     series,
     yDomainLeft,
@@ -164,7 +157,6 @@ export function BarChart<D extends ChartDataBaseType, B extends BarProps<D>>({
             type={yTypeRight}
             hide={!showYAxis}
             tickCount={DENSITIES[density]}
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
             width={yAxisWidthBiaxial}
             tick={{ fill: 'var(--dimmed-4)', fontSize: '0.8em' }}
             tickLine={{ stroke: 'var(--dimmed-2)' }}
@@ -181,7 +173,6 @@ export function BarChart<D extends ChartDataBaseType, B extends BarProps<D>>({
             type={yTypeLeft}
             hide={!showYAxis}
             tickCount={DENSITIES[density]}
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
             width={yAxisWidthNotBiaxial}
             tick={{ fill: 'var(--dimmed-4)', fontSize: '0.8em' }}
             tickLine={{ stroke: 'var(--dimmed-2)' }}

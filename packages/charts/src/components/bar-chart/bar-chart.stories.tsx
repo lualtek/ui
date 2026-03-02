@@ -113,7 +113,6 @@ export const WithExternalTooltip = {
     showTooltip: false,
   },
   render: (args: BarChartProps<Data, BarProps<Data>>) => {
-    // eslint-disable-next-line
     const [{ tooltip }, setArgs] = useArgs<typeof args & { tooltip: Data }>();
 
     useEffect(() => {
@@ -156,13 +155,7 @@ export const WithExternalTooltip = {
               <Title level="4">{tooltip.x}</Title>
               <Stack direction="row" fill={false} columnGap={16}>
                 {args.series.map((item: any, index: number) => (
-                  <Stack
-                    fill={false}
-                    key={item.dataKey}
-                    direction="row"
-                    columnGap={8}
-                    vAlign="center"
-                  >
+                  <Stack fill={false} key={item.dataKey} direction="row" columnGap={8} vAlign="center">
                     <div
                       style={{
                         width: 12,

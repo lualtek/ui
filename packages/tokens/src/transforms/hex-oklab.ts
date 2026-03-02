@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment,
-@typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-return */
 import type { ColorTypes } from 'colorjs.io';
 import Color from 'colorjs.io';
 import type { Transform } from 'style-dictionary/types';
