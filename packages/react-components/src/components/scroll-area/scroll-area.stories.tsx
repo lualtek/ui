@@ -18,47 +18,34 @@ const meta = {
       control: { type: 'inline-radio' },
     },
   },
-  render: args => (
+  render: (args) => (
     <ScrollArea {...args} style={{ maxHeight: 300, maxWidth: 400 }}>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit.Quos temporibus veniam, possimus, velit,
-      reprehenderit magnam ab totam eaque adipisci ratione praesentium explicabo voluptatum laborum eum
-      error animi porro voluptate natus!
-      Commodi eos molestias neque voluptates consectetur tempore adipisci nisi quod labore non.
-      Praesentium quaerat non officia id doloribus laborum, aperiam asperiores omnis earum sequi fugit
-      reiciendis enim quas molestias quae?
-      Minus voluptatum odit maxime voluptas ad expedita temporibus, at sed. Iusto, expedita rerum,
-      beatae ducimus ut amet ipsam ad quas, quisquam quo totam! Deserunt blanditiis doloremque
-      voluptatem nostrum minus ea!
-      Lorem ipsum dolor sit amet consectetur adipisicing elit.Quos temporibus veniam, possimus, velit,
-      reprehenderit magnam ab totam eaque adipisci ratione praesentium explicabo voluptatum laborum eum
-      error animi porro voluptate natus!
-      Commodi eos molestias neque voluptates consectetur tempore adipisci nisi quod labore non.
-      Praesentium quaerat non officia id doloribus laborum, aperiam asperiores omnis earum sequi fugit
-      reiciendis enim quas molestias quae?
-      Minus voluptatum odit maxime voluptas ad expedita temporibus, at sed. Iusto, expedita rerum,
-      beatae ducimus ut amet ipsam ad quas, quisquam quo totam! Deserunt blanditiis doloremque
-      voluptatem nostrum minus ea!
-      Lorem ipsum dolor sit amet consectetur adipisicing elit.Quos temporibus veniam, possimus, velit,
-      reprehenderit magnam ab totam eaque adipisci ratione praesentium explicabo voluptatum laborum eum
-      error animi porro voluptate natus!
-      Commodi eos molestias neque voluptates consectetur tempore adipisci nisi quod labore non.
-      Praesentium quaerat non officia id doloribus laborum, aperiam asperiores omnis earum sequi fugit
-      reiciendis enim quas molestias quae?
-      Minus voluptatum odit maxime voluptas ad expedita temporibus, at sed. Iusto, expedita rerum,
-      beatae ducimus ut amet ipsam ad quas, quisquam quo totam! Deserunt blanditiis doloremque
-      voluptatem nostrum minus ea!
-      Commodi eos molestias neque voluptates consectetur tempore adipisci nisi quod labore non.
-      Praesentium quaerat non officia id doloribus laborum, aperiam asperiores omnis earum sequi fugit
-      reiciendis enim quas molestias quae?
-      Minus voluptatum odit maxime voluptas ad expedita temporibus, at sed. Iusto, expedita rerum,
-      beatae ducimus ut amet ipsam ad quas, quisquam quo totam! Deserunt blanditiis doloremque
-      voluptatem nostrum minus ea!
-      Commodi eos molestias neque voluptates consectetur tempore adipisci nisi quod labore non.
-      Praesentium quaerat non officia id doloribus laborum, aperiam asperiores omnis earum sequi fugit
-      reiciendis enim quas molestias quae?
-      Minus voluptatum odit maxime voluptas ad expedita temporibus, at sed. Iusto, expedita rerum,
-      beatae ducimus ut amet ipsam ad quas, quisquam quo totam! Deserunt blanditiis doloremque
-      voluptatem nostrum minus ea!
+      Lorem ipsum dolor sit amet consectetur adipisicing elit.Quos temporibus veniam, possimus, velit, reprehenderit
+      magnam ab totam eaque adipisci ratione praesentium explicabo voluptatum laborum eum error animi porro voluptate
+      natus! Commodi eos molestias neque voluptates consectetur tempore adipisci nisi quod labore non. Praesentium
+      quaerat non officia id doloribus laborum, aperiam asperiores omnis earum sequi fugit reiciendis enim quas
+      molestias quae? Minus voluptatum odit maxime voluptas ad expedita temporibus, at sed. Iusto, expedita rerum,
+      beatae ducimus ut amet ipsam ad quas, quisquam quo totam! Deserunt blanditiis doloremque voluptatem nostrum minus
+      ea! Lorem ipsum dolor sit amet consectetur adipisicing elit.Quos temporibus veniam, possimus, velit, reprehenderit
+      magnam ab totam eaque adipisci ratione praesentium explicabo voluptatum laborum eum error animi porro voluptate
+      natus! Commodi eos molestias neque voluptates consectetur tempore adipisci nisi quod labore non. Praesentium
+      quaerat non officia id doloribus laborum, aperiam asperiores omnis earum sequi fugit reiciendis enim quas
+      molestias quae? Minus voluptatum odit maxime voluptas ad expedita temporibus, at sed. Iusto, expedita rerum,
+      beatae ducimus ut amet ipsam ad quas, quisquam quo totam! Deserunt blanditiis doloremque voluptatem nostrum minus
+      ea! Lorem ipsum dolor sit amet consectetur adipisicing elit.Quos temporibus veniam, possimus, velit, reprehenderit
+      magnam ab totam eaque adipisci ratione praesentium explicabo voluptatum laborum eum error animi porro voluptate
+      natus! Commodi eos molestias neque voluptates consectetur tempore adipisci nisi quod labore non. Praesentium
+      quaerat non officia id doloribus laborum, aperiam asperiores omnis earum sequi fugit reiciendis enim quas
+      molestias quae? Minus voluptatum odit maxime voluptas ad expedita temporibus, at sed. Iusto, expedita rerum,
+      beatae ducimus ut amet ipsam ad quas, quisquam quo totam! Deserunt blanditiis doloremque voluptatem nostrum minus
+      ea! Commodi eos molestias neque voluptates consectetur tempore adipisci nisi quod labore non. Praesentium quaerat
+      non officia id doloribus laborum, aperiam asperiores omnis earum sequi fugit reiciendis enim quas molestias quae?
+      Minus voluptatum odit maxime voluptas ad expedita temporibus, at sed. Iusto, expedita rerum, beatae ducimus ut
+      amet ipsam ad quas, quisquam quo totam! Deserunt blanditiis doloremque voluptatem nostrum minus ea! Commodi eos
+      molestias neque voluptates consectetur tempore adipisci nisi quod labore non. Praesentium quaerat non officia id
+      doloribus laborum, aperiam asperiores omnis earum sequi fugit reiciendis enim quas molestias quae? Minus
+      voluptatum odit maxime voluptas ad expedita temporibus, at sed. Iusto, expedita rerum, beatae ducimus ut amet
+      ipsam ad quas, quisquam quo totam! Deserunt blanditiis doloremque voluptatem nostrum minus ea!
     </ScrollArea>
   ),
 } satisfies Meta<typeof ScrollArea>;
@@ -85,7 +72,7 @@ export const WithCustomColors = {
   },
 } satisfies Story;
 
-export const hideScrollbars = {
+export const HideScrollbars = {
   args: {
     useSystemStyle: false,
     hideScrollbars: true,
@@ -106,47 +93,35 @@ export const WidthFade = {
     fadeDirection: 'vertical',
     fadeSize: 16,
   },
-  render: args => (
+  render: (args) => (
     <ScrollArea {...args} style={{ maxHeight: 300, maxWidth: 400 }}>
       <Stack vPadding={8}>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit.Quos temporibus veniam, possimus, velit,
-        reprehenderit magnam ab totam eaque adipisci ratione praesentium explicabo voluptatum laborum eum
-        error animi porro voluptate natus!
-        Commodi eos molestias neque voluptates consectetur tempore adipisci nisi quod labore non.
-        Praesentium quaerat non officia id doloribus laborum, aperiam asperiores omnis earum sequi fugit
-        reiciendis enim quas molestias quae?
-        Minus voluptatum odit maxime voluptas ad expedita temporibus, at sed. Iusto, expedita rerum,
-        beatae ducimus ut amet ipsam ad quas, quisquam quo totam! Deserunt blanditiis doloremque
-        voluptatem nostrum minus ea!
-        Lorem ipsum dolor sit amet consectetur adipisicing elit.Quos temporibus veniam, possimus, velit,
-        reprehenderit magnam ab totam eaque adipisci ratione praesentium explicabo voluptatum laborum eum
-        error animi porro voluptate natus!
-        Commodi eos molestias neque voluptates consectetur tempore adipisci nisi quod labore non.
-        Praesentium quaerat non officia id doloribus laborum, aperiam asperiores omnis earum sequi fugit
-        reiciendis enim quas molestias quae?
-        Minus voluptatum odit maxime voluptas ad expedita temporibus, at sed. Iusto, expedita rerum,
-        beatae ducimus ut amet ipsam ad quas, quisquam quo totam! Deserunt blanditiis doloremque
-        voluptatem nostrum minus ea!
-        Lorem ipsum dolor sit amet consectetur adipisicing elit.Quos temporibus veniam, possimus, velit,
-        reprehenderit magnam ab totam eaque adipisci ratione praesentium explicabo voluptatum laborum eum
-        error animi porro voluptate natus!
-        Commodi eos molestias neque voluptates consectetur tempore adipisci nisi quod labore non.
-        Praesentium quaerat non officia id doloribus laborum, aperiam asperiores omnis earum sequi fugit
-        reiciendis enim quas molestias quae?
-        Minus voluptatum odit maxime voluptas ad expedita temporibus, at sed. Iusto, expedita rerum,
-        beatae ducimus ut amet ipsam ad quas, quisquam quo totam! Deserunt blanditiis doloremque
-        voluptatem nostrum minus ea!
-        Commodi eos molestias neque voluptates consectetur tempore adipisci nisi quod labore non.
-        Praesentium quaerat non officia id doloribus laborum, aperiam asperiores omnis earum sequi fugit
-        reiciendis enim quas molestias quae?
-        Minus voluptatum odit maxime voluptas ad expedita temporibus, at sed. Iusto, expedita rerum,
-        beatae ducimus ut amet ipsam ad quas, quisquam quo totam! Deserunt blanditiis doloremque
-        voluptatem nostrum minus ea!
-        Commodi eos molestias neque voluptates consectetur tempore adipisci nisi quod labore non.
-        Praesentium quaerat non officia id doloribus laborum, aperiam asperiores omnis earum sequi fugit
-        reiciendis enim quas molestias quae?
-        Minus voluptatum odit maxime voluptas ad expedita temporibus, at sed. Iusto, expedita rerum,
-        beatae ducimus ut amet ipsam ad quas, quisquam quo totam! Deserunt blanditiis doloremque
+        Lorem ipsum dolor sit amet consectetur adipisicing elit.Quos temporibus veniam, possimus, velit, reprehenderit
+        magnam ab totam eaque adipisci ratione praesentium explicabo voluptatum laborum eum error animi porro voluptate
+        natus! Commodi eos molestias neque voluptates consectetur tempore adipisci nisi quod labore non. Praesentium
+        quaerat non officia id doloribus laborum, aperiam asperiores omnis earum sequi fugit reiciendis enim quas
+        molestias quae? Minus voluptatum odit maxime voluptas ad expedita temporibus, at sed. Iusto, expedita rerum,
+        beatae ducimus ut amet ipsam ad quas, quisquam quo totam! Deserunt blanditiis doloremque voluptatem nostrum
+        minus ea! Lorem ipsum dolor sit amet consectetur adipisicing elit.Quos temporibus veniam, possimus, velit,
+        reprehenderit magnam ab totam eaque adipisci ratione praesentium explicabo voluptatum laborum eum error animi
+        porro voluptate natus! Commodi eos molestias neque voluptates consectetur tempore adipisci nisi quod labore non.
+        Praesentium quaerat non officia id doloribus laborum, aperiam asperiores omnis earum sequi fugit reiciendis enim
+        quas molestias quae? Minus voluptatum odit maxime voluptas ad expedita temporibus, at sed. Iusto, expedita
+        rerum, beatae ducimus ut amet ipsam ad quas, quisquam quo totam! Deserunt blanditiis doloremque voluptatem
+        nostrum minus ea! Lorem ipsum dolor sit amet consectetur adipisicing elit.Quos temporibus veniam, possimus,
+        velit, reprehenderit magnam ab totam eaque adipisci ratione praesentium explicabo voluptatum laborum eum error
+        animi porro voluptate natus! Commodi eos molestias neque voluptates consectetur tempore adipisci nisi quod
+        labore non. Praesentium quaerat non officia id doloribus laborum, aperiam asperiores omnis earum sequi fugit
+        reiciendis enim quas molestias quae? Minus voluptatum odit maxime voluptas ad expedita temporibus, at sed.
+        Iusto, expedita rerum, beatae ducimus ut amet ipsam ad quas, quisquam quo totam! Deserunt blanditiis doloremque
+        voluptatem nostrum minus ea! Commodi eos molestias neque voluptates consectetur tempore adipisci nisi quod
+        labore non. Praesentium quaerat non officia id doloribus laborum, aperiam asperiores omnis earum sequi fugit
+        reiciendis enim quas molestias quae? Minus voluptatum odit maxime voluptas ad expedita temporibus, at sed.
+        Iusto, expedita rerum, beatae ducimus ut amet ipsam ad quas, quisquam quo totam! Deserunt blanditiis doloremque
+        voluptatem nostrum minus ea! Commodi eos molestias neque voluptates consectetur tempore adipisci nisi quod
+        labore non. Praesentium quaerat non officia id doloribus laborum, aperiam asperiores omnis earum sequi fugit
+        reiciendis enim quas molestias quae? Minus voluptatum odit maxime voluptas ad expedita temporibus, at sed.
+        Iusto, expedita rerum, beatae ducimus ut amet ipsam ad quas, quisquam quo totam! Deserunt blanditiis doloremque
         voluptatem nostrum minus ea!
       </Stack>
     </ScrollArea>

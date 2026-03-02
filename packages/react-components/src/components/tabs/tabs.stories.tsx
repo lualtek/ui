@@ -1,6 +1,6 @@
-import { useArgs } from 'storybook/preview-api';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
+import { useArgs } from 'storybook/preview-api';
 
 import { Button, Chip } from '../..';
 import { Tabs } from './tabs';
@@ -12,7 +12,7 @@ const meta = {
     defaultValue: '1',
     dimension: 'regular',
   },
-  render: args => (
+  render: (args) => (
     <Tabs {...args}>
       <Tabs.Panel value="1" label="Tab 1">
         Panel 1
@@ -61,11 +61,7 @@ export const WithDecorator = {
         <Tabs.Panel value="1" label="Tab 1">
           Panel 1
         </Tabs.Panel>
-        <Tabs.Panel
-          value="2"
-          label="Tab mid long 2"
-          decorator={<Chip color="green">10</Chip>}
-        >
+        <Tabs.Panel value="2" label="Tab mid long 2" decorator={<Chip color="green">10</Chip>}>
           Panel 2
         </Tabs.Panel>
         <Tabs.Panel value="3" label="Tab short 3">
@@ -74,11 +70,11 @@ export const WithDecorator = {
         <Tabs.Panel
           value="4"
           label="Tab veryy long 4"
-          decorator={(
+          decorator={
             <Chip dimension="small" color="cyan">
               8
             </Chip>
-          )}
+          }
         >
           Panel 4
         </Tabs.Panel>
@@ -116,11 +112,11 @@ const ConditionalTabTemplate = () => {
 };
 
 export const ConditionalTab: Story = {
-  render: args => <ConditionalTabTemplate {...args} />,
+  render: (args) => <ConditionalTabTemplate {...args} />,
 } satisfies Story;
 
 export const DisabledTabs: Story = {
-  render: args => (
+  render: (args) => (
     <Tabs defaultValue="1" {...args}>
       <Tabs.Panel value="1" label="Tab 1">
         Panel 1
@@ -148,7 +144,7 @@ export const Segmented: Story = {
   args: {
     segmented: true,
   },
-  render: args => (
+  render: (args) => (
     <Tabs defaultValue="1" {...args}>
       <Tabs.Panel value="1" label="Tab 1">
         Panel 1
@@ -183,7 +179,7 @@ export const Controlled: Story = {
     console.log('value:', value);
 
     return (
-      <Tabs onValueChange={value => handleValue(value)} value={value} {...args}>
+      <Tabs onValueChange={(value) => handleValue(value)} value={value} {...args}>
         <Tabs.Panel value="1" label="Tab 1">
           Panel 1
         </Tabs.Panel>
@@ -191,8 +187,7 @@ export const Controlled: Story = {
           Panel 2
         </Tabs.Panel>
         <Tabs.Panel value="3" label="Tab short 3">
-          Panel 3
-          <Button onClick={() => handleValue('1')}>Back to tab 1</Button>
+          Panel 3<Button onClick={() => handleValue('1')}>Back to tab 1</Button>
         </Tabs.Panel>
       </Tabs>
     );
@@ -200,7 +195,7 @@ export const Controlled: Story = {
 } satisfies Story;
 
 export const WithIcons: Story = {
-  render: args => (
+  render: (args) => (
     <Tabs defaultValue="1" {...args}>
       <Tabs.Panel icon="star" value="1" label="Tab 1">
         Panel 1

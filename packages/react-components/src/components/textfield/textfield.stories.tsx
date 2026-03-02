@@ -3,7 +3,8 @@ import { forwardRef, useState } from 'react';
 
 import { Button, Stack } from '@/components';
 
-import { Textfield, TextfieldProps } from './textfield';
+import type { TextfieldProps } from './textfield';
+import { Textfield } from './textfield';
 
 // eslint-disable-next-line no-useless-escape
 const pattern = /^[a-zA-Z0-9À-ÖØ-öø-ÿ\s\-_.()<>"&\/+^$*!?@#%~|:;]*$/;
@@ -39,7 +40,7 @@ const meta = {
       control: { type: 'inline-radio' },
     },
   },
-  render: args => <Textfield {...args} size={4} placeholder="Placeholder" />,
+  render: (args) => <Textfield {...args} size={4} placeholder="Placeholder" />,
 } satisfies Meta<typeof Textfield>;
 
 export default meta;
@@ -54,7 +55,7 @@ export const Single = {
 } satisfies Story;
 
 export const Types = {
-  render: args => (
+  render: (args) => (
     <div style={{ padding: 32, background: 'var(--dimmed-2)' }}>
       <Stack rowGap={24}>
         <Textfield {...args} label="Filled" />
@@ -94,7 +95,7 @@ export const WithIcon = {
     iconPosition: 'start',
     icon: 'chat',
   },
-  render: args => (
+  render: (args) => (
     <div style={{ padding: 32, background: 'var(--dimmed-2)' }}>
       <Stack rowGap={24}>
         <Textfield {...args} label="Filled" />
@@ -115,8 +116,9 @@ export const WithIcon = {
   ),
 } satisfies Story;
 
-const SearchTemplate = forwardRef<HTMLInputElement, TextfieldProps>(({ value, ...props }) => {
+const SearchTemplate = forwardRef<HTMLInputElement, TextfieldProps>(({ value, ...props }, forwardedRef) => {
   const [stateValue, setStateValue] = useState<TextfieldProps['value']>(value ?? '');
+  console.log(forwardedRef);
 
   return (
     <>
@@ -126,11 +128,7 @@ const SearchTemplate = forwardRef<HTMLInputElement, TextfieldProps>(({ value, ..
         onClear={() => setStateValue('')}
         value={stateValue}
       />
-      <Textfield
-        {...props}
-        onClear={() => setStateValue('')}
-        defaultValue="ciao"
-      />
+      <Textfield {...props} onClear={() => setStateValue('')} defaultValue="ciao" />
     </>
   );
 });
@@ -143,7 +141,7 @@ export const WithActionButton = {
     value: 'Sample value',
     defaultValue: undefined,
   },
-  render: args => <SearchTemplate {...args} />,
+  render: (args) => <SearchTemplate {...args} />,
 } satisfies Story;
 
 export const Invalid = {
@@ -155,7 +153,7 @@ export const Invalid = {
     },
     icon: 'chat',
   },
-  render: args => (
+  render: (args) => (
     <Stack as="form" rowGap={16}>
       <Textfield {...args} type="email" label="Type email" required defaultValue="" />
       <Textfield
@@ -171,12 +169,12 @@ export const Invalid = {
   ),
 } satisfies Story;
 
-export const forcedInvalid = {
+export const ForcedInvalid = {
   args: {
     label: 'Sample label',
     iconPosition: 'start',
     icon: 'chat',
     invalid: true,
   },
-  render: args => <Textfield {...args} type="email" required label="Type email" defaultValue="" />,
+  render: (args) => <Textfield {...args} type="email" required label="Type email" defaultValue="" />,
 } satisfies Story;

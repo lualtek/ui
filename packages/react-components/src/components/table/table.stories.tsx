@@ -1,10 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useMemo } from 'react';
 
-import {
-  IconButton, Menu, Popover, ResponsiveProvider, Stack,
-} from '../..';
-import { createColumnHelper, Table, TableProps } from '.';
+import { IconButton, Menu, Popover, ResponsiveProvider, Stack } from '../..';
+import type { TableProps } from '.';
+import { createColumnHelper, Table } from '.';
 import { tableDataFixture } from './__fixture__/table-data';
 
 type Person = {
@@ -14,7 +13,7 @@ type Person = {
   age: number;
   balance: string;
   status: string;
-}
+};
 
 const columnHelper = createColumnHelper<Person>();
 
@@ -25,64 +24,62 @@ const story: Meta<TableProps<Person>> = {
     itemsPerPage: 10,
   },
   decorators: [
-    Story => (
+    (Story) => (
       <ResponsiveProvider>
         <Story />
       </ResponsiveProvider>
     ),
   ],
   render: function Render({ ...args }) {
-    const columns = useMemo(() => [
-      columnHelper.accessor('actions', {
-        header: ' ',
-        enableSorting: false,
-        enableHiding: false,
-        meta: {
-          collapsed: true,
-        },
-        cell: () => (
-          <Stack direction="row" columnGap={8} fill={false}>
-            <IconButton icon="settings-gear" kind="secondary" />
-            <Popover>
-              <Popover.Trigger><IconButton icon="dot-menu" kind="secondary" /></Popover.Trigger>
-              <Popover.Content side="bottom" align="start" offset={4}>
-                <Popover.Close>
-                  <Menu>
-                    <Menu.Item
-                      value="watching"
-                      autoFocus
-                      icon="alarm-disabled"
-                    >
-                      Watch
-                    </Menu.Item>
-                    <Menu.Item
-                      value="status"
-                      icon="on"
-                    >
-                      Enable
-                    </Menu.Item>
-                  </Menu>
-                </Popover.Close>
-              </Popover.Content>
-            </Popover>
-          </Stack>
-        ),
-      }),
-      columnHelper.accessor('firstName', {
-        header: () => 'First Name',
-        cell: info => info.getValue(),
-        footer: info => info.column.id,
-        size: 400,
-        minSize: 300,
-      }),
-      columnHelper.accessor('status', {
-        header: 'Status',
-        footer: info => info.column.id,
-        enableSorting: false,
-      }),
-    ], []);
+    const columns = useMemo(
+      () => [
+        columnHelper.accessor('actions', {
+          header: ' ',
+          enableSorting: false,
+          enableHiding: false,
+          meta: {
+            collapsed: true,
+          },
+          cell: () => (
+            <Stack direction="row" columnGap={8} fill={false}>
+              <IconButton icon="settings-gear" kind="secondary" />
+              <Popover>
+                <Popover.Trigger>
+                  <IconButton icon="dot-menu" kind="secondary" />
+                </Popover.Trigger>
+                <Popover.Content side="bottom" align="start" offset={4}>
+                  <Popover.Close>
+                    <Menu>
+                      <Menu.Item value="watching" autoFocus icon="alarm-disabled">
+                        Watch
+                      </Menu.Item>
+                      <Menu.Item value="status" icon="on">
+                        Enable
+                      </Menu.Item>
+                    </Menu>
+                  </Popover.Close>
+                </Popover.Content>
+              </Popover>
+            </Stack>
+          ),
+        }),
+        columnHelper.accessor('firstName', {
+          header: () => 'First Name',
+          cell: (info) => info.getValue(),
+          footer: (info) => info.column.id,
+          size: 400,
+          minSize: 300,
+        }),
+        columnHelper.accessor('status', {
+          header: 'Status',
+          footer: (info) => info.column.id,
+          enableSorting: false,
+        }),
+      ],
+      [],
+    );
 
-    return (<Table {...args} columns={columns} data={tableDataFixture} />);
+    return <Table {...args} columns={columns} data={tableDataFixture} />;
   },
 };
 

@@ -3,7 +3,8 @@ import { useState } from 'react';
 import { useArgs } from 'storybook/preview-api';
 
 import { BlankButton } from '../..';
-import { Lightbox, LightboxProps } from './lightbox';
+import type { LightboxProps } from './lightbox';
+import { Lightbox } from './lightbox';
 
 const meta = {
   title: 'Dialogs/Lightbox',
@@ -27,12 +28,7 @@ const meta = {
             <img style={{ width: 150, height: 150 }} src={item.image} alt={item.title} />
           </BlankButton>
         ))}
-        <Lightbox
-          {...args}
-          selectedState={state}
-          onClose={() => setIsOpen({ isOpen: false })}
-          isOpen={isOpen}
-        />
+        <Lightbox {...args} selectedState={state} onClose={() => setIsOpen({ isOpen: false })} isOpen={isOpen} />
       </>
     );
   },
@@ -42,18 +38,15 @@ const meta = {
     },
     data: [
       {
-        image:
-          'https://ik.imagekit.io/thingstek/photos/installations/aa-device-con-pannello_bJ5kjnb5SmR',
+        image: 'https://ik.imagekit.io/thingstek/photos/installations/aa-device-con-pannello_bJ5kjnb5SmR',
         title: 'Image 1',
       },
       {
-        image:
-          'https://ik.imagekit.io/thingstek/photos/installations/aa-termoigrometro_4hIRcoH4bZcf.jpeg',
+        image: 'https://ik.imagekit.io/thingstek/photos/installations/aa-termoigrometro_4hIRcoH4bZcf.jpeg',
         title: 'Image 1',
       },
       {
-        image:
-          'https://ik.imagekit.io/thingstek/photos/installations/aa-tensiometro_ysEqRIkGmne.jpeg',
+        image: 'https://ik.imagekit.io/thingstek/photos/installations/aa-tensiometro_ysEqRIkGmne.jpeg',
         title: 'Image 2',
       },
     ],

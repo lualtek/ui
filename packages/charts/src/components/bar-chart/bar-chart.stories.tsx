@@ -17,9 +17,10 @@ import { useArgs, useCallback, useEffect } from 'storybook/preview-api';
 
 import SimpleData from '../../../fixtures/data';
 import MultiAxisData from '../../../fixtures/multi-y-data';
-import { ChartDataBaseType } from '../base-chart/base-chart';
+import type { ChartDataBaseType } from '../base-chart/base-chart';
 import { getChartDefaultColor } from '../base-chart/colors';
-import { BarChart, BarChartProps, BarProps } from './bar-chart';
+import type { BarChartProps, BarProps } from './bar-chart';
+import { BarChart } from './bar-chart';
 
 type Data = ChartDataBaseType;
 
@@ -121,7 +122,7 @@ export const WithExternalTooltip = {
           tooltip: args.data[args.data.length - 1],
         });
       }
-    }, []);
+    }, [args.data, args.data.length, setArgs]);
 
     const handleChartUpdate = useCallback(
       (state: any) => {

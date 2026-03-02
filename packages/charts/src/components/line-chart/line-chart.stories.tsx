@@ -1,4 +1,4 @@
-import { ChartDataBaseType } from '@/charts/components/base-chart/base-chart';
+import type { ChartDataBaseType } from '@/charts/components/base-chart/base-chart';
 import { Chip, Stack, Text, Title } from '@lualtek/react-components';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useArgs, useCallback, useEffect } from 'storybook/preview-api';
@@ -8,7 +8,8 @@ import MultiAxisData from '../../../fixtures/multi-y-data';
 import { ReferenceArea, ReferenceLine } from '../base-chart';
 import { getChartDefaultColor } from '../base-chart/colors';
 import { Brush } from '../brush';
-import { LineChart, LineChartProps, LineProps } from './line-chart';
+import type { LineChartProps, LineProps } from './line-chart';
+import { LineChart } from './line-chart';
 
 type Data = ChartDataBaseType;
 
@@ -96,7 +97,7 @@ export const WidthXPadding = {
   },
 } satisfies Story;
 
-export const withNoAnimation = {
+export const WithNoAnimation = {
   args: {
     disableAnimation: true,
   },
@@ -221,7 +222,7 @@ export const WithExternalTooltip = {
           tooltip: args.data[args.data.length - 1],
         });
       }
-    }, []);
+    }, [args.data, setArgs]);
 
     const handleChartUpdate = useCallback(
       (state: any) => {

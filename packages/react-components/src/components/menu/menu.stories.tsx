@@ -2,7 +2,8 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
 
 import { Chip } from '../..';
-import { Menu, MenuProps } from './menu';
+import type { MenuProps } from './menu';
+import { Menu } from './menu';
 
 const meta = {
   title: 'Navigation/Menu',
@@ -10,22 +11,23 @@ const meta = {
   args: {
     children: (
       <>
-        <Menu.Item value="2" padding={false}>List item text</Menu.Item>
-        <Menu.Item value="3" padding={false}>List item text</Menu.Item>
-        <Menu.Item
-          value="4"
-          padding={false}
-        >
+        <Menu.Item value="2" padding={false}>
+          List item text
+        </Menu.Item>
+        <Menu.Item value="3" padding={false}>
+          List item text
+        </Menu.Item>
+        <Menu.Item value="4" padding={false}>
           List item text List item textList item textList item textList item text
         </Menu.Item>
         <Menu.Separator />
-        <Menu.Item value="4" padding={false}>List item text</Menu.Item>
+        <Menu.Item value="4" padding={false}>
+          List item text
+        </Menu.Item>
       </>
     ),
   },
-  render: args => (
-    <Menu {...args} />
-  ),
+  render: (args) => <Menu {...args} />,
 } satisfies Meta<typeof Menu>;
 
 export default meta;
@@ -40,13 +42,19 @@ export const WithScroll = {
 };
 
 export const WithIcons = {
-  render: args => (
+  render: (args) => (
     <Menu {...args}>
-      <Menu.Item value="1" icon="sun">List item text</Menu.Item>
-      <Menu.Item value="2" icon="chat">List item text List item</Menu.Item>
+      <Menu.Item value="1" icon="sun">
+        List item text
+      </Menu.Item>
+      <Menu.Item value="2" icon="chat">
+        List item text List item
+      </Menu.Item>
       <Menu.Separator />
       <Menu.Item value="3">List item text</Menu.Item>
-      <Menu.Item value="4" icon="view">List item text</Menu.Item>
+      <Menu.Item value="4" icon="view">
+        List item text
+      </Menu.Item>
     </Menu>
   ),
 } satisfies Story;
@@ -60,14 +68,18 @@ const WithCheckboxTemplate = ({ ...args }: MenuProps) => {
         value="1"
         checked={isChecked}
         icon={isChecked ? 'check' : undefined}
-        onClick={() => setIsChecked(val => !val)}
+        onClick={() => setIsChecked((val) => !val)}
       >
         Checkable item
       </Menu.ItemCheckbox>
       <Menu.Item
         value="2"
         icon="sun"
-        decoration={<Chip dimension="small" color="blue">Decoration</Chip>}
+        decoration={
+          <Chip dimension="small" color="blue">
+            Decoration
+          </Chip>
+        }
       >
         List item text
       </Menu.Item>
@@ -76,17 +88,23 @@ const WithCheckboxTemplate = ({ ...args }: MenuProps) => {
 };
 
 export const WithCheckboxes = {
-  render: args => <WithCheckboxTemplate {...args} />,
+  render: (args) => <WithCheckboxTemplate {...args} />,
 } satisfies Story;
 
 export const WithLinks = {
-  render: args => (
+  render: (args) => (
     <Menu {...args}>
-      <Menu.Item value="1" as="a" href="https://www.lualtek.io" icon="view">List item text</Menu.Item>
-      <Menu.Item value="2" icon="chat">List item text List item</Menu.Item>
+      <Menu.Item value="1" as="a" href="https://www.lualtek.io" icon="view">
+        List item text
+      </Menu.Item>
+      <Menu.Item value="2" icon="chat">
+        List item text List item
+      </Menu.Item>
       <Menu.Separator />
       <Menu.Item value="3">List item text</Menu.Item>
-      <Menu.Item value="4" as="a" href="https://www.lualtek.io" icon="star">List item text</Menu.Item>
+      <Menu.Item value="4" as="a" href="https://www.lualtek.io" icon="star">
+        List item text
+      </Menu.Item>
     </Menu>
   ),
 } satisfies Story;
