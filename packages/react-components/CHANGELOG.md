@@ -1,5 +1,18 @@
 # @lualtek/react-components
 
+## 2026.3.0
+
+### Minor Changes
+
+- 6750981: Update Nunito Sans font
+- 478c85e: Remove fonts assets and update display title style
+- 478c85e: Migrate to variable font (Nunito Sans)
+
+### Patch Changes
+
+- 6750981: Export getChartDefaultColor from base-chart
+  - @lualtek/icons@2026.3.0
+
 ## 2026.2.5
 
 ### Patch Changes

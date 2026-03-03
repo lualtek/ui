@@ -1,5 +1,17 @@
 # @lualtek/charts
 
+## 2026.3.0
+
+### Patch Changes
+
+- 6750981: Export getChartDefaultColor from base-chart
+- Updated dependencies [6750981]
+- Updated dependencies [478c85e]
+- Updated dependencies [478c85e]
+- Updated dependencies [6750981]
+  - @lualtek/react-components@2026.3.0
+  - @lualtek/tokens@2026.3.0
+
 ## 2026.2.5
 
 ### Patch Changes
