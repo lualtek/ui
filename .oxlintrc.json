@@ -5,6 +5,9 @@
     "browser": true,
     "es2022": true
   },
+  "options": {
+    "typeAware": true
+  },
   "globals": {
     "React": "readonly"
   },
