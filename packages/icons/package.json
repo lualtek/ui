@@ -1,18 +1,18 @@
 {
   "name": "@lualtek/icons",
-  "description": "Lualtek's iconography",
   "version": "2026.2.5",
+  "description": "Lualtek's iconography",
+  "homepage": "https://github.com/lualtek/ui#readme",
+  "bugs": {
+    "url": "https://github.com/lualtek/ui/issues"
+  },
   "author": "Lualtek",
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com",
-    "access": "restricted"
+  "repository": {
+    "type": "git",
+    "url": "ssh+https://github.com/lualtek/ui.git",
+    "directory": "packages/icons"
   },
   "type": "module",
-  "exports": {
-    ".": "./dist/index.js",
-    "./sprite": "./dist/sprite.svg",
-    "./structure": "./dist/structure.json"
-  },
   "typesVersions": {
     "*": {
       "*": [
@@ -26,9 +26,14 @@
       ]
     }
   },
-  "engines": {
-    "node": ">=18.x",
-    "pnpm": ">=8.x"
+  "exports": {
+    ".": "./dist/index.js",
+    "./sprite": "./dist/sprite.svg",
+    "./structure": "./dist/structure.json"
+  },
+  "publishConfig": {
+    "access": "restricted",
+    "registry": "https://npm.pkg.github.com"
   },
   "scripts": {
     "prebuild": "rimraf dist",
@@ -37,18 +42,9 @@
     "build:sprite": "tsx ./sprites.ts",
     "build:clean": "rimraf dist/svgs"
   },
-  "repository": {
-    "type": "git",
-    "url": "ssh+https://github.com/lualtek/ui.git",
-    "directory": "packages/icons"
-  },
-  "bugs": {
-    "url": "https://github.com/lualtek/ui/issues"
-  },
-  "homepage": "https://github.com/lualtek/ui#readme",
   "devDependencies": {
     "@types/fs-extra": "11.0.4",
-    "@types/node": "25.2.3",
+    "@types/node": "25.3.3",
     "directory-tree": "3.6.0",
     "fs-extra": "11.3.3",
     "nanospinner": "1.2.2",
@@ -56,5 +52,9 @@
     "svgo": "4.0.0",
     "svgstore": "3.0.1",
     "tsconfig": "workspace:*"
+  },
+  "engines": {
+    "node": ">=18.x",
+    "pnpm": ">=8.x"
   }
 }

@@ -1,13 +1,23 @@
 {
   "name": "@lualtek/react-components",
   "version": "2026.2.5",
+  "homepage": "https://github.com/lualtek/ui",
+  "bugs": {
+    "url": "https://github.com/lualtek/ui/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh+https://github.com/lualtek/ui.git",
+    "directory": "packages/react-components"
+  },
   "files": [
     "dist"
   ],
   "type": "module",
-  "types": "dist/index.d.ts",
-  "module": "dist/index.js",
+  "sideEffects": false,
   "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -17,10 +27,9 @@
     "./core.css": "./dist/core.css",
     "./package.json": "./package.json"
   },
-  "sideEffects": false,
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com",
-    "access": "restricted"
+    "access": "restricted",
+    "registry": "https://npm.pkg.github.com"
   },
   "scripts": {
     "dev": "pnpm run --parallel watch:csstypes",
@@ -33,43 +42,6 @@
     "build:csstypes": "tcm -p '**/*.module.css' src",
     "clean": "rimraf dist core core.css",
     "prepack": "tsx ./prepack.ts"
-  },
-  "repository": {
-    "type": "git",
-    "url": "ssh+https://github.com/lualtek/ui.git",
-    "directory": "packages/react-components"
-  },
-  "bugs": {
-    "url": "https://github.com/lualtek/ui/issues"
-  },
-  "homepage": "https://github.com/lualtek/ui",
-  "browserslist": [
-    "last 2 Chrome versions",
-    "last 2 Firefox versions",
-    "last 2 Safari versions",
-    "last 2 Edge versions",
-    "not dead",
-    "not op_mini all"
-  ],
-  "peerDependencies": {
-    "constate": "^3.3.3",
-    "react": "^19.2",
-    "react-dom": "^19.2"
-  },
-  "devDependencies": {
-    "@lualtek/config": "workspace:*",
-    "@lualtek/themes": "workspace:*",
-    "@lualtek/tokens": "workspace:*",
-    "@types/node": "25.2.3",
-    "@types/react": "19.2.14",
-    "@types/react-dom": "19.2.3",
-    "postcss": "8.5.6",
-    "postcss-cli": "11.0.1",
-    "react": "^19.2",
-    "react-dom": "^19.2",
-    "tsconfig": "workspace:*",
-    "typed-css-modules": "0.9.1",
-    "typescript": "5.9.3"
   },
   "dependencies": {
     "@lualtek/icons": "workspace:*",
@@ -91,5 +63,33 @@
     "react-use": "17.6.0",
     "type-fest": "5.4.4",
     "vaul": "1.1.2"
-  }
+  },
+  "devDependencies": {
+    "@lualtek/config": "workspace:*",
+    "@lualtek/themes": "workspace:*",
+    "@lualtek/tokens": "workspace:*",
+    "@types/node": "25.3.3",
+    "@types/react": "19.2.14",
+    "@types/react-dom": "19.2.3",
+    "postcss": "8.5.8",
+    "postcss-cli": "11.0.1",
+    "react": "^19.2",
+    "react-dom": "^19.2",
+    "tsconfig": "workspace:*",
+    "typed-css-modules": "0.9.1",
+    "typescript": "5.9.3"
+  },
+  "peerDependencies": {
+    "constate": "^3.3.3",
+    "react": "^19.2",
+    "react-dom": "^19.2"
+  },
+  "browserslist": [
+    "last 2 Chrome versions",
+    "last 2 Firefox versions",
+    "last 2 Safari versions",
+    "last 2 Edge versions",
+    "not dead",
+    "not op_mini all"
+  ]
 }
