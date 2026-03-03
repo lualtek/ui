@@ -8,12 +8,12 @@ import type { Except } from 'type-fest';
 
 import { useChartAxis } from '@/charts/hooks/use-chart-axis';
 
-import type { BaseChartProps } from '../base-chart';
-import { BaseChart, DENSITIES } from '../base-chart';
-import type { ChartDataBaseType } from '../base-chart/base-chart';
-import { getChartDefaultColor } from '../base-chart/colors';
-import type { BrushProps } from '../brush';
-import { Brush } from '../brush';
+import type { BaseChartProps } from '@/charts/components/base-chart';
+import { BaseChart, DENSITIES } from '@/charts/components/base-chart';
+import type { ChartDataBaseType } from '@/charts/components/base-chart/base-chart';
+import { getChartDefaultColor } from '@/charts/components/base-chart/colors';
+import type { BrushProps } from '@/charts/components/brush';
+import { Brush } from '@/charts/components/brush';
 
 export type LineProps<D> = {
   /**
