@@ -1,7 +1,7 @@
 'use client';
 
 import clsx from 'clsx';
-import { domMax, LazyMotion, m } from 'motion/react';
+import { cubicBezier, domMax, LazyMotion, m } from 'motion/react';
 import type { FC } from 'react';
 import { useCallback, useEffect, useState } from 'react';
 import type { Except } from 'type-fest';
@@ -35,7 +35,7 @@ const scaleAnimation = {
     scale: 1,
     transition: {
       duration: 0.2,
-      ease: [0, 0, 0.34, 1],
+      ease: cubicBezier(0, 0, 0.34, 1),
       delay: 0,
     },
   },
@@ -43,7 +43,7 @@ const scaleAnimation = {
     scale: 0,
     transition: {
       duration: 0.2,
-      ease: [0.3, 0.07, 1, 1],
+      ease: cubicBezier(0.3, 0.07, 1, 1),
       delay: 0,
     },
   },

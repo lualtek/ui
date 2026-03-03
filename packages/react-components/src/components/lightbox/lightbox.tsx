@@ -115,12 +115,13 @@ export const Lightbox: FC<LightboxProps> = ({
   useKeyPressEvent('Escaper', () => onClose?.());
 
   const dynamicStyles = useMemo(
-    () => ({
-      '--max-h': imageHeight,
-      '--max-w': imageWidth,
-      '--thumb-h': thumbnailHeight,
-      '--thumb-w': thumbnailWidth,
-    }),
+    () =>
+      ({
+        '--max-h': imageHeight,
+        '--max-w': imageWidth,
+        '--thumb-h': thumbnailHeight,
+        '--thumb-w': thumbnailWidth,
+      }) as React.CSSProperties,
     [imageHeight, imageWidth, thumbnailHeight, thumbnailWidth],
   );
 
