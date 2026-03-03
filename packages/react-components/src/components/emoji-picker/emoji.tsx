@@ -1,6 +1,6 @@
-import { TokensTypes } from '@lualtek/tokens/platforms/web';
+import type { TokensTypes } from '@lualtek/tokens/web';
 import { Emoji as EmojiRender, EmojiStyle } from 'emoji-picker-react';
-import { GetEmojiUrl } from 'emoji-picker-react/dist/components/emoji/BaseEmojiProps';
+import type { GetEmojiUrl } from 'emoji-picker-react/dist/components/emoji/BaseEmojiProps';
 import { useMemo } from 'react';
 
 import styles from './emoji-picker.module.css';
@@ -13,10 +13,9 @@ export type EmojiProps = {
   getEmojiUrl?: GetEmojiUrl;
   emojiUrl?: string;
   className?: string;
-}
+};
 
 export const Emoji: React.FC<EmojiProps> = ({
-  className,
   unified = '1f346',
   emojiStyle = EmojiStyle.NATIVE,
   size = 24,
@@ -26,12 +25,7 @@ export const Emoji: React.FC<EmojiProps> = ({
 
   return (
     <span className={styles.EmojiRender}>
-      <EmojiRender
-        unified={unified}
-        size={computedSize}
-        emojiStyle={emojiStyle}
-        {...otherProps}
-      />
+      <EmojiRender unified={unified} size={computedSize} emojiStyle={emojiStyle} {...otherProps} />
     </span>
   );
 };

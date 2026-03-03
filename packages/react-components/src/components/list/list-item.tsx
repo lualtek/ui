@@ -1,32 +1,35 @@
 import clsx from 'clsx';
-import { FC } from 'react';
+import type { FC } from 'react';
 
-import {
-  Icon, IconProps, Stack,
-} from '@/components';
+import type { IconProps } from '@/components';
+import { Icon, Stack } from '@/components';
 
-import { ListProps } from './list';
+import type { ListProps } from './list';
 import styles from './list.module.css';
 
-export type ListItemProps = Pick<ListProps, 'dimension' | 'hideMarker'> & React.ComponentPropsWithRef<'li'> & {
-  /**
-   * Set the marker style. You can use any icon from the iconography as marker
-   * by passing its name.
-   *
-   * @defaultValue "circle"
-   */
-  marker?: IconProps['source'];
-  /**
-   * Set the color of the marker.
-   */
-  markerColor?: string;
-}
-
-type SizesType = Record<NonNullable<ListProps['dimension']>, {
-  icon: {
-    size: IconProps['dimension'];
+export type ListItemProps = Pick<ListProps, 'dimension' | 'hideMarker'> &
+  React.ComponentPropsWithRef<'li'> & {
+    /**
+     * Set the marker style. You can use any icon from the iconography as marker
+     * by passing its name.
+     *
+     * @defaultValue "circle"
+     */
+    marker?: IconProps['source'];
+    /**
+     * Set the color of the marker.
+     */
+    markerColor?: string;
   };
-}>
+
+type SizesType = Record<
+  NonNullable<ListProps['dimension']>,
+  {
+    icon: {
+      size: IconProps['dimension'];
+    };
+  }
+>;
 
 const sizes: SizesType = {
   small: {
@@ -79,4 +82,3 @@ export const Li: FC<ListItemProps> = ({
     {children}
   </Stack>
 );
-

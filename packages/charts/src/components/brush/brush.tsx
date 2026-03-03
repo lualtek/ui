@@ -11,17 +11,15 @@
  */
 
 import clsx from 'clsx';
-import React, { FC } from 'react';
+import type { FC } from 'react';
+import React from 'react';
 import { Brush as ReBrush } from 'recharts';
 
 import styles from './brush.module.css';
 
 export type BrushProps = React.ComponentProps<typeof ReBrush>;
 
-export const Brush: FC<BrushProps> = ({
-  className,
-  ...otherProps
-}) => (
+export const Brush: FC<BrushProps> = ({ className, ...otherProps }) => (
   <ReBrush
     {...otherProps}
     className={clsx(className, styles.Brush)}
@@ -32,4 +30,3 @@ export const Brush: FC<BrushProps> = ({
 );
 
 Brush.displayName = 'Brush';
-

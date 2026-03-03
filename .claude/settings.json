@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep:*)",
+      "Bash(pnpm install:*)",
+      "Bash(pnpm lint:*)",
+      "WebFetch(domain:oxc.rs)",
+      "WebFetch(domain:www.npmjs.com)",
+      "WebFetch(domain:cdn.jsdelivr.net)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(curl -s \"https://raw.githubusercontent.com/LasaleFamine/eslintc/master/packages/eslint-config/rules/react-a11y.mjs\")",
+      "Bash(curl -s \"https://raw.githubusercontent.com/LasaleFamine/eslintc/master/packages/eslint-config-base/rules/best-practices.mjs\")",
+      "Bash(curl -s \"https://raw.githubusercontent.com/LasaleFamine/eslintc/master/packages/eslint-config-base/rules/errors.mjs\")",
+      "Bash(curl -s \"https://raw.githubusercontent.com/LasaleFamine/eslintc/master/packages/eslint-config-base/rules/es6.mjs\")",
+      "Bash(curl -s \"https://raw.githubusercontent.com/LasaleFamine/eslintc/master/packages/eslint-config-base/rules/node.mjs\")",
+      "Bash(curl -s \"https://raw.githubusercontent.com/LasaleFamine/eslintc/master/packages/eslint-config-base/rules/style.mjs\")",
+      "Bash(curl -s \"https://raw.githubusercontent.com/LasaleFamine/eslintc/master/packages/eslint-config-base/rules/typescript.js\")"
+    ]
+  }
+}

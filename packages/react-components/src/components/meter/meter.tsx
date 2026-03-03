@@ -1,14 +1,11 @@
 'use client';
 
-import {
-  FC,
-  ReactNode,
-  useId,
-  useMemo,
-} from 'react';
-import { Except } from 'type-fest';
+import type { FC, ReactNode } from 'react';
+import { useId, useMemo } from 'react';
+import type { Except } from 'type-fest';
 
-import { Stack, StackProps, Text } from '@/components';
+import type { StackProps } from '@/components';
+import { Stack, Text } from '@/components';
 
 import styles from './meter.module.css';
 
@@ -52,18 +49,17 @@ export const Meter: FC<MeterProps> = ({
 }) => {
   const uid = useId();
 
-  const horizontalLabelDirection = useMemo(() => (
-    labelPosition === 'end' ? 'row' : 'row-reverse'),
-  [labelPosition]);
+  const horizontalLabelDirection = useMemo(() => (labelPosition === 'end' ? 'row' : 'row-reverse'), [labelPosition]);
 
-  const verticalLabelDirection = useMemo(() => (
-    labelPosition === 'end' ? 'column' : 'column-reverse'),
-  [labelPosition]);
+  const verticalLabelDirection = useMemo(
+    () => (labelPosition === 'end' ? 'column' : 'column-reverse'),
+    [labelPosition],
+  );
 
-  const stackDirection = useMemo(() => (direction === 'row'
-    ? horizontalLabelDirection
-    : verticalLabelDirection),
-  [direction, horizontalLabelDirection, verticalLabelDirection]);
+  const stackDirection = useMemo(
+    () => (direction === 'row' ? horizontalLabelDirection : verticalLabelDirection),
+    [direction, horizontalLabelDirection, verticalLabelDirection],
+  );
 
   return (
     <Stack

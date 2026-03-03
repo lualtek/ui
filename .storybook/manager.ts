@@ -1,20 +1,11 @@
-
 import { addons } from 'storybook/manager-api';
 import { themes } from 'storybook/theming';
-import {
-  type TagBadgeParameters,
-// @ts-expect-error something wrong
-} from 'storybook-addon-tag-badges';
 
 import lualtekTheme from './lualtek-theme';
 
-// eslint-disable-next-line @typescript-eslint/no-unsafe-call
 addons.setConfig({
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   theme: { ...themes.dark, ...lualtekTheme },
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   sidebar: {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
     ...addons.getConfig().sidebar,
     showRoots: true,
   },
@@ -30,13 +21,15 @@ addons.setConfig({
         tooltip: 'This component is designed for mobile devices and touch gestures.',
       },
       display: {
-        sidebar: [{
-          type: 'component',
-          skipInherited: true,
-        }],
+        sidebar: [
+          {
+            type: 'component',
+            skipInherited: true,
+          },
+        ],
         toolbar: false,
         mdx: true,
       },
     },
-  ] satisfies TagBadgeParameters[],
+  ],
 });

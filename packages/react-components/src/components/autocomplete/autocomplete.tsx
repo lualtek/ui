@@ -1,24 +1,16 @@
 'use client';
 
 import clsx from 'clsx';
-import {
-  Children,
-  FC,
-  ReactNode,
-  useCallback,
-  useMemo,
-  useState,
-} from 'react';
+import type { FC, ReactNode } from 'react';
+import { Children, useCallback, useMemo, useState } from 'react';
 import { useDebounce } from 'react-use';
 
-import {
-  MenuProps, Popover, PopoverContentProps, Sheet, SheetProps, Skeleton, Stack, Text, Textfield, TextfieldProps,
-  useResponsiveContext,
-} from '@/components';
+import type { MenuProps, PopoverContentProps, SheetProps, TextfieldProps } from '@/components';
+import { Popover, Sheet, Stack, Textfield, useResponsiveContext } from '@/components';
 
-import styles from './autocomplete.module.css';
 import { AutocompleteList } from './autocomplete-list';
-import { AutocompleteOption, AutocompleteOptionProps } from './autocomplete-option';
+import type { AutocompleteOptionProps } from './autocomplete-option';
+import styles from './autocomplete.module.css';
 
 export type AutocompleteProps = TextfieldProps & {
   /**
@@ -70,7 +62,6 @@ export type AutocompleteProps = TextfieldProps & {
 
 export const Autocomplete: FC<AutocompleteProps> = ({
   className,
-  children,
   disabled,
   readOnly,
   options,
@@ -93,7 +84,7 @@ export const Autocomplete: FC<AutocompleteProps> = ({
   const { matches } = useResponsiveContext();
   const isDesktop = useMemo(() => matches.small, [matches]);
 
-  const [, cancel] = useDebounce(
+  const [, _] = useDebounce(
     () => {
       setDebouncedValue(currentValue);
     },
@@ -108,30 +99,33 @@ export const Autocomplete: FC<AutocompleteProps> = ({
   }, []);
 
   const filteredOptions = useMemo(
-    () => (debouncedValue
-      ? options?.filter((item) => {
-        const childrenText = Children.toArray(item.children)?.[0] as string;
-        const debouncedLower = (debouncedValue as string).toLowerCase();
-        return (
-          String(item.value).toLowerCase().includes(debouncedLower)
-          || childrenText?.toLowerCase().includes(debouncedLower)
-        );
-      })
-      : options
-    ),
+    () =>
+      debouncedValue
+        ? options?.filter((item) => {
+            const childrenText = Children.toArray(item.children)?.[0] as string;
+            const debouncedLower = (debouncedValue as string).toLowerCase();
+            return (
+              String(item.value).toLowerCase().includes(debouncedLower) ||
+              childrenText?.toLowerCase().includes(debouncedLower)
+            );
+          })
+        : options,
     [debouncedValue, options],
   );
 
-  const handleClickOption = useCallback((value: string | number, text?: string) => {
-    setIsOpen(false);
+  const handleClickOption = useCallback(
+    (selectedValue: string | number, text?: string) => {
+      setIsOpen(false);
 
-    if (onClickOption) {
-      onClickOption?.(value, text);
-      return;
-    }
+      if (onClickOption) {
+        onClickOption?.(selectedValue, text);
+        return;
+      }
 
-    setCurrentValue(text ?? value);
-  }, [onClickOption]);
+      setCurrentValue(text ?? selectedValue);
+    },
+    [onClickOption],
+  );
 
   return (
     <div className={clsx(styles.Autocomplete, className)}>
@@ -145,7 +139,7 @@ export const Autocomplete: FC<AutocompleteProps> = ({
               readOnly={readOnly}
               value={currentValue}
               type="search"
-              onChange={event => setCurrentValue(event.target.value)}
+              onChange={(event) => setCurrentValue(event.target.value)}
               onFocus={() => setIsOpen(true)}
               id="autocompleteInput"
               style={style}
@@ -154,7 +148,7 @@ export const Autocomplete: FC<AutocompleteProps> = ({
           </Popover.Anchor>
           <Popover.Content
             usePortal={usePortal}
-            onOpenAutoFocus={event => event.preventDefault()}
+            onOpenAutoFocus={(event) => event.preventDefault()}
             onInteractOutside={({ currentTarget }) => onInteractOutside(currentTarget)}
             onEscapeKeyDown={() => setIsOpen(false)}
             align={align}
@@ -169,61 +163,59 @@ export const Autocomplete: FC<AutocompleteProps> = ({
             />
           </Popover.Content>
         </Popover>
-      )
-      /**
-       * Fallback to Sheet for mobile devices with UI adapted to touch interactions
-       */
-        : (
-          <Sheet
-            heading="Search options"
-            showHeading={false}
-            noPadding
-            nested
-            open={isOpen}
-            zIndex={zIndex}
-            onOpenChange={open => setIsOpen(open)}
-            trigger={(
-              <Textfield
-                ref={forwardedRef}
-                autoComplete="off"
-                disabled={disabled}
-                readOnly={readOnly}
-                value={currentValue}
-                id="autocompleteInput"
-                style={style}
-                {...otherProps}
-              />
-            )}
-          >
-            <Stack hPadding={24} vPadding={[8, 8]}>
-              <Textfield
-                {...otherProps}
-                icon="zoom"
-                showClearButton
-                onClear={() => {
-                  setCurrentValue('');
-                }}
-                fullWidth
-                ref={forwardedRef}
-                autoComplete="off"
-                label=""
-                value={currentValue}
-                type="search"
-                onChange={event => setCurrentValue(event.target.value)}
-                id="autocompleteInput"
-              />
-            </Stack>
-            <AutocompleteList
-              emptyContent={emptyContent}
-              matchFieldWidth={matchFieldWidth}
-              loading={loading}
-              maxHeight={maxHeight}
-              options={filteredOptions}
-              onClickOption={handleClickOption}
+      ) : (
+        /**
+         * Fallback to Sheet for mobile devices with UI adapted to touch interactions
+         */
+        <Sheet
+          heading="Search options"
+          showHeading={false}
+          noPadding
+          nested
+          open={isOpen}
+          zIndex={zIndex}
+          onOpenChange={(open) => setIsOpen(open)}
+          trigger={
+            <Textfield
+              ref={forwardedRef}
+              autoComplete="off"
+              disabled={disabled}
+              readOnly={readOnly}
+              value={currentValue}
+              id="autocompleteInput"
+              style={style}
+              {...otherProps}
             />
-          </Sheet>
-        )
-      }
+          }
+        >
+          <Stack hPadding={24} vPadding={[8, 8]}>
+            <Textfield
+              {...otherProps}
+              icon="zoom"
+              showClearButton
+              onClear={() => {
+                setCurrentValue('');
+              }}
+              fullWidth
+              ref={forwardedRef}
+              autoComplete="off"
+              label=""
+              value={currentValue}
+              type="search"
+              onChange={(event) => setCurrentValue(event.target.value)}
+              id="autocompleteInput"
+            />
+          </Stack>
+          <AutocompleteList
+            emptyContent={emptyContent}
+            matchFieldWidth={matchFieldWidth}
+            loading={loading}
+            maxHeight={maxHeight}
+            options={filteredOptions}
+            onClickOption={handleClickOption}
+          />
+        </Sheet>
+      )}
     </div>
   );
 };

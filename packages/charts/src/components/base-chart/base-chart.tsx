@@ -1,25 +1,14 @@
 'use client';
 
 import { Stack, Text } from '@lualtek/react-components';
-import {
-  FC,
-  type JSX, ReactElement, ReactNode, useMemo,
-} from 'react';
-import {
-  CartesianGrid,
-  Legend,
-  LegendProps,
-  ResponsiveContainer,
-  ResponsiveContainerProps,
-  Tooltip as ReTooltip,
-  XAxis,
-  XAxisProps,
-  YAxisProps,
-} from 'recharts';
-import { CartesianChartProps } from 'recharts/types/util/types';
-import { Except } from 'type-fest';
+import { type FC, type JSX, type ReactElement, type ReactNode, useMemo } from 'react';
+import type { LegendProps, ResponsiveContainerProps, XAxisProps, YAxisProps } from 'recharts';
+import { CartesianGrid, Legend, ResponsiveContainer, Tooltip as ReTooltip, XAxis } from 'recharts';
+import type { CartesianChartProps } from 'recharts/types/util/types';
+import type { Except } from 'type-fest';
 
-import { Tooltip, TooltipProps } from '../tooltip';
+import type { TooltipProps } from '../tooltip';
+import { Tooltip } from '../tooltip';
 
 export type ChartDataBaseType = Record<string, string | number | null>;
 
@@ -197,7 +186,7 @@ export type BaseChartProps = Except<ResponsiveContainerProps, 'className'> & {
   handleChartUpdate?: CartesianChartProps['onTouchStart'];
 };
 
-type BaseChartComponent = FC<BaseChartProps & Pick<React.ComponentPropsWithRef<'div'>, 'ref'>>
+type BaseChartComponent = FC<BaseChartProps & Pick<React.ComponentPropsWithRef<'div'>, 'ref'>>;
 
 export const DENSITIES: Record<NonNullable<BaseChartProps['density']>, number> = {
   low: 3,
@@ -234,21 +223,19 @@ export const BaseChart: BaseChartComponent = ({
   ref: forwardedRef,
   ...otherProps
 }) => {
-  const cursor = useMemo(() => ({
-    stroke: 'var(--dimmed-3)',
-    strokeWidth: 2,
-    fill: 'var(--dimmed-2)',
-    ...cursorStyle,
-  }), [cursorStyle]);
+  const cursor = useMemo(
+    () => ({
+      stroke: 'var(--dimmed-3)',
+      strokeWidth: 2,
+      fill: 'var(--dimmed-2)',
+      ...cursorStyle,
+    }),
+    [cursorStyle],
+  );
 
   return (
     <div ref={forwardedRef} className={className}>
-      <ResponsiveContainer
-        width="100%"
-        debounce={0}
-        height={height}
-        {...otherProps}
-      >
+      <ResponsiveContainer width="100%" debounce={0} height={height} {...otherProps}>
         {renderChart(
           <>
             {showGrid && (
@@ -265,14 +252,14 @@ export const BaseChart: BaseChartComponent = ({
                 !showTooltip
                   ? () => null
                   : (customTooltip ?? (
-                    <Tooltip
-                      formatLabel={formatTooltipLabel}
-                      formatName={formatTooltipName}
-                      formatValue={formatTooltipValue}
-                      tooltipDecorator={tooltipDecorator}
-                      tooltipColors={tooltipColors}
-                    />
-                  ))
+                      <Tooltip
+                        formatLabel={formatTooltipLabel}
+                        formatName={formatTooltipName}
+                        formatValue={formatTooltipValue}
+                        tooltipDecorator={tooltipDecorator}
+                        tooltipColors={tooltipColors}
+                      />
+                    ))
               }
             />
             <XAxis
@@ -306,7 +293,9 @@ export const BaseChart: BaseChartComponent = ({
                   const { color } = entry;
                   return (
                     <Stack inline fill={false} vPadding={8}>
-                      <Text as="span" size={14} style={{ color }}>{value}</Text>
+                      <Text as="span" size={14} style={{ color }}>
+                        {value}
+                      </Text>
                     </Stack>
                   );
                 }}

@@ -1,14 +1,10 @@
 import clsx from 'clsx';
-import {
-  domMax, LazyMotion, m,
-} from 'motion/react';
-import {
-  ComponentPropsWithRef, FC, useCallback, useId, useMemo, useState,
-} from 'react';
+import { domMax, LazyMotion, m } from 'motion/react';
+import type { ComponentPropsWithRef, FC } from 'react';
+import { useCallback, useId, useMemo, useState } from 'react';
 
-import {
-  Button, ButtonProps, Elevator, Stack, StackProps,
-} from '@/components';
+import type { ButtonProps, StackProps } from '@/components';
+import { Button, Elevator, Stack } from '@/components';
 
 import styles from './expander.module.css';
 
@@ -47,7 +43,7 @@ export type ExpanderProps = ComponentPropsWithRef<'div'> & {
    * @defaultValue 'center'
    */
   expandAlignment?: StackProps['hAlign'];
-}
+};
 
 export const Expander: FC<ExpanderProps> = ({
   expandLabel = 'Show more',
@@ -64,16 +60,16 @@ export const Expander: FC<ExpanderProps> = ({
   const [isCollapsed, setIsCollapsed] = useState(!expanded);
   const uid = useId();
 
-  const dynamicStyle = useMemo(() => ({
-    '--visibleArea': visibleArea,
-  }), [visibleArea]);
-
-  const handleCollapse = useCallback(
-    () => {
-      setIsCollapsed(s => !s);
-    },
-    [],
+  const dynamicStyle = useMemo(
+    () => ({
+      '--visibleArea': visibleArea,
+    }),
+    [visibleArea],
   );
+
+  const handleCollapse = useCallback(() => {
+    setIsCollapsed((s) => !s);
+  }, []);
 
   return (
     <div
@@ -86,9 +82,14 @@ export const Expander: FC<ExpanderProps> = ({
         <m.div
           className={styles.Content}
           id={uid}
-          animate={!isCollapsed ? { height: 'auto' } : {
-            height: 'calc(var(--visibleArea) + var(--white-space))', overflow: 'hidden',
-          }}
+          animate={
+            !isCollapsed
+              ? { height: 'auto' }
+              : {
+                  height: 'calc(var(--visibleArea) + var(--white-space))',
+                  overflow: 'hidden',
+                }
+          }
           transition={{ ease: 'easeOut', duration: 0.2 }}
           initial={false}
         >

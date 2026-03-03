@@ -1,16 +1,12 @@
 'use client';
 
-import { TokensTypes } from '@lualtek/tokens/platforms/web';
+import type { TokensTypes } from '@lualtek/tokens/web';
 import { domMax, LazyMotion, m } from 'motion/react';
-import {
-  FC,
-  ReactNode, useMemo,
-} from 'react';
+import type { FC, ReactNode } from 'react';
+import { useMemo } from 'react';
 
-import {
-  IconChip, IconChipProps, Stack, StackProps, Text, Title,
-  TitleProps,
-} from '@/components';
+import type { IconChipProps, StackProps, TitleProps } from '@/components';
+import { IconChip, Stack, Text, Title } from '@/components';
 
 import styles from './info-state.module.css';
 
@@ -65,7 +61,7 @@ export type InfoStateProps = React.ComponentPropsWithRef<'div'> & {
    * @defaultValue '4'
    */
   titleSize?: TitleProps['level'];
-}
+};
 
 export const InfoState: FC<InfoStateProps> = ({
   className,
@@ -85,9 +81,12 @@ export const InfoState: FC<InfoStateProps> = ({
 }) => {
   const isHorizontal = direction === 'row';
 
-  const dynamicStyle = useMemo(() => ({
-    '--icon-color': `var(--highlight-${iconColor}-background)`,
-  }), [iconColor]);
+  const dynamicStyle = useMemo(
+    () => ({
+      '--icon-color': `var(--highlight-${iconColor}-background)`,
+    }),
+    [iconColor],
+  );
 
   return (
     <Stack
@@ -97,14 +96,14 @@ export const InfoState: FC<InfoStateProps> = ({
       columnGap={32}
       className={className}
       hAlign={isHorizontal ? 'start' : 'center'}
-      vAlign={(isHorizontal && image) ? 'center' : 'start'}
+      vAlign={isHorizontal && image ? 'center' : 'start'}
       fill={false}
       wrap={!!image}
       style={{ ...dynamicStyle, ...style }}
       {...otherProps}
     >
       <LazyMotion features={domMax}>
-        {(!image && icon) && (
+        {!image && icon && (
           <m.span
             animate={{
               scale: [1, 0.8, 1],
@@ -117,34 +116,21 @@ export const InfoState: FC<InfoStateProps> = ({
               type: 'spring',
             }}
           >
-            <IconChip
-              icon={icon}
-              dimension="big"
-              color={iconColor}
-              className={styles.IconWrapper}
-            />
+            <IconChip icon={icon} dimension="big" color={iconColor} className={styles.IconWrapper} />
           </m.span>
         )}
 
-        {(image && !icon) && (
-          <img
-            className={styles.Image}
-            alt=""
-            width="400"
-            src={image}
-            loading="lazy"
-            decoding="async"
-          />
+        {image && !icon && (
+          <img className={styles.Image} alt="" width="400" src={image} loading="lazy" decoding="async" />
         )}
 
-        <Stack
-          rowGap={16}
-          hAlign={isHorizontal ? 'start' : 'center'}
-          vAlign="center"
-          fill={false}
-        >
-          <Title maxWidth={titleMaxWidth} align={isHorizontal ? 'start' : 'center'} level={titleSize}>{title}</Title>
-          <Text as="div" maxWidth={textMaxWidth} dimmed={6} align={isHorizontal ? 'start' : 'center'}>{children}</Text>
+        <Stack rowGap={16} hAlign={isHorizontal ? 'start' : 'center'} vAlign="center" fill={false}>
+          <Title maxWidth={titleMaxWidth} align={isHorizontal ? 'start' : 'center'} level={titleSize}>
+            {title}
+          </Title>
+          <Text as="div" maxWidth={textMaxWidth} dimmed={6} align={isHorizontal ? 'start' : 'center'}>
+            {children}
+          </Text>
           {actions && (
             <Stack vPadding={16} inline direction="row" columnGap={16} rowGap={16} wrap>
               {actions}

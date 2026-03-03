@@ -101,7 +101,7 @@
       text-align: center;
       font-size: --token(--font-size-16);
       color: var(--dimmed-6);
-      font-weight: --token(--font-weight-bold);
+      font-variation-settings: "wght" --token(--font-weight-bold);
     }
 
     .Input[data-slider-show-values='true'] &[data-orientation='vertical']::after {

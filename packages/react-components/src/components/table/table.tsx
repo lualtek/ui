@@ -1,45 +1,36 @@
 'use client';
 
+import type { ColumnDef, FilterFnOption, Row, RowData, SortingState, Table as TableType } from '@tanstack/react-table';
 import {
-  ColumnDef,
-  FilterFnOption,
   flexRender,
   getCoreRowModel,
   getFilteredRowModel,
   getPaginationRowModel,
   getSortedRowModel,
-  Row,
-  RowData,
-  SortingState,
-  Table as TableType,
   useReactTable,
 } from '@tanstack/react-table';
 import clsx from 'clsx';
-import {
-  AnimatePresence, domMax, LazyMotion, m,
-} from 'motion/react';
-import {
-  ReactNode, useCallback, useEffect, useId, useMemo, useState,
-} from 'react';
+import { AnimatePresence, domMax, LazyMotion, m } from 'motion/react';
+import type { ReactNode } from 'react';
+import { useCallback, useEffect, useId, useMemo, useState } from 'react';
 import { useDebounce } from 'react-use';
 
-import {
-  Panel,
-  Skeleton, Stack, Text,
-} from '@/components';
+import { Panel, Skeleton, Stack, Text } from '@/components';
 
-import styles from './table.module.css';
 import { TableCell } from './table-cell';
 import { TableCheckbox } from './table-checkbox';
 import { FilterControl, ToggleColumnsControl } from './table-controls';
 import { TableHeadCell } from './table-head-cell';
-import { TableHeader, TableHeaderProps } from './table-header';
-import { TablePagination, TablePaginationProps } from './table-pagination';
+import type { TableHeaderProps } from './table-header';
+import { TableHeader } from './table-header';
+import type { TablePaginationProps } from './table-pagination';
+import { TablePagination } from './table-pagination';
 import { TableRow } from './table-row';
-import { CustomColumnMeta } from './types';
+import styles from './table.module.css';
+import type { CustomColumnMeta } from './types';
 
 declare module '@tanstack/react-table' {
-  // eslint-disable-next-line @typescript-eslint/naming-convention, @typescript-eslint/no-empty-object-type
+  // oxlint-disable-next-line no-unused-vars, typescript/no-empty-interface
   interface ColumnMeta<TData extends RowData, TValue> extends CustomColumnMeta {}
 }
 
@@ -76,9 +67,9 @@ export type TableProps<T> = React.ComponentPropsWithRef<'table'> & {
    */
   showPagination?: boolean;
   /**
-    * Set clusters of items to show in a single page. These values are used to
-    * compute the select options for the page size select.
-    */
+   * Set clusters of items to show in a single page. These values are used to
+   * compute the select options for the page size select.
+   */
   pageClusters?: TablePaginationProps['clusters'];
   /**
    * Set the label for the clusters select.
@@ -101,10 +92,10 @@ export type TableProps<T> = React.ComponentPropsWithRef<'table'> & {
    */
   showHeader?: boolean;
   /**
- * Enable the dropdown to choose the visibility of the column
- *
- * @defaultValue false
- */
+   * Enable the dropdown to choose the visibility of the column
+   *
+   * @defaultValue false
+   */
   enableToggleColumns?: boolean;
   /**
    * Set the initial visibility of the columns. This object should have the column id as key and a boolean as value.
@@ -149,74 +140,74 @@ export type TableProps<T> = React.ComponentPropsWithRef<'table'> & {
   itemsPerPage?: number;
   /**
    * Get Table instance
-  */
+   */
   getTableInstance?: (instance: TableType<T>) => void;
-}
+};
 
 export type TableConditionalProps<T> =
   | {
-    /**
+      /**
        * Enable the global filter function
        */
-    enableFilterControl: boolean;
-    /**
+      enableFilterControl: boolean;
+      /**
        * Custom function used to filters table data.
        */
-    filterFn: FilterFnOption<T>;
-    /**
+      filterFn: FilterFnOption<T>;
+      /**
        * Set the label for the filter textfield control
        *
        * @defaultValue "Search across data"
        */
-    filterControlLabel: string;
-    /**
+      filterControlLabel: string;
+      /**
        * Set the label default value filter textfield control
        *
        */
-    filterControlDefaultValue?: string;
-    /**
+      filterControlDefaultValue?: string;
+      /**
        * Set debounce time for filter search
        * @defaultValue 230
        */
-    filterDebounce?: number;
-    /**
+      filterDebounce?: number;
+      /**
        * Triggers when the text search of the table changes
        */
-    onFilterTextChange?: (value: string) => void;
-  }
+      onFilterTextChange?: (value: string) => void;
+    }
   | {
-    /**
+      /**
        * Enable the global filter function
        */
-    enableFilterControl?: never;
-    /**
+      enableFilterControl?: never;
+      /**
        * Custom function used to filters table data.
        */
-    filterFn?: never;
-    /**
+      filterFn?: never;
+      /**
        * Set the label for the filter textfield control
        */
-    filterControlLabel?: never;
-    /**
+      filterControlLabel?: never;
+      /**
        * Set the label default value filter textfield control
        *
        */
-    filterControlDefaultValue?: never;
-    /**
+      filterControlDefaultValue?: never;
+      /**
        * Set debounce time for filter search
        * @defaultValue 230
        */
-    filterDebounce?: never;
-    /**
+      filterDebounce?: never;
+      /**
        * Triggers when the text search of the table changes
        */
-    onFilterTextChange?: never;
-  };
+      onFilterTextChange?: never;
+    };
 
 /**
  * {@link TableProps}
  */
-export type InternalTableProps<T> = TableProps<T> & TableConditionalProps<T>
+export type InternalTableProps<T> = TableProps<T> & TableConditionalProps<T>;
 
 export const Table = <T extends Record<string, unknown>>({
   data,
@@ -235,7 +226,7 @@ export const Table = <T extends Record<string, unknown>>({
   enableToggleColumns = false,
   toggleColumnsLabel,
   selectableRows,
-  renderSelectedLabel = selectedRows => `Selected items: ${selectedRows}`,
+  renderSelectedLabel = (selectedRows) => `Selected items: ${selectedRows}`,
   renderSelectedActions,
   height,
   background,
@@ -257,7 +248,7 @@ export const Table = <T extends Record<string, unknown>>({
   const [globalFilter, setGlobalFilter] = useState(filterControlDefaultValue);
   const [debouncedGlobalFilter, setDebouncedGlobalFilter] = useState(filterControlDefaultValue);
 
-  const [, cancel] = useDebounce(
+  const [, _] = useDebounce(
     () => {
       setDebouncedGlobalFilter(globalFilter);
     },
@@ -265,32 +256,37 @@ export const Table = <T extends Record<string, unknown>>({
     [globalFilter],
   );
 
-  const finalColumns = useMemo(() => (selectableRows ? [
-    {
-      id: 'selection',
-      enableHiding: false,
-      header: ({ table }) => (
-        !loading ? (
-          <TableCheckbox
-            checked={table.getIsAllRowsSelected()}
-            indeterminate={table.getIsSomeRowsSelected()}
-            onChange={table.getToggleAllRowsSelectedHandler()}
-          />
-        ) : null
-      ),
-      cell: ({ row }) => (
-        <TableCheckbox
-          checked={row.getIsSelected()}
-          indeterminate={row.getIsSomeSelected()}
-          onChange={row.getToggleSelectedHandler()}
-        />
-      ),
-      meta: {
-        collapsed: true,
-      },
-    },
-    ...columns,
-  ] : columns) as Array<ColumnDef<T>>, [columns, loading, selectableRows]);
+  const finalColumns = useMemo(
+    () =>
+      (selectableRows
+        ? [
+            {
+              id: 'selection',
+              enableHiding: false,
+              header: ({ table }) =>
+                !loading ? (
+                  <TableCheckbox
+                    checked={table.getIsAllRowsSelected()}
+                    indeterminate={table.getIsSomeRowsSelected()}
+                    onChange={table.getToggleAllRowsSelectedHandler()}
+                  />
+                ) : null,
+              cell: ({ row }) => (
+                <TableCheckbox
+                  checked={row.getIsSelected()}
+                  indeterminate={row.getIsSomeSelected()}
+                  onChange={row.getToggleSelectedHandler()}
+                />
+              ),
+              meta: {
+                collapsed: true,
+              },
+            },
+            ...columns,
+          ]
+        : columns) as Array<ColumnDef<T>>,
+    [columns, loading, selectableRows],
+  );
 
   const uid = useId();
   const table = useReactTable({
@@ -320,61 +316,70 @@ export const Table = <T extends Record<string, unknown>>({
 
   const selectedRowsCount = useMemo(() => Object.keys(rowSelection).length, [rowSelection]);
 
-  const renderRows = useCallback((rows: Array<Row<T>>) => (rows.length > 0 ? rows.map(row => (
-    <TableRow key={row.id} rowData={row}>
-      {row.getVisibleCells().map(cell => (
-        <TableCell
-          key={cell.id}
-          collapsed={cell.column.columnDef.meta?.collapsed}
-          align={cell.column.columnDef.meta?.align}
-          width={cell.column.columnDef.size}
-          minWidth={cell.column.columnDef.minSize}
-        >
-          {flexRender(cell.column.columnDef.cell, cell.getContext())}
-        </TableCell>
-      ))}
-    </TableRow>
-  )) : (
-    <tr>
-      <td colSpan={table.getVisibleFlatColumns().length}>
-        <Stack vAlign="center" hAlign="center" vPadding={40}>
-          {emptyComponent ?? 'No data'}
-        </Stack>
-      </td>
-    </tr>
-  )), [emptyComponent, table]);
+  const renderRows = useCallback(
+    (rows: Array<Row<T>>) =>
+      rows.length > 0 ? (
+        rows.map((row) => (
+          <TableRow key={row.id} rowData={row}>
+            {row.getVisibleCells().map((cell) => (
+              <TableCell
+                key={cell.id}
+                collapsed={cell.column.columnDef.meta?.collapsed}
+                align={cell.column.columnDef.meta?.align}
+                width={cell.column.columnDef.size}
+                minWidth={cell.column.columnDef.minSize}
+              >
+                {flexRender(cell.column.columnDef.cell, cell.getContext())}
+              </TableCell>
+            ))}
+          </TableRow>
+        ))
+      ) : (
+        <tr>
+          <td colSpan={table.getVisibleFlatColumns().length}>
+            <Stack vAlign="center" hAlign="center" vPadding={40}>
+              {emptyComponent ?? 'No data'}
+            </Stack>
+          </td>
+        </tr>
+      ),
+    [emptyComponent, table],
+  );
 
-  const renderThead = useCallback((rowsLength: number) => (rowsLength > 0 ? (
-    <thead role="rowgroup" className={styles.THead}>
-      {table.getHeaderGroups().map(headerGroup => (
-        <TableRow key={headerGroup.id}>
-          {headerGroup.headers.map(header => (
-            <TableHeadCell
-              key={header.id}
-              as="th"
-              width={header.column.columnDef.size}
-              canSort={header.column.getCanSort()}
-              sorting={header.column.getIsSorted()}
-              collapsed={header.column.columnDef.meta?.collapsed}
-              align={header.column.columnDef.meta?.align}
-              onClick={header.column.getToggleSortingHandler()}
-            >
-              {!header.isPlaceholder && flexRender(
-                header.column.columnDef.header,
-                header.getContext(),
-              )}
-            </TableHeadCell>
+  const renderThead = useCallback(
+    (rowsLength: number) =>
+      rowsLength > 0 ? (
+        <thead className={styles.THead}>
+          {table.getHeaderGroups().map((headerGroup) => (
+            <TableRow key={headerGroup.id}>
+              {headerGroup.headers.map((header) => (
+                <TableHeadCell
+                  key={header.id}
+                  as="th"
+                  width={header.column.columnDef.size}
+                  canSort={header.column.getCanSort()}
+                  sorting={header.column.getIsSorted()}
+                  collapsed={header.column.columnDef.meta?.collapsed}
+                  align={header.column.columnDef.meta?.align}
+                  onClick={header.column.getToggleSortingHandler()}
+                >
+                  {!header.isPlaceholder && flexRender(header.column.columnDef.header, header.getContext())}
+                </TableHeadCell>
+              ))}
+            </TableRow>
           ))}
-        </TableRow>
-      ))}
-    </thead>
-  ) : null),
-  [table]);
+        </thead>
+      ) : null,
+    [table],
+  );
 
-  const dynamicStyle = useMemo(() => ({
-    '--table-height': height,
-    '--table-background': background,
-  }), [height, background]);
+  const dynamicStyle = useMemo(
+    () => ({
+      '--table-height': height,
+      '--table-background': background,
+    }),
+    [height, background],
+  );
 
   useEffect(() => {
     table.setPageSize(itemsPerPage);
@@ -393,10 +398,7 @@ export const Table = <T extends Record<string, unknown>>({
   }, [debouncedGlobalFilter, onFilterTextChange]);
 
   return (
-    <div
-      className={clsx(styles.Table, className)}
-      style={{ ...dynamicStyle, ...style }}
-    >
+    <div className={clsx(styles.Table, className)} style={{ ...dynamicStyle, ...style }}>
       <AnimatePresence>
         <LazyMotion features={domMax}>
           {selectableRows && selectedRowsCount > 0 && (
@@ -450,10 +452,10 @@ export const Table = <T extends Record<string, unknown>>({
               }}
             >
               <TableHeader heading={heading} id={`${uid}-table-title`}>
-                {(enableFilterControl) ? (
+                {enableFilterControl ? (
                   <FilterControl
                     label={filterControlLabel}
-                    onChange={event => setGlobalFilter(event.target.value)}
+                    onChange={(event) => setGlobalFilter(event.target.value)}
                     onClear={() => setGlobalFilter('')}
                     defaultValue={filterControlDefaultValue}
                   />
@@ -461,14 +463,9 @@ export const Table = <T extends Record<string, unknown>>({
 
                 {actions}
 
-                {(enableToggleColumns && data.length)
-                  ? (
-                    <ToggleColumnsControl
-                      columns={table.getAllLeafColumns()}
-                      label={toggleColumnsLabel}
-                    />
-                  )
-                  : null}
+                {enableToggleColumns && data.length ? (
+                  <ToggleColumnsControl columns={table.getAllLeafColumns()} label={toggleColumnsLabel} />
+                ) : null}
               </TableHeader>
             </m.div>
           )}
@@ -486,36 +483,36 @@ export const Table = <T extends Record<string, unknown>>({
             {...otherProps}
           >
             {renderThead(table.getRowModel().rows.length)}
-            <tbody role="rowgroup">
-              {loading
-                ? (
-                  <TableRow>
-                    <TableCell colSpan={100}>
-                      <Skeleton gap={16} height={24} count={10} />
-                    </TableCell>
-                  </TableRow>
-                ) : renderRows(table.getRowModel().rows)}
+            <tbody>
+              {loading ? (
+                <TableRow>
+                  <TableCell colSpan={100}>
+                    <Skeleton gap={16} height={24} count={10} />
+                  </TableCell>
+                </TableRow>
+              ) : (
+                renderRows(table.getRowModel().rows)
+              )}
             </tbody>
           </table>
         </div>
       )}
 
       {/* PAGINATION */}
-      {(showPagination && table.getIsSomeColumnsVisible() && table.getRowModel().rows.length > 0) && (
+      {showPagination && table.getIsSomeColumnsVisible() && table.getRowModel().rows.length > 0 && (
         <TablePagination
           clusters={pageClusters}
           itemsPerPage={table.getState().pagination.pageSize}
           totalItems={data.length}
           currentPage={table.getState().pagination.pageIndex}
           clustersLabel={clustersLabel}
-          onPageSizeChange={pageSize => table.setPageSize(pageSize)}
-          onPageClick={selected => table.setPageIndex(selected)}
+          onPageSizeChange={(pageSize) => table.setPageSize(pageSize)}
+          onPageClick={(selected) => table.setPageIndex(selected)}
         />
       )}
     </div>
   );
 };
 
-export type { Table as TableType } from '@tanstack/react-table';
 export { createColumnHelper } from '@tanstack/react-table';
-
+export type { Table as TableType } from '@tanstack/react-table';

@@ -1,14 +1,11 @@
 'use client';
 
 import clsx from 'clsx';
-import {
-  FC, useMemo,
-} from 'react';
+import type { FC } from 'react';
+import { useMemo } from 'react';
 
-import {
-  Glow,
-  Stack, StackProps, TextChip, Title, TitleProps, useResponsiveContext,
-} from '@/components';
+import type { StackProps, TitleProps } from '@/components';
+import { Glow, Stack, TextChip, Title, useResponsiveContext } from '@/components';
 
 import styles from './stepper.module.css';
 
@@ -36,7 +33,7 @@ export type StepperProps = React.ComponentPropsWithRef<'div'> & {
    * Fill the width of the stepper.
    */
   fullWidth?: boolean;
-}
+};
 
 export const Stepper: FC<StepperProps> = ({
   className,
@@ -65,13 +62,10 @@ export const Stepper: FC<StepperProps> = ({
       <Glow innerRadius={matches.medium ? 12 : 8} borderOffset={0} borderWidth={1} spread={200} fitContent>
         <TextChip dimension={matches.medium ? 'regular' : 'small'} text={padStep} />
       </Glow>
-      <Stack
-        vPadding={matches.medium ? 8 : 4}
-        fill={fillContent}
-        rowGap={contentGap}
-        className={styles.Content}
-      >
-        <Title level="5" as="h5">{heading}</Title>
+      <Stack vPadding={matches.medium ? 8 : 4} fill={fillContent} rowGap={contentGap} className={styles.Content}>
+        <Title level="5" as="h5">
+          {heading}
+        </Title>
         {children}
       </Stack>
     </Stack>

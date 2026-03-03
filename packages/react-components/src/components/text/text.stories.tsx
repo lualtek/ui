@@ -30,6 +30,10 @@ const meta = {
       options: [4, 5, 6, 7, 8],
       control: { type: 'select' },
     },
+    weight: {
+      control: { type: 'select' },
+      options: ['light', 'regular', 'semibold', 'bold', 200, 300, 400, 500, 600, 700, 800, 900],
+    },
     align: {
       options: ['start', 'center', 'end'],
       control: { type: 'inline-radio' },
@@ -38,8 +42,14 @@ const meta = {
       options: ['none', 'extra-small', 'small', 'standard', 'large'],
       control: { type: 'inline-radio' },
     },
+    fontWidth: {
+      control: { type: 'range', min: 75, max: 125, step: 5 },
+    },
+    opticalSize: {
+      control: { type: 'range', min: 6, max: 12, step: 0.5 },
+    },
   },
-  render: args => <Text {...args} />,
+  render: (args) => <Text {...args} />,
 } satisfies Meta<typeof Text>;
 
 export default meta;
@@ -54,12 +64,20 @@ export const Weight = {
   },
 } satisfies Story;
 
+export const VariableWeight = {
+  args: {
+    weight: 350,
+    fontWidth: 90,
+    opticalSize: 10,
+  },
+} satisfies Story;
+
 export const WithPadding = {
   args: {
     hPadding: 104,
     vPadding: [80, 32],
   },
-  render: args => <Text {...args} as="p" />,
+  render: (args) => <Text {...args} as="p" />,
 } satisfies Story;
 
 export const CustomWrapper = {
@@ -73,11 +91,9 @@ export const Nested = {
   args: {
     size: 22,
   },
-  render: args => (
+  render: (args) => (
     <Text {...args}>
-      Lorem, ipsum dolor sit
-      {' '}
-      <Text size={14}>amet consectetur adipisicing elit.</Text>
+      Lorem, ipsum dolor sit <Text size={14}>amet consectetur adipisicing elit.</Text>
     </Text>
   ),
 } satisfies Story;
@@ -86,20 +102,19 @@ export const Balanced = {
   args: {
     balanced: true,
   },
-  render: ({ as, ...args }) => (
+  render: ({ ...args }) => (
     <Text {...args} as="p">
       {args.children}
     </Text>
   ),
 } satisfies Story;
 
-
 export const Trimmed = {
   args: {
     balanced: true,
     trim: 'end',
   },
-  render: ({ as, ...args }) => (
+  render: ({ ...args }) => (
     <Text {...args} as="p">
       {args.children}
     </Text>

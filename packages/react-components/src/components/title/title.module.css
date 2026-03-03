@@ -67,51 +67,79 @@
     &:is(.H6) {
       --fs-min: --token(--font-size-14);
       --fs-max: --token(--font-size-18);
+      --default-weight: --token(--font-weight-bold);
 
-      font-weight: --token(--font-weight-bold);
+      font-variation-settings:
+        'wght' var(--custom-weight, var(--default-weight)),
+        'wdth' var(--custom-width, 100),
+        'opsz' var(--custom-opsz, 12);
     }
 
     &:is(.H5) {
       --fs-min: 1rem;
       --fs-max: 1.33rem;
+      --default-weight: --token(--font-weight-bold);
 
-      font-weight: --token(--font-weight-bold);
+      font-variation-settings:
+        'wght' var(--custom-weight, var(--default-weight)),
+        'wdth' var(--custom-width, 100),
+        'opsz' var(--custom-opsz, 12);
     }
 
     &:is(.H4) {
       --fs-min: 1.33rem;
       --fs-max: 1.77rem;
+      --default-weight: --token(--font-weight-bold);
 
-      font-weight: --token(--font-weight-bold);
+      font-variation-settings:
+        'wght' var(--custom-weight, var(--default-weight)),
+        'wdth' var(--custom-width, 100),
+        'opsz' var(--custom-opsz, 12);
     }
 
     &:is(.H3) {
       --fs-min: 1.77rem;
       --fs-max: 2.37rem;
+      --default-weight: --token(--font-weight-light);
 
-      font-weight: --token(--font-weight-light);
+      font-variation-settings:
+        'wght' var(--custom-weight, var(--default-weight)),
+        'wdth' var(--custom-width, 100),
+        'opsz' var(--custom-opsz, 12);
     }
 
     &:is(.H2) {
       --fs-min: 2.37rem;
       --fs-max: 3.16rem;
+      --default-weight: --token(--font-weight-light);
 
-      font-weight: --token(--font-weight-light);
+      font-variation-settings:
+        'wght' var(--custom-weight, var(--default-weight)),
+        'wdth' var(--custom-width, 100),
+        'opsz' var(--custom-opsz, 12);
     }
 
     &:is(.H1) {
       --fs-min: 3.16rem;
       --fs-max: 4.2rem;
+      --default-weight: --token(--font-weight-light);
 
-      font-weight: --token(--font-weight-light);
+      font-variation-settings:
+        'wght' var(--custom-weight, var(--default-weight)),
+        'wdth' var(--custom-width, 100),
+        'opsz' var(--custom-opsz, 12);
     }
 
     &.Display {
       --fs-min: 4.2rem;
       --fs-max: 5.6rem;
+      --default-weight: --token(--font-weight-bold);
 
-      font-family: --token(--font-family-heading);
-      font-weight: --token(--font-weight-regular);
+      /*font-family: --token(--font-family-heading);*/
+      font-variation-settings:
+        'wght' var(--custom-weight, var(--default-weight)),
+        'wdth' var(--custom-width, 90),
+        'opsz' var(--custom-opsz, 5);
       letter-spacing: -0.03em;
     }
 

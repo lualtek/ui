@@ -1,10 +1,9 @@
 'use client';
 
-import {
-  createContext, PropsWithChildren, useContext, useId,
-} from 'react';
+import type { PropsWithChildren } from 'react';
+import { createContext, useContext, useId } from 'react';
 
-import { OverlayProps } from './overlay';
+import type { OverlayProps } from './overlay';
 
 type OverlayContextProps = Pick<OverlayProps, 'onClose'> & {
   /**
@@ -13,7 +12,7 @@ type OverlayContextProps = Pick<OverlayProps, 'onClose'> & {
    * @defaultValue ""
    */
   headingId?: string;
-}
+};
 
 export const OverlayContext = createContext<OverlayContextProps>({
   headingId: '',
@@ -21,16 +20,14 @@ export const OverlayContext = createContext<OverlayContextProps>({
 
 export const OverlayProvider = (props: PropsWithChildren<OverlayContextProps>) => {
   const uid = useId();
-  const {
-    children,
-    headingId = `${uid}-overlay-title`, onClose,
-  } = props;
+  const { children, headingId = `${uid}-overlay-title`, onClose } = props;
 
   return (
-    <OverlayContext.Provider value={{
-      headingId,
-      onClose,
-    }}
+    <OverlayContext.Provider
+      value={{
+        headingId,
+        onClose,
+      }}
     >
       {children}
     </OverlayContext.Provider>

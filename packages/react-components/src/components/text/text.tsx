@@ -1,11 +1,11 @@
 'use client';
 
-import { TokensTypes } from '@lualtek/tokens/platforms/web';
+import type { TokensTypes } from '@lualtek/tokens/web';
 import tkns from '@lualtek/tokens/web/tokens.json';
 import clsx from 'clsx';
-import { forwardRef, useMemo } from 'react';
+import { useMemo } from 'react';
 
-import { PolyRefComponent } from '@/components';
+import type { PolyRefComponent } from '@/components';
 
 import styles from './text.module.css';
 
@@ -25,10 +25,20 @@ export type TextProps = React.ComponentPropsWithRef<'span' | 'p'> & {
    */
   dimmed?: 4 | 5 | 6 | 7 | 8;
   /**
-   * Set the font weight of the text. The values are
-   * consistent with the typography system.
+   * Set the font weight of the text. Can be a keyword ('light', 'regular', 'semibold', 'bold')
+   * that uses the typography system tokens, or a number (e.g., 200-1000) for custom weight.
    */
-  weight?: 'light' | 'regular' | 'semibold' | 'bold' ;
+  weight?: 'light' | 'regular' | 'semibold' | 'bold' | number;
+  /**
+   * Set the font width (wdth) for variable fonts.
+   * Typically ranges from 75 to 125.
+   */
+  fontWidth?: number;
+  /**
+   * Set the optical size (opsz) for variable fonts.
+   * For Nunito Sans, ranges from 6 to 12.
+   */
+  opticalSize?: number;
   /**
    * Set the maximum width of the text after which it will wrap.
    */
@@ -86,35 +96,35 @@ export type TextProps = React.ComponentPropsWithRef<'span' | 'p'> & {
    * @defaultValue "text alphabetic"
    */
   trimType?: string;
-}
+};
 
 export type TextComponent = PolyRefComponent<'span', TextProps>;
 
-export const Text: TextComponent = (
-  {
-    as: Component = 'span',
-    children,
-    className,
-    size,
-    sentiment,
-    dimmed,
-    weight,
-    maxWidth,
-    align = 'start',
-    responsive = true,
-    lineHeight = 'standard',
-    textColor,
-    whiteSpace = 'normal',
-    balanced = false,
-    hPadding,
-    vPadding,
-    trim,
-    trimType = 'text alphabetic',
-    style,
-    ref: forwardedRef,
-    ...otherProps
-  },
-) => {
+export const Text: TextComponent = ({
+  as: Component = 'span',
+  children,
+  className,
+  size,
+  sentiment,
+  dimmed,
+  weight,
+  maxWidth,
+  align = 'start',
+  responsive = true,
+  lineHeight = 'standard',
+  textColor,
+  whiteSpace = 'normal',
+  balanced = false,
+  hPadding,
+  vPadding,
+  trim,
+  trimType = 'text alphabetic',
+  fontWidth,
+  opticalSize,
+  style,
+  ref: forwardedRef,
+  ...otherProps
+}) => {
   const dynamicStyle = useMemo(() => {
     const getPaddingValue = (
       padding: TokensTypes['space'] | [TokensTypes['space'] | 0, TokensTypes['space'] | 0],
@@ -140,14 +150,17 @@ export const Text: TextComponent = (
       '--h-padding-right': hPaddingValues.right,
       '--trim': trim ? `trim-${trim}` : undefined,
       '--trim-type': trimType,
+      '--custom-weight': typeof weight === 'number' ? weight : undefined,
+      '--custom-width': fontWidth,
+      '--custom-opsz': opticalSize,
     };
-  }, [maxWidth, align, textColor, whiteSpace, hPadding, vPadding, trimType, trim]);
+  }, [maxWidth, align, textColor, whiteSpace, hPadding, vPadding, trimType, trim, weight, fontWidth, opticalSize]);
 
   return (
     <Component
       ref={forwardedRef}
       data-text-size={size}
-      data-text-weight={weight}
+      data-text-weight={typeof weight === 'string' ? weight : undefined}
       data-text-sentiment={sentiment}
       data-text-dimmed={dimmed}
       data-text-line-height={lineHeight}

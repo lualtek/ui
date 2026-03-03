@@ -1,19 +1,12 @@
 'use client';
 
-import { TokensTypes } from '@lualtek/tokens/platforms/web';
+import type { TokensTypes } from '@lualtek/tokens/web';
 import tkns from '@lualtek/tokens/web/tokens.json';
-import ReactEmojiPicker, {
-  EmojiStyle,
-  PickerProps, SkinTonePickerLocation, Theme,
-} from 'emoji-picker-react';
-import { FC } from 'react';
+import type { PickerProps } from 'emoji-picker-react';
+import ReactEmojiPicker, { EmojiStyle, SkinTonePickerLocation, Theme } from 'emoji-picker-react';
+import type { FC } from 'react';
 
-import {
-  BlankButton,
-  Grid,
-  Separator,
-  Stack,
-} from '@/components';
+import { BlankButton, Grid, Separator, Stack } from '@/components';
 
 import styles from './emoji-picker.module.css';
 
@@ -26,21 +19,16 @@ export type EmojiPickerProps = PickerProps & {
 
 const highlightColorToExclude = ['support'];
 
-const highlightKeys = Object.keys(
-  tkns.color as Record<TokensTypes['colors'], unknown>,
-).filter(i => !highlightColorToExclude.includes(i)).map(item => item);
+const highlightKeys = Object.keys(tkns.color as Record<TokensTypes['colors'], unknown>)
+  .filter((i) => !highlightColorToExclude.includes(i))
+  .map((item) => item);
 
-export const EmojiPicker: FC<EmojiPickerProps> = ({
-  className,
-  theme,
-  onColorClick,
-  ...otherProps
-}) => (
+export const EmojiPicker: FC<EmojiPickerProps> = ({ theme, onColorClick, ...otherProps }) => (
   <Stack>
     {onColorClick && (
       <>
         <Grid colMinWidth="24px" rowGap={8} columnGap={8} hPadding={16} vPadding={16}>
-          {highlightKeys.map(color => (
+          {highlightKeys.map((color) => (
             <Grid.Item key={color}>
               <BlankButton
                 className={styles.ColorSwatch}

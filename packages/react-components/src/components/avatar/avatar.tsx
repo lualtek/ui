@@ -1,9 +1,10 @@
 'use client';
 
-import { TokensTypes } from '@lualtek/tokens/platforms/web';
+import type { TokensTypes } from '@lualtek/tokens/web';
 import tkns from '@lualtek/tokens/web/tokens.json';
 import clsx from 'clsx';
-import { FC, useState } from 'react';
+import type { FC } from 'react';
+import { useState } from 'react';
 
 import { Skeleton } from '@/components';
 
@@ -19,12 +20,9 @@ export type AvatarProps = React.ComponentPropsWithRef<'img'> & {
    * @defaultValue "regular"
    */
   dimension?: 'small' | 'regular' | 'big';
-}
+};
 
-type SkeletonSizeType = Record<
-NonNullable<AvatarProps['dimension']>,
-Exclude<TokensTypes['space'], string>
->;
+type SkeletonSizeType = Record<NonNullable<AvatarProps['dimension']>, Exclude<TokensTypes['space'], string>>;
 
 const SkeletonSize: SkeletonSizeType = {
   small: 24,
@@ -42,11 +40,7 @@ export const Avatar: FC<AvatarProps> = ({
   const [isLoading, setIsLoading] = useState(true);
 
   return (
-    <picture
-      className={clsx(styles.Avatar, className)}
-      data-loading={isLoading}
-      data-avatar-dimension={dimension}
-    >
+    <picture className={clsx(styles.Avatar, className)} data-loading={isLoading} data-avatar-dimension={dimension}>
       {!src && (
         <svg
           aria-hidden="true"
@@ -92,4 +86,3 @@ export const Avatar: FC<AvatarProps> = ({
     </picture>
   );
 };
-

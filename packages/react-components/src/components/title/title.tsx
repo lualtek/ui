@@ -1,13 +1,11 @@
 'use client';
 
-import { TokensTypes } from '@lualtek/tokens/platforms/web';
+import type { TokensTypes } from '@lualtek/tokens/web';
 import tkns from '@lualtek/tokens/web/tokens.json';
 import clsx from 'clsx';
-import {
-  forwardRef, useMemo,
-} from 'react';
+import { useMemo } from 'react';
 
-import { PolyRefComponent } from '@/components';
+import type { PolyRefComponent } from '@/components';
 
 import styles from './title.module.css';
 
@@ -70,31 +68,47 @@ export type TitleProps = React.ComponentPropsWithRef<'h1' | 'h2' | 'h3' | 'h4' |
    * @defaultValue "text alphabetic"
    */
   trimType?: string;
-}
+  /**
+   * Set the font weight of the title. Can be a number (e.g., 200-1000)
+   * or you can rely on the default weight for each level.
+   */
+  weight?: number;
+  /**
+   * Set the font width (wdth) for variable fonts.
+   * Typically ranges from 75 to 125.
+   */
+  fontWidth?: number;
+  /**
+   * Set the optical size (opsz) for variable fonts.
+   * For Nunito Sans, ranges from 6 to 12.
+   */
+  opticalSize?: number;
+};
 
 type TitleComponent = PolyRefComponent<'span', TitleProps>;
 
-export const Title: TitleComponent = (
-  {
-    as: Component = 'span',
-    children,
-    className,
-    lineHeight = 'standard',
-    level = '1',
-    align = 'start',
-    whiteSpace = 'normal',
-    maxWidth,
-    responsive = true,
-    balanced = false,
-    hPadding,
-    vPadding,
-    trim = 'both',
-    trimType = 'cap alphabetic',
-    style,
-    ref: forwardedRef,
-    ...otherProps
-  },
-) => {
+export const Title: TitleComponent = ({
+  as: Component = 'span',
+  children,
+  className,
+  lineHeight = 'standard',
+  level = '1',
+  align = 'start',
+  whiteSpace = 'normal',
+  maxWidth,
+  responsive = true,
+  balanced = false,
+  hPadding,
+  vPadding,
+  trim = 'both',
+  trimType = 'cap alphabetic',
+  weight,
+  fontWidth,
+  opticalSize,
+  style,
+  ref: forwardedRef,
+  ...otherProps
+}) => {
   const computedLevel = level.match(/\d/g) ? `H${level}` : level.charAt(0).toUpperCase() + level.slice(1);
   // @ts-expect-error: generated className is not pure in CSS
   const computedCSSClass = String(styles[computedLevel]);
@@ -122,8 +136,11 @@ export const Title: TitleComponent = (
       '--h-padding-right': hPaddingValues.right,
       '--trim': trim ? `trim-${trim}` : undefined,
       '--trim-type': trimType,
+      '--custom-weight': weight,
+      '--custom-width': fontWidth,
+      '--custom-opsz': opticalSize,
     };
-  }, [maxWidth, align, whiteSpace, vPadding, hPadding, trimType, trim]);
+  }, [maxWidth, align, whiteSpace, vPadding, hPadding, trimType, trim, weight, fontWidth, opticalSize]);
 
   return (
     <Component

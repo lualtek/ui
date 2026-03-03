@@ -7,7 +7,7 @@
     font: inherit;
     font-size: --token(--font-size-16);
     color: var(--dimmed-6);
-    font-weight: 600;
+    font-variation-settings: "wght" 600;
     cursor: pointer;
     inline-size: 100%;
     box-sizing: border-box;

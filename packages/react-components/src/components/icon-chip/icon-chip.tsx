@@ -1,12 +1,12 @@
 'use client';
 
-import { TokensTypes } from '@lualtek/tokens/platforms/web';
+import type { TokensTypes } from '@lualtek/tokens/web';
 import clsx from 'clsx';
-import { FC, useMemo } from 'react';
+import type { FC } from 'react';
+import { useMemo } from 'react';
 
-import {
-  Icon, IconProps, Stack,
-} from '@/components';
+import type { IconProps } from '@/components';
+import { Icon, Stack } from '@/components';
 
 import styles from './icon-chip.module.css';
 
@@ -27,11 +27,14 @@ export type IconChipProps = React.ComponentPropsWithRef<'span'> & {
    * Set the icon to show
    */
   icon: IconProps['source'];
-}
+};
 
-type Sizes = Record<string, {
-  icon: IconProps['dimension'];
-}>
+type Sizes = Record<
+  string,
+  {
+    icon: IconProps['dimension'];
+  }
+>;
 
 const sizes: Sizes = {
   small: {
@@ -54,10 +57,13 @@ export const IconChip: FC<IconChipProps> = ({
   ref: forwardedRef,
   ...otherProps
 }) => {
-  const dynamicStyle = useMemo(() => ({
-    '--background': `var(--highlight-${color}-background)`,
-    '--foreground': `var(--highlight-${color}-foreground)`,
-  }), [color]);
+  const dynamicStyle = useMemo(
+    () => ({
+      '--background': `var(--highlight-${color}-background)`,
+      '--foreground': `var(--highlight-${color}-foreground)`,
+    }),
+    [color],
+  );
 
   return (
     <Stack
@@ -73,11 +79,7 @@ export const IconChip: FC<IconChipProps> = ({
       style={{ ...dynamicStyle, ...style }}
       {...otherProps}
     >
-      <Icon
-        source={icon}
-        className={styles.Icon}
-        dimension={sizes[dimension].icon}
-      />
+      <Icon source={icon} className={styles.Icon} dimension={sizes[dimension].icon} />
     </Stack>
   );
 };

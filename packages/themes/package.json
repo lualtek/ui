@@ -1,43 +1,43 @@
 {
   "name": "@lualtek/themes",
-  "description": "Lualtek design system themes",
   "version": "2026.2.5",
-  "author": "Lualtek",
-  "style": "platforms/web/themes.css",
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com",
-    "access": "restricted"
+  "description": "Lualtek design system themes",
+  "homepage": "https://github.com/lualtek/ui",
+  "bugs": {
+    "url": "https://github.com/lualtek/ui/issues"
   },
-  "type": "module",
+  "author": "Lualtek",
+  "repository": {
+    "type": "git",
+    "url": "ssh+https://github.com/lualtek/ui.git",
+    "directory": "packages/themes"
+  },
+  "style": "platforms/web/themes.css",
   "files": [
     "platforms/"
   ],
+  "type": "module",
   "exports": {
     "./web": "./platforms/web/default.css",
     "./web/pro": "./platforms/web/pro.css",
     "./web/*.css": "./platforms/web/*.css",
     "./web/*.json": "./platforms/web/*.json"
   },
+  "publishConfig": {
+    "access": "restricted",
+    "registry": "https://npm.pkg.github.com"
+  },
   "scripts": {
     "prebuild": "rimraf platforms/",
     "build": "pnpm run build:themes",
     "build:themes": "tsx src/index.ts"
   },
-  "repository": {
-    "type": "git",
-    "url": "ssh+https://github.com/lualtek/ui.git",
-    "directory": "packages/themes"
-  },
-  "homepage": "https://github.com/lualtek/ui",
-  "bugs": {
-    "url": "https://github.com/lualtek/ui/issues"
-  },
   "devDependencies": {
     "@types/fs-extra": "11.0.4",
-    "@types/node": "25.2.3",
+    "@types/node": "25.3.3",
     "colorjs.io": "0.6.1",
     "fs-extra": "11.3.3",
-    "style-dictionary": "5.3.0",
+    "style-dictionary": "5.3.3",
     "tsconfig": "workspace:*",
     "yargs": "18.0.0"
   }

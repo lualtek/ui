@@ -2,20 +2,17 @@
 
 import * as ToastPrimitive from '@radix-ui/react-toast';
 import clsx from 'clsx';
-import {
-  FC, ReactNode, useMemo,
-} from 'react';
+import type { FC, ReactNode } from 'react';
+import { useMemo } from 'react';
 
-import {
-  Button, Icon, IconProps, Panel,
-  Stack, Text,
-  Title,
-} from '@/components';
+import type { IconProps } from '@/components';
+import { Button, Icon, Panel, Stack, Text, Title } from '@/components';
 
 import styles from './toast.module.css';
 
 const PrimitiveNoopComponent: React.FC<{
-  asChild?: boolean; children: React.ReactNode;
+  asChild?: boolean;
+  children: React.ReactNode;
 }> = ({ children }) => <>{children}</>;
 
 export type InlineToastProps = React.ComponentPropsWithRef<'output'> & {
@@ -69,7 +66,7 @@ export type InlineToastProps = React.ComponentPropsWithRef<'output'> & {
    * @private
    */
   isPrimitive?: boolean;
-}
+};
 
 const defaultIcons: Record<string, IconProps['source']> = {
   info: 'bulb',
@@ -109,14 +106,7 @@ export const InlineToast: FC<InlineToastProps> = ({
       role="status"
       {...otherProps}
     >
-      <Stack
-        hPadding={16}
-        vPadding={16}
-        vAlign="start"
-        hAlign="start"
-        direction="row"
-        columnGap={16}
-      >
+      <Stack hPadding={16} vPadding={16} vAlign="start" hAlign="start" direction="row" columnGap={16}>
         <Icon className={styles.Icon} source={icon ?? defaultIcons[kind]} dimension={24} />
         <Stack
           direction={singleLine ? 'row' : undefined}
@@ -128,11 +118,15 @@ export const InlineToast: FC<InlineToastProps> = ({
           <Stack>
             {title && (
               <ToastPrimitive.Title asChild>
-                <Title level="6" className={styles.Title}>{title}</Title>
+                <Title level="6" className={styles.Title}>
+                  {title}
+                </Title>
               </ToastPrimitive.Title>
             )}
             <ToastPrimitive.Description asChild>
-              <Text size={16} as="div">{children}</Text>
+              <Text size={16} as="div">
+                {children}
+              </Text>
             </ToastPrimitive.Description>
           </Stack>
           {(actions ?? dismissable) && (
@@ -141,11 +135,7 @@ export const InlineToast: FC<InlineToastProps> = ({
               {dismissable && (
                 <Stack inline direction="row" hAlign="start">
                   <ActionWrapper asChild>
-                    <Button
-                      onClick={onDismiss}
-                      dimension="small"
-                      kind="secondary"
-                    >
+                    <Button onClick={onDismiss} dimension="small" kind="secondary">
                       {dismissLabel}
                     </Button>
                   </ActionWrapper>

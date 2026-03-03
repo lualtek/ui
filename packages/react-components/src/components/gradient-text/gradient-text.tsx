@@ -1,10 +1,8 @@
 'use client';
 
 import clsx from 'clsx';
-import {
-  FC,
-  useMemo,
-} from 'react';
+import type { FC } from 'react';
+import { useMemo } from 'react';
 
 import styles from './gradient-text.module.css';
 
@@ -22,7 +20,7 @@ export type GradientTextProps = React.ComponentPropsWithRef<'span'> & {
    * The end color stop of the gradient.
    */
   colorEnd?: string;
-}
+};
 
 export const GradientText: FC<GradientTextProps> = ({
   children,
@@ -34,10 +32,13 @@ export const GradientText: FC<GradientTextProps> = ({
   ref: forwardedRef,
   ...otherProps
 }) => {
-  const dynamicStyle = useMemo(() => ({
-    '--gradient-color-start': colorStart,
-    '--gradient-color-end': colorEnd,
-  }), [colorStart, colorEnd]);
+  const dynamicStyle = useMemo(
+    () => ({
+      '--gradient-color-start': colorStart,
+      '--gradient-color-end': colorEnd,
+    }),
+    [colorStart, colorEnd],
+  );
 
   return (
     <span
@@ -51,4 +52,3 @@ export const GradientText: FC<GradientTextProps> = ({
     </span>
   );
 };
-

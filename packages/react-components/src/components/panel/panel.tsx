@@ -1,20 +1,24 @@
 'use client';
 
-import { TokensTypes } from '@lualtek/tokens/platforms/web';
+import type { TokensTypes } from '@lualtek/tokens/web';
 import tkns from '@lualtek/tokens/web/tokens.json';
 import clsx from 'clsx';
-import { forwardRef, useMemo } from 'react';
+import { useMemo } from 'react';
 
-import {
-  Glow,
-  GlowProps, PolyRefComponent, StackProps, useStyles,
-  VibrancyBlur, VibrancyColor, VibrancySaturation,
+import type {
+  GlowProps,
+  PolyRefComponent,
+  StackProps,
+  VibrancyBlur,
+  VibrancyColor,
+  VibrancySaturation,
 } from '@/components';
+import { Glow, useStyles } from '@/components';
 
 import { ConditionalWrapper } from '../conditional-wrapper';
 import styles from './panel.module.css';
 
-type RadiusType = Exclude<TokensTypes['radius'], string> | 0
+type RadiusType = Exclude<TokensTypes['radius'], string> | 0;
 
 export type PanelProps = {
   /**
@@ -54,8 +58,8 @@ export type PanelProps = {
    */
   bordered?: boolean;
   /**
- * Define the edge radius of the card.
- */
+   * Define the edge radius of the card.
+   */
   radius?: TokensTypes['radius'] | [RadiusType?, RadiusType?, RadiusType?, RadiusType?];
   /**
    * Enable border on a specific side.
@@ -92,38 +96,37 @@ export type PanelProps = {
    * Set the rainbow colors of the glow effect.
    */
   rainbowColors?: GlowProps['rainbowColors'];
-}
+};
 
-type PanelComponent = PolyRefComponent<'div', PanelProps>
+type PanelComponent = PolyRefComponent<'div', PanelProps>;
 
-export const Panel: PanelComponent = (
-  {
-    as: Component = 'div',
-    className,
-    children,
-    style,
-    vibrant = false,
-    vibrancyLevel = 'strong',
-    vibrancyColor,
-    vibrancySaturation,
-    bordered,
-    borderSide = 'all',
-    radius,
-    hPadding,
-    vPadding,
-    backgroundColor,
-    backgroundColorHover,
-    showGlow = false,
-    glowSpread,
-    glowColor,
-    glowFitContent = false,
-    rainbowColors,
-    ref: forwardedRef,
-    ...otherProps
-  },
-) => {
+export const Panel: PanelComponent = ({
+  as: Component = 'div',
+  className,
+  children,
+  style,
+  vibrant = false,
+  vibrancyLevel = 'strong',
+  vibrancyColor,
+  vibrancySaturation,
+  bordered,
+  borderSide = 'all',
+  radius,
+  hPadding,
+  vPadding,
+  backgroundColor,
+  backgroundColorHover,
+  showGlow = false,
+  glowSpread,
+  glowColor,
+  glowFitContent = false,
+  rainbowColors,
+  ref: forwardedRef,
+  ...otherProps
+}) => {
   const computedBackground = typeof backgroundColor === 'number' ? `var(--dimmed-${backgroundColor})` : backgroundColor;
-  const computedBackgroundHover = typeof backgroundColorHover === 'number' ? `var(--dimmed-${backgroundColorHover})` : backgroundColorHover;
+  const computedBackgroundHover =
+    typeof backgroundColorHover === 'number' ? `var(--dimmed-${backgroundColorHover})` : backgroundColorHover;
   const formatRadius = useMemo(() => {
     if (!radius) {
       return undefined;
@@ -133,7 +136,7 @@ export const Panel: PanelComponent = (
       return tkns.radius[radius];
     }
 
-    return radius.map(r => (r !== 0 ? tkns.radius[r!] : 0)).join(' ');
+    return radius.map((r) => (r !== undefined && r !== 0 ? tkns.radius[r] : 0)).join(' ');
   }, [radius]);
 
   const { vibrancy } = useStyles({
@@ -147,10 +150,10 @@ export const Panel: PanelComponent = (
   const dynamicStyle = useMemo(() => {
     const getPaddingValue = (
       padding: TokensTypes['space'] | [TokensTypes['space'] | 0, TokensTypes['space'] | 0],
-      direction: 'horizontal' | 'vertical',
+      paddingDirection: 'horizontal' | 'vertical',
     ) => {
       const [start, end] = Array.isArray(padding) ? padding : [padding, padding];
-      return direction === 'horizontal'
+      return paddingDirection === 'horizontal'
         ? { left: start ? tkns.space[start] : 0, right: end ? tkns.space[end] : 0 }
         : { top: start ? tkns.space[start] : 0, bottom: end ? tkns.space[end] : 0 };
     };
@@ -172,7 +175,7 @@ export const Panel: PanelComponent = (
   return (
     <ConditionalWrapper
       condition={showGlow}
-      wrapper={children => (
+      wrapper={(glowContent) => (
         <Glow
           innerRadius={radius}
           glowColor={glowColor ?? 'var(--dimmed-2)'}
@@ -183,7 +186,7 @@ export const Panel: PanelComponent = (
           rainbowColors={rainbowColors}
           fitContent={glowFitContent}
         >
-          {children}
+          {glowContent}
         </Glow>
       )}
     >

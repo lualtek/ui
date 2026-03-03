@@ -1,10 +1,8 @@
 'use client';
 
 import clsx from 'clsx';
-import {
-  FC,
-  useCallback, useMemo,
-} from 'react';
+import type { FC } from 'react';
+import { useCallback, useMemo } from 'react';
 
 import styles from './circular-progress.module.css';
 
@@ -39,7 +37,7 @@ export type CircularProgressProps = React.ComponentPropsWithRef<'div'> & {
    * Change the color of the progress bar.
    */
   color?: string;
-}
+};
 
 export const CircularProgress: FC<CircularProgressProps> = ({
   className,
@@ -47,26 +45,24 @@ export const CircularProgress: FC<CircularProgressProps> = ({
   max = 100,
   dimension = 'regular',
   showProgress,
-  progressLabel = val => val,
+  progressLabel = (val) => val,
   color,
   style,
   ref: forwardedRef,
   ...otherProps
 }) => {
-  const getPercentage = useCallback(
-    () => (value ? Math.round((100 * value) / max) : 0),
-    [max, value],
-  );
+  const getPercentage = useCallback(() => (value ? Math.round((100 * value) / max) : 0), [max, value]);
 
-  const clamp = useMemo(() => (num: number, min: number, max: number) => Math.min(Math.max(num, min), max), []);
+  const clamp = useMemo(() => (num: number, min: number, maxNum: number) => Math.min(Math.max(num, min), maxNum), []);
 
-  const dynamicStyle = useMemo(() => (
-    {
+  const dynamicStyle = useMemo(
+    () => ({
       '--progress': `${getPercentage()}%`,
       '--rotation': `${getPercentage() / 100}turn`,
       '--progress-color': color,
-    }
-  ), [color, getPercentage]);
+    }),
+    [color, getPercentage],
+  );
 
   return (
     <div

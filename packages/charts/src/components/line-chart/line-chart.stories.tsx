@@ -1,17 +1,15 @@
+import type { ChartDataBaseType } from '@/charts/components/base-chart/base-chart';
 import { Chip, Stack, Text, Title } from '@lualtek/react-components';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useArgs, useCallback, useEffect } from 'storybook/preview-api';
-import {ChartDataBaseType} from "@/charts/components/base-chart/base-chart";
 import SimpleData from '../../../fixtures/data';
 import { MultiDataSeries } from '../../../fixtures/multi-data-axes';
 import MultiAxisData from '../../../fixtures/multi-y-data';
 import { ReferenceArea, ReferenceLine } from '../base-chart';
 import { getChartDefaultColor } from '../base-chart/colors';
 import { Brush } from '../brush';
-import {
-  LineChart, LineChartProps,
-  LineProps,
-} from './line-chart';
+import type { LineChartProps, LineProps } from './line-chart';
+import { LineChart } from './line-chart';
 
 type Data = ChartDataBaseType;
 
@@ -22,11 +20,13 @@ const meta = {
   component: LineChart,
   args: {
     data,
-    series: [{
-      dataKey: 'y',
-      serieKeyId: 'y',
-      side: 'left',
-    }],
+    series: [
+      {
+        dataKey: 'y',
+        serieKeyId: 'y',
+        side: 'left',
+      },
+    ],
     showGrid: true,
     showDots: false,
     showYAxis: true,
@@ -51,9 +51,7 @@ const meta = {
       },
     },
   },
-  render: (args: LineChartProps<Data, LineProps<Data>>) => (
-    <LineChart {...args} />
-  ),
+  render: (args: LineChartProps<Data, LineProps<Data>>) => <LineChart {...args} />,
 } satisfies Meta<typeof LineChart>;
 
 export default meta;
@@ -83,11 +81,7 @@ export const WithMinWidth = {
 
 export const WithCustomTooltip = {
   args: {
-    customTooltip: ({ label }: any) => (
-      <div style={{ color: 'red' }}>
-        {label}
-      </div>
-    ),
+    customTooltip: ({ label }: any) => <div style={{ color: 'red' }}>{label}</div>,
   },
 } satisfies Story;
 
@@ -103,7 +97,7 @@ export const WidthXPadding = {
   },
 } satisfies Story;
 
-export const withNoAnimation = {
+export const WithNoAnimation = {
   args: {
     disableAnimation: true,
   },
@@ -123,7 +117,6 @@ export const WithFormattedTooltip = {
     formatTooltipName: ({ name }: any) => `Formatted ${name}`,
     formatTooltipValue: ({ value }: any) => `${value}.00`,
   },
-
 } satisfies Story;
 
 export const WithoutTooltipColors = {
@@ -132,16 +125,13 @@ export const WithoutTooltipColors = {
     series: MultiAxisData.series as Array<LineProps<Data>>,
     tooltipColors: false,
   },
-
 } satisfies Story;
 
 export const WithTooltipDecorator = {
   args: {
     data: MultiAxisData.data,
     series: MultiAxisData.series as Array<LineProps<Data>>,
-    tooltipDecorator: (entry: any) => (
-      <Chip>{Number(entry.value).toFixed(0)}</Chip>
-    ),
+    tooltipDecorator: (entry: any) => <Chip>{Number(entry.value).toFixed(0)}</Chip>,
   },
 } satisfies Story;
 
@@ -172,35 +162,10 @@ export const WithReferenceAreas = {
 export const WithReferenceAreasAndLines = {
   args: {
     referenceComponent: [
-      <ReferenceLine
-        yAxisId="left"
-        key="line1"
-        y={40}
-        dashed
-        color="var(--highlight-green-foreground)"
-      />,
-      <ReferenceLine
-        yAxisId="left"
-        key="line2"
-        y={70}
-        dashed
-        color="var(--highlight-yellow-foreground)"
-      />,
-      <ReferenceLine
-        yAxisId="left"
-        key="line2"
-        y={100}
-        dashed
-        color="var(--highlight-red-foreground)"
-      />,
-      <ReferenceArea
-        yAxisId="left"
-        color="var(--highlight-green-background)"
-        key="area1"
-        y1={0}
-        y2={40}
-        label="low"
-      />,
+      <ReferenceLine yAxisId="left" key="line1" y={40} dashed color="var(--highlight-green-foreground)" />,
+      <ReferenceLine yAxisId="left" key="line2" y={70} dashed color="var(--highlight-yellow-foreground)" />,
+      <ReferenceLine yAxisId="left" key="line2" y={100} dashed color="var(--highlight-red-foreground)" />,
+      <ReferenceArea yAxisId="left" color="var(--highlight-green-background)" key="area1" y1={0} y2={40} label="low" />,
       <ReferenceArea
         yAxisId="left"
         color="var(--highlight-yellow-background)"
@@ -233,7 +198,6 @@ export const WithFormattedXLabels = {
   },
 } satisfies Story;
 
-
 export const WithMultiDataAxes = {
   args: {
     data: undefined,
@@ -250,7 +214,6 @@ export const WithExternalTooltip = {
     showTooltip: false,
   },
   render: (args: LineChartProps<any, any>) => {
-    // eslint-disable-next-line
     const [{ tooltip }, setArgs] = useArgs<typeof args & { tooltip: Data }>();
 
     useEffect(() => {
@@ -259,31 +222,31 @@ export const WithExternalTooltip = {
           tooltip: args.data[args.data.length - 1],
         });
       }
-    }, []);
+    }, [args.data, setArgs]);
 
-    const handleChartUpdate = useCallback((state: any) => {
-      if (!state) return;
+    const handleChartUpdate = useCallback(
+      (state: any) => {
+        if (!state) return;
 
-      if (state.activePayload && state.activePayload.length > 0) {
-        const payload = state.activePayload[0].payload as Data;
-        if (tooltip?.x !== payload.x) {
-          setArgs({
-            tooltip: payload,
-          });
+        if (state.activePayload && state.activePayload.length > 0) {
+          const payload = state.activePayload[0].payload as Data;
+          if (tooltip?.x !== payload.x) {
+            setArgs({
+              tooltip: payload,
+            });
+          }
+        } else if (state.activeTooltipIndex !== undefined && state.activeTooltipIndex !== null) {
+          const index = Number(state.activeTooltipIndex);
+          const point = args.data?.[index];
+          if (point && tooltip?.x !== point.x) {
+            setArgs({
+              tooltip: point,
+            });
+          }
         }
-      } else if (
-        state.activeTooltipIndex !== undefined &&
-        state.activeTooltipIndex !== null
-      ) {
-        const index = Number(state.activeTooltipIndex);
-        const point = args.data?.[index];
-        if (point && tooltip?.x !== point.x) {
-          setArgs({
-            tooltip: point,
-          });
-        }
-      }
-    }, [tooltip, args.data, setArgs]);
+      },
+      [tooltip, args.data, setArgs],
+    );
 
     return (
       <Stack direction="column">
@@ -303,17 +266,16 @@ export const WithExternalTooltip = {
                       }}
                     />
                     <Text>{item.dataKey}:</Text>
-                    <Text weight="bold" style={{ minWidth: 100 }}>{Number(tooltip[item.dataKey as keyof Data]).toFixed(2)}</Text>
+                    <Text weight="bold" style={{ minWidth: 100 }}>
+                      {Number(tooltip[item.dataKey as keyof Data]).toFixed(2)}
+                    </Text>
                   </Stack>
                 ))}
               </Stack>
             </>
           )}
         </Stack>
-        <LineChart
-          {...args}
-          handleChartUpdate={handleChartUpdate}
-        />
+        <LineChart {...args} handleChartUpdate={handleChartUpdate} />
       </Stack>
     );
   },

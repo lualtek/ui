@@ -1,13 +1,11 @@
-import { FC, useMemo } from 'react';
-import { Except } from 'type-fest';
+import type { FC } from 'react';
+import { useMemo } from 'react';
 
-import {
-  AutocompleteProps, Menu, Skeleton, Stack, Text,
-  useResponsiveContext,
-} from '@/components';
+import type { AutocompleteProps } from '@/components';
+import { Menu, Skeleton, Stack, Text, useResponsiveContext } from '@/components';
 
-import styles from './autocomplete.module.css';
 import { AutocompleteOption } from './autocomplete-option';
+import styles from './autocomplete.module.css';
 
 export type AutocompleteListProps = Pick<
   AutocompleteProps,
@@ -35,28 +33,22 @@ export const AutocompleteList: FC<AutocompleteListProps> = ({
       data-autocomplete-match-width={matchFieldWidth ?? loading}
       maxHeight={maxHeight}
     >
-      {(options?.length === 0 && !loading) && (
-        <Text
-          as="div"
-          align="center"
-          dimmed={5}
-        >
+      {options?.length === 0 && !loading && (
+        <Text as="div" align="center" dimmed={5}>
           {emptyContent}
         </Text>
       )}
-      {loading
-        ? <Stack hPadding={16} vPadding={8} as="span"><Skeleton count={5} /></Stack>
-        : options?.map(({ value, children, ...rest }) => (
-          <AutocompleteOption
-            key={value}
-            value={value}
-            onClick={onClickOption}
-            {...rest}
-          >
+      {loading ? (
+        <Stack hPadding={16} vPadding={8} as="span">
+          <Skeleton count={5} />
+        </Stack>
+      ) : (
+        options?.map(({ value, children, ...rest }) => (
+          <AutocompleteOption key={value} value={value} onClick={onClickOption} {...rest}>
             {children}
           </AutocompleteOption>
         ))
-    }
+      )}
     </Menu>
   );
 };

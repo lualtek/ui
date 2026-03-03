@@ -1,27 +1,20 @@
 'use client';
 
-import { TokensTypes } from '@lualtek/tokens/platforms/web';
+import type { TokensTypes } from '@lualtek/tokens/web';
 import tkns from '@lualtek/tokens/web/tokens.json';
 import * as TabsPrimitive from '@radix-ui/react-tabs';
 import clsx from 'clsx';
-import {
-  AnimatePresence, domMax, LazyMotion, m,
-} from 'motion/react';
-import {
-  Children, FC, isValidElement, useCallback, useEffect, useId, useMemo, useState,
-} from 'react';
+import { AnimatePresence, domMax, LazyMotion, m } from 'motion/react';
+import type { FC } from 'react';
+import { Children, isValidElement, useCallback, useEffect, useId, useMemo, useState } from 'react';
 
-import {
-  Button, Panel, Stack,
-} from '@/components';
+import { Button, Panel, Stack } from '@/components';
 
+import type { TabPanelProps } from './tabs-panel';
+import { TabPanel } from './tabs-panel';
 import styles from './tabs.module.css';
-import { TabPanel, TabPanelProps } from './tabs-panel';
 
-type RadiusType = Record<
-  NonNullable<TabsProps['dimension']>,
-  Exclude<TokensTypes['radius'], string>
->
+type RadiusType = Record<NonNullable<TabsProps['dimension']>, Exclude<TokensTypes['radius'], string>>;
 
 export type TabsProps = TabsPrimitive.TabsProps & {
   /**
@@ -47,7 +40,7 @@ export type TabsProps = TabsPrimitive.TabsProps & {
 
 type TabsComponent = FC<TabsProps> & {
   Panel: typeof TabPanel;
-}
+};
 
 const radius: RadiusType = {
   small: 12,
@@ -69,9 +62,12 @@ export const Tabs: TabsComponent = ({
   const [activeItem, setActiveItem] = useState<string | undefined>(otherProps.defaultValue);
   const uid = useId();
 
-  const dynamicStyle = useMemo(() => ({
-    '--tabs-list-gap': listGap && tkns.space[listGap],
-  }), [listGap]);
+  const dynamicStyle = useMemo(
+    () => ({
+      '--tabs-list-gap': listGap && tkns.space[listGap],
+    }),
+    [listGap],
+  );
 
   const handleOnVlaueChange = useCallback(
     (value: string) => {
@@ -106,40 +102,39 @@ export const Tabs: TabsComponent = ({
           className={styles.List}
           data-tabs-inline={inline}
         >
-          <Stack
-            as={TabsPrimitive.List}
-            direction="row"
-            fill={false}
-            hAlign="start"
-          >
-            {Children.map(children, child => isValidElement<TabPanelProps>(child) && (
-              <TabsPrimitive.Trigger
-                value={child.props.value}
-                disabled={child.props.disabled}
-                className={styles.Trigger}
-                asChild
-              >
-                <Button kind="flat" fullWidth={segmented} dimension={dimension} icon={child.props.icon}>
-                  <Stack
-                    as="span"
-                    className={styles.Label}
-                    direction="row"
-                    vAlign="center"
-                    hAlign="center"
-                    columnGap={8}
-                    inline
+          <Stack as={TabsPrimitive.List} direction="row" fill={false} hAlign="start">
+            {Children.map(
+              children,
+              (child) =>
+                isValidElement<TabPanelProps>(child) && (
+                  <TabsPrimitive.Trigger
+                    value={child.props.value}
+                    disabled={child.props.disabled}
+                    className={styles.Trigger}
+                    asChild
                   >
-                    {child.props.label}
-                    {child.props.decorator}
-                  </Stack>
-                  <AnimatePresence key={activeItem}>
-                    {(child.props.value === activeItem) && (
-                      <m.span className={styles.Highlight} layoutId={`${uid}-tab-highlight-lazy`} />
-                    )}
-                  </AnimatePresence>
-                </Button>
-              </TabsPrimitive.Trigger>
-            ))}
+                    <Button kind="flat" fullWidth={segmented} dimension={dimension} icon={child.props.icon}>
+                      <Stack
+                        as="span"
+                        className={styles.Label}
+                        direction="row"
+                        vAlign="center"
+                        hAlign="center"
+                        columnGap={8}
+                        inline
+                      >
+                        {child.props.label}
+                        {child.props.decorator}
+                      </Stack>
+                      <AnimatePresence key={activeItem}>
+                        {child.props.value === activeItem && (
+                          <m.span className={styles.Highlight} layoutId={`${uid}-tab-highlight-lazy`} />
+                        )}
+                      </AnimatePresence>
+                    </Button>
+                  </TabsPrimitive.Trigger>
+                ),
+            )}
           </Stack>
         </Panel>
       </LazyMotion>

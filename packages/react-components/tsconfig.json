@@ -2,13 +2,15 @@
   "extends": "tsconfig/react-library.json",
   "compilerOptions": {
     "outDir": "dist",
-    "baseUrl": ".",
     "moduleResolution": "bundler",
     "paths": {
-      "@/components": ["src"],
-      "@/components/types": ["src/types"],
-      "@/components/utils": ["src/utils"],
-      "@/components/lib": ["src/lib"]
+      "@/components": ["./src"],
+      "@/components/types": ["./src/types"],
+      "@/components/utils": ["./src/utils"],
+      "@/components/lib": ["./src/lib"],
+      "@lualtek/icons/sprite": ["../icons/dist/sprite"],
+      "@lualtek/tokens": ["../tokens/platforms/web"],
+      "@lualtek/tokens/*": ["../tokens/*"]
     }
   },
   "include": ["src", "types", "generate-api-doc.ts"],

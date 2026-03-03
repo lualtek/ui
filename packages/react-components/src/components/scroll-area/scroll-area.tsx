@@ -1,11 +1,11 @@
 'use client';
 
-import { TokensTypes } from '@lualtek/tokens/platforms/web';
+import type { TokensTypes } from '@lualtek/tokens/web';
 import tkns from '@lualtek/tokens/web/tokens.json';
 import clsx from 'clsx';
-import { forwardRef, useMemo } from 'react';
+import { useMemo } from 'react';
 
-import { PolyRefComponent } from '@/components';
+import type { PolyRefComponent } from '@/components';
 
 import styles from './scroll-area.module.css';
 
@@ -64,30 +64,28 @@ export type ScrollAreaProps = {
    * @defaultValue 'contain'
    */
   overscrollBehavior?: 'auto' | 'contain' | 'none';
-}
+};
 
 type ScrollAreaComponent = PolyRefComponent<'div', ScrollAreaProps>;
 
-export const ScrollArea: ScrollAreaComponent = (
-  {
-    as: Component = 'div',
-    children,
-    className,
-    canScroll = true,
-    thumbColor,
-    trackColor,
-    bleed,
-    useSystemStyle = true,
-    hideScrollbars = false,
-    gutterBehavior = 'auto',
-    fadeDirection,
-    overscrollBehavior = 'contain',
-    fadeSize = 16,
-    style,
-    ref: forwardedRef,
-    ...otherProps
-  },
-) => {
+export const ScrollArea: ScrollAreaComponent = ({
+  as: Component = 'div',
+  children,
+  className,
+  canScroll = true,
+  thumbColor,
+  trackColor,
+  bleed,
+  useSystemStyle = true,
+  hideScrollbars = false,
+  gutterBehavior = 'auto',
+  fadeDirection,
+  overscrollBehavior = 'contain',
+  fadeSize = 16,
+  style,
+  ref: forwardedRef,
+  ...otherProps
+}) => {
   const computedFadeDirection = useMemo(() => {
     if (fadeSize) {
       return typeof fadeSize === 'string' ? fadeSize : tkns.space[fadeSize];
@@ -96,16 +94,17 @@ export const ScrollArea: ScrollAreaComponent = (
     return '0';
   }, [fadeSize]);
 
-  const dynamicStyle = useMemo(() => (
-    {
+  const dynamicStyle = useMemo(
+    () => ({
       '--thumb-color': thumbColor,
       '--track-color': trackColor,
       '--gutter-behaviour': gutterBehavior,
       '--fade-size': computedFadeDirection,
       '--overscroll-behavior': overscrollBehavior,
       '--bleed': bleed ? tkns.space[bleed] : 0,
-    }
-  ), [thumbColor, trackColor, gutterBehavior, overscrollBehavior, bleed, computedFadeDirection]);
+    }),
+    [thumbColor, trackColor, gutterBehavior, overscrollBehavior, bleed, computedFadeDirection],
+  );
 
   return (
     <Component

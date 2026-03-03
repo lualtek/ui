@@ -1,9 +1,7 @@
 'use client';
 
-import {
-  FC,
-  useMemo,
-} from 'react';
+import type { FC } from 'react';
+import { useMemo } from 'react';
 
 export type DatetimeProps = React.ComponentPropsWithRef<'time'> & {
   /**
@@ -22,7 +20,7 @@ export type DatetimeProps = React.ComponentPropsWithRef<'time'> & {
    * @defaultValue { year: 'numeric', month: 'long', day: 'numeric' }
    */
   options?: Intl.DateTimeFormatOptions;
-}
+};
 
 const defaultOptions: Partial<Intl.DateTimeFormatOptions> = {
   year: 'numeric',
@@ -30,18 +28,13 @@ const defaultOptions: Partial<Intl.DateTimeFormatOptions> = {
   day: 'numeric',
 };
 
-export const Datetime: FC<DatetimeProps> = ({
-  date,
-  locale = 'en-US',
-  options,
-  ref: forwardedRef,
-  ...otherProps
-}) => {
+export const Datetime: FC<DatetimeProps> = ({ date, locale = 'en-US', options, ref: forwardedRef, ...otherProps }) => {
   const hasDateTimeStyle = useMemo(() => options?.timeStyle ?? options?.dateStyle, [options]);
   const humanDate = useMemo(() => {
     const timeDate: Date = new Date(date);
     return new Intl.DateTimeFormat(
-      locale, hasDateTimeStyle ? { ...options } : { ...defaultOptions, ...options },
+      locale,
+      hasDateTimeStyle ? { ...options } : { ...defaultOptions, ...options },
     ).format(timeDate);
   }, [date, hasDateTimeStyle, locale, options]);
 

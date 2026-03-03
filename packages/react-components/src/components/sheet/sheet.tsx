@@ -1,14 +1,20 @@
 'use client';
 
-import {
-  FC, ReactNode, useMemo,
-} from 'react';
+import type { FC, ReactNode } from 'react';
+import { useMemo } from 'react';
 import { useMeasure } from 'react-use';
-import { DialogProps, Drawer as Vaul } from 'vaul';
+import type { DialogProps } from 'vaul';
+import { Drawer as Vaul } from 'vaul';
 
 import {
-  ClampText, IconButton, Panel, ResponsiveProvider, ScrollArea,
-  Stack, Text, Title,
+  ClampText,
+  IconButton,
+  Panel,
+  ResponsiveProvider,
+  ScrollArea,
+  Stack,
+  Text,
+  Title,
   useResponsiveContext,
 } from '@/components';
 
@@ -100,7 +106,7 @@ type SheetContentProps = React.ComponentPropsWithRef<typeof Vaul.Content> & {
    * Show the close button in the header if dismissible and on desktop only
    */
   showCloseButton?: boolean;
-}
+};
 
 const SheetContent: FC<SheetContentProps & Pick<DialogProps, 'children' | 'dismissible' | 'direction'>> = ({
   trigger,
@@ -132,23 +138,25 @@ const SheetContent: FC<SheetContentProps & Pick<DialogProps, 'children' | 'dismi
     return 'center';
   }, [direction]);
 
-  const commonDynamicStyle = useMemo(() => (
-    {
+  const commonDynamicStyle = useMemo(
+    () => ({
       '--sheet-z-index': zIndex,
-    }
-  ), [zIndex]);
+    }),
+    [zIndex],
+  );
 
-  const dynamicStyle = useMemo(() => (
-    {
+  const dynamicStyle = useMemo(
+    () => ({
       ...commonDynamicStyle,
       '--max-w': maxWidth ?? undefined,
       '--min-w': minWidth ?? undefined,
       '--header-tint': headerTint,
       '--sheet-z-index': zIndex,
       // Compute the header height based on the compact header and the header height + paddings
-      '--content-height': headerHeight ? `${headerHeight + ((compactHeader ? 8 : 24) * 2) + 8}px` : undefined,
-    }
-  ), [zIndex, headerTint, maxWidth, minWidth, headerHeight, commonDynamicStyle, compactHeader]);
+      '--content-height': headerHeight ? `${headerHeight + (compactHeader ? 8 : 24) * 2 + 8}px` : undefined,
+    }),
+    [zIndex, headerTint, maxWidth, minWidth, headerHeight, commonDynamicStyle, compactHeader],
+  );
 
   const shouldShowHandle = useMemo(() => !matches.small && dismissible, [matches, dismissible]);
 
@@ -159,11 +167,7 @@ const SheetContent: FC<SheetContentProps & Pick<DialogProps, 'children' | 'dismi
 
   return (
     <>
-      {trigger && (
-        <Vaul.Trigger asChild>
-          {trigger}
-        </Vaul.Trigger>
-      )}
+      {trigger && <Vaul.Trigger asChild>{trigger}</Vaul.Trigger>}
       <Vaul.Portal>
         <Vaul.Overlay style={{ ...commonDynamicStyle, ...dynamicStyle }} className={styles.Overlay} />
         <Vaul.Content asChild>
@@ -187,13 +191,9 @@ const SheetContent: FC<SheetContentProps & Pick<DialogProps, 'children' | 'dismi
               radius={matches.small ? 24 : 48}
               glowFitContent={matches.small}
             >
-              {(showCloseButton && dismissible && matches.small) && (
+              {showCloseButton && dismissible && matches.small && (
                 <Vaul.Close asChild>
-                  <IconButton
-                    icon="remove"
-                    kind="secondary"
-                    className={styles.ClosingButton}
-                  />
+                  <IconButton icon="remove" kind="secondary" className={styles.ClosingButton} />
                 </Vaul.Close>
               )}
               <Stack className={styles.Container}>
@@ -222,7 +222,9 @@ const SheetContent: FC<SheetContentProps & Pick<DialogProps, 'children' | 'dismi
                       data-sheet-sticky-header={stickyHeader}
                     >
                       <Vaul.Title asChild>
-                        <Title lineHeight="small" responsive={false} level={compactHeader ? '6' : '5'}>{heading}</Title>
+                        <Title lineHeight="small" responsive={false} level={compactHeader ? '6' : '5'}>
+                          {heading}
+                        </Title>
                       </Vaul.Title>
 
                       {description && (
@@ -250,7 +252,6 @@ const SheetContent: FC<SheetContentProps & Pick<DialogProps, 'children' | 'dismi
                   </Stack>
                 </ScrollArea>
               </Stack>
-
             </Panel>
           </Stack>
         </Vaul.Content>
@@ -259,30 +260,21 @@ const SheetContent: FC<SheetContentProps & Pick<DialogProps, 'children' | 'dismi
   );
 };
 
-export const SheetWrapper: FC<SheetProps> = ({
-  nested,
-  ...otherProps
-}) => {
+export const SheetWrapper: FC<SheetProps> = ({ nested, ...otherProps }) => {
   const { matches } = useResponsiveContext();
 
   return nested ? (
-    <Vaul.NestedRoot
-      {...otherProps}
-      handleOnly={matches.small}
-    >
+    <Vaul.NestedRoot {...otherProps} handleOnly={matches.small}>
       <SheetContent {...otherProps} />
     </Vaul.NestedRoot>
   ) : (
-    <Vaul.Root
-      {...otherProps}
-      handleOnly={matches.small}
-    >
+    <Vaul.Root {...otherProps} handleOnly={matches.small}>
       <SheetContent {...otherProps} />
     </Vaul.Root>
   );
 };
 
-export type SheetProps = DialogProps & SheetContentProps & { nested?: boolean }
+export type SheetProps = DialogProps & SheetContentProps & { nested?: boolean };
 
 export type SheetComponent = FC<SheetProps> & {
   Close: typeof Vaul.Close;
@@ -297,4 +289,3 @@ export const Sheet: SheetComponent = ({ nested, ...otherProps }) => (
 
 Sheet.Close = Vaul.Close;
 Sheet.Title = Vaul.Title;
-

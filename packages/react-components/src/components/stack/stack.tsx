@@ -1,11 +1,11 @@
 'use client';
 
-import { TokensTypes } from '@lualtek/tokens/platforms/web';
+import type { TokensTypes } from '@lualtek/tokens/web';
 import tkns from '@lualtek/tokens/web/tokens.json';
 import clsx from 'clsx';
-import { forwardRef, useMemo } from 'react';
+import { useMemo } from 'react';
 
-import { PolyRefComponent } from '@/components';
+import type { PolyRefComponent } from '@/components';
 
 import styles from './stack.module.css';
 
@@ -64,31 +64,29 @@ export type StackProps = {
    * Set the max width of the stack
    */
   maxWidth?: string;
-}
+};
 
 export type StackComponent = PolyRefComponent<'div', StackProps>;
 
-export const Stack: StackComponent = (
-  {
-    as,
-    children,
-    className,
-    rowGap,
-    columnGap,
-    inline = false,
-    direction = 'column',
-    wrap = false,
-    fill = true,
-    vAlign = 'initial',
-    hAlign = 'initial',
-    hPadding,
-    vPadding,
-    style,
-    maxWidth,
-    ref: forwardedRef,
-    ...otherProps
-  },
-) => {
+export const Stack: StackComponent = ({
+  as,
+  children,
+  className,
+  rowGap,
+  columnGap,
+  inline = false,
+  direction = 'column',
+  wrap = false,
+  fill = true,
+  vAlign = 'initial',
+  hAlign = 'initial',
+  hPadding,
+  vPadding,
+  style,
+  maxWidth,
+  ref: forwardedRef,
+  ...otherProps
+}) => {
   const Component = as ?? 'div';
   const alignmentTemplate = (prop: string) => {
     if (prop.includes('start') || prop.includes('end')) {
@@ -101,10 +99,10 @@ export const Stack: StackComponent = (
   const dynamicStyle = useMemo(() => {
     const getPaddingValue = (
       padding: TokensTypes['space'] | [TokensTypes['space'] | 0, TokensTypes['space'] | 0],
-      direction: 'horizontal' | 'vertical',
+      paddingDirection: 'horizontal' | 'vertical',
     ) => {
       const [start, end] = Array.isArray(padding) ? padding : [padding, padding];
-      return direction === 'horizontal'
+      return paddingDirection === 'horizontal'
         ? { left: start ? tkns.space[start] : 0, right: end ? tkns.space[end] : 0 }
         : { top: start ? tkns.space[start] : 0, bottom: end ? tkns.space[end] : 0 };
     };

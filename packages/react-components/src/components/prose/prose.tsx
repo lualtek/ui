@@ -1,7 +1,6 @@
 import clsx from 'clsx';
-import { forwardRef } from 'react';
 
-import { PolyRefComponent } from '@/components';
+import type { PolyRefComponent } from '@/components';
 
 import styles from './prose.module.css';
 
@@ -22,17 +21,15 @@ export type ProseProps = {
 
 type ProseComponent = PolyRefComponent<'div', ProseProps>;
 
-export const Prose: ProseComponent = (
-  {
-    as: Component = 'div',
-    children,
-    className,
-    gap = 'big',
-    balanced = false,
-    ref: forwardedRef,
-    ...otherProps
-  },
-) => (
+export const Prose: ProseComponent = ({
+  as: Component = 'div',
+  children,
+  className,
+  gap = 'big',
+  balanced = false,
+  ref: forwardedRef,
+  ...otherProps
+}) => (
   <Component
     ref={forwardedRef}
     className={clsx(styles.Prose, className)}
@@ -43,4 +40,3 @@ export const Prose: ProseComponent = (
     {children}
   </Component>
 );
-

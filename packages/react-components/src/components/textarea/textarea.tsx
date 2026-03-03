@@ -1,56 +1,53 @@
 'use client';
 
 import clsx from 'clsx';
-import {
-  ChangeEvent, FC, forwardRef, InputEvent, ReactNode, useCallback, useId, useMemo,
-  useState,
-} from 'react';
+import type { ChangeEvent, FC, InputEvent, ReactNode } from 'react';
+import { useCallback, useId, useMemo, useState } from 'react';
 
-import {
-  ClampText, Stack, Text,
-} from '@/components';
+import { ClampText, Stack, Text } from '@/components';
 
-import { BaseField, BaseFieldProps } from '../base-field';
+import type { BaseFieldProps } from '../base-field';
+import { BaseField } from '../base-field';
 import styles from './textarea.module.css';
 
-export type TextareaProps = BaseFieldProps & React.ComponentPropsWithRef<'textarea'> & {
-  /**
-   * Define the accessible label of the textarea. While this is not
-   * mandatory, an textarea should always have a label. If not using this property
-   * you can bind a custom label to the textarea by using an id.
-   */
-  label: string;
-  /**
-   * Set the field into a readonly state. When readonly, the field value
-   * cannot be edited but it can still be selected and copied.
-   */
-  readOnly?: boolean;
-  /**
-   * Set the field into a disabled state. When disabled, the field value cannot be
-   * edited, selected or copied, but it can still be focused and navigated by AT.
-   *
-   * @defaultValue false
-   */
-  disabled?: boolean;
-  /**
-   * Make the textfield full width, filling the available space.
-  */
-  fullWidth?: boolean;
-  /**
-   * Set the hint message to show when the field is resting or invalid.
-   */
-  hint?: {
-    resting?: ReactNode;
-    invalid?: ReactNode;
+export type TextareaProps = BaseFieldProps &
+  React.ComponentPropsWithRef<'textarea'> & {
+    /**
+     * Define the accessible label of the textarea. While this is not
+     * mandatory, an textarea should always have a label. If not using this property
+     * you can bind a custom label to the textarea by using an id.
+     */
+    label: string;
+    /**
+     * Set the field into a readonly state. When readonly, the field value
+     * cannot be edited but it can still be selected and copied.
+     */
+    readOnly?: boolean;
+    /**
+     * Set the field into a disabled state. When disabled, the field value cannot be
+     * edited, selected or copied, but it can still be focused and navigated by AT.
+     *
+     * @defaultValue false
+     */
+    disabled?: boolean;
+    /**
+     * Make the textfield full width, filling the available space.
+     */
+    fullWidth?: boolean;
+    /**
+     * Set the hint message to show when the field is resting or invalid.
+     */
+    hint?: {
+      resting?: ReactNode;
+      invalid?: ReactNode;
+    };
+    /**
+     * The callback function that is called when the textarea value changes.
+     */
+    onChange?: (event: ChangeEvent<HTMLTextAreaElement>) => void;
   };
-  /**
-  * The callback function that is called when the textarea value changes.
-  */
-  onChange?: (event: ChangeEvent<HTMLTextAreaElement>) => void;
-}
 
 export const Textarea: FC<TextareaProps> = ({
-  children,
   className,
   disabled = false,
   label,
@@ -112,15 +109,12 @@ export const Textarea: FC<TextareaProps> = ({
         </Text>
       </div>
       {(hint?.resting ?? hint?.invalid) && (
-        <Stack
-          className={styles.Hint}
-          hPadding={16}
-        >
+        <Stack className={styles.Hint} hPadding={16}>
           <Text
             size={14}
-            weight={(invalid || isUserInvalid) ? 'bold' : undefined}
-            dimmed={(invalid || isUserInvalid) ? undefined : 5}
-            textColor={(invalid || isUserInvalid) ? 'var(--invalid-foreground)' : undefined}
+            weight={invalid || isUserInvalid ? 'bold' : undefined}
+            dimmed={invalid || isUserInvalid ? undefined : 5}
+            textColor={invalid || isUserInvalid ? 'var(--invalid-foreground)' : undefined}
           >
             {invalid || isUserInvalid ? hint.invalid : hint.resting}
           </Text>

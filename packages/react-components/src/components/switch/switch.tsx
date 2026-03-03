@@ -2,50 +2,48 @@
 
 import * as SwitchPrimitive from '@radix-ui/react-switch';
 import clsx from 'clsx';
-import {
-  AnimatePresence, domMax, LazyMotion, m,
-} from 'motion/react';
-import {
-  FC,
-  ReactNode, useCallback,
-  useEffect,
-  useId, useRef, useState,
-} from 'react';
+import { AnimatePresence, domMax, LazyMotion, m } from 'motion/react';
+import type { FC, ReactNode } from 'react';
+import { useCallback, useEffect, useId, useRef, useState } from 'react';
 
-import { Stack, Text, TextProps } from '@/components';
+import type { TextProps } from '@/components';
+import { Stack, Text } from '@/components';
 
 import styles from './switch.module.css';
 
-export type SwitchProps = Exclude<SwitchPrimitive.SwitchProps, 'asChild'>
- & React.ComponentPropsWithRef<typeof SwitchPrimitive.Root> & {
-   /**
-   * Set the size of the switch.
-   *
-   * @defaultValue "regular"
-   */
-   dimension?: 'small' | 'regular' | 'big';
-   /**
-   * Assign a label to the input.
-   */
-   label?: ReactNode;
-   /**
-   * Assign a label to the input when is checked.
-   */
-   checkedLabel?: ReactNode;
-   /**
-   * Set the position of the label relative to the switch.
-   *
-   * @defaultValue "end"
-   */
-   labelPosition?: 'start' | 'end';
- };
-
-type Properties = Record<NonNullable<SwitchProps['dimension']>, {
-  text: {
-    size: TextProps['size'];
-    lh?: TextProps['lineHeight'];
+export type SwitchProps = Exclude<SwitchPrimitive.SwitchProps, 'asChild'> &
+  React.ComponentPropsWithRef<typeof SwitchPrimitive.Root> & {
+    /**
+     * Set the size of the switch.
+     *
+     * @defaultValue "regular"
+     */
+    dimension?: 'small' | 'regular' | 'big';
+    /**
+     * Assign a label to the input.
+     */
+    label?: ReactNode;
+    /**
+     * Assign a label to the input when is checked.
+     */
+    checkedLabel?: ReactNode;
+    /**
+     * Set the position of the label relative to the switch.
+     *
+     * @defaultValue "end"
+     */
+    labelPosition?: 'start' | 'end';
   };
-}>
+
+type Properties = Record<
+  NonNullable<SwitchProps['dimension']>,
+  {
+    text: {
+      size: TextProps['size'];
+      lh?: TextProps['lineHeight'];
+    };
+  }
+>;
 
 const properties: Properties = {
   small: {
@@ -83,10 +81,13 @@ export const Switch: FC<SwitchProps> = ({
   const [isChecked, setIsChecked] = useState(checked ?? defaultChecked);
   const [shouldShowCheckedLabel, setShowCheckedLabel] = useState(Boolean(checkedLabel));
 
-  const handleCheckedChange = useCallback((checked: boolean) => {
-    onCheckedChange?.(checked);
-    setIsChecked(checked);
-  }, [onCheckedChange]);
+  const handleCheckedChange = useCallback(
+    (newChecked: boolean) => {
+      onCheckedChange?.(newChecked);
+      setIsChecked(newChecked);
+    },
+    [onCheckedChange],
+  );
 
   useEffect(() => {
     setShowCheckedLabel(Boolean(checkedLabel));
@@ -156,7 +157,7 @@ export const Switch: FC<SwitchProps> = ({
                   {label}
                 </m.span>
               )}
-              {(shouldShowCheckedLabel && isChecked) && (
+              {shouldShowCheckedLabel && isChecked && (
                 <m.span
                   key="label-checked"
                   exit={{

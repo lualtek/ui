@@ -1,16 +1,11 @@
 'use client';
 
 import clsx from 'clsx';
-import {
-  ChangeEvent, FC,
-  ReactNode, useCallback, useId,
-  useState,
-} from 'react';
+import type { ChangeEvent, FC, ReactNode } from 'react';
+import { useCallback, useId, useState } from 'react';
 
-import {
-  Icon, IconProps, Stack,
-  Text,
-} from '@/components';
+import type { IconProps } from '@/components';
+import { Icon, Stack, Text } from '@/components';
 
 import styles from './select.module.css';
 
@@ -54,7 +49,7 @@ export type SelectProps = React.ComponentPropsWithRef<'select'> & {
    * Set the hint message to show when the field is invalid.
    */
   hint?: ReactNode;
-}
+};
 
 export const Select: FC<SelectProps> = ({
   children,
@@ -73,13 +68,10 @@ export const Select: FC<SelectProps> = ({
   const uid = useId();
   const [isUserInvalid, setIsUserInvalid] = useState<boolean>(invalid ?? false);
 
-  const handleInvalid = useCallback(
-    (event: ChangeEvent<HTMLSelectElement>) => {
-      event.preventDefault();
-      setIsUserInvalid(!event.currentTarget.validity.valid);
-    },
-    [],
-  );
+  const handleInvalid = useCallback((event: ChangeEvent<HTMLSelectElement>) => {
+    event.preventDefault();
+    setIsUserInvalid(!event.currentTarget.validity.valid);
+  }, []);
 
   return (
     <Stack
@@ -107,34 +99,24 @@ export const Select: FC<SelectProps> = ({
           {...otherProps}
         >
           {children}
-          {label && <option hidden disabled>{label}</option>}
+          {label && (
+            <option hidden disabled>
+              {label}
+            </option>
+          )}
         </select>
 
-        {kind === 'single' && (
-          <Icon
-            className={styles.Icon}
-            source={icon}
-            dimension={18}
-          />
-        )}
+        {kind === 'single' && <Icon className={styles.Icon} source={icon} dimension={18} />}
 
-        <Text
-          as="label"
-          dimmed={5}
-          size={14}
-          responsive={false}
-          htmlFor={`${uid}-select`}
-          className={styles.Label}
-        >
+        <Text as="label" dimmed={5} size={14} responsive={false} htmlFor={`${uid}-select`} className={styles.Label}>
           {label}
         </Text>
       </div>
       {(invalid ?? isUserInvalid) && (
-        <Stack
-          className={styles.Hint}
-          hPadding={16}
-        >
-          <Text as="div" size={14} weight="bold" textColor="var(--invalid-foreground)">{hint}</Text>
+        <Stack className={styles.Hint} hPadding={16}>
+          <Text as="div" size={14} weight="bold" textColor="var(--invalid-foreground)">
+            {hint}
+          </Text>
         </Stack>
       )}
     </Stack>

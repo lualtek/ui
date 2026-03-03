@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/react-vite';
+import type { Meta } from '@storybook/react-vite';
 
 import { Container } from '../components/container';
 
@@ -15,40 +15,34 @@ export const Basic = () => (
   <Container dimension="medium">
     <p>This is a standard paragraph</p>
 
-    <p><a href="https://wooo.google.com">Text link</a></p>
     <p>
+      <a href="https://wooo.google.com">Text link</a>
+    </p>
+    <p>
+      {/* oxlint-disable-next-line jsx_a11y/anchor-is-valid */}
       <a>
         This is a link without
         <em>href</em>
       </a>
     </p>
     <p>
-      <strong>Strong</strong>
-      {' '}
-      is used to indicate strong importance.
+      <strong>Strong</strong> is used to indicate strong importance.
     </p>
     <p>
       This text has added
-      <em>emphasis</em>
-      .
+      <em>emphasis</em>.
     </p>
     <p>
       The
-      <b>b element</b>
-      {' '}
-      is stylistically different text from normal text
+      <b>b element</b> is stylistically different text from normal text
     </p>
     <p>
       The
-      <i>i element</i>
-      {' '}
-      is text that is offset from the normal text.
+      <i>i element</i> is text that is offset from the normal text.
     </p>
     <p>
       The
-      <u>u element</u>
-      {' '}
-      is text with an unarticulated
+      <u>u element</u> is text with an unarticulated
     </p>
     <p>
       <del>This text is deleted.</del>
@@ -57,17 +51,14 @@ export const Basic = () => (
       <ins>This text is inserted.</ins>
     </p>
     <p>
-      <s>This text has a strikethrough</s>
-      .
+      <s>This text has a strikethrough</s>.
     </p>
     <p>
       Superscript
-      <sup>®</sup>
-      .
+      <sup>®</sup>.
     </p>
     <p>
-      Subscript for things like H
-      <sub>2</sub>
+      Subscript for things like H<sub>2</sub>
       O.
     </p>
     <p>
@@ -78,25 +69,16 @@ export const Basic = () => (
       <abbr title="HyperText Markup Language">HTML</abbr>
     </p>
     <p>
-      <q cite="https://mzl.la/2MHdcJy">
-        This text is a short inline quotation.
-      </q>
+      <q cite="https://mzl.la/2MHdcJy">This text is a short inline quotation.</q>
     </p>
     <p>
       The
-      <dfn>dfn element</dfn>
-      {' '}
-      indicates a definition.
+      <dfn>dfn element</dfn> indicates a definition.
     </p>
     <p>
       The
-      <var>variable element</var>
-      , such as
-      <var>x</var>
-      {' '}
-      =
-      <var>y</var>
-      .
+      <var>variable element</var>, such as
+      <var>x</var> =<var>y</var>.
     </p>
     <address>
       2518 W Armitage Ave
@@ -109,9 +91,7 @@ export const Basic = () => (
     </p>
     <p>
       The
-      <mark>mark element</mark>
-      {' '}
-      indicates a highlight.
+      <mark>mark element</mark> indicates a highlight.
     </p>
   </Container>
 );
@@ -158,11 +138,7 @@ export const List = () => (
 export const Code = () => (
   <Container dimension="medium">
     <p>
-      <code>&lt;kbd&gt;</code>
-      {' '}
-      tag example
-      {' '}
-      <kbd>ctrl + ,</kbd>
+      <code>&lt;kbd&gt;</code> tag example <kbd>ctrl + ,</kbd>
     </p>
     <p>
       <a href="https://google.com">
@@ -170,6 +146,8 @@ export const Code = () => (
         <code>code</code>
       </a>
     </p>
-    <p><samp>This is sample output from a computer program.</samp></p>
+    <p>
+      <samp>This is sample output from a computer program.</samp>
+    </p>
   </Container>
 );

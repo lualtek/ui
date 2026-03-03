@@ -25,7 +25,7 @@ const config: StorybookConfig = {
     getAbsolutePath('@storybook/addon-themes'),
     getAbsolutePath('@storybook/addon-docs'),
   ],
-  staticDirs: [{ from: '../packages/react-components/src/fonts', to: '/fonts' }],
+  // staticDirs: [{ from: '../packages/react-components/src/fonts', to: '/fonts' }],
   framework: {
     name: getAbsolutePath('@storybook/react-vite'),
     options: {},
@@ -36,12 +36,11 @@ const config: StorybookConfig = {
     reactDocgen: 'react-docgen-typescript',
     reactDocgenTypescriptOptions: {
       shouldExtractLiteralValuesFromEnum: true,
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-      propFilter: prop => (prop.parent ? !prop.parent.fileName.includes('node_modules') : true),
+      propFilter: (prop) => (prop.parent ? !prop.parent.fileName.includes('node_modules') : true),
     },
   },
-  async viteFinal(config) {
-    return mergeConfig(config, {
+  async viteFinal(viteConfig) {
+    return mergeConfig(viteConfig, {
       plugins: [tsconfigPaths()],
     });
   },

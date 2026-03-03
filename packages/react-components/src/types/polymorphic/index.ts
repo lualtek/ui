@@ -31,9 +31,9 @@ export type PolymorphicProps<
  * @template DefaultElement The default HTML element tag to render if 'as' is not provided.
  * @template OwnProps The type of the component's own specific props.
  */
-export type PolyRefComponent<
-  DefaultElement extends React.ElementType,
-  OwnProps = Record<string, unknown>,
-> = <C extends React.ElementType = DefaultElement>( // The component function is generic
-  props: PolymorphicProps<C, OwnProps> // Props are typed using the core PolymorphicProps type
+export type PolyRefComponent<DefaultElement extends React.ElementType, OwnProps = Record<string, unknown>> = <
+  C extends React.ElementType = DefaultElement,
+>(
+  // The component function is generic
+  props: PolymorphicProps<C, OwnProps>, // Props are typed using the core PolymorphicProps type
 ) => React.ReactElement | null; // Standard React component return type

@@ -1,6 +1,5 @@
-import {
-  cloneElement, FC, isValidElement, ReactNode,
-} from 'react';
+import type { FC, ReactNode } from 'react';
+import { cloneElement, isValidElement } from 'react';
 
 import { Stack, Title } from '@/components';
 
@@ -11,15 +10,9 @@ export type TableHeaderProps = React.ComponentPropsWithRef<'div'> & {
    * Set the title of the table.
    */
   heading?: ReactNode;
-}
+};
 
-export const TableHeader: FC<TableHeaderProps> = ({
-  children,
-  heading,
-  id,
-  ref: forwardRef,
-  ...otherProps
-}) => (
+export const TableHeader: FC<TableHeaderProps> = ({ children, heading, id, ref: forwardRef, ...otherProps }) => (
   <Stack
     direction="row"
     columnGap={32}
@@ -33,14 +26,16 @@ export const TableHeader: FC<TableHeaderProps> = ({
     {...otherProps}
   >
     <div>
-      {typeof heading === 'string'
-        ? <Title id={id} level="5">{heading}</Title>
-        : isValidElement<HTMLElement>(heading) && cloneElement(
-          heading,
-          {
-            id,
-          },
-        )}
+      {typeof heading === 'string' ? (
+        <Title id={id} level="5">
+          {heading}
+        </Title>
+      ) : (
+        isValidElement<HTMLElement>(heading) &&
+        cloneElement(heading, {
+          id,
+        })
+      )}
     </div>
 
     <Stack direction="row" vAlign="center" columnGap={8} rowGap={8} fill={false} wrap inline>

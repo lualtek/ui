@@ -1,25 +1,19 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import React from 'react';
 
-import {
-  BlankButton, Bleed, Container, Panel, Stack, SwipeRowActionProps,
-} from '@/components';
+import type { SwipeRowActionProps } from '@/components';
+import { BlankButton, Panel, Stack } from '@/components';
 
 import { SwipeRow } from './swipe-row';
 
 const renderActions = (props: Omit<SwipeRowActionProps, 'icon' | 'label'>) => [
-  <SwipeRow.Action
-    {...props}
-    icon="trash"
-    label="Edit"
-    onClick={() => console.log('Edit clicked')}
-  />,
+  <SwipeRow.Action {...props} icon="trash" label="Edit" onClick={() => console.log('Edit clicked')} key="action-1" />,
   <SwipeRow.Action
     {...props}
     sentiment="positive"
     icon="ai-chat"
     label="Action 2"
     onClick={() => console.log('Delete clicked')}
+    key="action-2"
   />,
   <SwipeRow.Action
     {...props}
@@ -27,6 +21,7 @@ const renderActions = (props: Omit<SwipeRowActionProps, 'icon' | 'label'>) => [
     icon="zoom"
     label="Action 3"
     onClick={() => console.log('Delete clicked')}
+    key="action-3"
   />,
   <SwipeRow.Action
     {...props}
@@ -34,6 +29,7 @@ const renderActions = (props: Omit<SwipeRowActionProps, 'icon' | 'label'>) => [
     icon="remove"
     label="My Action"
     onClick={() => console.log('Delete clicked')}
+    key="action-4"
   />,
 ];
 
@@ -49,10 +45,7 @@ const meta: Meta<typeof SwipeRow> = {
         <p style={{ margin: '4px 0 0', fontSize: '0.9rem', color: '#555' }}>Updated yesterday</p>
       </Panel>
     ),
-    children: (
-      <>
-        {renderActions({})}
-      </>),
+    children: <>{renderActions({})}</>,
   },
 };
 
@@ -75,7 +68,8 @@ export const WithLabels = {
         {renderActions({
           showLabel: true,
         })}
-      </>),
+      </>
+    ),
   },
 } satisfies Story;
 

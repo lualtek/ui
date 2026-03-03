@@ -1,8 +1,0 @@
-{
-  "ignore": {
-    "motion": {
-      "versions": ">12.3.1",
-      "reason": "There is something wrong in the codebase"
-    }
-  }
-}

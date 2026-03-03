@@ -1,11 +1,10 @@
 'use client';
 
-import { TokensTypes } from '@lualtek/tokens/platforms/web';
+import type { TokensTypes } from '@lualtek/tokens/web';
 import tkns from '@lualtek/tokens/web/tokens.json';
 import clsx from 'clsx';
-import {
-  FC, useMemo,
-} from 'react';
+import type { FC } from 'react';
+import { useMemo } from 'react';
 
 import styles from './bleed.module.css';
 
@@ -20,7 +19,7 @@ export type BleedProps = React.ComponentPropsWithRef<'div'> & {
    * This will ignore the `amount` prop.
    */
   full?: boolean;
-}
+};
 
 export const Bleed: FC<BleedProps> = ({
   className,
@@ -31,12 +30,13 @@ export const Bleed: FC<BleedProps> = ({
   ref: forwardedRef,
   ...otherProps
 }) => {
-  const amountType = (typeof amount === 'string') ? amount : tkns.space[amount as TokensTypes['space']];
-  const dynamicStyle = useMemo(() => (
-    {
+  const amountType = typeof amount === 'string' ? amount : tkns.space[amount as TokensTypes['space']];
+  const dynamicStyle = useMemo(
+    () => ({
       '--bleed': amount ? amountType : 0,
-    }
-  ), [amount, amountType]);
+    }),
+    [amount, amountType],
+  );
 
   return (
     <div
@@ -50,4 +50,3 @@ export const Bleed: FC<BleedProps> = ({
     </div>
   );
 };
-

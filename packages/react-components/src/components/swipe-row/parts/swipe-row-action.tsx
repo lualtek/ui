@@ -1,11 +1,9 @@
-import { IconNames } from '@lualtek/icons';
+import type { IconNames } from '@lualtek/icons';
 import { motion, useTransform } from 'motion/react';
-import { FC } from 'react';
+import type { FC } from 'react';
 
-import type { IconProps, TextProps } from '../../../index';
-import {
-  BlankButton, Icon, Panel, PanelProps, Stack, Text,
-} from '../../../index';
+import type { IconProps, TextProps, PanelProps } from '../../../index';
+import { BlankButton, Icon, Panel, Stack, Text } from '../../../index';
 import styles from '../swipe-row.module.css';
 import { useSwipeRow } from './swipe-row-context';
 
@@ -50,11 +48,14 @@ export interface SwipeRowActionProps {
 }
 
 type VisualPropsType = {
-  dimension: Record<NonNullable<SwipeRowActionProps['dimension']>, {
-    icon: IconProps['dimension'];
-    padding: PanelProps['vPadding'];
-    radius: PanelProps['radius'];
-  }>;
+  dimension: Record<
+    NonNullable<SwipeRowActionProps['dimension']>,
+    {
+      icon: IconProps['dimension'];
+      padding: PanelProps['vPadding'];
+      radius: PanelProps['radius'];
+    }
+  >;
   sentiment: Record<NonNullable<TextProps['sentiment']>, PanelProps['vibrancyColor']>;
 };
 
@@ -100,9 +101,7 @@ export const SwipeRowAction: FC<SwipeRowActionProps> = ({
   onClick,
   index = 0,
 }) => {
-  const {
-    x, actionsWidth, actionCount, closeActions,
-  } = useSwipeRow();
+  const { x, actionsWidth, actionCount, closeActions } = useSwipeRow();
 
   /**
    * Scale in the action once the trigger passed it,
@@ -118,12 +117,7 @@ export const SwipeRowAction: FC<SwipeRowActionProps> = ({
    * Map/transform the range start/endAnimate to 0 and 1 using the `x` value, then apply it to scale animation
    *
    */
-  const scale = useTransform(
-    x,
-    [startAnimate, endAnimate],
-    [0, 1],
-    { clamp: true },
-  );
+  const scale = useTransform(x, [startAnimate, endAnimate], [0, 1], { clamp: true });
 
   const handleClick = () => {
     onClick?.();
@@ -136,20 +130,8 @@ export const SwipeRowAction: FC<SwipeRowActionProps> = ({
   };
 
   return (
-    <Stack
-      as={motion.div}
-      className={styles.Action}
-      aria-label={label}
-      style={{ scale }}
-    >
-      <Stack
-        as={BlankButton}
-        hAlign="center"
-        vAlign="center"
-        fill={false}
-        rowGap={2}
-        onClick={handleClick}
-      >
+    <Stack as={motion.div} className={styles.Action} aria-label={label} style={{ scale }}>
+      <Stack as={BlankButton} hAlign="center" vAlign="center" fill={false} rowGap={2} onClick={handleClick}>
         <Panel
           as={Stack}
           bordered
@@ -168,7 +150,11 @@ export const SwipeRowAction: FC<SwipeRowActionProps> = ({
             dimension={actionVisualProps.dimension[dimension].icon}
           />
         </Panel>
-        {showLabel && <Text responsive={false} dimmed={4} size={14}>{label}</Text>}
+        {showLabel && (
+          <Text responsive={false} dimmed={4} size={14}>
+            {label}
+          </Text>
+        )}
       </Stack>
     </Stack>
   );

@@ -1,15 +1,11 @@
 'use client';
 
 import clsx from 'clsx';
-import {
-  FC,
-  forwardRef, MouseEvent, useCallback, useMemo,
-} from 'react';
+import type { MouseEvent } from 'react';
+import { useCallback, useMemo } from 'react';
 
-import {
-  Icon, IconProps, PolyRefComponent,
-  Spinner, useStyles,
-} from '@/components';
+import type { IconProps, PolyRefComponent } from '@/components';
+import { Icon, Spinner, useStyles } from '@/components';
 
 import styles from './button.module.css';
 
@@ -71,11 +67,11 @@ export type ButtonProps = {
    * Set a sentiment color/status to convey meaning and important to the action
    */
   sentiment?: 'positive' | 'warning' | 'danger';
-}
+};
 
-type ButtonComponent = PolyRefComponent<'button', ButtonProps>
+type ButtonComponent = PolyRefComponent<'button', ButtonProps>;
 
-type IconSizeProps = Record<NonNullable<ButtonProps['dimension']>, IconProps['dimension']>
+type IconSizeProps = Record<NonNullable<ButtonProps['dimension']>, IconProps['dimension']>;
 
 const iconSize: IconSizeProps = {
   big: 18,
@@ -83,27 +79,25 @@ const iconSize: IconSizeProps = {
   small: 14,
 };
 
-export const Button: ButtonComponent = (
-  {
-    as: Component = 'button',
-    kind = 'primary',
-    dimension = 'regular',
-    className,
-    children,
-    fullWidth,
-    icon,
-    iconOpticalSize,
-    disabled,
-    iconPosition = 'start',
-    iconColor,
-    type = 'button',
-    onClick,
-    busy,
-    sentiment,
-    ref: forwardedRef,
-    ...otherProps
-  },
-) => {
+export const Button: ButtonComponent = ({
+  as: Component = 'button',
+  kind = 'primary',
+  dimension = 'regular',
+  className,
+  children,
+  fullWidth,
+  icon,
+  iconOpticalSize,
+  disabled,
+  iconPosition = 'start',
+  iconColor,
+  type = 'button',
+  onClick,
+  busy,
+  sentiment,
+  ref: forwardedRef,
+  ...otherProps
+}) => {
   const { vibrancy } = useStyles();
 
   const handleClick = useCallback(
@@ -114,13 +108,11 @@ export const Button: ButtonComponent = (
     [disabled, onClick],
   );
 
-  const renderIcon = useMemo(() => icon && (
-    <Icon
-      source={icon}
-      fill={iconColor}
-      dimension={iconOpticalSize?.[dimension] ?? iconSize[dimension]}
-    />
-  ), [icon, dimension, iconColor, iconOpticalSize]);
+  const renderIcon = useMemo(
+    () =>
+      icon && <Icon source={icon} fill={iconColor} dimension={iconOpticalSize?.[dimension] ?? iconSize[dimension]} />,
+    [icon, dimension, iconColor, iconOpticalSize],
+  );
 
   return (
     <Component
@@ -137,11 +129,11 @@ export const Button: ButtonComponent = (
       aria-busy={busy}
       aria-live={busy ? 'polite' : undefined}
       onClick={handleClick}
-      {...(kind === 'primary' || kind === 'secondary') ? vibrancy.attributes : undefined}
+      {...(kind === 'primary' || kind === 'secondary' ? vibrancy.attributes : undefined)}
       {...otherProps}
     >
       {renderIcon}
-      {(children && busy) ? <span>{children}</span> : children}
+      {children && busy ? <span>{children}</span> : children}
       {busy && (
         <span className={styles.SpinnerIndicator}>
           <Spinner dimension={dimension} />

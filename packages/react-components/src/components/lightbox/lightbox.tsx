@@ -1,16 +1,13 @@
 'use client';
 
 import { domAnimation, LazyMotion, m } from 'motion/react';
-import {
-  FC, SetStateAction, useCallback, useMemo,
-} from 'react';
+import type { FC, SetStateAction } from 'react';
+import { useCallback, useMemo } from 'react';
 import { FocusOn } from 'react-focus-on';
 import { useKeyPressEvent } from 'react-use';
 
-import {
-  BlankButton,
-  IconButton, Overlay, OverlayProps,
-} from '@/components';
+import type { OverlayProps } from '@/components';
+import { BlankButton, IconButton, Overlay } from '@/components';
 
 import styles from './lightbox.module.css';
 
@@ -62,7 +59,7 @@ export type LightboxProps = {
    * Callback for closing the lightbox
    */
   onClose: NonNullable<OverlayProps['onClose']>;
-}
+};
 
 const navAnimation = {
   hidden: { opacity: 0 },
@@ -95,31 +92,38 @@ export const Lightbox: FC<LightboxProps> = ({
   const isFirst = useMemo(() => activeIndex === 0, [activeIndex]);
   const isLast = useMemo(() => activeIndex === data.length - 1, [data, activeIndex]);
 
-  const goTo = useCallback((direction: 'prev' | 'next') => {
-    const fullLength = data.length - 1;
-    switch (direction) {
-      case 'prev':
-        setActiveIndex(prevState => (prevState === 0 ? 0 : prevState - 1));
-        break;
-      case 'next':
-        setActiveIndex(prevState => (prevState === fullLength ? fullLength : prevState + 1));
-        break;
-      default:
-        setActiveIndex(0);
-        break;
-    }
-  }, [data, setActiveIndex]);
+  const goTo = useCallback(
+    (direction: 'prev' | 'next') => {
+      const fullLength = data.length - 1;
+      switch (direction) {
+        case 'prev':
+          setActiveIndex((prevState) => (prevState === 0 ? 0 : prevState - 1));
+          break;
+        case 'next':
+          setActiveIndex((prevState) => (prevState === fullLength ? fullLength : prevState + 1));
+          break;
+        default:
+          setActiveIndex(0);
+          break;
+      }
+    },
+    [data, setActiveIndex],
+  );
 
   useKeyPressEvent('ArrowRight', () => goTo('next'));
   useKeyPressEvent('ArrowLeft', () => goTo('prev'));
   useKeyPressEvent('Escaper', () => onClose?.());
 
-  const dynamicStyles = useMemo(() => ({
-    '--max-h': imageHeight,
-    '--max-w': imageWidth,
-    '--thumb-h': thumbnailHeight,
-    '--thumb-w': thumbnailWidth,
-  }), [imageHeight, imageWidth, thumbnailHeight, thumbnailWidth]);
+  const dynamicStyles = useMemo(
+    () =>
+      ({
+        '--max-h': imageHeight,
+        '--max-w': imageWidth,
+        '--thumb-h': thumbnailHeight,
+        '--thumb-w': thumbnailWidth,
+      }) as React.CSSProperties,
+    [imageHeight, imageWidth, thumbnailHeight, thumbnailWidth],
+  );
 
   return (
     <Overlay onClose={onClose} backdropOpacity={0.9} index={index}>
@@ -176,13 +180,7 @@ export const Lightbox: FC<LightboxProps> = ({
                 onClick={() => goTo('prev')}
               />
             </div>
-            <m.div
-              className={styles.Navigation}
-              variants={navAnimation}
-              initial="hidden"
-              animate="show"
-              exit="hidden"
-            >
+            <m.div className={styles.Navigation} variants={navAnimation} initial="hidden" animate="show" exit="hidden">
               {data.map((item, navIndex) => (
                 <BlankButton
                   key={item.image}
@@ -190,12 +188,7 @@ export const Lightbox: FC<LightboxProps> = ({
                   aria-current={navIndex === activeIndex}
                   onClick={() => setActiveIndex(navIndex)}
                 >
-                  <m.img
-                    variants={thumbAnimation}
-                    key={item.image}
-                    src={item.image}
-                    alt={item.title ?? ''}
-                  />
+                  <m.img variants={thumbAnimation} key={item.image} src={item.image} alt={item.title ?? ''} />
                 </BlankButton>
               ))}
             </m.div>
@@ -205,4 +198,3 @@ export const Lightbox: FC<LightboxProps> = ({
     </Overlay>
   );
 };
-
