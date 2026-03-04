@@ -1,5 +1,5 @@
-import { useArgs } from 'storybook/preview-api';
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { useArgs } from 'storybook/preview-api';
 
 import { Button, Stack } from '../..';
 import { Overlay } from './overlay';

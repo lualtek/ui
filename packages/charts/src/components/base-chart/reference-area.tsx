@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import type { ReferenceArea as ReferenceAreaType, ReferenceAreaProps as RechartReferenceAreaProps } from 'recharts';
+import type { ReferenceAreaProps as RechartReferenceAreaProps, ReferenceArea as ReferenceAreaType } from 'recharts';
 import { ReferenceArea as RechartReferenceArea } from 'recharts';
 import type { Except } from 'type-fest';
 

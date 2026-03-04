@@ -1,7 +1,7 @@
-import type { ChartDataBaseType } from '@/charts/components/base-chart/base-chart';
 import { Chip, Stack, Text, Title } from '@lualtek/react-components';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useArgs, useCallback, useEffect } from 'storybook/preview-api';
+import type { ChartDataBaseType } from '@/charts/components/base-chart/base-chart';
 import SimpleData from '../../../fixtures/data';
 import { MultiDataSeries } from '../../../fixtures/multi-data-axes';
 import MultiAxisData from '../../../fixtures/multi-y-data';

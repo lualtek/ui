@@ -1,7 +1,7 @@
-import { useState } from 'storybook/preview-api';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import type { ReactNode } from 'react';
 import { useRef } from 'react';
+import { useState } from 'storybook/preview-api';
 
 import { Button, InlineToast, Toast, ToastAction, ToastProvider, ToastViewport } from '../..';
 

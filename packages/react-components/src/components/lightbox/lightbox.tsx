@@ -95,16 +95,10 @@ export const Lightbox: FC<LightboxProps> = ({
   const goTo = useCallback(
     (direction: 'prev' | 'next') => {
       const fullLength = data.length - 1;
-      switch (direction) {
-        case 'prev':
-          setActiveIndex((prevState) => (prevState === 0 ? 0 : prevState - 1));
-          break;
-        case 'next':
-          setActiveIndex((prevState) => (prevState === fullLength ? fullLength : prevState + 1));
-          break;
-        default:
-          setActiveIndex(0);
-          break;
+      if (direction === 'prev') {
+        setActiveIndex((prevState) => (prevState === 0 ? 0 : prevState - 1));
+      } else {
+        setActiveIndex((prevState) => (prevState === fullLength ? fullLength : prevState + 1));
       }
     },
     [data, setActiveIndex],

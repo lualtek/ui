@@ -3,9 +3,8 @@ import { useMemo } from 'react';
 
 import type { AutocompleteProps } from '@/components';
 import { Menu, Skeleton, Stack, Text, useResponsiveContext } from '@/components';
-
-import { AutocompleteOption } from './autocomplete-option';
 import styles from './autocomplete.module.css';
+import { AutocompleteOption } from './autocomplete-option';
 
 export type AutocompleteListProps = Pick<
   AutocompleteProps,

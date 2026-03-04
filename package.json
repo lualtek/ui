@@ -11,7 +11,7 @@
     "start": "turbo run dev --parallel",
     "dev": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "lint": "biome lint --no-errors-on-unmatched --files-ignore-unknown=true",
+    "lint": "biome check --no-errors-on-unmatched --files-ignore-unknown=true",
     "test": "echo \"Add some test\"",
     "release": "changeset publish",
     "prepare": "husky",
@@ -24,7 +24,7 @@
     "@changesets/cli": "2.29.8",
     "@commitlint/cli": "20.4.2",
     "@commitlint/config-conventional": "20.4.2",
-    "@lualtek/biome-config": "1.1.2",
+    "@lualtek/biome-config": "1.2.0",
     "@lualtek/config": "workspace:*",
     "@lualtek/themes": "workspace:*",
     "@lualtek/tokens": "workspace:*",
@@ -52,7 +52,7 @@
     "vite-tsconfig-paths": "6.1.1"
   },
   "lint-staged": {
-    "*": "biome lint --no-errors-on-unmatched --files-ignore-unknown=true"
+    "*": "biome check --no-errors-on-unmatched --files-ignore-unknown=true"
   },
   "browserslist": [
     "last 2 Chrome versions",

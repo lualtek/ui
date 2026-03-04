@@ -16,7 +16,7 @@ import { useCallback, useEffect, useId, useMemo, useState } from 'react';
 import { useDebounce } from 'react-use';
 
 import { Panel, Skeleton, Stack, Text } from '@/components';
-
+import styles from './table.module.css';
 import { TableCell } from './table-cell';
 import { TableCheckbox } from './table-checkbox';
 import { FilterControl, ToggleColumnsControl } from './table-controls';
@@ -26,7 +26,6 @@ import { TableHeader } from './table-header';
 import type { TablePaginationProps } from './table-pagination';
 import { TablePagination } from './table-pagination';
 import { TableRow } from './table-row';
-import styles from './table.module.css';
 import type { CustomColumnMeta } from './types';
 
 declare module '@tanstack/react-table' {
@@ -514,5 +513,5 @@ export const Table = <T extends Record<string, unknown>>({
   );
 };
 
-export { createColumnHelper } from '@tanstack/react-table';
 export type { Table as TableType } from '@tanstack/react-table';
+export { createColumnHelper } from '@tanstack/react-table';

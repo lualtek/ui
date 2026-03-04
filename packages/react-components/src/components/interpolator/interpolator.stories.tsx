@@ -1,6 +1,6 @@
-import { useArgs } from 'storybook/preview-api';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useCallback } from 'react';
+import { useArgs } from 'storybook/preview-api';
 
 import { Avatar, Button, Icon, LinearProgress, Stack } from '../..';
 import { Interpolator } from './interpolator';

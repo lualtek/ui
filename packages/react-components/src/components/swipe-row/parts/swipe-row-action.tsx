@@ -2,7 +2,7 @@ import type { IconNames } from '@lualtek/icons';
 import { motion, useTransform } from 'motion/react';
 import type { FC } from 'react';
 
-import type { IconProps, TextProps, PanelProps } from '../../../index';
+import type { IconProps, PanelProps, TextProps } from '../../../index';
 import { BlankButton, Icon, Panel, Stack, Text } from '../../../index';
 import styles from '../swipe-row.module.css';
 import { useSwipeRow } from './swipe-row-context';

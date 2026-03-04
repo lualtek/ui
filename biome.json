@@ -6,6 +6,9 @@
   },
   "linter": {
     "includes": ["**", "**/*", "!**/types/**", "!**/*.d.ts"],
+    "domains": {
+      "types": "all"
+    },
     "rules": {
       "correctness": {
         "noUnknownFunction": "error",

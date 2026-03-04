@@ -10,10 +10,10 @@
  * https://lualtek.io
  */
 
-import { Brush, ReferenceLine } from '@/charts/components';
 import { Stack, Text, Title } from '@lualtek/react-components';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useArgs, useCallback, useEffect } from 'storybook/preview-api';
+import { Brush, ReferenceLine } from '@/charts/components';
 
 import SimpleData from '../../../fixtures/data';
 import MultiAxisData from '../../../fixtures/multi-y-data';

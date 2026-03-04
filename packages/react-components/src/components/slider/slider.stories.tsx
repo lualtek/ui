@@ -1,5 +1,5 @@
-import { useArgs, useMemo } from 'storybook/preview-api';
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { useArgs, useMemo } from 'storybook/preview-api';
 
 import { Slider } from './slider';
 

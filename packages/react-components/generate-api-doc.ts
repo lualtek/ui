@@ -73,9 +73,7 @@ async function mapToTypeAliases(): Promise<TypeAlias[]> {
     // Qui si possono modificare cose
     return filteredAliases.map((alias) => {
       // Get the whole type and props referenced by the component
-      const referencedProps = filteredAliases.filter(
-        (props) => props.name === alias.type.typeArguments?.[0]?.name,
-      )?.[0];
+      const referencedProps = filteredAliases.find((props) => props.name === alias.type.typeArguments?.[0]?.name);
       // Extract the types from the typeArguments like Pick, Omit, etc.
       const toFilterTypes = alias.type.typeArguments?.find((type) => type.types)?.types?.map((type) => type.value);
       // Filter the properties of the referenced type by the types extracted above
@@ -119,6 +117,11 @@ async function saveTypeAliasesToJsonFiles() {
   }
 }
 
-(async () => {
-  await saveTypeAliasesToJsonFiles();
+await (async () => {
+  try {
+    await saveTypeAliasesToJsonFiles();
+  } catch (err) {
+    console.error('Failed to generate API documentation:', err);
+    process.exit(1);
+  }
 })();

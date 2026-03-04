@@ -7,10 +7,9 @@ import { useDebounce } from 'react-use';
 
 import type { MenuProps, PopoverContentProps, SheetProps, TextfieldProps } from '@/components';
 import { Popover, Sheet, Stack, Textfield, useResponsiveContext } from '@/components';
-
+import styles from './autocomplete.module.css';
 import { AutocompleteList } from './autocomplete-list';
 import type { AutocompleteOptionProps } from './autocomplete-option';
-import styles from './autocomplete.module.css';
 
 export type AutocompleteProps = TextfieldProps & {
   /**

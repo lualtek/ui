@@ -8,9 +8,8 @@ import type { Except } from 'type-fest';
 
 import type { PolyRefComponent, StackProps } from '@/components';
 import { Stack } from '@/components';
-
-import { SnaplistItem } from './snaplist-item';
 import styles from './snaplist.module.css';
+import { SnaplistItem } from './snaplist-item';
 
 export type SnaplistProps = {
   /**

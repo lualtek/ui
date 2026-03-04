@@ -151,7 +151,6 @@ export const Marquee: FC<MarqueeProps> = ({
   }, [calculateWidth, containerRef, isMounted]);
 
   // Recalculate width when children change
-  // biome-ignore lint/correctness/useExhaustiveDependencies: watch children changes to recalculate width
   useEffect(() => {
     calculateWidth();
   }, [calculateWidth, children]);

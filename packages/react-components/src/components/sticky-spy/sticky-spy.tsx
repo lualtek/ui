@@ -31,7 +31,6 @@ export const StickySpy: FC<StickySpyProps> = ({
   const [isSticky, setIsSticky] = useState(false);
   const uid = useId();
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: watching children is required here
   useEffect(() => {
     const spy = spyRef.current;
     const observer = new IntersectionObserver(

@@ -64,7 +64,6 @@ export const ToggleButton: FC<ToggleButtonProps> = ({
   const [isPressed, setIsPressed] = useState<boolean>(pressed);
   const [isFirstRender, setFirstRender] = useState(true);
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: watch pressed state to set first render
   useEffect(() => {
     setFirstRender(false);
   }, [isPressed]);

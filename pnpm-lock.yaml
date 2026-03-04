@@ -21,8 +21,8 @@ importers:
         specifier: 20.4.2
         version: 20.4.2
       '@lualtek/biome-config':
-        specifier: 1.1.2
-        version: 1.1.2(@biomejs/biome@2.4.5)
+        specifier: 1.2.0
+        version: 1.2.0(@biomejs/biome@2.4.5)
       '@lualtek/config':
         specifier: workspace:*
         version: link:packages/config
@@ -1070,8 +1070,8 @@ packages:
     peerDependencies:
       tslib: '2'
 
-  '@lualtek/biome-config@1.1.2':
-    resolution: {integrity: sha512-Cc66DrNzIUqc+R2uv6dExX9h2C+cARi8S4XGqDAjriq14+sVBr+9KHV6yR+cNrz5xrR4+wlWF5as/EJcJlhZxA==, tarball: https://npm.pkg.github.com/download/@lualtek/biome-config/1.1.2/a796c36fa5cf9de2b542ef84e503377b9330ba1f}
+  '@lualtek/biome-config@1.2.0':
+    resolution: {integrity: sha512-tij2cdb24Ln8YYeaweqwR7o7PQ+ElWeBQiUtbUbYNrlLw8XYyRAymlA6MW2oac8KUgnSKNlaAyVJmgOB7Cqp5A==, tarball: https://npm.pkg.github.com/download/@lualtek/biome-config/1.2.0/cbad2ff1487ce2f66863968cc69dbd94cbd53408}
     engines: {node: '>=20'}
     peerDependencies:
       '@biomejs/biome': ^2.3.0
@@ -5883,7 +5883,7 @@ snapshots:
       '@jsonjoy.com/codegen': 17.67.0(tslib@2.6.3)
       tslib: 2.6.3
 
-  '@lualtek/biome-config@1.1.2(@biomejs/biome@2.4.5)':
+  '@lualtek/biome-config@1.2.0(@biomejs/biome@2.4.5)':
     dependencies:
       '@biomejs/biome': 2.4.5
 

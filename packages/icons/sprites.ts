@@ -1,7 +1,7 @@
+import path from 'node:path';
 import dt from 'directory-tree';
 import fs from 'fs-extra';
 import { createSpinner } from 'nanospinner';
-import path from 'node:path';
 import colors from 'picocolors';
 // @ts-expect-error: missing types
 import svgstore from 'svgstore';
