@@ -61,33 +61,22 @@
     color: inherit;
     min-block-size: --token(--space-48);
     block-size: var(--field-height);
-    font-variation-settings: "wght" --token(--font-weight-semi-bold);
+    font-variation-settings: 'wght' --token(--font-weight-semi-bold);
     border-radius: var(--field-radius);
     backdrop-filter: brightness(var(--vibrancy-brightness));
     border: 0;
-    box-shadow: 0 0 0 1px var(--global-outer-contrast-border), inset 0 0 0 1px var(--inner-border-color);
-    background:
-      linear-gradient(
-        to bottom,
-        var(--vibrancy-background-soft),
-        var(--vibrancy-background-soft)
-      );
-    padding:
-      calc(--token(--space-24) - --token(--space-4))
-      calc(var(--field-padding) * var(--factor))
-      --token(--space-4)
-      var(--field-padding);
+    box-shadow:
+      0 0 0 1px var(--global-outer-contrast-border),
+      inset 0 0 0 1px var(--inner-border-color);
+    background: linear-gradient(to bottom, var(--vibrancy-background-soft), var(--vibrancy-background-soft));
+    padding: calc(--token(--space-24) - --token(--space-4)) calc(var(--field-padding) * var(--factor))
+      --token(--space-4) var(--field-padding);
 
     &:disabled {
       box-shadow: none;
       cursor: not-allowed;
       color: var(--global-disabled-foreground);
-      background:
-        linear-gradient(
-          to bottom,
-          var(--global-disabled-background),
-          var(--global-disabled-background)
-        );
+      background: linear-gradient(to bottom, var(--global-disabled-background), var(--global-disabled-background));
     }
 
     &:-webkit-autofill,
@@ -95,7 +84,9 @@
     &:-webkit-autofill:focus,
     &:-webkit-autofill:active {
       -webkit-text-fill-color: var(--vibrancy-foreground);
-      box-shadow: 0 0 0 100px var(--vibrancy-background-soft) inset, 0 0 0 100px var(--global-background) inset;
+      box-shadow:
+        0 0 0 100px var(--vibrancy-background-soft) inset,
+        0 0 0 100px var(--global-background) inset;
     }
 
     & option {
@@ -108,21 +99,14 @@
 
     &[multiple] {
       block-size: auto;
-      padding:
-        calc(--token(--space-32) - --token(--space-4))
-        var(--field-padding)
-        --token(--space-4)
+      padding: calc(--token(--space-32) - --token(--space-4)) var(--field-padding) --token(--space-4)
         var(--field-padding);
       overflow: auto;
 
       & option {
         color: currentcolor;
-        padding:
-        calc(var(--field-padding) / 2)
-        var(--field-padding)
-        calc(var(--field-padding) / 2)
-        0;
-        font-variation-settings: "wght" --token(--font-weight-semi-bold);
+        padding: calc(var(--field-padding) / 2) var(--field-padding) calc(var(--field-padding) / 2) 0;
+        font-variation-settings: 'wght' --token(--font-weight-semi-bold);
       }
 
       & optgroup > option {

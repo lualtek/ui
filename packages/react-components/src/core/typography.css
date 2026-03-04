@@ -11,7 +11,7 @@
 
   strong,
   b {
-    font-variation-settings: "wght" --token(--font-weight-bold);
+    font-variation-settings: 'wght' --token(--font-weight-bold);
   }
 
   :where(a:any-link):not([data-no-link-style]) {
@@ -30,7 +30,6 @@
       }
     }
   }
-
 
   del {
     padding: 0 4px;
@@ -55,14 +54,13 @@
   }
 
   dt {
-    font-variation-settings: "wght" 600;
+    font-variation-settings: 'wght' 600;
   }
 
   dd {
     margin: 0;
     padding: 0;
   }
-
 
   ul {
     font-size: initial;
@@ -71,7 +69,7 @@
     & li::marker {
       font-size: inherit;
       text-align: right;
-      font-variation-settings: "wght" 600;
+      font-variation-settings: 'wght' 600;
       min-inline-size: --token(--space-32);
     }
   }
@@ -81,7 +79,7 @@
 
     & li::marker {
       font-size: inherit;
-      font-variation-settings: "wght" 600;
+      font-variation-settings: 'wght' 600;
       min-inline-size: --token(--space-32);
       font-variant-numeric: tabular-nums;
       white-space: nowrap;
@@ -91,8 +89,10 @@
   kbd {
     padding: 2px 4px;
     border-radius: --token(--radius-8);
-    font-variation-settings: "wght" 600;
-    box-shadow: 0 0 0 1px var(--global-outer-contrast-border), inset 0 0 0 1px var(--global-inner-contrast-border);
+    font-variation-settings: 'wght' 600;
+    box-shadow:
+      0 0 0 1px var(--global-outer-contrast-border),
+      inset 0 0 0 1px var(--global-inner-contrast-border);
     background: var(--vibrancy-background-mid);
   }
 
@@ -114,7 +114,9 @@
   code {
     background-color: var(--vibrancy-background-mid);
     border-radius: --token(--radius-8);
-    box-shadow: 0 0 0 1px var(--global-outer-contrast-border), inset 0 0 0 1px var(--global-inner-contrast-border);
+    box-shadow:
+      0 0 0 1px var(--global-outer-contrast-border),
+      inset 0 0 0 1px var(--global-inner-contrast-border);
     padding: 0 4px 3px;
     font-size: 1em;
     font-family: --token(--font-family-mono);

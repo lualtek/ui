@@ -3,14 +3,12 @@
 import { useEffect, useRef, useState, useTransition } from 'react';
 import { Bar, BarChart as ReBarChart, YAxis } from 'recharts';
 import type { Except } from 'type-fest';
-
-import { useChartAxis } from '@/charts/hooks/use-chart-axis';
-
 import { getChartDefaultColor } from '@/charts/components';
 import type { BaseChartProps } from '@/charts/components/base-chart';
 import { BaseChart, DENSITIES } from '@/charts/components/base-chart';
 import type { ChartDataBaseType } from '@/charts/components/base-chart/base-chart';
 import type { BrushProps } from '@/charts/components/brush';
+import { useChartAxis } from '@/charts/hooks/use-chart-axis';
 
 export type BarProps<D> = {
   /**
@@ -149,6 +147,7 @@ export function BarChart<D extends ChartDataBaseType, B extends BarProps<D>>({
         </ReBarChart>
       )}
     >
+      {/** biome-ignore lint/complexity/noUselessFragments: Necessary */}
       <>
         {children}
 

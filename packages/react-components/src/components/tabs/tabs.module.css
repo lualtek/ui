@@ -48,7 +48,9 @@
     inset: 0;
     background: color-mix(in oklch, var(--vibrancy-background-hard), transparent 50%);
     pointer-events: none;
-    box-shadow: 0 0 0 1px var(--global-outer-contrast-border), inset 0 0 0 1px var(--global-inner-contrast-border);
+    box-shadow:
+      0 0 0 1px var(--global-outer-contrast-border),
+      inset 0 0 0 1px var(--global-inner-contrast-border);
     border-radius: calc(--token(--radius-8) + --token(--radius-4));
 
     .Tabs[data-tabs-dimension='small'] & {

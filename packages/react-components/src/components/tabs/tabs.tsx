@@ -9,10 +9,9 @@ import type { FC } from 'react';
 import { Children, isValidElement, useCallback, useEffect, useId, useMemo, useState } from 'react';
 
 import { Button, Panel, Stack } from '@/components';
-
+import styles from './tabs.module.css';
 import type { TabPanelProps } from './tabs-panel';
 import { TabPanel } from './tabs-panel';
-import styles from './tabs.module.css';
 
 type RadiusType = Record<NonNullable<TabsProps['dimension']>, Exclude<TokensTypes['radius'], string>>;
 
@@ -39,7 +38,9 @@ export type TabsProps = TabsPrimitive.TabsProps & {
 };
 
 type TabsComponent = FC<TabsProps> & {
+  // biome-ignore-start lint/style/useNamingConvention: subcomponent
   Panel: typeof TabPanel;
+  // biome-ignore-end lint/style/useNamingConvention: subcomponent
 };
 
 const radius: RadiusType = {
@@ -81,7 +82,7 @@ export const Tabs: TabsComponent = ({
     if (otherProps.value) {
       setActiveItem(otherProps.value);
     }
-  }, [handleOnVlaueChange, otherProps.value]);
+  }, [otherProps.value]);
 
   return (
     <TabsPrimitive.Root

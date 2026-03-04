@@ -19,19 +19,13 @@ const meta = {
     showCloseButton: false,
     description: `This component can be used as a Dialog replacement on mobile and tablet devices.
 You can read about why and how it was built`,
-    children:
-      'This one specifically is the most simplest setup you can have, just a simple drawer with a trigger.',
+    children: 'This one specifically is the most simplest setup you can have, just a simple drawer with a trigger.',
   },
   render: function Render({ ...args }) {
     const [, setOpen] = useArgs<typeof args>();
 
     return (
-      <Sheet
-        {...args}
-        heading={args.heading}
-        onOpenChange={open => setOpen({ open })}
-        trigger={args.trigger}
-      >
+      <Sheet {...args} heading={args.heading} onOpenChange={(open) => setOpen({ open })} trigger={args.trigger}>
         <Stack>
           {args.children}
           <Stack direction="row" vPadding={[16, 0]} columnGap={8} hAlign="center" fill={false} wrap>
@@ -113,7 +107,9 @@ export const ScrollInside = {
           {args.children}
         </Sheet>
         {/* eslint-disable-next-line max-len */}
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ducimus, cumque? Totam reiciendis tempora illum aut, laboriosam provident molestiae doloribus in alias fugit nostrum distinctio accusantium cum repellat veritatis voluptatibus. Sunt.
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ducimus, cumque? Totam reiciendis tempora illum aut,
+        laboriosam provident molestiae doloribus in alias fugit nostrum distinctio accusantium cum repellat veritatis
+        voluptatibus. Sunt.
       </>
     );
   },
@@ -186,11 +182,7 @@ export const Nested = {
 
     return (
       <>
-        <Sheet
-          {...args}
-          onOpenChange={open => setOpen({ open })}
-          trigger={<Button>Open sheet</Button>}
-        >
+        <Sheet {...args} onOpenChange={(open) => setOpen({ open })} trigger={<Button>Open sheet</Button>}>
           <Stack rowGap={24}>
             This is an example of nested sheet. You can click the button below to open another sheet.
             <Sheet
@@ -200,14 +192,14 @@ export const Nested = {
               dismissible={args.dismissible}
               trigger={<Button>Open nested sheet</Button>}
             >
-              <Stack>
-                Nested sheet content example
-              </Stack>
+              <Stack>Nested sheet content example</Stack>
             </Sheet>
           </Stack>
         </Sheet>
         {/* eslint-disable-next-line max-len */}
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ducimus, cumque? Totam reiciendis tempora illum aut, laboriosam provident molestiae doloribus in alias fugit nostrum distinctio accusantium cum repellat veritatis voluptatibus. Sunt.
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ducimus, cumque? Totam reiciendis tempora illum aut,
+        laboriosam provident molestiae doloribus in alias fugit nostrum distinctio accusantium cum repellat veritatis
+        voluptatibus. Sunt.
       </>
     );
   },

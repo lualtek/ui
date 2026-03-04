@@ -12,11 +12,13 @@ import { PopoverTrigger } from './popover-trigger';
 export type PopoverProps = React.ComponentPropsWithRef<'div'> & PopoverPrimitive.PopoverProps;
 
 type PopoverComponentProps = FC<PopoverProps> & {
+  // biome-ignore-start lint/style/useNamingConvention: subcomponent
   Anchor: typeof PopoverAnchor;
   Close: typeof PopoverClose;
   Content: typeof PopoverContent;
   Portal: typeof PopoverPortal;
   Trigger: typeof PopoverTrigger;
+  // biome-ignore-end lint/style/useNamingConvention: subcomponent */
 };
 
 export const Popover: PopoverComponentProps = ({ children, ...otherProps }: PopoverProps) => (

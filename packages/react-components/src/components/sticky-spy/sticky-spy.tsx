@@ -1,17 +1,8 @@
 'use client';
 
+import type React from 'react';
 import type { FC } from 'react';
-import React, {
-  Children,
-  cloneElement,
-  Fragment,
-  isValidElement,
-  useEffect,
-  useId,
-  useMemo,
-  useRef,
-  useState,
-} from 'react';
+import { Children, cloneElement, Fragment, isValidElement, useEffect, useId, useMemo, useRef, useState } from 'react';
 
 export type StickySpyProps = React.ComponentPropsWithRef<'div'> & {
   /**
@@ -40,6 +31,7 @@ export const StickySpy: FC<StickySpyProps> = ({
   const [isSticky, setIsSticky] = useState(false);
   const uid = useId();
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: watching children is required here
   useEffect(() => {
     const spy = spyRef.current;
     const observer = new IntersectionObserver(

@@ -88,13 +88,15 @@ export const Stack: StackComponent = ({
   ...otherProps
 }) => {
   const Component = as ?? 'div';
-  const alignmentTemplate = (prop: string) => {
-    if (prop.includes('start') || prop.includes('end')) {
-      return `flex-${prop}`;
-    }
-
-    return prop;
-  };
+  const alignmentTemplate = useMemo(
+    () => (prop: string) => {
+      if (prop.includes('start') || prop.includes('end')) {
+        return `flex-${prop}`;
+      }
+      return prop;
+    },
+    [],
+  );
 
   const dynamicStyle = useMemo(() => {
     const getPaddingValue = (
@@ -121,7 +123,7 @@ export const Stack: StackComponent = ({
       '--h-padding-right': hPaddingValues.right,
       '--max-width': maxWidth,
     };
-  }, [columnGap, hAlign, hPadding, rowGap, vAlign, vPadding, maxWidth]);
+  }, [columnGap, hAlign, hPadding, rowGap, vAlign, vPadding, maxWidth, alignmentTemplate]);
 
   return (
     <Component

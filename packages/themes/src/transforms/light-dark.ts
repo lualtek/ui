@@ -74,17 +74,15 @@ const lightDark: ValueTransform = {
       // Applica la saturazione se definita nel token
       if (token.saturation && Number(token.saturation) >= 0) {
         const saturationValue = Number(token.saturation);
-        lightColor.set('c', c => c * saturationValue);
-        darkColor.set('c', c => c * saturationValue);
+        lightColor.set('c', (c) => c * saturationValue);
+        darkColor.set('c', (c) => c * saturationValue);
       }
 
       // Applica la trasparenza se definita nel token
       const transparency = token.original.transparency as { light?: string; dark?: string } | undefined;
 
-      const oklchFormatter = (color: Color, alpha?: string) => (alpha
-        ? `oklab(from ${normalizedColor(color)} l a b / ${alpha})`
-        : normalizedColor(color)
-      );
+      const oklchFormatter = (color: Color, alpha?: string) =>
+        alpha ? `oklab(from ${normalizedColor(color)} l a b / ${alpha})` : normalizedColor(color);
 
       finalLightValue = oklchFormatter(lightColor, transparency?.light);
 

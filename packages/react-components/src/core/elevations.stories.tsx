@@ -27,10 +27,18 @@ export const Resting = {
   render: () => (
     <Container dimension="large">
       <Stack direction="row" rowGap={24} columnGap={88} fill={false}>
-        <div data-elevation="1" style={divStyle}>1</div>
-        <div data-elevation="2" style={divStyle}>2</div>
-        <div data-elevation="3" style={divStyle}>3</div>
-        <div data-elevation="4" style={divStyle}>4</div>
+        <div data-elevation="1" style={divStyle}>
+          1
+        </div>
+        <div data-elevation="2" style={divStyle}>
+          2
+        </div>
+        <div data-elevation="3" style={divStyle}>
+          3
+        </div>
+        <div data-elevation="4" style={divStyle}>
+          4
+        </div>
       </Stack>
     </Container>
   ),
@@ -40,7 +48,9 @@ export const Hoverable = {
   render: () => (
     <Container dimension="large">
       <Stack direction="row" rowGap={24} columnGap={88} fill={false}>
-        <div data-elevation="1" data-elevation-hover="2" style={divStyle}>1</div>
+        <div data-elevation="1" data-elevation-hover="2" style={divStyle}>
+          1
+        </div>
       </Stack>
     </Container>
   ),

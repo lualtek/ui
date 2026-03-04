@@ -34,15 +34,18 @@ const meta = {
       control: { type: 'radio' },
     },
   },
-  render: args => (
+  render: (args) => (
     <SplitButton {...args}>
       <div
         style={{
-          padding: 24, background: 'var(--dimmed-2)', width: 300, borderRadius: 16,
+          padding: 24,
+          background: 'var(--dimmed-2)',
+          width: 300,
+          borderRadius: 16,
         }}
       >
-        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Distinctio aliquam exercitationem ut? Molestias repellat facilis totam non.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio aliquam exercitationem ut? Molestias
+        repellat facilis totam non.
       </div>
     </SplitButton>
   ),

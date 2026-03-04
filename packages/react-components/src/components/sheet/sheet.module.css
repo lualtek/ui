@@ -63,6 +63,7 @@
 
     @media (--from-small) {
       &[data-vaul-drawer] {
+        /* biome-ignore lint/complexity/noImportantStyles: required */
         user-select: unset !important;
       }
     }

@@ -11,9 +11,7 @@
     "start": "turbo run dev --parallel",
     "dev": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "lint": "oxlint --type-check",
-    "fmt": "oxfmt",
-    "fmt:check": "oxfmt --check",
+    "lint": "biome lint --no-errors-on-unmatched --files-ignore-unknown=true",
     "test": "echo \"Add some test\"",
     "release": "changeset publish",
     "prepare": "husky",
@@ -22,9 +20,11 @@
     "upgrade-interactive": "pnpm dlx npm-upgrade-monorepo"
   },
   "devDependencies": {
+    "@biomejs/biome": "2.4.5",
     "@changesets/cli": "2.29.8",
     "@commitlint/cli": "20.4.2",
     "@commitlint/config-conventional": "20.4.2",
+    "@lualtek/biome-config": "1.1.2",
     "@lualtek/config": "workspace:*",
     "@lualtek/themes": "workspace:*",
     "@lualtek/tokens": "workspace:*",
@@ -39,9 +39,6 @@
     "husky": "9.1.7",
     "lint-staged": "16.3.1",
     "npm-run-all": "4.1.5",
-    "oxfmt": "0.36.0",
-    "oxlint": "1.51.0",
-    "oxlint-tsgolint": "0.15.0",
     "react": "19.2.4",
     "react-dom": "19.2.4",
     "rimraf": "6.1.3",
@@ -55,8 +52,7 @@
     "vite-tsconfig-paths": "6.1.1"
   },
   "lint-staged": {
-    "*.{ts,tsx,js,jsx,mjs}": "oxlint --type-check --fix .",
-    "*": "oxfmt --no-error-on-unmatched-pattern"
+    "*": "biome lint --no-errors-on-unmatched --files-ignore-unknown=true"
   },
   "browserslist": [
     "last 2 Chrome versions",

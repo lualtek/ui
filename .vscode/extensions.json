@@ -5,10 +5,10 @@
   // List of extensions which should be recommended for users of this workspace.
   "recommendations": [
     "vunguyentuan.vscode-postcss",
-    "oxc.oxc-vscode",
     "kamikillerto.vscode-colorize",
     "editorconfig.editorconfig",
     "vunguyentuan.vscode-css-variables",
-    "aaron-bond.better-comments"
+    "aaron-bond.better-comments",
+    "biomejs.biome"
   ]
 }

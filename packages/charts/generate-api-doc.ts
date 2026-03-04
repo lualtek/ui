@@ -1,4 +1,5 @@
 /* eslint-disable no-restricted-syntax */
+/** biome-ignore-all lint/suspicious/noConsole: script */
 import { readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 

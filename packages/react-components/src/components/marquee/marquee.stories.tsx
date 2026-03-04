@@ -10,8 +10,14 @@ const meta = {
   },
   render: (args) => (
     <Marquee {...args}>
-      <img width="600" height="400" data-chromatic="ignore" src="https://picsum.photos/600/400" />
-      <img width="600" height="400" data-chromatic="ignore" src="https://picsum.photos/seed/picsum/600/400" />
+      <img alt="Logo" width="600" height="400" data-chromatic="ignore" src="https://picsum.photos/600/400" />
+      <img
+        alt="Logo"
+        width="600"
+        height="400"
+        data-chromatic="ignore"
+        src="https://picsum.photos/seed/picsum/600/400"
+      />
     </Marquee>
   ),
 } satisfies Meta<typeof Marquee>;

@@ -10,11 +10,7 @@ const meta = {
   args: {
     obfuscate: true,
     children: (
-      <Stack
-        fill={false}
-        hAlign="center"
-        vAlign="center"
-      >
+      <Stack fill={false} hAlign="center" vAlign="center">
         I am over the top
       </Stack>
     ),

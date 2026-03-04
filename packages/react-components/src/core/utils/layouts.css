@@ -1,3 +1,4 @@
+/* biome-ignore-all lint/complexity/noImportantStyles: Required */
 @layer utilities {
   :is([data-shrink='false']) {
     flex-shrink: 0 !important;

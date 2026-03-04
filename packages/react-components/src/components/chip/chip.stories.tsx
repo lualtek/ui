@@ -24,9 +24,20 @@ const meta = {
     },
     color: {
       options: [
-        'brand', 'gray', 'cyan', 'green',
-        'purple', 'yellow', 'red', 'blue', 'slate',
-        'indigo', 'salmon', 'dipsy', 'magenta', 'primary',
+        'brand',
+        'gray',
+        'cyan',
+        'green',
+        'purple',
+        'yellow',
+        'red',
+        'blue',
+        'slate',
+        'indigo',
+        'salmon',
+        'dipsy',
+        'magenta',
+        'primary',
       ],
       control: { type: 'select' },
     },
@@ -54,6 +65,6 @@ export const Dismissale = {
 export const Interactive = {
   args: {
     interactive: true,
-    onClick: event => console.log(event),
+    onClick: (event) => console.log(event),
   },
 } satisfies Story;

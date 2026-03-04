@@ -6,11 +6,10 @@ import { useMemo } from 'react';
 import { RovingTabIndexProvider } from 'react-roving-tabindex';
 
 import { ConditionalWrapper, Panel, Stack } from '@/components';
-
+import styles from './menu.module.css';
 import { MenuItem } from './menu-item/menu-item';
 import { MenuItemCheckbox } from './menu-item/menu-item-checkbox';
 import { MenuSeparator } from './menu-separator/menu-separator';
-import styles from './menu.module.css';
 
 export type MenuProps = React.ComponentPropsWithRef<'ul'> & {
   /**
@@ -31,8 +30,11 @@ export type MenuProps = React.ComponentPropsWithRef<'ul'> & {
 };
 
 type MenuComponent = FC<MenuProps> & {
+  // biome-ignore lint/style/useNamingConvention: SubComponent
   Item: typeof MenuItem;
+  // biome-ignore lint/style/useNamingConvention: SubComponent
   ItemCheckbox: typeof MenuItemCheckbox;
+  // biome-ignore lint/style/useNamingConvention: SubComponent
   Separator: typeof MenuSeparator;
 };
 

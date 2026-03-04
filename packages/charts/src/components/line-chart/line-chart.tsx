@@ -1,19 +1,18 @@
 'use client';
 
-import React, { Children, isValidElement, useEffect, useRef, useState, useTransition } from 'react';
+import type React from 'react';
+import { Children, isValidElement, useEffect, useRef, useState, useTransition } from 'react';
 import type { LineProps as ReLineProps } from 'recharts';
 import { Area, Line, AreaChart as ReAreaChart, LineChart as ReLineChart, YAxis } from 'recharts';
 import type { DataKey } from 'recharts/types/util/types';
 import type { Except } from 'type-fest';
-
-import { useChartAxis } from '@/charts/hooks/use-chart-axis';
-
 import type { BaseChartProps } from '@/charts/components/base-chart';
 import { BaseChart, DENSITIES } from '@/charts/components/base-chart';
 import type { ChartDataBaseType } from '@/charts/components/base-chart/base-chart';
 import { getChartDefaultColor } from '@/charts/components/base-chart/colors';
 import type { BrushProps } from '@/charts/components/brush';
 import { Brush } from '@/charts/components/brush';
+import { useChartAxis } from '@/charts/hooks/use-chart-axis';
 
 export type LineProps<D> = {
   /**
@@ -190,83 +189,81 @@ export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
         )
       }
     >
-      <>
-        {/* Any extra children like Brush */}
-        {children}
+      {/* Any extra children like Brush */}
+      {children}
 
-        {hasRightY && (
-          <YAxis
-            yAxisId="right"
-            orientation="right"
-            domain={yDomainRight}
-            type={yTypeRight}
-            tickCount={DENSITIES[density]}
-            hide={!showYAxis}
-            width={yAxisWidthBiaxial}
-            tick={{ fill: 'var(--dimmed-4)', fontSize: '0.8em' }}
-            tickLine={{ stroke: 'var(--dimmed-2)' }}
-            axisLine={{ stroke: 'var(--dimmed-2)' }}
-            allowDecimals={allowYDecimals}
-          />
-        )}
+      {hasRightY && (
+        <YAxis
+          yAxisId="right"
+          orientation="right"
+          domain={yDomainRight}
+          type={yTypeRight}
+          tickCount={DENSITIES[density]}
+          hide={!showYAxis}
+          width={yAxisWidthBiaxial}
+          tick={{ fill: 'var(--dimmed-4)', fontSize: '0.8em' }}
+          tickLine={{ stroke: 'var(--dimmed-2)' }}
+          axisLine={{ stroke: 'var(--dimmed-2)' }}
+          allowDecimals={allowYDecimals}
+        />
+      )}
 
-        {hasLeftY && (
-          <YAxis
-            yAxisId="left"
-            orientation="left"
-            domain={yDomainLeft}
-            type={yTypeLeft}
-            tickCount={DENSITIES[density]}
-            hide={!showYAxis}
-            width={yAxisWidthNotBiaxial}
-            tick={{ fill: 'var(--dimmed-4)', fontSize: '0.8em' }}
-            tickLine={{ stroke: 'var(--dimmed-2)' }}
-            axisLine={{ stroke: 'var(--dimmed-2)' }}
-            allowDecimals={allowYDecimals}
-          />
-        )}
+      {hasLeftY && (
+        <YAxis
+          yAxisId="left"
+          orientation="left"
+          domain={yDomainLeft}
+          type={yTypeLeft}
+          tickCount={DENSITIES[density]}
+          hide={!showYAxis}
+          width={yAxisWidthNotBiaxial}
+          tick={{ fill: 'var(--dimmed-4)', fontSize: '0.8em' }}
+          tickLine={{ stroke: 'var(--dimmed-2)' }}
+          axisLine={{ stroke: 'var(--dimmed-2)' }}
+          allowDecimals={allowYDecimals}
+        />
+      )}
 
-        {showAreas && (
-          <defs>
-            {series.map(({ serieKeyId, color }, index) => (
-              <linearGradient key={serieKeyId} id={serieKeyId} x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor={color ?? getChartDefaultColor(index)} stopOpacity={0.4} />
-                <stop offset="95%" stopColor={color ?? getChartDefaultColor(index)} stopOpacity={0} />
-              </linearGradient>
-            ))}
-          </defs>
-        )}
+      {showAreas && (
+        <defs>
+          {series.map(({ serieKeyId, color }, index) => (
+            <linearGradient key={serieKeyId} id={serieKeyId} x1="0" y1="0" x2="0" y2="1">
+              <stop offset="5%" stopColor={color ?? getChartDefaultColor(index)} stopOpacity={0.4} />
+              <stop offset="95%" stopColor={color ?? getChartDefaultColor(index)} stopOpacity={0} />
+            </linearGradient>
+          ))}
+        </defs>
+      )}
 
-        {series.map(({ serieKeyId, side, color, type, data: serieData, ...otherSerieProps }, index) => {
-          const computedStrokeColor = color ?? getChartDefaultColor(index);
-          const commonProps = {
-            yAxisId: side,
-            isAnimationActive: children ? false : isAnimationActive,
-            type: type ?? 'monotone',
-            stroke: computedStrokeColor,
-            data: serieData,
-            dot: showDots
-              ? {
-                  r: dotsSize,
-                  stroke: computedStrokeColor,
-                  fill: computedStrokeColor,
-                }
-              : false,
-            activeDot: {
-              fill: showDots ? 'var(--global-foreground)' : computedStrokeColor,
-              stroke: 'var(--global-background)',
-              strokeWidth: 4,
-              r: 6,
-            },
-          };
+      {series.map(({ serieKeyId, side, color, type, data: serieData, ...otherSerieProps }, index) => {
+        const computedStrokeColor = color ?? getChartDefaultColor(index);
+        const commonProps = {
+          yAxisId: side,
+          isAnimationActive: children ? false : isAnimationActive,
+          type: type ?? 'monotone',
+          stroke: computedStrokeColor,
+          data: serieData,
+          dot: showDots
+            ? {
+                r: dotsSize,
+                stroke: computedStrokeColor,
+                fill: computedStrokeColor,
+              }
+            : false,
+          activeDot: {
+            fill: showDots ? 'var(--global-foreground)' : computedStrokeColor,
+            stroke: 'var(--global-background)',
+            strokeWidth: 4,
+            r: 6,
+          },
+        };
 
-          return showAreas ? (
-            <Area {...otherSerieProps} {...commonProps} key={serieKeyId} fillOpacity={1} fill={`url(#${serieKeyId})`} />
-          ) : (
-            <Line {...otherSerieProps} {...commonProps} key={serieKeyId} />
-          );
-        })}
-      </>
+        return showAreas ? (
+          <Area {...otherSerieProps} {...commonProps} key={serieKeyId} fillOpacity={1} fill={`url(#${serieKeyId})`} />
+        ) : (
+          <Line {...otherSerieProps} {...commonProps} key={serieKeyId} />
+        );
+      })}
     </BaseChart>
   );
 }

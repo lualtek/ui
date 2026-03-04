@@ -75,32 +75,29 @@ export const PopoverContent: FC<PopoverContentProps> = ({
     [computeOrigin],
   );
 
-  const renderContent = useMemo(
-    () => (
-      <PopoverPrimitive.Content
-        asChild
-        sideOffset={Number(offset)}
-        side={side}
-        style={{ zIndex: 'var(--sheet-z-index)' }}
-        {...otherProps}
+  const renderContent = (
+    <PopoverPrimitive.Content
+      asChild
+      sideOffset={Number(offset)}
+      side={side}
+      style={{ zIndex: 'var(--sheet-z-index)' }}
+      {...otherProps}
+    >
+      <m.div
+        initial="hidden"
+        animate="visible"
+        exit="hidden"
+        variants={animation}
+        transition={{
+          type: 'spring',
+          stiffness: 700,
+          damping: 30,
+        }}
       >
-        <m.div
-          initial="hidden"
-          animate="visible"
-          exit="hidden"
-          variants={animation}
-          transition={{
-            type: 'spring',
-            stiffness: 700,
-            damping: 30,
-          }}
-        >
-          <Elevator resting={2}>{children}</Elevator>
-          {showArrow && <PopoverPrimitive.Arrow fill={arrowColor} />}
-        </m.div>
-      </PopoverPrimitive.Content>
-    ),
-    [animation, arrowColor, children, offset, otherProps, showArrow, side],
+        <Elevator resting={2}>{children}</Elevator>
+        {showArrow && <PopoverPrimitive.Arrow fill={arrowColor} />}
+      </m.div>
+    </PopoverPrimitive.Content>
   );
 
   return (

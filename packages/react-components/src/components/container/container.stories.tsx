@@ -5,11 +5,7 @@ import { Container } from './container';
 const meta = {
   title: 'Layouts/Container',
   component: Container,
-  render: args => (
-    <Container {...args}>
-      Content
-    </Container>
-  ),
+  render: (args) => <Container {...args}>Content</Container>,
   args: {
     className: 'ContainerEx',
   },

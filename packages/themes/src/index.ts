@@ -7,8 +7,8 @@ import type { Config, TransformedToken } from 'style-dictionary/types';
 
 import LightDark from './transforms/light-dark.ts';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const Filename = fileURLToPath(import.meta.url);
+const Dirname = path.dirname(Filename);
 
 // type ThemeVariants = typeof THEME_VARIANTS[number];
 // const THEME_VARIANTS = ['light', 'dark'] as const;
@@ -64,7 +64,7 @@ const getConfig = (name: string): Config => ({
 /**
  * Get all the folders inside the foldeer `themes` (eg, default, pro etc)
  */
-const themesDir = path.join(__dirname, 'themes');
+const themesDir = path.join(Dirname, 'themes');
 const availableThemes = fs.readdirSync(themesDir).filter((item) => {
   const itemPath = path.join(themesDir, item);
   return fs.existsSync(itemPath) && fs.statSync(itemPath).isDirectory();

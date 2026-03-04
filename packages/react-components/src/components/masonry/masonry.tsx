@@ -79,16 +79,15 @@ export const Masonry: FC<MasonryProps> = ({ className, children, columns = 3, ga
               const breakpoint = breakpoints[current as keyof Columns];
               const column = columns[current as keyof Columns];
 
-              return {
-                ...acc,
-                [breakpoint]: column,
-
-                default: columns.default,
-              };
+              if (column !== undefined) {
+                acc[breakpoint] = column;
+              }
+              acc.default = columns.default;
+              return acc;
             },
             {
               default: 0,
-            },
+            } as Record<number | string, number>,
           )
         : undefined,
     [columns],

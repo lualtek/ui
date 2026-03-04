@@ -133,43 +133,43 @@
       --default-weight: --token(--font-weight-light);
 
       font-variation-settings:
-        "wght" var(--custom-weight, var(--default-weight)),
-        "wdth" var(--custom-width, 100),
-        "opsz" var(--custom-opsz, 12);
+        'wght' var(--custom-weight, var(--default-weight)),
+        'wdth' var(--custom-width, 100),
+        'opsz' var(--custom-opsz, 12);
     }
 
     &[data-text-weight='regular'] {
       --default-weight: --token(--font-weight-regular);
 
       font-variation-settings:
-        "wght" var(--custom-weight, var(--default-weight)),
-        "wdth" var(--custom-width, 100),
-        "opsz" var(--custom-opsz, 12);
+        'wght' var(--custom-weight, var(--default-weight)),
+        'wdth' var(--custom-width, 100),
+        'opsz' var(--custom-opsz, 12);
     }
 
     &[data-text-weight='semibold'] {
       --default-weight: --token(--font-weight-semi-bold);
 
       font-variation-settings:
-        "wght" var(--custom-weight, var(--default-weight)),
-        "wdth" var(--custom-width, 100),
-        "opsz" var(--custom-opsz, 12);
+        'wght' var(--custom-weight, var(--default-weight)),
+        'wdth' var(--custom-width, 100),
+        'opsz' var(--custom-opsz, 12);
     }
 
     &[data-text-weight='bold'] {
       --default-weight: --token(--font-weight-bold);
 
       font-variation-settings:
-        "wght" var(--custom-weight, var(--default-weight)),
-        "wdth" var(--custom-width, 100),
-        "opsz" var(--custom-opsz, 12);
+        'wght' var(--custom-weight, var(--default-weight)),
+        'wdth' var(--custom-width, 100),
+        'opsz' var(--custom-opsz, 12);
     }
 
     &:not([data-text-weight]) {
       font-variation-settings:
-        "wght" var(--custom-weight),
-        "wdth" var(--custom-width, 100),
-        "opsz" var(--custom-opsz, 12);
+        'wght' var(--custom-weight),
+        'wdth' var(--custom-width, 100),
+        'opsz' var(--custom-opsz, 12);
     }
 
     /* Responsiveness */

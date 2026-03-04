@@ -1,7 +1,8 @@
 import type { PanInfo } from 'motion/react';
 import { animate, motion } from 'motion/react';
+import type React from 'react';
 import type { FC, PropsWithChildren } from 'react';
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 
 import styles from '../swipe-row.module.css';
 import { useSwipeRow } from './swipe-row-context';
@@ -33,7 +34,7 @@ export const SwipeRowTrigger: FC<PropsWithChildren<SwipeRowTriggerProps>> = ({ c
   /**
    * Handles the end of a drag gesture and determines the resulting animation based on the drag offset and velocity.
    */
-  const handleDragEnd = (event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
+  const handleDragEnd = (_event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
     const { offset, velocity } = info;
 
     /**

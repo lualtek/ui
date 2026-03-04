@@ -19,7 +19,7 @@ export const Basic = () => (
       <a href="https://wooo.google.com">Text link</a>
     </p>
     <p>
-      {/* oxlint-disable-next-line jsx_a11y/anchor-is-valid */}
+      {/** biome-ignore lint/a11y/useValidAnchor: story example */}
       <a>
         This is a link without
         <em>href</em>

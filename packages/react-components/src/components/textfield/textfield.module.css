@@ -84,7 +84,6 @@
   }
 
   .Hint {
-
     /* Black magic */
     .Textfield:has(.InputField:user-invalid, .InputField[aria-invalid='true']) & {
       display: flex;

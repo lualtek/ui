@@ -6,10 +6,9 @@ import clsx from 'clsx';
 import { Children, cloneElement, isValidElement, useMemo } from 'react';
 
 import type { PolyRefComponent } from '@/components';
-
+import styles from './list.module.css';
 import type { ListItemProps } from './list-item';
 import { Li } from './list-item';
-import styles from './list.module.css';
 
 export type ListProps = {
   children: React.ReactNode[] | React.ReactNode;
@@ -36,6 +35,7 @@ type ListComponent = PolyRefComponent<'ul', ListProps> & {
   /**
    * List item component.
    */
+  // biome-ignore lint/style/useNamingConvention: Subcomponent
   Li: typeof Li;
 };
 

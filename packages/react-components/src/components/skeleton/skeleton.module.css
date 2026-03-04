@@ -14,12 +14,12 @@
     position: relative;
     overflow: hidden;
 
-    & + & {
-      margin-left: var(--gap, 0);
-    }
-
     & + br + & {
       margin-top: var(--gap, 0);
+    }
+
+    & + & {
+      margin-left: var(--gap, 0);
     }
 
     &::after {
@@ -30,13 +30,7 @@
       right: 0;
       height: 100%;
       background-repeat: no-repeat;
-      background-image:
-        linear-gradient(
-          to right,
-          var(--base-color),
-          var(--highlight-color),
-          var(--base-color)
-        );
+      background-image: linear-gradient(to right, var(--base-color), var(--highlight-color), var(--base-color));
       transform: translateX(-100%);
     }
 

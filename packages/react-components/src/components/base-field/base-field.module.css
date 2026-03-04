@@ -7,7 +7,7 @@
     margin: 0;
     text-overflow: ellipsis;
     font-size: var(--font-size);
-    font-variation-settings: "wght" --token(--font-weight-regular);
+    font-variation-settings: 'wght' --token(--font-weight-regular);
     font-family: inherit;
     line-height: 1;
     appearance: none;
@@ -23,7 +23,9 @@
     outline-offset: 2px;
     min-block-size: --token(--space-48);
     border: 0;
-    box-shadow: 0 0 0 1px var(--global-outer-contrast-border), inset 0 0 0 1px var(--inner-border-color);
+    box-shadow:
+      0 0 0 1px var(--global-outer-contrast-border),
+      inset 0 0 0 1px var(--inner-border-color);
     border-radius: --token(--radius-16);
     text-align: start;
 
@@ -84,8 +86,11 @@
     &:-webkit-autofill:focus,
     &:-webkit-autofill:active {
       -webkit-text-fill-color: var(--vibrancy-foreground);
-      box-shadow: 0 0 0 1px var(--global-outer-contrast-border), inset 0 0 0 1px var(--global-inner-contrast-border), 0
-        0 0 100px var(--vibrancy-background-soft) inset, 0 0 0 100px var(--global-background) inset;
+      box-shadow:
+        0 0 0 1px var(--global-outer-contrast-border),
+        inset 0 0 0 1px var(--global-inner-contrast-border),
+        0 0 0 100px var(--vibrancy-background-soft) inset,
+        0 0 0 100px var(--global-background) inset;
 
       &::selection {
         -webkit-text-fill-color: var(--dimmed-0);

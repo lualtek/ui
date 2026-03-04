@@ -12,9 +12,20 @@ const meta = {
     },
     color: {
       options: [
-        'brand', 'gray', 'cyan', 'green',
-        'purple', 'yellow', 'red', 'blue', 'slate',
-        'indigo', 'salmon', 'dipsy', 'magenta', 'primary',
+        'brand',
+        'gray',
+        'cyan',
+        'green',
+        'purple',
+        'yellow',
+        'red',
+        'blue',
+        'slate',
+        'indigo',
+        'salmon',
+        'dipsy',
+        'magenta',
+        'primary',
       ],
       control: { type: 'select' },
     },
@@ -24,7 +35,7 @@ const meta = {
     tinted: true,
     color: 'cyan',
   },
-  render: args => <TextChip {...args} />,
+  render: (args) => <TextChip {...args} />,
 } satisfies Meta<typeof TextChip>;
 
 export default meta;
@@ -42,4 +53,3 @@ export const WithEmoji = {
     emoji: '1f609',
   },
 } satisfies Story;
-

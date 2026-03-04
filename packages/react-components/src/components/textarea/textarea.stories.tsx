@@ -29,7 +29,7 @@ const meta = {
       control: { type: 'inline-radio' },
     },
   },
-  render: args => <Area {...args} placeholder="Placeholder" />,
+  render: (args) => <Area {...args} placeholder="Placeholder" />,
 } satisfies Meta<typeof Area>;
 
 export default meta;

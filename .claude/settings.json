@@ -15,7 +15,19 @@
       "Bash(curl -s \"https://raw.githubusercontent.com/LasaleFamine/eslintc/master/packages/eslint-config-base/rules/es6.mjs\")",
       "Bash(curl -s \"https://raw.githubusercontent.com/LasaleFamine/eslintc/master/packages/eslint-config-base/rules/node.mjs\")",
       "Bash(curl -s \"https://raw.githubusercontent.com/LasaleFamine/eslintc/master/packages/eslint-config-base/rules/style.mjs\")",
-      "Bash(curl -s \"https://raw.githubusercontent.com/LasaleFamine/eslintc/master/packages/eslint-config-base/rules/typescript.js\")"
+      "Bash(curl -s \"https://raw.githubusercontent.com/LasaleFamine/eslintc/master/packages/eslint-config-base/rules/typescript.js\")",
+      "WebFetch(domain:biomejs.dev)",
+      "Bash(/Users/mattia/Workspaces/ui/node_modules/@biomejs/biome/bin/biome --version)",
+      "Bash(node_modules/@biomejs/biome/bin/biome lint --reporter=json packages/react-components/src/core/utils/layouts.css)",
+      "Bash(python3 -m json.tool)",
+      "Read(//Users/mattia/.vscode/extensions/**)",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); props=d.get\\(''contributes'',{}\\).get\\(''configuration'',{}\\).get\\(''properties'',{}\\); [print\\(k,'':'', v.get\\(''description'',''''\\)[:80]\\) for k in props if ''biome'' in k.lower\\(\\)]\")",
+      "Bash(xargs cat)",
+      "Bash(python3 -c \" import json,sys d=json.load\\(sys.stdin\\) configs = d.get\\(''contributes'',{}\\).get\\(''configuration'',[]\\) if isinstance\\(configs, dict\\): configs = [configs] for c in configs: for k,v in c.get\\(''properties'',{}\\).items\\(\\): print\\(k\\) \")",
+      "Bash(python3 -c \" import json,sys d=json.load\\(sys.stdin\\) configs = d.get\\(''contributes'',{}\\).get\\(''configuration'',[]\\) if isinstance\\(configs, dict\\): configs = [configs] for c in configs: for k,v in c.get\\(''properties'',{}\\).items\\(\\): if ''bin'' in k.lower\\(\\) or ''enabled'' in k.lower\\(\\): print\\(k, '':'', json.dumps\\(v, indent=2\\)[:300]\\) print\\(\\) \")",
+      "Bash(python3 -c \" import json,sys d=json.load\\(sys.stdin\\) print\\(''=== activationEvents ===''\\) for e in d.get\\(''activationEvents'',[]\\): print\\(e\\) print\\(\\) print\\(''=== documentSelector \\(in contributes\\) ===''\\) langs = d.get\\(''contributes'',{}\\) # Look for language IDs import re text = json.dumps\\(langs\\) css_mentions = [m.start\\(\\) for m in re.finditer\\(''css'', text, re.IGNORECASE\\)] for pos in css_mentions[:10]: print\\(text[max\\(0,pos-30\\):pos+50]\\) \")",
+      "Read(//Users/mattia/Library/Caches/dev.biomejs.biome/biome-logs/**)",
+      "Read(//Users/mattia/Workspaces/ui/**)"
     ]
   }
 }

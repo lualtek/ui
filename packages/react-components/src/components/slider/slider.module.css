@@ -35,7 +35,9 @@
   }
 
   .Track {
-    box-shadow: 0 0 0 1px var(--global-outer-contrast-border), inset 0 0 0 1px var(--global-inner-contrast-border);
+    box-shadow:
+      0 0 0 1px var(--global-outer-contrast-border),
+      inset 0 0 0 1px var(--global-inner-contrast-border);
     position: relative;
     flex-grow: 1;
     border-radius: --token(--radius-full);
@@ -101,7 +103,7 @@
       text-align: center;
       font-size: --token(--font-size-16);
       color: var(--dimmed-6);
-      font-variation-settings: "wght" --token(--font-weight-bold);
+      font-variation-settings: 'wght' --token(--font-weight-bold);
     }
 
     .Input[data-slider-show-values='true'] &[data-orientation='vertical']::after {
@@ -110,7 +112,6 @@
       transform: translateY(-50%);
     }
 
-
     &:hover {
       cursor: grab;
     }
@@ -118,7 +119,6 @@
     &:active {
       cursor: grabbing;
     }
-
 
     &[data-disabled] {
       background-color: var(--global-disabled-foreground);

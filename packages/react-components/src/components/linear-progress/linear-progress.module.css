@@ -15,7 +15,9 @@
     overflow: hidden;
     display: block;
     background: var(--track-color);
-    box-shadow: 0 0 0 1px var(--global-outer-contrast-border), inset 0 0 0 1px var(--global-inner-contrast-border);
+    box-shadow:
+      0 0 0 1px var(--global-outer-contrast-border),
+      inset 0 0 0 1px var(--global-inner-contrast-border);
     height: var(--progress-height);
     border-radius: --token(--radius-full);
     backdrop-filter: brightness(1.35);
@@ -27,18 +29,17 @@
     &:indeterminate {
       background-size: 200% 100%;
       animation: progress-stripes 2s linear infinite;
-      background-image:
-        linear-gradient(
-          to right,
-          transparent 50%,
-          var(--fill-color) 50%,
-          var(--fill-color) 60%,
-          transparent 60%,
-          transparent 71.5%,
-          var(--fill-color) 71.5%,
-          var(--fill-color) 84%,
-          transparent 84%
-        );
+      background-image: linear-gradient(
+        to right,
+        transparent 50%,
+        var(--fill-color) 50%,
+        var(--fill-color) 60%,
+        transparent 60%,
+        transparent 71.5%,
+        var(--fill-color) 71.5%,
+        var(--fill-color) 84%,
+        transparent 84%
+      );
     }
   }
 

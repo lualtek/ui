@@ -12,7 +12,7 @@
 
 import clsx from 'clsx';
 import type { FC } from 'react';
-import React from 'react';
+import type React from 'react';
 import { Brush as ReBrush } from 'recharts';
 
 import styles from './brush.module.css';

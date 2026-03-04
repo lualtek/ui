@@ -60,7 +60,8 @@
     background: var(--border-color);
 
     /* background-attachment: fixed; */
-    mask: linear-gradient(transparent, transparent),
+    mask:
+      linear-gradient(transparent, transparent),
       conic-gradient(
         from calc(((var(--starting-angle) + (var(--spread) * 0.25)) - (var(--spread) * 1.5)) * 1deg),
         oklch(100% 0 0deg / 15%) 0deg,
@@ -81,7 +82,8 @@
 
   .Glow::after {
     background: var(--gradient);
-    mask: linear-gradient(transparent, transparent),
+    mask:
+      linear-gradient(transparent, transparent),
       conic-gradient(
         from calc(((var(--starting-angle) + (var(--spread) * 0.25)) - (var(--spread) * 0.5)) * 1deg),
         transparent 0deg,
@@ -126,7 +128,8 @@
     inset: var(--border-offset);
     border: var(--glow-power) solid transparent;
     border-radius: calc((var(--border-offset) * -1) + var(--radius) + (var(--glow-power) / 2));
-    mask: linear-gradient(transparent, transparent),
+    mask:
+      linear-gradient(transparent, transparent),
       conic-gradient(
         from calc((var(--starting-angle) - (var(--spread) * 0.5)) * 1deg),
         black 0deg,

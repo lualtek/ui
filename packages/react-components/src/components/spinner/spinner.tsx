@@ -42,7 +42,7 @@ export const Spinner: FC<SpinnerProps> = ({ className, style, color, dimension =
       animate={{ rotate: '2turn' }}
       transition={{
         duration: 2,
-        repeat: Infinity,
+        repeat: Number.POSITIVE_INFINITY,
         repeatDelay: 2,
       }}
       style={{ ...style, originX: '50%', originY: '50%' }}

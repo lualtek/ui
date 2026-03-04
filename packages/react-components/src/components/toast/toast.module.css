@@ -35,7 +35,6 @@
     flex-grow: 0;
   }
 
-
   .Viewport {
     --viewport-padding: --token(--space-24);
 
@@ -89,4 +88,3 @@
     transform: translateX(calc(100% + var(--viewport-padding)));
   }
 }
-

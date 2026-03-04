@@ -3,8 +3,9 @@
 import type { TokensTypes } from '@lualtek/tokens/web';
 import tkns from '@lualtek/tokens/web/tokens.json';
 import clsx from 'clsx';
+import type React from 'react';
 import type { CSSProperties, FC, RefObject } from 'react';
-import React, { Children, Fragment, useCallback, useEffect, useId, useMemo, useRef, useState } from 'react';
+import { Children, Fragment, useCallback, useEffect, useId, useMemo, useRef, useState } from 'react';
 
 import styles from './marquee.module.css';
 
@@ -150,6 +151,7 @@ export const Marquee: FC<MarqueeProps> = ({
   }, [calculateWidth, containerRef, isMounted]);
 
   // Recalculate width when children change
+  // biome-ignore lint/correctness/useExhaustiveDependencies: watch children changes to recalculate width
   useEffect(() => {
     calculateWidth();
   }, [calculateWidth, children]);

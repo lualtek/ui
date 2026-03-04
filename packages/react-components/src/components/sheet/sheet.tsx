@@ -277,8 +277,10 @@ export const SheetWrapper: FC<SheetProps> = ({ nested, ...otherProps }) => {
 export type SheetProps = DialogProps & SheetContentProps & { nested?: boolean };
 
 export type SheetComponent = FC<SheetProps> & {
+  // biome-ignore-start lint/style/useNamingConvention: subcomponent
   Close: typeof Vaul.Close;
   Title: typeof Vaul.Title;
+  // biome-ignore-end lint/style/useNamingConvention: subcomponent
 };
 
 export const Sheet: SheetComponent = ({ nested, ...otherProps }) => (

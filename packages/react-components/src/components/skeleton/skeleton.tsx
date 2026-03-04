@@ -115,27 +115,23 @@ export const Skeleton: FC<SkeletonProps> = ({
             </Fragment>
           ),
         )
+      ) : /**
+       * If children are provided we hide them and show the skeleton instead
+       * while the loading state is active
+       */
+      loading ? (
+        <div
+          className={styles.SkeletonItem}
+          data-skeleton-circle={circle}
+          data-skeleton-animated={enableAnimation}
+          data-skeleton-children={Boolean(children)}
+          data-skeleton-inline={inline}
+          style={{ ...dynamicStyle, ...style }}
+        >
+          {children}
+        </div>
       ) : (
-        /**
-         * If children are provided we hide them and show the skeleton instead
-         * while the loading state is active
-         */
-        <>
-          {loading ? (
-            <div
-              className={styles.SkeletonItem}
-              data-skeleton-circle={circle}
-              data-skeleton-animated={enableAnimation}
-              data-skeleton-children={Boolean(children)}
-              data-skeleton-inline={inline}
-              style={{ ...dynamicStyle, ...style }}
-            >
-              {children}
-            </div>
-          ) : (
-            children
-          )}
-        </>
+        children
       )}
     </span>
   );

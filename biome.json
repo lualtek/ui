@@ -1,0 +1,19 @@
+{
+  "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+  "extends": ["@lualtek/biome-config/core"],
+  "formatter": {
+    "includes": ["**", "**/*", "!**/types/**", "!**/*.d.ts"]
+  },
+  "linter": {
+    "includes": ["**", "**/*", "!**/types/**", "!**/*.d.ts"],
+    "rules": {
+      "correctness": {
+        "noUnknownFunction": "error",
+        "noUnknownMediaFeatureName": "off"
+      }
+    }
+  },
+  "javascript": {
+    "globals": ["React"]
+  }
+}

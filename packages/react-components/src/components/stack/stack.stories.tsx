@@ -27,7 +27,7 @@ const meta = {
     direction: 'row',
     wrap: true,
   },
-  render: args => (
+  render: (args) => (
     <Stack rowGap={80} columnGap={24} {...args}>
       <div className="DivEx">01</div>
       <div className="DivEx">02</div>
@@ -69,9 +69,11 @@ export const WithMaxWidth = {
 
 export const WidthGrowChild = {
   args: {},
-  render: args => (
+  render: (args) => (
     <Stack rowGap={80} columnGap={24} {...args}>
-      <div style={{ background: 'slategray', padding: 8 }} data-grow={false}>01</div>
+      <div style={{ background: 'slategray', padding: 8 }} data-grow={false}>
+        01
+      </div>
       <div style={{ background: 'slategray', padding: 8 }}>02</div>
     </Stack>
   ),

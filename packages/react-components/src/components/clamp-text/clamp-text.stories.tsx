@@ -6,33 +6,25 @@ import { ClampText } from './clamp-text';
 const meta = {
   title: 'Typography/Clamp Text',
   component: ClampText,
-  render: args => (
+  render: (args) => (
     <Container dimension="medium">
       <ClampText {...args}>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Quos, a incidunt veritatis odio ullam ea dolores, ad dolorum beatae exercitationem illo
-        aut debitis cupiditate? Blanditiis voluptas enim minima excepturi nam.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Quos, a incidunt veritatis odio ullam ea dolores, ad dolorum beatae exercitationem illo
-        aut debitis cupiditate? Blanditiis voluptas enim minima excepturi nam.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Quos, a incidunt veritatis odio ullam ea dolores, ad dolorum beatae exercitationem illo
-        aut debitis cupiditate? Blanditiis voluptas enim minima excepturi nam.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Quos, a incidunt veritatis odio ullam ea dolores, ad dolorum beatae exercitationem illo
-        aut debitis cupiditate? Blanditiis voluptas enim minima excepturi nam.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Quos, a incidunt veritatis odio ullam ea dolores, ad dolorum beatae exercitationem illo
-        aut debitis cupiditate? Blanditiis voluptas enim minima excepturi nam.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Quos, a incidunt veritatis odio ullam ea dolores, ad dolorum beatae exercitationem illo
-        aut debitis cupiditate? Blanditiis voluptas enim minima excepturi nam.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Quos, a incidunt veritatis odio ullam ea dolores, ad dolorum beatae exercitationem illo
-        aut debitis cupiditate? Blanditiis voluptas enim minima excepturi nam.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Quos, a incidunt veritatis odio ullam ea dolores, ad dolorum beatae exercitationem illo
-        aut debitis cupiditate? Blanditiis voluptas enim minima excepturi nam.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos, a incidunt veritatis odio ullam ea dolores, ad
+        dolorum beatae exercitationem illo aut debitis cupiditate? Blanditiis voluptas enim minima excepturi nam. Lorem
+        ipsum dolor sit amet consectetur adipisicing elit. Quos, a incidunt veritatis odio ullam ea dolores, ad dolorum
+        beatae exercitationem illo aut debitis cupiditate? Blanditiis voluptas enim minima excepturi nam. Lorem ipsum
+        dolor sit amet consectetur adipisicing elit. Quos, a incidunt veritatis odio ullam ea dolores, ad dolorum beatae
+        exercitationem illo aut debitis cupiditate? Blanditiis voluptas enim minima excepturi nam. Lorem ipsum dolor sit
+        amet consectetur adipisicing elit. Quos, a incidunt veritatis odio ullam ea dolores, ad dolorum beatae
+        exercitationem illo aut debitis cupiditate? Blanditiis voluptas enim minima excepturi nam. Lorem ipsum dolor sit
+        amet consectetur adipisicing elit. Quos, a incidunt veritatis odio ullam ea dolores, ad dolorum beatae
+        exercitationem illo aut debitis cupiditate? Blanditiis voluptas enim minima excepturi nam. Lorem ipsum dolor sit
+        amet consectetur adipisicing elit. Quos, a incidunt veritatis odio ullam ea dolores, ad dolorum beatae
+        exercitationem illo aut debitis cupiditate? Blanditiis voluptas enim minima excepturi nam. Lorem ipsum dolor sit
+        amet consectetur adipisicing elit. Quos, a incidunt veritatis odio ullam ea dolores, ad dolorum beatae
+        exercitationem illo aut debitis cupiditate? Blanditiis voluptas enim minima excepturi nam. Lorem ipsum dolor sit
+        amet consectetur adipisicing elit. Quos, a incidunt veritatis odio ullam ea dolores, ad dolorum beatae
+        exercitationem illo aut debitis cupiditate? Blanditiis voluptas enim minima excepturi nam.
       </ClampText>
     </Container>
   ),

@@ -64,6 +64,7 @@ export type GridProps = React.ComponentPropsWithRef<'ul'> & {
 };
 
 type GridComponent = React.ForwardRefExoticComponent<GridProps> & {
+  // biome-ignore lint/style/useNamingConvention: Subcomponent
   Item: typeof GridItem;
 };
 

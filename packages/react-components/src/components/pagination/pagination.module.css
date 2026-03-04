@@ -6,12 +6,12 @@
     display: inline-flex;
     align-items: center;
 
-    & > li > a {
+    &>li>a {
       border-radius: --token(--radius-8);
       line-height: 1;
       padding: 0 --token(--space-8);
       cursor: pointer;
-      font-variation-settings: "wght" 700;
+      font-variation-settings: 'wght' 700;
       overflow: hidden;
       user-select: none;
       color: var(--dimmed-5);
@@ -33,8 +33,8 @@
         color: var(--foreground);
         background: linear-gradient(to top, var(--background), var(--global-background));
         box-shadow:
-        inset 0 0 0 1px color-mix(in oklab, var(--border-color), transparent calc(100% - var(--border-opacity))),
-        inset 0 0 0 3px color-mix(in oklab, var(--global-background), transparent 40%);
+          inset 0 0 0 1px color-mix(in oklab, var(--border-color), transparent calc(100% - var(--border-opacity))),
+          inset 0 0 0 3px color-mix(in oklab, var(--global-background), transparent 40%);
       }
 
       &[aria-current='page']::before,
@@ -42,10 +42,13 @@
         position: absolute;
         content: '';
         height: 1px;
-        background: var(--border-color);
         background: radial-gradient(circle at center, var(--shine-color), transparent);
         right: 45%;
-        transition: right, bottom, opacity, 0.3s ease-out;
+        transition:
+          right,
+          bottom,
+          opacity,
+          0.3s ease-out;
       }
 
       &[aria-current='page']::after {

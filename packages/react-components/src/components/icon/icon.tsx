@@ -40,15 +40,13 @@ export const Icon: FC<IconProps> = ({ className, source, dimension = 18, fill, r
       <use href={`${sprite}#${dynamicStyle}/${source}`} />
     </svg>
   ) : (
-    <>
-      {Children.map(source, (child) =>
-        cloneElement(child as ReactElement<React.SVGProps<SVGSVGElement>>, {
-          className,
-          'aria-hidden': 'true',
-          width: dimension,
-          height: dimension,
-        }),
-      )}
-    </>
+    Children.map(source, (child) =>
+      cloneElement(child as ReactElement<React.SVGProps<SVGSVGElement>>, {
+        className,
+        'aria-hidden': 'true',
+        width: dimension,
+        height: dimension,
+      }),
+    )
   );
 };

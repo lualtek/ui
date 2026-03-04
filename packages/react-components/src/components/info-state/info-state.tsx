@@ -110,7 +110,7 @@ export const InfoState: FC<InfoStateProps> = ({
             }}
             transition={{
               duration: 0.8,
-              repeat: Infinity,
+              repeat: Number.POSITIVE_INFINITY,
               repeatDelay: 5.2,
               repeatType: 'reverse',
               type: 'spring',

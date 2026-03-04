@@ -41,7 +41,6 @@
     block-size: var(--marker-size);
     margin-block-start: calc(var(--marker-size) / 2.5);
 
-
     &[data-list-default-marker='true'] {
       transform: scale(0.7);
       margin-block-start: calc(var(--marker-size) / 3);
@@ -52,10 +51,12 @@
     }
   }
 }
+
 @layer overrides {
   .ListItem {
     gap: var(--marker-gap);
 
+    /* biome-ignore lint/style/noDescendingSpecificity: ignored */
     [data-list-ordered='true'] & {
       display: list-item;
 
