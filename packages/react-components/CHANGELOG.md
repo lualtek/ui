@@ -1,5 +1,12 @@
 # @lualtek/react-components
 
+## 2026.3.1
+
+### Patch Changes
+
+- d6b78a4: Remove spring from keyframes array in infostate
+  - @lualtek/icons@2026.3.1
+
 ## 2026.3.0
 
 ### Minor Changes
