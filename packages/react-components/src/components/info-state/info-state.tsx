@@ -113,7 +113,6 @@ export const InfoState: FC<InfoStateProps> = ({
               repeat: Infinity,
               repeatDelay: 5.2,
               repeatType: 'reverse',
-              type: 'spring',
             }}
           >
             <IconChip icon={icon} dimension="big" color={iconColor} className={styles.IconWrapper} />
