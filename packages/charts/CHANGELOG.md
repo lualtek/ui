@@ -1,5 +1,13 @@
 # @lualtek/charts
 
+## 2026.3.2
+
+### Patch Changes
+
+- e7842fd: Added "defs" as supported children on LineChart
+  - @lualtek/react-components@2026.3.2
+  - @lualtek/tokens@2026.3.2
+
 ## 2026.3.1
 
 ### Patch Changes

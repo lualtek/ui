@@ -1,5 +1,11 @@
 # @lualtek/react-components
 
+## 2026.3.2
+
+### Patch Changes
+
+- @lualtek/icons@2026.3.2
+
 ## 2026.3.1
 
 ### Patch Changes
