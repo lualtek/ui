@@ -1,19 +1,17 @@
 'use client';
 
-import React, { Children, isValidElement, useEffect, useRef, useState, useTransition } from 'react';
-import type { LineProps as ReLineProps } from 'recharts';
-import { Area, Line, AreaChart as ReAreaChart, LineChart as ReLineChart, YAxis } from 'recharts';
-import type { DataKey } from 'recharts/types/util/types';
-import type { Except } from 'type-fest';
-
-import { useChartAxis } from '@/charts/hooks/use-chart-axis';
-
 import type { BaseChartProps } from '@/charts/components/base-chart';
 import { BaseChart, DENSITIES } from '@/charts/components/base-chart';
 import type { ChartDataBaseType } from '@/charts/components/base-chart/base-chart';
 import { getChartDefaultColor } from '@/charts/components/base-chart/colors';
 import type { BrushProps } from '@/charts/components/brush';
 import { Brush } from '@/charts/components/brush';
+import { useChartAxis } from '@/charts/hooks/use-chart-axis';
+import React, { Children, isValidElement, useEffect, useRef, useState, useTransition } from 'react';
+import type { LineProps as ReLineProps } from 'recharts';
+import { Area, Line, AreaChart as ReAreaChart, LineChart as ReLineChart, YAxis } from 'recharts';
+import type { DataKey } from 'recharts/types/util/types';
+import type { Except } from 'type-fest';
 
 export type LineProps<D> = {
   /**
@@ -81,9 +79,12 @@ export type LineChartAccessoryProps<T = Record<string, unknown>> = Except<
    */
   showAreas?: boolean;
   /**
-   * A brush component to render.
+   * A brush component or SVG defs element to render.
    */
-  children?: React.ReactElement<BrushProps>;
+  children?:
+    | React.ReactElement<BrushProps>
+    | React.ReactElement<React.SVGProps<SVGDefsElement>>
+    | Array<React.ReactElement<BrushProps> | React.ReactElement<React.SVGProps<SVGDefsElement>>>;
 } & T;
 
 export type LineChartProps<D extends ChartDataBaseType, L extends LineProps<D>> = LineChartAccessoryProps<{
@@ -132,9 +133,10 @@ export function LineChart<D extends ChartDataBaseType, L extends LineProps<D>>({
   // Validate children
   Children.forEach(children, (child) => {
     if (!isValidElement(child)) return;
+    if (child.type === 'defs') return;
     // @ts-expect-error - we need to check the type
     if (child.type?.displayName !== Brush.displayName && child.type !== Brush) {
-      throw new Error('LineChart only accepts Brush as children.');
+      throw new Error('LineChart only accepts Brush and defs as children.');
     }
   });
 
