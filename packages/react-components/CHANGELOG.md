@@ -1,5 +1,15 @@
 # @lualtek/react-components
 
+## 2026.4.0
+
+### Minor Changes
+
+- af7107c: Extend Panel with Panel.Link and Panel.Action for native whole-panel navigation and independent sibling controls, preserving keyboard focus and standard browser link gestures.
+
+### Patch Changes
+
+- @lualtek/icons@2026.4.0
+
 ## 2026.3.2
 
 ### Patch Changes
