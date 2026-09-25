@@ -65,4 +65,3 @@ export * from './title';
 export * from './toast';
 export * from './toggle-button';
 export * from './tooltip';
-export * from './linked-panel';
