@@ -4,6 +4,10 @@
   .Panel {
     background: var(--background);
     position: relative;
+
+    &:has(> .Link) {
+      isolation: isolate;
+    }
     padding: var(--v-padding-top, 0) var(--h-padding-right, 0) var(--v-padding-bottom, 0) var(--h-padding-left, 0);
 
     @media not (--touch) {
@@ -71,5 +75,23 @@
     inset: 0;
     z-index: -1;
     pointer-events: none;
+  }
+
+  .Link {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    border-radius: inherit;
+    color: inherit;
+
+    &:focus-visible {
+      outline: --token(--space-2) solid var(--global-interactive-text);
+      outline-offset: --token(--space-2);
+    }
+  }
+
+  .Action {
+    position: relative;
+    z-index: 2;
   }
 }

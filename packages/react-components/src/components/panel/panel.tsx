@@ -16,6 +16,8 @@ import type {
 import { Glow, useStyles } from '@/components';
 
 import { ConditionalWrapper } from '../conditional-wrapper';
+import { PanelAction } from './panel-action';
+import { PanelLink } from './panel-link';
 import styles from './panel.module.css';
 
 type RadiusType = Exclude<TokensTypes['radius'], string> | 0;
@@ -98,7 +100,10 @@ export type PanelProps = {
   rainbowColors?: GlowProps['rainbowColors'];
 };
 
-type PanelComponent = PolyRefComponent<'div', PanelProps>;
+type PanelComponent = PolyRefComponent<'div', PanelProps> & {
+  Link: typeof PanelLink;
+  Action: typeof PanelAction;
+};
 
 export const Panel: PanelComponent = ({
   as: Component = 'div',
@@ -206,3 +211,6 @@ export const Panel: PanelComponent = ({
     </ConditionalWrapper>
   );
 };
+
+Panel.Link = PanelLink;
+Panel.Action = PanelAction;

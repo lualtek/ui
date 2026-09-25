@@ -288,3 +288,20 @@ Follow these accessibility patterns:
 - Default to semantic HTML elements (button, nav, main, etc.)
 - Provide `aria-label` for icon-only interactive elements
 - Use Radix UI primitives for complex patterns (dialogs, menus, popovers) — they handle focus management and ARIA attributes
+
+## Panel
+
+### Panel navigation and independent actions
+
+Keep the Panel root as a non-interactive container when it includes secondary controls. Place one `Panel.Link` directly inside it, with an accessible name; render independent controls using `Panel.Action`. The link covers the panel surface and retains native browser navigation. `Panel.Action` keeps its contents above that link without click forwarding.
+
+```tsx
+<Panel bordered radius={24} hPadding={24} vPadding={24}>
+  <Panel.Link as={Link} href="/devices/1" aria-label="Open water meter" />
+  <Title level="5">Water meter</Title>
+  <Text>Today: 66.01 m³</Text>
+  <Panel.Action as={IconButton} icon="c-info" aria-label="Calculation details" onClick={openDetails} />
+</Panel>
+```
+
+`Link` is supplied by the application's router. For simple panels without secondary controls, the existing `Panel as={Link}` composition remains available. Panels without a direct `Panel.Link` retain their existing stacking behavior. Use `Panel.Action` for chart previews or other content that must receive pointer interaction above the surface link; supply the appropriate semantic element through `as`.
